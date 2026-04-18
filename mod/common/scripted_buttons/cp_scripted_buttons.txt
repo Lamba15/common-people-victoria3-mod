@@ -22,9 +22,11 @@ cp_layla_check_button = {
 
 	possible = {
 		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_button_cooldown }
 	}
 
 	effect = {
+		set_variable = { name = cp_button_cooldown days = 30 }
 		random_list = {
 			# Situation-specific: letter that has not come (Ahmed at war)
 			15 = {
@@ -76,6 +78,54 @@ cp_layla_check_button = {
 				}
 				set_variable = { name = cp_seen_mothers_hand days = 180 }
 				trigger_event = { id = cp_layla.15 popup = yes }
+			}
+			# Always-on: the hen that will not lay
+			10 = {
+				trigger = { NOT = { has_variable = cp_seen_hen } }
+				set_variable = { name = cp_seen_hen days = 180 }
+				trigger_event = { id = cp_layla.16 popup = yes }
+			}
+			# Always-on: the merchant's scale
+			10 = {
+				trigger = { NOT = { has_variable = cp_seen_scale } }
+				set_variable = { name = cp_seen_scale days = 180 }
+				trigger_event = { id = cp_layla.17 popup = yes }
+			}
+			# Always-on: Friday, the river low
+			10 = {
+				trigger = { NOT = { has_variable = cp_seen_river_low } }
+				set_variable = { name = cp_seen_river_low days = 180 }
+				trigger_event = { id = cp_layla.18 popup = yes }
+			}
+			# Always-on: the old woman who sees through walls
+			10 = {
+				trigger = { NOT = { has_variable = cp_seen_old_woman } }
+				set_variable = { name = cp_seen_old_woman days = 180 }
+				trigger_event = { id = cp_layla.19 popup = yes }
+			}
+			# Always-on: the bread that did not rise
+			10 = {
+				trigger = { NOT = { has_variable = cp_seen_bread } }
+				set_variable = { name = cp_seen_bread days = 180 }
+				trigger_event = { id = cp_layla.20 popup = yes }
+			}
+			# Always-on: dust on the water
+			10 = {
+				trigger = { NOT = { has_variable = cp_seen_dust } }
+				set_variable = { name = cp_seen_dust days = 180 }
+				trigger_event = { id = cp_layla.21 popup = yes }
+			}
+			# Always-on: the younger brother's letter
+			10 = {
+				trigger = { NOT = { has_variable = cp_seen_brother } }
+				set_variable = { name = cp_seen_brother days = 180 }
+				trigger_event = { id = cp_layla.22 popup = yes }
+			}
+			# Always-on: the mule that will not move
+			10 = {
+				trigger = { NOT = { has_variable = cp_seen_mule } }
+				set_variable = { name = cp_seen_mule days = 180 }
+				trigger_event = { id = cp_layla.23 popup = yes }
 			}
 			# Safety net: if every branch has been seen recently, fire a
 			# generic reflection (cp_layla.6 "A Moment") so the button

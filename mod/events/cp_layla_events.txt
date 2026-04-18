@@ -369,3 +369,221 @@ cp_layla.15 = {
 		default_option = yes
 	}
 }
+
+
+###############################################################################
+# Reflection pool expansion (cp_layla.16..23)
+#
+# Same voice, same scale as cp_layla.13/14/15. All village-life appropriate
+# for the starting state; no gates beyond cp_layla_alive. Fired from the
+# button and from the JE monthly random_events pulse. Reuse existing event
+# pictures (the pool of images is small; repetition is acceptable).
+###############################################################################
+
+# cp_layla.16 -- "The Hen That Will Not Lay"
+cp_layla.16 = {
+	type = country_event
+
+	title = cp_layla.16.t
+	desc  = cp_layla.16.d
+	flavor = cp_layla.16.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.16.a
+		default_option = yes
+	}
+}
+
+# cp_layla.17 -- "The Merchant's Scale"
+cp_layla.17 = {
+	type = country_event
+
+	title = cp_layla.17.t
+	desc  = cp_layla.17.d
+	flavor = cp_layla.17.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.17.a
+		default_option = yes
+	}
+}
+
+# cp_layla.18 -- "Friday, the River Low"
+cp_layla.18 = {
+	type = country_event
+
+	title = cp_layla.18.t
+	desc  = cp_layla.18.d
+	flavor = cp_layla.18.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.18.a
+		default_option = yes
+	}
+}
+
+# cp_layla.19 -- "The Old Woman Who Sees Through Walls"
+cp_layla.19 = {
+	type = country_event
+
+	title = cp_layla.19.t
+	desc  = cp_layla.19.d
+	flavor = cp_layla.19.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.19.a
+		default_option = yes
+	}
+}
+
+# cp_layla.20 -- "The Bread That Did Not Rise"
+cp_layla.20 = {
+	type = country_event
+
+	title = cp_layla.20.t
+	desc  = cp_layla.20.d
+	flavor = cp_layla.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.20.a
+		default_option = yes
+	}
+}
+
+# cp_layla.21 -- "Dust on the Water"
+cp_layla.21 = {
+	type = country_event
+
+	title = cp_layla.21.t
+	desc  = cp_layla.21.d
+	flavor = cp_layla.21.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.21.a
+		default_option = yes
+	}
+}
+
+# cp_layla.22 -- "The Younger Brother's Letter"
+cp_layla.22 = {
+	type = country_event
+
+	title = cp_layla.22.t
+	desc  = cp_layla.22.d
+	flavor = cp_layla.22.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.22.a
+		default_option = yes
+	}
+}
+
+# cp_layla.23 -- "The Mule That Will Not Move"
+cp_layla.23 = {
+	type = country_event
+
+	title = cp_layla.23.t
+	desc  = cp_layla.23.d
+	flavor = cp_layla.23.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.23.a
+		default_option = yes
+	}
+}

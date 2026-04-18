@@ -1,0 +1,172 @@
+﻿###############################################################################
+# Common People -- customizable localization
+#
+# V3's customizable_localization lets a single loc key resolve to different
+# text based on conditions. We use it to make Layla's JE "reason" prose
+# reactive to her current state -- as her profession, home state, SoL, and
+# ownership change, the prose describing her life changes with her.
+#
+# Pattern (vanilla, see 00_characters.txt:stepping_down_reason):
+#   <name> = {
+#     type = <scope type>
+#     text = {
+#       trigger = { <condition> }
+#       localization_key = <loc key to render>
+#     }
+#     # More specific triggers first; the first passing branch wins.
+#   }
+#
+# Each block below drives one segment of cp_je_layla_reason. The loc keys
+# the branches point to live in cp_layla_l_english.yml.
+###############################################################################
+
+
+# ============================================================================
+# HOUSING -- where and how she lives
+# ============================================================================
+cp_layla_housing_desc = {
+	type = country
+
+	# Urban, upper-strata professions
+	text = {
+		trigger = {
+			has_variable = cp_home_state_cairo
+			OR = { has_variable = cp_profession_shopkeepers  has_variable = cp_profession_clerks }
+		}
+		localization_key = cp_layla_housing_cairo_middling
+	}
+	text = {
+		trigger = {
+			has_variable = cp_home_state_alexandria
+			OR = { has_variable = cp_profession_shopkeepers  has_variable = cp_profession_clerks }
+		}
+		localization_key = cp_layla_housing_alexandria_middling
+	}
+
+	# Urban labourer
+	text = {
+		trigger = { has_variable = cp_home_state_cairo  has_variable = cp_profession_laborers }
+		localization_key = cp_layla_housing_cairo_tenement
+	}
+	text = {
+		trigger = { has_variable = cp_home_state_alexandria  has_variable = cp_profession_laborers }
+		localization_key = cp_layla_housing_alexandria_tenement
+	}
+
+	# Rural variants
+	text = {
+		trigger = { has_variable = cp_owns_land }
+		localization_key = cp_layla_housing_homesteader
+	}
+	text = {
+		trigger = { has_variable = cp_under_serfdom }
+		localization_key = cp_layla_housing_serf_restored
+	}
+
+	# Default: tenant's wife in a Delta village (the starting state)
+	text = {
+		localization_key = cp_layla_housing_tenant_default
+	}
+}
+
+
+# ============================================================================
+# POSSESSIONS -- what is in the house with her
+# ============================================================================
+cp_layla_possessions_desc = {
+	type = country
+
+	# Affluent / Wealthy tier
+	text = {
+		trigger = { var:cp_sol >= 30 }
+		localization_key = cp_layla_possessions_affluent
+	}
+	# Prosperous tier
+	text = {
+		trigger = { var:cp_sol >= 25 }
+		localization_key = cp_layla_possessions_prosperous
+	}
+	# Secure tier
+	text = {
+		trigger = { var:cp_sol >= 20 }
+		localization_key = cp_layla_possessions_secure
+	}
+	# Middling tier
+	text = {
+		trigger = { var:cp_sol >= 15 }
+		localization_key = cp_layla_possessions_middling
+	}
+	# Impoverished tier
+	text = {
+		trigger = { var:cp_sol >= 10 }
+		localization_key = cp_layla_possessions_impoverished
+	}
+	# Default: struggling (the starting tier at SoL 5)
+	text = {
+		localization_key = cp_layla_possessions_struggling
+	}
+}
+
+
+# ============================================================================
+# ROUTINE -- the shape of her day
+# ============================================================================
+cp_layla_routine_desc = {
+	type = country
+
+	text = {
+		trigger = { has_variable = cp_profession_clerks }
+		localization_key = cp_layla_routine_clerks_wife
+	}
+	text = {
+		trigger = { has_variable = cp_profession_shopkeepers }
+		localization_key = cp_layla_routine_shopkeepers
+	}
+	text = {
+		trigger = { has_variable = cp_profession_machinists }
+		localization_key = cp_layla_routine_machinists_wife
+	}
+	text = {
+		trigger = { has_variable = cp_profession_laborers  has_variable = cp_home_state_cairo }
+		localization_key = cp_layla_routine_cairo_laborers_wife
+	}
+	text = {
+		trigger = { has_variable = cp_profession_laborers }
+		localization_key = cp_layla_routine_laborers_wife
+	}
+	text = {
+		trigger = { has_variable = cp_owns_land }
+		localization_key = cp_layla_routine_homesteader
+	}
+	text = {
+		localization_key = cp_layla_routine_peasant_default
+	}
+}
+
+
+# ============================================================================
+# SAVINGS -- what she counts, privately, on Friday nights
+# ============================================================================
+cp_layla_savings_desc = {
+	type = country
+
+	text = {
+		trigger = { var:cp_sol >= 25  OR = { has_variable = cp_home_state_cairo  has_variable = cp_home_state_alexandria } }
+		localization_key = cp_layla_savings_urban_prosperous
+	}
+	text = {
+		trigger = { var:cp_sol >= 20 }
+		localization_key = cp_layla_savings_secure
+	}
+	text = {
+		trigger = { var:cp_sol >= 15 }
+		localization_key = cp_layla_savings_middling
+	}
+	text = {
+		trigger = { has_variable = cp_owns_land }
+		localization_key = cp_layla_savings_homesteader
+	}
+	text = {
+		localization_key = cp_layla_savings_village_default
+	}
+}

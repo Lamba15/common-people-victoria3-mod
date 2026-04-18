@@ -114,22 +114,33 @@ cp_je_layla = {
 
 	scripted_button = cp_layla_check_button
 
-	# Monthly: tick the debug counter + reroll her mood (1..10).
+	# Monthly: 10% chance of a spontaneous reflection event. Same pool the
+	# button picks from; each event has its own "seen recently" gate so
+	# the same beat cannot repeat within 180 days.
+	# Tick-increment and mood-reroll live on on_monthly_pulse_country →
+	# cp_on_monthly (see cp_on_actions.txt) because V3 doesn't allow both
+	# `effect` and `random_events` in a single on_monthly_pulse block.
 	on_monthly_pulse = {
-		effect = {
-			cp_debug_tick_increment = yes
-			random_list = {
-				10 = { set_variable = { name = cp_mood_roll value = 1 } }
-				10 = { set_variable = { name = cp_mood_roll value = 2 } }
-				10 = { set_variable = { name = cp_mood_roll value = 3 } }
-				10 = { set_variable = { name = cp_mood_roll value = 4 } }
-				10 = { set_variable = { name = cp_mood_roll value = 5 } }
-				10 = { set_variable = { name = cp_mood_roll value = 6 } }
-				10 = { set_variable = { name = cp_mood_roll value = 7 } }
-				10 = { set_variable = { name = cp_mood_roll value = 8 } }
-				10 = { set_variable = { name = cp_mood_roll value = 9 } }
-				10 = { set_variable = { name = cp_mood_roll value = 10 } }
-			}
+		random_events = {
+			chance_to_happen = 10
+
+			# Situation-specific
+			15 = cp_layla.10   # Ahmed at war: the letter that has not come
+			15 = cp_layla.11   # Homesteader: walking the field she owns
+			15 = cp_layla.12   # Serfdom restored: under the bey's eye
+
+			# Always-available village life
+			10 = cp_layla.13   # A day with no wind
+			10 = cp_layla.14   # The neighbour's boy in the lane
+			10 = cp_layla.15   # Her mother's left hand
+			10 = cp_layla.16   # The hen that will not lay
+			10 = cp_layla.17   # The merchant's scale
+			10 = cp_layla.18   # Friday, the river low
+			10 = cp_layla.19   # The old woman who sees through walls
+			10 = cp_layla.20   # The bread that did not rise
+			10 = cp_layla.21   # Dust on the water
+			10 = cp_layla.22   # The younger brother's letter
+			10 = cp_layla.23   # The mule that will not move
 		}
 	}
 

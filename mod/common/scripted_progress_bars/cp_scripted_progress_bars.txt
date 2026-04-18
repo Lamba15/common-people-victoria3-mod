@@ -18,9 +18,6 @@ cp_layla_life_bar = {
 	max_value = 696
 
 	monthly_progress = {
-		add = {
-			desc = cp_layla_life_bar_tick
-			value = 1
-		}
+		add = 1
 	}
 }
