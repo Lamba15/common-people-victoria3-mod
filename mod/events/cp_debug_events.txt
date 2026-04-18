@@ -39,6 +39,10 @@
 #   cp_debug.30  -- NEW: fire revolution-fear event directly.
 #   cp_debug.31  -- NEW: fire the Cairo-crossroads event directly.
 #   cp_debug.32  -- NEW: fire the Small-Concern ownership crossroads.
+#   cp_debug.33  -- NEW: fire Layla's death event directly.
+#   cp_debug.34  -- NEW: fire Ahmed's mill-accident death.
+#   cp_debug.35  -- NEW: fire a child's death (needs cp_children >= 1).
+#   cp_debug.36  -- NEW: recompute mortality + worker-risk pressures now.
 #
 # Retired (obsolete probes; removed in the April cleanup):
 #   cp_debug.2/.3/.4 -- direct law-event fires (superseded by .5 + dispatcher)
@@ -458,6 +462,61 @@ cp_debug.32 = {
 	immediate = {
 		c:EGY ?= {
 			trigger_event = { id = cp_layla.71 }
+		}
+	}
+}
+
+# cp_debug.33/.34/.35 -- Fire each mortality event directly.
+#   .33 = Layla dies (closes the arc)
+#   .34 = Ahmed dies at the mill
+#   .35 = a child dies of illness (requires cp_children >= 1)
+cp_debug.33 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.80 }
+		}
+	}
+}
+
+cp_debug.34 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.81 }
+		}
+	}
+}
+
+cp_debug.35 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.82 }
+		}
+	}
+}
+
+# cp_debug.36 -- Recompute mortality and worker-risk pressures now.
+# Useful to inspect the dials without waiting for Jan 1.
+cp_debug.36 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			cp_refresh_mortality_pressure = yes
+			cp_refresh_worker_safety_pressure = yes
 		}
 	}
 }

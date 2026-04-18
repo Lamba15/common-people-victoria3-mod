@@ -67,6 +67,9 @@ cp_startup.1 = {
 		set_variable = { name = cp_cohort_literacy_target value = 0 }
 		set_variable = { name = cp_expected_sol   value = 5 }
 		set_variable = { name = cp_sol_gap        value = 0 }
+		# Mortality pressures, refreshed yearly.
+		set_variable = { name = cp_mortality_pressure value = 0 }
+		set_variable = { name = cp_worker_risk    value = 0 }
 		# Tax burden 0..10. Recomputed yearly. Year-over-year snapshot
 		# lets cp_on_yearly detect sharp spikes and fire the tax-spike event.
 		set_variable = { name = cp_tax_burden     value = 0 }

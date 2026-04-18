@@ -854,3 +854,156 @@ cp_open_small_concern_on_credit = {
 cp_decline_small_concern = {
 	cp_shift_weight = { weight = economy delta = 1 }
 }
+
+
+# ============================================================================
+# Mortality pressure -- yearly risk synthesised from age, health laws, SoL
+# ============================================================================
+# cp_mortality_pressure 0..10 captures how close she sits to the edge of her
+# life in any given year. Computed yearly from:
+#   - age (the main driver; rises sharply past 60)
+#   - SoL (low SoL = malnutrition risk)
+#   - country health law (public > private > charitable for the poor)
+#   - wealth + private insurance access
+#   - pollution in her state (industrial cities erode the lungs)
+#
+# V3 baselines (standardofliving.txt wiki): mild starvation +30% mortality,
+# severe +100%; pollution +0.5% per impact. We compress these into a 0..10
+# dial that downstream random rolls read.
+# ============================================================================
+cp_refresh_mortality_pressure = {
+	set_variable = { name = cp_mortality_pressure value = 0 }
+
+	# Age bands. Peasants in 1836 did not typically see 70; a 70-yr-old is
+	# already living on borrowed time.
+	if = {
+		limit = { var:cp_age >= 70 }
+		change_variable = { name = cp_mortality_pressure add = 4 }
+	}
+	else_if = {
+		limit = { var:cp_age >= 60 }
+		change_variable = { name = cp_mortality_pressure add = 3 }
+	}
+	else_if = {
+		limit = { var:cp_age >= 50 }
+		change_variable = { name = cp_mortality_pressure add = 2 }
+	}
+	else_if = {
+		limit = { var:cp_age >= 40 }
+		change_variable = { name = cp_mortality_pressure add = 1 }
+	}
+
+	# Low SoL: malnutrition / exposure. V3's food-security numbers suggest
+	# mortality rises sharply below Struggling (SoL 5).
+	if = {
+		limit = { var:cp_sol <= 3 }
+		change_variable = { name = cp_mortality_pressure add = 3 }
+	}
+	else_if = {
+		limit = { var:cp_sol <= 5 }
+		change_variable = { name = cp_mortality_pressure add = 2 }
+	}
+	else_if = {
+		limit = { var:cp_sol <= 8 }
+		change_variable = { name = cp_mortality_pressure add = 1 }
+	}
+
+	# Health-care law. V3 ships three: charitable (default, worst), private
+	# (helps those who can pay), public (helps everyone).
+	if = {
+		limit = { has_law = law_type:law_public_health_insurance }
+		change_variable = { name = cp_mortality_pressure add = -2 }
+	}
+	else_if = {
+		limit = { has_law = law_type:law_private_health_insurance }
+		# Private insurance only helps households that can afford it.
+		if = {
+			limit = { var:cp_sol >= 25 }
+			change_variable = { name = cp_mortality_pressure add = -2 }
+		}
+		else_if = {
+			limit = { var:cp_sol >= 15 }
+			change_variable = { name = cp_mortality_pressure add = -1 }
+		}
+		# Below SoL 15 private insurance is out of reach — no bonus.
+	}
+	else_if = {
+		limit = { has_law = law_type:law_charitable_health_system }
+		# Charitable system covers the poorest a little.
+		if = {
+			limit = { var:cp_sol <= 10 }
+			change_variable = { name = cp_mortality_pressure add = -1 }
+		}
+	}
+
+	# Urban pollution: an indutrial city erodes the lungs. Approximation
+	# while state_pollution trigger names are being finalised — we gate
+	# on cp_in_city + cp_seen_first_textile_mill as a proxy for "she
+	# breathes industrial air".
+	if = {
+		limit = {
+			has_variable = cp_in_city
+			has_variable = cp_seen_first_textile_mill
+		}
+		change_variable = { name = cp_mortality_pressure add = 1 }
+	}
+
+	clamp_variable = { name = cp_mortality_pressure min = 0 max = 10 }
+}
+
+
+# ============================================================================
+# Worker-safety pressure -- Ahmed's annual accident risk at the mill
+# ============================================================================
+# cp_worker_risk 0..10 drives the Ahmed-at-work-dies random roll. Weighted
+# by whether Ahmed has an industrial job, the country's worker-rights law,
+# and whether the household owns the mill (owners don't tend machines).
+# ============================================================================
+cp_refresh_worker_safety_pressure = {
+	set_variable = { name = cp_worker_risk value = 0 }
+
+	# Only if Ahmed is on a shop floor. Owners (shopkeepers/capitalists)
+	# don't take mill-accident risk, even if they used to.
+	if = {
+		limit = {
+			has_variable = cp_ahmed_alive
+			var:cp_ahmed_alive > 0
+			OR = {
+				has_variable = cp_ahmed_profession_laborer
+			}
+		}
+		# Base industrial risk.
+		change_variable = { name = cp_worker_risk add = 3 }
+
+		# Law gates. No worker rights = worst; protections cut risk.
+		if = {
+			limit = { has_law = law_type:law_no_workers_rights }
+			change_variable = { name = cp_worker_risk add = 3 }
+		}
+		else_if = {
+			limit = { has_law = law_type:law_worker_protections }
+			change_variable = { name = cp_worker_risk add = -2 }
+		}
+		# law_regulatory_bodies is the implicit baseline; no modifier.
+	}
+
+	clamp_variable = { name = cp_worker_risk min = 0 max = 10 }
+}
+
+
+# Layla's own death. Sets cp_layla_alive = 0; downstream triggers that
+# gate on it stop firing. The JE will deactivate via its complete condition
+# in a subsequent pass.
+cp_layla_dies = {
+	set_variable = { name = cp_layla_alive value = 0 }
+}
+
+# A child dies of illness. cp_children decrements; a permanent scar flag
+# records the loss so future prose can refer to it.
+cp_child_dies = {
+	change_variable = { name = cp_children add = -1 }
+	clamp_variable = { name = cp_children min = 0 max = 10 }
+	set_variable = cp_lost_a_child
+	cp_shift_hope = { delta = -3 }
+	cp_shift_exhaustion = { delta = 2 }
+}

@@ -410,6 +410,27 @@
  cp_layla.71.c:0 "They refuse. The pot stays. They remain where they are."
 
 
+ # ----- Mortality events (cp_layla.80..82) -----
+
+ # cp_layla.80 -- "The Last Morning" (Layla dies)
+ cp_layla.80.t:0 "The Last Morning"
+ cp_layla.80.d:0 "The morning has the quality of a morning that does not require her to make it go. She lies on her bed and she listens to the first call to prayer and she does not get up."
+ cp_layla.80.f:0 "A daughter — or a neighbour, or her younger sister who came after the last funeral and has not yet left — comes in with water. Layla says a small thing about the water. The daughter, or the neighbour, or the sister, says a small thing back, and goes out again, because the morning has the kind of sunlight in it that does not require speech. She thinks, unhurriedly, of the woman at the quern at nine years old. She thinks of the seventeen-year-old at the wedding. She thinks of the one who stood, once, in an imagined room in Cairo, with a sentence in her mouth, and who came back from that room without having been afraid. She thinks of Ahmed. She thinks of a heron in the irrigation channel whose particular stillness she has never, in all the years since, stopped being grateful for. The light on the wall is the light she has known. Outside, the day is beginning. She closes her eyes. The day will go on without her, the way days do, and the carpet in the imagined room will still be long, and somewhere another woman — younger, in a village Layla has never seen — is thinking of saying the sentence aloud for the first time. She trusts the sentence to her. She lets go. The light does not change."
+ cp_layla.80.a:0 "#italic The morning continues.#!"
+
+ # cp_layla.81 -- "The Foreman's Runner" (Ahmed dies at the mill)
+ cp_layla.81.t:0 "The Foreman's Runner"
+ cp_layla.81.d:0 "A boy from the mill has come up the three flights of stairs with a message he does not know how to deliver."
+ cp_layla.81.f:0 "He knocks at the wrong door first. The neighbour sends him to hers. He stands in her doorway and he cannot get the first word out, and he does not need to. She has understood from his face before she understood from his mouth. There was an accident, he says, eventually. The machine. The belt. The manager is very sorry. The manager has asked the boy to tell her that the manager is very sorry. The boy delivers the manager's regret as if it were a parcel and she is the cabinet in which the parcel is to be stored. He goes. She does not close the door. She stands in the doorway. She does not weep yet, because weeping would come later, and she wants first to be alone with this. Somewhere below, in a room she has never seen, her husband's body is being waited for by a physician who will write a death certificate with a category in it — workplace incident — and a number, and the number will be added to a column in a ledger in Cairo, and the column, in the following year, will be discussed or not discussed in a chamber Ahmed never entered. Above her head the lamp is not lit. It is still morning. She stands in the doorway. The manager is very sorry."
+ cp_layla.81.a:0 "#italic She closes the door when she has decided to close the door.#!"
+
+ # cp_layla.82 -- "The Child" (a child dies of illness)
+ cp_layla.82.t:0 "The Child"
+ cp_layla.82.d:0 "The fever came in from the lane two streets over and it moved, in the way these fevers move, from house to house and then into theirs. Tonight the fever is in the small body on the pallet, and the small body is thinner than it was this morning."
+ cp_layla.82.f:0 "She has sat with the small body for two days. Ahmed is at the mill because the mill is where one is on the days it is not the Friday. A neighbour woman has sat with her for parts of both days, taking over when Layla's hands shake too badly to hold the cloth. The midwife came in the afternoon yesterday. She looked at the small face and she did not say anything, which is what the midwife says when there is nothing to say. Layla has boiled the herbs her mother boiled, and her mother's mother boiled, and she has held the small body against her chest, and she has sung — the first night, because singing was what she remembered; the second night, because singing had become the thing her hands did while her mind was doing something else. In the hour before dawn the small body stops being hot. It stops being hot, and then it stops being anything, and Layla — who is forty-two years old and who has held many small bodies in her life — understands this particular quiet and does not, at first, do anything about it. She holds on for a while longer. The morning call to prayer comes from the mosque four streets over. She lays the small body down. She folds the hands. She covers the face. She sits with her own hands in her lap. It is quiet. She has not yet told Ahmed. She will tell Ahmed when Ahmed comes home. Until then the child is hers alone, for one more hour, in the quiet before the lane wakes up."
+ cp_layla.82.a:0 "#italic She sits with the child until Ahmed comes home.#!"
+
+
  # ============================================================================
  # Imagined audience with the Pasha
  # See documentation/characters/layla/conversation.md

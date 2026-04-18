@@ -227,6 +227,85 @@ cp_on_yearly = {
 				}
 			}
 
+			# Mortality pressures — computed yearly before the rolls.
+			cp_refresh_mortality_pressure = yes
+			cp_refresh_worker_safety_pressure = yes
+
+			# Layla's annual mortality roll. Buckets her 0..10 pressure
+			# into three rough tiers with per-year death probabilities
+			# calibrated to 19th-century reality (a 70yo peasant without
+			# public health dies at ~10%/yr; a 40yo at peak health ~1%).
+			# Age gate: no roll before 35, because events-before-then
+			# should kill her (childbirth, famine, factory), not timers.
+			if = {
+				limit = {
+					var:cp_age >= 35
+					var:cp_mortality_pressure >= 1
+				}
+				if = {
+					limit = { var:cp_mortality_pressure >= 7 }
+					random_list = {
+						10 = { trigger_event = { id = cp_layla.80 } }
+						90 = { }
+					}
+				}
+				else_if = {
+					limit = { var:cp_mortality_pressure >= 4 }
+					random_list = {
+						4 = { trigger_event = { id = cp_layla.80 } }
+						96 = { }
+					}
+				}
+				else = {
+					random_list = {
+						1 = { trigger_event = { id = cp_layla.80 } }
+						99 = { }
+					}
+				}
+			}
+
+			# Ahmed's worker-accident roll. Gated on cp_worker_risk which
+			# is only non-zero when he works a shop floor. Worker-
+			# protections law clamps the worst away; no-workers-rights
+			# (or early industrialisation under regulatory_bodies) makes
+			# accidents real and annual.
+			if = {
+				limit = {
+					has_variable = cp_ahmed_alive
+					var:cp_ahmed_alive > 0
+					var:cp_worker_risk >= 3
+				}
+				if = {
+					limit = { var:cp_worker_risk >= 7 }
+					random_list = {
+						6 = { trigger_event = { id = cp_layla.81 } }
+						94 = { }
+					}
+				}
+				else = {
+					random_list = {
+						2 = { trigger_event = { id = cp_layla.81 } }
+						98 = { }
+					}
+				}
+			}
+
+			# Child mortality roll. V3 models this as state-level, but
+			# we capture one household's risk: if she has children AND
+			# conditions are grim (pressure 5+), a child may die this
+			# year. Lower bar than Layla's roll because children are
+			# more vulnerable to what the adults can survive.
+			if = {
+				limit = {
+					var:cp_children >= 1
+					var:cp_mortality_pressure >= 5
+				}
+				random_list = {
+					3 = { trigger_event = { id = cp_layla.82 } }
+					97 = { }
+				}
+			}
+
 			# Crossroads: the Small Concern. An urban household with
 			# savings and literacy is offered a partnership in a small
 			# workshop. Fires once per life. Eligibility covers lower-
