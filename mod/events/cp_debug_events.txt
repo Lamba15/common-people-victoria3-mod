@@ -667,3 +667,29 @@ cp_debug.46 = {
 		}
 	}
 }
+
+# cp_debug.47 -- Force the absence-bite "Month Without" event directly.
+cp_debug.47 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.98 }
+		}
+	}
+}
+
+# cp_debug.48 -- Force the "Her Name Is Not on the Deed" event directly.
+cp_debug.48 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.99 }
+		}
+	}
+}

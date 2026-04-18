@@ -195,6 +195,11 @@ cp_je_layla = {
 			# cp_may_vote && NOT cp_has_voted so the pulse reaches the
 			# event but the trigger blocks it when she already has voted.
 			10 = cp_layla.24   # Election day — the first vote
+
+			# Absence-bite events — fire rarely (low weight) and only
+			# when the country's lack of a law has visible cost on her.
+			5  = cp_layla.98   # The month without (no welfare + grim state)
+			5  = cp_layla.99   # Her name is not on the deed
 		}
 	}
 

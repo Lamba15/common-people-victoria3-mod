@@ -1827,6 +1827,153 @@ cp_layla.97 = {
 }
 
 
+# cp_layla.98 -- "The Month Without" (absence-bite: no welfare + grim state)
+#
+# Fires from the monthly pulse pool when: no_social_security law is active,
+# SoL pressed, old enough that a pension would have mattered, AND she has
+# NOT already fired this event in the last 4 years.
+#
+# The prose: she does not know what the word §Ipension§! means, but she
+# has heard it from a cousin who heard it from a traveller. She does the
+# arithmetic of her month in her head and the arithmetic comes out short
+# by an amount that the word §Ipension#! would have covered. Radicalises.
+cp_layla.98 = {
+	type = country_event
+
+	title = cp_layla.98.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.98.d.widow
+				trigger = {
+					has_variable = cp_ahmed_alive
+					var:cp_ahmed_alive = 0
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla.98.d.old
+				trigger = { var:cp_age >= 60 }
+			}
+			triggered_desc = {
+				desc = cp_layla.98.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.98.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		has_law = law_type:law_no_social_security
+		var:cp_sol <= 8
+		var:cp_age >= 50
+		NOT = { has_variable = cp_seen_month_without }
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_month_without days = 1460 }
+	}
+
+	# A: she sits with the arithmetic. Radical + weight on labor_laws.
+	option = {
+		name = cp_layla.98.a
+		default_option = yes
+		cp_shift_radical = { delta = 2 }
+		cp_shift_weight = { weight = labor_laws delta = 1 }
+	}
+	# B: she remembers her mother, who had no envelope either. The
+	# grief is older than the law, which does not make it smaller. Hope
+	# down, exhaustion up.
+	option = {
+		name = cp_layla.98.b
+		cp_shift_hope = { delta = -1 }
+		cp_shift_exhaustion = { delta = 1 }
+	}
+}
+
+
+# cp_layla.99 -- "Her Name Is Not on the Deed" (absence-bite: no property rights + she owns)
+#
+# Fires when she owns a field or a business in practice but the country's
+# law does not permit a woman to hold property in her own name. Subtle
+# bitter beat — not the radicalising clang of the welfare absence, but
+# the quieter cut of a paper that bears her husband's name though she
+# built the eastern wall with her dowry.
+cp_layla.99 = {
+	type = country_event
+
+	title = cp_layla.99.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.99.d.field
+				trigger = { has_variable = cp_owns_land }
+			}
+			triggered_desc = {
+				desc = cp_layla.99.d.shop
+				trigger = {
+					OR = {
+						has_variable = cp_owns_business
+						has_variable = cp_self_employed
+					}
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla.99.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.99.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_may_own_property }
+		OR = {
+			has_variable = cp_owns_land
+			has_variable = cp_owns_business
+			has_variable = cp_self_employed
+		}
+		NOT = { has_variable = cp_seen_not_on_deed }
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_not_on_deed days = 1460 }
+	}
+
+	# A: she sets her jaw. Weight on womens_rights rises; small radical.
+	option = {
+		name = cp_layla.99.a
+		default_option = yes
+		cp_shift_weight = { weight = womens_rights delta = 2 }
+		cp_shift_radical = { delta = 1 }
+	}
+	# B: she lets it pass. Exhaustion, weight on womens_rights still up
+	# because the cut landed even if she did not mark it.
+	option = {
+		name = cp_layla.99.b
+		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_weight = { weight = womens_rights delta = 1 }
+	}
+}
+
+
 # cp_layla.24 -- "Election Day" (first vote)
 #
 # Fires from the JE's monthly random pool. Internal trigger gates on
