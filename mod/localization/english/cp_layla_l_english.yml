@@ -6,7 +6,7 @@
 
  # ----- Journal entry: cp_je_layla -----
  cp_je_layla:0 "Layla al-Sharif"
- cp_je_layla_reason:0 "#b age#! #v [Country.MakeScope.Var('cp_age').GetValue|D]#!  ·  #b SoL#! #v [Country.MakeScope.Var('cp_sol').GetValue|D]#!  ·  #b hope#! #v [Country.MakeScope.Var('cp_hope').GetValue|D]#!  ·  #b literacy#! #v [ROOT.GetCountry.GetCustom('cp_layla_literacy_label')]#!  ·  #b politics#! #v [ROOT.GetCountry.GetCustom('cp_layla_stance_label')]#!\n\n[ROOT.GetCountry.GetCustom('cp_layla_housing_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_possessions_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_routine_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_savings_desc')]"
+ cp_je_layla_reason:0 "#b age#! #v [Country.MakeScope.Var('cp_age').GetValue|D]#!  ·  #b SoL#! #v [Country.MakeScope.Var('cp_sol').GetValue|D]#![ROOT.GetCountry.GetCustom('cp_layla_sol_delta_label')]  ·  #b hope#! #v [Country.MakeScope.Var('cp_hope').GetValue|D]#!  ·  #b literacy#! #v [ROOT.GetCountry.GetCustom('cp_layla_literacy_label')]#!  ·  #b politics#! #v [ROOT.GetCountry.GetCustom('cp_layla_stance_label')]#!\n\n[ROOT.GetCountry.GetCustom('cp_layla_housing_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_possessions_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_routine_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_savings_desc')]"
 
  # ----- Events -----
 
@@ -153,6 +153,12 @@
  cp_layla_stance_neutral:0 "neutral"
  cp_layla_stance_radical:0 "radical"
  cp_layla_stance_loyalist:0 "loyalist"
+
+ # SoL year-over-year delta. Rendered inline after the SoL number.
+ # Green if up, red if down, hidden when zero.
+ cp_layla_sol_delta_up:0 " §G(+[Country.MakeScope.Var('cp_sol_delta').GetValue|D])§!"
+ cp_layla_sol_delta_down:0 " §R([Country.MakeScope.Var('cp_sol_delta').GetValue|D])§!"
+ cp_layla_sol_delta_flat:0 ""
 
  # ----- Customizable-localization variants for cp_je_layla_reason -----
  # See mod/common/customizable_localization/cp_custom_loc.txt for the

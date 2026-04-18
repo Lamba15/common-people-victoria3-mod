@@ -37,6 +37,9 @@ cp_startup.1 = {
 		# --- V3-mirroring canonical state (scales match V3 itself) ---
 		# SoL 1..99 -- peasant at game start sits at 5 (Struggling tier).
 		set_variable = { name = cp_sol            value = 5 }
+		# Year-over-year snapshot and delta. Updated in cp_on_yearly.
+		set_variable = { name = cp_sol_prev       value = 5 }
+		set_variable = { name = cp_sol_delta      value = 0 }
 		# Literacy 0..100 (percent).
 		set_variable = { name = cp_literacy       value = 0 }
 		# Radicalism / loyalism 0..100. Mutually exclusive; effects enforce.

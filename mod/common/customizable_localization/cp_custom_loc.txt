@@ -22,6 +22,30 @@
 
 
 # ============================================================================
+# SoL DELTA LABEL -- color-coded year-over-year change, hidden when zero
+#
+# The actual numeric delta is cp_sol_delta. This customizable_loc picks
+# one of three render variants: green up, red down, or empty (no change).
+# Updated once per year in cp_on_yearly.
+# ============================================================================
+cp_layla_sol_delta_label = {
+	type = country
+
+	text = {
+		trigger = { var:cp_sol_delta > 0 }
+		localization_key = cp_layla_sol_delta_up
+	}
+	text = {
+		trigger = { var:cp_sol_delta < 0 }
+		localization_key = cp_layla_sol_delta_down
+	}
+	text = {
+		localization_key = cp_layla_sol_delta_flat
+	}
+}
+
+
+# ============================================================================
 # LITERACY LABEL -- binary, matching how V3 treats an individual
 #
 # V3 pops carry literacy as a percentage (0..100) = "approximately what
