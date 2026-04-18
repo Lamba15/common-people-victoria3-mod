@@ -70,6 +70,7 @@ cp_on_monthly = {
 				has_variable = cp_layla_alive
 			}
 			cp_debug_tick_increment = yes
+			# Mood bucket (1..10 -> low/mid/high bucket)
 			random_list = {
 				10 = { set_variable = { name = cp_mood_roll value = 1 } }
 				10 = { set_variable = { name = cp_mood_roll value = 2 } }
@@ -81,6 +82,12 @@ cp_on_monthly = {
 				10 = { set_variable = { name = cp_mood_roll value = 8 } }
 				10 = { set_variable = { name = cp_mood_roll value = 9 } }
 				10 = { set_variable = { name = cp_mood_roll value = 10 } }
+			}
+			# Variant within bucket (1..3)
+			random_list = {
+				33 = { set_variable = { name = cp_status_variant value = 1 } }
+				33 = { set_variable = { name = cp_status_variant value = 2 } }
+				34 = { set_variable = { name = cp_status_variant value = 3 } }
 			}
 		}
 	}

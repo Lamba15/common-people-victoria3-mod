@@ -59,9 +59,15 @@ cp_startup.1 = {
 		set_variable = { name = cp_exhaustion     value = 3 }
 
 		# --- Monthly mood roll (1..10) ---
-		# Rerolled by the JE's on_monthly_pulse. Drives status_desc variety.
-		# Seed at 5 so the first month already has a valid status.
+		# Rerolled monthly in cp_on_monthly. Drives which mood bucket her
+		# status line falls into: low 1..3, mid 4..6, high 7..10.
 		set_variable = { name = cp_mood_roll      value = 5 }
+
+		# --- Monthly variant roll (1..3) ---
+		# Rerolled alongside mood. Picks which of three prose variants
+		# within the chosen mood bucket is displayed this month. Each
+		# (situation × mood × variant) triple resolves to one triggered_desc.
+		set_variable = { name = cp_status_variant value = 1 }
 
 		# --- Personality weights (0..10) ---
 		# Drift silently + via event effects. See documentation/characters/layla/README.md.
