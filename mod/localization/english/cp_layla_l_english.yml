@@ -6,7 +6,7 @@
 
  # ----- Journal entry: cp_je_layla -----
  cp_je_layla:0 "Layla al-Sharif"
- cp_je_layla_reason:0 "#b age#! #v [Country.MakeScope.Var('cp_age').GetValue|D]#!  ·  #b SoL#! #v [Country.MakeScope.Var('cp_sol').GetValue|D]#!  ·  #b literacy#! #v [Country.MakeScope.Var('cp_literacy').GetValue|D]#!  ·  #b hope#! #v [Country.MakeScope.Var('cp_hope').GetValue|D]#!  ·  #b radical#! #v [Country.MakeScope.Var('cp_radical').GetValue|D]#!  ·  #b loyal#! #v [Country.MakeScope.Var('cp_loyalist').GetValue|D]#!\n\n[ROOT.GetCustom('cp_layla_housing_desc')]\n\n[ROOT.GetCustom('cp_layla_possessions_desc')]\n\n[ROOT.GetCustom('cp_layla_routine_desc')]\n\n[ROOT.GetCustom('cp_layla_savings_desc')]"
+ cp_je_layla_reason:0 "#b age#! #v [Country.MakeScope.Var('cp_age').GetValue|D]#!  ·  #b SoL#! #v [Country.MakeScope.Var('cp_sol').GetValue|D]#!  ·  #b literacy#! #v [Country.MakeScope.Var('cp_literacy').GetValue|D]#!  ·  #b hope#! #v [Country.MakeScope.Var('cp_hope').GetValue|D]#!  ·  #b radical#! #v [Country.MakeScope.Var('cp_radical').GetValue|D]#!  ·  #b loyal#! #v [Country.MakeScope.Var('cp_loyalist').GetValue|D]#!\n\n[ROOT.GetCountry.GetCustom('cp_layla_housing_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_possessions_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_routine_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_savings_desc')]"
 
  # ----- Events -----
 
