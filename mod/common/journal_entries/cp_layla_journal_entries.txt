@@ -208,6 +208,13 @@ cp_je_layla = {
 			# Slavery: her ambient encounter with the compound. Gated
 			# inside on slavery-legal laws + 4yr cooldown.
 			5  = cp_layla.104  # The compound on the edge of the village
+
+			# Seasonal / cultural / communal life. Each 2-year cooldown.
+			10 = cp_layla.25   # The first day of Ramadan
+			10 = cp_layla.26   # The Nile rises (land-bound only)
+			10 = cp_layla.27   # The Hajj returnees
+			10 = cp_layla.28   # The midwife's lamp
+			10 = cp_layla.29   # The date harvest
 		}
 	}
 

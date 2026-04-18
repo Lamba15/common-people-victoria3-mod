@@ -2327,3 +2327,189 @@ cp_layla.104 = {
 		cp_shift_exhaustion = { delta = 1 }
 	}
 }
+
+
+# =============================================================================
+# Ambient-life pulses -- cp_layla.25..29
+# =============================================================================
+# Five more vignettes for the monthly random pool. Each is a moment of her
+# life in a year, not a year of her life; each has its own "seen recently"
+# cooldown so it doesn't repeat within ~2 years.
+# =============================================================================
+
+# cp_layla.25 -- "The First Day of Ramadan"
+cp_layla.25 = {
+	type = country_event
+
+	title = cp_layla.25.t
+	desc  = cp_layla.25.d
+	flavor = cp_layla.25.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_ramadan }
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_ramadan days = 730 }
+	}
+
+	option = {
+		name = cp_layla.25.a
+		default_option = yes
+		cp_shift_weight = { weight = religion delta = 1 }
+	}
+}
+
+# cp_layla.26 -- "The Nile Rises"
+cp_layla.26 = {
+	type = country_event
+
+	title = cp_layla.26.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.26.d.good
+				trigger = { var:cp_sol >= 10 }
+			}
+			triggered_desc = {
+				desc = cp_layla.26.d.bad
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.26.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_flood }
+		# Only reaches her if she's still on the land.
+		OR = {
+			has_variable = cp_profession_peasants
+			has_variable = cp_profession_farmers
+			has_variable = cp_owns_land
+		}
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_flood days = 730 }
+	}
+
+	option = {
+		name = cp_layla.26.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+	}
+}
+
+# cp_layla.27 -- "The Hajj Returnees"
+cp_layla.27 = {
+	type = country_event
+
+	title = cp_layla.27.t
+	desc  = cp_layla.27.d
+	flavor = cp_layla.27.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_hajj }
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_hajj days = 730 }
+	}
+
+	option = {
+		name = cp_layla.27.a
+		default_option = yes
+		cp_shift_weight = { weight = religion delta = 1 }
+		cp_shift_hope = { delta = 1 }
+	}
+}
+
+# cp_layla.28 -- "The Midwife's Lamp"
+cp_layla.28 = {
+	type = country_event
+
+	title = cp_layla.28.t
+	desc  = cp_layla.28.d
+	flavor = cp_layla.28.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_childbirth.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_midwife_lamp }
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_midwife_lamp days = 730 }
+	}
+
+	option = {
+		name = cp_layla.28.a
+		default_option = yes
+	}
+}
+
+# cp_layla.29 -- "The Date Harvest"
+cp_layla.29 = {
+	type = country_event
+
+	title = cp_layla.29.t
+	desc  = cp_layla.29.d
+	flavor = cp_layla.29.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_date_harvest }
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_date_harvest days = 730 }
+	}
+
+	option = {
+		name = cp_layla.29.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+	}
+}
