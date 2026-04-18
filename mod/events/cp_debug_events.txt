@@ -761,3 +761,18 @@ cp_debug.53 = {
 		}
 	}
 }
+
+# cp_debug.54 -- Fire daughter's marriage crossroads. Sets prerequisites.
+cp_debug.54 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			set_variable = { name = cp_children value = 2 }
+			set_variable = { name = cp_age value = 40 }
+			trigger_event = { id = cp_layla.72 }
+		}
+	}
+}

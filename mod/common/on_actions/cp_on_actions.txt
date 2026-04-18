@@ -443,6 +443,26 @@ cp_on_yearly = {
 					85 = { }
 				}
 			}
+
+			# Crossroads: daughter's marriage. Fires once per life when
+			# the mother is old enough that a first child born around
+			# cp_age 22 would now be of marrying age. 20% roll per
+			# qualifying year so the crossroads arrives when it does.
+			if = {
+				limit = {
+					var:cp_age >= 38
+					var:cp_children >= 1
+					NOT = { has_variable = cp_seen_daughter_marriage }
+					NOT = { has_variable = cp_daughter_married }
+				}
+				random_list = {
+					20 = {
+						trigger_event = { id = cp_layla.72 }
+						set_variable = cp_seen_daughter_marriage
+					}
+					80 = { }
+				}
+			}
 		}
 	}
 }

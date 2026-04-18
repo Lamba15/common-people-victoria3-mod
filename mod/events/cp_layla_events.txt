@@ -2629,3 +2629,86 @@ cp_layla.35 = {
 		cp_shift_hope = { delta = 1 }
 	}
 }
+
+
+# =============================================================================
+# cp_layla.72 -- "The Suitor" (daughter's marriage crossroads)
+# =============================================================================
+# Fires once per life when mother is old enough + has at least one child.
+# Three paths shape the daughter's trajectory, which in turn shapes which
+# pulse events the mother reads over subsequent years (via cp_daughter_*
+# flags).
+# =============================================================================
+cp_layla.72 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla.72.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.72.d.literate
+				trigger = { has_variable = cp_daughter_at_school }
+			}
+			triggered_desc = {
+				desc = cp_layla.72.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.72.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 5
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	# Option A: marry her to the village peasant's son. Familiar. Safe.
+	# Continuity — she stays in the lane, in reach, in Layla's kitchen
+	# once a week for the rest of Layla's life.
+	option = {
+		name = cp_layla.72.a
+		default_option = yes
+		set_variable = cp_daughter_married
+		set_variable = cp_daughter_married_village
+		cp_shift_hope = { delta = 1 }
+		cp_shift_weight = { weight = land_reform delta = 1 }
+	}
+	# Option B: marry her to the shopkeeper's son in Cairo (or the city).
+	# The girl moves. The girl rises. The mother will see her four times
+	# a year at most. Hope up but exhaustion up — the grief is for a
+	# relationship that changes, not ends.
+	option = {
+		name = cp_layla.72.b
+		trigger = {
+			OR = {
+				has_variable = cp_in_city
+				has_variable = cp_seen_first_textile_mill
+				has_variable = cp_seen_railway
+			}
+		}
+		set_variable = cp_daughter_married
+		set_variable = cp_daughter_married_city
+		cp_shift_hope = { delta = 2 }
+		cp_shift_exhaustion = { delta = 2 }
+		cp_shift_weight = { weight = womens_rights delta = 1 }
+	}
+	# Option C: refuse. The girl is not ready; OR the mother is holding
+	# out for a better match; OR — in the schooled variant — the girl
+	# herself has said no. Pride, risk. Hope up; exhaustion up.
+	# Available always; if schooled, prose implies the girl chose.
+	option = {
+		name = cp_layla.72.c
+		set_variable = cp_daughter_marriage_delayed
+		cp_shift_hope = { delta = 1 }
+		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_weight = { weight = womens_rights delta = 1 }
+	}
+}
