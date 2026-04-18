@@ -556,6 +556,41 @@ cp_on_law_enacted = {
 			}
 			trigger_event = { id = cp_layla.96 }
 		}
+
+		# Education ladder: public schools + compulsory primary school.
+		# Each one-shot per life via cp_seen_* flag (set inside event).
+		if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				ROOT.currently_enacting_law.type ?= law_type:law_public_schools
+				NOT = { has_variable = cp_seen_public_schools }
+			}
+			trigger_event = { id = cp_layla.100 }
+		}
+		else_if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				ROOT.currently_enacting_law.type ?= law_type:law_compulsory_primary_school
+				NOT = { has_variable = cp_seen_compulsory_school }
+			}
+			trigger_event = { id = cp_layla.101 }
+		}
+
+		# Slavery: emancipation is the big beat. The starting states
+		# (slave_trade / legacy / debt) are her baseline — no reaction
+		# event for those; they're handled via the ambient pulse
+		# cp_layla.104 which fires while those laws are active.
+		if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				ROOT.currently_enacting_law.type ?= law_type:law_slavery_banned
+				NOT = { has_variable = cp_seen_emancipation }
+			}
+			trigger_event = { id = cp_layla.103 }
+		}
 	}
 }
 

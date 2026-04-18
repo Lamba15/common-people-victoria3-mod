@@ -693,3 +693,71 @@ cp_debug.48 = {
 		}
 	}
 }
+
+# cp_debug.49 -- Force-pass law_public_schools so cp_layla.100 fires.
+cp_debug.49 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_public_schools
+		}
+	}
+}
+
+# cp_debug.50 -- Force-pass law_compulsory_primary_school → cp_layla.101.
+cp_debug.50 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_compulsory_primary_school
+		}
+	}
+}
+
+# cp_debug.51 -- Fire the daughter-reads pulse directly. Sets
+# cp_daughter_at_school so the trigger passes, then triggers the event.
+cp_debug.51 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			set_variable = { name = cp_children value = 2 }
+			set_variable = cp_daughter_at_school
+			trigger_event = { id = cp_layla.102 }
+		}
+	}
+}
+
+# cp_debug.52 -- Force-pass law_slavery_banned → cp_layla.103.
+cp_debug.52 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_slavery_banned
+		}
+	}
+}
+
+# cp_debug.53 -- Fire the slavery-ambient pulse directly.
+cp_debug.53 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.104 }
+		}
+	}
+}

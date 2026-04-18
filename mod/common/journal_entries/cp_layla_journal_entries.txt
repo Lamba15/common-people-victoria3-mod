@@ -200,6 +200,14 @@ cp_je_layla = {
 			# when the country's lack of a law has visible cost on her.
 			5  = cp_layla.98   # The month without (no welfare + grim state)
 			5  = cp_layla.99   # Her name is not on the deed
+
+			# Education arc: the daughter reads aloud. Gated inside on
+			# cp_daughter_at_school + cooldown so it fires at most yearly.
+			10 = cp_layla.102  # The daughter reads to her mother
+
+			# Slavery: her ambient encounter with the compound. Gated
+			# inside on slavery-legal laws + 4yr cooldown.
+			5  = cp_layla.104  # The compound on the edge of the village
 		}
 	}
 

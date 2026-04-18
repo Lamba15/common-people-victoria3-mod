@@ -2035,3 +2035,295 @@ cp_layla.24 = {
 		cp_shift_radical = { delta = 1 }
 	}
 }
+
+
+# =============================================================================
+# Education + slavery reactions -- cp_layla.100..109
+# =============================================================================
+# Education: three events covering the ladder public_schools -> compulsory.
+# Slavery: one event for the emancipation moment; one pulse for her ambient
+# exposure to enslaved people. The default for Egypt 1836 is law_slave_trade
+# (she was born into the world where some people are owned); the prose takes
+# this as given.
+# =============================================================================
+
+# cp_layla.100 -- "A School in the Next Village" (law_public_schools enacted)
+#
+# Fires on first enactment. She may or may not have children; the prose
+# branches. The event itself sets cp_public_schools_seen flag so that
+# later pulse events can reference it.
+cp_layla.100 = {
+	type = country_event
+
+	title = cp_layla.100.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.100.d.has_kids
+				trigger = { var:cp_children > 0 }
+			}
+			triggered_desc = {
+				desc = cp_layla.100.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.100.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_public_schools }
+	}
+
+	immediate = {
+		set_variable = cp_seen_public_schools
+	}
+
+	# A: she believes it. Hope up, weight on education up.
+	option = {
+		name = cp_layla.100.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+		cp_shift_weight = { weight = education delta = 1 }
+		cp_shift_loyalist = { delta = 1 }
+	}
+	# B: she'll believe it when she sees the schoolroom. No effect.
+	option = {
+		name = cp_layla.100.b
+	}
+}
+
+
+# cp_layla.101 -- "They Will Be Taken to the School" (law_compulsory_primary_school)
+#
+# The child labour ladder reaches its floor: primary school is required.
+# For a peasant household this has real cost — children who worked fields
+# can no longer work fields during school hours. The prose holds both
+# sides: pride that they will read, grief that the field will miss them.
+cp_layla.101 = {
+	type = country_event
+
+	title = cp_layla.101.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.101.d.has_kids
+				trigger = { var:cp_children > 0 }
+			}
+			triggered_desc = {
+				desc = cp_layla.101.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.101.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_compulsory_school }
+	}
+
+	immediate = {
+		set_variable = cp_seen_compulsory_school
+		if = {
+			# If she has kids, the daughter goes. Flag it. Literacy
+			# pop-tick will carry her upward more aggressively from now.
+			limit = { var:cp_children > 0 }
+			set_variable = cp_daughter_at_school
+		}
+	}
+
+	# A: she accepts it. Hope, weight on education, loyalism.
+	option = {
+		name = cp_layla.101.a
+		default_option = yes
+		cp_shift_hope = { delta = 2 }
+		cp_shift_weight = { weight = education delta = 2 }
+		cp_shift_loyalist = { delta = 2 }
+	}
+	# B: she resents the lost hands in the field. Only reachable if
+	# she has children AND is still on the land.
+	option = {
+		name = cp_layla.101.b
+		trigger = {
+			var:cp_children > 0
+			OR = {
+				has_variable = cp_profession_peasants
+				has_variable = cp_profession_farmers
+			}
+		}
+		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_radical = { delta = 1 }
+	}
+}
+
+
+# cp_layla.102 -- "The Daughter's Letter" (pulse: her daughter reads to her)
+#
+# Fires from the JE pool once cp_daughter_at_school is set. A scene: the
+# child reads aloud to the mother who cannot read, in a language the
+# mother half-recognises. Sets cp_seen_daughter_reads flag with cooldown
+# so the same scene doesn't repeat more than yearly.
+cp_layla.102 = {
+	type = country_event
+
+	title = cp_layla.102.t
+	desc = cp_layla.102.d
+	flavor = cp_layla.102.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		has_variable = cp_daughter_at_school
+		NOT = { has_variable = cp_seen_daughter_reads }
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_daughter_reads days = 365 }
+	}
+
+	option = {
+		name = cp_layla.102.a
+		default_option = yes
+		cp_shift_hope = { delta = 2 }
+		cp_shift_weight = { weight = education delta = 1 }
+	}
+}
+
+
+# cp_layla.103 -- "The Chains Are Cut" (law_slavery_banned enacted)
+#
+# The emancipation event. She does not own slaves (she is a peasant); the
+# event is about what changes in the village square when the bey's
+# household, or the merchant's courtyard, or the old cotton compound,
+# suddenly does not have the people it had yesterday. Strong hope bump.
+cp_layla.103 = {
+	type = country_event
+
+	title = cp_layla.103.t
+	desc = cp_layla.103.d
+	flavor = cp_layla.103.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_emancipation }
+	}
+
+	immediate = {
+		set_variable = cp_seen_emancipation
+	}
+
+	# A: she prays for them. Hope up, loyalism up, weight on revolution
+	# down (the country did the right thing; revolution less needed).
+	option = {
+		name = cp_layla.103.a
+		default_option = yes
+		cp_shift_hope = { delta = 3 }
+		cp_shift_loyalist = { delta = 3 }
+		cp_shift_weight = { weight = revolution delta = -1 }
+	}
+	# B: she looks at her own life and sees how close she has stood to
+	# that line all along. Radical up, weight on land_reform up, weight
+	# on revolution up.
+	option = {
+		name = cp_layla.103.b
+		cp_shift_radical = { delta = 1 }
+		cp_shift_weight = { weight = land_reform delta = 1 }
+		cp_shift_weight = { weight = revolution delta = 1 }
+	}
+}
+
+
+# cp_layla.104 -- "The Compound on the Edge of the Village" (pulse: she sees slaves)
+#
+# Fires from the JE pool when slavery is legal in the country. The prose
+# is her walking past a compound she has walked past all her life, where
+# the people are not free. She is careful with her own privilege:
+# peasant-but-not-chattel. The event does not moralise for her; it shows
+# what she sees and what she thinks.
+cp_layla.104 = {
+	type = country_event
+
+	title = cp_layla.104.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.104.d.child
+				trigger = { var:cp_age <= 30 }
+			}
+			triggered_desc = {
+				desc = cp_layla.104.d.older
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.104.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		OR = {
+			has_law = law_type:law_slave_trade
+			has_law = law_type:law_legacy_slavery
+			has_law = law_type:law_debt_slavery
+			has_law = law_type:law_colonial_slavery
+		}
+		NOT = { has_variable = cp_seen_slaves_pulse }
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_slaves_pulse days = 1460 }
+	}
+
+	# A: she prays for them. No mechanical effect; the prayer is not
+	# a policy.
+	option = {
+		name = cp_layla.104.a
+		default_option = yes
+	}
+	# B: she feels the sharpness — I am a peasant, but I am not that.
+	# Weight on revolution up; it is a thin comfort, and she knows it.
+	option = {
+		name = cp_layla.104.b
+		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_exhaustion = { delta = 1 }
+	}
+}
