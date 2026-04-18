@@ -163,6 +163,28 @@ cp_conversation.1 = {
 		trigger_event = { id = cp_conversation.100 popup = yes }
 	}
 
+	# About the envelope. Only if she has received welfare at least once.
+	option = {
+		name = cp_conversation.1.j
+		trigger = {
+			has_variable = cp_receives_welfare
+			NOT = { has_variable = cp_seen_audience_envelope }
+		}
+		set_variable = { name = cp_seen_audience_envelope months = 18 }
+		trigger_event = { id = cp_conversation.110 popup = yes }
+	}
+
+	# About the vote. Only if she has voted.
+	option = {
+		name = cp_conversation.1.k
+		trigger = {
+			has_variable = cp_has_voted
+			NOT = { has_variable = cp_seen_audience_vote }
+		}
+		set_variable = { name = cp_seen_audience_vote months = 18 }
+		trigger_event = { id = cp_conversation.120 popup = yes }
+	}
+
 	# A small thing. Always available. Shorter cooldown (6 months) because
 	# it's the "I don't have a speech tonight" option and should be reachable
 	# more often than the big topics.
@@ -1524,6 +1546,277 @@ cp_conversation.82 = {
 		# Telling a story to the walls when the man won't listen still
 		# counts for her. She does not lose hope; she refuses to give it
 		# to him.
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.110..113 -- The Envelope (gated on cp_receives_welfare)
+# ============================================================================
+# What she wants to say about the envelope: thanks, complaint, pride.
+# Pasha responses: he takes credit / he dismisses / he says he did not know.
+# ============================================================================
+
+cp_conversation.110 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.110.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.110.d.pension
+				trigger = {
+					has_law = law_type:law_old_age_pension
+					var:cp_age >= 60
+				}
+			}
+			triggered_desc = {
+				desc = cp_conversation.110.d.subsidy
+				trigger = { has_law = law_type:law_wage_subsidies }
+			}
+			triggered_desc = {
+				desc = cp_conversation.110.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.110.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_envelope
+	}
+
+	# Pasha: takes credit
+	option = {
+		name = cp_conversation.110.a
+		trigger_event = { id = cp_conversation.111 popup = yes }
+	}
+	# Pasha: dismissive
+	option = {
+		name = cp_conversation.110.b
+		trigger_event = { id = cp_conversation.112 popup = yes }
+	}
+	# Pasha: honest — he says he did not know what the envelope meant to
+	# people until a woman told him
+	option = {
+		name = cp_conversation.110.c
+		trigger_event = { id = cp_conversation.113 popup = yes }
+	}
+}
+
+cp_conversation.111 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.111.t
+	desc = cp_conversation.111.d
+	flavor = cp_conversation.111.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.111.a
+		default_option = yes
+		# He has claimed her small relief as his generosity. She accepts
+		# the envelope without accepting his self-portrait — small loyalism,
+		# small hardening.
+		cp_shift_loyalist = { delta = 1 }
+		cp_shift_radical = { delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.112 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.112.t
+	desc = cp_conversation.112.d
+	flavor = cp_conversation.112.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.112.a
+		default_option = yes
+		# "It is only a coin." The smallness of his framing against the
+		# largeness of what the coin buys lands as a class cut. Radical up,
+		# weight on labor_laws up.
+		cp_shift_radical = { delta = 2 }
+		cp_shift_weight = { weight = labor_laws delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.113 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.113.t
+	desc = cp_conversation.113.d
+	flavor = cp_conversation.113.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.113.a
+		default_option = yes
+		# He admits ignorance. The admission, which would be small from
+		# anyone else, is large from him. Hope up two; loyalism small.
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 2 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.120..123 -- The Vote (gated on cp_has_voted)
+# ============================================================================
+# What she wants to say about her name on the rolls. Pasha responses: he
+# congratulates her (hollow) / he warns her (paternal) / he listens.
+# ============================================================================
+
+cp_conversation.120 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.120.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.120.d.literate
+				trigger = { var:cp_literacy >= 30 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.120.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.120.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_vote
+	}
+
+	# Pasha: hollow congratulation
+	option = {
+		name = cp_conversation.120.a
+		trigger_event = { id = cp_conversation.121 popup = yes }
+	}
+	# Pasha: paternal warning
+	option = {
+		name = cp_conversation.120.b
+		trigger_event = { id = cp_conversation.122 popup = yes }
+	}
+	# Pasha: listens
+	option = {
+		name = cp_conversation.120.c
+		trigger_event = { id = cp_conversation.123 popup = yes }
+	}
+}
+
+cp_conversation.121 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.121.t
+	desc = cp_conversation.121.d
+	flavor = cp_conversation.121.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.121.a
+		default_option = yes
+		# The Pasha's congratulation is polite emptiness. She takes it
+		# the way she takes watered tea — courteously, without mistaking
+		# it for what it was meant to be. Small radical.
+		cp_shift_radical = { delta = 1 }
+		cp_shift_weight = { weight = womens_rights delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.122 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.122.t
+	desc = cp_conversation.122.d
+	flavor = cp_conversation.122.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.122.a
+		default_option = yes
+		# Paternal warning: "vote carefully, child." She marks the word
+		# §Ichild§! and does not forget it. Radical hardens.
+		cp_shift_radical = { delta = 2 }
+		cp_shift_weight = { weight = womens_rights delta = 1 }
+		cp_shift_weight = { weight = revolution delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.123 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.123.t
+	desc = cp_conversation.123.d
+	flavor = cp_conversation.123.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.123.a
+		default_option = yes
+		# He listens. An unusual response from this role, and she notices.
+		# Hope +2, loyalism +2, weight on womens_rights up.
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 2 }
+		cp_shift_weight = { weight = womens_rights delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
