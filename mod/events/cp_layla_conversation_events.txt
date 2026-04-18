@@ -31,7 +31,25 @@ cp_conversation.1 = {
 	placement = root
 
 	title = cp_conversation.1.t
-	desc = cp_conversation.1.d
+	# Framing varies with her state. A widow entering Cairo in her mind is
+	# not the same woman who enters it with her husband asleep in the next
+	# room. first_valid picks the first matching variant.
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.1.d.widow
+				trigger = { var:cp_ahmed_alive = 0 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.1.d.at_war
+				trigger = { has_variable = cp_ahmed_at_war }
+			}
+			triggered_desc = {
+				desc = cp_conversation.1.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
 	flavor = cp_conversation.1.f
 
 	event_image = {
@@ -56,6 +74,18 @@ cp_conversation.1 = {
 		trigger_event = { id = cp_conversation.10 popup = yes }
 	}
 
+	# About Ahmed. Available whether he is home, at war, or dead —
+	# the prose in cp_conversation.20 adapts to which.
+	option = {
+		name = cp_conversation.1.b
+		trigger = {
+			has_variable = cp_married
+			NOT = { has_variable = cp_seen_audience_ahmed }
+		}
+		set_variable = { name = cp_seen_audience_ahmed months = 18 }
+		trigger_event = { id = cp_conversation.20 popup = yes }
+	}
+
 	# Fallback so the root never has zero options.
 	option = {
 		name = cp_conversation.1.z
@@ -76,7 +106,24 @@ cp_conversation.10 = {
 	placement = root
 
 	title = cp_conversation.10.t
-	desc = cp_conversation.10.d
+	# Her opening about the land varies with her condition. A serf and a
+	# homesteader do not enter the same room.
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.10.d.serf
+				trigger = { has_variable = cp_under_serfdom }
+			}
+			triggered_desc = {
+				desc = cp_conversation.10.d.owner
+				trigger = { has_variable = cp_owns_land }
+			}
+			triggered_desc = {
+				desc = cp_conversation.10.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
 	flavor = cp_conversation.10.f
 
 	event_image = {
@@ -84,6 +131,12 @@ cp_conversation.10 = {
 	}
 
 	duration = 5
+
+	immediate = {
+		# Topic-memory flag. Set here (not in .90) so save-across-branch
+		# preserves the fact that she has spoken of land at least once.
+		set_variable = cp_has_spoken_of_land
+	}
 
 	# Pasha: dismissive
 	option = {
@@ -353,6 +406,171 @@ cp_conversation.19 = {
 
 
 # ============================================================================
+# cp_conversation.20 -- Her opening speech (AHMED)
+# ============================================================================
+# The Ahmed topic adapts to his state: alive-at-home, conscripted-at-war,
+# or dead. Three distinct opening monologues keyed on his condition;
+# three Pasha responses, one of which is only available if he still lives.
+# ============================================================================
+
+cp_conversation.20 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.20.t
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.20.d.widow
+				trigger = { var:cp_ahmed_alive = 0 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.20.d.at_war
+				trigger = { has_variable = cp_ahmed_at_war }
+			}
+			triggered_desc = {
+				desc = cp_conversation.20.d.home
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.20.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_ahmed
+	}
+
+	# Pasha: compassionate. Always available.
+	option = {
+		name = cp_conversation.20.a
+		trigger_event = { id = cp_conversation.21 popup = yes }
+	}
+	# Pasha: political. Only meaningful if Ahmed is alive — the Pasha
+	# cannot ask more of a dead man.
+	option = {
+		name = cp_conversation.20.b
+		trigger = {
+			has_variable = cp_ahmed_alive
+			var:cp_ahmed_alive > 0
+		}
+		trigger_event = { id = cp_conversation.22 popup = yes }
+	}
+	# Pasha: cruel. Always available.
+	option = {
+		name = cp_conversation.20.c
+		trigger_event = { id = cp_conversation.23 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.21 -- She faces the compassionate Pasha (Ahmed)
+# ============================================================================
+
+cp_conversation.21 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.21.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.21.d.widow
+				trigger = { var:cp_ahmed_alive = 0 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.21.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.21.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.21.a
+		default_option = yes
+		# She allows herself to feel seen. A small hope.
+		cp_shift_hope = { delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.22 -- She faces the political Pasha (Ahmed)
+# ============================================================================
+# Only reachable when Ahmed is alive. The Pasha declines to be softened
+# by her husband's story; the country will ask what it asks.
+# ============================================================================
+
+cp_conversation.22 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.22.t
+	desc = cp_conversation.22.d
+	flavor = cp_conversation.22.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.22.a
+		default_option = yes
+		# She tastes, for the first time in this imagined room, the shape
+		# of opposition. It is small. It is real.
+		cp_shift_weight = { weight = war delta = 1 }
+		cp_shift_weight = { weight = revolution delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.23 -- She faces the cruel Pasha (Ahmed)
+# ============================================================================
+
+cp_conversation.23 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.23.t
+	desc = cp_conversation.23.d
+	flavor = cp_conversation.23.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.23.a
+		default_option = yes
+		# Being dismissed by the man in her own fantasy costs her.
+		cp_shift_hope = { delta = -1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
 # cp_conversation.90 -- Closer (the fantasy dissolves)
 # ============================================================================
 
@@ -361,7 +579,23 @@ cp_conversation.90 = {
 	placement = root
 
 	title = cp_conversation.90.t
-	desc = cp_conversation.90.d
+	# Her exit from the fantasy is colored by which topic she just
+	# carried. Widow walks back into a different room than a wife does.
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.90.d.widow
+				trigger = {
+					has_variable = cp_has_spoken_of_ahmed
+					var:cp_ahmed_alive = 0
+				}
+			}
+			triggered_desc = {
+				desc = cp_conversation.90.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
 	flavor = cp_conversation.90.f
 
 	event_image = {
@@ -371,12 +605,11 @@ cp_conversation.90 = {
 	duration = 5
 
 	immediate = {
-		# Permanent flags set by any completed audience.
+		# Permanent flag set by ANY completed audience. Per-topic flags
+		# are now set in each topic's opening event (.10, .20) so
+		# save-across-branch preserves which topic she spoke of.
 		set_variable = cp_has_stood_before_pasha
-		# Topic-specific flag (only one topic implemented; hardcoded for
-		# now; Phase 2 will branch this on cp_last_conversation_topic).
-		set_variable = cp_has_spoken_of_land
-		# Set cooldown here (not on button) so mid-audience save/quit
+		# Cooldown set here (not on the button) so mid-audience save/quit
 		# does not lock the player out.
 		set_variable = { name = cp_audience_cooldown days = 90 }
 	}
