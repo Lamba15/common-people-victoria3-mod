@@ -163,6 +163,11 @@ cp_on_yearly = {
 			}
 			# Resample cp_sol from her pop group BEFORE computing delta.
 			cp_refresh_sol_from_pop = yes
+
+			# Pop-tick: literacy drifts toward cohort, political mood drifts
+			# from expected-SoL gap. Both mirror the SoL resample pattern.
+			cp_pop_tick_literacy = yes
+			cp_pop_tick_political_mood = yes
 			# Delta = current - prev. Computed via multiply-by-(-1)
 			# because `change_variable = { subtract = var:X }` is not
 			# reliably supported; `add = var:X` is. So negate prev, then add.

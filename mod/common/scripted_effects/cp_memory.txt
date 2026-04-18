@@ -315,6 +315,116 @@ cp_shift_literacy = {
 	clamp_variable = { name = cp_literacy min = 0 max = 100 }
 }
 
+# ----------------------------------------------------------------------------
+# Literacy pop-tick -- drift cp_literacy toward her pop cohort's literacy_rate.
+#
+# Same state-marker + diaspora-fallback topology as cp_refresh_sol_from_pop.
+# V3's literacy_rate on pop scope is a fraction 0..1; we multiply to 0..100
+# to compare against cp_literacy. Drift is UP only (she doesn't forget what
+# she learned). Age bands slow the rate: <30 = +3/yr, <40 = +2/yr,
+# <60 = +1/yr, 60+ = no drift.
+#
+# Cohort literacy itself rises when Egypt builds institutions and techs,
+# so we don't need to read the institution level directly — the cohort
+# average captures it.
+# ----------------------------------------------------------------------------
+
+# Reads cohort literacy_rate from current region_state scope.
+# Saves scope:tmp_cohort_literacy (0..1) when a matching pop exists.
+cp_read_cohort_literacy_for = {
+	ordered_scope_pop = {
+		limit = {
+			culture = cu:misri
+			religion = rel:sunni
+			is_pop_type = $poptype$
+		}
+		order_by = total_pops
+		position = 0
+		check_range_bounds = no
+		save_temporary_scope_value_as = {
+			name = tmp_cohort_literacy
+			value = literacy_rate
+		}
+	}
+}
+
+# Profession dispatcher for the literacy read. Scope must be on region_state.
+cp_read_cohort_literacy_only = {
+	if = {
+		limit = { root = { has_variable = cp_profession_laborers } }
+		cp_read_cohort_literacy_for = { poptype = laborers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_farmers } }
+		cp_read_cohort_literacy_for = { poptype = farmers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_machinists } }
+		cp_read_cohort_literacy_for = { poptype = machinists }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_shopkeepers } }
+		cp_read_cohort_literacy_for = { poptype = shopkeepers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_clerks } }
+		cp_read_cohort_literacy_for = { poptype = clerks }
+	}
+	else = {
+		cp_read_cohort_literacy_for = { poptype = peasants }
+	}
+}
+
+# Diaspora fallback for literacy (Delta cohort read).
+cp_read_diaspora_cohort_literacy = {
+	s:STATE_LOWER_EGYPT ?= {
+		random_scope_state = {
+			limit = { owner = c:EGY }
+			cp_read_cohort_literacy_only = yes
+		}
+	}
+}
+
+cp_pop_tick_literacy = {
+	# Try local cohort first.
+	every_scope_state = {
+		limit = { has_variable = cp_layla_lives_here }
+		cp_read_cohort_literacy_only = yes
+	}
+	# Diaspora fallback.
+	if = {
+		limit = { NOT = { exists = scope:tmp_cohort_literacy } }
+		cp_read_diaspora_cohort_literacy = yes
+	}
+
+	if = {
+		limit = { exists = scope:tmp_cohort_literacy }
+		# Convert cohort fraction (0..1) to percent (0..100) for comparison.
+		set_variable = { name = cp_cohort_literacy_target value = scope:tmp_cohort_literacy }
+		multiply_variable = { name = cp_cohort_literacy_target value = 100 }
+
+		# Drift UP only when cohort is ahead of her. Age-banded.
+		if = {
+			limit = {
+				var:cp_cohort_literacy_target > var:cp_literacy
+				var:cp_age < 60
+			}
+			if = {
+				limit = { var:cp_age < 30 }
+				change_variable = { name = cp_literacy add = 3 }
+			}
+			else_if = {
+				limit = { var:cp_age < 40 }
+				change_variable = { name = cp_literacy add = 2 }
+			}
+			else = {
+				change_variable = { name = cp_literacy add = 1 }
+			}
+		}
+		clamp_variable = { name = cp_literacy min = 0 max = 100 }
+	}
+}
+
 # Radicalism and loyalism are mutually exclusive (V3 rule).
 cp_shift_radical = {
 	change_variable = { name = cp_radical add = $delta$ }
@@ -332,6 +442,72 @@ cp_shift_loyalist = {
 		limit = { var:cp_loyalist > 0 }
 		set_variable = { name = cp_radical value = 0 }
 	}
+}
+
+# ----------------------------------------------------------------------------
+# Political-mood pop-tick -- expected-SoL gap drives radicalism/loyalism.
+#
+# V3's own formula (standardofliving.txt): a pop below expected SoL gains
+# +0.2% radicalism per level-gap per month (cap 15%). Above expected SoL
+# produces loyalism. Peasants have sol_change_impact = 0.01 so year-over-
+# year SoL SWINGS barely move them — what radicalises peasants is the
+# chronic gap between actual and expected.
+#
+# Expected SoL per the plan §0.5: lower strata = 5, middle = 10.
+# On a yearly tick we scale roughly 12× monthly: a 1-point gap ≈ +2.4%/yr;
+# we bucket it as +1 per small gap, +2 per mid, +3 per wide.
+#
+# cp_shift_radical / cp_shift_loyalist zero the opposite automatically
+# (V3's mutual-exclusion rule encoded in the library).
+# ----------------------------------------------------------------------------
+cp_pop_tick_political_mood = {
+	# Expected SoL for her current profession.
+	set_variable = { name = cp_expected_sol value = 5 }
+	if = {
+		limit = {
+			OR = {
+				has_variable = cp_profession_clerks
+				has_variable = cp_profession_shopkeepers
+				has_variable = cp_profession_machinists
+			}
+		}
+		set_variable = { name = cp_expected_sol value = 10 }
+	}
+
+	# cp_sol_gap = expected - cp_sol. Positive → she's below expected.
+	# multiply-by-(-1) trick because `subtract = var:X` is unreliable.
+	set_variable = { name = cp_sol_gap value = var:cp_sol }
+	multiply_variable = { name = cp_sol_gap value = -1 }
+	change_variable = { name = cp_sol_gap add = var:cp_expected_sol }
+
+	# Below expected → radicalism drift.
+	if = {
+		limit = { var:cp_sol_gap >= 5 }
+		cp_shift_radical = { delta = 3 }
+	}
+	else_if = {
+		limit = { var:cp_sol_gap >= 2 }
+		cp_shift_radical = { delta = 2 }
+	}
+	else_if = {
+		limit = { var:cp_sol_gap >= 1 }
+		cp_shift_radical = { delta = 1 }
+	}
+	# Above expected → loyalism drift.
+	else_if = {
+		limit = { var:cp_sol_gap <= -5 }
+		cp_shift_loyalist = { delta = 3 }
+	}
+	else_if = {
+		limit = { var:cp_sol_gap <= -2 }
+		cp_shift_loyalist = { delta = 2 }
+	}
+	else_if = {
+		limit = { var:cp_sol_gap <= -1 }
+		cp_shift_loyalist = { delta = 1 }
+	}
+	# Gap ≈ 0 → no drift; the mutually-exclusive pair decays slowly via
+	# V3's own tick and through event-driven cp_shift_* calls.
 }
 
 

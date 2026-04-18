@@ -28,6 +28,9 @@
 #                   check that repeated moves don't leave stale markers.
 #   cp_debug.24  -- NEW: recompute cp_tax_burden from the live tax regime.
 #                   JE "tax" field should update to the new tier label.
+#   cp_debug.25  -- NEW: force-run the pop-tick (literacy + political mood).
+#                   Inspect cp_literacy, cp_radical, cp_loyalist,
+#                   cp_expected_sol, cp_sol_gap after.
 #
 # Retired (obsolete probes; removed in the April cleanup):
 #   cp_debug.2/.3/.4 -- direct law-event fires (superseded by .5 + dispatcher)
@@ -325,6 +328,22 @@ cp_debug.24 = {
 	immediate = {
 		c:EGY ?= {
 			cp_refresh_tax_burden = yes
+		}
+	}
+}
+
+# cp_debug.25 -- Force-run the pop-tick (literacy + political mood).
+# Use to test drift without waiting for January 1. Inspect cp_literacy,
+# cp_radical, cp_loyalist, cp_expected_sol, cp_sol_gap after.
+cp_debug.25 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			cp_pop_tick_literacy = yes
+			cp_pop_tick_political_mood = yes
 		}
 	}
 }

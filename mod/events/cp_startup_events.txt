@@ -62,6 +62,11 @@ cp_startup.1 = {
 		# Radicalism / loyalism 0..100. Mutually exclusive; effects enforce.
 		set_variable = { name = cp_radical        value = 0 }
 		set_variable = { name = cp_loyalist       value = 0 }
+		# Pop-tick working vars. Overwritten yearly by cp_pop_tick_*;
+		# seeded here so lint can see them before first yearly pulse.
+		set_variable = { name = cp_cohort_literacy_target value = 0 }
+		set_variable = { name = cp_expected_sol   value = 5 }
+		set_variable = { name = cp_sol_gap        value = 0 }
 		# Tax burden 0..10. Recomputed yearly. Year-over-year snapshot
 		# lets cp_on_yearly detect sharp spikes and fire the tax-spike event.
 		set_variable = { name = cp_tax_burden     value = 0 }
