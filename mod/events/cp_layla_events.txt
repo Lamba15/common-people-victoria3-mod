@@ -893,3 +893,42 @@ cp_layla.41 = {
 		default_option = yes
 	}
 }
+
+
+###############################################################################
+# Industrial-building reactions (cp_layla.50..59)
+#
+# Fired by cp_on_building_built when a specific industrial building goes
+# up in her state. One-shot per building type via cp_seen_* flags.
+###############################################################################
+
+# cp_layla.50 -- "The Smoke Above the Palm" (first textile mill in her state)
+cp_layla.50 = {
+	type = country_event
+
+	title = cp_layla.50.t
+	desc  = cp_layla.50.d
+	flavor = cp_layla.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.50.a
+		default_option = yes
+		cp_shift_weight = { weight = economy delta = 1 }
+	}
+	option = {
+		name = cp_layla.50.b
+		cp_shift_weight = { weight = labor_laws delta = 1 }
+	}
+}

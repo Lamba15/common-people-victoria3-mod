@@ -35,6 +35,7 @@
 #                   so the tech dispatcher fires cp_layla.30/.31/.32.
 #   cp_debug.27  -- NEW: fire Ahmed homecoming event directly.
 #   cp_debug.28  -- NEW: fire Ahmed death-notice event directly.
+#   cp_debug.29  -- NEW: fire textile-mill-arrival event directly.
 #
 # Retired (obsolete probes; removed in the April cleanup):
 #   cp_debug.2/.3/.4 -- direct law-event fires (superseded by .5 + dispatcher)
@@ -395,6 +396,21 @@ cp_debug.28 = {
 		c:EGY ?= {
 			set_variable = cp_ahmed_at_war
 			trigger_event = { id = cp_layla.41 }
+		}
+	}
+}
+
+# cp_debug.29 -- Fire the textile-mill arrival directly. Skips the
+# on_building_built hook; useful for reviewing cp_layla.50 prose without
+# waiting for the AI to build a mill in Lower Egypt.
+cp_debug.29 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.50 }
 		}
 	}
 }

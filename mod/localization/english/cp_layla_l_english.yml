@@ -331,6 +331,16 @@
  cp_layla.41.a:0 "She closes the door."
 
 
+ # ----- Industrial-building reactions (cp_layla.50..) -----
+
+ # cp_layla.50 -- "The Smoke Above the Palm" (first textile mill in her state)
+ cp_layla.50.t:0 "The Smoke Above the Palm"
+ cp_layla.50.d:0 "There is a new tall thing on the horizon, past the canal. It has a chimney. The chimney gives off smoke in a pillar so straight it looks like it has been painted there."
+ cp_layla.50.f:0 "She passes near it once, on the way to her aunt's house. The ground vibrates — not an earthquake vibration, a steady one, continuous, as if the earth itself has become a slow drum. A few men stand at the gates in clean clothes. Many more men, in less clean clothes, walk in at dawn and do not come out until after sunset. One of her cousins works there now. He sends a little money home and he does not come back for Friday prayers anymore. The cousin says the machines are from Manchester. He says the word 'Manchester' as if it is a place, not far off, where bigger things happen. She nods. She does not know where Manchester is. She does not ask."
+ cp_layla.50.a:0 "The world is getting bigger. She is not certain that it is getting better."
+ cp_layla.50.b:0 "She wonders whether her sons, when they come, will walk to that gate at dawn."
+
+
  # ============================================================================
  # Imagined audience with the Pasha
  # See documentation/characters/layla/conversation.md
