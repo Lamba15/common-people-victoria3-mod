@@ -185,6 +185,17 @@ cp_conversation.1 = {
 		trigger_event = { id = cp_conversation.120 popup = yes }
 	}
 
+	# About the stall. Only if she is self-employed.
+	option = {
+		name = cp_conversation.1.l
+		trigger = {
+			has_variable = cp_self_employed
+			NOT = { has_variable = cp_seen_audience_stall }
+		}
+		set_variable = { name = cp_seen_audience_stall months = 18 }
+		trigger_event = { id = cp_conversation.130 popup = yes }
+	}
+
 	# A small thing. Always available. Shorter cooldown (6 months) because
 	# it's the "I don't have a speech tonight" option and should be reachable
 	# more often than the big topics.
@@ -1817,6 +1828,136 @@ cp_conversation.123 = {
 		cp_shift_hope = { delta = 2 }
 		cp_shift_loyalist = { delta = 2 }
 		cp_shift_weight = { weight = womens_rights delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.130..133 -- The Stall (gated on cp_self_employed)
+# ============================================================================
+# What she wants to say to the Pasha about the small enterprise that is
+# hers. Pasha responses: tax collector's voice / patronising / he asks
+# about the ledger.
+# ============================================================================
+
+cp_conversation.130 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.130.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.130.d.forced
+				trigger = { has_variable = cp_self_employed_forced }
+			}
+			triggered_desc = {
+				desc = cp_conversation.130.d.chosen
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.130.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_stall
+	}
+
+	# Pasha: tax collector
+	option = {
+		name = cp_conversation.130.a
+		trigger_event = { id = cp_conversation.131 popup = yes }
+	}
+	# Pasha: patronising
+	option = {
+		name = cp_conversation.130.b
+		trigger_event = { id = cp_conversation.132 popup = yes }
+	}
+	# Pasha: asks about the ledger
+	option = {
+		name = cp_conversation.130.c
+		trigger_event = { id = cp_conversation.133 popup = yes }
+	}
+}
+
+cp_conversation.131 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.131.t
+	desc = cp_conversation.131.d
+	flavor = cp_conversation.131.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.131.a
+		default_option = yes
+		# "And what does the stall pay?" — the Pasha's first question
+		# is the bailiff's first question. Radicalises.
+		cp_shift_radical = { delta = 2 }
+		cp_shift_weight = { weight = economy delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.132 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.132.t
+	desc = cp_conversation.132.d
+	flavor = cp_conversation.132.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.132.a
+		default_option = yes
+		# "Charming." Small radical, weight on womens_rights up.
+		cp_shift_radical = { delta = 1 }
+		cp_shift_weight = { weight = womens_rights delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.133 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.133.t
+	desc = cp_conversation.133.d
+	flavor = cp_conversation.133.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.133.a
+		default_option = yes
+		# He asks about the ledger with real interest — an economic
+		# question framed without contempt. Hope up, weight on economy up.
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 1 }
+		cp_shift_weight = { weight = economy delta = 2 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
