@@ -623,3 +623,18 @@ cp_debug.43 = {
 		}
 	}
 }
+
+# cp_debug.44 -- Fire the self-employment crossroads directly (cp_layla.97).
+# Grants cp_may_work first so the trigger passes.
+cp_debug.44 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			set_variable = cp_may_work
+			trigger_event = { id = cp_layla.97 }
+		}
+	}
+}

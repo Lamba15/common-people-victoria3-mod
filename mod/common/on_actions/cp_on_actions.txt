@@ -386,6 +386,63 @@ cp_on_yearly = {
 					80 = { }
 				}
 			}
+
+			# Crossroads: self-employment (Slice D). Gated on cp_may_work
+			# (set by cp_layla.95 when law_women_in_the_workplace enacts).
+			# Two paths:
+			#   - FORCED: she has to. Widowhood + pressed SoL, or
+			#     unemployed + pressed SoL. 50% roll per qualifying year
+			#     because survival arrives faster than vocation.
+			#   - CHOSEN: law active, household OK, small yearly chance.
+			#     15% roll per qualifying year.
+			# One-shot per life via cp_seen_self_employment; flag is set
+			# inside the event's immediate.
+			if = {
+				limit = {
+					has_variable = cp_may_work
+					NOT = { has_variable = cp_seen_self_employment }
+					NOT = { has_variable = cp_self_employed }
+					# Forced: widow with SoL <=10, or low SoL without
+					# Ahmed's profession carrying them.
+					OR = {
+						AND = {
+							has_variable = cp_ahmed_alive
+							var:cp_ahmed_alive = 0
+							var:cp_sol <= 10
+						}
+						AND = {
+							var:cp_sol <= 8
+							NOT = { has_variable = cp_profession_shopkeepers }
+							NOT = { has_variable = cp_profession_capitalists }
+						}
+					}
+				}
+				random_list = {
+					50 = {
+						trigger_event = { id = cp_layla.97 }
+					}
+					50 = { }
+				}
+			}
+			else_if = {
+				# Chosen path: law active, decent SoL, not already
+				# self-employed or in a profession that makes this
+				# redundant. Low roll so it feels optional.
+				limit = {
+					has_variable = cp_may_work
+					NOT = { has_variable = cp_seen_self_employment }
+					NOT = { has_variable = cp_self_employed }
+					NOT = { has_variable = cp_profession_shopkeepers }
+					NOT = { has_variable = cp_profession_capitalists }
+					var:cp_sol >= 9
+				}
+				random_list = {
+					15 = {
+						trigger_event = { id = cp_layla.97 }
+					}
+					85 = { }
+				}
+			}
 		}
 	}
 }

@@ -1699,3 +1699,129 @@ cp_layla.96 = {
 		cp_shift_weight = { weight = revolution delta = 1 }
 	}
 }
+
+
+# cp_layla.97 -- "Her Own Stall" (self-employment crossroads)
+#
+# Gated on law_women_in_the_workplace being active AND cp_may_work (set by
+# cp_layla.95's immediate). Fires in two registers:
+#   - Forced: widowed + SoL pressed, OR unemployed peasant in city without
+#     Ahmed's wages. No decline option; the choice is only what kind of
+#     stall (shop / street / service).
+#   - Chosen: law active, not under duress. Three options including decline.
+#
+# One-shot per life via cp_seen_self_employment. Can be retriggered if the
+# flag is cleared by a later event (e.g. shop fails).
+cp_layla.97 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla.97.t
+	# Opening varies by register (forced vs chosen) and by location
+	# (village stall vs city shop).
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.97.d.forced_widow
+				trigger = {
+					has_variable = cp_ahmed_alive
+					var:cp_ahmed_alive = 0
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla.97.d.forced_poor
+				trigger = { var:cp_sol <= 8 }
+			}
+			triggered_desc = {
+				desc = cp_layla.97.d.chosen_city
+				trigger = { has_variable = cp_in_city }
+			}
+			triggered_desc = {
+				desc = cp_layla.97.d.chosen_village
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.97.f.widow
+				trigger = {
+					has_variable = cp_ahmed_alive
+					var:cp_ahmed_alive = 0
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla.97.f.poor
+				trigger = { var:cp_sol <= 8 }
+			}
+			triggered_desc = {
+				desc = cp_layla.97.f.chosen
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 5
+
+	trigger = {
+		has_variable = cp_layla_alive
+		has_variable = cp_may_work
+		NOT = { has_variable = cp_seen_self_employment }
+		NOT = { has_variable = cp_self_employed }
+	}
+
+	immediate = {
+		set_variable = cp_seen_self_employment
+	}
+
+	# Option A: open a stall. Default option.
+	# Prose register differs by forced/chosen but the mechanic is the
+	# same: she is now a shopkeeper, her household's SoL lifts, her
+	# exhaustion rises. Forced register ALSO sets cp_self_employed_forced
+	# which downstream events can read for prose colour.
+	option = {
+		name = cp_layla.97.a
+		default_option = yes
+		# Branch on whether this is a forced entry.
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						has_variable = cp_ahmed_alive
+						var:cp_ahmed_alive = 0
+					}
+					var:cp_sol <= 8
+				}
+			}
+			cp_start_self_employed_forced = yes
+		}
+		else = {
+			cp_start_self_employed_chosen = yes
+		}
+	}
+	# Option B: decline. Only available when the crossroads is a choice
+	# (not forced by widowhood or poverty). Prose acknowledges the
+	# refused possibility.
+	option = {
+		name = cp_layla.97.b
+		trigger = {
+			NOT = {
+				OR = {
+					AND = {
+						has_variable = cp_ahmed_alive
+						var:cp_ahmed_alive = 0
+					}
+					var:cp_sol <= 8
+				}
+			}
+		}
+		cp_decline_self_employment = yes
+	}
+}

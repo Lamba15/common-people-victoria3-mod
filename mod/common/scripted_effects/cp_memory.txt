@@ -857,6 +857,59 @@ cp_decline_small_concern = {
 
 
 # ============================================================================
+# Self-employment (Slice D) -- she opens her own stall/shop/service
+# ============================================================================
+# Slice D's crossroads: gated on law_women_in_the_workplace. Unlike
+# cp_open_small_concern (which is a household-level partnership taken up by
+# Ahmed as the wage-earner), this is specifically HER earnings, HER name on
+# the stall. The event shape has two registers:
+#   - Forced: widowhood / poverty drove her out the door. SoL ticks up
+#     because she is now earning; hope rises from self-possession; but
+#     cp_self_employed_forced flag carries the bitter taste downstream.
+#   - Chosen: the law exists, the law opens the gate, and she walks
+#     through by choice. Smaller SoL bump; hope + loyalism; weight
+#     toward economy + womens_rights.
+# Her profession variable becomes cp_profession_shopkeepers because V3
+# models the pop group that fits best; pop-tick reads shopkeeper cohort
+# from now on.
+# ============================================================================
+
+# Forced entry: widowhood or poverty pushed her. The stall is survival.
+cp_start_self_employed_forced = {
+	cp_become_shopkeeper = yes
+	set_variable = cp_self_employed
+	set_variable = cp_self_employed_forced
+	set_variable = { name = cp_recent_ownership days = 730 }
+	# Survival bump — she was teetering on SoL 6; a small stall pulls
+	# the household to subsistence-plus. Not a boom. Enough to breathe.
+	cp_shift_sol = { delta = 2 }
+	cp_shift_hope = { delta = 1 }
+	cp_shift_exhaustion = { delta = 2 }
+	cp_refresh_sol_from_pop = yes
+}
+
+# Chosen entry: the law opened the gate, she stepped through. Clean
+# self-possession. No debt. No bitterness.
+cp_start_self_employed_chosen = {
+	cp_become_shopkeeper = yes
+	set_variable = cp_self_employed
+	set_variable = { name = cp_recent_ownership days = 730 }
+	cp_shift_sol = { delta = 1 }
+	cp_shift_hope = { delta = 2 }
+	cp_shift_loyalist = { delta = 1 }
+	cp_shift_weight = { weight = economy delta = 1 }
+	cp_shift_weight = { weight = womens_rights delta = 1 }
+	cp_refresh_sol_from_pop = yes
+}
+
+# She declines. Only reachable when the crossroads is by choice (not
+# under forced register). Small exhaustion for the refused possibility.
+cp_decline_self_employment = {
+	cp_shift_exhaustion = { delta = 1 }
+}
+
+
+# ============================================================================
 # Mortality pressure -- yearly risk synthesised from age, health laws, SoL
 # ============================================================================
 # cp_mortality_pressure 0..10 captures how close she sits to the edge of her
