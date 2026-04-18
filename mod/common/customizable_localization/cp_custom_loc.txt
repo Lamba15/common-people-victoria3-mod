@@ -22,26 +22,19 @@
 
 
 # ============================================================================
-# LITERACY LABEL -- word tier for the JE's debug readout
+# LITERACY LABEL -- binary, matching how V3 treats an individual
+#
+# V3 pops carry literacy as a percentage (0..100) = "approximately what
+# percent of individuals in that pop can read and write". For a single
+# persona like Layla, the percentage doesn't map cleanly — she either
+# can or cannot read. We gate at 10% and render a binary word.
 # ============================================================================
 cp_layla_literacy_label = {
 	type = country
 
 	text = {
-		trigger = { var:cp_literacy >= 70 }
-		localization_key = cp_layla_literacy_label_well_read
-	}
-	text = {
-		trigger = { var:cp_literacy >= 40 }
+		trigger = { var:cp_literacy >= 10 }
 		localization_key = cp_layla_literacy_label_literate
-	}
-	text = {
-		trigger = { var:cp_literacy >= 15 }
-		localization_key = cp_layla_literacy_label_reading
-	}
-	text = {
-		trigger = { var:cp_literacy >= 5 }
-		localization_key = cp_layla_literacy_label_signs
 	}
 	text = {
 		localization_key = cp_layla_literacy_label_illiterate
@@ -50,29 +43,26 @@ cp_layla_literacy_label = {
 
 
 # ============================================================================
-# MOOD LABEL -- single word that combines the radical/loyalist mutex
+# POLITICAL STANCE -- V3's canonical three states
+#
+# Per V3 wiki: "Individuals have one of three stances towards the country
+# and its government: loyalist, neutral, or radical." The two numeric
+# variables cp_loyalist and cp_radical are mutually exclusive (V3 rule);
+# a non-zero value in either places her in that state.
 # ============================================================================
-cp_layla_mood_label = {
+cp_layla_stance_label = {
 	type = country
 
 	text = {
-		trigger = { var:cp_loyalist >= 50 }
-		localization_key = cp_layla_mood_label_devoted
+		trigger = { var:cp_loyalist > 0 }
+		localization_key = cp_layla_stance_loyalist
 	}
 	text = {
-		trigger = { var:cp_loyalist >= 20 }
-		localization_key = cp_layla_mood_label_loyal
+		trigger = { var:cp_radical > 0 }
+		localization_key = cp_layla_stance_radical
 	}
 	text = {
-		trigger = { var:cp_radical >= 50 }
-		localization_key = cp_layla_mood_label_radicalized
-	}
-	text = {
-		trigger = { var:cp_radical >= 20 }
-		localization_key = cp_layla_mood_label_restive
-	}
-	text = {
-		localization_key = cp_layla_mood_label_steady
+		localization_key = cp_layla_stance_neutral
 	}
 }
 

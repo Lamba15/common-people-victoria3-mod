@@ -6,7 +6,7 @@
 
  # ----- Journal entry: cp_je_layla -----
  cp_je_layla:0 "Layla al-Sharif"
- cp_je_layla_reason:0 "#b age#! #v [Country.MakeScope.Var('cp_age').GetValue|D]#!  ·  #b SoL#! #v [Country.MakeScope.Var('cp_sol').GetValue|D]#!  ·  #b hope#! #v [Country.MakeScope.Var('cp_hope').GetValue|D]#!  ·  #b literacy#! #v [ROOT.GetCountry.GetCustom('cp_layla_literacy_label')]#!  ·  #b mood#! #v [ROOT.GetCountry.GetCustom('cp_layla_mood_label')]#!\n\n[ROOT.GetCountry.GetCustom('cp_layla_housing_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_possessions_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_routine_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_savings_desc')]"
+ cp_je_layla_reason:0 "#b age#! #v [Country.MakeScope.Var('cp_age').GetValue|D]#!  ·  #b SoL#! #v [Country.MakeScope.Var('cp_sol').GetValue|D]#!  ·  #b hope#! #v [Country.MakeScope.Var('cp_hope').GetValue|D]#!  ·  #b literacy#! #v [ROOT.GetCountry.GetCustom('cp_layla_literacy_label')]#!  ·  #b politics#! #v [ROOT.GetCountry.GetCustom('cp_layla_stance_label')]#!\n\n[ROOT.GetCountry.GetCustom('cp_layla_housing_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_possessions_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_routine_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_savings_desc')]"
 
  # ----- Events -----
 
@@ -144,17 +144,15 @@
  cp_layla.14.a:0 "She stays in the doorway."
 
  # ----- Word labels for the debug readout -----
+ # Literacy: binary (she reads or doesn't). V3 pops carry literacy as a %;
+ # for an individual the threshold is the sensible rendering.
  cp_layla_literacy_label_illiterate:0 "illiterate"
- cp_layla_literacy_label_signs:0 "signs her name"
- cp_layla_literacy_label_reading:0 "reading slowly"
  cp_layla_literacy_label_literate:0 "literate"
- cp_layla_literacy_label_well_read:0 "well-read"
 
- cp_layla_mood_label_steady:0 "steady"
- cp_layla_mood_label_restive:0 "restive"
- cp_layla_mood_label_radicalized:0 "radicalized"
- cp_layla_mood_label_loyal:0 "loyal"
- cp_layla_mood_label_devoted:0 "devoted"
+ # Political stance: V3's canonical three states.
+ cp_layla_stance_neutral:0 "neutral"
+ cp_layla_stance_radical:0 "radical"
+ cp_layla_stance_loyalist:0 "loyalist"
 
  # ----- Customizable-localization variants for cp_je_layla_reason -----
  # See mod/common/customizable_localization/cp_custom_loc.txt for the
