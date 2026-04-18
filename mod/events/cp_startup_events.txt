@@ -70,6 +70,11 @@ cp_startup.1 = {
 		# Mortality pressures, refreshed yearly.
 		set_variable = { name = cp_mortality_pressure value = 0 }
 		set_variable = { name = cp_worker_risk    value = 0 }
+		# Welfare-ladder tier (0..4), snapshot via cp_refresh_welfare_tier.
+		# Tracked so cp_on_law_enacted can detect up/down transitions.
+		set_variable = { name = cp_welfare_tier   value = 0 }
+		set_variable = { name = cp_welfare_tier_prev value = 0 }
+		cp_refresh_welfare_tier = yes
 		# Tax burden 0..10. Recomputed yearly. Year-over-year snapshot
 		# lets cp_on_yearly detect sharp spikes and fire the tax-spike event.
 		set_variable = { name = cp_tax_burden     value = 0 }

@@ -1125,6 +1125,113 @@ cp_layla.90 = {
 }
 
 
+# cp_layla.91 -- "The New Law" (welfare tier INCREASED)
+#
+# Fired by cp_on_law_enacted when the welfare ladder climbs. Prose varies
+# by the new tier (NOT by the transition shape — the key signal is what
+# she now has access to that she did not before).
+cp_layla.91 = {
+	type = country_event
+
+	title = cp_layla.91.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.91.d.pension
+				trigger = { var:cp_welfare_tier = 4 }
+			}
+			triggered_desc = {
+				desc = cp_layla.91.d.subsidies
+				trigger = { var:cp_welfare_tier = 3 }
+			}
+			triggered_desc = {
+				desc = cp_layla.91.d.poor
+				trigger = { var:cp_welfare_tier = 2 }
+			}
+			triggered_desc = {
+				desc = cp_layla.91.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.91.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.91.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+		cp_shift_loyalist = { delta = 2 }
+	}
+	option = {
+		name = cp_layla.91.b
+		# She'll believe it when she sees it.
+		cp_shift_weight = { weight = economy delta = 1 }
+	}
+}
+
+
+# cp_layla.92 -- "They Have Taken It Back" (welfare tier DECREASED)
+#
+# A rollback: the law was there and is not anymore. Variants cover
+# the "how far did we fall" shape — all the way back to no_social_security
+# is different from pension → subsidies. Prose reacts to the NEW tier.
+cp_layla.92 = {
+	type = country_event
+
+	title = cp_layla.92.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.92.d.none
+				trigger = { var:cp_welfare_tier = 0 }
+			}
+			triggered_desc = {
+				desc = cp_layla.92.d.partial
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.92.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.92.a
+		default_option = yes
+		cp_shift_hope = { delta = -1 }
+		cp_shift_radical = { delta = 3 }
+		cp_shift_weight = { weight = revolution delta = 1 }
+	}
+	option = {
+		name = cp_layla.92.b
+		# The quiet absorption of a loss she had half-expected.
+		cp_shift_exhaustion = { delta = 1 }
+	}
+}
+
+
 # cp_layla.82 -- "The Child" (a child dies of illness)
 #
 # cp_children decrements; cp_lost_a_child permanent flag set; hope drops

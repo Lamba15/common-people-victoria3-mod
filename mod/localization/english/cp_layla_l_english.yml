@@ -442,6 +442,24 @@
  cp_layla.90.a:0 "She takes it with thanks. The country has, at last, seen her."
  cp_layla.90.b:0 "She takes it without thanks. The silence before the envelope does not un-happen."
 
+ # cp_layla.91 -- "The New Law" (welfare tier up)
+ cp_layla.91.t:0 "The New Law"
+ cp_layla.91.d.pension:0 "They have passed a pension. Word came up the lane at midday. An old woman — nobody Layla knows — will receive, beginning next month, a sum of money from the country every Thursday until she dies."
+ cp_layla.91.d.subsidies:0 "They have passed a subsidy. The foreman at Ahmed's mill announced it at the end of the shift, unwilling to meet the men's eyes as he did. The wages will be topped up. The country is paying."
+ cp_layla.91.d.poor:0 "They have passed a relief law. The bread-woman in the lane will come now with paper and a stamp, not only with bread, and the paper will entitle the destitute households to a small fixed sum."
+ cp_layla.91.d.default:0 "A new law has passed. Word has reached the lane that the country intends, from next month, to pay money directly to certain households it had not paid money to before."
+ cp_layla.91.f:0 "She sits with the news on the threshold in the late light. She thinks of her mother, who died on a Friday because there was no physician and no money to fetch one. She thinks of the widow two lanes over whose children walked barefoot for three winters and who would, under this new law, not have walked barefoot. She thinks of her own household, and of whether this law will reach her, and of whether her gratitude — if it comes — will be clean gratitude or the complicated kind that has, underneath it, a quiet resentment that the law came now and not earlier. She does not know yet. She will have to wait to see it happen. Laws on paper are not the same as envelopes in the hand; she has lived long enough to know that."
+ cp_layla.91.a:0 "She allows herself a small hope. The country, for once, has moved in the right direction."
+ cp_layla.91.b:0 "She'll believe it when an envelope reaches her door."
+
+ # cp_layla.92 -- "They Have Taken It Back" (welfare tier down)
+ cp_layla.92.t:0 "They Have Taken It Back"
+ cp_layla.92.d.none:0 "The welfare law has been repealed. No replacement. The news came up the lane in the evening and by the time it reached her door it had been told by four mouths, and every mouth had added something, and the something had always been worse than what came before."
+ cp_layla.92.d.partial:0 "The welfare law has been rolled back. A smaller law replaces it — enough, still, for some; not enough for others. Which side of the line her household sits on, the lane will learn in the coming weeks, not today."
+ cp_layla.92.f:0 "She stands in the doorway. She thinks of the envelope the country had, recently, taught her hand to hold — and of what it had been like, however brief, to be the person the country intended to hand a thing to. She thinks of her mother's grave, which is what she always thinks of when the country takes a thing back. She thinks of the widow two lanes over, whose children had begun, under the law, to wear shoes. She thinks of the lane itself — which is, tonight, darker than it was last night, and which will be darker still by next week. A country's direction, she has learned, is a thing that can be reversed. It is a thing that HAS been reversed. She had, foolishly, allowed herself to think this one particular reversal would not come. She was wrong. She will not be wrong in the same way again. Something in her chest, tonight, becomes harder than it was this morning."
+ cp_layla.92.a:0 "She turns. She finds the neighbour in the lane who organises. She asks when the next meeting is."
+ cp_layla.92.b:0 "She closes the door. She keeps the thought to herself — for now."
+
 
  # ============================================================================
  # Imagined audience with the Pasha

@@ -44,6 +44,8 @@
 #   cp_debug.35  -- NEW: fire a child's death (needs cp_children >= 1).
 #   cp_debug.36  -- NEW: recompute mortality + worker-risk pressures now.
 #   cp_debug.37  -- NEW: fire the First-Envelope welfare event directly.
+#   cp_debug.38  -- NEW: simulate welfare UP transition (enact poor_laws).
+#   cp_debug.39  -- NEW: simulate welfare DOWN transition (no_social_security).
 #
 # Retired (obsolete probes; removed in the April cleanup):
 #   cp_debug.2/.3/.4 -- direct law-event fires (superseded by .5 + dispatcher)
@@ -533,6 +535,34 @@ cp_debug.37 = {
 	immediate = {
 		c:EGY ?= {
 			trigger_event = { id = cp_layla.90 }
+		}
+	}
+}
+
+# cp_debug.38 -- Simulate a welfare-ladder UP transition. Sets cp_welfare_tier
+# low, then passes a higher-tier law so cp_on_law_enacted fires cp_layla.91.
+cp_debug.38 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_poor_laws
+		}
+	}
+}
+
+# cp_debug.39 -- Simulate a welfare-ladder DOWN transition. Rolls back to
+# no_social_security so cp_on_law_enacted fires cp_layla.92.
+cp_debug.39 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_no_social_security
 		}
 	}
 }
