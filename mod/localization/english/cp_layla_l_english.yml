@@ -6,7 +6,7 @@
 
  # ----- Journal entry: cp_je_layla -----
  cp_je_layla:0 "Layla al-Sharif"
- cp_je_layla_reason:0 "#b age#! #v [Country.MakeScope.Var('cp_age').GetValue|D]#!  ·  #b SoL#! #v [Country.MakeScope.Var('cp_sol').GetValue|D]#![ROOT.GetCountry.GetCustom('cp_layla_sol_delta_label')]  ·  #b hope#! #v [Country.MakeScope.Var('cp_hope').GetValue|D]#!  ·  #b literacy#! #v [ROOT.GetCountry.GetCustom('cp_layla_literacy_label')]#!  ·  #b politics#! #v [ROOT.GetCountry.GetCustom('cp_layla_stance_label')]#!\n\n[ROOT.GetCountry.GetCustom('cp_layla_housing_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_possessions_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_routine_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_savings_desc')]"
+ cp_je_layla_reason:0 "@clock! #b age#! #v [Country.MakeScope.Var('cp_age').GetValue|D]#!  ·  [ROOT.GetCountry.GetCustom('cp_layla_sol_tier_icon')] #b SoL#! #v [Country.MakeScope.Var('cp_sol').GetValue|1]#![ROOT.GetCountry.GetCustom('cp_layla_sol_delta_label')]  ·  @popularity! #b hope#! #v [Country.MakeScope.Var('cp_hope').GetValue|D]#!  ·  @paper! #b literacy#! #v [ROOT.GetCountry.GetCustom('cp_layla_literacy_label')]#!  ·  [ROOT.GetCountry.GetCustom('cp_layla_stance_icon')] #b politics#! #v [ROOT.GetCountry.GetCustom('cp_layla_stance_label')]#!  ·  @state! #b home#! #v [ROOT.GetCountry.GetCustom('cp_layla_home_state_label')][ROOT.GetCountry.GetCustom('cp_layla_urban_label')]#!  ·  @peasants! #b pop#! #v [ROOT.GetCountry.GetCustom('cp_layla_pop_group_label')]#!\n\n[ROOT.GetCountry.GetCustom('cp_layla_housing_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_possessions_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_routine_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_savings_desc')]"
 
  # ----- Events -----
 
@@ -105,6 +105,10 @@
  cp_layla_check_button_name:0 "Check on Layla"
  cp_layla_check_button_desc:0 "Look in on her for a moment, at whatever she happens to be doing. No decisions, no mechanics — only a witness, for a moment, to a life."
 
+ # scripted_button: imagine a conversation
+ cp_layla_conversation_button_name:0 "Imagine a conversation"
+ cp_layla_conversation_button_desc:0 "She pictures a visitor at her door — a stranger from the Cairo road, or a dream, or a voice she heard once as a girl. She imagines what they would ask, and what she would answer."
+
  # cp_layla.6 -- reflection event (orphan; reachable via console only now)
  cp_layla.6.t:0 "A Moment"
  cp_layla.6.d:0 "She is doing, at this moment, what she has done every day of her life. She is also, underneath that, doing something else."
@@ -156,9 +160,45 @@
 
  # SoL year-over-year delta. Rendered inline after the SoL number.
  # Green if up, red if down, hidden when zero.
- cp_layla_sol_delta_up:0 " §G(+[Country.MakeScope.Var('cp_sol_delta').GetValue|D])§!"
- cp_layla_sol_delta_down:0 " §R([Country.MakeScope.Var('cp_sol_delta').GetValue|D])§!"
+ cp_layla_sol_delta_up:0 " #G (+[Country.MakeScope.Var('cp_sol_delta').GetValue|1])#!"
+ cp_layla_sol_delta_down:0 " #R ([Country.MakeScope.Var('cp_sol_delta').GetValue|1])#!"
  cp_layla_sol_delta_flat:0 ""
+
+ # SoL tier icons. V3's own iconography per tier.
+ cp_layla_sol_icon_destitute:0 "@destitute!"
+ cp_layla_sol_icon_struggling:0 "@struggling!"
+ cp_layla_sol_icon_impoverished:0 "@impoverished!"
+ cp_layla_sol_icon_middling:0 "@middling!"
+ cp_layla_sol_icon_secure:0 "@secure!"
+ cp_layla_sol_icon_prosperous:0 "@prosperous!"
+ cp_layla_sol_icon_affluent:0 "@affluent!"
+ cp_layla_sol_icon_wealthy:0 "@wealthy!"
+ cp_layla_sol_icon_lavish:0 "@lavish!"
+ cp_layla_sol_icon_opulent:0 "@opulent!"
+
+ # Political stance icons.
+ cp_layla_stance_icon_neutral:0 "@pinned_star!"
+ cp_layla_stance_icon_radical:0 "@activism!"
+ cp_layla_stance_icon_loyalist:0 "@movement_royalist_absolutist!"
+
+ # Urban-centre sub-labels (shown after the V3 state name when she lives
+ # in a city within that state).
+ cp_layla_urban_cairo:0 " (Cairo)"
+ cp_layla_urban_alexandria:0 " (Alexandria)"
+ cp_layla_urban_none:0 ""
+
+ # Home state rendered dynamically from the region_state pointer set in
+ # cp_move_to_state. Works for any V3 state — Delta, Hejaz, Sudan, etc.
+ cp_layla_home_state_dynamic:0 "[Country.MakeScope.Var('cp_layla_state_pointer').GetState.GetStateRegion.GetName]"
+
+ # Pop-group labels — the culture × religion × pop_type she belongs to.
+ # Her SoL is bisected from this group's standard_of_living.
+ cp_layla_pop_group_peasants:0 "Misri Sunni Peasants"
+ cp_layla_pop_group_farmers:0 "Misri Sunni Farmers"
+ cp_layla_pop_group_laborers:0 "Misri Sunni Laborers"
+ cp_layla_pop_group_machinists:0 "Misri Sunni Machinists"
+ cp_layla_pop_group_shopkeepers:0 "Misri Sunni Shopkeepers"
+ cp_layla_pop_group_clerks:0 "Misri Sunni Clerks"
 
  # ----- Customizable-localization variants for cp_je_layla_reason -----
  # See mod/common/customizable_localization/cp_custom_loc.txt for the
@@ -250,3 +290,105 @@
  cp_layla.23.d:0 "The village mule has stopped in the lane, and the village mule will not be persuaded to start again."
  cp_layla.23.f:0 "He belongs to nobody in particular — the village owns him, or he owns the village, depending on whom one asks — and this afternoon he is standing squarely in the lane between Layla's door and the well with a cart of straw behind him and a young boy who is too small to whip him with any seriousness pleading with him in a reedy voice. Layla leans in the doorway with the bucket under her arm, waiting. She is not in a hurry. The mule is. Eventually the young boy gives up and goes to find his father and the mule, unobserved, takes one thoughtful step forward, then another, then begins, at his own leisurely pace, to walk. Layla picks up the bucket and follows him toward the well. She has learned, over the years, that the village moves at the speed of the village, and that impatience is a thing for other women in other places."
  cp_layla.23.a:0 "She walks behind the mule."
+
+
+ # ============================================================================
+ # Imagined audience with the Pasha
+ # See documentation/characters/layla/conversation.md
+ # Reference to the actual ruler via [ROOT.GetCountry.GetRuler.GetFullName]
+ # so this prose ages with the game -- Muhammad Ali in 1836, Isma'il in 1867,
+ # whoever holds power when the audience is imagined.
+ # ============================================================================
+
+ # cp_conversation.1 -- Root: she goes to Cairo in her mind
+ cp_conversation.1.t:0 "An Audience in Cairo"
+ cp_conversation.1.d:0 "She is kneading the second loaf and she has decided, tonight, to go to Cairo in her mind."
+ cp_conversation.1.f:0 "She has never been. She will never be. The dough is on the board in front of her, and her hands are working it with the turn and fold she has been doing since she was eleven, and the kitchen is quiet except for the soft rhythm of the dough. And then, between one fold and the next, she is not in the kitchen. She is at the end of a long carpet the colour of old blood, in a room with a ceiling she cannot see, and at the far end of the carpet [ROOT.GetCountry.GetRuler.GetFullName] is waiting for her. She does not know what he looks like. She has invented a face: a man of some age, a beard the colour of ashes, eyes she cannot read. She has invented the room too. She does not know what the palace is really like, and so she has built one from rumour and from the stories travellers brought through the village when she was small — gold thread on the cushions, brass lamps, a secretary at a low table with ink on his fingers. She takes one step forward on the carpet. She is wearing a dress she does not own. Her hands, she notices, are clean. She has an hour, perhaps. She has rehearsed this, kneading bread, a hundred times. Tonight she lets it happen. What does she speak of tonight?"
+ cp_conversation.1.a:0 "Tell him about the land."
+ cp_conversation.1.z:0 "The courage leaves her. She returns to the oven."
+
+ # cp_conversation.10 -- Her opening speech (THE LAND)
+ cp_conversation.10.t:0 "The Land"
+ cp_conversation.10.d:0 "She stands at the end of the carpet. [ROOT.GetCountry.GetRuler.GetFullName] is waiting for her to speak."
+ cp_conversation.10.f:0 "Effendim, she says — and her voice is smaller than she rehearsed, smaller than she meant, smaller than the room — I have come about the land. She clears her throat. The room is enormous. She is aware of the secretary's pen at the edge of her vision, scratching. She begins again. My name is Layla, daughter of Mohamed al-Sharif, of a village in the Delta you have never heard of. My grandfather planted in this soil. His grandfather planted in this soil. His grandfather before him planted in this soil. They are in the soil now. I will be in the soil. My children, if I have children who live, will be in the soil. I have known that field for thirty years. I have known it in the flood year that was good, when the silt was the colour of dark tea, and in the flood year that failed, when we ate less in every month until Ramadan came, and in the year the locust took the eastern strip and left the western strip, and in the year my mother died with her hand on the dry earth at the edge of the canal. She pauses. She is not looking at him. She is looking somewhere past his shoulder, at a window she has also invented, which lets in an imagined sun. The field is ours, Effendim. The field has always been ours. The ledgers in Cairo say otherwise. The ledgers say the field belongs to a man none of us have seen, who sends his bailiff at harvest with a donkey and a book, and the bailiff takes what the ledger tells him to take, which is never what was agreed at planting, which is never what leaves us enough for winter. I am not a woman of the city. I do not know the laws. I know only that the field is ours, and the paper is not, and I have come — she looks at him now, truly — I have come to ask you for a paper. One paper. With my name on it. With my husband's name on it, if the law requires that. With the name of the field on it. That my grandchildren, when they are old, can show to the bailiff and say, the field is ours. Because it has always been ours. That is what I have come to say. She stops. Her hands, she realises, have been gripping the folds of the dress she does not own. She unclenches them. She waits."
+ cp_conversation.10.a:0 "#italic as the Pasha:#! \"The land has owners. You are not one of them.\""
+ cp_conversation.10.b:0 "#italic as the Pasha:#! \"Speak on. I am listening.\""
+ cp_conversation.10.c:0 "#italic as the Pasha:#! \"A peasant woman should not be in this room.\""
+
+ # cp_conversation.11 -- She faces the dismissive Pasha
+ cp_conversation.11.t:0 "He Does Not Look Up"
+ cp_conversation.11.d:0 "He says it without lifting his head. The secretary's pen does not pause."
+ cp_conversation.11.f:0 "The words land in the room and do not ask permission to land. The land has owners. You are not one of them. She feels the breath go out of her in a long quiet way, as if she had been struck in the chest by something soft and heavy, like a wet cloth, like grief. She stands on the carpet. She does not move. She is aware that in the real kitchen, her hands have stopped working the dough, and she forces them to begin again. In the imagined room, she stays. She had prepared herself for anger. She had prepared herself for indifference. She had not prepared herself for the efficiency of it — the way he said it, as if stating the time, as if telling the secretary to bring tea. Effendim, she says, and she hears her voice now with a kind of distance, as if she were listening to another woman speak. Effendim, perhaps I have not been clear. We work the land. We have always worked the land. My grandfather — I said, he says, without looking up, the land has owners. You are not one of them. The bailiff collects what the ledger requires. The ledger was drawn up correctly. Your name, and your husband's name, are on the ledger in the appropriate column. The column for those who work the land. Not for those who own it. That column is filled. That column has been filled, in some cases, since before your grandfather's grandfather. There is a silence. Effendim, she says again — and now there is something in her voice she did not plan to put there — Effendim, what if the column were wrong? He lifts his head for the first time. What does he do next?"
+ cp_conversation.11.a:0 "#italic as the Pasha:#! \"There is a small parcel near the canal road. Take it. Go home.\""
+ cp_conversation.11.b:0 "#italic as the Pasha:#! \"Enough. The audience is over. Secretary — show her out.\""
+
+ # cp_conversation.12 -- She faces the engaged Pasha
+ cp_conversation.12.t:0 "He Is Listening"
+ cp_conversation.12.d:0 "He leans forward very slightly. The secretary stops writing."
+ cp_conversation.12.f:0 "Speak on, he says, and the voice is warmer than she expected, and she cannot tell if the warmth is real or if it is something men like him have learned to put into their voices when peasants come before them, and for a long moment she cannot remember what she had meant to say next. She is aware of her own breath. She is aware of the sweat on the back of her neck, which in the imagined room should not be there but is. She collects herself. Effendim, she says — and this time she hears her own voice clearly, clearly enough that the secretary, she notices, has begun to write again — Effendim, I know that the wars need men. I know that the men need arms. I know that the arms need steel, and the steel needs money, and the money comes from somewhere, and I am not a fool. I know that most of where the money comes from is us. The villages. The wheat. The cotton the bey makes us plant instead of wheat now, because it fetches a better price in the port. I am not angry about this. No — that is not true. I am angry. But I understand. A country is a thing that costs. She pauses. She has never said this aloud, not to Ahmed, not to her mother when her mother was alive, not to herself before tonight. But Effendim, she continues, when the cost is paid and paid and paid again, and the ones who pay have no paper saying that the field they water with their backs is their field — then one day something will break. I do not know what will break. I do not know what year. But I know my grandmother knew what it was like when the floods failed, and I know my mother knew, and I know I have known. And I know that the paper, Effendim, would be a cheap thing for you to give. Cheaper than the steel. Cheaper than the wars. Cheaper than the next revolt you will have to crush. She stops. She has said more than she meant to. The room is still. He has been listening. He makes a small gesture — the kind of gesture a man makes when he has decided something. What does he say?"
+ cp_conversation.12.a:0 "#italic as the Pasha:#! \"I will consider what you have said. We will speak of this again.\""
+ cp_conversation.12.b:0 "#italic as the Pasha:#! \"Let me ask you this: what if I gave this land to a soldier?\""
+
+ # cp_conversation.13 -- She faces the cruel Pasha
+ cp_conversation.13.t:0 "He Says the Quiet Thing"
+ cp_conversation.13.d:0 "The warmth she had imagined in his voice is not there. Something else is."
+ cp_conversation.13.f:0 "A peasant woman, he says, should not be in this room. He is not cruel the way the bailiff is cruel, which is a small cruelty in service of small appetites. He is cruel the way a man is cruel who has never been told no, and who believes that the reason he has never been told no is that he has always been right. You have come to me, he says, with the dust of your village still on your skirt, and you believe — he makes a small motion with two fingers, a dismissing motion, the kind one makes at a fly — that I am in need of your opinion on the disposition of land which is not yours. Tell me, he says — and now there is something worse than cruelty in his voice, there is amusement — tell me who it was that dressed you this morning and put these ideas in your head. Was it your husband? Your bey? A French traveller? She stands on the carpet. She feels the sting of his words as if someone had slapped her face and then held a cloth to it, soft and heavy. In the real kitchen her hands are still. She has stopped pretending. In the imagined room she has a choice. She can curtsey. She can go. She can — and she does — open her mouth. Nobody dressed me, Effendim, she says. Nobody put ideas in my head. I have been putting them there myself, in the time between fetching water and waiting for my husband to come home, for thirty years. The ideas are mine. The dust is mine. The room is yours. If you will not hear me, I will go. If you will hear me — one more sentence — I will say the sentence, and then I will go, and I will not trouble you again. She waits. He is looking at her. His face has not changed. But something has."
+ cp_conversation.13.a:0 "#italic as the Pasha:#! \"Say your one sentence. Then go.\""
+ cp_conversation.13.b:0 "#italic Turn and leave. The audience is over in her mind.#!"
+
+ # cp_conversation.14 -- Dismissive branch: Pasha offers a token
+ cp_conversation.14.t:0 "The Parcel by the Canal Road"
+ cp_conversation.14.d:0 "He speaks without warmth, without cruelty either. He speaks the way one disposes of a small matter in order to return to larger ones."
+ cp_conversation.14.f:0 "There is a small parcel, he says, near the canal road. Unworked for years. The soil is poor. It is too close to the salt. Take it. It is a small thing. I will instruct the secretary. Go home. He is already looking down at his papers again. The audience has ended, although she is still standing in the room. She understands, with the clarity of a woman who has stood in more doorways than she can count, what has happened. He has given her nothing. He has given her a scrap that nobody else wants — a piece of land too salt for wheat, too far from the village to walk, a parcel that will belong to her on paper and on no other axis of the real world. The paper itself, she knows, will not come. A man in Cairo will be told to prepare it. The man will not prepare it. Or the man will prepare it, and another man will misplace it, and she will hear of it again in fifteen years when the bey's bailiff arrives at harvest with a new ledger and no memory of her visit. She stands on the carpet. She thinks of her field, the real one, green and hers and not hers. She thinks of her grandfather's grandmother. She does not say any of this. Thank you, Effendim, she says, because her mother taught her that one always thanks a man who has given you something, even if the thing is not what you asked for, even if the thing is nothing. She turns. She walks the long carpet. Behind her, she does not hear the secretary's pen resume. She knows, in a way she cannot explain, that no parcel will be waiting when she gets home."
+ cp_conversation.14.a:0 "#italic She walks the long carpet back.#!"
+
+ # cp_conversation.15 -- Dismissive branch: audience ends abruptly
+ cp_conversation.15.t:0 "The Secretary Shows Her Out"
+ cp_conversation.15.d:0 "He does not look at her again. The pen is already scratching a new line."
+ cp_conversation.15.f:0 "The secretary stands. He is a small man in a dark robe and he has the kind of face that has been trained not to have an expression. He does not touch her. He does not need to. He gestures, politely, toward the door at the far end of the carpet, and he waits, politely, for her to walk. She walks. She walks a long time. The carpet, she realises, is much longer than she had imagined when she came in — or perhaps she is walking more slowly now. She does not look back. She does not know if he has already begun the next audience, with a man who has brought a gift, or with a bey who has come to complain of a neighbour, or with a general who has a war to discuss. She is one woman. There is no gift on the low table beside the carpet where she thought a gift should go. She had not thought to bring one. She did not know gifts were required. At the door she pauses, and she turns, and she says — more to the room than to him — I am Layla al-Sharif. You may forget me. My field will not forget what I said here. The door closes behind her. In the real kitchen, the dough is resting. Her hands are folded in her lap. She has not noticed."
+ cp_conversation.15.a:0 "#italic She stands in the kitchen. She does not move for a while.#!"
+
+ # cp_conversation.16 -- Engaged branch: vague promise
+ cp_conversation.16.t:0 "I Will Consider It"
+ cp_conversation.16.d:0 "He says the words he has said a thousand times to petitioners from the provinces. She can hear, underneath, that he means something by them."
+ cp_conversation.16.f:0 "I will consider what you have said, he says. We will speak of this again. She has heard this phrase, in the mouths of lesser men, all her life. From the bey, when the roof of the grain store collapsed. From the bailiff, when the weights at the scale were in his favour by an obvious margin. From the headman of the village, when a woman came to complain about her husband. I will consider it. We will speak of this again. It is the phrase a man uses when he wants the woman to leave. But in this room, Effendim, it is different. She does not know whether it is different because he means it, or because she wants to believe he means it, or because she has worked so hard to imagine the version of him who would mean it that the imagined version is now standing in front of her, wearing his face. Thank you, Effendim, she says. I will wait. She does not know what she is waiting for. She does not know if it will ever come. But as she walks back down the long carpet she feels a small stupid hope inside her chest, the size of a wheat-grain, the kind of hope a woman is wiser to refuse and never can. In the real kitchen her hands have returned to the dough. The dough is ready to rise. She puts the cloth over the bowl. She says nothing to the empty room."
+ cp_conversation.16.a:0 "#italic She covers the dough. She lets it rise.#!"
+
+ # cp_conversation.17 -- Engaged branch: hard question
+ cp_conversation.17.t:0 "What If I Gave This Land to a Soldier?"
+ cp_conversation.17.d:0 "He asks it with something like curiosity. She had not prepared for curiosity."
+ cp_conversation.17.f:0 "What if, he says, I gave this land to a soldier? A man who fought for Egypt. A man who lost a leg at Nezib, say, or a son at Konya. A man who earned, by the blood his family has shed for the country, the right to a field. What would you say to him, when he came to your door with a paper in his hand and said, madam, this field is mine now? She stands on the carpet. It is the hardest question anyone has ever asked her, including the midwife when the child would not come. Effendim, she says, after a long moment — I would say to him, may God be merciful to your son. I would say to him, come in, and drink water in the shade. I would say to him, the water of this well is good. And then — she lifts her head and looks at him, truly, for the first time — and then, Effendim, I would ask him to show me the paper. And I would read it. Except that I cannot read. So I would ask him to read it to me. And then I would ask whether the paper named the field, or whether the paper named a field. And if the paper named a field only in general, Effendim, I would say to him, soldier, there are many fields. Let us walk out together and find you one that is not already worked by a woman whose grandfather's grandfather is in the ground. She pauses. The thing I would not say, Effendim, is that this is fair. It is not fair. Fair is not a word I am certain belongs in this room. I would say only: the field is mine. It has always been mine. Find him a different field. There are many. Someone in your secretary's ledger will know where they are. He looks at her. The secretary's pen has stopped again."
+ cp_conversation.17.a:0 "#italic She has answered. She is shaking a little. She waits.#!"
+
+ # cp_conversation.18 -- Cruel branch: one sentence
+ cp_conversation.18.t:0 "One Sentence"
+ cp_conversation.18.d:0 "He lifts one finger. Speak, he says. She has been given the sentence she asked for."
+ cp_conversation.18.f:0 "She has rehearsed, standing at the oven, a hundred different sentences. Some of them were angry. Some of them were pleading. Some of them were the kind of sentence a scholar would build, with a beginning and a middle and a closing. She has forgotten all of them. She stands on the carpet and her mouth opens before she has told it to open and she hears herself say — Effendim, if you will not give me the paper, then let my daughter — if I ever have a daughter, if a daughter of mine ever lives past her second year — let my daughter come to this room in my place, in thirty years, and speak the same words, and receive the same nothing, and go home. Because I will teach her to come. I will teach her the names of the fields and the names of her grandmothers and the sound of the quern-stone and the smell of the silt, and when she stands on this carpet she will not be smaller than the room. She will be the size of the room. She will be the size of the river. She will be the size of the whole of Egypt, which is made of women like her, women like me, women who have been standing on carpets like this one forever, waiting for a paper that does not come. That is my sentence, Effendim. I am going now. She has not asked permission. She has already turned. He does not stop her. Perhaps she imagines that, on her walk back down the carpet, he makes a small mark in his own book. Perhaps she imagines wrong."
+ cp_conversation.18.a:0 "#italic She walks out on her own feet.#!"
+
+ # cp_conversation.19 -- Cruel branch: she leaves without the sentence
+ cp_conversation.19.t:0 "She Leaves"
+ cp_conversation.19.d:0 "She does not speak. She turns. She walks."
+ cp_conversation.19.f:0 "She had a sentence prepared. She had prepared it at the oven, at the quern, at the well, in the dark of the first hour of the first watch of the night. She had prepared it so often that the sentence had come to feel like a stone in her pocket — a thing she could touch to know was real. In the imagined room, with him looking at her with that face that had not changed, with that amusement still at the edges of his mouth, she chooses not to give him the stone. He does not deserve the stone. The stone is hers. She turns on the carpet. She does not curtsey. She does not thank him. She does not even lift her chin. She simply walks, and the walk takes longer than it should take, and she does not look back to see whether he is watching her go, because she has decided — and this is a decision she will remember, in the real kitchen, for the rest of her life — that his watching or not watching is no longer a fact she will organise her life around. The door opens for her. She passes through. In the real kitchen her hands have finished with the dough and her hands are folded and she is looking out the small window, at the line of the canal, at the palm trees along the canal, at the flat sky. Something in her chest is quiet in a new way. It is not triumph. It is not despair. It is something smaller and steadier, the kind of quiet that follows a decision one has been carrying without knowing it for a long time. She begins to wash her hands in the basin. The water is cold. The quiet stays."
+ cp_conversation.19.a:0 "#italic She washes her hands. The quiet stays.#!"
+
+ # cp_conversation.90 -- Closer: the fantasy dissolves
+ cp_conversation.90.t:0 "The Kitchen Returns"
+ cp_conversation.90.d:0 "She is not in Cairo. She has never been. The dough is in front of her. The light has not changed."
+ cp_conversation.90.f:0 "She is in her kitchen. The dough is on the board, covered with a cloth, rising. The light through the small window is the same light it was before she went to Cairo in her mind. Outside, the lane is quiet. A goat complains in the far distance. Ahmed is wherever Ahmed is — in the far field, on a road she cannot see, in a country she has never learned the map of. She looks at her hands. They are the hands of a woman who has been kneading dough, not the hands of a woman who has stood on a carpet. The dress she was wearing in the imagined room is not in the house and never was. She permits herself — just for a breath — the question of whether any of it counted. Whether a sentence spoken in the privacy of one's own head, to an audience of one's own making, is a sentence at all. The answer, she decides, is the one her mother gave her when she was eight years old and asked whether the prayers counted when spoken quietly: they count. They count to the one who speaks them. That is enough. She turns the cloth back and checks the dough. It has risen well. She lifts the bowl to the oven. She puts the kettle over the small fire. Somewhere in the country, [ROOT.GetCountry.GetRuler.GetFullName] is not thinking of her. The secretary is not thinking of her. The bey is not thinking of her. She is thinking of the tea that will be ready in a moment, and of the bread that will be baked by the time the sun is at the palms, and of Ahmed, who will come home, or will not, or will come home changed. She is thinking, also, in a small stubborn corner of her chest, that one day the sentence will be said aloud in a real room, by a real woman, and that the room will change when the sentence arrives. Perhaps the real woman will be her daughter. Perhaps it will be someone else's daughter. Perhaps it will not be for a hundred years. She does not know. The kettle begins to hiss. She reaches for it. The day continues."
+ cp_conversation.90.a:0 "#italic The day continues.#!"
+
+ # ----- cp_layla.7 -- "The Tax Collector" -----
+ cp_layla.7.t:0 "The Tax Collector"
+ cp_layla.7.d:0 "He comes with a ledger, an inkhorn, and two guards. He comes when the harvest is measured."
+ cp_layla.7.f:0 "She knows him by sight, though he would not recognise her if she passed his house in the city. He is younger than Ahmed and he is older than the bey. He reads the number off the page as though the number were the weather — something that simply is, and is not his doing. Ahmed hands across what he has, wrapped in the best cloth they own, which is not very good cloth. The assessor does not look at him. He makes a mark. He makes another mark. He does not look up when he says #italic This year the rate is higher.#! She is standing in the door. She is holding the youngest child on her hip. The child does not yet know the word #italic tax#!. It will be one of the first words the child learns."
+ cp_layla.7.a:0 "Pay what is asked."
+ cp_layla.7.b:0 "#italic She meets his eyes.#!"
+
+ # ----- cp_layla.8 -- "The Price of the Loaf" -----
+ cp_layla.8.t:0 "The Price of the Loaf"
+ cp_layla.8.d:0 "The bread costs the same coin this week. There is less bread in it."
+ cp_layla.8.f:0 "Ahmed brings home the loaf. It is the loaf she has bought, or watched him buy, every week of her married life. She takes it in both hands — the weight is wrong. She does not weigh bread; her hands weigh bread. Her hands have been weighing bread since she was nine. She says nothing. She tears a piece for the children. She tears a piece for Ahmed. The piece she tears for herself is smaller than usual and she does not announce this and neither does anyone notice, which is how it has always gone. That night, lying awake, she thinks about the word #italic tax#! and how for the first time in her life she is sure she knows what it means. It means something has been taken from between her teeth before she got there."
+ cp_layla.8.a:0 "Go to sleep."
+ cp_layla.8.b:0 "#italic Curse the ones who decide such things.#!"
+

@@ -144,6 +144,82 @@ cp_layla.4 = {
 	}
 }
 
+# cp_layla.7 -- "The Tax Collector" (tax burden spikes into crushing tier)
+#
+# Fires from cp_on_yearly when cp_tax_burden >= 7 and wasn't last year.
+# A real tax visit in a Delta village: assessor, two guards, a ledger.
+cp_layla.7 = {
+	type = country_event
+
+	title = cp_layla.7.t
+	desc  = cp_layla.7.d
+	flavor = cp_layla.7.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.7.a
+		default_option = yes
+		cp_shift_hope = { delta = -1 }
+		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_weight = { weight = land_reform delta = 1 }
+	}
+	option = {
+		name = cp_layla.7.b
+		cp_shift_hope = { delta = -2 }
+		cp_shift_radical = { delta = 5 }
+		cp_shift_weight = { weight = revolution delta = 1 }
+	}
+}
+
+
+# cp_layla.8 -- "The Price of the Loaf" (first consumption tax on grain)
+#
+# Fires the first time the government levies a consumption tax on grain
+# during her lifetime. Grain is the loaf; the loaf is the day. Sets
+# cp_seen_grain_tax permanently so it doesn't re-fire.
+cp_layla.8 = {
+	type = country_event
+
+	title = cp_layla.8.t
+	desc  = cp_layla.8.d
+	flavor = cp_layla.8.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.8.a
+		default_option = yes
+		cp_shift_hope = { delta = -1 }
+	}
+	option = {
+		name = cp_layla.8.b
+		cp_shift_hope = { delta = -1 }
+		cp_shift_weight = { weight = economy delta = 1 }
+	}
+}
+
+
 # cp_layla.5 -- "The First Cry" (childbirth, mother survives)
 #
 # Placeholder — orphan until pregnancy mechanics are wired.

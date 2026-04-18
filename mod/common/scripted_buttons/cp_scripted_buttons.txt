@@ -138,3 +138,35 @@ cp_layla_check_button = {
 		}
 	}
 }
+
+
+###############################################################################
+# cp_layla_conversation_button -- "Imagine a conversation"
+#
+# Opens cp_conversation.1 (the root), which offers topic choices as options.
+# Framing: she is imagining it. The player is a dream visitor. See
+# documentation/characters/layla/conversation.md for the full design.
+#
+# Separate cooldown from the Check button: cp_conversation_cooldown (90 days).
+# Both buttons can be used in the same window.
+###############################################################################
+
+cp_layla_conversation_button = {
+	name = "cp_layla_conversation_button_name"
+	desc = "cp_layla_conversation_button_desc"
+
+	visible = {
+		always = yes
+	}
+
+	possible = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_audience_cooldown }
+	}
+
+	# Cooldown is set by cp_conversation.90 (the closer), not here, so
+	# that if the player quits mid-audience the button is not locked.
+	effect = {
+		trigger_event = { id = cp_conversation.1 popup = yes }
+	}
+}

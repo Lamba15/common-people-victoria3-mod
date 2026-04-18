@@ -51,6 +51,264 @@ cp_shift_sol = {
 	clamp_variable = { name = cp_sol min = 1 max = 99 }
 }
 
+# Home state is data-driven, not enumerated. Exactly one region_state
+# carries var:cp_layla_lives_here at any time. cp_move_to_state sets it
+# and clears the previous marker. cp_refresh_sol_from_pop iterates to
+# find her current state instead of branching on a flag-per-state list.
+#
+# This keeps us agnostic to Egypt's shifting borders: Muhammad Ali's
+# Egypt spans the Delta, Hejaz, Sudan, the Levant. If EGY annexes or
+# loses a state, nothing here breaks.
+#
+# Vanilla pattern source:
+#   - 00_slavery.txt  (every_scope_state + limit = { has_variable = X })
+#   - 00_belle_epoque.txt  (s:STATE_X ?= { random_scope_state })
+#   - ordered_scope_pop with order_by = total_pops / position = 0
+
+# Dispatch cohort read based on her profession, called from inside
+# region_state scope. Expects scope to already be on the region_state.
+# Saves scope:tmp_cohort_sol when a matching pop exists.
+cp_read_cohort_here_for = {
+	ordered_scope_pop = {
+		limit = {
+			culture = cu:misri
+			religion = rel:sunni
+			is_pop_type = $poptype$
+		}
+		order_by = total_pops
+		position = 0
+		check_range_bounds = no
+		save_temporary_scope_value_as = {
+			name = tmp_cohort_sol
+			value = standard_of_living
+		}
+	}
+}
+
+# Cohort-only dispatch (no state-avg capture). Scope must be on region_state.
+# Profession flags live on c:EGY; vanilla pattern for cross-scope reads is
+# the nested-block form `root = { has_variable = X }`, not `root.has_variable`.
+cp_read_cohort_only = {
+	if = {
+		limit = { root = { has_variable = cp_profession_laborers } }
+		cp_read_cohort_here_for = { poptype = laborers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_farmers } }
+		cp_read_cohort_here_for = { poptype = farmers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_machinists } }
+		cp_read_cohort_here_for = { poptype = machinists }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_shopkeepers } }
+		cp_read_cohort_here_for = { poptype = shopkeepers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_clerks } }
+		cp_read_cohort_here_for = { poptype = clerks }
+	}
+	else = {
+		cp_read_cohort_here_for = { poptype = peasants }
+	}
+}
+
+# Read cohort + state average in the current region_state.
+cp_read_cohort_here = {
+	cp_read_cohort_only = yes
+	save_temporary_scope_value_as = {
+		name = tmp_state_sol
+		value = average_sol
+	}
+}
+
+# Diaspora fallback: read her cohort's SoL in the Egyptian Delta
+# (STATE_LOWER_EGYPT — the canonical home of misri-sunni pops). Called
+# when her current state has zero members of her cohort. Narratively:
+# she carries her people's economic reality with her; a displaced Layla
+# lives materially closer to a Delta cousin than to her Sudanese neighbours.
+cp_read_diaspora_cohort = {
+	s:STATE_LOWER_EGYPT ?= {
+		random_scope_state = {
+			limit = { owner = c:EGY }
+			cp_read_cohort_only = yes
+		}
+	}
+}
+
+# Resample Layla's SoL from HER POP GROUP — the culture-religion-pop_type-
+# state combination she statistically belongs to. Prefers the filtered
+# cohort read; falls back to the state-region average if her cohort
+# doesn't exist; last-resort fallback is country average.
+cp_refresh_sol_from_pop = {
+	# Step 1: her current state (cohort + state-region average).
+	every_scope_state = {
+		limit = { has_variable = cp_layla_lives_here }
+		cp_read_cohort_here = yes
+	}
+
+	# Step 2: diaspora fallback — if the local cohort is missing, read
+	# her cohort's SoL in the Delta. Keeps her tied to her people even
+	# when the map scatters them across Muhammad Ali's empire.
+	if = {
+		limit = { NOT = { exists = scope:tmp_cohort_sol } }
+		cp_read_diaspora_cohort = yes
+	}
+
+	# Step 3: commit the best available read to cp_sol.
+	#   cohort (local → diaspora)  >  current state average  >  country average
+	if = {
+		limit = { exists = scope:tmp_cohort_sol }
+		set_variable = { name = cp_sol value = scope:tmp_cohort_sol }
+	}
+	else_if = {
+		limit = { exists = scope:tmp_state_sol }
+		set_variable = { name = cp_sol value = scope:tmp_state_sol }
+	}
+	else = {
+		# No state marker found — first run, or save corruption.
+		# Country average is the honest fallback.
+		set_variable = { name = cp_sol value = average_sol }
+	}
+
+	# Personal law / condition micro-adjustments on top of the group base.
+	if = {
+		limit = { has_variable = cp_owns_land }
+		change_variable = { name = cp_sol add = 2 }
+	}
+	if = {
+		limit = { has_variable = cp_under_serfdom }
+		change_variable = { name = cp_sol add = -1 }
+	}
+
+	# Personal variance ±0.5 (total 1-point spread) so she isn't identical
+	# to the group median. Fractional values are kept — cp_sol is float.
+	random_list = {
+		33 = { change_variable = { name = cp_sol add = -0.5 } }
+		34 = { }
+		33 = { change_variable = { name = cp_sol add = 0.5 } }
+	}
+
+	clamp_variable = { name = cp_sol min = 1 max = 99 }
+}
+
+
+# ============================================================================
+# Taxation -- cp_tax_burden 0..10, how hard the tax regime hits HER
+# ============================================================================
+# V3 tracks five tax levels (very_low/low/medium/high/very_high) and five
+# tax methods (land / per_capita / proportional / graduated / consumption).
+# A peasant under Land-Based Taxation at Very High is crushed; the same
+# peasant under Per-Capita Taxation at Very High is exempt. Consumption
+# taxes on basic goods (grain, fish, fabric) hurt the poor more than the
+# rich because peasants spend a larger share of wages on them.
+#
+# Vanilla triggers used:
+#   tax_level >= high                    (country scope)
+#   has_law = law_type:law_X             (country scope)
+#   has_consumption_tax = g:grain        (country scope)
+# ============================================================================
+cp_refresh_tax_burden = {
+	set_variable = { name = cp_tax_burden value = 0 }
+
+	# Who pays the main tax method? Peasants + subsistence farmers are
+	# land-taxed; middle strata pay per-capita / proportional; laborers
+	# pay a sliver through proportional + consumption.
+	if = {
+		limit = {
+			OR = {
+				has_variable = cp_profession_peasants
+				has_variable = cp_profession_farmers
+			}
+		}
+		# Land-Based Taxation hits her directly as a peasant.
+		if = {
+			limit = { has_law = law_type:law_land_based_taxation }
+			if = {
+				limit = { tax_level >= very_high }
+				change_variable = { name = cp_tax_burden add = 8 }
+			}
+			else_if = {
+				limit = { tax_level >= high }
+				change_variable = { name = cp_tax_burden add = 6 }
+			}
+			else_if = {
+				limit = { tax_level >= medium }
+				change_variable = { name = cp_tax_burden add = 4 }
+			}
+			else_if = {
+				limit = { tax_level >= low }
+				change_variable = { name = cp_tax_burden add = 2 }
+			}
+			# very_low = +0 (effectively untaxed)
+		}
+		# Per-Capita taxation exempts peasants entirely — she pays nothing.
+		# Proportional/graduated tax wages; peasants have none.
+		# So no other tax-method branch fires for her under the peasant arc.
+	}
+	else = {
+		# Middle/upper strata pay per-capita, proportional, or graduated.
+		if = {
+			limit = {
+				OR = {
+					has_law = law_type:law_per_capita_based_taxation
+					has_law = law_type:law_proportional_taxation
+					has_law = law_type:law_graduated_taxation
+				}
+			}
+			if = {
+				limit = { tax_level >= very_high }
+				change_variable = { name = cp_tax_burden add = 6 }
+			}
+			else_if = {
+				limit = { tax_level >= high }
+				change_variable = { name = cp_tax_burden add = 4 }
+			}
+			else_if = {
+				limit = { tax_level >= medium }
+				change_variable = { name = cp_tax_burden add = 2 }
+			}
+			else_if = {
+				limit = { tax_level >= low }
+				change_variable = { name = cp_tax_burden add = 1 }
+			}
+		}
+	}
+
+	# Consumption taxes on goods she actually consumes. Weights reflect
+	# how central each good is to a peasant household's buy package:
+	# grain is the loaf; fabric is clothes; fish/meat sometimes; sugar
+	# and coffee are later-game luxuries.
+	if = {
+		limit = { has_consumption_tax = g:grain }
+		change_variable = { name = cp_tax_burden add = 2 }
+	}
+	if = {
+		limit = { has_consumption_tax = g:fish }
+		change_variable = { name = cp_tax_burden add = 1 }
+	}
+	if = {
+		limit = { has_consumption_tax = g:fabric }
+		change_variable = { name = cp_tax_burden add = 1 }
+	}
+	if = {
+		limit = { has_consumption_tax = g:meat }
+		change_variable = { name = cp_tax_burden add = 0.5 }
+	}
+	if = {
+		limit = { has_consumption_tax = g:sugar }
+		change_variable = { name = cp_tax_burden add = 0.5 }
+	}
+	if = {
+		limit = { has_consumption_tax = g:coffee }
+		change_variable = { name = cp_tax_burden add = 0.3 }
+	}
+
+	clamp_variable = { name = cp_tax_burden min = 0 max = 10 }
+}
+
+
 # Literacy 0..100 (percent).
 cp_shift_literacy = {
 	change_variable = { name = cp_literacy add = $delta$ }
@@ -117,23 +375,99 @@ cp_become_clerk = {
 
 
 # ============================================================================
-# Home state transitions -- exactly one cp_home_state_* flag at a time
+# Home state transitions -- data-driven via region_state marker + pointer
 # ============================================================================
 
+# Clear the cp_layla_lives_here marker from wherever it currently sits.
+# Run from country scope (root = c:EGY). We search across EVERY country's
+# states in case she's been displaced by border changes and now lives in
+# a state EGY no longer owns.
 cp_clear_home_state = {
-	remove_variable = cp_home_state_lower_egypt
-	remove_variable = cp_home_state_cairo
-	remove_variable = cp_home_state_alexandria
+	every_country = {
+		every_scope_state = {
+			limit = { has_variable = cp_layla_lives_here }
+			remove_variable = cp_layla_lives_here
+		}
+	}
+	# Urban sub-locators (cities within her state — Cairo, Alexandria,
+	# Damascus, etc.) are still flag-per-hub on the country because
+	# they name the hub, not the state.
+	remove_variable = cp_in_city
+	remove_variable = cp_in_cairo
+	remove_variable = cp_in_alexandria
 }
 
-cp_move_to_cairo = {
+# Move Layla to the specified state. Takes $state$ as a V3 state region
+# id. Muhammad Ali's Egypt at 1836 owns a huge arc of states:
+#   Nile region:  STATE_LOWER_EGYPT, STATE_MIDDLE_EGYPT, STATE_UPPER_EGYPT,
+#                 STATE_EGYPTIAN_DESERT, STATE_SINAI, STATE_MATRUH,
+#                 STATE_DONGOLA, STATE_KORDOFAN, STATE_BLUE_NILE
+#   Arabia:       STATE_ALEPPO, STATE_LEBANON, STATE_PALESTINE, STATE_SYRIA,
+#                 STATE_TRANSJORDAN
+#   Anatolia:     STATE_ADANA (shared with Turkey)
+#   Ethiopia:     STATE_ERITREA
+#   Balkans:      STATE_CRETE
+# Any of these is a valid $state$ input; see gamestates.txt for the full
+# V3 state catalogue.
+#
+# Sets the marker on whichever region_state in that region is owned by
+# EGY; if EGY doesn't own any of it, falls back to the first region_state
+# so the marker still lands (she's living under foreign rule).
+#
+# Also stores a pointer to her state as a country variable, so the JE
+# label can render the state's vanilla name via
+# [Country.Var('cp_layla_state_pointer').GetState.GetStateRegion.GetName]
+# (vanilla pattern: expedition_location_var in 00_expedition_effects.txt).
+cp_move_to_state = {
 	cp_clear_home_state = yes
-	set_variable = cp_home_state_cairo
+	s:$state$ ?= {
+		# Prefer the EGY-owned region_state when present (her home country).
+		if = {
+			limit = {
+				any_scope_state = { owner = c:EGY }
+			}
+			random_scope_state = {
+				limit = { owner = c:EGY }
+				set_variable = cp_layla_lives_here
+				root = {
+					set_variable = { name = cp_layla_state_pointer value = prev }
+				}
+			}
+		}
+		else = {
+			# EGY doesn't own any of this region — she's under foreign
+			# rule. Pick any region_state so the marker still lands.
+			random_scope_state = {
+				set_variable = cp_layla_lives_here
+				root = {
+					set_variable = { name = cp_layla_state_pointer value = prev }
+				}
+			}
+		}
+	}
 }
 
-cp_move_to_alexandria = {
-	cp_clear_home_state = yes
-	set_variable = cp_home_state_alexandria
+# Urban sub-locators. Cairo and Alexandria are CITY HUBS within
+# STATE_LOWER_EGYPT, not V3 states — see gamestates.txt. These flags are
+# orthogonal to her home state: cp_in_cairo + cp_layla_lives_here on
+# STATE_LOWER_EGYPT means "in the city of Cairo". If she moves states,
+# cp_clear_home_state wipes these.
+cp_enter_cairo = {
+	set_variable = cp_in_city
+	set_variable = cp_in_cairo
+	remove_variable = cp_in_alexandria
+}
+
+cp_enter_alexandria = {
+	set_variable = cp_in_city
+	set_variable = cp_in_alexandria
+	remove_variable = cp_in_cairo
+}
+
+cp_leave_city = {
+	remove_variable = cp_in_city
+	remove_variable = cp_in_cairo
+	remove_variable = cp_in_alexandria
 }
 
 

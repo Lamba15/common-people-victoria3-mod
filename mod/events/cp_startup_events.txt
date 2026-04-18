@@ -34,28 +34,39 @@ cp_startup.1 = {
 		# --- Identity ---
 		set_variable = { name = cp_age            value = 22 }
 
-		# --- V3-mirroring canonical state (scales match V3 itself) ---
-		# SoL 1..99 -- peasant at game start sits at 5 (Struggling tier).
-		set_variable = { name = cp_sol            value = 5 }
-		# Year-over-year snapshot and delta. Updated in cp_on_yearly.
-		set_variable = { name = cp_sol_prev       value = 5 }
-		set_variable = { name = cp_sol_delta      value = 0 }
-		# Literacy 0..100 (percent).
-		set_variable = { name = cp_literacy       value = 0 }
-		# Radicalism / loyalism 0..100. Mutually exclusive; effects enforce.
-		set_variable = { name = cp_radical        value = 0 }
-		set_variable = { name = cp_loyalist       value = 0 }
-
 		# --- Profession as flag set ---
 		# Exactly one cp_profession_* is set at a time. Transitions clear
 		# the old one and set the new one. Flag-based because string
 		# variables are brittle for trigger comparisons in V3.
 		set_variable = cp_profession_peasants
 
-		# --- Home state as flag set ---
-		# She is in Lower Egypt at game start. Migration events flip the
-		# flag (clear cp_home_state_lower_egypt, set cp_home_state_cairo).
-		set_variable = cp_home_state_lower_egypt
+		# --- Home state as a state-scope marker ---
+		# Her residence is data-driven: the region_state she lives in
+		# carries var:cp_layla_lives_here. Any EGY state at any time
+		# (Delta, Hejaz, Sudan, Syria under Muhammad Ali, etc.) can host
+		# her without hardcoding a flag list. At game start she lives in
+		# the Delta. Must run BEFORE cp_refresh_sol_from_pop, which reads
+		# from the marker.
+		cp_move_to_state = { state = STATE_LOWER_EGYPT }
+
+		# --- V3-mirroring canonical state (scales match V3 itself) ---
+		# SoL 1..99. Seed from her cohort via the pop-group read, then
+		# layer personal law/variance via the library.
+		set_variable = { name = cp_sol            value = 5 }
+		cp_refresh_sol_from_pop = yes
+		# Year-over-year snapshot and delta. Updated in cp_on_yearly.
+		set_variable = { name = cp_sol_prev       value = var:cp_sol }
+		set_variable = { name = cp_sol_delta      value = 0 }
+		# Literacy 0..100 (percent).
+		set_variable = { name = cp_literacy       value = 0 }
+		# Radicalism / loyalism 0..100. Mutually exclusive; effects enforce.
+		set_variable = { name = cp_radical        value = 0 }
+		set_variable = { name = cp_loyalist       value = 0 }
+		# Tax burden 0..10. Recomputed yearly. Year-over-year snapshot
+		# lets cp_on_yearly detect sharp spikes and fire the tax-spike event.
+		set_variable = { name = cp_tax_burden     value = 0 }
+		cp_refresh_tax_burden = yes
+		set_variable = { name = cp_tax_burden_prev value = var:cp_tax_burden }
 
 		# --- Inner state (0..10) ---
 		set_variable = { name = cp_hope           value = 5 }

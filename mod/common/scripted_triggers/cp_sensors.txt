@@ -130,7 +130,7 @@ cp_sensor_oil_lamps_arrive = {
 
 cp_sensor_electricity_lights_her_street = {
 	c:EGY.market = { mg:electricity = { market_goods_buy_orders > 100 } }
-	has_variable = cp_home_state_cairo
+	has_variable = cp_in_cairo
 }
 
 
@@ -233,7 +233,7 @@ cp_sensor_standard_clothes_available = {
 
 cp_sensor_services_reach_her_quarter = {
 	c:EGY.market = { mg:services = { market_goods_buy_orders > 100 } }
-	has_variable = cp_home_state_cairo
+	has_variable = cp_in_cairo
 }
 
 cp_sensor_transportation_reaches_her = {
@@ -461,7 +461,7 @@ cp_sensor_she_hears_foreign_news = {
 	OR = {
 		var:cp_literacy > 20
 		AND = {
-			has_variable = cp_home_state_cairo
+			has_variable = cp_in_cairo
 			c:EGY = { has_technology_researched = telegraphs }
 		}
 	}
@@ -481,7 +481,7 @@ cp_sensor_can_plausibly_own_radio = {
 	c:EGY.market = { mg:radios = { market_goods_buy_orders > 100 } }
 	var:cp_sol >= 15
 	OR = {
-		has_variable = cp_home_state_cairo
+		has_variable = cp_in_cairo
 		has_variable = cp_profession_laborers
 		has_variable = cp_profession_machinists
 		has_variable = cp_profession_shopkeepers
@@ -502,7 +502,45 @@ cp_sensor_can_plausibly_own_telephone = {
 	c:EGY.market = { mg:telephones = { market_goods_buy_orders > 50 } }
 	var:cp_sol >= 20
 	OR = {
-		has_variable = cp_home_state_cairo
-		has_variable = cp_home_state_alexandria
+		has_variable = cp_in_cairo
+		has_variable = cp_in_alexandria
+	}
+}
+
+
+# ============================================================================
+# Taxation sensors
+# ============================================================================
+# cp_tax_burden is our 0..10 synthesis of (tax method × profession × tax
+# level × consumption taxes). These sensors read it so events and prose
+# can branch on the felt weight rather than each underlying law.
+
+cp_sensor_taxes_are_crushing = {
+	has_variable = cp_tax_burden
+	var:cp_tax_burden >= 7
+}
+
+cp_sensor_taxes_are_heavy = {
+	has_variable = cp_tax_burden
+	var:cp_tax_burden >= 5
+	NOT = { var:cp_tax_burden >= 7 }
+}
+
+cp_sensor_taxes_are_fair = {
+	has_variable = cp_tax_burden
+	var:cp_tax_burden <= 3
+}
+
+# The loaf is taxed. Hits the peasant household disproportionately hard.
+cp_sensor_grain_is_taxed = {
+	has_consumption_tax = g:grain
+}
+
+# She's paying a land tax (the one tax that touches subsistence peasants).
+cp_sensor_she_pays_land_tax = {
+	has_law = law_type:law_land_based_taxation
+	OR = {
+		has_variable = cp_profession_peasants
+		has_variable = cp_profession_farmers
 	}
 }

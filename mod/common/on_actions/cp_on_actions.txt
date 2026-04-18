@@ -53,6 +53,20 @@ cp_on_start = {
 				set_variable = { name = cp_sol_prev value = var:cp_sol }
 				set_variable = { name = cp_sol_delta value = 0 }
 			}
+			# Saves from before the data-driven home-state refactor lack
+			# the region_state marker. Backfill to Lower Egypt (her start)
+			# so cp_refresh_sol_from_pop has something to read.
+			if = {
+				limit = {
+					has_variable = cp_layla_alive
+					NOT = {
+						any_country = {
+							any_scope_state = { has_variable = cp_layla_lives_here }
+						}
+					}
+				}
+				cp_move_to_state = { state = STATE_LOWER_EGYPT }
+			}
 
 			trigger_event = { id = cp_startup.1 }
 		}
@@ -141,12 +155,49 @@ cp_on_yearly = {
 				set_variable = { name = cp_sol_prev value = var:cp_sol }
 				set_variable = { name = cp_sol_delta value = 0 }
 			}
-			# Delta = current - prev. Stored so the JE's reason prose
-			# can render the year-over-year change with its own color.
-			set_variable = { name = cp_sol_delta value = var:cp_sol }
-			change_variable = { name = cp_sol_delta subtract = var:cp_sol_prev }
-			# Snapshot for next year.
+			if = {
+				limit = { NOT = { has_variable = cp_tax_burden } }
+				set_variable = { name = cp_tax_burden value = 0 }
+				cp_refresh_tax_burden = yes
+				set_variable = { name = cp_tax_burden_prev value = var:cp_tax_burden }
+			}
+			# Resample cp_sol from her pop group BEFORE computing delta.
+			cp_refresh_sol_from_pop = yes
+			# Delta = current - prev. Computed via multiply-by-(-1)
+			# because `change_variable = { subtract = var:X }` is not
+			# reliably supported; `add = var:X` is. So negate prev, then add.
+			set_variable = { name = cp_sol_delta value = var:cp_sol_prev }
+			multiply_variable = { name = cp_sol_delta value = -1 }
+			change_variable = { name = cp_sol_delta add = var:cp_sol }
 			set_variable = { name = cp_sol_prev value = var:cp_sol }
+
+			# Tax burden: same pattern. Recompute, then fire the tax-spike
+			# event if burden jumped by ≥3 since last year (the tax
+			# collector now comes for more than he did).
+			cp_refresh_tax_burden = yes
+			if = {
+				limit = {
+					NOT = { has_variable = cp_seen_tax_spike }
+					var:cp_tax_burden >= 7
+					# current - prev >= 3  via multiply-by-(-1) trick
+					var:cp_tax_burden >= var:cp_tax_burden_prev
+					# We cannot express var - var >= 3 directly; approximate
+					# with absolute threshold (>=7) + the trend guard above.
+				}
+				trigger_event = { id = cp_layla.7 }
+				set_variable = { name = cp_seen_tax_spike days = 1800 }
+			}
+			# First-bite event: consumption tax on grain lands for the
+			# first time since she's been alive.
+			if = {
+				limit = {
+					NOT = { has_variable = cp_seen_grain_tax }
+					has_consumption_tax = g:grain
+				}
+				trigger_event = { id = cp_layla.8 }
+				set_variable = cp_seen_grain_tax
+			}
+			set_variable = { name = cp_tax_burden_prev value = var:cp_tax_burden }
 		}
 	}
 }

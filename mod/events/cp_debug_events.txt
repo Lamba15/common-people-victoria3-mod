@@ -4,17 +4,40 @@
 # Console-only test events. Each has a single, isolated job.
 # Fire with `event cp_debug.N` in the in-game console.
 #
-# Why split them: we want to be able to verify each layer independently.
-# If cp_debug.2 fires "The Deed" but cp_debug.5 does NOT, the dispatcher is
-# broken. If BOTH fail, the event itself is broken.
-#
+# Currently live (retained because each still has diagnostic value):
 #   cp_debug.1   -- Confirm console event firing works (visible, no data).
-#   cp_debug.2   -- Directly fire cp_layla.2 (The Deed). Proves the event
-#                   renders. BYPASSES the on_law_enactment_pass dispatcher.
-#   cp_debug.3   -- Directly fire cp_layla.3 (The Bey Returns).
-#   cp_debug.4   -- Directly fire cp_layla.4 (He Marches).
-#   cp_debug.5   -- Activate Homesteading law (tests the dispatcher path).
+#   cp_debug.5   -- Activate Homesteading law (tests dispatcher path).
 #   cp_debug.6   -- Age Layla by 10 years (hidden; verify with JE panel).
+#   cp_debug.7   -- Bump SoL by +3 (hidden; check JE numeric).
+#   cp_debug.8   -- Force-run the yearly delta computation now.
+#   cp_debug.11  -- Read country average_sol -> cp_sol. Works (returns 7.84).
+#   cp_debug.13  -- Run cp_refresh_sol_from_pop. After the P-N cutover to
+#                   ordered_scope_pop, this returns her cohort's SoL
+#                   (roughly 8 for 1836 misri-sunni-peasants).
+#   cp_debug.18  -- State-region avg SoL via random_scope_state. Known
+#                   good: returns 8.28 for EGY-Lower-Egypt at 1836.
+#   cp_debug.19  -- Pop-group SoL via ordered_scope_pop in region_state.
+#                   Known good: returns 8 for largest misri-sunni-peasant pop.
+#   cp_debug.20  -- NEW: move Layla to STATE_SINAI and resample cp_sol.
+#                   Tests the data-driven home-state plumbing end-to-end.
+#                   SoL should change to Sinai's peasant cohort value.
+#   cp_debug.21  -- NEW: move Layla to STATE_NUBIA (Upper-Egypt-ish); if
+#                   EGY controls it, cohort read lands there, otherwise
+#                   falls through to state-region avg.
+#   cp_debug.22  -- NEW: move Layla back to STATE_LOWER_EGYPT. Sanity
+#                   check that repeated moves don't leave stale markers.
+#   cp_debug.24  -- NEW: recompute cp_tax_burden from the live tax regime.
+#                   JE "tax" field should update to the new tier label.
+#
+# Retired (obsolete probes; removed in the April cleanup):
+#   cp_debug.2/.3/.4 -- direct law-event fires (superseded by .5 + dispatcher)
+#   cp_debug.9       -- superseded by .13 (does the same resample)
+#   cp_debug.10      -- multi-marker cascade (returned 77, body never fired)
+#   cp_debug.12      -- state_average_sol direct read (returned 0)
+#   cp_debug.14      -- >=5 single-threshold probe (served its purpose)
+#   cp_debug.15      -- random_scope_pop scope-save probe (returned 77)
+#   cp_debug.16/.17  -- script_value attempts (both returned 0; replaced
+#                       by .18/.19's random_scope_state pattern)
 ###############################################################################
 
 namespace = cp_debug
@@ -36,45 +59,6 @@ cp_debug.1 = {
 	option = {
 		name = cp_debug.1.a
 		default_option = yes
-	}
-}
-
-# cp_debug.2 -- Directly trigger The Deed, no law activation.
-cp_debug.2 = {
-	type = country_event
-	hidden = yes
-	orphan = yes
-
-	immediate = {
-		c:EGY ?= {
-			trigger_event = { id = cp_layla.2 }
-		}
-	}
-}
-
-# cp_debug.3 -- Directly trigger The Bey Returns.
-cp_debug.3 = {
-	type = country_event
-	hidden = yes
-	orphan = yes
-
-	immediate = {
-		c:EGY ?= {
-			trigger_event = { id = cp_layla.3 }
-		}
-	}
-}
-
-# cp_debug.4 -- Directly trigger He Marches.
-cp_debug.4 = {
-	type = country_event
-	hidden = yes
-	orphan = yes
-
-	immediate = {
-		c:EGY ?= {
-			trigger_event = { id = cp_layla.4 }
-		}
 	}
 }
 
@@ -102,6 +86,245 @@ cp_debug.6 = {
 	immediate = {
 		c:EGY ?= {
 			change_variable = { name = cp_age add = 10 }
+		}
+	}
+}
+
+# cp_debug.7 -- Bump SoL by +3. Use this THEN cp_debug.8 to see the delta fire.
+cp_debug.7 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			change_variable = { name = cp_sol add = 3 }
+		}
+	}
+}
+
+# cp_debug.8 -- Force-run the yearly delta computation. Uses the same
+# math as cp_on_yearly but via a temp-variable + multiply-by-(-1) pattern,
+# which is the safer syntax in case `subtract = var:X` silently no-ops.
+cp_debug.8 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			# delta = cp_sol - cp_sol_prev  (via multiply-by-(-1))
+			set_variable = { name = cp_sol_delta value = var:cp_sol_prev }
+			multiply_variable = { name = cp_sol_delta value = -1 }
+			change_variable = { name = cp_sol_delta add = var:cp_sol }
+			set_variable = { name = cp_sol_prev value = var:cp_sol }
+		}
+	}
+}
+
+# cp_debug.11 -- Read country-level average_sol directly into cp_sol.
+# If this works, the readout will show Egypt's actual average SoL (probably
+# ~8-10 at 1836). If it fails or returns 0, we know the direct-read path
+# does not work for this value.
+cp_debug.11 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			# Pre-write a marker so we can tell if the next line fires.
+			set_variable = { name = cp_sol value = 88 }
+			# Attempt the read. If it lands, cp_sol becomes the real value.
+			set_variable = { name = cp_sol value = average_sol }
+		}
+	}
+}
+
+# cp_debug.13 -- Run the pop-group bisection now. Sets cp_sol to 0 first,
+# then walks the 24-threshold cascade. If the any_scope_pop + standard_of_living
+# trigger pattern works, cp_sol will land near her pop group's ceiling SoL
+# (probably 5-8 for misri-sunni-peasants in Lower Egypt 1836).
+cp_debug.13 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			cp_refresh_sol_from_pop = yes
+		}
+	}
+}
+
+# cp_debug.18 -- Read state-region average SoL via the Belle Epoque pattern:
+# enter state-region -> random_scope_state -> save average_sol as a temp.
+# Vanilla source: 00_belle_epoque.txt line 74-78 (random_scope_state inside
+# s:STATE_X ?= {}) plus line 71/85 (average_sol readable on region_state).
+# Markers: 66 = script never entered the save; 0 = filter found no state;
+# real number (5-10ish) = success.
+cp_debug.18 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			set_variable = { name = cp_sol value = 66 }
+			s:STATE_LOWER_EGYPT ?= {
+				random_scope_state = {
+					limit = { owner = c:EGY }
+					save_temporary_scope_value_as = {
+						name = tmp_state_sol
+						value = average_sol
+					}
+				}
+			}
+			set_variable = { name = cp_sol value = scope:tmp_state_sol }
+		}
+	}
+}
+
+# cp_debug.19 -- Pop-group SoL via the same scope path: enter region_state
+# via random_scope_state, then ordered_scope_pop picks the LARGEST matching
+# pop (order_by = total_size), saves its standard_of_living.
+# Markers: 66 = script never entered the save chain; 0 = no matching pop
+# found OR SoL read returned 0; a real SoL number = success.
+cp_debug.19 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			set_variable = { name = cp_sol value = 66 }
+			s:STATE_LOWER_EGYPT ?= {
+				random_scope_state = {
+					limit = { owner = c:EGY }
+					ordered_scope_pop = {
+						limit = {
+							culture = cu:misri
+							religion = rel:sunni
+							is_pop_type = peasants
+						}
+						order_by = total_pops
+						position = 0
+						check_range_bounds = no
+						save_temporary_scope_value_as = {
+							name = tmp_pop_sol
+							value = standard_of_living
+						}
+					}
+				}
+			}
+			set_variable = { name = cp_sol value = scope:tmp_pop_sol }
+		}
+	}
+}
+
+# cp_debug.20 -- Move Layla to STATE_SINAI, then refresh SoL. Verifies
+# the data-driven home-state pipeline: marker clearing + setting +
+# state pointer + pop-tick reading from the new location.
+cp_debug.20 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			cp_move_to_state = { state = STATE_SINAI }
+			cp_refresh_sol_from_pop = yes
+		}
+	}
+}
+
+# cp_debug.21 -- Move Layla to STATE_BLUE_NILE. Misri pops don't exist
+# there (Bedouin/Sudanese/Dinka/Nuer/Nuba per gamestates.txt), so her
+# local cohort read misses and the diaspora fallback kicks in: her SoL
+# reflects misri-sunni-peasants' situation back in the Delta, not the
+# Sudanese average. Expected: ~7-9 (matches cp_debug.13 from the Delta).
+cp_debug.21 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			cp_move_to_state = { state = STATE_BLUE_NILE }
+			cp_refresh_sol_from_pop = yes
+		}
+	}
+}
+
+# cp_debug.22 -- Move Layla back to STATE_LOWER_EGYPT. After calling
+# cp_debug.20 or .21 this should restore her SoL to the Delta cohort.
+# Also validates that repeat moves don't leave stale markers on the
+# previous state (confirmed in-game by fresh .18/.19 reads).
+cp_debug.22 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			cp_move_to_state = { state = STATE_LOWER_EGYPT }
+			cp_refresh_sol_from_pop = yes
+		}
+	}
+}
+
+# cp_debug.23 -- Stage-by-stage probe for cp_refresh_sol_from_pop.
+# Writes a marker to cp_sol at each stage so we can see how far it
+# gets if it silently fails somewhere.
+#   11 = effect entered at all
+#   22 = home-state marker found by every_scope_state
+#   33 = diaspora fallback entered (local cohort missed)
+#   44 = diaspora cohort saved (tmp_cohort_sol exists)
+#   real SoL = fully committed value
+cp_debug.23 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			set_variable = { name = cp_sol value = 11 }
+
+			# Stage A: home-state marker exists?
+			every_scope_state = {
+				limit = { has_variable = cp_layla_lives_here }
+				root = { set_variable = { name = cp_sol value = 22 } }
+			}
+
+			# Stage B: diaspora fallback path
+			s:STATE_LOWER_EGYPT ?= {
+				random_scope_state = {
+					limit = { owner = c:EGY }
+					c:EGY = { set_variable = { name = cp_sol value = 33 } }
+					cp_read_cohort_only = yes
+				}
+			}
+			if = {
+				limit = { exists = scope:tmp_cohort_sol }
+				set_variable = { name = cp_sol value = 44 }
+				# Overwrite 44 with the actual cohort value so we see it
+				set_variable = { name = cp_sol value = scope:tmp_cohort_sol }
+			}
+		}
+	}
+}
+
+# cp_debug.24 -- Force-recompute cp_tax_burden. Use after changing tax
+# laws or tax level via console to see the JE tier-label update immediately
+# instead of waiting for the next yearly pulse.
+cp_debug.24 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			cp_refresh_tax_burden = yes
 		}
 	}
 }

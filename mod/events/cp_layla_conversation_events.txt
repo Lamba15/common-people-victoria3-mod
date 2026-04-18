@@ -1,0 +1,388 @@
+﻿###############################################################################
+# Common People -- Layla imagines an audience with the Pasha
+#
+# Framing: while kneading bread, she imagines walking into the palace in
+# Cairo and standing before the ruler of Egypt. The player is the Pasha.
+# At each turn the player picks what he says back. She responds according
+# to which Pasha she faces tonight. The audience ends when the fantasy
+# dissolves; she returns to the quern.
+#
+# Full design: documentation/characters/layla/conversation.md
+#
+# Event numbering:
+#   cp_conversation.1      -- Root: she sets the scene, picks the topic
+#   cp_conversation.10..19 -- The Land topic (Phase 1, fully written)
+#   cp_conversation.20..29 -- Ahmed topic (Phase 2)
+#   cp_conversation.30..39 -- The Bey topic (Phase 2)
+#   cp_conversation.40..49 -- The Water topic (Phase 2)
+#   cp_conversation.50..59 -- Herself topic (Phase 3)
+#   cp_conversation.90     -- Shared closer (fantasy dissolves)
+###############################################################################
+
+namespace = cp_conversation
+
+
+# ============================================================================
+# cp_conversation.1 -- Root: she goes to Cairo in her mind
+# ============================================================================
+
+cp_conversation.1 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.1.t
+	desc = cp_conversation.1.d
+	flavor = cp_conversation.1.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	# About the land. Available whenever she is rural.
+	option = {
+		name = cp_conversation.1.a
+		trigger = {
+			OR = {
+				has_variable = cp_profession_peasants
+				has_variable = cp_profession_farmers
+				has_variable = cp_owns_land
+				has_variable = cp_under_serfdom
+			}
+			NOT = { has_variable = cp_seen_audience_land }
+		}
+		set_variable = { name = cp_seen_audience_land months = 18 }
+		trigger_event = { id = cp_conversation.10 popup = yes }
+	}
+
+	# Fallback so the root never has zero options.
+	option = {
+		name = cp_conversation.1.z
+		default_option = yes
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.10 -- Her opening speech (THE LAND)
+# ============================================================================
+# Her opening monologue to the Pasha. Options are what the Pasha says back.
+# Three mood branches: dismissive, engaged, cruel.
+# ============================================================================
+
+cp_conversation.10 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.10.t
+	desc = cp_conversation.10.d
+	flavor = cp_conversation.10.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	# Pasha: dismissive
+	option = {
+		name = cp_conversation.10.a
+		trigger_event = { id = cp_conversation.11 popup = yes }
+	}
+	# Pasha: engaged
+	option = {
+		name = cp_conversation.10.b
+		trigger_event = { id = cp_conversation.12 popup = yes }
+	}
+	# Pasha: cruel
+	option = {
+		name = cp_conversation.10.c
+		trigger_event = { id = cp_conversation.13 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.11 -- She faces the dismissive Pasha
+# ============================================================================
+
+cp_conversation.11 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.11.t
+	desc = cp_conversation.11.d
+	flavor = cp_conversation.11.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	# Pasha offers a token (a scrap of land not her field)
+	option = {
+		name = cp_conversation.11.a
+		trigger_event = { id = cp_conversation.14 popup = yes }
+	}
+	# Pasha ends the audience
+	option = {
+		name = cp_conversation.11.b
+		trigger_event = { id = cp_conversation.15 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.12 -- She faces the engaged Pasha
+# ============================================================================
+
+cp_conversation.12 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.12.t
+	desc = cp_conversation.12.d
+	flavor = cp_conversation.12.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	# Pasha makes a vague commitment
+	option = {
+		name = cp_conversation.12.a
+		trigger_event = { id = cp_conversation.16 popup = yes }
+	}
+	# Pasha poses a hard question (what if the land went to a soldier?)
+	option = {
+		name = cp_conversation.12.b
+		trigger_event = { id = cp_conversation.17 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.13 -- She faces the cruel Pasha
+# ============================================================================
+
+cp_conversation.13 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.13.t
+	desc = cp_conversation.13.d
+	flavor = cp_conversation.13.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	# Pasha softens enough to let her speak once more
+	option = {
+		name = cp_conversation.13.a
+		trigger_event = { id = cp_conversation.18 popup = yes }
+	}
+	# She decides to leave
+	option = {
+		name = cp_conversation.13.b
+		trigger_event = { id = cp_conversation.19 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.14 -- Dismissive branch: Pasha offers a token
+# ============================================================================
+
+cp_conversation.14 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.14.t
+	desc = cp_conversation.14.d
+	flavor = cp_conversation.14.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.14.a
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.15 -- Dismissive branch: Pasha ends it abruptly
+# ============================================================================
+
+cp_conversation.15 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.15.t
+	desc = cp_conversation.15.d
+	flavor = cp_conversation.15.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.15.a
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.16 -- Engaged branch: vague promise
+# ============================================================================
+
+cp_conversation.16 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.16.t
+	desc = cp_conversation.16.d
+	flavor = cp_conversation.16.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.16.a
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.17 -- Engaged branch: Pasha poses a hard question
+# ============================================================================
+
+cp_conversation.17 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.17.t
+	desc = cp_conversation.17.d
+	flavor = cp_conversation.17.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	# This one nudges her sense of the world: she has been asked to weigh
+	# her claim against a soldier's. Small personality drift.
+	option = {
+		name = cp_conversation.17.a
+		cp_shift_weight = { weight = land_reform delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.18 -- Cruel branch: Pasha softens
+# ============================================================================
+
+cp_conversation.18 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.18.t
+	desc = cp_conversation.18.d
+	flavor = cp_conversation.18.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.18.a
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.19 -- Cruel branch: she leaves
+# ============================================================================
+
+cp_conversation.19 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.19.t
+	desc = cp_conversation.19.d
+	flavor = cp_conversation.19.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	# Standing up and walking out of her own fantasy, even imagined, costs
+	# her something. Small but real.
+	option = {
+		name = cp_conversation.19.a
+		cp_shift_weight = { weight = revolution delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.90 -- Closer (the fantasy dissolves)
+# ============================================================================
+
+cp_conversation.90 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.90.t
+	desc = cp_conversation.90.d
+	flavor = cp_conversation.90.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		# Permanent flags set by any completed audience.
+		set_variable = cp_has_stood_before_pasha
+		# Topic-specific flag (only one topic implemented; hardcoded for
+		# now; Phase 2 will branch this on cp_last_conversation_topic).
+		set_variable = cp_has_spoken_of_land
+		# Set cooldown here (not on button) so mid-audience save/quit
+		# does not lock the player out.
+		set_variable = { name = cp_audience_cooldown days = 90 }
+	}
+
+	option = {
+		name = cp_conversation.90.a
+		default_option = yes
+	}
+}

@@ -89,6 +89,7 @@ cp_je_layla = {
 	}
 
 	scripted_button = cp_layla_check_button
+	scripted_button = cp_layla_conversation_button
 
 	# Monthly: 10% chance of a spontaneous reflection event. Same pool the
 	# button picks from; each event has its own "seen recently" gate so
