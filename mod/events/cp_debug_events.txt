@@ -816,3 +816,81 @@ cp_debug.57 = {
 		}
 	}
 }
+
+# cp_debug.58 -- Force-pass law_charitable_health_system → cp_layla.108.
+cp_debug.58 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_charitable_health_system
+		}
+	}
+}
+
+# cp_debug.59 -- Force-pass law_private_health_insurance → cp_layla.109.
+cp_debug.59 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_private_health_insurance
+		}
+	}
+}
+
+# cp_debug.60 -- Force-pass law_public_health_insurance → cp_layla.110.
+cp_debug.60 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_public_health_insurance
+		}
+	}
+}
+
+# cp_debug.61 -- Force-pass law_worker_protections → cp_layla.111.
+cp_debug.61 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_worker_protections
+		}
+	}
+}
+
+# cp_debug.62 -- Force-pass law_right_to_associate → cp_layla.112.
+cp_debug.62 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_right_to_associate
+		}
+	}
+}
+
+# cp_debug.63 -- Fire strike pulse directly.
+cp_debug.63 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.113 }
+		}
+	}
+}

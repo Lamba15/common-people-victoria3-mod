@@ -2866,3 +2866,269 @@ cp_layla.107 = {
 		cp_shift_hope = { delta = 1 }
 	}
 }
+
+
+# =============================================================================
+# Health system + labour rights reactions -- cp_layla.108..113
+# =============================================================================
+# cp_layla.108: charitable health system (doctor-at-the-mosque)
+# cp_layla.109: private health insurance (she cannot afford it / she can)
+# cp_layla.110: public health insurance (doctor in the next village)
+# cp_layla.111: worker protections enacted
+# cp_layla.112: trade unions (right to associate enacted)
+# cp_layla.113: strike pulse (laborer + right to associate + low wages)
+# =============================================================================
+
+# cp_layla.108 -- "The Doctor at the Mosque" (law_charitable_health_system)
+cp_layla.108 = {
+	type = country_event
+
+	title = cp_layla.108.t
+	desc  = cp_layla.108.d
+	flavor = cp_layla.108.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_charitable_health }
+	}
+
+	immediate = {
+		set_variable = cp_seen_charitable_health
+	}
+
+	option = {
+		name = cp_layla.108.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+		cp_shift_weight = { weight = religion delta = 1 }
+	}
+	option = {
+		name = cp_layla.108.b
+		cp_shift_weight = { weight = labor_laws delta = 1 }
+	}
+}
+
+# cp_layla.109 -- "The Man with the Bag" (law_private_health_insurance)
+cp_layla.109 = {
+	type = country_event
+
+	title = cp_layla.109.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.109.d.can_afford
+				trigger = { var:cp_sol >= 20 }
+			}
+			triggered_desc = {
+				desc = cp_layla.109.d.cannot
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.109.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_private_health }
+	}
+
+	immediate = {
+		set_variable = cp_seen_private_health
+	}
+
+	option = {
+		name = cp_layla.109.a
+		default_option = yes
+		cp_shift_weight = { weight = labor_laws delta = 1 }
+	}
+	option = {
+		name = cp_layla.109.b
+		trigger = { var:cp_sol >= 20 }
+		cp_shift_loyalist = { delta = 1 }
+	}
+}
+
+# cp_layla.110 -- "The Doctor in the Next Village" (law_public_health_insurance)
+cp_layla.110 = {
+	type = country_event
+
+	title = cp_layla.110.t
+	desc  = cp_layla.110.d
+	flavor = cp_layla.110.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_public_health }
+	}
+
+	immediate = {
+		set_variable = cp_seen_public_health
+	}
+
+	option = {
+		name = cp_layla.110.a
+		default_option = yes
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 2 }
+		cp_shift_weight = { weight = labor_laws delta = 1 }
+	}
+	option = {
+		name = cp_layla.110.b
+		cp_shift_hope = { delta = 1 }
+		cp_shift_radical = { delta = 1 }
+	}
+}
+
+# cp_layla.111 -- "The Guard Has Been Installed" (law_worker_protections)
+cp_layla.111 = {
+	type = country_event
+
+	title = cp_layla.111.t
+	desc  = cp_layla.111.d
+	flavor = cp_layla.111.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_worker_protections }
+	}
+
+	immediate = {
+		set_variable = cp_seen_worker_protections
+	}
+
+	option = {
+		name = cp_layla.111.a
+		default_option = yes
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 2 }
+		cp_shift_weight = { weight = labor_laws delta = 2 }
+	}
+	option = {
+		name = cp_layla.111.b
+		cp_shift_radical = { delta = 1 }
+		cp_shift_weight = { weight = labor_laws delta = 1 }
+	}
+}
+
+# cp_layla.112 -- "The Meeting After Shift" (law_right_to_associate)
+cp_layla.112 = {
+	type = country_event
+
+	title = cp_layla.112.t
+	desc  = cp_layla.112.d
+	flavor = cp_layla.112.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_right_to_associate }
+	}
+
+	immediate = {
+		set_variable = cp_seen_right_to_associate
+	}
+
+	option = {
+		name = cp_layla.112.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+		cp_shift_weight = { weight = labor_laws delta = 2 }
+		cp_shift_weight = { weight = revolution delta = -1 }
+	}
+	option = {
+		name = cp_layla.112.b
+		cp_shift_radical = { delta = 1 }
+		cp_shift_weight = { weight = labor_laws delta = 1 }
+	}
+}
+
+# cp_layla.113 -- "The Strike" (pulse; she's a laborer + right to associate)
+#
+# Low-probability pulse. Fires when her household works in industry AND
+# the country permits organising. She does not lead; she walks past; she
+# notes. One-shot every 5 years so it can recur across a long life.
+cp_layla.113 = {
+	type = country_event
+
+	title = cp_layla.113.t
+	desc  = cp_layla.113.d
+	flavor = cp_layla.113.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		has_variable = cp_in_city
+		OR = {
+			has_variable = cp_profession_laborers
+			has_variable = cp_profession_machinists
+			has_variable = cp_ahmed_profession_laborer
+		}
+		OR = {
+			has_law = law_type:law_right_to_associate
+			has_law = law_type:law_corporatized_unions
+			has_law = law_type:law_factory_councils
+		}
+		NOT = { has_variable = cp_seen_strike }
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_strike days = 1825 }
+	}
+
+	option = {
+		name = cp_layla.113.a
+		default_option = yes
+		cp_shift_weight = { weight = labor_laws delta = 1 }
+	}
+	option = {
+		name = cp_layla.113.b
+		cp_shift_weight = { weight = labor_laws delta = 2 }
+		cp_shift_radical = { delta = 1 }
+	}
+}

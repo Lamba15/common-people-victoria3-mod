@@ -221,6 +221,10 @@ cp_je_layla = {
 			10 = cp_layla.33   # The cup of coffee
 			10 = cp_layla.34   # The white sugar
 			10 = cp_layla.35   # The cloth from the port
+
+			# Labour: a strike in her city. Gated on her being a laborer
+			# (or Ahmed) + right-to-associate laws + 5yr cooldown.
+			5  = cp_layla.113  # The strike
 		}
 	}
 
