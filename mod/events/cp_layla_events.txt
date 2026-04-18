@@ -2712,3 +2712,157 @@ cp_layla.72 = {
 		cp_shift_weight = { weight = womens_rights delta = 1 }
 	}
 }
+
+
+# =============================================================================
+# Regime + citizenship reactions -- cp_layla.105..107
+# =============================================================================
+# The country's political architecture reaches her kitchen. Each is a
+# first-enactment one-shot gated on cp_seen_* flags.
+# =============================================================================
+
+# cp_layla.105 -- "Every Man, They Say" (law_universal_suffrage)
+#
+# Fires only if she has already voted (womens_suffrage was earlier),
+# because otherwise the moment is about other people's rights. Prose
+# takes different shapes depending on whether she is already old.
+cp_layla.105 = {
+	type = country_event
+
+	title = cp_layla.105.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.105.d.voter
+				trigger = { has_variable = cp_has_voted }
+			}
+			triggered_desc = {
+				desc = cp_layla.105.d.not_yet
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.105.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_universal_suffrage }
+	}
+
+	immediate = {
+		set_variable = cp_seen_universal_suffrage
+	}
+
+	# A: the country came around. Hope up, loyalism up.
+	option = {
+		name = cp_layla.105.a
+		default_option = yes
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 2 }
+	}
+	# B: it is late. The men have gotten it at the same moment as
+	# everyone else; for most of those men this is not a change in
+	# what they have. Small loyalism.
+	option = {
+		name = cp_layla.105.b
+		cp_shift_loyalist = { delta = 1 }
+	}
+}
+
+
+# cp_layla.106 -- "The Poster on the Wall" (law_single_party_state)
+#
+# The one-party state lands as propaganda: posters, slogans, a man at
+# the coffeehouse who speaks too loudly about loyalty. The prose keys
+# on the colour of the paper and the register of the speech.
+cp_layla.106 = {
+	type = country_event
+
+	title = cp_layla.106.t
+	desc  = cp_layla.106.d
+	flavor = cp_layla.106.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_single_party }
+	}
+
+	immediate = {
+		set_variable = cp_seen_single_party
+	}
+
+	# A: she lowers her head and carries on. Exhaustion up.
+	option = {
+		name = cp_layla.106.a
+		default_option = yes
+		cp_shift_exhaustion = { delta = 2 }
+	}
+	# B: she marks the faces of the ones who shout loudest. Radical up.
+	option = {
+		name = cp_layla.106.b
+		cp_shift_radical = { delta = 2 }
+		cp_shift_weight = { weight = revolution delta = 1 }
+	}
+}
+
+
+# cp_layla.107 -- "The Coptic Neighbour Exhales" (law_multicultural)
+#
+# For a misri-sunni majority Layla, the multicultural law is not about
+# her rights changing but about her neighbours' shoulders going down.
+# The prose is what she sees at the coffeehouse, at the well, at the
+# holiday gathering.
+cp_layla.107 = {
+	type = country_event
+
+	title = cp_layla.107.t
+	desc  = cp_layla.107.d
+	flavor = cp_layla.107.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_multicultural }
+	}
+
+	immediate = {
+		set_variable = cp_seen_multicultural
+	}
+
+	# A: she is glad. Hope up, loyalism up.
+	option = {
+		name = cp_layla.107.a
+		default_option = yes
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 2 }
+		cp_shift_weight = { weight = religion delta = -1 }
+	}
+	# B: she is quieter — a paper law is not a village. Small hope.
+	option = {
+		name = cp_layla.107.b
+		cp_shift_hope = { delta = 1 }
+	}
+}

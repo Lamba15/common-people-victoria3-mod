@@ -776,3 +776,43 @@ cp_debug.54 = {
 		}
 	}
 }
+
+# cp_debug.55 -- Force-pass law_universal_suffrage (requires feminism tech +
+# presumably some baseline laws; the event fires regardless via dispatcher).
+cp_debug.55 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_universal_suffrage
+		}
+	}
+}
+
+# cp_debug.56 -- Force-pass law_single_party_state.
+cp_debug.56 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_single_party_state
+		}
+	}
+}
+
+# cp_debug.57 -- Force-pass law_multicultural.
+cp_debug.57 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_multicultural
+		}
+	}
+}
