@@ -723,3 +723,101 @@ cp_layla.23 = {
 		default_option = yes
 	}
 }
+
+
+###############################################################################
+# Tech arrival reactions (cp_layla.30..39)
+#
+# Fired by cp_on_tech when Egypt researches a technology that a villager
+# would observably hear about. Each fires exactly once per save via a
+# cp_seen_* flag set in the dispatcher.
+###############################################################################
+
+# cp_layla.30 -- "The Iron Horse" (railways researched)
+cp_layla.30 = {
+	type = country_event
+
+	title = cp_layla.30.t
+	desc  = cp_layla.30.d
+	flavor = cp_layla.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.30.a
+		default_option = yes
+		cp_shift_weight = { weight = economy delta = 1 }
+	}
+	option = {
+		name = cp_layla.30.b
+	}
+}
+
+# cp_layla.31 -- "A Word From Beyond" (electric_telegraph researched)
+cp_layla.31 = {
+	type = country_event
+
+	title = cp_layla.31.t
+	desc  = cp_layla.31.d
+	flavor = cp_layla.31.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.31.a
+		default_option = yes
+	}
+	option = {
+		name = cp_layla.31.b
+		cp_shift_weight = { weight = religion delta = 1 }
+	}
+}
+
+# cp_layla.32 -- "Voices in the Air" (radio researched)
+cp_layla.32 = {
+	type = country_event
+
+	title = cp_layla.32.t
+	desc  = cp_layla.32.d
+	flavor = cp_layla.32.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.32.a
+		default_option = yes
+	}
+	option = {
+		name = cp_layla.32.b
+	}
+}

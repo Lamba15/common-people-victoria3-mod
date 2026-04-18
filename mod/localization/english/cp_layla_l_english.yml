@@ -292,6 +292,30 @@
  cp_layla.23.a:0 "She walks behind the mule."
 
 
+ # ----- Tech arrival reactions (cp_layla.30..32) -----
+
+ # cp_layla.30 -- "The Iron Horse" (railways arrive in Egypt)
+ cp_layla.30.t:0 "The Iron Horse"
+ cp_layla.30.d:0 "Word has come up the canal road. A machine that pulls itself. No mule, no ox. Black smoke against the morning."
+ cp_layla.30.f:0 "She does not go to see it. She is told, by the boy who delivers bread, that it makes a noise like the end of the world and moves faster than a horse at full gallop. He is twelve and has been crying, and he does not know why. She asks him if he liked it. He thinks for a while. He says he does not know. That evening, washing turnips in the shade of the wall, she tries to picture a mule made of iron and cannot, and then she tries to picture nothing pulling it at all, and she cannot picture that either. The world is getting bigger. She is not sure yet whether a bigger world is a better one."
+ cp_layla.30.a:0 "She decides, next time the bread-boy comes, to walk with him to the canal road."
+ cp_layla.30.b:0 "The world is larger than she thought. She says nothing."
+
+ # cp_layla.31 -- "A Word From Beyond" (electric telegraph)
+ cp_layla.31.t:0 "A Word From Beyond"
+ cp_layla.31.d:0 "The news from Istanbul reached Cairo before the afternoon prayer. Not by courier. By a wire."
+ cp_layla.31.f:0 "Nobody in the village has seen the wire, but the man from the next village says he has touched one where the road bends past his cousin's mill. It is cold, he says, and nothing moves inside it. And yet. Yesterday the Sultan decreed and today the Pasha knows. She tries to picture it — a word travelling on a string, not stopping for mountains, not stopping for the sea — and the picture refuses. A word is made in a mouth. A word needs a mouth to catch it. She asks the imam, because she is not sure who else to ask. He says it is permitted. He does not say whether he understands it."
+ cp_layla.31.a:0 "She believes it. She does not understand it."
+ cp_layla.31.b:0 "She says nothing to anyone, and she prays that night for clarity."
+
+ # cp_layla.32 -- "Voices in the Air" (radio)
+ cp_layla.32.t:0 "Voices in the Air"
+ cp_layla.32.d:0 "A box, in the shopkeeper's house. A voice comes out of it. A woman's voice, singing — and no woman there."
+ cp_layla.32.f:0 "She sits outside with the other women, on the bench the shopkeeper has dragged out for them, and the song comes through the open door. None of them will go inside. It is not the song, exactly. It is that she cannot tell whether the woman singing it is alive, now, at this very hour, or was alive once and is gone. Perhaps she is in Cairo. Perhaps she is in Europe. Perhaps she is in a grave, and the grave is singing. The shopkeeper's wife keeps bringing them tea and they keep not drinking it. The song ends. Another begins. Layla realises she has been holding her breath."
+ cp_layla.32.a:0 "She asks, quietly, whether the singer knows we are listening."
+ cp_layla.32.b:0 "She goes home before the next song. It is too much, all at once."
+
+
  # ============================================================================
  # Imagined audience with the Pasha
  # See documentation/characters/layla/conversation.md

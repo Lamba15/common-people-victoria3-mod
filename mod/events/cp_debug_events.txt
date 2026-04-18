@@ -31,6 +31,8 @@
 #   cp_debug.25  -- NEW: force-run the pop-tick (literacy + political mood).
 #                   Inspect cp_literacy, cp_radical, cp_loyalist,
 #                   cp_expected_sol, cp_sol_gap after.
+#   cp_debug.26  -- NEW: force-grant railways + telegraph + radio to EGY
+#                   so the tech dispatcher fires cp_layla.30/.31/.32.
 #
 # Retired (obsolete probes; removed in the April cleanup):
 #   cp_debug.2/.3/.4 -- direct law-event fires (superseded by .5 + dispatcher)
@@ -344,6 +346,23 @@ cp_debug.25 = {
 		c:EGY ?= {
 			cp_pop_tick_literacy = yes
 			cp_pop_tick_political_mood = yes
+		}
+	}
+}
+
+# cp_debug.26 -- Force-grant the three gated technologies to EGY so the
+# tech dispatcher fires cp_layla.30/.31/.32 in sequence. Use to test
+# prose and event gating without waiting for decades of research.
+cp_debug.26 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			add_technology_researched = railways
+			add_technology_researched = electric_telegraph
+			add_technology_researched = radio
 		}
 	}
 }

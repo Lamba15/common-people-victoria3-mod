@@ -300,3 +300,58 @@ cp_on_war_end = {
 		# and fire the appropriate Layla event.
 	}
 }
+
+
+# ============================================================================
+# Technology acquired -- ambient industrial modernity reaches her
+# ============================================================================
+# on_acquired_technology fires once per country per tech, with root = country
+# and scope:technology = the technology scope. Pattern from vanilla
+# 00_code_on_actions.txt (grand-exhibition tracking).
+#
+# We don't key on scope:technology directly (the comparison syntax is
+# awkward); we gate on has_technology_researched for each tech of interest
+# plus a one-shot cp_seen_* flag. The dispatcher runs on every tech
+# acquisition, but each branch fires its event exactly once.
+# ============================================================================
+
+on_acquired_technology = {
+	on_actions = {
+		cp_on_tech
+	}
+}
+
+cp_on_tech = {
+	effect = {
+		if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				has_technology_researched = railways
+				NOT = { has_variable = cp_seen_railway }
+			}
+			trigger_event = { id = cp_layla.30 }
+			set_variable = cp_seen_railway
+		}
+		if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				has_technology_researched = electric_telegraph
+				NOT = { has_variable = cp_seen_telegraph }
+			}
+			trigger_event = { id = cp_layla.31 }
+			set_variable = cp_seen_telegraph
+		}
+		if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				has_technology_researched = radio
+				NOT = { has_variable = cp_seen_radio }
+			}
+			trigger_event = { id = cp_layla.32 }
+			set_variable = cp_seen_radio
+		}
+	}
+}
