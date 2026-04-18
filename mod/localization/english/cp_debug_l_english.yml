@@ -1,5 +1,5 @@
 ﻿l_english:
- cp_debug.1.t:0 "A Quick Look"
- cp_debug.1.d:0 "Layla's current state: age §Y[Country.MakeScope.Var('cp_age').GetValue]§!, SoL §Y[Country.MakeScope.Var('cp_sol').GetValue]§!, literacy §Y[Country.MakeScope.Var('cp_literacy').GetValue]§!, hope §Y[Country.MakeScope.Var('cp_hope').GetValue]§!, exhaustion §Y[Country.MakeScope.Var('cp_exhaustion').GetValue]§!, radicalism §Y[Country.MakeScope.Var('cp_radical').GetValue]§!, loyalism §Y[Country.MakeScope.Var('cp_loyalist').GetValue]§!. Debug tick §Y[Country.MakeScope.Var('cp_debug_tick').GetValue]§!."
- cp_debug.1.f:0 "This event verifies that Layla's country variables are being maintained and that the journal entry's pulses are firing. If §Ytick§! never increments when you advance months, the monthly pulse is silently failing. If §Yage§! never increments when you advance years, the yearly pulse is silently failing. Remove before v0.2.0 ships."
- cp_debug.1.a:0 "Noted."
+ cp_debug.1.t:0 "Console Event OK"
+ cp_debug.1.d:0 "If you can see this, firing §Yevent cp_debug.N§! from the console works. For Layla's current state, open the §YLayla al-Sharif§! journal entry — the reason text shows live variable values."
+ cp_debug.1.f:0 "The debug tick and age numbers are shown in yellow at the top of the journal entry body. If those show as §R§Y§!§! (empty), variable substitution is broken and we need a different rendering path. If they show §Y0§! early on and climb over months, the monthly pulse is firing."
+ cp_debug.1.a:0 "Got it."

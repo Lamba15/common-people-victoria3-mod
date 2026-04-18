@@ -2,12 +2,14 @@
 # Common People -- scripted buttons
 #
 # cp_layla_check_button -- the "Check on Layla" action on her JE. Dispatches
-# to one of several reflection events. Each branch has a trigger gating it to
-# her current situation; V3 skips branches whose trigger fails, so only
-# appropriate events compete. Three always-on branches guarantee a hit.
+# to one of several reflection events. Each branch:
+#   - gates on her current life situation
+#   - gates on a "seen recently" timed flag so the same beat does not repeat
+#     within 6 months
+#   - sets the seen-recently flag when chosen
 #
 # Scope at effect time: country (c:EGY, the JE owner). All Layla state reads
-# as `has_variable = X` / `var:X` directly (no scope:cp_layla dance).
+# as `has_variable = X` / `var:X` directly.
 ###############################################################################
 
 cp_layla_check_button = {
@@ -24,21 +26,63 @@ cp_layla_check_button = {
 
 	effect = {
 		random_list = {
+			# Situation-specific: letter that has not come (Ahmed at war)
 			15 = {
-				trigger = { has_variable = cp_ahmed_at_war }
+				trigger = {
+					has_variable = cp_ahmed_at_war
+					NOT = { has_variable = cp_seen_letter }
+				}
+				set_variable = { name = cp_seen_letter days = 180 }
 				trigger_event = { id = cp_layla.10 popup = yes }
 			}
+			# Situation-specific: walking the field (homesteader)
 			15 = {
-				trigger = { has_variable = cp_owns_land }
+				trigger = {
+					has_variable = cp_owns_land
+					NOT = { has_variable = cp_seen_walking_field }
+				}
+				set_variable = { name = cp_seen_walking_field days = 180 }
 				trigger_event = { id = cp_layla.11 popup = yes }
 			}
+			# Situation-specific: under the bey's eye (serfdom restored)
 			15 = {
-				trigger = { has_variable = cp_under_serfdom }
+				trigger = {
+					has_variable = cp_under_serfdom
+					NOT = { has_variable = cp_seen_under_beys_eye }
+				}
+				set_variable = { name = cp_seen_under_beys_eye days = 180 }
 				trigger_event = { id = cp_layla.12 popup = yes }
 			}
-			10 = { trigger_event = { id = cp_layla.13 popup = yes } }
-			10 = { trigger_event = { id = cp_layla.14 popup = yes } }
-			10 = { trigger_event = { id = cp_layla.15 popup = yes } }
+			# Always-on: a day with no wind
+			10 = {
+				trigger = {
+					NOT = { has_variable = cp_seen_no_wind }
+				}
+				set_variable = { name = cp_seen_no_wind days = 180 }
+				trigger_event = { id = cp_layla.13 popup = yes }
+			}
+			# Always-on: the neighbour's boy in the lane
+			10 = {
+				trigger = {
+					NOT = { has_variable = cp_seen_neighbours_boy }
+				}
+				set_variable = { name = cp_seen_neighbours_boy days = 180 }
+				trigger_event = { id = cp_layla.14 popup = yes }
+			}
+			# Always-on: her mother's left hand
+			10 = {
+				trigger = {
+					NOT = { has_variable = cp_seen_mothers_hand }
+				}
+				set_variable = { name = cp_seen_mothers_hand days = 180 }
+				trigger_event = { id = cp_layla.15 popup = yes }
+			}
+			# Safety net: if every branch has been seen recently, fire a
+			# generic reflection (cp_layla.6 "A Moment") so the button
+			# never misfires.
+			1 = {
+				trigger_event = { id = cp_layla.6 popup = yes }
+			}
 		}
 	}
 }

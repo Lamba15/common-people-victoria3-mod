@@ -1,23 +1,27 @@
 ﻿###############################################################################
 # Common People -- debug events
 #
-# Console-only test events. orphan = yes is legitimate here because these
-# are explicitly fired via `event cp_debug.N` from the in-game console. They
-# are NOT wired to dispatchers or random lists. See plan §10 rule 3.
+# Console-only test events. Each has a single, isolated job.
+# Fire with `event cp_debug.N` in the in-game console.
 #
-# Scope-safe: the console's `event cp_debug.N` fires the event with an empty
-# scope target (no owning country), so each event wraps its effect in
-# `c:EGY ?= { ... }` to resolve to Egypt.
+# Why split them: we want to be able to verify each layer independently.
+# If cp_debug.2 fires "The Deed" but cp_debug.5 does NOT, the dispatcher is
+# broken. If BOTH fail, the event itself is broken.
 #
-# Usage (in-game debug console):
-#   event cp_debug.1   -- show Layla's current state in a visible event
-#   event cp_debug.2   -- activate Homesteading law in Egypt
-#   event cp_debug.3   -- fast-forward Layla's age by 10 years
+#   cp_debug.1   -- Confirm console event firing works (visible, no data).
+#   cp_debug.2   -- Directly fire cp_layla.2 (The Deed). Proves the event
+#                   renders. BYPASSES the on_law_enactment_pass dispatcher.
+#   cp_debug.3   -- Directly fire cp_layla.3 (The Bey Returns).
+#   cp_debug.4   -- Directly fire cp_layla.4 (He Marches).
+#   cp_debug.5   -- Activate Homesteading law (tests the dispatcher path).
+#   cp_debug.6   -- Age Layla by 10 years (hidden; verify with JE panel).
 ###############################################################################
 
 namespace = cp_debug
 
-# cp_debug.1 -- State dump
+# cp_debug.1 -- "I'm alive" visible event. No variable substitution -- event
+# text in V3 does not cleanly support Var() substitution. Values are read
+# from the journal entry body (which DOES render substitutions in reason).
 cp_debug.1 = {
 	type = country_event
 	orphan = yes
@@ -35,8 +39,49 @@ cp_debug.1 = {
 	}
 }
 
-# cp_debug.2 -- Force Homesteading law in Egypt
+# cp_debug.2 -- Directly trigger The Deed, no law activation.
 cp_debug.2 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.2 }
+		}
+	}
+}
+
+# cp_debug.3 -- Directly trigger The Bey Returns.
+cp_debug.3 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.3 }
+		}
+	}
+}
+
+# cp_debug.4 -- Directly trigger He Marches.
+cp_debug.4 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.4 }
+		}
+	}
+}
+
+# cp_debug.5 -- Activate Homesteading law. This exercises the
+# on_law_enactment_pass dispatcher path. If cp_layla.2 fires, the
+# dispatcher works; if not, compare to cp_debug.2.
+cp_debug.5 = {
 	type = country_event
 	hidden = yes
 	orphan = yes
@@ -48,8 +93,8 @@ cp_debug.2 = {
 	}
 }
 
-# cp_debug.3 -- Age Layla by 10 years
-cp_debug.3 = {
+# cp_debug.6 -- Age Layla by 10 years. Hidden; confirm via JE panel.
+cp_debug.6 = {
 	type = country_event
 	hidden = yes
 	orphan = yes
