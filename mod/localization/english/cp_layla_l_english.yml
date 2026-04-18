@@ -378,6 +378,8 @@
  cp_conversation.1.f:0 "She has never been. She will never be. The dough is on the board in front of her, and her hands are working it with the turn and fold she has been doing since she was eleven, and the kitchen is quiet except for the soft rhythm of the dough. And then, between one fold and the next, she is not in the kitchen. She is at the end of a long carpet the colour of old blood, in a room with a ceiling she cannot see, and at the far end of the carpet [ROOT.GetCountry.GetRuler.GetFullName] is waiting for her. She does not know what he looks like. She has invented a face: a man of some age, a beard the colour of ashes, eyes she cannot read. She has invented the room too. She does not know what the palace is really like, and so she has built one from rumour and from the stories travellers brought through the village when she was small — gold thread on the cushions, brass lamps, a secretary at a low table with ink on his fingers. She takes one step forward on the carpet. She is wearing a dress she does not own. Her hands, she notices, are clean. She has an hour, perhaps. She has rehearsed this, kneading bread, a hundred times. Tonight she lets it happen. What does she speak of tonight?"
  cp_conversation.1.a:0 "Tell him about the land."
  cp_conversation.1.b:0 "Tell him about Ahmed."
+ cp_conversation.1.c:0 "Tell him about the children."
+ cp_conversation.1.h:0 "Tell him a small thing."
  cp_conversation.1.z:0 "The courage leaves her. She returns to the oven."
 
  # cp_conversation.10 -- Her opening speech (THE LAND)
@@ -477,6 +479,52 @@
  cp_conversation.23.d:0 "He speaks the words she has been dreading to hear. Many wives. Many men. She is not singular."
  cp_conversation.23.f:0 "#italic Many men serve,#! he says. #italic Many wives wait. Many wives grieve. You are not singular. Do not cry for what every wife has carried since the first war.#! She stands on the carpet. She does not cry. The tears, if they come, will come later, in the kitchen, over the dough, where nobody in the country he governs will see them and no secretary in his service will write them down. Effendim, she says — and she is surprised, a little, to find that she still has a voice in this room — Effendim. My grief is not for the country. My grief is for Ahmed. He was a man, not a category. My waiting is not for the country. My waiting is for Ahmed. He was a man. He was not a category. I will go now. She does not wait for him to dismiss her. She turns. She walks the carpet. The secretary does not write what she said. That is fine. She will say it again, somewhere, to someone who matters more."
  cp_conversation.23.a:0 "#italic She turns. She walks.#!"
+
+
+ # ----- Children topic (cp_conversation.30..33) -----
+
+ cp_conversation.30.t:0 "The Children"
+ cp_conversation.30.d.one:0 "She stands at the end of the carpet. There is one, she says. A girl. She is four. She asks questions at night that have the shape of grown-up questions, and I answer them as truthfully as the hour allows."
+ cp_conversation.30.d.many:0 "She stands at the end of the carpet. There are several, she says. They are loud. I wanted to tell you about them because, [ROOT.GetCountry.GetRuler.GetFullName], they are citizens of your country and you have never seen their faces."
+ cp_conversation.30.d.grown:0 "She stands at the end of the carpet. My children are grown, she says. I want to tell you what I tried to teach them, and what they learned instead."
+ cp_conversation.30.f:0 "She did not plan to speak of them tonight. She had other things rehearsed. But the oldest had cried at bedtime, and the crying had the shape of a question he did not yet have words for, and the question has followed her into the imagined room, uninvited. The secretary turns a page. [ROOT.GetCountry.GetRuler.GetFullName] is waiting. She has not yet decided what she is going to ask for. A school, perhaps. An honest teacher. A schoolbook that is not forty years old. A future for her daughter that does not end at the quern. She will see what comes out of her mouth. What does he say back?"
+ cp_conversation.30.a:0 "#italic as the Pasha:#! \"Tell me their names.\""
+ cp_conversation.30.b:0 "#italic as the Pasha:#! \"The country needs them. We have plans for their generation.\""
+ cp_conversation.30.c:0 "#italic as the Pasha:#! \"Every woman has children. Do not waste your hour on them.\""
+
+ cp_conversation.31.t:0 "He Asks Their Names"
+ cp_conversation.31.d:0 "He leans forward a fraction. Tell me their names, he says. She does."
+ cp_conversation.31.f:0 "She had not expected to be asked. She says the names in the order of their births. He repeats each one after her, quietly, as if committing them to memory — or as if doing her the courtesy of pretending to. The secretary writes the names down. Under each name he writes the mother's name, because the mother's name is the only name he has. It occurs to her that somewhere, in some actual ledger in the palace, there might be, one day, a page with her children's names on it, written because she asked for nothing more than to have them read aloud. That is not nothing. That is more than their grandmother was given. She stands in the room and she is no longer shaking. Her hands are folded. She is herself, entirely, and her children exist in a country that has heard their names."
+ cp_conversation.31.a:0 "#italic She says their names once more, quietly, for herself.#!"
+
+ cp_conversation.32.t:0 "We Have Plans"
+ cp_conversation.32.d:0 "He speaks of their generation as one speaks of a harvest. Schools, he says. Factories. A new order of things."
+ cp_conversation.32.f:0 "By the time your children are the age you are now, he tells her, they will not recognise the country you grew up in. They will read. They will work with machines. They will go where the work is, instead of staying where their grandfathers happened to die. She listens carefully. She cannot tell, yet, whether what he is describing is a blessing or a theft. Some of the things he says sound like a future she would want for them. Some sound like the loss of a thing she has not finished loving. She nods. She will think on it, she says. She will not say the thing she is thinking, which is: yes, but will they remember us? And if they remember us, will they be ashamed? And if they are ashamed, is that their failing or is it ours — for being the country that is being replaced?"
+ cp_conversation.32.a:0 "#italic She nods. She does not say what she is thinking.#!"
+
+ cp_conversation.33.t:0 "Every Woman Has Children"
+ cp_conversation.33.d:0 "He waves a hand. #italic Every woman has children. Do not waste your hour on them.#!"
+ cp_conversation.33.f:0 "She feels the sting the way she has learned to feel the stings of men who have decided that the women in front of them are shorthand for all the women they have ever met. She does not cry. She does not apologise. She had been going to ask for a school. She had been going to ask whether the school in the next village might have a teacher who could be paid, honestly, a wage the teacher could live on. She does not ask now. She will not give him her question if he has already decided not to hear it. Effendim, she says — and she hears, in her own voice, something she has not heard before — my children are not every woman's children. They are mine. Their names are the names I have given them. Their questions are the questions I answer. I will waste my hour on whatever I want to waste my hour on. Thank you for your time. She turns. She leaves him there. The secretary does not write what she said."
+ cp_conversation.33.a:0 "#italic She walks out of her own fantasy.#!"
+
+
+ # ----- A Small Thing (cp_conversation.80..82) -----
+
+ cp_conversation.80.t:0 "A Small Thing"
+ cp_conversation.80.d:0 "She stands at the end of the carpet. She has no grievance tonight — or she has, always, but she is tired of grievances. Tonight she wants to tell him about something small. She has not made a speech of it. She is going to say the things as they come."
+ cp_conversation.80.f:0 "This is new for her. She has always imagined this room as a place for asking. For explaining, at least. For demanding, on the nights when she could find the courage for it. Tonight she wants to tell a story that is not an argument. The heron in the irrigation channel. The loaf that came out of the oven with a perfect crust on one side and not the other. The way her youngest pronounced a word wrong, in a way that was beautiful, and then forever changed because the child was corrected by an aunt and never pronounced it that way again. These are the real things of her life. She says them out of order. She says them as they come. [ROOT.GetCountry.GetRuler.GetFullName] is, she imagines, listening. Whether he is or not, she is telling the stories for herself. What does he do?"
+ cp_conversation.80.a:0 "#italic as the Pasha:#! \"Go on. I have the hour.\""
+ cp_conversation.80.b:0 "#italic as the Pasha:#! \"I am not sure why you tell me these things.\""
+
+ cp_conversation.81.t:0 "He Has the Hour"
+ cp_conversation.81.d:0 "Go on, he says. She does."
+ cp_conversation.81.f:0 "She tells him about the heron, and about the loaf, and about the mispronounced word. She tells him about a cousin who fixed a fishing net with a stitch nobody in the village could name and who refused to explain it. She tells him about the time lightning hit the palm tree at the edge of the canal, and about the silence that followed — not an absence of sound, but a new quality of sound, as if the air itself had learned something it had not known before. She tells him about her mother, who had died while a heron was standing in the irrigation channel. She tells him these things slowly. She is not in a hurry. The secretary is not writing. Perhaps the secretary has been told not to write. Perhaps the secretary knows, the way all careful men know, when writing would cheapen the hour. When she is done she is somehow lighter than she was when she came in. She has told a man about her life, and the man has not asked her to justify it, and the man has not told her it should have been different, and the man has not offered to improve it. He has simply had the hour."
+ cp_conversation.81.a:0 "#italic She thanks him, not for anything he did — for the hour.#!"
+
+ cp_conversation.82.t:0 "Why Do You Tell Me This"
+ cp_conversation.82.d:0 "He does not hide his boredom. She had not expected him to."
+ cp_conversation.82.f:0 "He asks her — not rudely, but with the bluntness of a man who has other appointments — why she is telling him these things. She thinks about it. She could lie. She could say she has a point, and she is building to it, and if he will just give her a moment more she will make the stories serve whatever argument the imagined room requires. She does not lie. She says: because they are mine, Effendim. Because in the country you run, there is almost nowhere where a woman like me can tell a story that is about nothing but itself. The story has to be evidence. The story has to support a request. The story has to be pointed at a bey, or at a tax, or at a law. I wanted — tonight, just this once — to tell a story that is not pointed at anything. If you do not want to hear it, I will stop. If you do not want to hear it, I will tell it to the walls, and the walls will hear it as well as any other man in this building. She stops. He is looking at her. He has not dismissed her. He has not told her to continue either. The hour is not yet over."
+ cp_conversation.82.a:0 "#italic She tells the rest of the story to the walls.#!"
 
 
  # cp_conversation.90 -- Closer: the fantasy dissolves

@@ -11,11 +11,14 @@
 #
 # Event numbering:
 #   cp_conversation.1      -- Root: she sets the scene, picks the topic
-#   cp_conversation.10..19 -- The Land topic (Phase 1, fully written)
-#   cp_conversation.20..29 -- Ahmed topic (Phase 2)
-#   cp_conversation.30..39 -- The Bey topic (Phase 2)
-#   cp_conversation.40..49 -- The Water topic (Phase 2)
-#   cp_conversation.50..59 -- Herself topic (Phase 3)
+#   cp_conversation.10..19 -- The Land topic
+#   cp_conversation.20..29 -- The Ahmed topic (reacts to his state)
+#   cp_conversation.30..39 -- The Children topic (gated on cp_children > 0)
+#   cp_conversation.40..49 -- The Room in the City (gated on cp_in_city)
+#   cp_conversation.50..59 -- The Paper (gated on cp_owns_land)
+#   cp_conversation.60..69 -- The Politics (gated on cp_radical or cp_loyalist)
+#   cp_conversation.70..79 -- The Boss (gated on laborer + city)
+#   cp_conversation.80..89 -- A Small Thing (always available fallback)
 #   cp_conversation.90     -- Shared closer (fantasy dissolves)
 ###############################################################################
 
@@ -84,6 +87,30 @@ cp_conversation.1 = {
 		}
 		set_variable = { name = cp_seen_audience_ahmed months = 18 }
 		trigger_event = { id = cp_conversation.20 popup = yes }
+	}
+
+	# About the children. Only if she has any.
+	option = {
+		name = cp_conversation.1.c
+		trigger = {
+			has_variable = cp_children
+			var:cp_children > 0
+			NOT = { has_variable = cp_seen_audience_children }
+		}
+		set_variable = { name = cp_seen_audience_children months = 18 }
+		trigger_event = { id = cp_conversation.30 popup = yes }
+	}
+
+	# A small thing. Always available. Shorter cooldown (6 months) because
+	# it's the "I don't have a speech tonight" option and should be reachable
+	# more often than the big topics.
+	option = {
+		name = cp_conversation.1.h
+		trigger = {
+			NOT = { has_variable = cp_seen_audience_small_thing }
+		}
+		set_variable = { name = cp_seen_audience_small_thing months = 6 }
+		trigger_event = { id = cp_conversation.80 popup = yes }
 	}
 
 	# Fallback so the root never has zero options.
@@ -565,6 +592,214 @@ cp_conversation.23 = {
 		default_option = yes
 		# Being dismissed by the man in her own fantasy costs her.
 		cp_shift_hope = { delta = -1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.30..33 -- The Children topic
+# ============================================================================
+# Opening variants: one small child, many children, grown children.
+# Three Pasha responses: gentle (he asks their names), statesman (the
+# country has plans for their generation), dismissive (every woman has
+# children).
+# ============================================================================
+
+cp_conversation.30 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.30.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.30.d.grown
+				trigger = { var:cp_age >= 38 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.30.d.many
+				trigger = { var:cp_children >= 2 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.30.d.one
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.30.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_childbirth.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_children
+	}
+
+	option = {
+		name = cp_conversation.30.a
+		trigger_event = { id = cp_conversation.31 popup = yes }
+	}
+	option = {
+		name = cp_conversation.30.b
+		trigger_event = { id = cp_conversation.32 popup = yes }
+	}
+	option = {
+		name = cp_conversation.30.c
+		trigger_event = { id = cp_conversation.33 popup = yes }
+	}
+}
+
+cp_conversation.31 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.31.t
+	desc = cp_conversation.31.d
+	flavor = cp_conversation.31.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.31.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.32 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.32.t
+	desc = cp_conversation.32.d
+	flavor = cp_conversation.32.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.32.a
+		default_option = yes
+		cp_shift_weight = { weight = education delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.33 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.33.t
+	desc = cp_conversation.33.d
+	flavor = cp_conversation.33.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.33.a
+		default_option = yes
+		cp_shift_weight = { weight = revolution delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.80..82 -- A Small Thing (always available)
+# ============================================================================
+# When she doesn't have a grievance. When she doesn't have a speech. When
+# she only wants to tell someone — this one man, who runs the country she
+# has lived her whole life in — about a thing that happened to her this
+# week. Two Pasha responses: he listens; he is bored.
+# ============================================================================
+
+cp_conversation.80 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.80.t
+	desc = cp_conversation.80.d
+	flavor = cp_conversation.80.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_small_thing
+	}
+
+	option = {
+		name = cp_conversation.80.a
+		trigger_event = { id = cp_conversation.81 popup = yes }
+	}
+	option = {
+		name = cp_conversation.80.b
+		trigger_event = { id = cp_conversation.82 popup = yes }
+	}
+}
+
+cp_conversation.81 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.81.t
+	desc = cp_conversation.81.d
+	flavor = cp_conversation.81.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.81.a
+		default_option = yes
+		# The simple act of being heard lifts her a full point of hope.
+		cp_shift_hope = { delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.82 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.82.t
+	desc = cp_conversation.82.d
+	flavor = cp_conversation.82.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.82.a
+		default_option = yes
+		# Telling a story to the walls when the man won't listen still
+		# counts for her. She does not lose hope; she refuses to give it
+		# to him.
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
