@@ -231,6 +231,47 @@ cp_on_yearly = {
 			cp_refresh_mortality_pressure = yes
 			cp_refresh_worker_safety_pressure = yes
 
+			# First welfare receipt. Fires once per life when a welfare
+			# law is active AND she plausibly qualifies. Each rung has
+			# its own eligibility test; any match triggers the event.
+			if = {
+				limit = {
+					NOT = { has_variable = cp_seen_first_envelope }
+					OR = {
+						# Old-age pension and she's of age.
+						AND = {
+							has_law = law_type:law_old_age_pension
+							var:cp_age >= 60
+						}
+						# Poor laws and she's poor.
+						AND = {
+							has_law = law_type:law_poor_laws
+							var:cp_sol <= 10
+						}
+						# Wage subsidies and her household earns wages.
+						AND = {
+							has_law = law_type:law_wage_subsidies
+							var:cp_sol <= 15
+							OR = {
+								has_variable = cp_profession_laborers
+								has_variable = cp_profession_machinists
+								has_variable = cp_profession_farmers
+								has_variable = cp_profession_clerks
+							}
+						}
+					}
+				}
+				# 50% per qualifying year — welfare rolls are slow but
+				# the first envelope feels like an arrival, not a raffle.
+				random_list = {
+					50 = {
+						trigger_event = { id = cp_layla.90 }
+						set_variable = cp_seen_first_envelope
+					}
+					50 = { }
+				}
+			}
+
 			# Layla's annual mortality roll. Buckets her 0..10 pressure
 			# into three rough tiers with per-year death probabilities
 			# calibrated to 19th-century reality (a 70yo peasant without

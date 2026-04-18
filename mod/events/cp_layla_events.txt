@@ -1058,6 +1058,73 @@ cp_layla.81 = {
 }
 
 
+# cp_layla.90 -- "The First Envelope" (first welfare receipt)
+#
+# Fires once per life when any welfare law is active AND she qualifies.
+# Three triggered_desc variants by which rung reached her first:
+# pension (age 60+ + law_old_age_pension), subsidy (laborer household
+# + law_wage_subsidies), or poor relief (SoL pressed + law_poor_laws).
+cp_layla.90 = {
+	type = country_event
+
+	title = cp_layla.90.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.90.d.pension
+				trigger = {
+					has_law = law_type:law_old_age_pension
+					var:cp_age >= 60
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla.90.d.subsidy
+				trigger = {
+					has_law = law_type:law_wage_subsidies
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla.90.d.poor
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.90.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	immediate = {
+		set_variable = cp_receives_welfare
+	}
+
+	option = {
+		name = cp_layla.90.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+		cp_shift_loyalist = { delta = 3 }
+	}
+	option = {
+		name = cp_layla.90.b
+		# She takes the envelope but without gratitude — she has not
+		# forgotten who withheld it for so long. Small loyalism, no hope
+		# bump; a small radical tick remains because the silence before
+		# the envelope does not un-happen when the envelope arrives.
+		cp_shift_loyalist = { delta = 1 }
+		cp_shift_radical = { delta = 1 }
+	}
+}
+
+
 # cp_layla.82 -- "The Child" (a child dies of illness)
 #
 # cp_children decrements; cp_lost_a_child permanent flag set; hope drops

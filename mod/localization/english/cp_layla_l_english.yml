@@ -431,6 +431,18 @@
  cp_layla.82.a:0 "#italic She sits with the child until Ahmed comes home.#!"
 
 
+ # ----- Welfare (cp_layla.90) -----
+
+ # cp_layla.90 -- "The First Envelope" (first welfare receipt)
+ cp_layla.90.t:0 "The First Envelope"
+ cp_layla.90.d.pension:0 "A clerk from the district office has come up the stairs on his Thursday rounds. He is carrying a list and a canvas satchel with envelopes in it. One of the envelopes, he says, has her name on it."
+ cp_layla.90.d.subsidy:0 "Ahmed has come home from the mill tonight with his wage envelope — and a second, thinner envelope — which he lays on the table with the careful puzzlement of a man who has been asked to carry something he does not understand."
+ cp_layla.90.d.poor:0 "The woman who comes to the lane on Tuesdays with bread for the women who have nothing has brought, today, a paper with a stamp on it — and a small coin tied in a cloth — and her name."
+ cp_layla.90.f:0 "She has not, before today, been the person the country intended to hand a thing to. The country has handed things to men before — a uniform, a rifle, a ledger with a farm's name in it. The country has handed things, occasionally, through men — a bride-price, a tax receipt, a burial permit. Today the country is handing a thing directly to her. She takes the envelope, or the paper, or the coin tied in the cloth. She does not know what face to wear while doing this. Her mother never had this face to practise. Her grandmother had not imagined this expression would be needed. She tries a small polite nod. She tries a small stiff thank-you. She holds the envelope in both hands as if it might fly off. The clerk — or the subsidy officer, or the bread-woman — goes on to the next name. Something in her chest has shifted. She is not sure, yet, whether the shift is in the direction of gratitude or in the direction of quiet offence that the country had decided to send this envelope only now, and not in any of the years before."
+ cp_layla.90.a:0 "She takes it with thanks. The country has, at last, seen her."
+ cp_layla.90.b:0 "She takes it without thanks. The silence before the envelope does not un-happen."
+
+
  # ============================================================================
  # Imagined audience with the Pasha
  # See documentation/characters/layla/conversation.md

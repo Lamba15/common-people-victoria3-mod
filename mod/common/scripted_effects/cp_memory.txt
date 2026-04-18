@@ -948,6 +948,37 @@ cp_refresh_mortality_pressure = {
 		change_variable = { name = cp_mortality_pressure add = 1 }
 	}
 
+	# Welfare law. V3's 5-rung lawgroup_welfare: no_social_security is
+	# default (no effect); poor_laws, wage_subsidies, old_age_pension each
+	# protect a different cohort.
+	if = {
+		limit = {
+			has_law = law_type:law_poor_laws
+			var:cp_sol <= 10
+		}
+		change_variable = { name = cp_mortality_pressure add = -1 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_wage_subsidies
+			var:cp_sol <= 15
+			OR = {
+				has_variable = cp_profession_laborers
+				has_variable = cp_profession_machinists
+				has_variable = cp_profession_farmers
+				has_variable = cp_profession_clerks
+			}
+		}
+		change_variable = { name = cp_mortality_pressure add = -1 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_old_age_pension
+			var:cp_age >= 60
+		}
+		change_variable = { name = cp_mortality_pressure add = -2 }
+	}
+
 	clamp_variable = { name = cp_mortality_pressure min = 0 max = 10 }
 }
 
