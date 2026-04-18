@@ -379,6 +379,8 @@
  cp_conversation.1.a:0 "Tell him about the land."
  cp_conversation.1.b:0 "Tell him about Ahmed."
  cp_conversation.1.c:0 "Tell him about the children."
+ cp_conversation.1.d:0 "Tell him about the city, and the room."
+ cp_conversation.1.e:0 "Tell him about the paper."
  cp_conversation.1.h:0 "Tell him a small thing."
  cp_conversation.1.z:0 "The courage leaves her. She returns to the oven."
 
@@ -506,6 +508,59 @@
  cp_conversation.33.d:0 "He waves a hand. #italic Every woman has children. Do not waste your hour on them.#!"
  cp_conversation.33.f:0 "She feels the sting the way she has learned to feel the stings of men who have decided that the women in front of them are shorthand for all the women they have ever met. She does not cry. She does not apologise. She had been going to ask for a school. She had been going to ask whether the school in the next village might have a teacher who could be paid, honestly, a wage the teacher could live on. She does not ask now. She will not give him her question if he has already decided not to hear it. Effendim, she says — and she hears, in her own voice, something she has not heard before — my children are not every woman's children. They are mine. Their names are the names I have given them. Their questions are the questions I answer. I will waste my hour on whatever I want to waste my hour on. Thank you for your time. She turns. She leaves him there. The secretary does not write what she said."
  cp_conversation.33.a:0 "#italic She walks out of her own fantasy.#!"
+
+
+ # ----- The Room in the City (cp_conversation.40..43) -----
+
+ cp_conversation.40.t:0 "The Room"
+ cp_conversation.40.d.fresh:0 "She stands at the end of the carpet. The room, she says. We have a room. It is on the third floor of a building I do not yet know the name of. We are six in a room that held four people before we arrived. I am telling you this because I do not yet know how to tell it to myself."
+ cp_conversation.40.d.settled:0 "She stands at the end of the carpet. I live in the city now, she says. It has been a while. I can walk to the river without getting lost. I have a neighbour — a Copt woman, our age, who lost her husband the same year I did — whose door is the only door I knock on without thinking."
+ cp_conversation.40.d.struggling:0 "She stands at the end of the carpet. The city is hard, she says. The rent goes up and the wages do not. I do not tell you this to complain. I tell you because the walls here are thinner than the walls of the village, and what happens behind them travels faster than you may realise, Effendim."
+ cp_conversation.40.f:0 "She has not yet learned, in the imagined room, to speak of the city without flinching. The walls of the palace are smooth and cold; the walls of her building flake plaster onto the stairs if she is not careful going up. She had expected the city, after enough years, to become a place. It has become, instead, a kind of weather — something to endure, to accommodate, to sometimes enjoy in a specific hour of a specific day. The secretary turns a page. [ROOT.GetCountry.GetRuler.GetFullName] waits. What does he say?"
+ cp_conversation.40.a:0 "#italic as the Pasha:#! \"Tell me what the street looks like.\""
+ cp_conversation.40.b:0 "#italic as the Pasha:#! \"You are one more body in the streets of a city the country is feeding. Do not expect thanks for arriving.\""
+ cp_conversation.40.c:0 "#italic as the Pasha:#! \"Your neighbourhood is restive. Have you noticed?\""
+
+ cp_conversation.41.t:0 "Tell Me What the Street Looks Like"
+ cp_conversation.41.d:0 "He asks, and he seems to mean it. Tell me the street, he says. The smell. What you hear at dawn."
+ cp_conversation.41.f:0 "She is surprised. She had not expected the Pasha to be curious. She tells him: the street is narrow. There is a baker on the corner whose oven wall is warm against her shoulder when she passes before sunrise. A cart goes by with glass bottles in it, rattling, and the bottles sing the way the quern-stone used to sing in the village, only faster and in a different pitch. The fish-seller has a cry that is half a melody and half a complaint. Somewhere above her head a woman hangs wet laundry out of a window. A cat goes past on some cat's errand. A boy who is too young to be working is already working. She tells him these things. He listens. She cannot tell whether he is listening because he cares or because he is the kind of man who files what he hears and uses it later. She decides, for tonight, that it does not matter. The street has been named in this room. That is something."
+ cp_conversation.41.a:0 "#italic She hears her own city in a new way walking home the next morning.#!"
+
+ cp_conversation.42.t:0 "One More Body"
+ cp_conversation.42.d:0 "He does not look at her. The city, he says, has absorbed many such arrivals. You are one more."
+ cp_conversation.42.f:0 "The words do not surprise her, exactly. She has heard, from men who run smaller rooms than this one — foremen, landlords, the corner policeman — the same arithmetic. We have more of you than we needed. Be grateful you are fed. She stands on the carpet and she does not argue the arithmetic, because the arithmetic is his arithmetic and she has come to know that arguing the arithmetic of men who run rooms is a way of losing one's afternoon. But Effendim, she says — and she is surprised to find her voice is steady — a body that arrives is also a body that works. My Ahmed weaves the cloth you wear. My neighbour stitches it. My cousin's boy loads it onto the cart. We are bodies, yes. We are also the thing that is holding this city up. If we are dust to you, we are dust with hands. She stops. She does not know where the sentence came from. She walks out. She does not wait for him to dismiss her."
+ cp_conversation.42.a:0 "#italic She walks out. She finds Ahmed has already come home from the shift.#!"
+
+ cp_conversation.43.t:0 "Your Neighbourhood Is Restive"
+ cp_conversation.43.d:0 "He watches her as he says it. She understands, with a small cold clarity, that he is asking a question, not making a remark."
+ cp_conversation.43.f:0 "Have you noticed, he says. She has. She has noticed the pamphlets that appear under her door and are gone before sunrise. She has noticed the meeting at the tea-house that ends when a man she does not know walks in. She has noticed the new word the boys use in the street — a word she had not heard in the village, a word that sounds like a thing one could be arrested for knowing. She does not tell him these things. She says, instead: I have noticed that the rent has gone up, Effendim, and the wages have not. I have noticed that the foreman at my husband's mill fines the men for talking at the machines. I have noticed that bread is smaller this year than last year. She does not know, when she has finished saying it, whether she has told him anything useful or whether she has given him the names of her neighbours. She turns. She walks. On the way back down the carpet she learns, in her chest, the feeling of having said a careful thing in a room where there is no such thing as a careful thing, only careful silences."
+ cp_conversation.43.a:0 "#italic She walks back with more care in her step than she had on the way in.#!"
+
+
+ # ----- The Paper (cp_conversation.50..53) -----
+
+ cp_conversation.50.t:0 "The Paper"
+ cp_conversation.50.d.fresh:0 "She stands at the end of the carpet with a paper folded in her imagined hand. The ink on it is new enough that she is still afraid to fold it the wrong way. The field is ours, she says. On paper. I came tonight to say thank you, and to ask — she pauses — whether the paper holds."
+ cp_conversation.50.d.settled:0 "She stands at the end of the carpet. The field is ours, she says. It has been, on paper, for some years now. I have grown old enough that I have begun to worry about whether my children will inherit the paper, and whether the paper will inherit the field. I have come tonight to ask."
+ cp_conversation.50.f:0 "She had not planned to come about the paper. She had come about other things, once, and had got nothing. This time she has something — she has the paper itself, or the memory of it, folded behind a loose brick at home — and she has realised, standing over bread this afternoon, that she has never thanked anyone for it. Thanking a law is difficult. Laws are not people. But a Pasha is a person, and this Pasha is who she thanks. And then — she realises as she stands — thanking is not the only thing she came to say. The worry came in with the thanks. Thanks first, then the worry. That is the order. [ROOT.GetCountry.GetRuler.GetFullName] is waiting. What does he say back?"
+ cp_conversation.50.a:0 "#italic as the Pasha:#! \"The country is proud. Keep the field. Work it well.\""
+ cp_conversation.50.b:0 "#italic as the Pasha:#! \"And what of your neighbours — those who did not receive a paper?\""
+ cp_conversation.50.c:0 "#italic as the Pasha:#! \"Papers can be un-written. You understand.\""
+
+ cp_conversation.51.t:0 "The Country Is Proud"
+ cp_conversation.51.d:0 "He says it plainly, without flourish. The country is proud. Keep the field."
+ cp_conversation.51.f:0 "She had not expected plainness. She had expected either the extravagance of a man who thinks words are coins, or the indifference of a man who thinks they are not worth spending. She gets, instead, a sentence: the country is proud. Keep the field. Work it well. She does not know if the country is proud. She suspects the country does not think of her at all. But that a man who holds the country's name in his mouth has said the sentence, and had the secretary write it, is enough to make her, for one imagined moment, believe that the field is truly hers — not just on the paper behind the brick, but in the ledger of whatever larger thing a country is. She bows, slightly. She does not bow in the village. She does tonight. She walks the long carpet back and she feels, for the first time in this imagined room, that she belongs to something larger than the field and that the larger thing has, at last, acknowledged her back."
+ cp_conversation.51.a:0 "#italic She bows. She walks back light.#!"
+
+ cp_conversation.52.t:0 "And Your Neighbours?"
+ cp_conversation.52.d:0 "He asks it not cruelly, not gently — accurately. It is the question she had not prepared for."
+ cp_conversation.52.f:0 "And what of your neighbours, he says, who did not receive a paper? She stands on the carpet. The name of her neighbour across the lane comes to her — Umm Mariam, who had worked the field next to theirs for thirty years, and who had not been granted a paper because the bailiff had written Umm Mariam's husband's name incorrectly in the ledger and no one had corrected it. She says the name. Her neighbour, she says, did not receive a paper because a clerk put the wrong letter in the wrong box. The field she works is not hers. It will not be her sons' either. I am proud of my paper, Effendim. I am also ashamed of it. I do not know how to hold both at once. But I have come to say: if the paper is real, make more papers. Make one for Umm Mariam. Make one for every woman in my village whose husband's name was entered correctly or incorrectly. Paper is cheap. The country can afford it. She does not know if he will answer. She does not think he will. She has said it anyway."
+ cp_conversation.52.a:0 "#italic She has named a neighbour to the country. It matters more than the answer.#!"
+
+ cp_conversation.53.t:0 "Papers Can Be Un-Written"
+ cp_conversation.53.d:0 "He says it softly. She hears in the softness the shape of a warning she had hoped not to hear."
+ cp_conversation.53.f:0 "Papers can be un-written, he says. You understand. A law passes. Another law, in a different year, repeals it. A new Pasha sits in this chair. A new assembly meets. A war strains the treasury. A revolt in one province changes the temper of the next. Your paper is a good paper, today. Today is a day. Tomorrow is another. She stands on the carpet. She hears, underneath his words, both a threat and something that is not a threat — a weary accuracy. She does not argue. She nods. She says: then, Effendim, I will teach my children that the paper is real, and I will teach them also that paper burns. I will teach them the shape of the field and the names of the wells and the song that marks the boundary with the neighbour's. The paper may go. The knowing will stay. She walks out. She does not look back. At home, that night, she does not take the paper out of the pot behind the brick. She does not need to. She has memorised it."
+ cp_conversation.53.a:0 "#italic She goes home and teaches her oldest the song of the boundary.#!"
 
 
  # ----- A Small Thing (cp_conversation.80..82) -----

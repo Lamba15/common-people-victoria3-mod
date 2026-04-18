@@ -737,6 +737,9 @@ cp_move_family_to_cairo = {
 	cp_refresh_sol_from_pop = yes
 	cp_shift_hope = { delta = 1 }
 	cp_shift_exhaustion = { delta = 2 }
+	# Timed flag marks the move as recent — conversation variants key on it
+	# ("fresh from the move" vs "settled into the city"). 2 years = 730 days.
+	set_variable = { name = cp_recent_city_move days = 730 }
 }
 
 # Ahmed commutes; she stays in the village with the children. His

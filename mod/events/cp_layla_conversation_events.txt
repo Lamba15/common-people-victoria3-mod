@@ -101,6 +101,28 @@ cp_conversation.1 = {
 		trigger_event = { id = cp_conversation.30 popup = yes }
 	}
 
+	# About the room in the city. Only if she lives urban now.
+	option = {
+		name = cp_conversation.1.d
+		trigger = {
+			has_variable = cp_in_city
+			NOT = { has_variable = cp_seen_audience_city }
+		}
+		set_variable = { name = cp_seen_audience_city months = 18 }
+		trigger_event = { id = cp_conversation.40 popup = yes }
+	}
+
+	# About the paper — the field now hers on paper. Only if she owns land.
+	option = {
+		name = cp_conversation.1.e
+		trigger = {
+			has_variable = cp_owns_land
+			NOT = { has_variable = cp_seen_audience_paper }
+		}
+		set_variable = { name = cp_seen_audience_paper months = 18 }
+		trigger_event = { id = cp_conversation.50 popup = yes }
+	}
+
 	# A small thing. Always available. Shorter cooldown (6 months) because
 	# it's the "I don't have a speech tonight" option and should be reachable
 	# more often than the big topics.
@@ -715,6 +737,255 @@ cp_conversation.33 = {
 		name = cp_conversation.33.a
 		default_option = yes
 		cp_shift_weight = { weight = revolution delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.40..43 -- The Room in the City
+# ============================================================================
+# Gated on cp_in_city. Opening variants: fresh from the move (within
+# 2 years, via cp_recent_city_move), settled in, or struggling
+# (cp_sol below 8). Three Pasha responses: curious, dismissive, political.
+# ============================================================================
+
+cp_conversation.40 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.40.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.40.d.fresh
+				trigger = { has_variable = cp_recent_city_move }
+			}
+			triggered_desc = {
+				desc = cp_conversation.40.d.struggling
+				trigger = { var:cp_sol < 8 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.40.d.settled
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.40.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_city
+	}
+
+	option = {
+		name = cp_conversation.40.a
+		trigger_event = { id = cp_conversation.41 popup = yes }
+	}
+	option = {
+		name = cp_conversation.40.b
+		trigger_event = { id = cp_conversation.42 popup = yes }
+	}
+	option = {
+		name = cp_conversation.40.c
+		trigger_event = { id = cp_conversation.43 popup = yes }
+	}
+}
+
+cp_conversation.41 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.41.t
+	desc = cp_conversation.41.d
+	flavor = cp_conversation.41.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.41.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.42 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.42.t
+	desc = cp_conversation.42.d
+	flavor = cp_conversation.42.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.42.a
+		default_option = yes
+		cp_shift_exhaustion = { delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.43 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.43.t
+	desc = cp_conversation.43.d
+	flavor = cp_conversation.43.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.43.a
+		default_option = yes
+		# Learning the word "neighbourhood" as a political unit. A small
+		# step toward noticing the shape of urban collective action.
+		cp_shift_weight = { weight = labor_laws delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.50..53 -- The Paper (she owns her field)
+# ============================================================================
+# Gated on cp_owns_land. Opening variants: fresh from the deed (within
+# 540 days via cp_seen_homesteading), or settled. Three Pasha responses:
+# proud, political (what of your neighbours?), cautious (papers can be
+# un-written).
+# ============================================================================
+
+cp_conversation.50 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.50.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.50.d.fresh
+				trigger = { has_variable = cp_seen_homesteading }
+			}
+			triggered_desc = {
+				desc = cp_conversation.50.d.settled
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.50.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_paper
+	}
+
+	option = {
+		name = cp_conversation.50.a
+		trigger_event = { id = cp_conversation.51 popup = yes }
+	}
+	option = {
+		name = cp_conversation.50.b
+		trigger_event = { id = cp_conversation.52 popup = yes }
+	}
+	option = {
+		name = cp_conversation.50.c
+		trigger_event = { id = cp_conversation.53 popup = yes }
+	}
+}
+
+cp_conversation.51 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.51.t
+	desc = cp_conversation.51.d
+	flavor = cp_conversation.51.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.51.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+		cp_shift_loyalist = { delta = 2 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.52 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.52.t
+	desc = cp_conversation.52.d
+	flavor = cp_conversation.52.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.52.a
+		default_option = yes
+		# She has been asked to reckon with her own fortune against her
+		# neighbours' — nudges land-reform conviction.
+		cp_shift_weight = { weight = land_reform delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.53 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.53.t
+	desc = cp_conversation.53.d
+	flavor = cp_conversation.53.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.53.a
+		default_option = yes
+		# The cold possibility of its reversal sticks in her. Small
+		# exhaustion from re-learning a thing she hoped she'd stopped
+		# having to know.
+		cp_shift_exhaustion = { delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
