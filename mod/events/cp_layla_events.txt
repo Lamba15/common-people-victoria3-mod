@@ -821,3 +821,75 @@ cp_layla.32 = {
 		name = cp_layla.32.b
 	}
 }
+
+
+###############################################################################
+# War-end reactions (cp_layla.40..41)
+#
+# Fired by cp_on_war_end when Ahmed was conscripted (cp_ahmed_at_war set).
+# The dispatcher rolls outcome weighted by recently_won_war /
+# recently_lost_war, then fires one of these. The composite effect
+# (cp_ahmed_homecoming / cp_ahmed_killed) runs in immediate so the state
+# is committed before the player sees the event.
+###############################################################################
+
+# cp_layla.40 -- "The Column Returns" (Ahmed comes home)
+cp_layla.40 = {
+	type = country_event
+
+	title = cp_layla.40.t
+	desc  = cp_layla.40.d
+	flavor = cp_layla.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		has_variable = cp_ahmed_alive
+	}
+
+	immediate = {
+		cp_ahmed_homecoming = yes
+	}
+
+	option = {
+		name = cp_layla.40.a
+		default_option = yes
+	}
+}
+
+# cp_layla.41 -- "The Clerk's Letter" (Ahmed killed)
+cp_layla.41 = {
+	type = country_event
+
+	title = cp_layla.41.t
+	desc  = cp_layla.41.d
+	flavor = cp_layla.41.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	immediate = {
+		cp_ahmed_killed = yes
+	}
+
+	option = {
+		name = cp_layla.41.a
+		default_option = yes
+	}
+}

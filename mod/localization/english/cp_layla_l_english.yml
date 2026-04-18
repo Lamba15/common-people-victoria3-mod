@@ -316,6 +316,21 @@
  cp_layla.32.b:0 "She goes home before the next song. It is too much, all at once."
 
 
+ # ----- War-end reactions (cp_layla.40..41) -----
+
+ # cp_layla.40 -- "The Column Returns" (Ahmed comes home)
+ cp_layla.40.t:0 "The Column Returns"
+ cp_layla.40.d:0 "The dust on the canal road is a different dust today. Horses. Men. The shape of him, smaller than she remembered, at the back of the column."
+ cp_layla.40.f:0 "He stands in the doorway before he comes in. He is looking at the doorway as if he is deciding whether he is still permitted to cross it. She puts down the bread. She says his name once. He nods. He does not speak. That will come later — in weeks, perhaps, or in months — and when it comes it will arrive in small pieces at odd hours, about things she was not expecting to hear. For now he sits on the stool where he used to sit. He eats what she puts in front of him. He asks if the well is still the well. He asks if the neighbour woman with the bad hip is still the neighbour woman with the bad hip. She says yes, and yes. He nods, and nods, and the afternoon passes. At dusk she understands that her husband is home, and that he is not entirely the husband she sent away, and that she does not mind."
+ cp_layla.40.a:0 "She sets an extra plate at the table."
+
+ # cp_layla.41 -- "The Clerk's Letter" (Ahmed killed)
+ cp_layla.41.t:0 "The Clerk's Letter"
+ cp_layla.41.d:0 "An official on a donkey came through the village today. He had a ledger and a list of names. He had one name for Layla's house."
+ cp_layla.41.f:0 "He did not dismount. He asked in a tired voice, in a formal Arabic too flat for the village's ear, whether this was the house of Ahmed son of Mahmoud. She said that it was. He said: then I have news, and I am sorry to carry it. He read the line from the ledger. It was a single line. The village women gathered behind her, not close. When he had read it he put the ledger back in his saddlebag and said — not unkindly — that the country was grateful. Then he rode on to the next name. Layla went inside and she did not close the door. She did not sit down. She stood at the wall where he used to hang his coat. She did not weep yet, because weeping would come later, and she wanted first to be alone with this."
+ cp_layla.41.a:0 "She closes the door."
+
+
  # ============================================================================
  # Imagined audience with the Pasha
  # See documentation/characters/layla/conversation.md

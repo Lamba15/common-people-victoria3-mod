@@ -296,8 +296,44 @@ on_war_end = {
 
 cp_on_war_end = {
 	effect = {
-		# TODO P9: if Ahmed was at war, roll homecoming / wounded / killed
-		# and fire the appropriate Layla event.
+		if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				has_variable = cp_ahmed_alive
+				has_variable = cp_ahmed_at_war
+			}
+			# Clear the conscription gate so the next war can fire cp_layla.4
+			# again. cp_ahmed_at_war itself is cleared by the outcome effect
+			# in cp_memory (cp_ahmed_homecoming / cp_ahmed_killed).
+			remove_variable = cp_seen_ahmed_conscripted
+
+			# Outcome weights by war result. recently_won_war and
+			# recently_lost_war are vanilla-set on country scope at
+			# on_capitulation (days = 1825 timer, so they're fresh here).
+			if = {
+				limit = { has_variable = recently_won_war }
+				random_list = {
+					75 = { trigger_event = { id = cp_layla.40 } }
+					25 = { trigger_event = { id = cp_layla.41 } }
+				}
+			}
+			else_if = {
+				limit = { has_variable = recently_lost_war }
+				random_list = {
+					40 = { trigger_event = { id = cp_layla.40 } }
+					60 = { trigger_event = { id = cp_layla.41 } }
+				}
+			}
+			else = {
+				# Neither side fully capitulated (white peace, stalemate).
+				# Still brutal; still a coin flip with a slight pull toward home.
+				random_list = {
+					55 = { trigger_event = { id = cp_layla.40 } }
+					45 = { trigger_event = { id = cp_layla.41 } }
+				}
+			}
+		}
 	}
 }
 

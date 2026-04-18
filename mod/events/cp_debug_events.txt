@@ -33,6 +33,8 @@
 #                   cp_expected_sol, cp_sol_gap after.
 #   cp_debug.26  -- NEW: force-grant railways + telegraph + radio to EGY
 #                   so the tech dispatcher fires cp_layla.30/.31/.32.
+#   cp_debug.27  -- NEW: fire Ahmed homecoming event directly.
+#   cp_debug.28  -- NEW: fire Ahmed death-notice event directly.
 #
 # Retired (obsolete probes; removed in the April cleanup):
 #   cp_debug.2/.3/.4 -- direct law-event fires (superseded by .5 + dispatcher)
@@ -363,6 +365,36 @@ cp_debug.26 = {
 			add_technology_researched = railways
 			add_technology_researched = electric_telegraph
 			add_technology_researched = radio
+		}
+	}
+}
+
+# cp_debug.27 -- Fire the homecoming event directly (skip the outcome roll).
+# Tests prose + cp_ahmed_homecoming composite effect. Requires Ahmed alive.
+cp_debug.27 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			set_variable = cp_ahmed_at_war
+			trigger_event = { id = cp_layla.40 }
+		}
+	}
+}
+
+# cp_debug.28 -- Fire the death-notice directly. Tests prose +
+# cp_ahmed_killed composite. Clears cp_ahmed_alive.
+cp_debug.28 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			set_variable = cp_ahmed_at_war
+			trigger_event = { id = cp_layla.41 }
 		}
 	}
 }
