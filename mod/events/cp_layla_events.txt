@@ -2513,3 +2513,119 @@ cp_layla.29 = {
 		cp_shift_hope = { delta = 1 }
 	}
 }
+
+
+# =============================================================================
+# Goods-arrival pulses -- cp_layla.33..35
+# =============================================================================
+# V3 market_goods_* triggers give us real, dynamic read on Egypt's market.
+# Each event fires only when the good is actually circulating at meaningful
+# scale in her country, AND her household can plausibly afford it.
+# =============================================================================
+
+# cp_layla.33 -- "The Cup of Coffee" (coffee circulating, she can afford it)
+cp_layla.33 = {
+	type = country_event
+
+	title = cp_layla.33.t
+	desc  = cp_layla.33.d
+	flavor = cp_layla.33.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_coffee_arrival }
+		var:cp_sol >= 10
+		c:EGY.market = {
+			mg:coffee = { market_goods_buy_orders > 100 }
+		}
+	}
+
+	immediate = {
+		set_variable = cp_seen_coffee_arrival
+	}
+
+	option = {
+		name = cp_layla.33.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+	}
+}
+
+# cp_layla.34 -- "The White Sugar" (sugar cheap, household starts buying)
+cp_layla.34 = {
+	type = country_event
+
+	title = cp_layla.34.t
+	desc  = cp_layla.34.d
+	flavor = cp_layla.34.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_sugar_cheap }
+		c:EGY.market = {
+			mg:sugar = { market_goods_cheaper >= 0.10 }
+		}
+	}
+
+	immediate = {
+		set_variable = cp_seen_sugar_cheap
+	}
+
+	option = {
+		name = cp_layla.34.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+	}
+}
+
+# cp_layla.35 -- "The Cloth from the Port" (fabric/clothes affordable)
+cp_layla.35 = {
+	type = country_event
+
+	title = cp_layla.35.t
+	desc  = cp_layla.35.d
+	flavor = cp_layla.35.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_cloth_affordable }
+		var:cp_sol >= 12
+		c:EGY.market = {
+			mg:clothes = { market_goods_buy_orders > 200 }
+		}
+	}
+
+	immediate = {
+		set_variable = cp_seen_cloth_affordable
+	}
+
+	option = {
+		name = cp_layla.35.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+	}
+}

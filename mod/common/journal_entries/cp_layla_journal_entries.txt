@@ -215,6 +215,12 @@ cp_je_layla = {
 			10 = cp_layla.27   # The Hajj returnees
 			10 = cp_layla.28   # The midwife's lamp
 			10 = cp_layla.29   # The date harvest
+
+			# Goods-arrival pulses. One-shot; gated on V3 market_goods_*
+			# reads, so they fire only when the good actually circulates.
+			10 = cp_layla.33   # The cup of coffee
+			10 = cp_layla.34   # The white sugar
+			10 = cp_layla.35   # The cloth from the port
 		}
 	}
 
