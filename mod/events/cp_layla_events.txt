@@ -3132,3 +3132,65 @@ cp_layla.113 = {
 		cp_shift_radical = { delta = 1 }
 	}
 }
+
+
+# =============================================================================
+# cp_layla.73 -- "The Mill Closes" (economic-downturn crossroads)
+# =============================================================================
+# Fires when she is city-based + laborer household + economic stress
+# (cp_sol falls below a certain threshold). Three paths reshape the
+# household's strategy. One-shot via cp_seen_mill_closed.
+# =============================================================================
+cp_layla.73 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla.73.t
+	desc  = cp_layla.73.d
+	flavor = cp_layla.73.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	# A: return to the village. Default. The village will have them if
+	# the village has them; SoL contracts but they are fed.
+	option = {
+		name = cp_layla.73.a
+		default_option = yes
+		set_variable = cp_seen_mill_closed
+		cp_flee_city_for_village = yes
+	}
+	# B: Ahmed takes the lower wage as a machinist apprentice. Only
+	# available if he's alive and skilled enough for the retraining
+	# (literacy gate).
+	option = {
+		name = cp_layla.73.b
+		trigger = {
+			has_variable = cp_ahmed_alive
+			var:cp_ahmed_alive > 0
+			NOT = { has_variable = cp_ahmed_at_war }
+			var:cp_literacy >= 5
+		}
+		set_variable = cp_seen_mill_closed
+		cp_ahmed_apprentices_machinist = yes
+	}
+	# C: the stall becomes the household's primary income. Requires
+	# she's already self-employed.
+	option = {
+		name = cp_layla.73.c
+		trigger = {
+			has_variable = cp_self_employed
+		}
+		set_variable = cp_seen_mill_closed
+		cp_stall_becomes_primary = yes
+	}
+}

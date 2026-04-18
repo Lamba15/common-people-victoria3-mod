@@ -1047,6 +1047,14 @@
  cp_layla.113.a:0 "#italic Let him stand in the middle. Let the gate stay closed.#!"
  cp_layla.113.b:0 "#italic Let them bring it back with what they went in asking for.#!"
 
+ # ----- cp_layla.73 -- "The Mill Closes" (crossroads) -----
+ cp_layla.73.t:0 "The Mill Closes"
+ cp_layla.73.d:0 "The notice was pinned to the gate this morning. The owner has — in the shortest paragraph Ahmed has ever had to read aloud to her — decided to close. The mill will be silent in three weeks."
+ cp_layla.73.f:0 "She has been expecting it for eight months. The wages have been thinning; the foreman has been harsher; the men at the coffeehouse have been muttering about a buyer who was supposed to come and did not come. This morning the notice arrived. Three weeks. After the three weeks the mill will be silent, the gate will be padlocked, the machines will be sold — or not sold, and will stand rusting through the seasons — and the men who have been, for many years, the mill's men will be nothing in particular. Ahmed has read the notice twice. He has folded it. He has placed it on the low table. He has looked at her. The look, she knows, is the look of a man handing a decision to his wife because he has looked at the decision long enough to know it is not his alone. She has, in her head, three things she could say. She has, in her hands, the small account-book of the stall, which she brought out when Ahmed was reading. She lays it on the table next to the notice. She looks at him. §IWhat is in front of us,#! she says, §Iis three weeks. Let us decide what we do in the three weeks, and not in four.#! He nods. She opens the book. The two of them lean over it, the way they leaned over the first deed when she was a bride, the way they leaned over the prescription the time the doctor came for the second-born. The decision is not a small one. But at least — she thinks, turning the page — at least they will make it together."
+ cp_layla.73.a:0 "Go back to the village. The field will take us in."
+ cp_layla.73.b:0 "Ahmed re-skills. Take the cut. Apprentice as a machinist."
+ cp_layla.73.c:0 "Make the stall the household. I will earn."
+
  # ----- Root additions for Envelope + Vote conversation topics -----
  cp_conversation.1.j:0 "Tell him about the envelope."
  cp_conversation.1.k:0 "Tell him about her name on the rolls."

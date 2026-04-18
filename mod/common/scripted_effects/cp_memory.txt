@@ -576,6 +576,11 @@ cp_become_laborer = {
 	set_variable = cp_profession_laborers
 }
 
+cp_become_peasant = {
+	cp_clear_profession = yes
+	set_variable = cp_profession_peasants
+}
+
 cp_become_farmer = {
 	cp_clear_profession = yes
 	set_variable = cp_profession_farmers
@@ -852,6 +857,50 @@ cp_open_small_concern_on_credit = {
 # drift toward economic thinking — she has learned the vocabulary by
 # turning it down.
 cp_decline_small_concern = {
+	cp_shift_weight = { weight = economy delta = 1 }
+}
+
+
+# ============================================================================
+# Mill closes (Slice S) -- economic downturn crossroads outcomes
+# ============================================================================
+# The crossroads fires when the industry Ahmed works in contracts. Three
+# paths:
+#   - Return to village: she drops cp_in_city, Ahmed reverts to peasants,
+#     SoL contracts, weight on land_reform up (reflux of village identity).
+#   - Ahmed apprentices: he takes a pay cut to re-skill as a machinist.
+#     Short-term SoL pain, long-term setup for better trajectory.
+#   - She expands the stall: their income source swaps hands. Requires
+#     cp_self_employed; sets cp_primary_earner_layla.
+# All three set cp_seen_mill_closed permanent flag.
+# ============================================================================
+
+cp_flee_city_for_village = {
+	cp_leave_city = yes
+	cp_become_peasant = yes
+	set_variable = cp_ahmed_profession_peasant
+	remove_variable = cp_ahmed_profession_laborer
+	cp_refresh_sol_from_pop = yes
+	cp_shift_hope = { delta = -1 }
+	cp_shift_exhaustion = { delta = 2 }
+	cp_shift_weight = { weight = land_reform delta = 2 }
+	cp_shift_radical = { delta = 1 }
+}
+
+cp_ahmed_apprentices_machinist = {
+	cp_shift_sol = { delta = -2 }
+	cp_shift_hope = { delta = 1 }
+	cp_shift_exhaustion = { delta = 2 }
+	cp_shift_weight = { weight = education delta = 1 }
+	cp_shift_weight = { weight = labor_laws delta = 1 }
+	set_variable = cp_ahmed_apprentice_period
+}
+
+cp_stall_becomes_primary = {
+	set_variable = cp_primary_earner_layla
+	cp_shift_hope = { delta = 2 }
+	cp_shift_exhaustion = { delta = 2 }
+	cp_shift_weight = { weight = womens_rights delta = 2 }
 	cp_shift_weight = { weight = economy delta = 1 }
 }
 

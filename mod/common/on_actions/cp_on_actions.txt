@@ -463,6 +463,28 @@ cp_on_yearly = {
 					80 = { }
 				}
 			}
+
+			# Crossroads: the mill closes. Fires when she's a city
+			# laborer household AND SoL has fallen to struggling. 30%
+			# roll per qualifying year — the downturn feels arriving,
+			# not scheduled.
+			if = {
+				limit = {
+					has_variable = cp_in_city
+					NOT = { has_variable = cp_seen_mill_closed }
+					OR = {
+						has_variable = cp_ahmed_profession_laborer
+						has_variable = cp_profession_laborers
+					}
+					var:cp_sol <= 9
+				}
+				random_list = {
+					30 = {
+						trigger_event = { id = cp_layla.73 }
+					}
+					70 = { }
+				}
+			}
 		}
 	}
 }

@@ -894,3 +894,16 @@ cp_debug.63 = {
 		}
 	}
 }
+
+# cp_debug.64 -- Fire "Mill Closes" crossroads.
+cp_debug.64 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.73 }
+		}
+	}
+}
