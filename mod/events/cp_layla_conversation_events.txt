@@ -212,6 +212,18 @@ cp_conversation.1 = {
 		trigger_event = { id = cp_conversation.140 popup = yes }
 	}
 
+	# About the child who did not live. Only if she has lost a child.
+	# Long cooldown (36 months) — this is not a topic to raise lightly.
+	option = {
+		name = cp_conversation.1.n
+		trigger = {
+			has_variable = cp_lost_a_child
+			NOT = { has_variable = cp_seen_audience_lost_child }
+		}
+		set_variable = { name = cp_seen_audience_lost_child months = 36 }
+		trigger_event = { id = cp_conversation.150 popup = yes }
+	}
+
 	# A small thing. Always available. Shorter cooldown (6 months) because
 	# it's the "I don't have a speech tonight" option and should be reachable
 	# more often than the big topics.
@@ -2095,6 +2107,125 @@ cp_conversation.143 = {
 		# §Icanal#!. Radical up, weight on land_reform up.
 		cp_shift_radical = { delta = 2 }
 		cp_shift_weight = { weight = land_reform delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.150..153 -- The Child Who Did Not Live (gated on cp_lost_a_child)
+# ============================================================================
+# She does not raise it lightly. The Pasha responses are the three things
+# men of power say to grieving women: the platitude; the silence; the
+# admission of their own.
+# ============================================================================
+
+cp_conversation.150 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.150.t
+	desc  = cp_conversation.150.d
+	flavor = cp_conversation.150.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_lost_child
+	}
+
+	option = {
+		name = cp_conversation.150.a
+		trigger_event = { id = cp_conversation.151 popup = yes }
+	}
+	option = {
+		name = cp_conversation.150.b
+		trigger_event = { id = cp_conversation.152 popup = yes }
+	}
+	option = {
+		name = cp_conversation.150.c
+		trigger_event = { id = cp_conversation.153 popup = yes }
+	}
+}
+
+cp_conversation.151 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.151.t
+	desc = cp_conversation.151.d
+	flavor = cp_conversation.151.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.151.a
+		default_option = yes
+		# The platitude. §IGod is merciful; the child is in paradise.#!
+		# She knows this sentence. She has said it to other women. Hearing
+		# it from the Pasha tastes different. Small radical; weight on
+		# labor_laws up (because public health could have saved the child).
+		cp_shift_radical = { delta = 1 }
+		cp_shift_weight = { weight = labor_laws delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.152 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.152.t
+	desc = cp_conversation.152.d
+	flavor = cp_conversation.152.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.152.a
+		default_option = yes
+		# He does not speak. The silence is the response she had not
+		# rehearsed for. Small hope — the silence, unexpectedly,
+		# contains more than the platitude did. Weight on religion up.
+		cp_shift_hope = { delta = 1 }
+		cp_shift_weight = { weight = religion delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.153 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.153.t
+	desc = cp_conversation.153.d
+	flavor = cp_conversation.153.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.153.a
+		default_option = yes
+		# He says his own child's name. The grief becomes, briefly, a
+		# thing two people are carrying. Hope up; loyalism up.
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 2 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
