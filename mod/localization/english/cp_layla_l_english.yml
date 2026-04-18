@@ -1,0 +1,120 @@
+﻿l_english:
+ # Names
+ cp_name_layla:0 "Layla"
+ cp_name_alsharif:0 "al-Sharif"
+ cp_name_ahmed:0 "Ahmed"
+
+ # ----- Journal entry: cp_je_layla -----
+ cp_je_layla:0 "Layla al-Sharif"
+ cp_je_layla_reason:0 "She lives in a single-room mud-brick house at the edge of a village on the Nile in the Delta. She has never left the Delta. She has never seen Cairo. The house has one window covered with a wooden lattice, a packed-earth floor that Ahmed's mother swept every morning for thirty years until she did not wake up, and a palm-frond roof that leaks along the north edge when the flood comes.\n\nShe owns three clay pots, a copper cup that was her grandmother's, two cotton head-scarves, a small stone grinding-bowl, one wooden chest holding her wedding clothes, and three hens who share the courtyard with her at night because they do not trust the jackals in the lane.\n\nShe rises before the muezzin. She grinds dhurra for bread and bakes aish baladi on the clay oven in the courtyard before the sun is high enough to stand in. She drinks tea with mint. Most evenings she cooks ful medames with onions — beans from a sack Ahmed carried from the town, which will last the family eleven weeks if she is careful. On Fridays there is sometimes fish from the Nile.\n\nShe keeps a small clay pot behind a loose brick in the wall. She counts what is in it on Friday nights, when Ahmed is asleep. She does not name what she is counting toward."
+
+ # ----- Events -----
+
+ # cp_layla.1 -- "The Farmer's Daughter" (intro)
+ cp_layla.1.t:0 "The Farmer's Daughter"
+ cp_layla.1.d:0 "She is awake before the muezzin. She has been awake before the muezzin every morning of her adult life."
+ cp_layla.1.f:0 "Her name is Layla al-Sharif and she is twenty-two years old. She would like, if anyone ever asked her — and no one ever has — a roof that does not leak when the flood comes, children who live past the first year, and a slip of paper with her name written on it saying this patch of earth belongs to her. The bey says the earth belongs to the bey. The bey says many things. The sky begins to turn the color of the inside of a pomegranate. She has not asked, in any voice anyone could hear, to be seen. But somewhere, in a small private way she will never know about, she is being seen now."
+ cp_layla.1.a:0 "Watch her."
+
+ # cp_layla.2 -- "The Deed" (homesteading granted)
+ cp_layla.2.t:0 "The Deed"
+ cp_layla.2.d:0 "She holds it. She has waited her whole life to hold it. Her grandmothers waited too."
+ cp_layla.2.f:0 "The wax is still warm where the seal pressed it. It is the color of dried blood and it carries her name. Her name. Layla bint Mohamed al-Sharif, of Lower Egypt, on a paper that the law says cannot be taken from her. She stands in the middle of the field and her hands will not stop shaking and the field — green, hers, hers — keeps blurring at the edges. She does not weep. She has not wept for anything before, not the babies she has lost or the brother who never came back, and she will not weep now. But the field will not stop blurring. Somewhere, in a village she will never visit, a man with a name like hers walks past with a paper of his own, and he is also not weeping. The sun is high. The wax is warm. The earth is hers."
+ cp_layla.2.a:0 "She holds it carefully."
+
+ # cp_layla.3 -- "The Bey Returns" (serfdom restored)
+ cp_layla.3.t:0 "The Bey Returns"
+ cp_layla.3.d:0 "He came back today. The law brought him back."
+ cp_layla.3.f:0 "She knew before she saw him. The doors of the lane were already shut and the dogs had stopped barking and the boys who play in the dust had been called inside. Then the dust rose at the village edge — the wrong kind of dust, the dust that means horses — and she put her back against the wall and she put her hand on Ahmed's wrist and she did not look up. She has spent her whole life being good at not looking up. There are things one learns in this country that one does not unlearn. The deed is folded in her chest, against the bone, and the deed does not matter today. The bey rides through the lane. He does not need to look at her. He knows she is there. He has always known she was there."
+ cp_layla.3.a:0 "She does not look up."
+
+ # cp_layla.4 -- "He Marches" (Ahmed conscripted)
+ cp_layla.4.t:0 "He Marches"
+ cp_layla.4.d:0 "He left at dawn. He looked back once. War is a thing that, in this country, happens to other people's husbands until one day it does not."
+ cp_layla.4.f:0 "He carried a small bundle and a piece of bread wrapped in cloth, and he wore his grey gallabiya because there was no uniform yet — they would give him one in Cairo, or perhaps later, or perhaps never. The other men of the village walked beside him. None of them spoke. She stood at the wall with the other women and she did not lift her hand and she did not call his name, and when the column turned at the bend in the road she watched the dust settle for a long time before she walked back to the house. The house was quiet in a new way. The way a house is quiet when it has begun to understand what it might become. Somewhere, in a city she has never seen, a clerk is writing his name in a ledger no one in this village will ever read."
+ cp_layla.4.a:0 "She watches until the column turns."
+
+ # cp_layla.5 -- "The First Cry" (childbirth, mother survives)
+ cp_layla.5.t:0 "The First Cry"
+ cp_layla.5.d:0 "She lived. The child lived. In this country, in this year, that is two miracles in the same hour."
+ cp_layla.5.f:0 "The lamp guttered. She held the small wet weight of him and she did not feel what they had told her she would feel. Her mother had said: you will know him at once, you will feel a love that has no end. She felt instead a slow surprise — a kind of disbelief that her own breath was still moving in her own chest. The midwife dried her hands in the shadow at the foot of the bed. Ahmed, kneeling, would not look at the baby; he would not stop looking at her. She thought, with a clarity that frightened her: I am still here. I am still here, and there is a person in my arms now who needs me to stay. The lamp guttered again. She let it burn."
+ cp_layla.5.a:0 "She lets the lamp burn."
+
+ # ----- JE: monthly status, check-on button -----
+
+ # Status variants: three lines each (thinking / doing / hoping). The JE's
+ # first_valid block picks one per month based on her life situation and
+ # cp_mood_roll (rerolled by on_monthly_pulse, range 1-10; low <=3, high >=7).
+
+ # --- Ahmed at war ---
+ cp_je_layla_status_war_high:0 "She is thinking about the letter the postman will bring this month. She is sure of it today.\nShe is kneading dough for two loaves instead of one, because she has decided to believe he is coming home.\nShe is hoping the war will end before the next flood, and she is permitting herself, today, a small hope."
+ cp_je_layla_status_war_mid:0 "She is thinking about Ahmed's bread-bowl, which she has not moved from its place.\nShe is grinding dhurra that she used to grind with him kneeling beside her, and the grinding is slower now.\nShe is hoping no official with a clipboard rides into the village this month."
+ cp_je_layla_status_war_low:0 "She is thinking about the shaving-water he left in its clay jar. It has gone green. She has not emptied it.\nShe is sweeping a floor that is already swept, because sitting still is the worst of the hours.\nShe is hoping, in the quietest part of her, only to know. Either way. Only to know."
+
+ # --- Under the restored serfdom ---
+ cp_je_layla_status_serfdom_high:0 "She is thinking about the deed folded in a pot behind a loose brick, which the bey does not know about.\nShe is plaiting a palm-frond basket in the doorway as the overseer passes, and she has not looked up.\nShe is hoping the laws will turn again — they have turned before — and she means to be alive when they do."
+ cp_je_layla_status_serfdom_mid:0 "She is thinking about which of the neighbour women will weep first at the harvest. One of them always does.\nShe is carrying water from the canal. Her back is sore in the old place and also in a new place.\nShe is hoping the yield stretches past the bey's portion — barely — and leaves a handful of grain for her own pot."
+ cp_je_layla_status_serfdom_low:0 "She is thinking about her grandmother, who lived under a bey and died under a bey, and is free of beys now.\nShe is doing what she is told, in the order she is told, without looking up. It is an old discipline, and her body remembers it.\nShe is hoping, carefully, not to hope. Hoping is a thing she has learned to ration."
+
+ # --- She owns the field ---
+ cp_je_layla_status_homesteader_high:0 "She is thinking about the heron that stands in her irrigation channel, and which belongs, in some way, to the field, and therefore to her.\nShe is walking the border stones in the order she walks them every morning — north, east, south, the crooked one by the canal.\nShe is hoping for a second donkey, and a small school for her children if they live, and she is letting herself say both out loud."
+ cp_je_layla_status_homesteader_mid:0 "She is thinking about the word \"mine\", which still does not sit correctly in her mouth, but which she is beginning to say.\nShe is checking the dhurra at the north corner, where the soil is thinnest, and judging whether to bring manure this week or next.\nShe is hoping the flood is kind this year — not too shy, not too fierce — and that the palm-frond roof will hold."
+ cp_je_layla_status_homesteader_low:0 "She is thinking about the paper folded against her chest, and whether she has checked it enough times today. She has not.\nShe is inspecting the seam of the wedding chest where the wood has cracked, because she has not yet told Ahmed about the crack.\nShe is hoping nothing will come and take this from her. It is not a specific fear; it is every fear, compressed."
+
+ # --- Default: tenant's wife ---
+ cp_je_layla_status_tenant_high:0 "She is thinking about the small silver coin under the loose brick, which is closer to a copper pot than it was last month.\nShe is putting a mint leaf in her tea because the plant on the window-ledge has thickened out, and today she is allowed to.\nShe is hoping the merchant in town gives her a fair price for the surplus onions. It does happen, sometimes."
+ cp_je_layla_status_tenant_mid:0 "She is thinking about whether the beans will stretch to Friday, and how long the sack has been thinning for.\nShe is kneading dough on the flat stone, and the stone is warm from the sun.\nShe is hoping the hen that has stopped laying has only stopped for a little while."
+ cp_je_layla_status_tenant_low:0 "She is thinking about the two babies she lost, and the day each of them would have been born if they had waited to be born.\nShe is sweeping the packed-earth floor in the pattern Ahmed's mother used to sweep it, because the pattern is what the floor wants.\nShe is hoping, only, for a quiet day. A day with nothing in it is a kind of mercy in this village."
+
+ # scripted_progress_bar keys (still defined in common/ for future reuse)
+ cp_layla_life_bar:0 "Her Life"
+ cp_layla_life_bar_desc:0 "The months she has been given since she turned twenty-two. Her mother used to say counting time invites the evil eye; she counts anyway, privately."
+ cp_layla_life_bar_tick:0 "Another month she has lived."
+
+ # scripted_button: check on Layla
+ cp_layla_check_button_name:0 "Check on Layla"
+ cp_layla_check_button_desc:0 "Look in on her for a moment, at whatever she happens to be doing. No decisions, no mechanics — only a witness, for a moment, to a life."
+
+ # cp_layla.6 -- reflection event (orphan; reachable via console only now)
+ cp_layla.6.t:0 "A Moment"
+ cp_layla.6.d:0 "She is doing, at this moment, what she has done every day of her life. She is also, underneath that, doing something else."
+ cp_layla.6.f:0 "She crouches by the clay oven in the courtyard, turning a small piece of aish baladi with the edge of her hand because the long stick is cracked and she has not yet replaced it. The sun is behind a cloud. A neighbour's boy is crying in the lane and his mother is not answering. Somewhere, in a shaded corner of her attention, she is thinking about her mother — the way her mother would reach for a piece of bread with her left hand because her right hand was always busy doing something more important, and how she has begun, without noticing, to reach for her own bread with her left hand too. It is not a large thing to notice. Most of what there is to notice about a life is not large."
+ cp_layla.6.a:0 "Let her be."
+
+ # ----- "Check on Layla" dispatch pool (cp_layla.10 - cp_layla.15) -----
+
+ # cp_layla.10 -- "The Letter That Has Not Come" (Ahmed at war)
+ cp_layla.10.t:0 "The Letter That Has Not Come"
+ cp_layla.10.d:0 "The post-cart passes through the village once a month. She does not go out to it. That would tell the village she is waiting, and the village already knows."
+ cp_layla.10.f:0 "Her hand is flat on the doorframe. She is counting: the hoof-beats, then the wheels, then the diminishing sound of them moving on without stopping. The postman has not called her name in four months. Her mother-in-law — widowed at nineteen — tells her this means nothing; letters are slow, armies are slower, men who go quiet are not always the men who have died. Layla nods. Her mother-in-law is right, or she is not right, and either way the nodding is what one does. The clay jar of Ahmed's shaving-water is where he left it. The water has gone green; a skin has formed on the top of it. She has not emptied the jar. There will be time to empty the jar. There will be time for a great many small things, once there is news."
+ cp_layla.10.a:0 "She waits for the next cart."
+
+ # cp_layla.11 -- "Walking the Field She Owns" (homesteader)
+ cp_layla.11.t:0 "Walking the Field She Owns"
+ cp_layla.11.d:0 "She walks the edge before the sun is high. Hers. The word still does not sit correctly in her mouth."
+ cp_layla.11.f:0 "She has begun, without meaning to, to walk the border stones in the same order each morning — the north corner, the east corner, the south corner, the little crooked one by the canal — as if the walking of it is what keeps the field from leaving. The dhurra is coming up green and strong, and a little early this year. A heron stands one-legged in the irrigation channel and does not look at her; the heron is a creature she has begun to feel a private fondness for, in the way that one feels a fondness for a neighbour who has chosen not to pry. Ahmed is still asleep in the house. She has not told him how early she rises now. He would worry, and she would have to explain something she does not yet know how to explain to herself."
+ cp_layla.11.a:0 "She walks the four corners."
+
+ # cp_layla.12 -- "Under the Bey's Eye" (serfdom restored)
+ cp_layla.12.t:0 "Under the Bey's Eye"
+ cp_layla.12.d:0 "The bey's overseer passes twice a day now. Once in the morning, once in the evening. Both times with a list."
+ cp_layla.12.f:0 "She does not look at the list and she does not look at him. She has learned, as all the women of the village have learned, to stand in a particular way while he is passing: the shoulders a little forward, the eyes on a fixed point at her own feet, the hands busy with something that cannot be interrupted. The something today is a basket she is plaiting from palm-fronds. The basket does not need to be plaited today. She plaits it anyway, because stopping would be to notice him, and to notice him is to be noticed back. The deed is folded in a clay pot behind a loose brick, and the brick is behind a sack of dhurra. She has not touched the brick in four months. Some things must be protected by being forgotten about, publicly, for a long time."
+ cp_layla.12.a:0 "She plaits until the sound of him fades."
+
+ # cp_layla.13 -- "A Day With No Wind" (always available)
+ cp_layla.13.t:0 "A Day With No Wind"
+ cp_layla.13.d:0 "The air is heavy this morning. No wind from the Nile, no wind from the desert. The palm-frond roof does not creak."
+ cp_layla.13.f:0 "A day with no wind is a day when the prayers go straight up, her grandmother used to say. Layla is not certain her grandmother believed it. She is not certain she believes it either. But she finds that she is praying, quietly, while she grinds the dhurra — not for anything in particular, not for rain and not against drought, not for a child and not against losing a child. She is praying only that whoever is listening today would listen a little longer. The hens are quiet in the courtyard. A neighbour's cat walks the top of the mud wall in a thoughtful way. The dust that has risen this morning will not settle until the afternoon. There will be dust on the bread if she is not careful. She is careful."
+ cp_layla.13.a:0 "She grinds, quietly."
+
+ # cp_layla.14 -- "The Neighbour's Boy in the Lane" (always available)
+ cp_layla.14.t:0 "The Neighbour's Boy in the Lane"
+ cp_layla.14.d:0 "The neighbour's boy is crying in the lane again. His mother is at the well."
+ cp_layla.14.f:0 "His grandmother died in the winter and there is no one in the house to pick him up. Layla listens for a long moment with her hands in the dough. The crying is the kind that is not about anything and will pass; the mother — Fatma, six months older than Layla, with the new baby who almost did not live — will be back in a quarter-hour. Layla does not go out. She knows that if Fatma returns and finds another woman holding her son, it will be a wound that does not heal the right way. But she leaves the dough and steps into the doorway, so that the boy, if he turns his head, will see that there is a face. Sometimes being seen is enough. He turns his head. She lifts her chin. He keeps crying; but he keeps crying at her, now, instead of at nothing."
+ cp_layla.14.a:0 "She stays in the doorway."
+
+ # cp_layla.15 -- "Her Mother's Left Hand" (always available)
+ cp_layla.15.t:0 "Her Mother's Left Hand"
+ cp_layla.15.d:0 "Her mother used to reach for bread with her left hand, always. The right hand was always busy."
+ cp_layla.15.f:0 "Stirring a pot, wiping a child's face, adjusting a scarf — the right hand was doing something more important. Layla has begun, without noticing, to reach with her left hand too. She notices today because the bread slips from her fingers and falls on the mat, and the mat is not clean, and she has to brush it off and re-examine it before it goes into her mouth. She thinks of her mother's hand. Her mother's hand is buried now, in the cemetery on the western edge of the village, under a rectangle of stones no larger than a loaf. Layla has not been to the grave since the forty-day mourning ended. She will go on Friday, she tells herself. She has been telling herself this every week for four years. This week too, she thinks, she will go. This week too, she will probably not."
+ cp_layla.15.a:0 "She eats the bread, left-handed."

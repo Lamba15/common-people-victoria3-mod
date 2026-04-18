@@ -1,0 +1,2667 @@
+
+Paradox Wikis
+Victoria 3 Wiki
+
+Search
+Search Victoria 3 Wiki
+Log in
+Navigation menu
+PageDiscussion
+ReadEditEdit sourceView history
+Victoria 3 Wiki
+Recent changes
+Random page
+Paradox Wikis
+- Main portal
+- Wikis discord
+- Contact us
+- Style guidelines
+V3 links
+- Forums
+- Game discord
+- Mods
+- Store
+- Twitch
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+Building
+Jump to navigationJump to search
+Please help with verifying or updating older sections of this article.
+At least some were last verified for version 1.10.
+
+Economy
+Buildings
+List of buildings • Unique buildings
+Companies • Flavored companies
+Market
+Goods • Needs
+Production methods
+List of production methods
+Treasury
+
+Ambox outdated info.png
+Please help with verifying or updating this image. It was last verified for version unknown.
+The buildings panel provides a detailed summary of the buildings in the player's country and their associated production methods.
+See also: List of buildings
+Buildings are the primary basis of a country's economy in Victoria 3. Buildings employ pops and typically produce goods; however, some buildings provide other benefits: such as prestige, Bureaucracy bureaucracy, or military units. Each building is located in a state, and its employees must live in that state. Each level of a building has an owner, which can be a government, the building's employees, a company, or SOL strata upper.png upper strata pops.
+
+Although called "buildings", they should be considered as industrial sectors, bureaucratic districts or similar – that is, a single level of a building does not represent a single factory, farm, or administrative office building, but a number of such.
+
+
+Contents
+1	Construction
+1.1	Building costs
+1.2	Construction efficiency
+2	Building groups
+2.1	Urbanization
+3	Managing buildings
+4	Throughput
+4.1	Economy of scale
+5	Productivity
+6	Ownership
+7	Companies
+8	Building production and employment
+8.1	Industry buildings
+8.2	Agricultural buildings
+8.3	Mines
+8.4	Plantations
+8.5	Military
+8.6	Urban center buildings
+8.7	Government buildings
+8.8	Misc resource buildings
+8.9	Private infrastructure
+8.10	Subsistence buildings
+8.11	Construction sector
+9	References
+Construction
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+Max weekly construction progress
+Source	Amount
+Base	+10
+Urbanization Urbanization	+10
+Urban Planning Urban Planning	+5
+Modern Sewerage Modern Sewerage	+5
+Steel-Frame Buildings Steel-Frame Buildings	+5
+Elevators Elevators	+5
+Tata company prosperity bonus	+10
+This section discusses the construction mechanic; for the power bloc principle of the same name, see Power bloc#Construction.
+State status construction.png Construction represents a country's ability to build new buildings, whether by government or private direction. Each country has a base of +10, but can construct additional Building construction sector.png construction sector buildings to gain more. A ruler with the character trait Trait engineer.png engineer also give +5 construction.
+
+Whenever any building is built or expanded, it goes into the construction queue – with the exception of auto-built buildings, such as urban centers and trade centers. The construction queue is split into government construction – using the national budget – and private construction – using the investment pool. The proportion of construction points allocated to each is based on the Economic System law. If either queue is not utilizing its full allocation of construction points, the other queue can automatically use them.
+
+Each regular constructible building has a construction cost, ranging from 100 to 800, with unique buildings costing 2500 and canals costing 5000. Each Monday construction points are added in order to buildings in the construction queue. Each country has a max weekly construction progress which limits the number of points added to a single building which can be increased by certain technologies. If the country has more construction points available than the max weekly construction progress limit next building in the queue receives the points up to the limit so on until no points remain.
+
+The government construction queue can be reordered at any time, prioritizing or deprioritizing a given building's construction. Government construction can also be paused and unpaused at any time. As long as a building remains in the construction queue, it retains its construction progress, but if it is removed from the queue, all progress is lost with no refund or transfer.
+
+Building costs
+The costs of running the construction sectors (both materials and labor) are the sole expenses when constructing. They can be seen in the budget under Construction Goods and Government Wages respectively. When buildings are constructed, the construction sector uses pop labor and goods, and the costs involved are subject to market forces. Construction sectors use Goods wood.png wood and Goods fabric.png fabric for the basic production method. Goods iron.png Iron, Goods steel.png steel, Goods glass.png glass and Goods explosives.png explosives are required for more advanced production methods. Private construction draws funds from the investment pool for the cost of goods only – the construction sector employees are still paid from the national budget – and private construction is paused if the investment pool does not have sufficient funds to pay for construction.
+
+Any excess construction each week is wasted. Wages must be paid regardless of whether the construction is used or not. However, excess construction does not require any goods. In general, one should always use the entire construction capacity outside of dire and temporary situations.
+
+Construction efficiency
+Construction efficiency is a modifier affecting the amount of construction points gained when building in a state. With no modifier to construction efficiency, each construction point provides one construction progress. Positive construction efficiency provides a bonus to the points assigned to a building in a queue. For example, if a state has +50% construction efficiency, then each construction point provides 1.5 construction progress. Conversely, a state with −50% construction efficiency would only gain 0.5 construction progress from each point of construction.
+
+Construction efficiency is modified by various sources:
+
+Local construction sectors increase construction efficiency in the state, with more advanced production methods providing more efficiency per level.
+The Road Maintenance Road Maintenance decree provides +10% construction efficiency.
+The power bloc principle
+Principle tier I.png
+Construction
+ Construction I provides +10% construction efficiency.
+Having surplus Bureaucracy Bureaucracy increases construction efficiency nationwide, up to +10% with 100% surplus bureaucracy.
+Certain state traits like mountains or deserts decrease local construction efficiency.
+State status unincorporated.png Unincorporated states have −20% local construction efficiency for most buildings, −50% for heavy industry, −30% for normal industry and government buildings. There is no construction efficiency malus for agriculture buildings, art academies and military buildings.
+State status turmoil.png Turmoil decreases construction efficiency in increasing severity.
+State status devastation.png Devastation decreases construction efficiency in direct proportion.
+The IG trade unions.png trade union trait IG trait work to rule.png work-to-rule decreases construction efficiency nationwide by −15%.
+Declaring bankruptcy decreases construction efficiency nationwide by −75%.
+Certain events can increase or decrease construction efficiency.
+Construction efficiency has a minimum of 5%[1].
+
+Building groups
+Each building belongs to one or more building groups. These groups represent related industries and are also used for various modifiers and triggers.
+
+These tables omit most groups which have the same name as the sole building contained within; groups containing a single building with a different name are indicated with hover text.
+
+Urban buildings
+Manufacturing industries	Service industries	Urban facilities
+Light industries	Heavy industries	Military industries	Arts Buildings	Ownership buildings
+Building food industries.png Food Industries
+Building textile mills.png Textile Mills
+Building furniture manufacturies.png Furniture Manufacturies
+Building glassworks.png Glassworks
+Building tooling workshops.png Tooling Workshops
+Building paper mills.png Paper Mills
+Building shipyards.png Shipyards
+Building fertilizer plant.png Fertilizer Plants
+Building explosives factory.png Explosives Factory
+Building synthetics plants.png Synthetics Plants
+Building steel mills.png Steel Mills
+Building motor industries.png Motor Industries
+Building automotive industries.png Automotive Industries
+Building electrics industries.png Electrics Industries
+Building arms industries.png Arms Industries
+Building artillery foundries.png Artillery Foundries
+Building military shipyards.png Military Shipyards
+Building munition plants.png Munition Plants
+Building urban center.png Urban Center
+Building arts academy.png Arts Academy
+Building manor houses.png Manor Houses
+Building financial districts.png Financial Districts
+Building company headquarter.png Company Headquarter
+Building regional company headquarter.png Regional Company Headquarter
+Rural buildings
+Agriculture	Ranches	Plantations	Extraction
+Staple crops	Subsistence agriculture	Mining
+Building vineyard.png Vineyard
+Building rye farms.png Rye Farms
+Building wheat farms.png Wheat Farms
+Building rice farms.png Rice Farms
+Building maize farms.png Maize Farms
+Building millet farms.png Millet Farms
+Building subsistence farm grain.png Subsistence Farms
+Building subsistence farm fruit.png Subsistence Orchards
+Building subsistence farm fish.png Subsistence Fishing Villages
+Building subsistence farm rice.png Subsistence Rice Paddies
+Building livestock ranches.png Livestock Ranches
+Building subsistence farm meat.png Subsistence Pastures
+Building coffee plantations.png Coffee Plantations
+Building cotton plantations.png Cotton Plantations
+Building dye plantations.png Dye Plantations
+Building opium plantations.png Opium Plantations
+Building tea plantations.png Tea Plantations
+Building tobacco plantations.png Tobacco Plantations
+Building sugar plantations.png Sugar Plantations
+Building banana plantations.png Banana Plantations
+Building silk plantations.png Silk Plantations
+Building coal mines.png Coal Mines
+Building iron mines.png Iron Mines
+Building lead mines.png Lead Mines
+Building sulfur mines.png Sulfur Mines
+Building gold mines.png Gold Mines
+Building gold fields.png Gold Fields
+Building logging camp.png Logging Camps
+Building rubber plantations.png Rubber Plantations
+Building fishing wharves.png Fishing Wharves
+Building whaling stations.png Whaling Stations
+Building oil rig.png Oil Rigs
+Development buildings
+Government structures	Infrastructure	Power plants	Military buildings
+Monuments	Private infrastructure	Public Infrastructure	Canals	Army buildings	Naval buildings
+Building university.png University
+Building government administration.png Government Administration
+Building skyscraper.png Skyscraper
+All monuments
+Building port.png Port
+Building railway.png Railway
+Building trade center.png Trade Center
+Building construction sector.png Construction Sector
+Building suez canal.png Suez Canal
+Building panama canal.png Panama Canal
+Building power plants.png Power Plants
+Building barracks.png Barracks
+Building conscription center.png Conscription Center
+Building naval base.png Naval Base
+Descriptively these groups represent various sectors of the economy:
+
+Urban – Urban buildings generally represent the sorts of work that takes place in Victorian cities. These are the industries that make finished goods, and centers of art and trade. Most urban buildings have no limit on their total levels and can be built in any state.
+Urban Centers – These represent the miscellaneous shops and small businesses that fill cities. Urban Centers are automatically created rather than built, with the number of levels based on the urbanization in a state; urbanization is generated by the state's other buildings. Urban Centers are the primary source of Goods services.png services but also produce infrastructure and transportation.
+Trade Centers – These represent the import/export businesses and brokers who manage international trading.
+Manufacturing industries – Manufacturing industries produce most goods: either finished goods for pop consumption, industrial goods such as Goods tools.png tools and Goods locomotives.png engines, or military goods such as Goods small arms.png small arms or Tanks tanks.
+Ownership buildings – These represent either aristocratic estates or capitalist financial firms which purchase ownership of other buildings and receive the dividends of profitable buildings.
+Rural – Rural buildings represent industries typically located outside a city, such as agriculture or mining. Rural buildings are typically limited to a set cap in each state, and no state can build every type.
+Agriculture – These represent industrialized farming. The number of agriculture buildings that can be built is limited by the amount of Arable land.png arable land in each state. Additionally, each state can host only certain types of crops.
+Plantations – These represent large scale cultivational of cash crops. The number of plantation buildings that can be built is limited by the amount of Arable land.png arable land in each state. Additionally, each state can host only certain types of crops.
+Ranches – These represent large scale livestock operations raising animals for meat and fabric and other byproducts such as fertilizer. The number of ranch buildings that can be built is limited by the amount of Arable land.png arable land in each state.
+Extraction – These represent the extraction of natural resources such as mines, logging, fishing, and whaling. Most goods produced here are used by urban industries. Resource industries are limited by the natural availability of the resource in the state.
+Subsistence buildings – These are a special type of inefficient building that cannot manually be built or destroyed, but rather appear anywhere in the world where there is unused Arable land.png arable land. The vast majority of the world's population starts the game working in subsistence buildings as Pop peasants.png peasants, and much of the game's industrialization process is about finding more productive employment for those peasants. Pops working in these buildings contribute little to GDP and taxes per capita.
+Development – These are buildings that provide vital state functions. These include government offices, universities, and military buildings.
+Military bases – barracks and naval bases hire and train the Military battalions.png battalions and Military flotillas.png flotillas that make up a country's standing army and navy. These buildings are limited based on the Army Model law for Barracks and technology for Naval Bases.
+Conscription centers – These represent a country's ability to levy its civilian population for war.
+Infrastructure – These are the ports and railways that connect the country. Ports are government funded, while railways may be privately owned or government run. Ports provide Military convoys.png convoys and a small amount of State status infrastructure.png infrastructure, while railways provide significant amounts of infrastructure and transportation.
+Government buildings – These are buildings funded by the government and provide crucial civil services required for the smooth running of a Victorian era nation. Examples include Government Administrations where Pop bureaucrats.png bureaucrats produce bureaucracy for the administration of incorporated states and institutions, and universities where Pop academics.png academics produce innovation for technological progression.
+Construction Sector – These are the construction firms which build other buildings. Once a Construction Sector has been built, they appear in the construction tab rather than the development tab.
+Canals – The Panama and Suez Canals. These can only be built in their historical locations and provide +100 prestige to their owner and +20% migration attraction to their state. They reduce the sea travel distance required for routes than go through them, saving a large number of convoys for trade and supply routes or travel time for fleets and armies.
+Monuments – Certain states across the world start with or can build unique buildings that historically existed in those states. Depending on the game rules, monuments may provide a unique effect, prestige, or simply bragging rights.
+Urbanization
+Urbanization represents the density of each state. Most buildings contribute between +5 and +20 urbanization per level. Initially, each 100 urbanization in a state creates one Building urban center.png Urban Center. This is reduced by Joint-Stock Companies Joint-Stock Companies (−10%), Investment Banks Investment Banks (−15%), and Corporate Governance Corporate Governance (−25%), such that eventually each 50 urbanization in a state creates one Urban Center.
+
+Managing buildings
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+See also: Production methods
+To ease the management of the different buildings (and their associated production methods) in the country, the player can refer to the buildings panel.
+
+The panel provides an overview of all buildings in the country, and allows the player to see at a glance how those industries are doing financially. The buildings are grouped by type and can be expanded to view the individual buildings in each state, and each building can be clicked on to get an in-depth view of its balance sheet and workforce. In addition, the panel allows adjusting the production methods of an individual building, or setting all production methods for a certain building type to a specific setting across the country.
+
+Predictive tooltips explain the anticipated impact on the building's balance as a result of changes in production, consumption, and wage requirements, as well as the changes in employment (which new job positions will be created and which will disappear) that could also impact the country's politics over time. A warning is provided if there are not enough qualifying pops to take on any new professions created, as this limits the building's ability to hire.
+
+Throughput
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+Throughput is a measure of how effectively a workforce can turn input goods into output goods. Both input and output goods are modified by the throughput percentage while required workers remains the same, increasing or decreasing the productivity of the building without changing its level or workforce. Positive throughput bonuses can help an industry reach its maximum profit potential, as additional wages are not necessary to achieve an increase in production.
+
+Throughput is positively modified by economy of scale, certain technologies, some state traits, the encourage industry decrees, use of prestige goods as input, certain interest group traits, and certain events. Companies provide a base of +20% throughput for their owned building levels, which is modified by the ratio of unowned building levels. Company-owned buildings gain additional throughput based on the country's prestige rank, up to +20% for the number one Great power.png great power.
+
+Throughput is negatively modified by State status devastation.png devastation, some state traits, going into default, input goods shortages, and certain events. All throughput modifiers stack additively with each other.
+
+Economy of scale
+All productive buildings (except subsistence farms) and many government buildings receive a +1% throughput bonus for each building level in the same state. The maximum economy of scale throughput bonus starts at +20% and is increased by the Mechanized Workshops Mechanized Workshops (+10%) and Shift Work Shift Work (+20%) technologies. An additional +10% maximum is added by the principle
+Principle tier III.png
+Transportation Infrastructure
+ Transportation Infrastructure III. And buildings owned by a company can gain another +10% if the Role executive.png executive has the trait Trait expert entrepreneur.png Expert Entrepreneur, scaled by the ratio of levels not owned by the company. The maximum economy of scale bonus possible is 70% (a level 70+ building).
+
+Productivity
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+Buildings that produce and sell goods of any kind have a displayed productivity value. This is the profit-per-employee generated by the building on an annual basis, before wages are paid. The productivity value is displayed in green when it is either over 30 or above 150% of the average for its type worldwide, or in red when it is either below 3 or below 66% of the average worldwide.
+
+The exact calculation of productivity is
+annual price of output
+−
+annual price of input
+number of employees
+{\displaystyle {\dfrac {{\text{annual price of output}}-{\text{annual price of input}}}{\text{number of employees}}}}
+
+The weekly balance can be derived by subtracting the average annual wage from productivity and then multiplying by (number of employees / 52)
+
+Ownership
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+Each building level has a certain owner. This can be a government, the building's employees, or an ownership building. Buildings which are always government funded can only be owned by the country that owns the state. Building levels owned by pops have ownership shares which entitle that pop to a proportion of a building's cash reserve and dividends. Pops become more Political radical.png radical if a building where they have ownership shares is downsized or has its cash reserve wiped out by the country declaring bankruptcy.
+
+When a building is profitable, a 25% to 50% of the profit is deposited into the building's cash reserves with the rest paid to the owners as dividends. Buildings with full cash reserves pay their entire weekly profit as dividends. Dividends are divided and paid per share. For example, a Building financial districts.png Financial Districts building with the Privately Owned production method has 10 shares for its Capitalist employees and 1 share for its Shopkeeper employees; thus the Shopkeepers receive 9.1% (1/11) of the building's dividends. Shares are per employee, so if there were 5 capitalists and 50 shopkeepers, the total dividend distribution would be 50:50 between the capitalists and shopkeepers.
+
+Under Cooperative Ownership Cooperative Ownership, building levels owned by the country's companies pay out 75% of their dividends to the workforce before passing the rest on to the company HQ.
+
+Most pop types contribute a portion of their dividends into the investment pool. Dividends paid to pops are also subject to dividends taxes on the full amount of paid dividends, regardless of how much is reinvested. Buildings owned by other buildings pay their dividends to the ownership buildings, which then pay dividends to their owner pops.
+
+Buildings owned by a government split dividends between the treasury and investment pool based on Government Dividend Reinvestment, which is determined by the country's Economic System law. The remaining dividends are then multiplied by Government Dividend Efficiency to determine the actual dividends paid to the government treasury; the base efficiency is 25% and can be modified by the Economic System law. For example if a country with Interventionism (50% Government Reinvestment and +25% Government Dividends Efficiency) has 1000 in dividends from government owned buildings 500 of that would be deposited into the Investment pool, then 50% of the remaining 500 would be deposited in the treasury, with the remaining 250 lost to the void.[2]
+
+Companies
+Main article: Companies
+Countries can establish companies which then can construct and own certain buildings. Buildings built by a company enjoy higher construction efficiency, and those owned by the company have higher throughput and potentially contribute to the company's prosperity to activate additional bonuses.
+
+Building production and employment
+For full details of buildings, see List of buildings; for full details of production methods, see List of production methods.
+Each level of a building produces and consumes certain amounts of goods while providing certain jobs based on the applied production methods. Production methods are applied to all levels of a building in a state. Only the owner of a state can change the PMs, regardless of percentage of foreign ownership.
+
+Industry buildings
+Food Industries production and employment per level
+Building
+Output goods	Base PM group 1	Base PM group 2	Refining PM group	Automation PM group
+Food Industries
+Goods groceries.png Groceries
+Liquor Liquor	Base	Canning	Distilleries	Automation
+Bakeries
+Goods groceries.png +45
+Goods grain.png −40
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Jars
+—	Prioritize Grocery Production
+—	Manual Dough Processing
+—
+Sweeteners
+Goods groceries.png +65
+Goods grain.png −40
+Goods sugar.png −15
+Pop shopkeepers.png +500
+Pop laborers.png +4000
+Pop machinists.png +500
+Canned Fish/Meat
+Goods groceries.png +30
+Goods grain.png +20
+Goods iron.png −10
+Pop machinists.png +500
+Goods fish.png −30 / Goods meat.png −20
+
+Pot Stills
+Liquor +60
+Goods groceries.png −30
+Goods sugar.png −25
+Pop shopkeepers.png +100
+Pop machinists.png +250
+Automated Bakery
+Goods tools.png −10 • Pop laborers.png −2500
+Baking Powder
+Goods groceries.png +120
+Goods grain.png −80
+Goods sugar.png −30
+
+Pop shopkeepers.png +500
+Pop laborers.png +3500
+Pop machinists.png +750
+Pop engineers.png +250
+Vacuum Packaging
+(Efficient Canning Practices)
+Goods groceries.png +60 (+70)
+Goods grain.png +30
+Goods fish.png −30
+Goods meat.png −20
+Goods iron.png −10
+Goods oil.png −5
+Pop machinists.png +500
+Pop engineers.png +200
+Patent Stills
+Liquor +100
+Goods groceries.png −40
+Goods sugar.png −25
+Goods glass.png −10
+Pop shopkeepers.png +200
+Pop machinists.png +500
+Pop engineers.png +200
+Industry production and employment per level
+Building
+Output goods	Base PM group	Refining PM group	Automation PM group
+Textile Mills
+Goods clothes.png Clothes
+Goods luxury clothes.png Luxury Clothes	Base	Luxury Production	Automation
+Handsewn Clothes
+Goods clothes.png +45
+Goods fabric.png −40
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Prioritize Non-Luxury Clothing
+—	Traditional Looms
+—
+Dye Workshops
+Goods clothes.png +60
+Goods fabric.png −40
+Goods dye.png −5
+Pop shopkeepers.png +500
+Pop laborers.png +4000
+Pop machinists.png +500
+Craftsman Sewing
+Goods clothes.png −30
+
+Goods luxury clothes.png +30
+Goods silk.png −15
+Goods fabric.png +15
+Pop shopkeepers.png +500
+Mechanized Looms
+Goods tools.png −5
+Pop laborers.png −1500
+Sewing Machines
+Goods clothes.png +100
+Goods fabric.png −60
+Goods dye.png −10
+Goods tools.png −5
+Pop shopkeepers.png +500
+Pop laborers.png +3500
+Pop machinists.png +750
+Pop engineers.png +250
+Elastics
+Goods clothes.png −70
+Goods luxury clothes.png +70
+Goods rubber.png −10
+Goods silk.png −35
+Goods fabric.png +35
+Pop shopkeepers.png +1000
+Automatic Power Looms
+Goods tools.png −5 • Goods electricity.png −10
+Pop laborers.png −2500
+Electric Sewing Machines
+Goods clothes.png +140
+Goods fabric.png −60
+Goods dye.png −20
+Goods tools.png −10
+Goods electricity.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Furniture Manufacturies
+Goods furniture.png Furniture
+Goods luxury furniture.png Luxury Furniture	Base	Luxury Production	Automation
+Handcrafted Furniture
+Goods furniture.png +45
+Goods wood.png −30
+Goods fabric.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Prioritize Non-Luxury Furniture
+—	Hand Assembly
+—
+Lathes
+Goods furniture.png +65
+Goods wood.png −30
+Goods fabric.png −10
+Goods tools.png −5
+Pop shopkeepers.png +500
+Pop laborers.png +3250
+Pop machinists.png +1000
+Pop engineers.png +250
+Luxury Furniture Production
+Goods furniture.png −25
+Goods luxury furniture.png +25
+Goods hardwood.png −15
+Goods wood.png +15
+Pop shopkeepers.png +500
+Water-tube Boiler
+Goods tools.png −5 • Goods coal.png −5
+Pop laborers.png −1500
+Rotary Valve Engine
+Goods tools.png −5 • Goods coal.png −10
+Pop laborers.png −2000
+Mechanized Workshops
+Goods furniture.png +110
+Goods wood.png −50
+Goods fabric.png −10
+Goods tools.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1250
+Pop engineers.png +750
+Precision Tools
+Goods furniture.png −55
+Goods luxury furniture.png +55
+Goods hardwood.png −25
+Goods tools.png −10
+Goods wood.png +25
+Pop shopkeepers.png +1000
+Assembly Lines
+Goods tools.png −5
+Goods oil.png −5
+Goods electricity.png −5
+Pop laborers.png −3000
+Glassworks
+Goods glass.png Glass
+Goods porcelain.png Porcelain	Base	Luxury Production	Glassblowing
+Forest Glass
+Goods glass.png +30
+Goods wood.png −30
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Prioritize Glass Production
+—	Manual Glassblowing
+—
+Leaded Glass
+Goods glass.png +40
+Goods wood.png −20
+Goods lead.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +4000
+Pop machinists.png +500
+Ceramics
+Goods glass.png −10
+Goods porcelain.png +10
+Goods dye.png −5
+Pop shopkeepers.png +250
+Automatic Bottle Blowers
+Goods tools.png −2
+Goods locomotives.png −2
+Goods oil.png −5
+Pop laborers.png −2500
+Crystal Glass
+Goods glass.png +60
+Goods lead.png −35
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Bone China
+Goods glass.png −20
+Goods porcelain.png +30
+Goods dye.png −10
+Pop shopkeepers.png +500
+Houseware Plastics
+Goods glass.png +100
+Goods oil.png −20
+Goods lead.png −30
+Pop shopkeepers.png +500
+Pop laborers.png +2500
+Pop machinists.png +1250
+Pop engineers.png +750
+Tooling Workshops
+Goods tools.png Tools	Base	N/A	Automation
+Crude Tools
+Goods tools.png +30
+Goods wood.png −30
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Hand Assembly
+—
+Pig Iron Tools
+Goods tools.png +60
+Goods wood.png −30
+Goods iron.png −20
+Pop shopkeepers.png +500
+Pop laborers.png +4000
+Pop machinists.png +500
+Water-tube Boiler
+Goods coal.png −10
+Pop laborers.png −1500
+Steel Tools
+Goods tools.png +80
+Goods wood.png −30
+Goods steel.png −20
+Pop shopkeepers.png +500
+Pop laborers.png +3500
+Pop machinists.png +500
+Pop engineers.png +500
+Rotary Valve Engine
+Goods coal.png −15
+Pop laborers.png −2000
+Machined Steel Tools
+Goods tools.png +110
+Goods rubber.png −10
+Goods steel.png −30
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Assembly Lines
+Goods oil.png −10 • Goods electricity.png −5
+Pop laborers.png −3000
+Paper Mills
+Goods paper.png Paper	Base	N/A	Automation
+Pulp Pressing
+Goods paper.png +40
+Goods wood.png −30
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Hand Assembly
+—
+Sulfite Pulping
+Goods paper.png +70
+Goods wood.png −30
+Goods sulfur.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +4000
+Pop machinists.png +500
+Water-tube Boiler
+Goods tools.png −5 • Goods coal.png −5
+Pop laborers.png −1500
+Paper Bleaching
+Goods paper.png +100
+Goods wood.png −30
+Goods sulfur.png −10
+Goods dye.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Rotary Valve Engine
+Goods tools.png −5 • Goods coal.png −10
+Pop laborers.png −2000
+Fertilizer Plants
+Goods fertilizer.png Fertilizer	Fertilizer Production	N/A	N/A
+Artificial Fertilizers
+Goods fertilizer.png +90
+Goods sulfur.png −30
+Goods iron.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Improved Fertilizers
+Goods fertilizer.png +140
+Goods sulfur.png −30
+Goods iron.png −30
+Pop shopkeepers.png +500
+Pop laborers.png +2000
+Pop machinists.png +1500
+Pop engineers.png +1000
+Nitrogen Fixation Process
+Goods fertilizer.png +200
+Goods sulfur.png −40
+Goods oil.png −20
+Goods iron.png −30
+Pop shopkeepers.png +500
+Pop laborers.png +1000
+Pop machinists.png +2000
+Pop engineers.png +1500
+Explosives Factory
+Goods explosives.png Explosives	Explosives	N/A	N/A
+Leblanc Process
+Goods explosives.png +50
+Goods fertilizer.png −20
+Goods sulfur.png −20
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Ammonia-soda Process
+Goods explosives.png +80
+Goods fertilizer.png −30
+Goods sulfur.png −30
+Goods paper.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +2500
+Pop machinists.png +1000
+Pop engineers.png +1000
+Vacuum Evaporation
+Goods explosives.png +110
+Goods fertilizer.png −40
+Goods sulfur.png −40
+Goods paper.png −20
+Pop shopkeepers.png +500
+Pop laborers.png +2000
+Pop machinists.png +1000
+Pop engineers.png +1000
+Brine Electrolysis
+Goods explosives.png +150
+Goods fertilizer.png −50
+Goods sulfur.png −40
+Goods electricity.png −20
+Goods paper.png −30
+Pop shopkeepers.png +500
+Pop laborers.png +1000
+Pop machinists.png +1000
+Pop engineers.png +1500
+Synthetics Plants
+Goods dye.png Dye
+Goods silk.png Silk	Synthetic Dyes	Synthetic Silk	N/A
+Synthetic Dye
+Goods dye.png +80
+Goods sulfur.png −20
+Goods fertilizer.png −30
+
+Pop laborers.png +1000
+Pop shopkeepers.png +500
+Pop machinists.png +1500
+Pop engineers.png +2000
+Prioritize Dye Production
+—
+Rayon
+Goods dye.png −10
+Goods silk.png +30
+Goods wood.png −10
+Pop laborers.png −1000
+Pop machinists.png +1000
+Steel Mills
+Goods steel.png Steel	Steelmaking Process	N/A	Automation
+Blister Steel Process
+Goods steel.png +65
+Goods iron.png −40
+Goods coal.png −30
+
+Pop shopkeepers.png +500
+Pop laborers.png +3500
+Pop machinists.png +750
+Pop engineers.png +250
+Hand Assembly
+—
+Bessemer Process
+Goods steel.png +90
+Goods iron.png −60
+Goods coal.png −30
+
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Water-tube Boiler
+Goods tools.png −5 • Goods coal.png −5 • Pop laborers.png −1500
+Open Hearth Process
+Goods steel.png +120
+Goods iron.png −90
+Goods coal.png −30
+
+Pop shopkeepers.png +500
+Pop laborers.png +2500
+Pop machinists.png +1250
+Pop engineers.png +750
+Rotary Valve Engine
+Goods tools.png −5 • Goods coal.png −10 • Pop laborers.png −2000
+Electric Arc Process
+Goods steel.png +150
+Goods iron.png −100
+Goods coal.png −30
+Goods electricity.png −30
+Pop shopkeepers.png +500
+Pop laborers.png +2000
+Pop machinists.png +1500
+Pop engineers.png +1000
+Motor Industries
+Goods locomotives.png Engines	Base	N/A	Automation
+Steam Engines
+Goods locomotives.png +40
+Goods steel.png −30
+Pop shopkeepers.png +500
+Pop laborers.png +2500
+Pop machinists.png +1500
+Pop engineers.png +500
+Hand Assembly
+—
+Electric Engines
+Goods locomotives.png +80
+Goods steel.png −40
+Goods electricity.png −30
+
+Pop shopkeepers.png +500
+Pop laborers.png +2000
+Pop machinists.png +1500
+Pop engineers.png +1000
+Water-tube Boiler
+Goods tools.png −5
+Goods coal.png −5
+Pop laborers.png −500
+Pop machinists.png −500
+Rotary Valve Engine
+Goods tools.png −5
+Goods coal.png −10
+Pop laborers.png −1000
+Pop machinists.png −500
+Diesel Engines
+Goods locomotives.png +120
+Goods steel.png −50
+Goods oil.png −50
+
+Pop shopkeepers.png +500
+Pop laborers.png +1500
+Pop machinists.png +1500
+Pop engineers.png +1500
+Assembly Lines
+Goods tools.png −5
+Goods oil.png −5
+Goods electricity.png −5
+Pop laborers.png −1500
+Pop machinists.png −500
+Shipyards
+Goods steamers.png Steamers
+Goods clippers.png Clippers	Base	N/A	N/A
+Wooden Ships
+Goods clippers.png +35
+Goods wood.png −40
+Goods fabric.png −20
+
+Pop shopkeepers.png +500
+Pop laborers.png +3500
+Pop machinists.png +750
+Pop engineers.png +250
+Reinforced Wooden Ships
+Goods clippers.png +70
+Goods wood.png −20
+Goods hardwood.png −20
+Goods fabric.png −20
+Goods locomotives.png −5
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Steamships
+Goods steamers.png +65
+Goods steel.png −30
+Goods coal.png −10
+Goods locomotives.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +2000
+Pop machinists.png +1500
+Pop engineers.png +1000
+Arc-Welded Steamships
+Goods steamers.png +80
+Goods steel.png −30
+Goods electricity.png −30
+Goods locomotives.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +1000
+Pop machinists.png +2000
+Pop engineers.png +1500
+Military Shipyards
+Man-o-Wars Man-o-Wars
+Ironclads Ironclads	Base	N/A	N/A
+Wooden Hulls
+Man-o-Wars +35
+Goods wood.png −40
+Goods fabric.png −20
+Goods iron.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +3500
+Pop machinists.png +750
+Pop engineers.png +250
+Steam Ships
+Man-o-Wars +45
+Goods wood.png −20
+Goods hardwood.png −20
+Goods fabric.png −10
+Goods locomotives.png −5
+Goods iron.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Steel Hulls
+Ironclads +55
+Goods steel.png −40
+Goods coal.png −20
+Goods locomotives.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +2500
+Pop machinists.png +1000
+Pop engineers.png +1000
+Capital Ships
+Ironclads +70
+Goods steel.png −40
+Goods electricity.png −30
+Goods locomotives.png −20
+Pop shopkeepers.png +500
+Pop laborers.png +2000
+Pop machinists.png +1500
+Pop engineers.png +1000
+Electrics Industries
+Goods telephones.png Telephones
+Goods radios.png Radios	Telephones	Radios	N/A
+Telephone Production
+Goods telephones.png +60
+Goods iron.png −20
+Goods rubber.png −20
+Goods lead.png −20
+Goods tools.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +1500
+Pop machinists.png +2000
+Pop engineers.png +1000
+Prioritize Telephone Production
+—
+Radio Production
+Goods telephones.png −20
+Goods radios.png +40
+Goods electricity.png −50
+Pop engineers.png +500
+Arms Industries
+Goods small arms.png Small Arms	Firearms Manufacturing	N/A	Automation
+Muskets
+Goods small arms.png +30
+Goods iron.png −10
+Goods hardwood.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Pop machinists.png +500
+Hand Assembly
+—
+Rifles
+Goods small arms.png +50
+Goods steel.png −10
+Goods hardwood.png −10
+Goods tools.png −5
+Pop shopkeepers.png +500
+Pop laborers.png +4000
+Pop machinists.png +1000
+Rotary Valve Engine
+Goods coal.png −15
+Pop laborers.png −2000
+Repeating Rifles
+Goods small arms.png +70
+Goods steel.png −20
+Goods hardwood.png −10
+Goods tools.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +3500
+Pop machinists.png +1000
+Pop engineers.png +500
+Assembly Lines
+Goods oil.png −10 • Goods electricity.png −5
+Pop laborers.png −3000
+Bolt Action Rifles
+Goods small arms.png +100
+Goods steel.png −20
+Goods hardwood.png −10
+Goods tools.png −20
+Goods oil.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1250
+Pop engineers.png +750
+Artillery Foundry
+Artillery Artillery	Foundries	N/A	Automation
+Cannons
+Artillery +25
+Goods iron.png −15
+Goods hardwood.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +3500
+Pop machinists.png +1000
+Hand Assembly
+—
+Smoothbores
+Artillery +45
+Goods iron.png −25
+Goods hardwood.png −15
+
+Pop shopkeepers.png +500
+Pop laborers.png +3250
+Pop machinists.png +1000
+Pop engineers.png +250
+Rotary Valve Engine
+Goods coal.png −15
+Pop laborers.png −2000
+Breech Loaders
+Artillery +65
+Goods steel.png −25
+Goods hardwood.png −10
+Goods tools.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +2500
+Pop machinists.png +1500
+Pop engineers.png +500
+Assembly Lines
+Goods oil.png −10 • Goods electricity.png −5
+Pop laborers.png −2500
+Recoil Mechanisms
+Artillery +90
+Goods steel.png −40
+Goods tools.png −20
+Goods oil.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +2000
+Pop machinists.png +1500
+Pop engineers.png +1000
+Munition Plants
+Goods ammunition.png Ammunition	Base	N/A	Automation
+Percussion Caps
+Goods ammunition.png +50
+Goods explosives.png −20
+Goods lead.png −20
+
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Hand Assembly
+—
+Rotary Valve Engine
+Goods coal.png −15
+Pop laborers.png −2000
+Explosive Shells
+Goods ammunition.png +90
+Goods explosives.png −40
+Goods lead.png −30
+
+Pop shopkeepers.png +500
+Pop laborers.png +2500
+Pop machinists.png +1250
+Pop engineers.png +750
+Assembly Lines
+Goods oil.png −10 • Goods electricity.png −5
+Pop laborers.png −3000
+Automotive Industries production and employment per level
+Automotive Industries
+Goods automobiles.png Automobiles
+Goods aeroplanes.png Aeroplanes
+Tanks Tanks	Automobiles	Aeroplanes	Tanks	Automation
+Automobile Production
+Goods automobiles.png +30
+Goods locomotives.png −10
+Goods rubber.png −5
+Goods oil.png −5
+Pop shopkeepers.png +500
+Pop laborers.png +2000
+Pop machinists.png +1500
+Pop engineers.png +1000
+No Aeroplane Production
+—	No Tank Production
+—	Hand Assembly
+—
+Mass Production
+Goods automobiles.png +50
+Goods locomotives.png −10
+Goods rubber.png −10
+Goods oil.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +1500
+Pop machinists.png +1500
+Pop engineers.png +1500
+Aeroplane Production
+Goods aeroplanes.png +10
+Goods automobiles.png −10
+Goods hardwood.png −4
+Goods fabric.png −4
+Pop engineers.png +250
+Tank Production
+Tanks +20
+Goods automobiles.png −20
+Goods steel.png −5
+Pop engineers.png +250
+Assembly Lines
+Goods tools.png −5
+Goods oil.png −5
+Goods electricity.png −5
+Pop laborers.png −1500
+Agricultural buildings
+Farm production and employment per level
+Farms
+Output goods	Base PM group	Refining PM group	Automation PM group
+Rye Farms
+Goods grain.png Grain
+Goods fruit.png Fruit
+Goods sugar.png Sugar
+Liquor Liquor	Base	Secondary	Harvesting Process
+Simple Farming
+Goods grain.png +20
+
+Pop laborers.png +4000
+Pop farmers.png +1000
+Maintain Single Crop
+—	Ox-Powered Ploughs
+—
+Soil-Enriching Farming
+Goods grain.png +30
+Goods fertilizer.png −5
+Pop laborers.png +3500
+Pop farmers.png +1500
+Potatoes
+Goods grain.png −10 • Liquor +10	Harvesting Tools
+Goods tools.png −2 • Pop laborers.png −1000
+Fertilizers
+Goods grain.png +45
+Goods fertilizer.png −10
+Pop laborers.png +3000
+Pop farmers.png +2000
+Apple Orchards
+Goods grain.png −8 • Goods fruit.png +7 • Goods sugar.png +1	Steam-Powered Thresher Machines
+Goods tools.png −2 • Goods coal.png −1 • Pop laborers.png −1500
+Chemical Fertilizers
+Goods grain.png +60
+Goods fertilizer.png −15
+Pop laborers.png +2500
+Pop farmers.png +2500
+Sugar Beets
+Goods grain.png −5 • Goods sugar.png +4	Tractors
+Goods coal.png −2 • Goods locomotives.png −1 • Pop laborers.png −2000
+Compression Ignition Tractors
+Goods oil.png −2 • Goods locomotives.png −1 • Pop laborers.png −2500
+Wheat Farms
+Goods grain.png Grain
+Goods fruit.png Fruit
+Goods sugar.png Sugar	Base	Secondary	Harvesting Process
+Simple Farming
+Goods grain.png +20
+
+Pop laborers.png +4000
+Pop farmers.png +1000
+Maintain Single Crop
+—	Ox-Powered Ploughs
+—
+Soil-Enriching Farming
+Goods grain.png +30
+Goods fertilizer.png −5
+Pop laborers.png +3500
+Pop farmers.png +1500
+Citrus Orchards
+Goods grain.png −8 • Goods fruit.png +7 • Goods sugar.png +1	Harvesting Tools
+Goods tools.png −2 • Pop laborers.png −1000
+Fertilizers
+Goods grain.png +45
+Goods fertilizer.png −10
+Pop laborers.png +3000
+Pop farmers.png +2000
+Sugar Beets
+Goods grain.png −5 • Goods sugar.png +4	Steam-Powered Thresher Machines
+Goods tools.png −2 • Goods coal.png −1 • Pop laborers.png −1500
+Chemical Fertilizers
+Goods grain.png +60
+Goods fertilizer.png −15
+Pop laborers.png +2500
+Pop farmers.png +2500
+Tractors
+Goods coal.png −2 • Goods locomotives.png −1 • Pop laborers.png −2000
+Compression Ignition Tractors
+Goods oil.png −2 • Goods locomotives.png −1 • Pop laborers.png −2500
+Rice Farms
+Goods grain.png Grain
+Goods fruit.png Fruit
+Goods sugar.png Sugar	Base	Secondary	Harvesting Process
+Simple Farming
+Goods grain.png +35
+
+Pop laborers.png +8000
+Pop farmers.png +2000
+Maintain Single Crop
+—	Ox-Powered Ploughs
+—
+Soil-Enriching Farming
+Goods grain.png +50
+Goods fertilizer.png −10
+Pop laborers.png +7000
+Pop farmers.png +3000
+Fig Orchards
+Goods grain.png −20 • Goods fruit.png +15 • Goods sugar.png +2	Harvesting Tools
+Goods tools.png −4 • Pop laborers.png −2000
+Fertilizers
+Goods grain.png +75
+Goods fertilizer.png −20
+Pop laborers.png +6000
+Pop farmers.png +4000
+Steam-Powered Thresher Machines
+Goods tools.png −4 • Goods coal.png −2 • Pop laborers.png −3000
+Chemical Fertilizers
+Goods grain.png +100
+Goods fertilizer.png −30
+Pop laborers.png +5000
+Pop farmers.png +5000
+Maize Farms
+Goods grain.png Grain
+Goods fruit.png Fruit
+Goods sugar.png Sugar	Base	Secondary	Harvesting Process
+Simple Farming
+Goods grain.png +20
+
+Pop laborers.png +4000
+Pop farmers.png +1000
+Maintain Single Crop
+—	Ox-Powered Ploughs
+—
+Soil-Enriching Farming
+Goods grain.png +30
+Goods fertilizer.png −5
+Pop laborers.png +3500
+Pop farmers.png +1500
+Citrus Orchards
+Goods grain.png −8 • Goods fruit.png +7 • Goods sugar.png +1	Harvesting Tools
+Goods tools.png −2 • Pop laborers.png −1000
+Fertilizers
+Goods grain.png +45
+Goods fertilizer.png −10
+Pop laborers.png +3000
+Pop farmers.png +2000
+Steam-Powered Thresher Machines
+Goods tools.png −2 • Goods coal.png −1 • Pop laborers.png −1500
+Chemical Fertilizers
+Goods grain.png +60
+Goods fertilizer.png −15
+Pop laborers.png +2500
+Pop farmers.png +2500
+Tractors
+Goods coal.png −2 • Goods locomotives.png −1 • Pop laborers.png −2000
+Compression Ignition Tractors
+Goods oil.png −2 • Goods locomotives.png −1 • Pop laborers.png −2500
+Millet Farms
+Goods grain.png Grain
+Goods fruit.png Fruit
+Goods sugar.png Sugar	Base	Secondary	Harvesting Process
+Simple Farming
+Goods grain.png +20
+
+Pop laborers.png +4000
+Pop farmers.png +1000
+Maintain Single Crop
+—	Ox-Powered Ploughs
+—
+Soil-Enriching Farming
+Goods grain.png +30
+Goods fertilizer.png −5
+Pop laborers.png +3500
+Pop farmers.png +1500
+Fig Orchards
+Goods grain.png −8 • Goods fruit.png +7 • Goods sugar.png +1	Harvesting Tools
+Goods tools.png −2 • Pop laborers.png −1000
+Fertilizers
+Goods grain.png +45
+Goods fertilizer.png −10
+Pop laborers.png +3000
+Pop farmers.png +2000
+Steam-Powered Thresher Machines
+Goods tools.png −2 • Goods coal.png −1 • Pop laborers.png −1500
+Chemical Fertilizers
+Goods grain.png +60
+Goods fertilizer.png −15
+Pop laborers.png +2500
+Pop farmers.png +2500
+Tractors
+Goods coal.png −2 • Goods locomotives.png −1 • Pop laborers.png −2000
+Compression Ignition Tractors
+Goods oil.png −2 • Goods locomotives.png −1 • Pop laborers.png −2500
+Ranch production and employment per level
+Ranch
+Output goods	Base PM group 1	Base PM group 2	Automation PM group 1	Automation PM group 2
+Livestock Ranches
+Goods meat.png Meat
+Goods fabric.png Fabric
+Goods fertilizer.png Fertilizer	Base	Wool Production	Fencing	Refrigeration
+Open Air Stockyards
+Goods meat.png +10
+Pop laborers.png +4000
+Pop farmers.png +1000
+Sheep Ranch
+Goods fabric.png +5	Standard Fences
+—	Unrefrigerated
+—
+Butchering Tools
+Goods meat.png +15
+Goods tools.png −2
+
+Pop laborers.png +4000
+Pop farmers.png +1000
+Increased Wool Gathering
+Goods fabric.png +15
+Goods fertilizer.png +2.5
+Goods grain.png −10
+Barbed Wire Fences
+Goods iron.png −1 • Pop laborers.png −500	Refrigerated Storage
+Goods electricity.png −1 • Pop laborers.png −500
+Slaughterhouses
+Goods meat.png +25
+Goods tools.png −5
+
+Pop laborers.png +3750
+Pop farmers.png +1000
+Pop machinists.png +250
+Intensive Wool Gathering
+Goods fabric.png +25
+Goods fertilizer.png +5
+Goods grain.png −15
+Electric Fences
+Goods iron.png −1 • Goods electricity.png −1 • Pop laborers.png −1000	Refrigerated Rail Cars
+Goods electricity.png −1 • Goods transportation.png −1 • Pop laborers.png −1000
+Mechanized Slaughterhouses
+Goods meat.png +35
+Goods tools.png −5
+Goods coal.png −5
+Pop laborers.png +3500
+Pop farmers.png +1000
+Pop machinists.png +500
+Vineyard production and employment per level
+Building
+Output goods	Base PM group	Automation PM group
+Vineyard
+Goods wine.png Wine	Base	Train Automation
+Basic Production
+Goods wine.png +20
+
+Pop laborers.png +4000
+Pop farmers.png +1000
+Road Carts
+—
+Automatic Irrigation
+Goods wine.png +40
+Goods locomotives.png −5
+
+Pop laborers.png +3000
+Pop farmers.png +1500
+Pop machinists.png +500
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Mines
+Mine production and employment per level
+Building
+Output goods	Base PM group 1	Base PM group 2	Automation PM group 1	Automation PM group 2
+Coal Mines
+Goods coal.png Coal	Mining Equipment	Explosives	Steam Automation	Train Automation
+Picks and Shovels
+Goods coal.png +25
+Goods tools.png −5
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Manual Drilling
+—	Hand Cranked Crane
+—	Road Carts
+—
+Atmospheric Engine Pump
+Goods coal.png +40
+Goods tools.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +3750
+Pop machinists.png +500
+Pop engineers.png +250
+Nitroglycerin
+Goods coal.png +15 • Goods explosives.png −5 • Pop engineers.png +250	Steam Donkey
+Goods locomotives.png −1 • Goods coal.png −3 • Pop laborers.png −1000	Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Condensing Engine Pump
+Goods coal.png +60
+Goods tools.png −15
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Dynamite
+Goods coal.png +25 • Goods explosives.png −10 • Pop engineers.png +250
+Diesel Pump
+Goods coal.png +90
+Goods tools.png −15
+Goods oil.png −5
+Pop shopkeepers.png +500
+Pop laborers.png +2250
+Pop machinists.png +1500
+Pop engineers.png +750
+Iron Mines
+Goods iron.png Iron	Mining Equipment	Explosives	Steam Automation	Train Automation
+Picks and Shovels
+Goods iron.png +20
+Goods tools.png −5
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Manual Drilling
+—	Hand Cranked Crane
+—	Road Carts
+—
+Atmospheric Engine Pump
+Goods iron.png +40
+Goods tools.png −10
+Goods coal.png −10
+
+Pop shopkeepers.png +500
+Pop laborers.png +3750
+Pop machinists.png +500
+Pop engineers.png +250
+Nitroglycerin
+Goods iron.png +12 • Goods explosives.png −5 • Pop engineers.png +250	Steam Donkey
+Goods locomotives.png −1 • Goods coal.png −4 • Pop laborers.png −1000	Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Condensing Engine Pump
+Goods iron.png +60
+Goods tools.png −15
+Goods coal.png −15
+
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Dynamite
+Goods iron.png +20 • Goods explosives.png −10 • Pop engineers.png +250
+Diesel Pump
+Goods iron.png +70
+Goods tools.png −15
+Goods oil.png −5
+
+Pop shopkeepers.png +500
+Pop laborers.png +2250
+Pop machinists.png +1500
+Pop engineers.png +750
+Lead Mines
+Goods lead.png Lead	Mining Equipment	Explosives	Steam Automation	Train Automation
+Picks and Shovels
+Goods lead.png +20
+Goods tools.png −5
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Manual Drilling
+—	Hand Cranked Crane
+—	Road Carts
+—
+Atmospheric Engine Pump
+Goods lead.png +40
+Goods tools.png −10
+Goods coal.png −10
+
+Pop shopkeepers.png +500
+Pop laborers.png +3750
+Pop machinists.png +500
+Pop engineers.png +250
+Nitroglycerin
+Goods lead.png +12 • Goods explosives.png −5 • Pop engineers.png +250	Steam Donkey
+Goods locomotives.png −1 • Goods coal.png −4 • Pop laborers.png −1000	Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Condensing Engine Pump
+Goods lead.png +60
+Goods tools.png −15
+Goods coal.png −15
+
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Dynamite
+Goods lead.png +20 • Goods explosives.png −10 • Pop engineers.png +250
+Diesel Pump
+Goods lead.png +70
+Goods tools.png −15
+Goods oil.png −5
+
+Pop shopkeepers.png +500
+Pop laborers.png +2250
+Pop machinists.png +1500
+Pop engineers.png +750
+Sulfur Mines
+Goods sulfur.png Sulfur	Mining Equipment	Explosives	Steam Automation	Train Automation
+Picks and Shovels
+Goods sulfur.png +20
+Goods tools.png −5
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Manual Drilling
+—	Hand Cranked Crane
+—	Road Carts
+—
+Atmospheric Engine Pump
+Goods sulfur.png +40
+Goods tools.png −10
+Goods coal.png −10
+
+Pop shopkeepers.png +500
+Pop laborers.png +3750
+Pop machinists.png +500
+Pop engineers.png +250
+Nitroglycerin
+Goods sulfur.png +10 • Goods explosives.png −5 • Pop engineers.png +250	Steam Donkey
+Goods locomotives.png −1 • Goods coal.png −4 • Pop laborers.png −1000	Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Condensing Engine Pump
+Goods sulfur.png +60
+Goods tools.png −15
+Goods coal.png −15
+
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Dynamite
+Goods sulfur.png +20 • Goods explosives.png −10 • Pop engineers.png +250
+Diesel Pump
+Goods sulfur.png +80
+Goods tools.png −15
+Goods oil.png −5
+
+Pop shopkeepers.png +500
+Pop laborers.png +2250
+Pop machinists.png +1500
+Pop engineers.png +750
+Gold Mines
+Goods gold.png Gold	Mining Equipment	Explosives	Steam Automation	Train Automation
+Picks and Shovels
+Goods gold.png +8
+Goods tools.png −5
+Minting +250
+Pop shopkeepers.png +250
+Pop laborers.png +4500
+Manual Drilling
+—	Hand Cranked Crane
+—	Road Carts
+—
+Atmospheric Engine Pump
+Goods gold.png +15
+Goods tools.png −10
+Goods coal.png −10
+Minting +500
+Pop shopkeepers.png +500
+Pop laborers.png +3750
+Pop machinists.png +500
+Pop engineers.png +250
+Nitroglycerin
+Goods gold.png +5
+Goods explosives.png −5
+Minting +125
+Pop engineers.png +250
+Steam Donkey
+Goods locomotives.png −1 • Goods coal.png −4 • Pop laborers.png −1000	Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Condensing Engine Pump
+Goods gold.png +25
+Goods tools.png −15
+Goods coal.png −15
+Minting +750
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Dynamite
+Goods gold.png +10
+Goods explosives.png −10
+Minting +250
+Pop engineers.png +250
+Diesel Pump
+Goods gold.png +30
+Goods tools.png −15
+Goods oil.png −5
+Minting +1000
+Pop shopkeepers.png +500
+Pop laborers.png +2250
+Pop machinists.png +1500
+Pop engineers.png +750
+Gold Fields
+Goods gold.png Gold	Base	N/A	N/A	N/A
+Basic Production
+Goods gold.png +10
+Minting +500
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Plantations
+Plantation production and employment per level
+Building
+Output goods	Base PM group	Secondary PM group	Working Conditions PM group	Automation PM group
+Coffee Plantations
+Goods coffee.png Coffee	Base	Drying Method	Working Conditions	Train Automation
+Dry Process
+Goods coffee.png +20
+
+Pop laborers.png +6000
+Pop farmers.png +1000
+Patio Drying
+Goods coffee.png +5
+
+Pop laborers.png +1500
++5% Pop laborers.png laborers mortality
++10% Pop slaves.png slaves mortality
+Standard Labor
+—	Road Carts
+—
+Wet Process - Manual Pulping
+Goods coffee.png +25
+Goods tools.png −5
+
+Pop laborers.png +4000
+Pop farmers.png +1500
+Mechanical Dryers
+Goods coffee.png +15
+Goods tools.png −3
+Goods locomotives.png −2
+
+Pop laborers.png +500
+Pop machinists.png +500
+Violent Treatment
+Goods coffee.png +10
++10% State slave imports
++25% Pop laborers.png laborers mortality
+-75% Pop laborers.png laborers job attraction
+−2.5 Pop slaves.png slaves SOL
+−25% Minimum wage
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Wet Process - Mechanical Pulping
+Goods coffee.png +35
+Goods tools.png −5
+Goods locomotives.png −3
+
+Pop laborers.png +3500
+Pop farmers.png +1500
+Pop machinists.png +500
+Exploitative Practices
+Goods coffee.png +5
++15% Pop laborers.png laborers mortality
+-25% Pop laborers.png laborers job attraction
+−1.5 Pop slaves.png slaves SOL
+−25% Minimum wage
+Cotton Plantations
+Goods fabric.png Fabric	Base	N/A	Working Conditions	Train Automation
+Basic Production
+Goods fabric.png +45
+
+Pop laborers.png +7000
+Pop farmers.png +1000
+Standard Labor
+—	Road Carts
+—
+Automatic Irrigation
+Goods fabric.png +80
+Goods locomotives.png −5
+
+Pop laborers.png +5000
+Pop farmers.png +1500
+Pop machinists.png +500
+Violent Treatment
+Goods fabric.png +20
++10% State slave imports
++20% Pop laborers.png laborers mortality
+-75% Pop laborers.png laborers job attraction
+−2 Pop slaves.png slaves SOL
+−25% Minimum wage
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Exploitative Practices
+Goods fabric.png +10
++10% Pop laborers.png laborers mortality
+-25% Pop laborers.png laborers job attraction
+−1 Pop slaves.png slaves SOL
+−25% Minimum wage
+Dye Plantations
+Goods dye.png Dye	Base	N/A	Working Conditions	Train Automation
+Basic Production
+Goods dye.png +30
+
+Pop laborers.png +6000
+Pop farmers.png +1000
+Standard Labor
+—	Road Carts
+—
+Automatic Irrigation
+Goods dye.png +45
+Goods locomotives.png −5
+
+Pop laborers.png +4500
+Pop farmers.png +1500
+Pop machinists.png +500
+Violent Treatment
+Goods dye.png +15
++10% State slave imports
++20% Pop laborers.png laborers mortality
+-75% Pop laborers.png laborers job attraction
+−2 Pop slaves.png slaves SOL
+−25% Minimum wage
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Exploitative Practices
+Goods dye.png +10
++10% Pop laborers.png laborers mortality
+-25% Pop laborers.png laborers job attraction
+−1 Pop slaves.png slaves SOL
+−25% Minimum wage
+Opium Plantations
+Opium Opium	Base	N/A	N/A	Train Automation
+Basic Production
+Opium +20
+
+Pop laborers.png +4000
+Pop farmers.png +1000
+Road Carts
+—
+Automatic Irrigation
+Opium +40
+Goods locomotives.png −5
+
+Pop laborers.png +2500
+Pop farmers.png +1500
+Pop machinists.png +500
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Tea Plantations
+Goods tea.png Tea	Base	N/A	Working Conditions	Train Automation
+Basic Production
+Goods tea.png +20
+
+Pop laborers.png +6000
+Pop farmers.png +1000
+Standard Labor
+—	Road Carts
+—
+Automatic Irrigation
+Goods tea.png +35
+Goods locomotives.png −5
+
+Pop laborers.png +4000
+Pop farmers.png +1500
+Pop machinists.png +500
+Violent Treatment
+Goods tea.png +20
++10% State slave imports
+-20% Pop laborers.png laborers job attraction
+−1 Pop slaves.png slaves SOL
+−35% Minimum wage
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Exploitative Practices
+Goods tea.png +15
+-20% Pop laborers.png laborers job attraction
+−0.5 Pop slaves.png slaves SOL
+−35% Minimum wage
+Tobacco Plantations
+Tobacco Tobacco	Base	Manufacturing	Working Conditions	Train Automation
+Basic Production
+Tobacco +30
+
+Pop laborers.png +6000
+Pop farmers.png +1000
+Hand-Rolled
+Pop laborers.png +1000
++5% Minimum wage
+Standard Labor
+—	Road Carts
+—
+Automatic Irrigation
+Tobacco +45
+Goods locomotives.png −5
+
+Pop laborers.png +4000
+Pop farmers.png +1500
+Pop machinists.png +500
+Molds
+Tobacco +5
+Goods iron.png −1
+
+Pop machinists.png +500
+Exploited Rollers
+Tobacco +5
+
+Pop laborers.png +1000
++5% Pop laborers.png laborers mortality
+-25% Pop laborers.png laborers job attraction
+−1 Pop slaves.png slaves SOL
+−10% Minimum wage
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Electric Rollers
+Tobacco +20
+Goods iron.png −2
+Goods electricity.png −2
+
+Pop machinists.png +500
+Pop laborers.png −1500
+Lectors
+Tobacco +2 (unscaled)
++0.5 Pop slaves.png slaves SOL
++10% Pop laborers.png laborers job attraction
++5% Minimum wage
++2% State loyalists from political movements
++2% State radicals from political movements
++10% State conversion
+Factory Radios
+Tobacco +5
+Goods radios.png −1
+
+Pop laborers.png +1000
++10% Pop laborers.png laborers job attraction
++1 Pop slaves.png slaves SOL
++5% State loyalists from political movements
++5% State radicals from political movements
+Sugar Plantations
+Goods sugar.png Sugar	Base	Refinement	Working Conditions	Train Automation
+Basic Production
+Goods sugar.png +25
+
+Pop laborers.png +9000
+Pop farmers.png +1000
++5% Pop laborers.png laborers mortality
++10% Pop slaves.png slaves mortality
+−1 Pop slaves.png slaves SOL
+Ox-Driven Rollers
+—	Standard Labor
+—	Road Carts
+—
+Automatic Irrigation
+Goods sugar.png +50
+Goods locomotives.png −5
+
+Pop laborers.png +7000
+Pop farmers.png +1000
+Pop machinists.png +500
+Vacuum Pans
+Goods sugar.png +5
+Goods coal.png −1
+
+Pop laborers.png −1000
+Violent Treatment
+Goods sugar.png +40
++10% State slave imports
++35% Pop laborers.png laborers mortality
++35% Pop slaves.png slaves mortality
+-90% Pop laborers.png laborers job attraction
+−3 Pop slaves.png slaves SOL
+−15% Minimum wage
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Steam-Powered Mills
+Goods sugar.png +15
+Goods locomotives.png −1
+Goods coal.png −2
+
+Pop laborers.png −2000
+Pop machinists.png +500
+Exploitative Practices
+Goods sugar.png +20
++25% Pop laborers.png laborers mortality
++25% Pop slaves.png slaves mortality
+−35% Pop laborers.png laborers job attraction
+−2 Pop slaves.png slaves SOL
+−15% Minimum wage
+Centrifugal Machines
+Goods sugar.png +30
+Goods locomotives.png −1
+Goods coal.png −4
+
+Pop laborers.png −3500
+Pop machinists.png +1000
+Pop engineers.png +500
+Banana Plantations
+Goods fruit.png Fruit	Base	N/A	Working Conditions	Train Automation
+Basic Production
+Goods fruit.png +40
+
+Pop laborers.png +5000
+Pop farmers.png +1000
+Standard Labor
+—	Road Carts
+—
+Automatic Irrigation
+Goods fruit.png +50
+Goods locomotives.png −5
+
+Pop laborers.png +3000
+Pop farmers.png +1500
+Pop machinists.png +500
+Violent Treatment
+Goods fruit.png +25
++10% State slave imports
++20% Pop laborers.png laborers mortality
+-75% Pop laborers.png laborers job attraction
+−2 Pop slaves.png slaves SOL
+−25% Minimum wage
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Exploitative Practices
+Goods fruit.png +20
++10% Pop laborers.png laborers mortality
+-25% Pop laborers.png laborers job attraction
+−1 Pop slaves.png slaves SOL
+−25% Minimum wage
+Silk Plantations
+Goods silk.png Silk	Base	N/A	N/A	Train Automation
+Basic Production
+Goods silk.png +15
+
+Pop laborers.png +4000
+Pop farmers.png +1000
+Road Carts
+—
+Automatic Irrigation
+Goods silk.png +40
+Goods locomotives.png −5
+
+Pop laborers.png +3000
+Pop farmers.png +1500
+Pop machinists.png +500
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Military
+Barracks and Conscription Center Production and Employment Per Level
+Training PM	No Organized Training	General Training	Advanced Tactics Training	Training Method Streamlining	NCO Incorporation	Mobile Warfare Tactics
+Unscaled modifiers	+50 Training Rate	+50 Training Rate	+50 Training Rate	+50 Training Rate	+50 Training Rate	+50 Training Rate
+Barracks
+Level-scaled modifiers	+8 Training Rate	+15 Training Rate	+17 Training Rate	+19 Training Rate	+22 Training Rate	+24 Training Rate
+Conscription Center
+Level-scaled modifiers	+10 Training Rate	+18 Training Rate	+21 Training Rate	+24 Training Rate	+27 Training Rate	+30 Training Rate
+Employment ratio	Pop officers.png 3 • Pop soldiers.png 97	Pop officers.png 5 • Pop soldiers.png 95	Pop officers.png 10 • Pop soldiers.png 90	Pop officers.png 15 • Pop soldiers.png 85	Pop officers.png 20 • Pop soldiers.png 80	Pop officers.png 25 • Pop soldiers.png 75
+Naval Base Production and Employment Per Level
+Naval Theory PM	Naval Traditions	Power of the Purse	Jeune École	Sea Lane Strategies	Battlefleet Tactics
+Unscaled modifiers
++10 Training Rate
+−5% Morale Loss
++10% Morale Damage
++10 Training Rate
+−10% Morale Loss
++20% Morale Damage
++10 Training Rate
+−15% Morale Loss
++30% Morale Damage
++10 Training Rate
+−20% Morale Loss
++40% Morale Damage
++10 Training Rate
+Level-scaled modifiers	+4 Training Rate	+5 Training Rate	+6 Training Rate	+7 Training Rate	+8 Training Rate
+Employment ratio	Pop officers.png 10 • Pop soldiers.png 90	Pop officers.png 125 • Pop soldiers.png 875	Pop officers.png 15 • Pop soldiers.png 85	Pop officers.png 175 • Pop soldiers.png 825	Pop officers.png 20 • Pop soldiers.png 80
+Urban center buildings
+Urban Center production and employment per level
+Building
+Output goods	Base PM group	Secondary PM group 1	Secondary PM group 2	Ownership PM group
+Urban Center
+Goods services.png Services
+Goods transportation.png Transportation
+State status infrastructure.png Infrastructure	Amenities	Street Lighting	Public Transport	Urban Churches
+Market Stalls
+Goods services.png +15
+Pop laborers.png +3500
+Pop clerks.png +900
+Pop shopkeepers.png +400
+Unlit Streets
+—	Personal Transportation Only
+Goods transportation.png +2	State-Run Churches
+Pop clergymen.png +200
+Market Squares
+Goods services.png +20
+Goods wood.png −1
+Goods glass.png −1
+Pop laborers.png +3000
+Pop clerks.png +1400
+Pop shopkeepers.png +400
+Gas Streelights
+Goods services.png +5
+Goods coal.png −2
+State status infrastructure.png +1
+Pop laborers.png +250
+Public Trams
+Goods locomotives.png −0.5
+Goods transportation.png +4
+Pop laborers.png −500
+Pop machinists.png +200
+Pop engineers.png +100
+Free Churches
+Pop clerks.png +100 • Pop clergymen.png +150
+Covered Markets
+Goods services.png +25
+Goods glass.png −2
+Goods steel.png −1
+Pop laborers.png +2500
+Pop clerks.png +1900
+Pop shopkeepers.png +400
+Electric Streetlights
+Goods services.png +10
+Goods electricity.png −3
+State status infrastructure.png +2
+Pop laborers.png +200
+Pop engineers.png +50
+Public Motor Carriages
+Goods automobiles.png −1
+Goods transportation.png +8
+Pop laborers.png −1000
+Pop machinists.png +400
+Pop engineers.png +200
+State Atheism
+Pop clerks.png +150 • Pop bureaucrats.png +50
+Arcades
+Goods services.png +30
+Goods glass.png −2
+Goods steel.png −2
+Goods electricity.png −1
+Pop laborers.png +1000
+Pop clerks.png +3000
+Pop shopkeepers.png +1000
+Arts Academy
+Goods fine art.png Fine Art	Base	Migration	N/A	Patronage
+Traditional Art
+Goods fine art.png +4 • Goods paper.png −10	No Effect
+—	Traditional Patronage
+Pop academics.png +1000
+Pop clerks.png +3000
+Pop laborers.png +1000
+Realist Art
+Goods fine art.png +5 • Goods paper.png −15	Increased Exchange
++25% Migration attraction
+Photographic Art
+Goods fine art.png +7 • Goods paper.png −15 • Goods tools.png −8		Bourgeoisie Patronage
+Pop academics.png +1500
+Pop clerks.png +2500
+Pop laborers.png +1000
+Film Art
+Goods fine art.png +8
+Goods tools.png −10
+Goods paper.png −15
+Goods electricity.png −2
+Independent Artists
+Pop academics.png +2000
+Pop clerks.png +2000
+Pop laborers.png +1000
+Ownership building production and employment per level
+Building
+Primary owner type	Ownership PM group	Secondary ownership PM group
+Manor Houses
+Pop aristocrats.png Aristocrats	Base	Secondary
+Privately Owned
+Pop aristocrats.png +50 • +10 Pop aristocrats.png ownership shares	Clergy Oversight
+Pop clergymen.png +100 • +1 Pop clergymen.png ownership shares
+Increased Clergy Oversight
+Pop aristocrats.png +50
+Pop clergymen.png +50
++10 Pop aristocrats.png ownership shares
++1 Pop clergymen.png ownership shares
+Bureaucrat Oversight
+Pop bureaucrats.png +100 • +1 Pop bureaucrats.png ownership shares
+Financial Districts
+Pop capitalists.png Capitalists	Base	N/A
+Privately Owned
+Pop capitalists.png +50
+Pop shopkeepers.png +25
+Pop clerks.png +25
++10 Pop capitalists.png ownership shares
++1 Pop shopkeepers.png ownership shares
+Publicly Traded
+Pop capitalists.png +50
+Pop bureaucrats.png +25
+Pop clerks.png +25
++10 Pop capitalists.png ownership shares
+Increased Clergy Oversight
+Pop capitalists.png +50
+Pop clergymen.png +25
+Pop laborers.png +25
++10 Pop capitalists.png ownership shares
++2 Pop clergymen.png ownership shares
+(Regional) Company Headquarters
+Pop capitalists.png Capitalists	Base
+See Company HQ info for details on variants	N/A
+Privately Owned (Full Capitalist)
+Pop capitalists.png +25
+Pop clerks.png +25
++10 Pop capitalists.png ownership shares
+Increased Clergy Oversight (Full Capitalist)
+Pop capitalists.png +25
+Pop clergymen.png +25
++10 Pop capitalists.png ownership shares
++2 Pop clergymen.png ownership shares
+Government Run
+Pop bureaucrats.png +50
+Pop clerks.png +50
++10 Pop bureaucrats.png ownership shares
++2 Pop clerks.png ownership shares
+Worker Cooperative
+Pop shopkeepers.png +50
+Pop clerks.png +50
++10 Pop shopkeepers.png ownership shares
++2 Pop clerks.png ownership shares
+Government buildings
+Government building production and employment per level
+Building
+Output	Base PM group	Secondary PM group	Secularism PM group
+Government Administration
+Bureaucracy Bureaucracy
+Taxation Capacity	Base	Professionalism	Secularism
+Simple Organization
+Bureaucracy +10 • +2 Taxation Capacity • Pop clerks.png +500	Hereditary Bureaucrats
+Pop aristocrats.png +250 • Pop bureaucrats.png +250	Secular Administration
+Pop bureaucrats.png +500
+Filing Cabinets
+Bureaucracy +50
+Goods paper.png −10
++10 Taxation Capacity
+Pop clerks.png +500
+Standardized Filing System
+Bureaucracy +65
+Goods paper.png −20
++15 Taxation Capacity
+Pop clerks.png +500
+Professional Bureaucrats
+Pop bureaucrats.png +500	Administrative Clergy
+Pop clergymen.png +250 • Pop bureaucrats.png +250
+Telephone Switchboards
+Bureaucracy +100
+Goods paper.png −20
+Goods telephones.png −5
++30 Taxation Capacity
+Pop clerks.png +500
+University
+Innovation.png Innovation	Base	Migration	Secularism
+Scholastic Education
+Innovation.png +1
+Goods paper.png −5
++10% Qualifications
+Pop clerks.png +250
+Pop laborers.png +250
+No Effect
+—	Secular Academia
+Pop academics.png +500
+Philosophy Department
+Innovation.png +1.5
+Goods paper.png −10
++15% Qualifications
+Pop clerks.png +250
+Pop laborers.png +250
+Increase Exchange
++25% Migration attraction	Clerical Educators
+Pop clergymen.png +250 • Pop academics.png +250
+Analytical Philosophy Department
+Innovation.png +2
+Goods paper.png −15
++20% Qualifications
+Pop clerks.png +200
+Pop laborers.png +200
+Pop academics.png +100
+Skyscraper	Skyscraper	Airships	N/A
+Bureaucratic Nexus
++25% Government Administration throughput
+Goods paper.png −25
+Pop bureaucrats.png +300
+Pop clerks.png +500
+Pop laborers.png +200
+No Airships
+—
+Trade Nexus
++25% Trade capacity
++25% Trade advantage
+Goods paper.png −25
+Pop bureaucrats.png +300
+Pop clerks.png +500
+Pop laborers.png +200
+Airship Mooring Post
++10 Prestige
+Power Plant production and employment per level
+Building
+Output goods	Base PM group
+Power Plants
+Goods electricity.png Electricity	Base
+Early Power Plant
+Goods electricity.png +25
+Goods locomotives.png −4
+Goods coal.png −5
+Goods wood.png −5
+Pop laborers.png +500
+Pop machinists.png +400
+Pop engineers.png +100
+Coal-Fired Plant
+Goods electricity.png +50
+Goods locomotives.png −6
+Goods coal.png −20
+Pop laborers.png +350
+Pop machinists.png +500
+Pop engineers.png +150
+Oil-Fired Plant
+Goods electricity.png +80
+Goods locomotives.png −10
+Goods oil.png −25
+Pop laborers.png +200
+Pop machinists.png +600
+Pop engineers.png +200
+Misc resource buildings
+Logging production and employment per level
+Building
+Output goods	Base PM group	Refining PM group	Automation PM group 1	Automation PM group 2
+Logging Camps
+Goods wood.png Wood
+Goods hardwood.png Hardwood	Base	Hardwood Production	Special Equipment	Transportation
+Simple Forestry
+Goods wood.png +30
+
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Prioritize Softwood Production
+—	Horse Drawn
+—	Road Carts
+—
+Saw Mills
+Goods wood.png +60
+Goods tools.png −5
+
+Pop shopkeepers.png +500
+Pop laborers.png +4000
+Pop machinists.png +500
+Hardwood Production
+Goods wood.png −25 • Goods hardwood.png +10	Steam Donkey
+Goods locomotives.png −1 • Goods coal.png −4
+Pop laborers.png −1000
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Electric Saw Mills
+Goods wood.png +100
+Goods tools.png −10
+Goods electricity.png −5
+
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Focused Hardwood Production
+Goods wood.png −40 • Goods hardwood.png +20	Chainsaws
+Goods locomotives.png −1
+Goods oil.png −4
+Pop laborers.png −1500
+Pop engineers.png +250
+Rail Log Carts
+Goods transportation.png −8 • Pop laborers.png −1500
+Rubber production and employment per level
+Building
+Output goods	Base PM group	Working Conditions PM group	Automation PM group
+Rubber Plantations
+Goods rubber.png Rubber	Base	Train Automation
+Basic Production
+Goods rubber.png +20
+
+Pop laborers.png +6000
+Pop farmers.png +1000
+Standard Labor
+—	Road Carts
+—
+Automatic Irrigation
+Goods rubber.png +40
+Goods locomotives.png −5
+
+Pop laborers.png +4000
+Pop farmers.png +1500
+Pop machinists.png +500
+Violent Treatment
+Goods rubber.png +25
++10% State slave imports
++50% Pop laborers.png laborers mortality
+-85% Pop laborers.png laborers job attraction
+−2.5 Pop slaves.png slaves SOL
+−25% Minimum wage
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Exploitative Practices
+Goods rubber.png +10
++40% Pop laborers.png laborers mortality
+-75% Pop laborers.png laborers job attraction
+−1.5 Pop slaves.png slaves SOL
+−25% Minimum wage
+
+
+Misc Resource production and employment per level
+Building
+Output goods	Base PM group	Automation PM group
+Fishing Wharves
+Goods fish.png Fish	Base	Refrigeration
+Simple Fishing
+Goods fish.png +25
+
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Unrefrigerated
+—
+Fishing Trawlers
+Goods fish.png +50
+Goods clippers.png −5
+
+Pop shopkeepers.png +500
+Pop laborers.png +4000
+Pop machinists.png +500
+Refrigerated Storage
+Goods electricity.png −5 • Pop laborers.png −1000
+Steam Trawlers
+Goods fish.png +100
+Goods steamers.png −5
+Goods coal.png−15
+
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Refrigerated Rail Cars
+Goods electricity.png −5 • Goods transportation.png −5 • Pop laborers.png −2000
+Flash Freezing
+Goods electricity.png −7 • Goods transportation.png −7 • Pop laborers.png −3000
+Whaling Stations
+Goods oil.png Oil
+Goods meat.png Meat	Base	Refrigeration
+Simple Whaling
+Goods meat.png +5
+Goods oil.png +10
+Pop shopkeepers.png +500
+Pop laborers.png +4500
+Unrefrigerated
+—
+Whaling Fleet
+Goods meat.png +10
+Goods oil.png +20
+Goods clippers.png −5
+Pop shopkeepers.png +500
+Pop laborers.png +4000
+Pop machinists.png +500
+Refrigerated Storage
+Goods electricity.png −5 • Pop laborers.png −1000
+Steam-Powered Whalers
+Goods meat.png +20
+Goods oil.png +40
+Goods steamers.png −5
+Goods coal.png −20
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Refrigerated Rail Cars
+Goods electricity.png −5 • Goods transportation.png −5 • Pop laborers.png −2000
+Flash Freezing
+Goods electricity.png −7 • Goods transportation.png −7 • Pop laborers.png −3000
+Oil Rigs
+Goods oil.png Oil	Base	Transportation
+Steam-Powered Derricks
+Goods oil.png +60
+Goods locomotives.png −5
+Goods coal.png −10
+
+Pop shopkeepers.png +500
+Pop laborers.png +3000
+Pop machinists.png +1000
+Pop engineers.png +500
+Road Carts
+—
+Rail Transportation
+Goods transportation.png −5 • Pop laborers.png −1000
+Combustion Engine Derricks
+Goods oil.png +100
+Goods locomotives.png −10
+Pop shopkeepers.png +500
+Pop laborers.png +2000
+Pop machinists.png +2000
+Pop engineers.png +900
+Tanker Cars
+Goods transportation.png −10 • Pop laborers.png −2000
+Private infrastructure
+Railway production and employment per level
+Building
+Output Goods	Base PM Group	Passenger Trains PM Group
+Railway
+State status infrastructure.png Infrastructure
+Goods transportation.png Transportation	Base	Passenger trains
+Experimental Trains
+State status infrastructure.png +20
+Goods transportation.png +20
+Goods coal.png −2
+Goods locomotives.png −5
+Pop laborers.png +600
+Pop machinists.png +200
+Pop clerks.png +200
+Cargo prioritization
+—
+(Joint) Steam Trains
+State status infrastructure.png +25 (+30)
+Goods transportation.png +25 (+30)
+Goods coal.png −5 (−6)
+Goods locomotives.png −5 (−6)
+Pop laborers.png +500
+Pop machinists.png +300
+Pop clerks.png +200
+Wooden passenger carriages
+Goods transportation.png +10 • Goods wood.png −8 • Pop clerks.png +100
+(Joint) Electric Trains
+State status infrastructure.png +30 (+40)
+Goods transportation.png +35 (+45)
+Goods electricity.png −8 (−10)
+Goods locomotives.png −5 (−6)
+Pop laborers.png +400
+Pop machinists.png +350
+Pop engineers.png +50
+Pop clerks.png +200
+Steel passenger carriages
+Goods transportation.png +15 • Goods steel.png −5 • Pop clerks.png +200
+(Joint) Diesel Trains
+State status infrastructure.png +40 (+55)
+Goods transportation.png +40 (+50)
+Goods oil.png −6 (−8)
+Goods locomotives.png −5 (−6)
+Pop laborers.png +400
+Pop machinists.png +300
+Pop engineers.png +100
+Pop clerks.png +200
+Port production and employment per level
+Building
+Output Goods	Base PM Group
+Port
+Military convoys.png Convoys
+State status infrastructure.png Infrastructure	Base
+Anchorage
+Pop laborers.png +175 • Pop clerks.png +50 • Pop bureaucrats.png +25
+Cargo Port
+Military convoys.png +100
+State status infrastructure.png +5
+Goods merchant marine.png +10
+Goods clippers.png −5
+Pop laborers.png +700
+Pop clerks.png +200
+Pop bureaucrats.png +100
+Industrial Port
+Military convoys.png +150
+State status infrastructure.png +7.5
+Goods merchant marine.png +20
+Goods steamers.png −5
+Goods coal.png −5
+Pop laborers.png +500
+Pop machinists.png +200
+Pop clerks.png +200
+Pop bureaucrats.png +100
+Modern Port
+Military convoys.png +200
+State status infrastructure.png +10
+Goods merchant marine.png +30
+Goods steamers.png −5
+Goods oil.png −5
+Pop laborers.png +400
+Pop machinists.png +250
+Pop engineers.png +50
+Pop clerks.png +200
+Pop bureaucrats.png +100
+Trade Center production and employment per level
+Building
+Output Goods	Base PM Group	Passenger Trains PM Group
+Trade Center
+State status infrastructure.png Infrastructure
+Goods transportation.png Transportation	Base	Trade Quantity
+Trade Center
++1 Weekly trades
++10 Trade capacity
+Pop shopkeepers.png +200
+Pop clerks.png +800
+Small-Scale Trading
+Goods merchant marine.png −3 • −50% Traded quantity
+Regular Trading
+Goods merchant marine.png −4
+Influential Trade Center
++1 Weekly trades
++10 Trade capacity
+Hud influence.png +0.5
+Pop shopkeepers.png +200
+Pop clerks.png +800
+Bulk Trading
+Goods merchant marine.png −5 • +50% Traded quantity
+Mass-Scale Trading
+Goods merchant marine.png −6 • +100% Traded quantity
+Subsistence buildings
+Subsistence Building Production and Employment Per Level
+Building
+Output Goods	Base PM Group 1	Base PM Group 2	Base PM Group 3
+Subsistence Farms
+Goods clothes.png Clothes
+Goods fabric.png Fabric
+Goods furniture.png Furniture
+Goods grain.png Grain
+Liquor Liquor
+Goods services.png Services
+Goods wood.png Wood
+Base	Home Workshops	Serfdom
+Basic Production
+Goods grain.png +1
+Goods fabric.png +0.5
+Goods wood.png +0.5
+Goods services.png +0.5
+Pop peasants.png +5000
+No Home Workshops
+Goods grain.png +0.5 • Goods fabric.png +0.25 • Goods wood.png +0.25	Free Peasants
+Subsistence output +4
+Serfdom
+Goods grain.png +0.5 • Subsistence output +3
+Home Workshops
+Goods clothes.png +0.25 • Goods furniture.png +0.25 • Liquor +0.25	Corvée Labor
+Goods grain.png +0.25 • Subsistence output +3
+State construction efficiency +0.1%
+Homesteading
+Goods grain.png +0.25
+Subsistence output +4
+Pop peasants.png −100
+Pop farmers.png +100
+Subsistence Orchards
+Goods clothes.png Clothes
+Goods fabric.png Fabric
+Goods fruit.png Fruit
+Goods furniture.png Furniture
+Goods grain.png Grain
+Liquor Liquor
+Goods services.png Services
+Goods wood.png Wood
+Base	Home Workshops	Serfdom
+Basic Production
+Goods grain.png +0.25
+Goods fruit.png +0.5
+Goods fabric.png +0.5
+Goods wood.png +0.5
+Goods services.png +0.5
+Pop peasants.png +5000
+No Home Workshops
+Goods fruit.png +0.33 • Goods fabric.png +0.25 • Goods wood.png +0.25	Free Peasants
+Subsistence output +4
+Serfdom
+Goods fruit.png +0.33 • Subsistence output +3
+Home Workshops
+Goods clothes.png +0.25 • Goods furniture.png +0.25 • Liquor +0.25	Corvée Labor
+Goods grain.png +0.25 • Subsistence output +3
+State construction efficiency +0.1%
+Homesteading
+Goods grain.png +0.25
+Subsistence output +4
+Pop peasants.png −100
+Pop farmers.png +100
+Subsistence Pastures
+Goods clothes.png Clothes
+Goods fabric.png Fabric
+Goods furniture.png Furniture
+Goods grain.png Grain
+Goods meat.png Meat
+Liquor Liquor
+Goods services.png Services
+Goods wood.png Wood
+Base	Home Workshops	Serfdom
+Basic Production
+Goods grain.png +0.25
+Goods meat.png +0.5
+Goods fabric.png +0.75
+Goods wood.png +0.25
+Goods services.png +0.5
+Pop peasants.png +5000
+No Home Workshops
+Goods meat.png +0.33 • Goods fabric.png +0.5	Free Peasants
+Subsistence output +4
+Serfdom
+Goods meat.png +0.3 • Subsistence output +33
+Home Workshops
+Goods clothes.png +0.25 • Goods furniture.png +0.25 • Liquor +0.25	Corvée Labor
+Goods grain.png +0.25 • Subsistence output +3
+State construction efficiency +0.1%
+Homesteading
+Goods grain.png +0.25
+Subsistence output +4
+Pop peasants.png −100
+Pop farmers.png +100
+Subsistence Fishing Villages
+Goods clothes.png Clothes
+Goods fabric.png Fabric
+Goods fish.png Fish
+Goods furniture.png Furniture
+Goods grain.png Grain
+Liquor Liquor
+Goods services.png Services
+Goods wood.png Wood
+Base	Home Workshops	Serfdom
+Basic Production
+Goods grain.png +0.5
+Goods fish.png +1
+Goods fabric.png +0.25
+Goods wood.png +0.25
+Goods services.png +0.5
+Pop peasants.png +5000
+No Home Workshops
+Goods fish.png +0.5 • Goods fabric.png +0.25 • Goods wood.png +0.25	Free Peasants
+Subsistence output +4
+Serfdom
+Goods fish.png +0.5 • Subsistence output +3
+Home Workshops
+Goods clothes.png +0.25 • Goods furniture.png +0.25 • Liquor +0.25	Corvée Labor
+Goods grain.png +0.25 • Subsistence output +3
+State construction efficiency +0.1%
+Homesteading
+Goods grain.png +0.25
+Subsistence output +4
+Pop peasants.png −100
+Pop farmers.png +100
+Subsistence Rice Paddies
+Goods clothes.png Clothes
+Goods fabric.png Fabric
+Goods furniture.png Furniture
+Goods grain.png Grain
+Liquor Liquor
+Goods services.png Services
+Goods wood.png Wood
+Base	Home Workshops	Serfdom
+Basic Production
+Goods grain.png +2
+Goods fabric.png +0.75
+Goods wood.png +0.75
+Goods services.png +1
+Pop peasants.png +10000
+No Home Workshops
+Goods grain.png +1 • Goods fabric.png +0.5 • Goods wood.png +0.5	Free Peasants
+Subsistence output +4
+Serfdom
+Goods grain.png +1 • Subsistence output +3
+Home Workshops
+Goods clothes.png +0.5 • Goods furniture.png +0.5 • Liquor +0.5	Corvée Labor
+Goods grain.png +0.25 • Subsistence output +3
+State construction efficiency +0.1%
+Homesteading
+Goods grain.png +0.25
+Subsistence output +4
+Pop peasants.png −100
+Pop farmers.png +100
+Construction sector
+Construction Sector
+PM	Wooden Buildings	Iron-Frame Buildings	Steel-Frame Buildings	Arc-Welded Buildings
+Output
++2 Construction points
++0.2% State construction efficiency
++5 Construction points
++0.4% State construction efficiency
++10 Construction points
++0.7% State construction efficiency
++15 Construction points
++1.0% State construction efficiency
+Input
+Goods wood.png −75
+Goods fabric.png −25
+Goods wood.png −40
+Goods fabric.png −20
+Goods iron.png −50
+Goods tools.png −10
+Goods steel.png −50
+Goods glass.png −40
+Goods explosives.png −10
+Goods tools.png −20
+Goods steel.png −50
+Goods glass.png −40
+Goods explosives.png −20
+Goods tools.png −40
+Goods electricity.png −40
+Employment
+Pop laborers.png +800
+Pop clerks.png +100
+Pop shopkeepers.png +100
+Pop laborers.png +750
+Pop clerks.png +100
+Pop shopkeepers.png +100
+Pop machinists.png +50
+Pop laborers.png +650
+Pop clerks.png +100
+Pop shopkeepers.png +100
+Pop machinists.png +150
+Pop laborers.png +600
+Pop clerks.png +100
+Pop shopkeepers.png +100
+Pop machinists.png +150
+Pop engineers.png +50
+Base cost
+Goods wood.png 75*20 = 1500 (75%)
+Goods fabric.png 25*20 = 500 (25%)
+Total 2000
+(£1000 per construction point)
+Goods iron.png 50*40 = 2000 (55%)
+Goods tools.png 10*40 = 400 (11%)
+Goods wood.png 40*20 = 800 (22%)
+Goods fabric.png 20*20 = 400 (11%)
+Total 3600
+(£720 per construction point)
+Goods steel.png 50*50 = 2500 (46%)
+Goods glass.png 40*40 = 1600 (30%)
+Goods explosives.png 10*50 = 500 (9%)
+Goods tools.png 20*40 = 800 (15%)
+Total 5400
+(£540 per construction point)
+Goods steel.png 50*50 = 2500 (30%)
+Goods glass.png 40*40 = 1600 (19%)
+Goods explosives.png 20*50 = 1000 (12%)
+Goods tools.png 40*40 = 1600 (19%)
+Goods electricity.png 40*40 = 1600 (19%)
+Total
+(£553 per construction point)
+References
+ MIN_CONSTRUCTION_EFFICIENCY
+ There is currently a bug that governments do not receive any dividends from owning building levels in other countries.
+Game concepts
+Pops	Pops • Acceptance • Culture • Migration • Needs • Professions • Religion • Standard of living
+Government	Government • Capacities • Characters • Decrees • Institutions • Laws • Technology
+Politics	Elections • Ideology • Interest group • Political lobby • Political movement • Political party • Revolution
+Economy	Buildings • Goods • Harvest condition • Infrastructure • Market • Production methods • State • Treasury
+Diplomacy	Diplomacy • Diplomatic action • Diplomatic play • Power bloc • Ranks • Subjects • Treaties
+Warfare	Warfare • Land warfare • Naval warfare • Wargoals • Conscription
+Others	Countries • Decisions • Events • Journal • Objectives • Vickypedia
+Categories: Potentially outdated1.10Economy
+Privacy policyAbout Victoria 3 WikiDisclaimersMobile view
+Attribution-ShareAlike 3.0Powered by MediaWiki
+
+Games
+Discover
+Our Brands
+Browse
+Play on Paradox technology
+Community
+Paradox Forums
+Paradox Wikis
+Support
+About
+News
+About us
+Careers
+Join our playtests
+Media contact
+Social Media
+Legal Information
+EU Online Dispute Resolution
+Report Illegal Content

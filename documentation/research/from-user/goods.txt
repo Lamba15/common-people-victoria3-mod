@@ -1,0 +1,846 @@
+
+Paradox Wikis
+Victoria 3 Wiki
+
+Search
+Search Victoria 3 Wiki
+Log in
+Navigation menu
+PageDiscussion
+ReadEditEdit sourceView history
+Victoria 3 Wiki
+Recent changes
+Random page
+Paradox Wikis
+- Main portal
+- Wikis discord
+- Contact us
+- Style guidelines
+V3 links
+- Forums
+- Game discord
+- Mods
+- Store
+- Twitch
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+Goods
+Jump to navigationJump to search
+This article has been verified for the current version (1.12) of the game.
+
+Economy
+Buildings
+List of buildings • Unique buildings
+Companies • Flavored companies
+Market
+Goods • Needs
+Production methods
+List of production methods
+Treasury
+
+Trade goods in the French market.
+Goods, or Trade Goods, represent natural resources, manufactured goods, or services which make up the economy of countries. Each good has a base cost per unit, which varies in each market depending on relative supply (sales) and demand (purchases) up to 75% more expensive or cheaper than the base price. Goods are produced by one or more buildings and consumed by buildings or pops. Most goods can be traded from one market to another.
+
+All in-game goods are abstracted to some degree, representing several similar or related real-world materials or goods. More advanced or higher quality goods are generally represented by a larger quantity of the good rather than a separate good.
+
+Balancing the supply and demand of goods makes up a large part of gameplay in Victoria 3.
+
+
+Contents
+1	Goods categories
+2	Goods types
+2.1	Staple goods
+2.2	Luxury goods
+2.3	Industrial goods
+2.4	Military goods
+3	Prestige goods
+4	Discoverable goods
+5	Maps
+5.1	Resources
+5.2	Agriculture
+6	References
+Goods categories
+There are four broad categories of goods:
+
+Market staple goods.png Staple goods are everyday goods that pops need to live, such as food to eat, wood to heat their homes, and clothes to wear. Staple goods tend to be purchased in vast quantities by poor and middle class pops, while richer pops generally avoid them in favor of their luxury variants.
+Market luxury goods.png Luxury goods are the things that pops do not necessarily need but definitely want, such as fine foods, luxury drinks like tea and coffee, or fine clothes made from Chinese silk. Luxuries tend to be more profitable to produce than staple goods, but depend on having a customer base with money – a poor factory worker isn't going to be buying a whole lot of mahogany cabinets.
+Market industrial goods.png Industrial goods are goods such as iron, coal, rubber and lead whose main purpose is often to be converted into other, more profitable goods. Securing a steady supply of vital Industrial goods is crucial to industrialization and growing the GDP of the country.
+Market military goods.png Military goods are goods such as small arms, ammunition and warships that are used by military buildings to arm and supply the armies and navies of the 19th century nations. The more technologically advanced the army or navy, the more complex and expensive military goods they will need.
+Of those, staple and luxury goods are mainly consumed by pops, while industrial and military goods are mainly consumed by buildings. More details on individual goods can be found below.
+
+Goods types
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+Column key:
+
+Base cost: the cost of this good when buy and sell orders are equal
+Traded quantity: number of units traded per level of trade route for this good
+Prestige factor: amount of prestige gained by the third-largest producer of this good; second-largest producer gains ×2, and largest gains ×4
+Convoy cost multiplier: the number of convoys required to ship one unit of this good
+Consumption tax cost: Hud authority.png authority cost to establish a consumption tax on this good
+Obsession chance: multiplier to chance of a culture gaining this good as an obsession; goods without an obsession chance cannot become obsessions
+Staple goods
+Market staple goods.png Good	Hud money.png Base cost	Traded quantity	Prestige factor	Military convoys.png Convoy cost multiplier	Hud authority.png Consumption tax cost	Obsession chance	Produced by	Consumed by
+Goods clothes.png Clothes	30	8	4	0.5	300	—
+Textile Mills
+Subsistence buildings
+Pop consumption
+Goods fabric.png Fabric	20	10	3	0.25	300	—
+Livestock Ranches
+Cotton Plantations
+Subsistence buildings
+Pop consumption
+Textile Mills
+Furniture Manufactories
+(Military) Shipyards
+Automotive Industries
+First Aid mobilization
+Construction Sector
+Goods fish.png Fish	20	12	3	0.25	300	—
+Fishing Wharves
+Subsistence Fishing Villages
+Pop consumption
+Food Industries
+Goods furniture.png Furniture	30	8	4	0.5	300	—
+Furniture Manufactories
+Subsistence buildings
+Pop consumption
+Goods grain.png Grain	20	12	3	0.25	500	—
+Farms
+Subsistence buildings
+Pop consumption
+Food Industries
+Livestock Ranches
+Basic Supplies mobilization
+Goods groceries.png Groceries	30	9	4	0.5	300	—	Food Industries
+Pop consumption
+Extra Supplies mobilization
+Goods merchant marine.png Merchant Marine	50	4	8	0.05	No	—	Port	Trade Centers
+Goods paper.png Paper	30	7	4	0.5	200	—	Paper Mills
+Pop consumption
+Explosives Factory
+Arts Academy
+Government Administration
+University
+Skyscraper
+Goods wood.png Wood	20	10	3	0.25	300	—
+Logging Camps
+Subsistence buildings
+Pop consumption
+Furniture Manufactories
+Glassworks
+(Military) Shipyards
+Tooling Workshops
+Paper Mills
+Synthetics Plants
+Urban Centers
+Railways
+Construction Sector
+The following goods are produced and consumed state-by-state. They do not go onto the national market, cannot be traded and don't track lead producers for prestige.
+
+Local goods
+Market staple goods.png Good	Hud money.png Base cost	Hud authority.png Consumption tax cost	Obsession chance	Produced by	Consumed by
+Goods electricity.png Electricity	30	200	—	Power Plants
+Pop consumption
+Advanced production methods
+Goods services.png Services	30	200	—
+Urban Center
+Subsistence buildings
+Pop consumption
+Goods transportation.png Transportation	30	200	—
+Railway
+Urban Centers
+Pop consumption
+Train Automation production methods
+Luxury goods
+Market luxury goods.png Good	Hud money.png Base cost	Traded quantity	Prestige factor	Military convoys.png Convoy cost multiplier	Hud authority.png Consumption tax cost	Obsession chance	Produced by	Consumed by
+Goods automobiles.png Automobiles	100	3	10	1.5	100	1	Automotive Industries
+Pop consumption
+Motorized Reconnaissance
+Truck Transport
+Goods coffee.png Coffee	50	5	6	0.75	100	1.5	Coffee Plantations	Pop consumption
+Goods fine art.png Fine art	200	1.5	10	1	100	1	Arts Academy	Pop consumption
+Goods fruit.png Fruit	30	8	4	0.75	200	1
+Farms
+Banana Plantations
+Subsistence Orchards
+Pop consumption
+Goods gold.png Gold	100	No	5	1	No	—
+Gold Fields
+Gold Mines
+None[1]
+Liquor Liquor	30	8	4	0.75	100	2
+Food Industries
+Rye Farms
+Subsistence industries
+Pop consumption
+Liquor Supplements mobilization
+First Aid mobilization
+Goods luxury clothes.png Luxury clothes	60	4	8	0.75	100	1	Textile Mills	Pop consumption
+Goods luxury furniture.png Luxury furniture	60	4	8	0.75	100	1	Furniture Manufacturies	Pop consumption
+Goods meat.png Meat	30	8	4	0.75	200	1
+Livestock Ranches
+Whaling Stations
+Subsistence Pastures
+Pop consumption
+Luxurious Supplies mobilization
+Food Industries
+Opium Opium	50	5	2	0.75	100	10	Opium Plantations
+Pop consumption
+Opium Supplements mobilization
+Field Hospitals mobilization
+Goods porcelain.png Porcelain	70	3.5	8	0.75	100	1	Glassworks	Pop consumption
+Goods radios.png Radios	80	3.5	10	1	100	1	Electrics Industries
+Pop consumption
+Supplies mobilization
+Naval units
+Goods sugar.png Sugar	30	8	4	0.75	100	1.5
+Farms
+Sugar Plantations
+Pop consumption
+Chocolate Supplements mobilization
+Food Industries
+Goods tea.png Tea	50	5	6	0.75	100	1.5	Tea Plantations	Pop consumption
+Goods telephones.png Telephones	70	4	10	1	100	1	Electrics Industries
+Pop consumption
+Government Administration
+Tobacco Tobacco	40	5	4	0.75	100	2	Tobacco Plantations
+Pop consumption
+Tobacco Supplements mobilization
+Goods wine.png Wine	50	5	6	0.75	100	2	Vineyards
+Pop consumption
+Luxurious Supplies mobilization
+Industrial goods
+Market industrial goods.png Good	Hud money.png Base cost	Traded quantity	Prestige factor	Military convoys.png Convoy cost multiplier	Hud authority.png Consumption tax cost	Obsession chance	Produced by	Consumed by
+Goods clippers.png Clippers	60	3.5	4	0.25	100	0.5	Shipyards
+Port
+Fishing Wharves
+Whaling Stations
+Pop consumption
+Goods coal.png Coal	30	7	3	0.75	150	—	Coal Mines
+Pop consumption
+Many production methods
+Goods dye.png Dye	40	5	6	1	No	—
+Dye Plantations
+Synthetics Plants
+Textile Mills
+Glassworks
+Paper Mills
+Goods locomotives.png Engines	60	4	8	1.5	No	—	Motor Industries
+(Military) Shipyards
+Automotive Industries
+Farms
+Steam Donkey
+Plantations
+Power Plants
+Oil Rigs
+Railways
+Rail Transport mobilization
+Goods explosives.png Explosives	50	4	6	1.5	No	—	Explosives Factories
+Munition Plants
+Mines
+Torpedo Boats
+Construction Sector
+Goods fertilizer.png Fertilizer	30	7	3	1	No	—
+Fertilizer Plants
+Livestock Ranches
+Explosives Factories
+Synthetics Plants
+Farms
+Chemical Weapons mobilization
+Goods glass.png Glass	40	5	5	1	100	—	Glassworks
+Pop consumption
+Food Industries
+Urban Center
+Construction Sector
+Goods hardwood.png Hardwood	40	5	4	1	No	—	Logging Camps
+Furniture Manufactories
+(Military) Shipyards
+Automotive Industries
+Arms Industries
+Artillery Foundries
+Goods iron.png Iron	40	5	3	1	No	—	Iron Mines
+Food Industries
+Tooling Workshops
+Fertilizer Plants
+Steel Mills
+Electrics Industries
+Livestock Ranches
+Construction Sector
+Arms Industries
+Artillery Foundries
+Goods lead.png Lead	40	5	3	1	No	—	Lead Mines
+Glassworks
+Electrics Industries
+Munition Plants
+Goods oil.png Oil	40	6	6	1	200	—
+Whaling Stations
+Oil Rigs
+Pop consumption
+Supplies mobilization
+Reconnaissance mobilization
+Flamethrowers mobilization
+Food Industries
+Assembly Lines
+Fertilizer Plants
+Arms Industries
+Farms
+Goods rubber.png Rubber	40	5	4	1	No	—	Rubber Plantations
+Tooling Workshops
+Textile Mills
+Automotive Industries
+Electrics Industries
+Goods silk.png Silk	40	5	6	1	100	—
+Silk Plantations
+Synthetics Plants
+Textile Mills
+Pop consumption
+Goods steamers.png Steamers	70	3.5	6	0.25	100	0.5	Shipyards
+Pop consumption
+Port
+Fishing Wharves
+Whaling Stations
+Goods steel.png Steel	50	4	5	1	No	—	Steel Mills
+Tooling Workshops
+Motor Industries
+(Military) Shipyards
+Automotive Industries
+Arms Industries
+Artillery Foundries
+Railways
+Construction Sector
+Goods sulfur.png Sulfur	50	4	3	1	No	—	Sulfur Mines
+Paper Mills
+Fertilizer Plants
+Explosives Factories
+Synthetics Plants
+Goods tools.png Tools	40	5	5	1	No	—	Tooling Workshops
+Many production methods
+Military goods
+Market military goods.png Good	Hud money.png Base cost	Traded quantity	Prestige factor	Military convoys.png Convoy cost multiplier	Hud authority.png Consumption tax cost	Obsession chance	Produced by	Consumed by
+Goods aeroplanes.png Aeroplanes	80	3	10	2	100	0.5	Automotive Industries
+Aerial Reconnaissance
+Carriers
+Pop consumption
+Goods ammunition.png Ammunition	50	5	5	1	No	—	Munition Plants	Military units
+Artillery Artillery	70	3.5	5	1.5	No	—	Artillery Foundries	Military units
+Ironclads Ironclads	80	3.5	10	0.5	No	—	Military Shipyards	Naval units
+Man-o-Wars Man-o-Wars	70	3.5	5	0.5	No	—	Military Shipyards	Naval units
+Goods small arms.png Small arms	60	4	5	1	100	0.5	Arms Industries
+Land units
+Pop consumption
+Tanks Tanks	80	3	10	2	No	—	Automotive Industries	Land units
+Prestige goods
+Round frame dec.png
+Charters of Commerce
+Available only with the Charters of Commerce DLC enabled.
+Prestige goods are variants of regular goods. Each prestige good is connected to a company. Many flavored companies have preset flavored prestige goods that they produce as long as they are prosperous, while companies can make generic prestige goods only after completing a journal entry. Prestige goods are produced only by buildings owned by the relevant company. Generic prestige goods are produced by a number of different companies while flavored prestige goods are only produced by a specific company. Generic prestige goods can be renamed.
+
+Prestige goods are identical to their base good for most purposed and are used interchangeably for inputs and pop needs. Buildings that use prestige goods as an input gain a throughput bonus and pops give prestige goods higher weight for goods substitution for needs, default +50%. Prestige goods provide the following scaling effects multiplied by their relative proportion:
+
+Function	Effect
+As building input	+20% Throughput
+As military building input
++15% Military offense.png Offense
++15% Military defense.png Defense
++25% Military morale.png Morale recovery
+In trade center market area	+100 Export trade advantage
+In local market for pop needs	+100% Substitution demand
+As pop needs purchase	+40% Standard of Living (capped to +20% at 50% or more proportion)
+In national market for obsession spawn chance	+500% Spawn chance
+Being the leading producer of a prestige good provides three times the prestige of the base good with the same relative scaling amount for 1st, 2nd, and 3rd. The leading producers of prestige goods are calculated separately from the base goods.
+
+List of prestige goods
+Discoverable goods
+
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+Goods oil.png Oil, Goods rubber.png rubber, and Goods gold.png gold can be discovered in a state provided its owner, or the owner of a neighbouring state, has the right technology. Some gold and rubber resources are present at the start of the game; those amounts are included in the tables below. Oil can also be gained from Whaling whaling, and that oil is not included in the tables below.
+
+Undiscovered resources in a state may not be revealed all at once; the amounts in the tables below are the maximum amounts that can be revealed in that state. If a state is State status split state.png split between two or more countries, its resources are split roughly proportionally as well.
+
+Americas
+Strategic Region	State	Goods oil.png	Goods rubber.png	Goods gold.png
+The Andes	Acre	—	15	—
+The Andes	Antofagasta	—	—	10
+The Andes	Cajamarca	20	—	4
+The Andes	Ecuador	—	12	—
+The Andes	Jujuy	—	—	3
+The Andes	La Paz	50	8	4
+The Andes	Lima	—	—	6
+The Andes	Pastaza	20	16	—
+The Andes	Potosí	—	—	4
+The Andes	Santa Cruz	50	22	—
+The Andes	Total	140	73	31
+Brazil	Amazonas	20	25	—
+Brazil	Bahia	—	3	—
+Brazil	Ceará	—	3	—
+Brazil	Goiás	—	16	—
+Brazil	Maranhão	—	16	—
+Brazil	Mato Grosso	20	26	—
+Brazil	Minas Gerais	20	7	10
+Brazil	Pará	20	22	—
+Brazil	Paraíba	—	1	—
+Brazil	Pernambuco	—	2	—
+Brazil	Piauí	—	4	—
+Brazil	Rio de Janeiro	—	7	—
+Brazil	Rio Grande do Norte	—	2	—
+Brazil	Rio Grande do Sul	20	—	—
+Brazil	São Paulo	20	10	—
+Brazil	Uruguay	20	—	—
+Brazil	Total	140	144	10
+Canada	Manitoba	30	—	—
+Canada	Ontario	60	—	—
+Canada	Total	90	—	—
+Caribbean	Cuba	10	8	—
+Caribbean	Haiti	—	12	—
+Caribbean	Jamaica	—	14	—
+Caribbean	Puerto Rico	—	6	—
+Caribbean	Santo Domingo	—	12	—
+Caribbean	West Indies	30	—	—
+Caribbean	Total	40	52	—
+Central America	Chiapas	—	24	—
+Central America	Costa Rica	—	12	—
+Central America	Guatemala	—	20	—
+Central America	Honduras	—	16	—
+Central America	Nicaragua	—	14	—
+Central America	Panama	—	12	—
+Central America	San Salvador	—	10	—
+Central America	Yucatán	—	16	—
+Central America	Total	—	124	—
+Dixie	Alabama	20	—	—
+Dixie	Arkansas	20	—	—
+Dixie	Florida	30	—	—
+Dixie	Louisiana	20	—	—
+Dixie	Mississippi	30	—	—
+Dixie	Oklahoma	80	—	—
+Dixie	Texas	100	—	—
+Dixie	Total	300	—	—
+Gran Colombia	Antioquia	20	8	—
+Gran Colombia	Bolívar	50	16	—
+Gran Colombia	Cauca	—	10	—
+Gran Colombia	Cundinamarca	—	6	—
+Gran Colombia	Guaviare	—	18	—
+Gran Colombia	Guyana	20	16	12
+Gran Colombia	Miranda	100	4	—
+Gran Colombia	Zulia	100	4	—
+Gran Colombia	Total	290	82	12
+Great Plains	Alberta	80	—	—
+Great Plains	Colorado	20	—	8
+Great Plains	Kansas	50	—	—
+Great Plains	Montana	20	—	—
+Great Plains	Nebraska	20	—	—
+Great Plains	North Dakota	20	—	—
+Great Plains	South Dakota	20	—	8
+Great Plains	Saskatchewan	30	—	—
+Great Plains	Wyoming	20	—	—
+Great Plains	Total	280	—	16
+La Plata	Araucania	20	—	4
+La Plata	Corrientes	20	—	—
+La Plata	Alto Paraguay	20	—	—
+La Plata	Bajo Paraguay	20	—	—
+La Plata	Patagonia	20	—	—
+La Plata	Santa Fe	20	—	—
+La Plata	Santiago	—	—	5
+La Plata	Tucumán	—	—	3
+La Plata	Total	120	—	12
+Mexico	Bajío	—	—	4
+Mexico	Guerrero	—	8	3
+Mexico	Jalisco	—	12	—
+Mexico	México	—	8	—
+Mexico	Oaxaca	—	6	2
+Mexico	Río Grande	80	—	—
+Mexico	Sonora	—	—	6
+Mexico	Veracruz	40	8	—
+Mexico	Zacatecas	—	—	4
+Mexico	Total	120	42	19
+The Midwest	Missouri	20	—	—
+The Midwest	Ohio	10	—	—
+The Midwest	Total	30	—	—
+New England	Pennsylvania	50	—	—
+Pacific Coast	Alaska	—	—	12
+Pacific Coast	Arizona	—	—	5
+Pacific Coast	British Columbia	—	—	8
+Pacific Coast	California	80	—	12
+Pacific Coast	Nevada	—	—	15
+Pacific Coast	Utah	20	—	—
+Pacific Coast	Yukon Territory	—	—	12
+Pacific Coast	Total	100	—	64
+Europe and Asia
+Strategic Region	State	Goods oil.png	Goods rubber.png	Goods gold.png
+Balkans	Albania	20	—	—
+Bengal	Assam	44	12	—
+Bombay	Bombay	—	—	3
+Bombay	Gujarat	8	—	—
+Bombay	Total	8	—	6
+South China	Chongqing	10	—	—
+North China	Alxa	10	—	—
+North China	Shandong	20	—	—
+North China	Shanxi	30	—	—
+North China	Xi’an	20	—	—
+North China	Total	80	—	—
+Danubia	Délvidék	20	—	—
+Danubia	Moldavia	50	—	—
+Danubia	Wallachia	80	—	—
+Danubia	Total	150	—	—
+Dnieper	Chernihiv	6	—	—
+Dnieper	Kharkiv	12	—	—
+Dnieper	Total	18	—	—
+Delhi	Punjab	7	—	—
+England	East Anglia	20	—	—
+England	Lancashire	20	—	—
+England	Total	40	—	—
+Italy	Lombardy	20	—	—
+Rhine	Friesland	60	—	—
+North Germany	Elbe	60	—	—
+North Germany	Hannover	60	—	—
+North Germany	Total	120	—	—
+South Germany	Bohemia	—	—	5
+South Germany	Tyrol	—	—	2
+South Germany	Total	—	—	7
+Iberia	Asturias	—	—	4
+Iberia	Navarra	30	—	—
+Iberia	Total	30	—	4
+Indochina	Annam	—	6	—
+Indochina	Arakan	7	—	—
+Indochina	Bangkok	—	16	—
+Indochina	Cambodia	—	12	—
+Indochina	Chiang Mai	—	4	—
+Indochina	Malaya	—	40	—
+Indochina	Mandalay	26	20	2
+Indochina	Mekong	—	8	—
+Indochina	Nakhon Ratchasima	—	2	—
+Indochina	Pegu	5	9	—
+Indochina	Sagaing	—	—	3
+Indochina	Shan States	—	2	—
+Indochina	Tenasserim	—	16	—
+Indochina	Tonkin	—	16	—
+Indochina	Total	38	151	5
+Indonesia	Aceh	25	18	—
+Indonesia	East Borneo	60	28	—
+Indonesia	North Borneo	20	16	8
+Indonesia	West Borneo	—	12	10
+Indonesia	Celebes	—	4	—
+Indonesia	Central Java	—	8	—
+Indonesia	East Java	20	12	—
+Indonesia	West Java	20	12	—
+Indonesia	Luzón	—	4	—
+Indonesia	Mindanao	—	10	—
+Indonesia	Moluccas	—	4	—
+Indonesia	Eastern New Guinea	15	12	—
+Indonesia	Western New Guinea	15	8	—
+Indonesia	North Sumatra	—	28	—
+Indonesia	South Sumatra	20	28	—
+Indonesia	Sunda Islands	—	8	—
+Indonesia	Visayas	—	4	—
+Indonesia	Total	195	216	18
+Japan	Chubu	30	—	—
+Japan	Hokkaido	—	—	8
+Japan	Sakhalin	10	—	—
+Japan	Total	40	—	8
+Madras	Ceylon	—	12	—
+Madras	Madras	—	7	—
+Madras	Malabar	—	8	—
+Madras	Mysore	—	6	6
+Madras	Total	—	33	6
+Manchuria	Northern Heilongjiang	—	—	18
+Manchuria	Northern Jilin	20	—	8
+Manchuria	Shengjing	20	—	—
+Manchuria	Total	40	—	26
+Oceania	New South Wales	30	—	12
+Oceania	North Island	—	—	4
+Oceania	South Island	—	—	6
+Oceania	Tasmania	—	—	6
+Oceania	Victoria	—	—	6
+Oceania	Western Australia	—	—	8
+Oceania	Total	30	—	42
+Poland	East Galicia	100	—	—
+Poland	West Galicia	60	—	—
+Poland	Total	160	—	—
+Arctic Russia	Arkhangelsk	—	—	10
+Arctic Russia	Nenetsia	30	—	—
+Arctic Russia	Vologda	20	—	—
+Arctic Russia	Total	50	—	10
+Russia	Cheboksary	24	—	—
+Russia	Kursk	—	—	3
+Russia	Saratov	15	—	—
+Russia	Total	39	—	3
+East Siberia	Buryatia	—	—	16
+East Siberia	Chita	10	—	—
+East Siberia	Chukotka	—	—	4
+East Siberia	Irkutsk	10	—	—
+East Siberia	Kamchatka	—	—	2
+East Siberia	Kolmya	—	—	16
+East Siberia	Okhotsk	—	—	8
+East Siberia	Yakutsk	5	—	8
+East Siberia	Total	25	—	54
+West Siberia	Altai	—	—	3
+West Siberia	Krasnoyarsk	—	—	12
+West Siberia	Ob	60	—	—
+West Siberia	Surgut	120	—	—
+West Siberia	Tobolsk	60	—	—
+West Siberia	Total	240	—	15
+Urals	Chelyabinsk	—	—	12
+Urals	Kazan	60	—	—
+Urals	Perm	60	—	—
+Urals	Samara	90	—	—
+Urals	Ufa	35	—	—
+Urals	Ural	—	—	8
+Urals	Vyatka	25	—	—
+Urals	Total	270	—	20
+Africa and Middle East
+Strategic Region	State	Goods oil.png	Goods rubber.png	Goods gold.png
+Arabia	Baghdad	40	—	—
+Arabia	Basra	60	—	—
+Arabia	Mosul	40	—	—
+Arabia	Nejd	60	—	—
+Arabia	Oman	30	—	—
+Arabia	Trucial Coast	80	—	—
+Arabia	Yemen	30	—	—
+Arabia	Total	340	—	—
+Caucasus	Astrakhan	30	—	—
+Caucasus	Baku	100	—	—
+Caucasus	Dagestan	30	—	—
+Caucasus	Kalmykia	10	—	—
+Caucasus	Kuban	30	—	—
+Caucasus	North Caucasus	25	—	4
+Caucasus	Stavropol	30	—	—
+Caucasus	Tiflis	—	—	3
+Caucasus	Total	255	—	7
+Central Asia	Aktobe	30	—	—
+Central Asia	Dzungaria	10	—	—
+Central Asia	Turkmenia	30	—	—
+Central Asia	Uralsk	60	—	—
+Central Asia	Total	130	—	—
+Congo	East Angola	—	16	—
+Congo	North Angola	—	22	—
+Congo	South Angola	—	14	—
+Congo	South Cameroon	—	24	—
+Congo	Congo	5	60	—
+Congo	Lower Congo	—	32	—
+Congo	Equateur	—	30	—
+Congo	Gabon	5	24	—
+Congo	Kasai	—	22	—
+Congo	Katanga	—	20	—
+Congo	Lualaba	—	52	—
+Congo	Ubangi-Shari	—	34	—
+Congo	Zambia	—	20	—
+Congo	Total	10	370	—
+Ethiopia	Amhara	—	26	—
+Ethiopia	Gonder	—	22	—
+Ethiopia	Oromia	10	28	—
+Ethiopia	Total	10	76	—
+North Africa	Constantine	20	—	—
+North Africa	Libyan Desert	50	—	—
+North Africa	East Sahara	20	—	—
+North Africa	Inner Morocco	—	—	3
+North Africa	Sahara	20	—	—
+North Africa	Tripoli	50	—	—
+North Africa	Total	160	—	3
+Niger	Benin	—	16	—
+Niger	Chad	30	—	—
+Niger	Dahomey	—	22	—
+Niger	Hausaland	10	20	—
+Niger	East Hausaland	5	—	—
+Niger	Outer Hausaland	5	—	—
+Niger	Niger	50	—	—
+Niger	Nigeria	—	24	—
+Niger	Niger Delta	—	22	—
+Niger	Togo	—	20	—
+Niger	Yoruba States	—	16	—
+Niger	Total	100	140	—
+Nile	Darfur	30	—	—
+Nile	Dongola	5	—	—
+Nile	Equatoria	—	18	—
+Nile	Kordofan	20	—	—
+Nile	Total	55	18	—
+Persia	Arabistan	60	—	—
+Persia	Fars	60	—	—
+Persia	Hormuz	40	—	—
+Persia	Khorasan	20	—	—
+Persia	Luristan	20	—	—
+Persia	Mazandaran	20	—	—
+Persia	Persian Kurdistan	20	—	—
+Persia	Total	240	—	—
+Senegal	Gambia	—	16	—
+Senegal	Ghana	—	22	—
+Senegal	Guinea	—	22	—
+Senegal	Ivory Coast	5	22	—
+Senegal	Liberia	—	20	—
+Senegal	Inner Mauritania	20	—	—
+Senegal	Senegal	—	16	—
+Senegal	Sierra Leone	—	28	—
+Senegal	Timbuktu	20	—	—
+Senegal	Volta	—	24	—
+Senegal	Windward Coast	—	22	—
+Senegal	Total	45	192	—
+Southern Africa	Lourenço Marques	—	16	—
+Southern Africa	Northern Cape	—	—	9
+Southern Africa	Transvaal	—	—	12
+Southern Africa	Vrystaat	—	—	16
+Southern Africa	Zambezi	—	16	—
+Southern Africa	Total	—	32	37
+Zanj	Kazembe	—	22	—
+Zanj	Kenya	—	16	—
+Zanj	Lindi	—	16	—
+Zanj	North Madagascar	—	16	—
+Zanj	South Madagascar	—	16	—
+Zanj	Mocambique	—	28	—
+Zanj	Rift Valley	—	16	—
+Zanj	Tanganyika	—	28	—
+Zanj	Uganda	—	28	—
+Zanj	Zambezia	—	14	—
+Zanj	Zanzibar	—	16	—
+Zanj	Total	—	216	—
+Maps
+Resources
+Coal
+Coal
+
+
+Fish
+Fish
+
+
+Gold fields
+Gold fields
+
+
+Gold mines (starting)
+Gold mines (starting)
+
+
+Iron
+Iron
+
+
+Lead
+Lead
+
+
+Logging
+Logging
+
+
+Oil
+Oil
+
+
+Rubber
+Rubber
+
+
+Sulfur
+Sulfur
+
+
+Whaling
+Whaling
+
+Agriculture
+Livestock ranches can be built nearly anywhere, so that map can also be used as a general map of arable land.
+
+Livestock ranches
+Livestock ranches
+
+
+Banana plantations
+Banana plantations
+
+
+Coffee plantations
+Coffee plantations
+
+
+Cotton plantations
+Cotton plantations
+
+
+Dye plantations
+Dye plantations
+
+
+Maize farms
+Maize farms
+
+
+Millet farms
+Millet farms
+
+
+Opium plantations
+Opium plantations
+
+
+Rice farms
+Rice farms
+
+
+Rye farms
+Rye farms
+
+
+Silk plantations
+Silk plantations
+
+
+Sugar plantations
+Sugar plantations
+
+
+Tea plantations
+Tea plantations
+
+
+Tobacco plantations
+Tobacco plantations
+
+
+Vineyards
+Vineyards
+
+
+Wheat farms
+Wheat farms
+
+References
+ Gold is unique in that it is fixed price and non-tradable, and nothing actually demands it, but because of these qualities it will always provide a stable source of income for the producing buildings to pay its employees and dividends. Increased minting, which allows a nation to directly benefit from gold mining, happens concurrently with gold production
+To update page content, see reference files /Victoria 3/game/common/goods/00_goods.txt and /Victoria 3/game/common/prestige_goods/00_prestige_goods.txt.
+To update flavor text, see reference file /Victoria 3/game/localization/english/goods_l_english.yml.
+For discoverable goods, see reference files in folder /Victoria 3/game/map_data/state_regions
+Game concepts
+Pops	Pops • Acceptance • Culture • Migration • Needs • Professions • Religion • Standard of living
+Government	Government • Capacities • Characters • Decrees • Institutions • Laws • Technology
+Politics	Elections • Ideology • Interest group • Political lobby • Political movement • Political party • Revolution
+Economy	Buildings • Goods • Harvest condition • Infrastructure • Market • Production methods • State • Treasury
+Diplomacy	Diplomacy • Diplomatic action • Diplomatic play • Power bloc • Ranks • Subjects • Treaties
+Warfare	Warfare • Land warfare • Naval warfare • Wargoals • Conscription
+Others	Countries • Decisions • Events • Journal • Objectives • Vickypedia
+Categories: 1.12Economy
+Privacy policyAbout Victoria 3 WikiDisclaimersMobile view
+Attribution-ShareAlike 3.0Powered by MediaWiki
+
+Games
+Discover
+Our Brands
+Browse
+Play on Paradox technology
+Community
+Paradox Forums
+Paradox Wikis
+Support
+About
+News
+About us
+Careers
+Join our playtests
+Media contact
+Social Media
+Legal Information
+EU Online Dispute Resolution
+Report Illegal Content

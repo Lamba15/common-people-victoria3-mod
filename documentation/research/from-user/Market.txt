@@ -1,0 +1,339 @@
+
+Paradox Wikis
+Victoria 3 Wiki
+
+Search
+Search Victoria 3 Wiki
+Log in
+Navigation menu
+PageDiscussion
+ReadEditEdit sourceView history
+Victoria 3 Wiki
+Recent changes
+Random page
+Paradox Wikis
+- Main portal
+- Wikis discord
+- Contact us
+- Style guidelines
+V3 links
+- Forums
+- Game discord
+- Mods
+- Store
+- Twitch
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+Market
+Jump to navigationJump to search
+Please help with verifying or updating older sections of this article.
+At least some were last verified for version 1.9.
+
+Economy
+Buildings
+List of buildings • Unique buildings
+Companies • Flavored companies
+Market
+Goods • Needs
+Production methods
+List of production methods
+Treasury
+
+A bird's eye view of the French market.
+All transactions of goods by pops and buildings take place within a market. Each country belongs to either its own market or another market as a member of a customs union. Countries can also import or export goods between markets via trade. Each market has its own prices for goods based on the total number of buy and sell orders in the market.
+
+Markets also define the range for internal migration.
+
+
+Contents
+1	National market
+1.1	Customs union
+1.2	Market adjacency
+1.3	Market price
+1.4	Market access
+1.5	Local price
+1.5.1	Oversupply and undersupply
+1.5.2	Shortages
+2	Trade
+2.1	World market
+2.1.1	World market hub
+2.1.2	Blockades
+2.1.3	Trade advantage
+2.1.4	Trade capacity
+2.2	Tariffs and subventions
+2.3	Embargoes
+2.4	Treaty ports
+3	Supply network
+3.1	Shipping lane
+3.2	Convoys
+4	References
+National market
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.8.
+The national market represents the sum of goods transactions within a country. By default, each country has its own national market, which has a State status market capital.png Market Capital, typically the same state as its State status capital.png Government Capital. All states within the market have a measure of market access from 0% to 100%, which represents how well the state is connected to the national market. Market access depends primarily on a state's State status infrastructure.png Infrastructure usage, while overseas states (those which are not in a contiguous region with the market capital) also require Building port.png Ports and Military convoys.png Convoys through a shipping lane.
+
+Customs union
+Customs unions are joint markets led by a single country, the market owner. Customs unions come about in one of three ways:
+
+All subjects automatically join their overlord's market.
+Power bloc trade league.png Trade League power blocs are always customs unions, with the bloc leader as the market owner.
+Other power blocs can become customs unions with
+Principle tier III.png
+Market Unification
+ Market Unification III, with the bloc leader as the market owner.
+A customs union has only a single market capital, that of the market owner.
+
+Members of a customs union can also be granted their own market: subjects by their direct overlord; bloc members by the bloc leader. This removes that country – and its subjects – from the union and creates a new market led by that country.
+
+Market adjacency
+Markets are considered adjacent if they share a direct land border or connect to any shared sea node.
+
+Market price
+See also: Goods
+All goods have a defined base price. This is the price if the number of buy orders equals the number of sell orders. The actual price of each good varies based on the total number of buy and sell orders across all states in a market. The price of goods can vary between 75% below to 75% above the base price. That is the final market price can vary from 25% to 175% of the base price.
+
+The price of a good in a state or a market is given by the following formula:[1]
+
+Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle \text{price} = \text{Base Price} * \left[1+0.75*\text{clamp}\left(\dfrac{\text{BUY}-\text{SELL}}{\min(\text{BUY},\text{SELL})},\text{±}1\right)\right]}
+
+For example, for a good with a base price of 20 such as Goods wood.png wood, when there are 100 buy orders and 120 sell orders, its price will be:
+
+Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle \text{price} = 20 * \left[1+0.75*\text{clamp}\left(\dfrac{100-120}{100},\text{±}1\right)\right]=20*(1-0.15)=17}
+
+or 15% below base price, because there is more supply than demand.
+
+It should be stressed that the amount of goods bought and sold in the market is not the same. All of the buy orders are bought and paid for by pops or industries, and all of the sell orders are sold with revenue received by industries. The difference between the two is created or destroyed by the simulation, along with the corresponding monetary value.
+
+When there are more sell orders than buy orders, this effect creates extra value in the economy, with the local maximum of 20.87% sell orders times good base price achieved at market price of -39.56% below base, or 65.5% ratio of buy to sell orders and the absolute maximum of 25% sell orders times good base price achieved with no sell orders at all (theoretically at 100% MAPI, reduced by actual MAPI as described below).
+
+Conversely, when there are more buy orders than sell orders, value in the economy is destroyed, since buyers pay more money in total than sellers receive.
+
+Continuing with the example above, buyers would pay for 100 wood, and sellers would receive money for 120 wood, with the resulting difference of 17*(120-100)=£340 appearing in the economy, which makes up for 14.2% of 20*120=£2400 of the wood made available on the market.
+
+Market access
+Main article: Market access
+Market access represents how well a state is connected to the national market. It starts as simple calculation of infrastructure over infrastructure usage. If the state has more infrastructure than infrastructure usage, its market access is 100%, but if usage exceeds available infrastructure, market access is reduced by a proportional amount. For example, if a state has an infrastructure of 45 with a usage of 90, its market access is at most 50%. States which are overseas from the State status market capital.png market capital also require shipping lanes and convoys; therefore, market access in overseas states is also limited by the supply network strength and can be reduced despite a sufficient supply of infrastructure. Similarly, Market isolated.png isolated states, whatever the reason, have 0 market access.
+
+Market access affects how states interact with the national market in two ways: first by reducing a state's buy and sell orders added to the national market, and second by reducing the Market Access Price Impact (MAPI) on local prices. Overall, low market access negatively impacts both local prices in a state as well as market prices on the national market. Thus, maintaining good market access in all states is important for a healthy economy.
+
+Local price
+Market Access Price Impact
+Source	Amount
+Base	75%
+State status unincorporated.png Unincorporated state	−10%
+Traditionalism Traditionalism	−15%
+Stock Exchange Stock Exchange	+10%
+Zeppelins Zeppelins	+5%
+Macroeconomics Macroeconomics	+5%
+State trait river.png Some major rivers	+5%
+While market price reflects the general cost of goods across the market, each state has a separate local price for each good. As all transactions occur on the state level, excluding inter-market trades, the local price in each state is the actual amount each pop and building pays or gains. The local price is calculated as a proportion of the market price and the state price – calculated as though the state made its own market. The proportion is called Market Access Price Impact (MAPI), which is determined by laws, technology, and state traits and incorporation, then multiplied by the state's market access. For example, with a MAPI of 85%, the local price in a state is the weighted average of 85% of market price and 15% of the state price. As another example, Market isolated.png isolated states have 0% market access (and so 0% MAPI) and so use 100% of the state price. Finally, local-only goods, Goods services.png services, Goods transportation.png transportation, and Goods electricity.png electricity always use only the state price.
+
+The local price of a good is given by the following formula: Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle \text{local price} = \text{MAPI} * \text{Market Price} + (1-\text{MAPI}) * \text{State Price}}
+
+For example, Goods iron.png iron has a base price of £40; if the national market balance is 0, meaning buy and sell orders are equal, and the state produces iron but consumes none making it 75% below base price (£10), the formula for local price would be as follows when MAPI is at 85%[2]:
+local price
+=
+(
+0.85
+∗
+40
+)
++
+(
+0.15
+∗
+10
+)
+=
+34
++
+1.5
+=
+35.5
+{\displaystyle {\text{local price}}=(0.85*40)+(0.15*10)=34+1.5=35.5} This is an 11% decrease from the market price meaning that iron mines are losing potential money as no iron is bought locally.
+
+Oversupply and undersupply
+In Victoria 3, transactions of goods are not directly from producer to consumer, but abstracted through the market. That is, producers can sell all of their goods and consumers can purchase all of their goods, even if the number of buy and sell orders for a good do not match. Mismatches in buy and sell orders results in price changes as noted above. For this reason, oversupply (more sell orders) and undersupply (more buy orders) of goods each impact the cash reserves of buildings and wealth of pops. Additionally, as market and local prices are capped at 75% above or below base price, extreme over- or under-supply results in losses for the buyer or seller compared to an uncapped "true" value of the good.
+
+The price effects of over- and under-supply are magnified by the effects of market access and MAPI. A state which only produces a good has an decreased price for that good compared to the national market and conversely a state that only consumes a good has an increased price. This can result in a loss of money between a producer's sell price and a consumer's buy price when they are in different states. If the producer and consumer are in the same state, this loss does not occur.
+
+An oversupply is good for pops and buildings that purchase the good, as they have more cash remaining than typical, leading to Standard of living.png standard of living increases and higher dividends. However, when a good is highly oversupplied, the buildings which produce that good are unlikely to make any profit, and thus they are unable to raise their workers' wages and may even fire workers to balance their budget. With fewer workers, the production of the good is reduced, thus bringing supply back to a healthier equilibrium, but fired workers become Political radical.png radicals and reduced production also reduces demand of input goods thus affecting the buildings producing them, so this is not typically an effective strategy. Government subsidies can keep production going, though often a great expense to the national treasury.
+
+While an undersupply increases the profits of buildings producing that good – and the dividends of its ownership pops, a large undersupply of goods is almost never desirable. In particular, if buy orders are twice or more of sell orders, it results in a shortage for all buildings using that good as an input. While shortages can resolve themselves, this is often more damaging as a shortage of an input good for a building can lead to a shortage of its output goods. Additionally, high prices may reduce pops' standard of living. Thus, deliberate action to change the situation is recommended. This may include increasing production of the good, importing it from another market, or reducing its consumption.
+
+Shortages
+A shortage occurs when the buy orders of a good exceed sell orders by at least double. This is indicated by the shortage icon Shortage besides the good's icon. A shortage reduces the throughput of all buildings requiring the good as an input by −5% and increasing −1% per day up to a maximum of −75%, depending on the severity of the shortage. When the shortage is resolved the modifier decreases by 1% per day until it reaches 0 and is removed.
+
+This effect is extremely damaging since buildings which already had one of their input goods at an extremely high price (+75%), now also receive a throughput malus. As the buildings lose throughput, fewer input goods are demanded and as the building becomes less profitable, workers might be fired, further reducing throughput and thus demand. Both effects reduce the demand for the good in shortage and slowly alleviate it, however this equilibrium could be found at a certain percentage of the shortage effect, still reducing the effectiveness of its buildings, so it still should demand the player's attention in fixing it.
+
+Trade
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.9.
+Countries in different markets can engage in trade between their markets. This is done automatically via the world market or manually through a treaty using the Goods Transfer Article. Countries which have enacted Isolationism Isolationism typically cannot engage in trade via the World Market, but can trade via Goods Transfer Articles. Additionally, unless a country has enacted Free Trade Free Trade, it can gain national income from trade via tariffs. Trade via the world market is facilitated by Building trade center.png Trade Centers, which can be nationally or privately built and owned.
+
+World market
+The world market is conceptually located in the sea. To access it, a market area must either possess a Building port.png Port or the country it belongs to must have a treaty with another country that includes the Treaty transit rights.png Transit Rights article while the other country has an adjacent market area with a Port.
+
+World market hub
+A world market hub represents the primary trade center with the world market for a market area. Each market area with at least one Port has a single hub. If a market has more than one port, the location of the world market hub can change depending on Port levels and states' gross domestic product, but will generally remain relatively stable.
+
+Blockades
+During war, fleets can be given orders to Order blockade.png Blockade a sea node, which reduces supply routes to and world market access for states adjacent to that sea node. A blockade is not immediately effective, but scale up over time to the maximum blockade strength.
+
+Each type of flotilla has a certain Blockade strength, with capital ships generally having 10 times the blockade strength of equivalent light ships. The blockade strength determines the blockade level on a scale from 0% to 100%, which gives scalable deficits for the state(s) blockaded.
+
+At 100% blockade level, the following effects are applied
+
+−50% migration attraction
+−75% efficiency for shipping lanes
+−75% world market access
+−75% throughput for Building fishing wharves.png Fishing Wharves and Building port.png Ports
+Trade advantage
+Trade advantage is a measure of how dominant a country is in the trade of a particular good. Trade advantage individually modifies the import price or export price for a good in a certain state. At 100%, trade advantage provides a 25% better price. However, trade advantage is a zero-sum game, as the overall market price remains unchanged, meaning that gains for one country results in losses for others. Therefore, there are two values at play: absolute trade advantage and relative trade advantage. Relative trade advantage is a country's trade advantage as a percentage of global trade advantage.
+
+The world market price has a monopoly bonus. If one market controls 100% of exports, the world market price is 20% higher. This higher price is scaled to the share of global trade owned by the largest trader, so if one country controls 50% of the market the price is 10% higher. In this scenario, trade advantage does not affect the price.
+
+Trade advantage is made up of several factors:
+
+Base trade advantage: 100
++2 for every percentage of the global production that is within the market area
++0.5 for every percentage of the production in a market area that is controlled by a company with trade rights
++1 for every percentage of production that is prestige goods, for export advantage only
++1 for each percentage of trade going to a country that the trade center's owner has trade privileges with
++2 for each percentage of trade that is to a trade center in a treaty port
+−0.5 for each percentage of trade that is going to a country that the trade center owner lacks an interest with. This is not applicable with
+Principle tier III.png
+External Trade
+ External Trade III
+−0.75 for each percentage of trade with a country that is at war with the trade center owner
+−1 for each percentage of trade going to a country that is embargoing the trade center owner
+There is also a list of flat bonuses that modify trade advantage:
+
++25% for having
+Principle tier I.png
+External Trade
+ External Trade I power bloc principle
++5% for trade centers in the market capital
++25% depending on the trade center owner's trade law.
+Up to +0.5% for every 100 trade capacity in the trade center (max +20% further modified by banking techs).
+Additionally, trade capacity is also modified by which Trade Policy is implemented.
+
+Law	Effects
+Mercantilism icon
+Mercantilism
+An export-focused economy with an emphasis on keeping a positive current account and competing with other nations.
+−25% Trade Advantage for imports
++25% Trade Advantage for exports
+Protectionism icon
+Protectionism
+Our industries must be protected from the depredations of foreign market actors.
+Free Trade icon
+Free Trade
+The free exchange of goods must not be impeded, as trade is for the benefit of all.
++25% Trade advantage
+Isolationism icon
+Isolationism
+An economy focused on supplying the nation's needs internally, while keeping out of the affairs of others.
+No Disable trade centers
+Canton System icon
+Canton System
+A variant of Isolationism where trade is only permitted in a single coastal state.
+Trade capacity
+Trade centers can trade a certain amount each week, quantified by the trading capacity they produce. Each trade center produces 10 trade capacity and consumes a certain amount of Goods merchant marine.pngMerchant Marine. Each type of good takes up a certain amount of trade capacity. The various production methods increase the goods traded per trade capacity at the cost of more merchant marine. The power bloc principle External trade I increases trade capacity by 25%. Additionally,
+Principle tier II.png
+External trade
+ External trade II unlocks the production method Influential Trade Center which makes trade centers produce +0.5 Hud influence.png influence.
+
+Trade centers imports or exports an traded quantity amount of a good autonomously, with a number of weekly adjustments based on the ‘Weekly Trades’ value created by the Trade Center, in which they increase or decrease trade volumes to create profit for themselves. Countries can attempt to manipulate trade by changing tariff and subvention levels.
+
+Tariffs and subventions
+Maximum Tariff and Subvention rates per Trade Policy law
+Type	Mercantilism Mercantilism	Canton System Canton System	Protectionism Protectionism	Free Trade Free Trade	Isolationism Isolationism
+Import Tariffs	50%	50%	50%	—	—
+Export Tariffs	20%	20%	50%	—	—
+Import Subventions	20%	20%	50%	50%	—
+Export Subventions	50%	50%	50%	50%	—
+See also: Trade Policy laws
+Countries can impose tariffs or provide subventions on the import or export of specific goods, which can be set to none, 12.5%, 25%, or 50%. The maximum percentage permitted is determined by the country’s current Trade Policy law. The tarrifs and subventions are paid by or to the Building trade center.png Trade Centers which trade those goods.
+
+Tariff percentages are calculated from a good's base price rather than its market price. Countries in a customs union – including subjects – split tariffs proportionally by their relative GDP, with the market owner receiving a minimum of 25% of the tariff income.
+
+The power bloc principles
+Principle tier II.png
+Market Unification
+ Market Unification II and
+Principle tier II.png
+Internal Trade
+ Internal Trade II each add an additional flat +20% tariffs on all trade routes with non-bloc members. These additional tariffs apply even for trade routes owned by countries within the bloc that have enacted Free Trade Free Trade.
+
+Embargoes
+A market owner can impose an Diplomacy embargo.png embargo on another market owner to reduce that country's trade advantage for a base cost of Hud influence.png 100 Influence. Embargoes are also automatically imposed at no cost whenever two countries are at war with each other; these automatic embargoes are removed when peace is signed. Embargoes decreases the trade advantage by 1% for both countries on goods for each percentage of a bought good, that comes from the other party's market.[3]
+
+Members of a customs union or a power bloc with
+Principle tier I.png
+Market Unification
+ Market Unification I cannot embargo each other. The automatic embargo from war still applies in the case of a power bloc with Market Unification.
+
+Treaty ports
+State status treaty port.png Treaty ports are a special type of state, based on the port province of a state region. They can be established by a diplomatic play or treaty and allow the owner of the treaty port to bypass tariffs and embargoes by enabling the owner of the treaty port to build trade centers that buy and sell from the market that the treaty port resides in to the world market.
+
+Treaty ports treaties can be withdrawn by the initiator at will and only be withdrawn by the market's owner if:
+
+The market's owner is of greater rank
+The market's owner is not unrecognized
+Treaty duration is over or 5 years has passed after the war if the treaty was forced via war
+When the treaty, governing the treaty port is withdrawn, the former owner of the treaty port will still keep the province, but it will lose its status as a treaty port. If a treaty port is temporarily lost as a result of a secession or revolution, it will be reinstated after the rebels have been defeated, except in the case of special revolution tags like Heavenly Kingdom and similar due to a bug.
+
+Supply network
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.11.
+A country's supply network is the total of all of its shipping lanes. If a country does not have sufficient Military convoys.png convoys to support its supply network, it suffers reduced market access for overseas states and the supply of overseas armies is reduced.
+
+Shipping lane
+Shipping lanes are the connections between non-adjacent areas. Shipping lanes are used for intra-market connections to overseas states and regions, and supply routes for overseas armies. Each shipping lane has a required convoy usage. The amount required varies depending on the type of shipping lane and distance it travels.
+
+When at war, a country's shipping lanes may be disrupted by an enemy navy using the Order raid convoys.png Raid Convoys order. This directly reduces the efficiency of affected shipping lanes as well as reducing the number of convoys thus potentially impacting the market's overall supply network. A country can order its navy to Order escort convoys.png Escort Convoys to reduce the effect of enemy raids.
+
+Convoys
+Convoys are the capacity required for shipping lanes and the supply network. Convoys are produced by Building port.png Ports, requiring either Goods clippers.png clippers or Goods steamers.png steamers as an input. Subjects, as well as junior members of customs unions, transfer 50% or 75% of their convoys to the the market owner.
+
+References
+ The 0.75 is based on the define PRICE_RANGE which can be set between 0 and 1, and it scales based on the define BUY_SELL_DIFF_AT_MAX_FACTOR, which defines the maximum ratio of buy and sell orders beyond which prices do not change.
+ Source of this example
+ Prior to version 1.9 they instead made trade routes between the two countries inactive, but didn't remove them.
+Game concepts
+Pops	Pops • Acceptance • Culture • Migration • Needs • Professions • Religion • Standard of living
+Government	Government • Capacities • Characters • Decrees • Institutions • Laws • Technology
+Politics	Elections • Ideology • Interest group • Political lobby • Political movement • Political party • Revolution
+Economy	Buildings • Goods • Harvest condition • Infrastructure • Market • Production methods • State • Treasury
+Diplomacy	Diplomacy • Diplomatic action • Diplomatic play • Power bloc • Ranks • Subjects • Treaties
+Warfare	Warfare • Land warfare • Naval warfare • Wargoals • Conscription
+Others	Countries • Decisions • Events • Journal • Objectives • Vickypedia
+Categories: Potentially outdated1.9EconomyPages with math errorsPages with math render errors
+Privacy policyAbout Victoria 3 WikiDisclaimersMobile view
+Attribution-ShareAlike 3.0Powered by MediaWiki
+
+Games
+Discover
+Our Brands
+Browse
+Play on Paradox technology
+Community
+Paradox Forums
+Paradox Wikis
+Support
+About
+News
+About us
+Careers
+Join our playtests
+Media contact
+Social Media
+Legal Information
+EU Online Dispute Resolution
+Report Illegal Content

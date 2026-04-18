@@ -1,0 +1,165 @@
+###############################################################################
+# Common People -- journal entries
+#
+# cp_je_layla -- Layla's life. Pinned by default for Egypt at game start. It
+# is not a goal and it does not complete; it exists for as long as she does
+# so the player can watch her.
+#
+# UI composition:
+#   - Title: cp_je_layla (her name)
+#   - Status line: status_desc with 12 triggered_desc variants (4 life
+#     situations x 3 mood buckets). Each variant is a 3-line loc string --
+#     what she is thinking, what she is doing, what she is hoping for.
+#   - Body prose: cp_je_layla_reason -- lasting "who she is" paragraphs
+#     (house, possessions, the unchanging texture of her life).
+#   - Button: cp_layla_check_button -- "Check on Layla", dispatches to a
+#     random event appropriate to her situation.
+#
+# Pulses:
+#   - on_monthly_pulse: rerolls cp_mood_roll (1-10), so the status line
+#     changes every month without anything else changing.
+#   - on_yearly_pulse: increments cp_age (internal; not displayed).
+#
+# Variant ordering in status_desc matters: first_valid picks the first
+# matching branch, so more specific conditions (situation + mood) must
+# come before more general ones (situation only, then mood only, then
+# default).
+###############################################################################
+
+cp_je_layla = {
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+    group = je_group_internal_affairs
+
+    # Monthly-updating status. Three lines per variant:
+    #   She is thinking about [...].
+    #   She is [doing ...].
+    #   She is hoping [...].
+    status_desc = {
+        first_valid = {
+            # --- Ahmed at war ---
+            triggered_desc = {
+                trigger = {
+                    scope:cp_layla ?= {
+                        has_variable = cp_ahmed_at_war
+                        var:cp_mood_roll >= 7
+                    }
+                }
+                desc = cp_je_layla_status_war_high
+            }
+            triggered_desc = {
+                trigger = {
+                    scope:cp_layla ?= {
+                        has_variable = cp_ahmed_at_war
+                        var:cp_mood_roll <= 3
+                    }
+                }
+                desc = cp_je_layla_status_war_low
+            }
+            triggered_desc = {
+                trigger = { scope:cp_layla ?= { has_variable = cp_ahmed_at_war } }
+                desc = cp_je_layla_status_war_mid
+            }
+
+            # --- Under the restored serfdom ---
+            triggered_desc = {
+                trigger = {
+                    scope:cp_layla ?= {
+                        has_variable = cp_under_serfdom
+                        var:cp_mood_roll >= 7
+                    }
+                }
+                desc = cp_je_layla_status_serfdom_high
+            }
+            triggered_desc = {
+                trigger = {
+                    scope:cp_layla ?= {
+                        has_variable = cp_under_serfdom
+                        var:cp_mood_roll <= 3
+                    }
+                }
+                desc = cp_je_layla_status_serfdom_low
+            }
+            triggered_desc = {
+                trigger = { scope:cp_layla ?= { has_variable = cp_under_serfdom } }
+                desc = cp_je_layla_status_serfdom_mid
+            }
+
+            # --- She owns the field ---
+            triggered_desc = {
+                trigger = {
+                    scope:cp_layla ?= {
+                        has_variable = cp_owns_land
+                        var:cp_mood_roll >= 7
+                    }
+                }
+                desc = cp_je_layla_status_homesteader_high
+            }
+            triggered_desc = {
+                trigger = {
+                    scope:cp_layla ?= {
+                        has_variable = cp_owns_land
+                        var:cp_mood_roll <= 3
+                    }
+                }
+                desc = cp_je_layla_status_homesteader_low
+            }
+            triggered_desc = {
+                trigger = { scope:cp_layla ?= { has_variable = cp_owns_land } }
+                desc = cp_je_layla_status_homesteader_mid
+            }
+
+            # --- Default: tenant's wife ---
+            triggered_desc = {
+                trigger = { scope:cp_layla ?= { var:cp_mood_roll >= 7 } }
+                desc = cp_je_layla_status_tenant_high
+            }
+            triggered_desc = {
+                trigger = { scope:cp_layla ?= { var:cp_mood_roll <= 3 } }
+                desc = cp_je_layla_status_tenant_low
+            }
+            triggered_desc = {
+                trigger = { always = yes }
+                desc = cp_je_layla_status_tenant_mid
+            }
+        }
+    }
+
+    # "Check on Layla" -- rolls for a random appropriate reflection event.
+    scripted_button = cp_layla_check_button
+
+    # Monthly: reroll her mood (1-10). Drives status_desc variation so the
+    # panel changes every month even when her life situation does not.
+    on_monthly_pulse = {
+        effect = {
+            scope:cp_layla ?= {
+                random_list = {
+                    10 = { set_variable = { name = cp_mood_roll value = 1 } }
+                    10 = { set_variable = { name = cp_mood_roll value = 2 } }
+                    10 = { set_variable = { name = cp_mood_roll value = 3 } }
+                    10 = { set_variable = { name = cp_mood_roll value = 4 } }
+                    10 = { set_variable = { name = cp_mood_roll value = 5 } }
+                    10 = { set_variable = { name = cp_mood_roll value = 6 } }
+                    10 = { set_variable = { name = cp_mood_roll value = 7 } }
+                    10 = { set_variable = { name = cp_mood_roll value = 8 } }
+                    10 = { set_variable = { name = cp_mood_roll value = 9 } }
+                    10 = { set_variable = { name = cp_mood_roll value = 10 } }
+                }
+            }
+        }
+    }
+
+    # Yearly: bump cp_age. Internal only -- not shown in the UI. Future
+    # events can gate on age (var:cp_age >= 40, etc.) without needing a
+    # birth-date lookup.
+    on_yearly_pulse = {
+        effect = {
+            scope:cp_layla ?= {
+                change_variable = { name = cp_age add = 1 }
+            }
+        }
+    }
+
+    weight = 100
+    should_be_pinned_by_default = yes
+}

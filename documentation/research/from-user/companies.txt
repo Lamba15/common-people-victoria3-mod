@@ -1,0 +1,436 @@
+
+Paradox Wikis
+Victoria 3 Wiki
+
+Search
+Search Victoria 3 Wiki
+Log in
+Navigation menu
+PageDiscussion
+ReadEditEdit sourceView history
+Victoria 3 Wiki
+Recent changes
+Random page
+Paradox Wikis
+- Main portal
+- Wikis discord
+- Contact us
+- Style guidelines
+V3 links
+- Forums
+- Game discord
+- Mods
+- Store
+- Twitch
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+Companies
+Jump to navigationJump to search
+Please help with verifying or updating older sections of this article.
+At least some were last verified for version 1.10.
+
+Economy
+Buildings
+List of buildings • Unique buildings
+Companies • Flavored companies
+Market
+Goods • Needs
+Production methods
+List of production methods
+Treasury
+This page discusses the mechanics of companies; for the power bloc principle, see Power bloc § Companies.
+Companies represent particularly notable corporations or joint ventures. Each company is associated with one or several types of building in a country. The company can own and build levels of these buildings and provide bonuses to throughput and construction efficiency. Companies potentially provide additional national bonuses if the company is sufficiently productive.
+
+
+Contents
+1	Establishment
+1.1	Company headquarter
+1.1.1	Regional headquarters
+1.1.2	Building info
+1.2	Executives
+2	Benefits
+2.1	Prosperity
+2.2	Prestige goods
+3	Charters
+3.1	Company countries
+4	Basic companies
+5	Flavored companies
+6	References
+Establishment
+Company slots
+Source	Amt.
+Corporate Charters Corporate Charters	+1
+Joint-Stock Companies Joint-Stock Companies	+1
+Investment Banks Investment Banks	+1
+Corporate Governance Corporate Governance	+1
+Macroeconomics Macroeconomics	+1
+Technocracy Technocracy	+1
+Principle tier III.png
+Companies
+ Companies III	+1
+Each country has a limited number of slots for companies. Slots are gained by researching certain society technologies, starting with Corporate Charters Corporate Charters. Each Society technology directly following Corporate Charters adds +1 additional company slot up to a maximum of 5 slots upon researching Macroeconomics Macroeconomics. An additional company slot can be unlocked by enacting Technocracy Technocracy or from the power bloc principle
+Principle tier III.png
+Companies
+ Companies III.
+
+Each company has certain requirements before it can be established, typically building a minimum level of one of its associated buildings. Flavored companies tend to have stricter requirements, such as constructing the requisite building in a specific state. Additionally, 5 levels of an associated building in one state must be available to transfer to the company's ownership. This can be from private owners, nationally-owned, or a mix of both.
+
+When a company is established, it cannot be disbanded for five years. Similarly, after a company is disbanded, it cannot be reestablished for four years. Companies which own a country cannot be disbanded.
+
+Company headquarter
+Each company has an associated Building company headquarter.png Company Headquarter building. This is an ownership building similar to Building financial district.png Financial Districts and Building manor houses.png Manor Houses, but associated specifically with a particular company. When a company is established, its headquarter is immediately built in the state with enough eligible buildings and the highest productivity rating compared to other eligible states. The headquarter has as many levels as the company owns building levels; these are automatically added and removed. Company Headquarters have only a single production method – depending on the current law, power bloc principles and the company's ownership type, which have the effects listed below.
+
+Regional headquarters
+With the investment rights charter a company can establish a secondary regional HQ in a foreign country, which the country of origin has a Treaty investment rights.png Investment Rights agreement with. The regional HQ will be established as soon as they own 5 buildings in the target country. The regional HQ will then be able to buy up, construct or expand buildings in that country using that country's own investment pool. The regional HQ will then send some of their earnings back to the main HQ's investment pool. On the other hand, the country where the regional HQ has been established, will get access to potential prestige goods as well as the company construction and throughput bonuses.
+
+Building info
+Name	Values per level
+(Regional) Company Headquarter icon
+(Regional) Company Headquarter
+0.1 State status infrastructure.png Infrastructure usage
+5 Urbanization
+Production method	Employees per level	Ownership shares	Ownership category	Requires
+Method privately owned.png Privately Owned
++10 Pop capitalists.png Capitalists
++15 Pop clerks.png Clerks
+10 Pop capitalists.png Capitalists shares	This is added to
+each category below
+Not
+Principle tier II.png
+Divine Economics
+ Divine Economics II
+Not Command Economy Command Economy
+Not Cooperative Ownership Cooperative Ownership
++15 Pop capitalists.png Capitalists
++10 Pop clerks.png Clerks
+Full Capitalist Ownership
++15 Pop aristocrats.png Aristocrats
++10 Pop clerks.png Clerks
+10 Pop aristocrats.png Aristocrats shares	Partial Aristocratic Ownership
++25 Pop shopkeepers.png Shopkeepers	5 Pop shopkeepers.png Shopkeepers shares	Partial Shopkeeper Ownership
++25 Pop bureaucrats.png Bureaucrats	5 Pop bureaucrats.png Bureaucrats shares	Partial Bureaucrat Ownership
++25 Pop academics.png Academics	5 Pop academics.png Academics shares	Partial Academic Ownership
+Method privately owned.png Increased Clergy Oversight
++10 Pop capitalists.png Capitalists
++25 Pop clergymen.png Clergymen
+10 Pop capitalists.png Capitalists shares
+2 Pop clergymen.png Clergymen shares
+This is added to
+each category below
+Principle tier II.png
+Divine Economics
+ Divine Economics II
+Not Command Economy Command Economy
+Not Cooperative Ownership Cooperative Ownership
++15 Pop capitalists.png Capitalists		Full Capitalist Ownership
++15 Pop aristocrats.png Aristocrats	10 Pop aristocrats.png Aristocrats shares	Partial Aristocratic Ownership
++15 Pop shopkeepers.png Shopkeepers	5 Pop shopkeepers.png Shopkeepers shares	Partial Shopkeeper Ownership
++15 Pop bureaucrats.png Bureaucrats	5 Pop bureaucrats.png Bureaucrats shares	Partial Bureaucrat Ownership
++15 Pop academics.png Academics	5 Pop academics.png Academics shares	Partial Academic Ownership
+Method government run.png Government Run
++50 Pop clerks.png Clerks
++50 Pop bureaucrats.png Bureaucrats
+10 Pop bureaucrats.png Bureaucrats shares
+2 Pop clerks.png Clerks shares
+Any	Command Economy Command Economy
+Method worker cooperative.png Worker Cooperative
++50 Pop clerks.png Clerks
++50 Pop shopkeepers.png Shopkeepers
+10 Pop shopkeepers.png Shopkeepers shares
+2 Pop clerks.png Clerks shares
+Any	Cooperative Ownership Cooperative Ownership
+Executives
+Role executive.png Executives lead companies. An executive's popularity increases their company's prosperity target and their traits may affect the company's owned buildings.
+
+Executives increase their interest group's political strength by +2% based on the number of owned building levels up to a maximum of +20%.
+
+Owned building levels (>=)	10	50	100	250	500	1000	1500	2500	5000	10000
+Added political strength	+2%	+4%	+6%	+8%	+10%	+12%	+14%	+16%	+18%	+20%
+Benefits
+Buildings owned by an established company enjoy +20% throughput, and buildings constructed by a company have +50% construction efficiency. All countries also gain a scaled bonus based on their Prestige.png prestige rank, calculated as
+10
+⋅
+(
+1
+−
+rank
+num of countries
+)
+{\displaystyle 10\cdot (1-{\tfrac {\text{rank}}{\text{num of countries}}})}. For example, Flag of Kongo Kongo starts at rank 185, around the halfway point of all starting countries, and it has a starting prestige bonus of +5%. The top ten ranked countries always have +10%, as well as an additional +1% per rank up to +10% (+20% total) throughput and construction efficiency for the Rank #1 country.
+
+The throughput bonus is scaled for a given building to the proportion of levels owned by companies. For example, a building with half of its levels owned by a company would receive +10% throughput – half of the base +20% throughput bonus – as well as half of the prestige bonus.
+
+If a country has more established companies than slots, then each additional company adds a penalty to the throughput and construction efficiency bonuses, scaled to the overage ratio, with a minimum penalty of ×0.33. For example, if a country has three companies but only two slots, it receives a Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle \tfrac{\text{companies}}{\text{slots}} -1=\tfrac{3}{2}-1=} ×0.5 multiplier or 50% of the normal company bonuses. This also applies to the prestige bonus.
+
+The power bloc principle
+Principle tier II.png
+Internal Trade
+ Internal Trade II provides +5% company throughput and the principle
+Principle tier I.png
+Companies
+ Companies I provides +10% company throughput. This is additive with the base throughput and prestige rank bonus.
+
+Prosperity
+Companies start with 0 prosperity. The current prosperity changes towards the target prosperity weekly by 0.2 to 1 depending on the number of fully employed building levels the company owns. With 20 or more fully employed levels, prosperity increases weekly by 1, and with 40 or more levels it decreases weekly by 0.2. These values scale down or up with fewer employed levels; for example, with only 10 fully employed levels, a company's prosperity would increase weekly by 0.6 or decrease by 0.8.
+
+Target prosperity is set by a combination of company productivity, number of employed levels, and Political popularity.png popularity of the Role executive.png executive. Productivity gives 50 times the companies relative productivity. This is equal to the average productivity of the companies owned building levels compared to the average productivity of all associated building levels not owned by the company. Each fully employed building level gives another 1, up to 50. Finally, each point of the executive's popularity gives 0.2, from −20 to 20. The maximum target cannot exceed 100, but it can be "buffered" if the total sum is over 100. For example, a company with a relative productivity of 1.5 (50% more productive than global average for its building types), with 10 employed levels and an executive with −10 popularity would have a prosperity target of Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle (50 \cdot 1.5) + 10 + (0.2 \cdot -10) = 75 + 10 - 2 = 83}
+
+When a company reaches 100 current prosperity, its prosperity bonus activates. If the company later drops below 75 prosperity, its bonus deactivates. If a company is disbanded and later re-established, it starts with 0 prosperity again.
+
+Prestige goods
+Round frame dec.png
+Charters of Commerce
+Available only with the Charters of Commerce DLC enabled.
+Many companies can produce prestige goods. Companies producing flavored goods can do so immediately when prosperous, while companies producing generic goods require completing a journal entry first.
+
+Charters
+Free charters
+Source	Amt.
+Corporate Charters Corporate Charters	+2
+Investment Banks Investment Banks	+1
+Traditionalism Traditionalism	−1
+Extraction Economy Extraction Economy	−1
+Laissez-Faire Laissez-Faire	+1
+Technocracy Technocracy	+1
+Principle tier II.png
+Companies
+ Companies II	+1
+Great power.png Great power	+1
+Company charters unlock additional features for that company. There are five types of charters. Charters cost 100 Hud authority.png authority each to maintain, unless the country has available free charters. Countries have a base of 1 free charter[1], with more gained as in the table on the right. Without
+Round frame dec.png
+Charters of Commerce
+ Charters of Commerce, only Trade Rights can be granted.
+
+Charter	Requirements	Effects
+Company trade rights.png Trade Rights		Allows company to build Building trade center.png Trade Centers
+The following require
+Round frame dec.png
+Charters of Commerce
+ Charters of Commerce
+Company investment rights.png Investment Rights		Allows construction of Building regional company headquarter.png Regional Company Headquarters
+Company colonization rights.png Colonization Rights
+Country can colonize a state
+Is not unrecognized
+Company begins colonizing selected state, with a 20% speed bonus
+When the colony is completed, it creates a new company country, owned by this company.
+The new country is a Chartered Company chartered company of the company's owning country.
+Company industry rights.png Industry Rights
+Company does not already have industry rights
+Company has a selectable building to grant rights
+Allows company to build and purchase the selected building type
+Revoking this charter does not remove ownership but does remove company bonuses
+Company monopoly rights.png Monopoly Rights
+Grants monopoly on the selected building type
+Company gains a −80% discount to privatizing monopolized buildings
+Private investment besides the company cannot construct monopolized buildings
+Monopoly rights and investment rights cannot be revoked within five years of being granted. Other charters can be revoked immediately. Trade rights cannot be revoked if the company owns any trade centers.
+
+Company countries
+Countries created by the Company colonization rights.png Colonization Rights charter are "owned" by that company and are Chartered Company chartered company subjects of the company's owning country. They get the construction efficiency and throughput benefits of the company, which apply to nationally owned buildings in addition to those owned by the company's HQ. For buildings associated with the company, these are the full benefits, though scaled to the company country's prestige, not the overlord's prestige. For other buildings, the benefits are reduced to only 1/5 of the full amount, but this applies to all buildings, even government funded buildings. If a company country becomes independent, it loses the connection to the owning company. Company countries can only be Chartered Company chartered companies and can only have Chartered Company chartered company subjects.
+
+Newly established company countries have the following laws as well as the permanent modifier Colonial Administration:
+
+Power Structure	Economy	Human Rights
+Governance Principles	Colonial Administration Colonial Administration	Economic System	Extraction Economy Extraction Economy	Free Speech	Censorship Censorship
+Distribution of Power	Oligarchy Oligarchy	Trade Policy	Same as overlord	Labor Rights	No Workers' Rights No Workers' Rights
+Citizenship	Subjecthood Subjecthood	Taxation	Same as overlord	Children's Rights	Child Labor Allowed Child Labor Allowed
+Caste Hegemony	Same as overlord	Land Reform	Same as overlord	Rights of Women	Same as overlord
+Church and State	Same as overlord	Colonization	Colonial Exploitation Colonial Exploitation	Welfare	No Social Security No Social Security
+Bureaucracy	Same as overlord	Policing	Same as overlord	Migration	Migration Controls Migration Controls
+Army Model	Same as overlord	Education System	No Schools No Schools	Slavery	Same as overlord
+Internal Security	Same as overlord	Health System	No Health System No Health System	Labor Associations	Same as overlord
+At the start of the game, Flag of East India Company East India Company, Flag of Hudson’s Bay Company Hudson’s Bay Company, and Flag of Alaska Russian-American Company are each owned by those respective companies. These are somewhat special as they don't have the same subject type restrictions and they do not start with the above laws or modifier.
+
+Basic companies
+The following companies are available to all countries regardless of location or culture. Ownership is Full Capitalist Ownership unless specifically noted otherwise. These companies' names are dynamically generated and so are referred to by their designations in the game files here:
+
+Name / Ownership	Buildings
+Round frame dec.png
+Charters of Commerce
+ Industry charters
+Round frame dec.png
+Charters of Commerce
+ Prestige goods	Prosperity bonus	Requirements
+Basic Agriculture 1
+Pop aristocrats.png Partial Aristocrat
+Building wheat farms.png Wheat Farms
+Building rye farms.png Rye Farms
+Building maize farms.png Maize Farms	Prestige fine grain.png Fine Grain	+10% Livestock Ranches throughput	Owns level 5 or higher Wheat Farms or Rye Farms
+Basic Agriculture 2
+Pop aristocrats.png Partial Aristocrat
+Building rice farms.png Rice Farms
+Building millet farms.png Millet Farms
+Building maize farms.png Maize Farms
+Building rye farms.png Rye Farms	Prestige fine grain.png Fine Grain
++10% Livestock Ranches throughput
++10% Food Industries throughput
+Owns level 5 or higher Rice Farms, Millet Farms or Maize Farms
+Basic Fabrics
+Pop aristocrats.png Partial Aristocrat
+Building livestock ranches.png Livestock Ranches
+Building cotton plantations.png Cotton Plantations
+Building textile mills.png Textile Mills	Prestige prime meat.png Prime Meat	+10% Textile Mills throughput	Owns level 5 or higher Livestock Ranches or Cotton Plantations
+Basic Colonial Plantations 1
+Pop aristocrats.png Partial Aristocrat
+Building tea plantations.png Tea Plantations
+Building opium plantations.png Opium Plantations
+Building tobacco plantations.png Tobacco Plantations	Prestige pure opium.png Pure Opium	−10% Radicals from movements	Owns level 5 or higher Opium Plantations or Tea Plantations
+Basic Colonial Plantations 2
+Pop aristocrats.png Partial Aristocrat
+Building coffee plantations.png Coffee Plantations
+Building sugar plantations.png Sugar Plantations
+Building tobacco plantations.png Tobacco Plantations
+Building tea plantations.png Tea Plantations	Prestige reserve coffee.png Reserve Coffee	+10% Colony growth speed	Owns level 5 or higher Coffee Plantations, Sugar Plantations or Tobacco Plantations
+Basic Silk and Dye
+Pop aristocrats.png Partial Aristocrat
+Building silk plantations.png Silk Plantations
+Building dye plantations.png Dye Plantations
+Building textile mills.png Textile Mills	No	+10% Textile Mills throughput	Owns level 5 or higher Silk Plantations or Dye Plantations
+Basic Wine and Fruit
+Pop aristocrats.png Partial Aristocrat
+Building vineyard.png Vineyard
+Building banana plantations.png Banana Plantations
+Building sugar plantations.png Sugar Plantations	No	+10% Prestige.png Prestige	Owns level 5 or higher Vineyard or Banana Plantations
+Basic Fishing
+Building fishing wharves.png Fishing Wharves
+Building whaling stations.png Whaling Stations
+Building shipyards.png Shipyards	Prestige select fish.png Select Fish
++10% Convoys
++5% Shipyards throughput
+Owns level 5 or higher Fishing Wharves or Whaling Stations
+Basic Forestry
+Pop aristocrats.png Partial Aristocrat
+Building logging camps.png Logging Camps
+Building rubber plantations.png Rubber Plantations
+Building tooling workshops.png Tooling Workshops	No
++0.7 Infrastructure from population
++15 Maximum infrastructure from population
+Owns level 5 or higher Logging Camps or Rubber Plantations
+Basic Oil
+Building oil rigs.png Oil Rigs
+Building coal mines.png Coal Mines	No	+10% State migration attraction	Owns level 5 or higher Oil Rigs
+Basic Gold Mining
+Building gold mines.png Gold Mines
+Building lead mines.png Lead Mines	No
++5% Minting
++5% Loyalists from movements
+Owns level 5 or higher Gold Mines
+Basic Metal Mining
+Building iron mines.png Iron Mines
+Building lead mines.png Lead Mines
+Building coal mines.png Coal Mines	No
++10% Steel Mills throughput
++5% Pollution health effect impact
+Owns level 5 or higher Iron Mines or Lead Mines
+Basic Mineral Mining
+Building sulfur mines.png Sulfur Mines
+Building coal mines.png Coal Mines
+Building iron mines.png Iron Mines	No	+10% Fertilizer Plants throughput	Owns level 5 or higher Sulfur Mines or Coal Mines
+Basic Food
+Pop aristocrats.png Partial Aristocrat
+Building food industries.png Food Industries
+Building livestock ranches.png Livestock Ranches
+Building wheat farms.png Wheat Farms
+Prestige gourmet groceries.png Gourmet Groceries	+5% Birth rate	Owns level 5 or higher Food Industries
+Basic Paper
+Building paper mills.png Paper Mills
+Building logging camps.png Logging Camps	Prestige craft paper.png Craft Paper	+10% Bureaucracy	Owns level 5 or higher Paper Mills
+Basic Home Goods
+Building glassworks.png Glassworks
+Building furniture manufacturies.png Furniture Manufacturies
+Building logging camps.png Logging Camps
+Building lead mines.png Lead Mines
+Prestige stylish furniture.png Stylish Furniture	+7.5% Loyalists from movements	Owns level 5 or higher Glassworks or Furniture Manufacturies
+Basic Textiles	Building textile mills.png Textile Mills
+Building cotton plantations.png Cotton Plantations
+Building silk plantations.png Silk Plantations
+Prestige designer clothes.png Designer Clothes	−10% Radicals from movements	Owns level 5 or higher Textile Mills
+Basic Steel	Building steel mills.png Steel Mills
+Building iron mines.png Iron Mines
+Building coal mines.png Coal Mines
+Prestige refined steel.png Refined Steel	+5% State construction efficiency	Owns level 5 or higher Steel Mills
+Basic Metalworks	Building tooling workshops.png Tooling Workshops	Building steel mills.png Steel Mills	Prestige precision tools.png Precision Tools	+5% Manufacturing throughput	Owns level 5 or higher Tooling Workshops
+Basic Shipyards
+Building shipyards.png Shipyards
+Building military shipyards.png Military Shipyards
+Building logging camps.png Logging Camps	No	+10% Navy Offense	Owns level 5 or higher Shipyards or Military Shipyards
+Basic Chemicals
+Building fertilizer plant.png Fertilizer Plants
+Building synthetics plants.png Synthetics Plants
+Building sulfur mines.png Sulfur Mines	Prestige enriched fertilizer.png Enriched Fertilizer	+10% Fertilizer Plants throughput	Owns level 5 or higher Fertilizer Plants or Synthetics Plants
+Basic Motors
+Building motor industries.png Motor Industries
+Building automotive industries.png Automotive Industries
+Building steel mills.png Steel Mills	No	+10% Formation travel speed	Owns level 5 or higher Motor Industries or Automotive Industries
+Basic Munitions
+Building munition plants.png Munition Plants
+Building explosives factory.png Explosives Factory
+Building sulfur mines.png Sulfur Mines
+Building steel mills.png Steel Mills
+Prestige high grade explosives.png High-grade Explosives	−10% Military goods cost	Owns level 5 or higher Munition Plants or Explosives Factory
+Basic Electrics	Building electrics industries.png Electrics Industries
+Building iron mines.png Iron Mines
+Building rubber plantations.png Rubber Plantations
+No	+10% Power Plant throughput	Owns level 5 or higher Electrics Industries
+Basic Weapons
+Building arms industries.png Arms Industries
+Building artillery foundry.png Artillery Foundry
+Building automotive industries.png Automotive Industries
+Building steel mills.png Steel Mills
+Prestige high powered small arms.png High-powered Small Arms
++5% Army Offense
++5% Army Defense
+Owns level 5 or higher Arms Industries or Artillery Foundry
+United Construction Conglomerate
+Pop bureaucrats.png Partial Bureaucrat
+Building steel mills.png Steel Mills
+Building tooling workshops.png Tooling Workshops
+Building glassworks.png Glassworks
+Building lead mines.png Lead Mines	No	+20% Construction sector throughput
+Owns level 10 or higher Steel Mills, Tooling Workshops, or Glassworks
+Is in a power bloc with
+Principle tier III.png
+Construction
+ Construction III principle.
+Flavored companies
+Main article: List of flavored companies
+Many historical companies are represented as flavored companies. The AI is more likely to establish a flavored company over a basic one. These companies are typically tied to specific states or cultures. As such they are heavily associated with certain countries, but those tied to states are not technically limited to specific countries as in theory any country can conquer any state. If the state required is a split state, it is not possible that two countries can found the same flavored company.
+
+References
+ Technically 0, but most Economic System laws give +1
+Game concepts
+Pops	Pops • Acceptance • Culture • Migration • Needs • Professions • Religion • Standard of living
+Government	Government • Capacities • Characters • Decrees • Institutions • Laws • Technology
+Politics	Elections • Ideology • Interest group • Political lobby • Political movement • Political party • Revolution
+Economy	Buildings • Goods • Harvest condition • Infrastructure • Market • Production methods • State • Treasury
+Diplomacy	Diplomacy • Diplomatic action • Diplomatic play • Power bloc • Ranks • Subjects • Treaties
+Warfare	Warfare • Land warfare • Naval warfare • Wargoals • Conscription
+Others	Countries • Decisions • Events • Journal • Objectives • Vickypedia
+Categories: Potentially outdated1.10Pages with obsolete template parametersEconomyPages with math errorsPages with math render errors
+Privacy policyAbout Victoria 3 WikiDisclaimersMobile view
+Attribution-ShareAlike 3.0Powered by MediaWiki
+
+Games
+Discover
+Our Brands
+Browse
+Play on Paradox technology
+Community
+Paradox Forums
+Paradox Wikis
+Support
+About
+News
+About us
+Careers
+Join our playtests
+Media contact
+Social Media
+Legal Information
+EU Online Dispute Resolution
+Report Illegal Content

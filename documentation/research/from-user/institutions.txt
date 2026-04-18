@@ -1,0 +1,151 @@
+
+Paradox Wikis
+Victoria 3 Wiki
+
+Search
+Search Victoria 3 Wiki
+Log in
+Navigation menu
+PageDiscussion
+ReadEditEdit sourceView history
+Victoria 3 Wiki
+Recent changes
+Random page
+Paradox Wikis
+- Main portal
+- Wikis discord
+- Contact us
+- Style guidelines
+V3 links
+- Forums
+- Game discord
+- Mods
+- Store
+- Twitch
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+Institutions
+Jump to navigationJump to search
+Please help with verifying or updating older sections of this article.
+At least some were last verified for version 1.10.
+
+
+Institution summary tab showing the institutions' level, the per-level-cost, and the total cost.
+Institutions represent certain government services, offices, or departments. These include things like schools and workplace safety controls, as well as colonization, police, and poorhouses.
+
+Institutions are established or abolished by laws. Each institution can vary in cost and effect from level 1 to 5. When an institution is initially established by law, it is automatically set to level 1 and can only be removed by abolishing the law. The level of an institution multiplies both the effect and Bureaucracy bureaucracy cost; thus a level 3 institution has three times the effect and cost as a level 1 institution. While interest groups may take a stance on the laws establishing an institution, they never have an opinion on the magnitude of the institution itself. Laws may also add additional effects to an institution or increase the maximum possible investment.
+
+Institutions only apply their effects, and bureaucracy cost, to State status incorporated.png incorporated states.
+
+
+Contents
+1	Institution effects
+2	Institution levels
+3	Strategy
+3.1	Colonial Affairs
+3.2	Education
+3.3	Workplace Safety
+4	References
+Institution effects
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+There are seven institutions, most of which have a base effect. All institutions require a law which enables it; most laws enabling an institution also add additional effects per level and some laws enabling an institution have other effects related to the institution, such as increasing the max level of the institution or adding a related national effect.
+
+For example, the Home affairs home affairs institution's base effect reduces revolution and secession progression speed. If the current law is National Guard National Guard, then each level also increases conscription and reduces political movement radicalism; while if the law is Guaranteed Liberties Guaranteed Liberties, each level instead also reduces Political radical.png radicals and increases Political loyalist.png loyalists from movements.
+
+Some power bloc principles also modify institution effects.
+
+Institution	Base modifiers	Enabling law category	Additional Levels	Description
+Colonial affairs Colonial affairs	+10% Colonial growth generation	Colonization	Colonization (2), Quinine, Civilizing Mission, Malaria Prevention
+The office handling the management of foreign colonial holdings.
+Education Education	—	Education system
+Rationalism, Empiricism, Dialectics
+Children's Rights laws (1-2)
+The nation's school system, ensuring a growth in population literacy.
+Health system Health System	—	Health system	Medical Degrees, Pharmaceuticals, Quinine, Malaria Prevention, Antibiotics
+Keeping the spread of disease at bay.
+Home affairs Home affairs	−10% Revolution/Secession progression speed	Internal security	Centralization, Central Archives, Identification Documents, Central Planning, Mass Surveillance
+Tasked with obstructing citizen revolts.
+Law enforcement Law enforcement	−10% State penalties from turmoil	Policing
+Bureaucracy (2), Law Enforcement
+Policing laws (2)
+The national police force enforcing the nation's laws.
+Social security Social Security
++10% Welfare payments
++2% Food security
+Welfare	Democracy, Egalitarianism, Human Rights
+A safety net for the old or infirm.
+Workplace safety office Workplace safety office	−20% Dangerous working conditions	Labor rights	Labor Movement (3), Socialism (2)
+The ministry controlling that labor laws are followed.
+Institution levels
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+When an institution is enabled, the first level of the institution is automatically added, regardless of having sufficient Bureaucracy bureaucracy. The effects and cost of an institution are multiplied by its current level, so a level five institution has five times the effect and cost of a level one institution. Each institution has its own max level, based on enacted laws and researched technologies. Increasing the level of the institution, and thus its effects, requires both sufficient max institution level and sufficient available bureaucracy.
+
+Increasing or decreasing an institution's level takes a base time of one year per level. During the implementation of another level, the bureaucracy cost changes proportionally over the year, but the desired effects only apply once the new level has been fully implemented. If available bureaucracy goes below 0 while increasing an institution's level, the institution pauses its increase until bureaucracy is positive again.
+
+Each level of an institution costs a base of Bureaucracy 1 bureaucracy per 100,000 population in incorporated states with a minimum cost of Bureaucracy 10 bureaucracy, that is with less than 1 million pops in incorporated states. The law Elected Bureaucrats Elected Bureaucrats reduces the bureaucracy cost for all institutions by −15%.
+
+Certain power bloc principles modify to time to change and cost of certain institutions.
+
+Strategy
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+Colonial Affairs
+Frontier Colonization Frontier Colonization is just a strictly worse law than Colonial Resettlement Colonial Resettlement. The limits on where and how you can colonize is quite strict. The only reason to pick this is that it is not opposed by the IG rural folk.png Rural Folk, but instead endorsed meaning there is usually no actual opposition to this law.
+
+Colonial Exploitation Colonial Exploitation lowers wages and factory throughput in exchange for higher plantation and resource throughput in colonies. Since it is unlikely that it is beneficial to build any industry anyway, this is likely just a bonus to throughput.
+
+Education
+
+Level 5 private and level 3 public schools cost the same total bureaucracy
+Which education system is best depends largely on Standard of living. Religious Schools Religious Schools is strictly worse than the other two. This is especially true late game because it cannot be increased past level 3. It does have its place though as it is easier to implement early in the game, both due to the typical early political situation with a strong IG devout.png Devout and weak/non-existent IG trade unions.png Trade Unions, IG intelligensia.png Intelligentsia and IG industrialists.png Industrialists, the fact that it is the only option in countries with a State Religion State Religion, and the fact that it is unlocked by an earlier tech.
+
+Private Schools Private Schools or Public Schools Public Schools can both be the best option, depending on circumstances. Private schools provide 0.5% education access per wealth per level, while public schools provide a flat 12.5% to everyone per level. This means that for POPs with a SoL below 25, public schools provide more education per level, at 25 they are equivalent, and above 25 private schools provide more.
+
+With an average SoL below 25, private schools can, however, still be better, as they are 40% cheaper to implement, so it is possible to maintain a higher level for the same amount of Bureaucracy Bureaucracy, assuming that bureaucracy is sparse and the current technologies allow another level. 3 levels of private school is 10% cheaper than 2 levels of public schools, 4 levels of private school is 20% cheaper than 3 levels of public school, and 5 levels of private school is 25% cheaper than 4 levels of public school. In fact, level 5 private schools and level 3 public schools costs the exact same amount of bureaucracy.
+
+Implementing 5 levels of private school compared to 3 levels of public school at the same cost is better for POPs with a SoL between 16 and 24, equivalent for POPs with a SoL at 15 and worse for POPs with a SoL below 15.
+
+Workplace Safety
+The only difference between Regulatory Bodies Regulatory Bodies and Workers' Protections Workers' Protections is that the latter increases the minimum wage. Raising the minimum wage should not be done accidentally. Furthermore, for countries following the path of socialism, one of the options in the A World To Win event instantly enacts Regulatory Bodies, making it possible to focus on other laws.
+
+References
+To update institutions modifiers see reference file /Victoria 3/game/common/institutions/00_institutions.txt
+To update institutions flavor text see reference file /Victoria 3/game/localization/english/institutions_l_english.yml:
+Game concepts
+Pops	Pops • Acceptance • Culture • Migration • Needs • Professions • Religion • Standard of living
+Government	Government • Capacities • Characters • Decrees • Institutions • Laws • Technology
+Politics	Elections • Ideology • Interest group • Political lobby • Political movement • Political party • Revolution
+Economy	Buildings • Goods • Harvest condition • Infrastructure • Market • Production methods • State • Treasury
+Diplomacy	Diplomacy • Diplomatic action • Diplomatic play • Power bloc • Ranks • Subjects • Treaties
+Warfare	Warfare • Land warfare • Naval warfare • Wargoals • Conscription
+Others	Countries • Decisions • Events • Journal • Objectives • Vickypedia
+Categories: Potentially outdated1.10Politics
+Privacy policyAbout Victoria 3 WikiDisclaimersMobile view
+Attribution-ShareAlike 3.0Powered by MediaWiki
+
+Games
+Discover
+Our Brands
+Browse
+Play on Paradox technology
+Community
+Paradox Forums
+Paradox Wikis
+Support
+About
+News
+About us
+Careers
+Join our playtests
+Media contact
+Social Media
+Legal Information
+EU Online Dispute Resolution
+Report Illegal Content

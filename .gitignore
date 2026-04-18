@@ -5,3 +5,12 @@ gate.iml
 *.dtmp
 /cmf
 *.code-workspace
+/image/prompts/
+
+# Local tool configs
+/.codex
+/.claude/settings.local.json
+/.claude/projects/
+
+# Test saves (used by Phase A-T, not shipped)
+/testing-saves/

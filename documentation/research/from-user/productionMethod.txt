@@ -1,0 +1,139 @@
+
+Paradox Wikis
+Victoria 3 Wiki
+
+Search
+Search Victoria 3 Wiki
+Log in
+Navigation menu
+PageDiscussion
+ReadEditEdit sourceView history
+Victoria 3 Wiki
+Recent changes
+Random page
+Paradox Wikis
+- Main portal
+- Wikis discord
+- Contact us
+- Style guidelines
+V3 links
+- Forums
+- Game discord
+- Mods
+- Store
+- Twitch
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+Production method
+Jump to navigationJump to search
+Please help with verifying or updating older sections of this article.
+At least some were last verified for version 1.10.
+
+Economy
+Buildings
+List of buildings • Unique buildings
+Companies • Flavored companies
+Market
+Goods • Needs
+Production methods
+List of production methods
+Treasury
+
+The buildings panel provides a detailed summary of the buildings in the player's country and their associated production methods.
+Production methods represent a building's mode of operation. Production methods determine which goods, capacities and general effects a building requires and produces, and how many and what professions are employed by the building.
+
+Many production methods represent more advanced techniques for producing a building's primary good, but others represent alternative production, such as luxury goods vs. staple goods, or organizational methods such as secular vs. clerical administrators.
+
+All levels of a building in the same state must use the same production method, but different buildings across the country can use any combination of production methods. In the building tab it is possible to change production methods nationwide at once.
+
+
+Contents
+1	Production method groups
+1.1	Production method requirements
+2	Production method effects
+2.1	Pollution
+3	Managing production methods
+4	References
+Production method groups
+Production methods are categorized according to one or more groups for each building. Each group always has a single active production method for a given building. Between buildings, similar groups generally have the same icon colors, although there are production method groups, that do not follow this pattern. The following are the most common types of production method groups:
+
+Base – Brown icon color. Determines the primary input and output goods for the building. Typically determines the base workforce of the building. More advanced base production methods are unlocked with technology and increase input and output goods, and typically also requires better educated workers. Some buildings, such as food industries, have multiple base production methods allowing for significantly increased output of primary goods.
+Secondary – Purple icon color. Adds secondary output goods at the cost of reduced primary output; may also require a secondary input. May add a small amount of workforce.
+Automation – Green icon color. Reduces the building's unskilled workforce at the cost of additional input goods.
+Organization – Blue icon color. These represent organization methods and determine the majority of the workforce for government and ownership buildings.
+Military – Red icon color. These determine the training and doctrine used for barracks, conscription centers, and naval bases.
+Production method requirements
+While each building always has at least one production method available per group, many production methods are locked and unavailable until certain conditions are met. Most often this is researching a certain technology, but it can also include enacting certain laws or even enabling another production method. Some production methods even require certain goods to be produced in the state or the market.
+
+Lastly, the production method of unique buildings are defined by the game rules, namely whether unique buildings are turned on, off or on 'only prestige'.
+
+If the requirements for an active production method are no longer met, it automatically switches to the first valid production method in the same group.
+
+Production method effects
+Each production method can affect its building, the state the building is in, or the entire country. Additionally, the effects may be flat or scale by the level of the building or the amount of employed workforce.
+
+Level-scaled modifiers are more powerful the more levels of that building exist, regardless of how much employment the building has. For example, the number of workers for a building is always a level-scaled building modifier. This means that the production method adds a certain number of workers to the building for each level of the building.
+
+Workforce-scaled modifiers depend on both the building level and percentage of full employment; they are also typically affected by throughput, which increases the effects by an additional percentage. Input and output goods are typically workforce-scaled building modifiers.
+
+Unscaled modifiers remain the same regardless of building levels or employment amount. A common example are ownership shares.
+
+Pollution
+State status pollution.png Pollution is generated by most production methods and reduces the state's migration attraction and pops' standard of living and increases pop mortality. Heavy industry pollute the most, while agricultural pollute the least. Pollution impact changes daily by 0.255 in each state region towards the pollution impact target to the following formula:
+
+Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle \text{Pollution impact target} = \dfrac{ \text{Total pollution generation} }{50 + 1.5 \cdot \sqrt{\text{Arable Land}} } \cdot \frac{1}{255}}
+
+Each 1% of pollution impact has the following base effects:
+
+−0.25% migration attraction,
++0.5% drought, flood, wildfire, and heatwave impact,
+−0.03 standard of living,
++0.5% mortality.
+The effects on standard of living and mortality can be reduced by the Health system Health System institution (−10% per level; −15% with Public Health Insurance Public Health Insurance) and the technology Modern Sewerage Modern Sewerage (−10%).
+
+Pollution applies to the entire state region.
+
+Managing production methods
+To ease the management of the different buildings (and their associated production methods) in the country, the player can refer to the buildings panel.
+
+The panel provides an overview of all buildings in the country, and allows the player to see at a glance how those industries are doing financially. The buildings are grouped by type and can be expanded to view the individual buildings in each state, and each building can be clicked on to get an in-depth view of its balance sheet and workforce. In addition, the panel allows adjusting the production methods of an individual building, or setting all production methods for a certain building type to a specific setting across the country.
+
+Predictive tooltips explain the anticipated impact on the building's balance as a result of changes in production, consumption, and wage requirements, as well as the changes in employment (which new job positions will be created and which will disappear) that could also impact the country's politics over time. A warning is provided if there are not enough qualifying pops to take on any new professions created, as this limits the building's ability to hire.
+
+References
+Game concepts
+Pops	Pops • Acceptance • Culture • Migration • Needs • Professions • Religion • Standard of living
+Government	Government • Capacities • Characters • Decrees • Institutions • Laws • Technology
+Politics	Elections • Ideology • Interest group • Political lobby • Political movement • Political party • Revolution
+Economy	Buildings • Goods • Harvest condition • Infrastructure • Market • Production methods • State • Treasury
+Diplomacy	Diplomacy • Diplomatic action • Diplomatic play • Power bloc • Ranks • Subjects • Treaties
+Warfare	Warfare • Land warfare • Naval warfare • Wargoals • Conscription
+Others	Countries • Decisions • Events • Journal • Objectives • Vickypedia
+Categories: Potentially outdated1.10EconomyPages with math errorsPages with math render errors
+Privacy policyAbout Victoria 3 WikiDisclaimersMobile view
+Attribution-ShareAlike 3.0Powered by MediaWiki
+
+Games
+Discover
+Our Brands
+Browse
+Play on Paradox technology
+Community
+Paradox Forums
+Paradox Wikis
+Support
+About
+News
+About us
+Careers
+Join our playtests
+Media contact
+Social Media
+Legal Information
+EU Online Dispute Resolution
+Report Illegal Content

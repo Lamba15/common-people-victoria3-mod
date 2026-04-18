@@ -1,0 +1,235 @@
+
+Paradox Wikis
+Victoria 3 Wiki
+
+Search
+Search Victoria 3 Wiki
+Log in
+Navigation menu
+PageDiscussion
+ReadEditEdit sourceView history
+Victoria 3 Wiki
+Recent changes
+Random page
+Paradox Wikis
+- Main portal
+- Wikis discord
+- Contact us
+- Style guidelines
+V3 links
+- Forums
+- Game discord
+- Mods
+- Store
+- Twitch
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+Laws
+Jump to navigationJump to search
+Please help with verifying or updating older sections of this article.
+At least some were last verified for version 1.10.
+
+Laws
+Power structure laws
+Economy laws
+Human rights laws
+Amendments
+
+The numbers on top of the crossing arrows refer to the number of alternative laws currently available to be enacted in that sub-category.
+Laws represent legal reforms in a country that affect the political, economic, and social conditions of its population. Each country always has one active law in each active law group. At the start of the game, all countries have laws close to the actual situation in those countries in 1836. Over the course of the game, those laws may be changed under internal or external pressure. Interest groups endorse or disapprove of various laws based on their and their leaders' ideologies. Political movements also advocate for or against changes to a country's laws. Certain diplomatic plays can change another country's laws as well.
+
+Laws affect the country and its population in various ways, with effects ranging from a simple change in modifiers to fundamentals such as the system of governance. Each institution, such as policing and colonization, has a law category that establishes the institution and modifies its effects. The laws of the country provide the largest the amount of Hud authority.png authority available to the player, with more authoritarian laws generally providing more authority.
+
+Some laws may have law variants. An example is Canton System Canton System, which replaces Isolationism Isolationism for Flag of China China. A law variant inherits all ideological stances from its parent, but may have vastly different effects. For clarity, names of law variants are followed by names of their parent laws in parentheses when viewed in-game.
+
+The current set of laws and potential changes to laws can be found in the politics tab.
+
+
+Contents
+1	Enacting laws
+1.1	Law support
+1.2	Imposing laws
+1.3	Enactment process
+1.3.1	Formulas
+2	Law categories
+2.1	Power structure laws
+2.2	Economy laws
+2.3	Human rights laws
+3	References
+Enacting laws
+
+At each checkpoint, one of the 4 options (success, debate, advance, stall) happens.
+Enacting a new law is a process that takes several steps.
+
+First, a law needs support to be chosen. This requires an interest group in the current government, the ruler, or a non-passive political movement that endores the potential change. If the government is considered illegitimate (below 25 Legitimacy.png legitimacy), it is completely unable to pass any law – except those endorsed by a non-passive movement. If the enactment process has already started and the government then becomes illegitimate, the law makes no progress until the government's legitimacy increases.
+
+Next, the proposed law progresses through enactment with a periodic chance for success, advancement, debate, or stalling. There are three phases of enactment. When the law has progressed through all three phases, it is officially in effect.
+
+Enactment phase flavor names
+Law support
+Interest group approval from
+Law Stances
+Strongly Approves	+2
+Approves	+1
+Neutral	0
+Disapproves	−1
+Strongly Disapproves	−2
+Law Changes
+One step	±5
+Two steps	±10
+Three or more steps	±20
+Approval enactment multipliers
+Law group	Mult.
+Governance Principles	×2
+Slavery	×2
+Land Reform	×1.5
+Support for a law can come from an interest group in Political government.png government, a non-passive Ideological movement political movement, or directly from the Role ruler.png ruler's ideology. Interest groups' ideologies and their leaders' ideologies affect which laws they support along a 5-point scale from Oppose strongly oppose to Endorse strongly endorse. Interest groups support any law that is preferred over the current one; similarly, they oppose any law that is less preferred than the current one. Interest groups in government that support the proposed law provide the initial success chance, while all non-marginal interest groups that oppose it provide the initial stall towards enactment. Opposing interest groups that have neutral or happier approval provide only half as much stall chance, intrest groups that are angry provide 50% more stall chance. Non-passive political movements also provide enactment chance equal to their support, either endorsing or opposing based on their stance toward the law. The ruler's stance on a law provides ±5% chance per step of difference from the current law.
+
+Aside from providing support, interest groups gain or lose approval based on current laws and proposed changes. Changes have approximately five times the effect on approval, but that effect decays over five years. Thus, a quick way to appease an unhappy or angry interest group is to propose a change to a law they approve of. Even without the intention to actually enact it, it can provide time for other effects to wear off or take place. Certain law groups – as noted on the right – multiply the effect of law changes on approval, but this is always capped at ±20.
+
+Similarly, political movements gain or lose Political activism.png activism based on current laws and proposed changes.
+
+Treaty law commitment.png Law Commitment treaty articles can also provide support to enact a law, with +5% per rank category the other party in the treaty has over the country committing to the law. For example, a law commitment by a Major power.png major power (rank 6) to a Great power.png great power (rank 7) gives +5% success chance. A Minor power.png minor power (rank 4) would get +15%, and so on.
+
+Imposing laws
+Overlords can impose laws on their non-autonomous subjects, starting their enactment as usual. It must be possible for the subject to enact the law in order for the overlord to impose it. The imposed law goes through all regular enactment and may fail or cause a revolution as normal. Puppet Puppets, Colony Colonies, Crown Land Crown Lands, and Chartered Company Chartered Companies receive a +10% success chance for imposed laws.
+
+Certain power bloc identities or principles allow the power bloc leader to impose certain laws on the members of their bloc.
+
+Imposing a law starts a journal entry for the imposed country, with an option to begin or refuse enacting the imposed law. While the journal is active, no other law can begin enactment, and the imposed law can only begin enactment through the journal entry's buttons.
+
+idEvent scales.png Foreign Legal Imposition
+Ambox outdated info.png
+Please help with verifying or updating this infobox. It was last verified for version 1.10.
+Our [overlord] [imposer country] has declared it imperative that we enact [imposed law].
+
+Enactment process
+Base enactment days
+Law group	Time
+Governance Principles	200
+Distribution of Power
+Economic System
+Slavery
+150
+All others	100
+Once a law is chosen for enactment, it begins progressing towards a checkpoint. Enactment can be cancelled at any time, and cancelling a law change prevents attempting that specific law again for two years. The default time between checkpoints is Time 100 days, and this is increased or decreased by various factors, such as Legitimacy.png legitimacy or surplus Hud authority.png authority, as well as temporary modifiers. Certain law groups – as noted on the right – have longer base times.
+
+At each checkpoint, one of the four things can happen: Success, Advance, Debate, or Stall.[1]
+
+Success means that the law progresses to the next phase; if the law is already in the final phase, it immediately comes into effect and the process ends.
+Advance triggers some kind of a positive event that usually increases success chance and sometimes offers a choice between a high increase of success chance and a medium increase in success chance plus a different bonus.
+Debate triggers an event that can be either a positive or a negative, often offering some kind of a trade-off between increasing the success chance for a price or decreasing the success chance.
+Stall triggers an event that usually reduces the success chance, sometimes with an option to take a smaller reduction and a different penalty.
+During the entire progress, the law can meet a setback – something that hinders the law. If the law has three setbacks over the course of the entire process, the enactment fails, and that law cannot be proposed again for two years. Setbacks occur during enactment events or if the law reaches 0% success chance.
+
+Interest groups in government and non-passive political movements that support the law contribute their clout and support, respectively, to the base success chance, while all non-marginalized interest groups and non-passive political movements who oppose the law contribute to stall chance. If the ruler has a stance on the law, they provide +5% chance per step of difference between the proposed law and the current law, either to support or oppose.
+
+The chance for advance starts at twice the chance for success minus the stall chance, and the chance for debate is the difference between the other three options and 100%. If the chance of debate would go to less than 0%, instead an end-of-discussion factor is applied to scale the lower of success or stall chances so the sum chance remains 100%.
+
+When a law progresses from one phase to the next, all accumulated effects on enactment success – both positive and negative – carry over to the next phase. Therefore, it is often better to choose a +5% Enactment Success Chance out of an early event, which is effectively a +5% bonus to each of the three phases instead of immediately progressing a single phase.
+
+If the country's government Legitimacy.png legitimacy falls to Illegitimate, it cannot continue law enactment until the legitimacy is raised to at least Unacceptable, unless the law is endorsed by a movement with at least Political activism.png 25 activism.
+
+Formulas
+Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle \text{Base success chance} = \sum(\text{Clout of endorsing interest groups in government}) + \sum(\text{Support of endorsing non-passive political movements}) + \text{Ruler's endorsement}}
+
+Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle \text{Base stall chance} = 0.5\cdot\sum(\text{Clout of neutral or happier opposing interest groups}) + \sum(\text{Clout of unhappy opposing interest groups}) + 1.5\cdot\sum(\text{Clout of angry opposing interest groups}) + \sum(\text{Support of opposing non-passive political movements}) + \text{Ruler's opposition}}
+
+Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle \text{Advance chance} = 2 \cdot \text{Base success chance} - \text{Base stall chance}}
+
+Debate chance
+=
+100
+−
+∑
+(
+Advance chance
++
+Base success chance
++
+Base stall chance
+)
+{\displaystyle {\text{Debate chance}}=100-\sum ({\text{Advance chance}}+{\text{Base success chance}}+{\text{Base stall chance}})}
+
+Law categories
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+There are three major categories of laws, each with 8 groups, which then contain between three and nine specific laws.
+
+Many laws require a specific technology to be unlocked, and many require certain other laws to be enacted or not enacted – for example, it is not possible to enact Multiculturalism Multiculturalism while the country practices Slave Trade Slave Trade. A few laws are unique to a certain culture, and typically have a set of very specific requirements. Generally, if a country has a unique law variant, it will replace that variant's base law. For example, the Chinese Canton System Canton System is unique to Han Chinese countries that own Western Guangdong and replaces Isolationism Isolationism.
+
+Power structure laws
+Main article: Power structure laws
+Governance Principles – The foundational principles and authority by which the country is governed. Determines who the Head of State is.
+Distribution of Power – How political power is distributed. Determines who the Head of State is accountable to.
+Citizenship – Extending the rights of citizenship.
+Caste Hegemony – Erasure of rights among members of society based on the British Indian Caste System.
+Church and State – The relationship between physical and spiritual governors.
+Bureaucracy – How the country is administered.
+Army Model – How the army is organized and regulated.
+Internal Security – Keeping the country's affairs in order.
+Economy laws
+Main article: Economy laws
+Economic System – The fundamental principles of the economy.
+Trade Policy – Laws governing trade and the exchange of goods across borders.
+Land Reform – Laws governing the ownership and exploitation of land
+Taxation – How the state raises revenue by taxing its citizens.
+Colonization – The stance on establishing colonies to supplant and conquer decentralized nations.
+Policing – The existence and priorities of the national police force.
+Education System – Laws about the government's involvement (or lack thereof) in providing education.
+Health System – Laws about the government's involvement (or lack thereof) in providing healthcare for its citizens.
+Human rights laws
+Main article: Human rights laws
+Free Speech – Laws regulating free speech and right to public assembly.
+Labor Rights – The rights of workers.
+Children's Rights – The rights and protections afforded to children.
+Rights of Women – The legal regulations of the fairer sex.
+Welfare – Government assistance for the income deprived.
+Migration – Controlling the flow of people.
+Slavery – People as property.
+Labor Associations – The law that dictates the rights and activities of labor association.
+References
+ The game's RNG determines the outcome based on the save seed, the exact game day, and the exact chances. Reloading a save does not change any of these and so cannot give a different outcome alone. Changing the checkpoint day by changing surplus authority is the easiest way to change the outcome.
+To update page content see reference files in folder /Victoria 3/game/common/laws:
+Each law type has its own txt file (named after the law type).
+To update flavor text see reference files in folder /Victoria 3/game/localization/english:
+For laws flavor text see reference file laws_l_english.yml.
+For modifiers flavor text see reference file modifiers_l_english.yml.
+For institutions flavor text see reference file institutions_l_english.yml.
+For inventions flavor text see reference file inventions_l_english.yml.
+Game concepts
+Pops	Pops • Acceptance • Culture • Migration • Needs • Professions • Religion • Standard of living
+Government	Government • Capacities • Characters • Decrees • Institutions • Laws • Technology
+Politics	Elections • Ideology • Interest group • Political lobby • Political movement • Political party • Revolution
+Economy	Buildings • Goods • Harvest condition • Infrastructure • Market • Production methods • State • Treasury
+Diplomacy	Diplomacy • Diplomatic action • Diplomatic play • Power bloc • Ranks • Subjects • Treaties
+Warfare	Warfare • Land warfare • Naval warfare • Wargoals • Conscription
+Others	Countries • Decisions • Events • Journal • Objectives • Vickypedia
+Categories: Potentially outdated1.10Pages with obsolete template parametersLawsGame conceptsPages with math errorsPages with math render errors
+Privacy policyAbout Victoria 3 WikiDisclaimersMobile view
+Attribution-ShareAlike 3.0Powered by MediaWiki
+
+Games
+Discover
+Our Brands
+Browse
+Play on Paradox technology
+Community
+Paradox Forums
+Paradox Wikis
+Support
+About
+News
+About us
+Careers
+Join our playtests
+Media contact
+Social Media
+Legal Information
+EU Online Dispute Resolution
+Report Illegal Content

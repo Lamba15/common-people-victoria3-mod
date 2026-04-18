@@ -1,14 +1,12 @@
 {
-  "name" : "Name of your Mod",
-  "id" : "com.github.your-github-name.your-repo-name",
+  "name" : "Common People",
+  "id" : "common-people",
   "version" : "0.1.0",
   "game_id" : "victoria3",
   "picture" : "thumbnail.png",
-  "supported_game_version" : "1.8.*",
-  "short_description" : "Description of your Mod",
-  "tags" : [],
+  "supported_game_version" : "1.12.*",
+  "short_description" : "Personal stories of ordinary people whose lives change through your policy decisions. Egypt-first; more to come.",
+  "tags" : ["Events", "Historical", "Immersion", "Characters"],
   "relationships" : [],
-  "game_custom_data" : {
-    "multiplayer_synchronized" : true
-  }
+  "game_custom_data" : {}
 }

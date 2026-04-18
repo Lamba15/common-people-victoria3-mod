@@ -1,0 +1,109 @@
+﻿###############################################################################
+# Common People -- startup events
+#
+# Fires once at game start for each country we have content for. For MVP we
+# only seed EGY with Layla. Future countries follow the same pattern.
+#
+# Root scope: country (EGY) when cp_startup.1 fires.
+#
+# 1.13 migration note: when National Cast ships (April 28, 2026) the
+# create_character call migrates to the Cast registration API. The character
+# template and variable shape stay identical, so migration is mechanical.
+###############################################################################
+
+namespace = cp_startup
+
+# cp_startup.1 -- Seed Egypt with Layla
+#
+# Instantiates Layla from her template, saves her as a scope (cp_layla), sets
+# all her personality/opinion/flag variables, and kicks off her intro event.
+# The character_template pattern follows vanilla (see ig_leaders/historic
+# agitator events that instantiate from templates).
+cp_startup.1 = {
+    type = country_event
+    hidden = yes
+
+    # Only fire if this country hasn't seeded Layla yet. The country-scope
+    # variable cp_layla_seeded is set on first run; save/reload respects it.
+    trigger = {
+        NOT = { has_variable = cp_layla_seeded }
+    }
+
+    immediate = {
+        # Mark country as seeded so we never double-spawn.
+        set_variable = cp_layla_seeded
+
+        # Instantiate Layla from the template. on_created runs in her scope.
+        # save_scope_as MUST be a sibling of template (not inside on_created),
+        # so the resulting scope propagates back to this immediate context
+        # where trigger_event below can pass it along to cp_layla.1.
+        create_character = {
+            template = cp_layla
+            save_scope_as = cp_layla
+            on_created = {
+                # Internal state variables (0-10 scale, integer)
+                # Narrative pop-class tag. 1 = farmer/serf. Changes when she
+                # migrates (farmer -> laborer -> ...). Used by event triggers.
+                set_variable = { name = cp_social_class value = 1 }
+
+                # Personality weights. See documentation/characters/layla/README.md
+                # These drift over time (silent drift + event effects).
+                set_variable = { name = cp_w_land_reform     value = 10 }
+                set_variable = { name = cp_w_war             value = 7  }
+                set_variable = { name = cp_w_revolution      value = 8  }
+                set_variable = { name = cp_w_religion        value = 6  }
+                set_variable = { name = cp_w_womens_rights   value = 5  }
+                set_variable = { name = cp_w_economy         value = 5  }
+                set_variable = { name = cp_w_france          value = 4  }
+                set_variable = { name = cp_w_education       value = 3  }
+                set_variable = { name = cp_w_labor_laws      value = 2  }
+                set_variable = { name = cp_w_diplomacy       value = 1  }
+
+                # Inner state (0-10)
+                set_variable = { name = cp_hope              value = 5  }
+                set_variable = { name = cp_exhaustion        value = 3  }
+
+                # Monthly mood roll (1-10). The JE's on_monthly_pulse rerolls
+                # this every month; status_desc reads it to pick a variant
+                # (low <=3, mid 4-6, high >=7). Initialize mid so the first
+                # month of the game already has a valid status.
+                set_variable = { name = cp_mood_roll         value = 5  }
+
+                # Age tracker. V3 has no GetAge loc method, so we maintain
+                # the age as an explicit variable and increment it in the
+                # JE's yearly pulse. Start value = game start year - birth.
+                set_variable = { name = cp_age               value = 22 }
+
+                # Opinions on nations she has heard of (-100 to +100).
+                # Nations she hasn't heard of have no variable at all --
+                # absence of variable = total unawareness.
+                set_variable = { name = cp_opinion_fra       value = 5  }
+                set_variable = { name = cp_opinion_ott       value = 10 }
+                set_variable = { name = cp_opinion_gbr       value = 0  }
+                set_variable = { name = cp_opinion_egy       value = 10 }
+
+                # Info-flow / life flags (0 or 1 as integer "booleans")
+                set_variable = { name = cp_literate          value = 0  }
+                set_variable = { name = cp_married           value = 1  }
+                set_variable = { name = cp_children          value = 0  }
+            }
+        }
+
+        # Home state binding: for 1.12 we don't store a scope reference on
+        # her (variables can't hold scopes reliably). Instead we keep the
+        # convention that Layla is in s:STATE_LOWER_EGYPT throughout the
+        # farming phase. If she migrates in a life-decision event, we update
+        # her cp_social_class and the events handle the state lookup.
+        # When 1.13 ships, set_home_state replaces this convention.
+
+        # Add the persistent journal entry that "watches" her. The JE auto-
+        # removes when she dies (see common/journal_entries/cp_layla_*).
+        add_journal_entry = { type = cp_je_layla }
+
+        # Kick off her intro story IMMEDIATELY (no days= delay). Saved scopes
+        # passed through trigger_event with a delay can drop in 1.12, leaving
+        # scope:cp_layla unset when the event fires. Firing inline keeps the
+        # scope chain intact.
+        trigger_event = { id = cp_layla.1 }
+    }
+}

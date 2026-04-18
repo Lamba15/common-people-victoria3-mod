@@ -1,0 +1,185 @@
+
+Paradox Wikis
+Victoria 3 Wiki
+
+Search
+Search Victoria 3 Wiki
+Log in
+Navigation menu
+PageDiscussion
+ReadEditEdit sourceView history
+Victoria 3 Wiki
+Recent changes
+Random page
+Paradox Wikis
+- Main portal
+- Wikis discord
+- Contact us
+- Style guidelines
+V3 links
+- Forums
+- Game discord
+- Mods
+- Store
+- Twitch
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+Decrees
+Jump to navigationJump to search
+Please help with verifying or updating older sections of this article.
+At least some were last verified for version 1.10.
+
+Decrees are effects that can be applied to individual states to improve them in many ways. Multiple decrees can be used simultaneously on the same state, with the exception of the three decrees encouraging certain industries which are mutually exclusive. Nearly all decrees require a certain technology to have been researched in order to be used. Decrees can be applied either by right-clicking on a province or through the political lens.
+
+Decrees cost a base of Hud authority.png 100 authority each to be applied, except Emergency Relief Emergency Relief which costs 50. A Role ruler.png ruler with the character traits Trait ambitious.png Ambitious and Trait imperious.png Imperious reduces the cost of decrees by −25% and −20% respectively. Certain events can also reduce the cost. Decree cost reductions are capped at a minimum 10% of the base cost, even if modifiers would reduce the cost more.
+
+As well as their immediate effects, decrees also enables certain events.
+
+
+Contents
+1	List of decrees
+2	Strategic considerations
+2.1	Road maintenance and construction
+3	References
+List of decrees
+Name	Required technology	Conditions	Modifiers
+Emergency Relief
+Emergency Relief
+Promote charitable support and care for the state's most unfortunate
+Centralization Centralization
+Any of:
+State has 20% or more starving pops
+State has a State status famine.png famine
+State has more than 20% State status devastation.png devastation
+State has a negative harvest condition
+−50% Tax collection
+State status infrastructure.png +10% Infrastructure
++5% Market access price impact
++5% Food security
+Encourage Agricultural Industry
+Encourage Agricultural Industry
+Increase Agricultural and Plantation sector throughput
+Enclosure Enclosure
+State does not have another Encourage __ Industry decree
++20% Agriculture throughput
++20% Ranches throughput
++20% Plantations throughput
+Encourage Manufacturing Industry
+Encourage Manufacturing Industry
+Increase Manufacturing and Service sector throughput
+Manufacturies Manufacturies
+State does not have another Encourage __ Industry decree
++20% Manufacturing Industries throughput
++20% Service Industries throughput
+Encourage Resource Industry
+Encourage Resource Industry
+Increase Resource sector throughput
+Shaft Mining Shaft Mining
+State does not have another Encourage __ Industry decree
++20% Mines throughput
++20% Logging Camps throughput
++20% Fishing Wharves throughput
++20% Whaling Stations throughput
++20% Oil Rigs throughput
++20% Rubber Plantations throughput
+Enlistment Efforts
+Enlistment Efforts
+Incentivizing recruitment and training of local troops through financial incentives and preferential treatment
+Mandatory Service Mandatory Service
+Military conscripts.png +5% Conscription rate
++25% Training rate
+Greener Grass Campaign
+Greener Grass Campaign
+Promote the state as a desirable place to migrate to
+Romanticism Romanticism
+State is not isolated
++20 Migration attraction
++25% Migration attraction
+Promote National Values
+Promote National Values
+Increase cultural assimilation and religious conversion rates
+Nationalism Nationalism
+Owner does not have the law Law multicultural.png Multiculturalism
+Assimilation.png +50% Assimilation
+Conversion.png +50% Conversion
+Yes.png Assimilation.png Assimilation in Homeland States Allowed
+Political radical.png +50% Radicalism increases for Violent Hostility status
+Political radical.png +40% Radicalism increases for Cultural Erasure status
+Political radical.png +30% Radicalism increases for Open Prejudice status
+Promote Social Mobility
+Promote Social Mobility
+Encourage the population to strive for higher job qualifications
+Any of:
+State has less than 30% Religion hindu.png Hindu pops
+Owner does not have Law caste system enforced.png Caste System Enforced or Law caste system codified.png Caste System Codified
++25% Education access
++25% Qualifications
+Road Maintenance
+Road Maintenance
+Expand and maintain road networks
+Centralization Centralization
+State status infrastructure.png +1 Infrastructure per 100K population
+State status infrastructure.png +20 Maximum infrastructure per 100K population
+State status construction.png +10% State construction efficiency
+Violent Suppression
+Violent Suppression
+Use the nation's national guard to control the angry mobs
+Standing Army Standing Army
+Owner does not have the law Law guaranteed liberties.png Guaranteed Liberties
+State status turmoil.png Turmoil in state is at least 25%
+State status turmoil.png −50% State penalties from turmoil
+State status turmoil.png +2% Mortality per turmoil
+Strategic considerations
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+Decrees can be a powerful tool, especially for countries with fewer states to punch above their weight. As an example, Flag of Belgium Belgium can enact three or four decrees in each of its two starting states at the game start. Apart from decrees, the other primary use of authority is to raise consumption taxes. The surplus bonus is faster law enactment, which can be very useful when implementing a new law, especially an unpopular one. But when a law is not being implemented, a surplus has no benefit, so one should generally use all available authority in that case.
+
+The amount of available authority tends to decrease over the course of the game for most countries due to increasing liberalization. So if the state budget is very dependent on decrees and consumption taxes, there should be a plan for what to do, when liberalizing. Nevertheless, it is generally the case that modern laws are worth a lot more than potential decrees.
+
+When considering to enact a decree there are two important factors:
+
+The value of the decree compared to introducing an additional consumption tax
+The value of the decree compared to liberalizing further
+Decrees are more powerful when the country has around five or fewer states, while consumption taxes are better in larger countries.
+
+Road maintenance and construction
+The Road Maintenance decree is not efficient to maintain State status infrastructure.png infrastructure outside of emergencies and temporary solutions; railroads and ports should be built instead as the long term solution. However, using the decree to boost construction can be quite effective; particularly early in the game, when countries do not have a much construction available and thus are constructing in only one or two states at any given time.
+
+References
+To update this table, see Module:Decree/List
+Game concepts
+Pops	Pops • Acceptance • Culture • Migration • Needs • Professions • Religion • Standard of living
+Government	Government • Capacities • Characters • Decrees • Institutions • Laws • Technology
+Politics	Elections • Ideology • Interest group • Political lobby • Political movement • Political party • Revolution
+Economy	Buildings • Goods • Harvest condition • Infrastructure • Market • Production methods • State • Treasury
+Diplomacy	Diplomacy • Diplomatic action • Diplomatic play • Power bloc • Ranks • Subjects • Treaties
+Warfare	Warfare • Land warfare • Naval warfare • Wargoals • Conscription
+Others	Countries • Decisions • Events • Journal • Objectives • Vickypedia
+Categories: Potentially outdated1.10Game concepts
+Privacy policyAbout Victoria 3 WikiDisclaimersMobile view
+Attribution-ShareAlike 3.0Powered by MediaWiki
+
+Games
+Discover
+Our Brands
+Browse
+Play on Paradox technology
+Community
+Paradox Forums
+Paradox Wikis
+Support
+About
+News
+About us
+Careers
+Join our playtests
+Media contact
+Social Media
+Legal Information
+EU Online Dispute Resolution
+Report Illegal Content

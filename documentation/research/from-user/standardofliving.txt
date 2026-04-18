@@ -1,0 +1,254 @@
+
+Paradox Wikis
+Victoria 3 Wiki
+
+Search
+Search Victoria 3 Wiki
+Log in
+Navigation menu
+PageDiscussion
+ReadEditEdit sourceView history
+Victoria 3 Wiki
+Recent changes
+Random page
+Paradox Wikis
+- Main portal
+- Wikis discord
+- Contact us
+- Style guidelines
+V3 links
+- Forums
+- Game discord
+- Mods
+- Store
+- Twitch
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+Standard of living
+Jump to navigationJump to search
+Please help with verifying or updating older sections of this article.
+At least some were last verified for version 1.9.
+
+Pops
+Culture • Religion
+Profession • Qualifications
+Standard of Living • Needs
+Migration
+Standard of Living – often abbreviated as SoL – represents the socio-economic status of pops. Each pop spends their weekly wages on the set of goods providing them with highest standard of living they can afford.
+
+
+Contents
+1	Calculation
+1.1	Wealth
+1.2	Modifiers
+1.3	Expected standard of living
+2	Effects
+2.1	Needs
+2.1.1	Obsessions and taboos
+2.2	Loyalists and radicals
+2.3	Birth rate and mortality
+2.4	Migration
+3	Food security
+3.1	Starvation
+4	Observations
+5	References
+Calculation
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.8.
+SoL	Score
+Destitute Destitute	1–4
+Struggling Struggling	5–9
+Impoverished Impoverished	10–14
+Middling Middling	15–19
+Secure Secure	20–24
+Prosperous Prosperous	25–29
+Affluent Affluent	30–39
+Wealthy Wealthy	40–49
+Lavish Lavish	50–59
+Opulent Opulent	60+
+Each pop has a standard of living value between 1 and 99. These values are grouped into descriptive categories, as listed in the table on the right. The standard of living for pops is also shown as an average for pop groupings, such as in each state, profession, religion, culture, strata, and the entire country. Pops' standard of living values are always whole numbers, but averaged scores often have a decimal.
+
+Pop wealth is the primary determinant for the standard of living value; it also determines a pop's needs and base political strength.
+
+Wealth
+A pop's wealth forms the foundation of its standard of living.
+
+Pops accumulate wealth over time as long as their weekly income exceeds 102% of their next level buy package cost[1] at a speed of 0.2 times the difference. Conversely, if a pop's income is lower than 98% of its current expenses, its wealth declines at a speed of 0.1 times the difference.[2]
+
+Pop income comes primarily from their workplace either as wages or dividends. Dependents also earn some income, and the Social security Social Security institution can supplement income through welfare payments. Pop expenses consist of their needs and taxes.
+
+As pops increase in wealth and rise to a higher standard of living, their expenses increase as they have larger and more expensive needs. This results in a dynamic equilibrium where a pop's wealth drifts to a stable level where it neither increases nor decreases. If there are changes to a pop's income or expenses, such as the cost of goods it consumes, the pop's wealth again drifts to the new stable level.
+
+Wealth has a number of functions in addition to forming the basis for standard of living. Certain law and institution combinations provide benefits to pops only in relation to their wealth. Many professional qualifications also require pops to have a certain level of wealth.
+
+Modifiers
+Certain events and journal entries modify pops standard of living outside its actual wealth. Most of these modifiers are temporary and apply only to a single state or some other subset of a country's population. Rulers with the Trait cruel.png Cruel trait provide −1 to the standard of living for all pops in their country.
+
+A state's State status pollution.png pollution level reduces its pops' standard of living, scaling up to −3 at 100% pollution impact.
+
+The Health system health system institution also provides flat bonuses to the standard of living depending on which establishing law is enacted.
+
+Private Health Insurance Private Health Insurance: +0.5 standard of living per level for the SOL strata upper.png upper strata
+Public Health Insurance Public Health Insurance: +0.5 standard of living per level for all pops
+The Hud powerblocs.png power bloc principle
+Principle tier III.png
+Food Standardization
+ Food Standardization III provides +1 standard of living for all pops.
+
+Expected standard of living
+Stratum	Base expected
+SOL strata poor.png Lower strata	5
+SOL strata middle.png Middle strata	10
+SOL strata upper.png Upper strata	15
+Pops have a base expected standard of living depending on their profession's stratum, and if their current standard of living is below this, they become more radical over time.
+
+Each pop has additional expected standard of living scaled by Literacy.png literacy, which starts with a max of 5, increasing by 1 with each of the following society technologies:
+
+Egalitarianism Egalitarianism (II)
+Labor Movement Labor Movement (II)
+Socialism Socialism (III)
+Political Agitation Political Agitation (IV)
+Mass Propaganda Mass Propaganda (V)
+For example, a laborer pop with 20% literacy would have 6 expected standard of living at the start of the game, and a bureaucrat pop with 50% literacy would have 14 expected standard of living if Socialism (plus the earlier techs) has been researched. The effect of literacy on expected standard of living is reduced by 75% if the pop works in a subsistence building.
+
+Certain events can further modify a pop's expected standard of living, and pops in State status unincorporated.png unincorporated states have a −33% modifier to their expected standard of living.
+
+Pops gain job satisfaction by having a standard of living above their expected standard of living.
+
+Effects
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.9.
+Each standard of living score has several effects on pops. From changing their consumption to modifying birth and death rates, and more.
+
+Needs
+Main article: Needs
+Each wealth level has a defined set of needs and an amount of "value" that must be spent on goods to fulfill that need. This value is defined by goods' base prices for 10,000 working pops. So for example at wealth level 14, £85 worth of "value" is allocated for Standard Clothing (only fulfilled by Goods clothes.png clothes). If the price of clothes is above base price, it costs more to fulfill this need. Conversely, a low price for clothes means pops can save more wealth. As a result, cheaper goods means wealthier, happier pops.
+
+There are 14 categories of needs and no wealth level uses all of them at once. Most needs can be satisfied by a variety of goods. For example, the need for Heating is fulfilled by any of Goods wood.png wood, Goods fabric.png fabric, Goods coal.png coal, Goods oil.png oil, or Goods electricity.png electricity. These can be purchased in any combination so that the total base prices add up to the required value. Unless only one good for a category is available, pops attempt to buy at least two different goods to fulfill that need. Goods can also appear in several different needs categories. For example, Goods groceries.png groceries, Goods meat.png meat, and Goods fruit.png fruit can fulfil the need for both Basic Food and Luxury Food.
+
+Obsessions and taboos
+In addition to general economic factors, cultures can develop up to 3 obsessions for certain goods, which doubles the demand weight for that good, while certain religions have taboos they must abide by, reducing demand weight for those goods by half. The starting obsessions can be found here: Culture#List_of_cultures.
+
+There is a small chance of cultures developing new obsessions during the course of a game. This requires the culture to have at least 50,000 people in a market where the supply of the good is at least 50% of the demand for it and the market demands at least £500 of the good (calculated as
+number of units
+∗
+base price
+{\displaystyle {\text{number of units}}*{\text{base price}}}). The chance is increased by increased supply (up to 3 times the demand) and market size. Trade routes can be used to try to get other cultures to develop obsessions for products produced in the player's country. Certain events may also create or remove obsessions.
+
+Loyalists and radicals
+Every time a pop increases or decreases in standard of living, a portion of it becomes more Political loyalist.png loyal or Political radical.png radical. Note that radicals and loyalists "cancel out". For example, if loyalists radicalize, they instead become neutral, and the same is true for radicals becoming loyal. A single pop cannot contain both loyalists and radicals at the same time.
+
+Base +3% radicals when SoL decreases and +3% loyalists when SoL increases[3]
+These percentages can be modified by laws, institutions, characters' traits, events, and other modifiers. In the absence of positive modifiers, fluctuations in standard of living generally radicalize pops.
+
+In addition to decreasing standard of living, pops with a standard of living below their expected level radicalize each month, at +0.2% for each level of difference between expected and current. This effect is capped once a pop reaches 15% radicalism per level of difference between expected and current standard of living.
+
+The first few years of the game are a grace period, based on the selected game rule, when changes to radicals and loyalists are scaled down.
+
+Birth rate and mortality
+
+Ambox outdated info.png
+Please help with verifying or updating this image. It was last verified for version 1.10.
+Birth rate and mortality as functions of standard of living
+Both base birth rate and mortality change with a pop's standard of living.[4]
+
+The game uses five pseudo-algorithms to model demographic transition[wp 1].
+
+Below Struggling SoL (5) mortality is increased to represent starvation
+As SoL increases between Struggling (5) and Middling (15), mortality quickly drops
+As SoL increases between Impoverished (10) and Prosperous (25), birth rates steeply drop
+As SoL increases between Middling (15) and Prosperous (25), the decrease in mortality slows down
+As SoL increases above Prosperous (25), the minimum base birth rate of 0.60% and mortality rate of 0.45% are applied
+Since modifiers are almost always applied to either birth- or death rate, the effects for better or worse, are much more pronounced at a low SoL.
+
+Another common factor is Literacy.png literacy, which reduces birth rate by −10% at 100%, and scales linearly below that. As literacy decreases only birth rate, the effect is stronger in lower wealth levels, and pops with high literacy may have their net growth SoL at 6 rather than 5 and population growth reduced by 20% at SoL 11 and 9% at Wealth 20.
+
+Pops living in a state will face an increasing penalty to birth rate proportional to the unemployement rate in that state, up to 40%.
+
+State status pollution.png Pollution may increase mortality by up to 50%, but the effect can be reduced by passing Health System Laws and researching Modern Sewerage Modern Sewerage.
+
+
+Ambox outdated info.png
+Please help with verifying or updating this image. It was last verified for version 1.8.
+Population growth by different Health System laws adjusted by wealth levels
+Health System laws are the most prominent way of decreasing mortality and thus increasing the growth of the population; however, because health systems increase SoL, they have a counterintuitive effect and Public Health Insurance Public Health Insurance level 5 may lead to a net decrease of population growth, as pops of wealth levels 20 to 30 receive a larger decrease in birth rates from increased SoL than the decrease of mortality from the institution.
+
+Migration
+A state's average standard of living provides its base migration attraction. Additionally, pops with a standard of living below average for their market are 1% more likely to migrate for each level below average[5].
+
+The attraction can also be increased via decrees or certain events (typically the discovery of gold, oil or rubber).
+
+Food security
+See also: Needs, Pops
+Food security represents how easily pops in a given state can afford their basic food needs. It is primarily determined by supply of food goods, but also by their price. Food Security is a value between 0 and 100%, where at 0% the pop is in a state of severe starvation and at 100% the pop has full and easy access to all the food it requires. What determines a Pop’s food security is mainly a combination of two factors:
+
+How much the Basic Food Pop Need is in shortage in the state in question
+How much money the pop is spending on Basic Food compared to their whole buy package at base price
+Example: Food Security starts at 100% and is reduced by the two values above. If a pop spends 70% of their income on Basic Foods, and food is also in a 20% shortage, the food security for the pop in question will be 100% - 70% - 20% = 10%.
+
+Additionally, the Emergency Relief Emergency Relief decree increases food security by 5%. Each level of Charity Hospitals Charity Hospitals increases food security by 2%. Each level of Social securitySocial Security increases food security by 2% with Old Age Pension Old Age Pension increasing it by an additional 1% per level.
+
+Pops with less than 40% food security are considered to be in Mild starvation.png mild starvation, while pops with less than 20% are considered to be in Severe starvation.png severe starvation. If more than 35% of a state's pop are in mild starvation and more than 15% are in severe starvation, that state is considered to be in a State status famine.png famine.
+
+Starving POPs has a severely increased mortality and decreased birth rate. Famines is a primarily political classification, and thus don’t have any direct effects on your pops. It act as a starting point for narrative content surrounding famines and how to deal with them. Famines also act as a warning signal for the player. They tell you how long they’ve lasted, how many people are affected as well as estimations for how many deaths and unrealized births the famine has led to.
+
+Starvation
+Starving pops have a penalty to their birth rate and mortality, scaled by their food security.
+
+Mild starvation.png Mild starvation scales up to −35% birth rate and +30% mortality
+Severe starvation.png Severe starvation scales up to −90% birth rate and +100% mortality
+
+
+Observations
+Peasants, slaves and laborers usually have low SoL. Thus, abolishing slavery and serfdom, allowing peasants to be hired in industries and reducing the number of laborers via advanced and labor-reducing production methods are recommended if raising SoL is an objective.
+Laws which increase minimum wage and welfare also increase SoL, as do laws which increase acceptance.
+Due to the differences in base wage between different jobs, it also increases SoL to use more advanced production methods, and not just because of the increased number of goods available (assuming the workers actually have the qualifications to work those new jobs)
+References
+ See /Victoria 3/game/common/buy_packages/00_buy_packages.txt
+ See /Victoria 3/game/common/defines/00_defines.txt
+WEALTH_PROGRESS_WANTED_BUFFER
+WEALTH_PROGRESS_INCREASE
+WEALTH_PROGRESS_ACCEPTABLE_DEFICIT
+WEALTH_PROGRESS_DECREASE
+ In 00_defines.txt: DEFAULT_SOL_CHANGE_IMPACT_FACTOR
+ See Defines#Pop growth for details of calculations
+ In 00_defines.txt: ECONOMIC_MIGRATION_FROM_SOL_DIFFERENCE
+Wikipedia link references:
+
+ Links to English Wikipedia article
+Game concepts
+Pops	Pops • Acceptance • Culture • Migration • Needs • Professions • Religion • Standard of living
+Government	Government • Capacities • Characters • Decrees • Institutions • Laws • Technology
+Politics	Elections • Ideology • Interest group • Political lobby • Political movement • Political party • Revolution
+Economy	Buildings • Goods • Harvest condition • Infrastructure • Market • Production methods • State • Treasury
+Diplomacy	Diplomacy • Diplomatic action • Diplomatic play • Power bloc • Ranks • Subjects • Treaties
+Warfare	Warfare • Land warfare • Naval warfare • Wargoals • Conscription
+Others	Countries • Decisions • Events • Journal • Objectives • Vickypedia
+Categories: Potentially outdated1.9Game concepts
+Privacy policyAbout Victoria 3 WikiDisclaimersMobile view
+Attribution-ShareAlike 3.0Powered by MediaWiki
+
+Games
+Discover
+Our Brands
+Browse
+Play on Paradox technology
+Community
+Paradox Forums
+Paradox Wikis
+Support
+About
+News
+About us
+Careers
+Join our playtests
+Media contact
+Social Media
+Legal Information
+EU Online Dispute Resolution
+Report Illegal Content

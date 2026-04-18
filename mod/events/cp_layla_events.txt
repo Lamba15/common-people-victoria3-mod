@@ -1,0 +1,392 @@
+﻿###############################################################################
+# Common People -- Layla story events
+#
+# All Layla events follow Pattern B (image-led, NOT portrait):
+#   - no gui_window, no left_icon
+#   - event_image with custom DDS that depicts Layla in the scene
+#   - short desc (one sentence setup)
+#   - long flavor (the longer Mahfouz-style prose; renders as small italic)
+#
+# All events are country_event with root = c:EGY. They access Layla via the
+# saved scope cp_layla, which cp_startup.1 saves on the country at game start.
+# Every event guards on `exists = scope:cp_layla` so a missing/dead Layla
+# fails silently rather than erroring.
+#
+# Console testing:
+#   event cp_layla.1     -- intro
+#   event cp_layla.2     -- The Deed (homesteading)
+#   event cp_layla.3     -- The Bey Returns (serfdom restored)
+#   event cp_layla.4     -- He Marches (Ahmed conscripted)
+#   event cp_layla.5     -- The First Cry (childbirth)
+#
+# Note: V3 requires numeric event IDs (namespace.NUMBER). String IDs are
+# rejected by the parser.
+###############################################################################
+
+namespace = cp_layla
+
+# cp_layla.1 -- "The Farmer's Daughter"
+#
+# First meeting with Layla. Fires immediately from cp_startup.1.
+cp_layla.1 = {
+    type = country_event
+
+    title = cp_layla.1.t
+    desc  = cp_layla.1.d
+    flavor = cp_layla.1.f
+
+    icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+    event_image = {
+        texture = "gfx/event_pictures/cp_layla_intro.dds"
+    }
+
+    duration = 3
+
+    trigger = {
+        exists = scope:cp_layla
+    }
+
+    option = {
+        name = cp_layla.1.a
+        default_option = yes
+        scope:cp_layla = {
+            set_variable = cp_met_player
+        }
+    }
+}
+
+# cp_layla.2 -- "The Deed" (homesteading granted)
+#
+# The great moment. Triggered manually for now (future: on_law_enacted hook
+# when law_homesteading enacted in EGY).
+cp_layla.2 = {
+    type = country_event
+    orphan = yes
+
+    title = cp_layla.2.t
+    desc  = cp_layla.2.d
+    flavor = cp_layla.2.f
+
+    icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+    event_image = {
+        texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+    }
+
+    duration = 3
+
+    trigger = {
+        exists = scope:cp_layla
+    }
+
+    option = {
+        name = cp_layla.2.a
+        default_option = yes
+        scope:cp_layla = {
+            set_variable = cp_owns_land
+        }
+    }
+}
+
+# cp_layla.3 -- "The Bey Returns" (serfdom restored)
+#
+# The darkest event. Triggered manually for now (future: on_law_enacted hook
+# when law_serfdom enacted in EGY).
+cp_layla.3 = {
+    type = country_event
+    orphan = yes
+
+    title = cp_layla.3.t
+    desc  = cp_layla.3.d
+    flavor = cp_layla.3.f
+
+    icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+    event_image = {
+        texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+    }
+
+    duration = 3
+
+    trigger = {
+        exists = scope:cp_layla
+    }
+
+    option = {
+        name = cp_layla.3.a
+        default_option = yes
+        scope:cp_layla = {
+            change_variable = { name = cp_hope add = -3 }
+            set_variable = cp_under_serfdom
+        }
+    }
+}
+
+# cp_layla.4 -- "He Marches" (Ahmed conscripted)
+#
+# Triggered manually for now (future: on_war_started, EGY involved).
+cp_layla.4 = {
+    type = country_event
+    orphan = yes
+
+    title = cp_layla.4.t
+    desc  = cp_layla.4.d
+    flavor = cp_layla.4.f
+
+    icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+    event_image = {
+        texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+    }
+
+    duration = 3
+
+    trigger = {
+        exists = scope:cp_layla
+    }
+
+    option = {
+        name = cp_layla.4.a
+        default_option = yes
+        scope:cp_layla = {
+            set_variable = cp_ahmed_at_war
+            change_variable = { name = cp_exhaustion add = 2 }
+        }
+    }
+}
+
+# cp_layla.6 -- "A Moment" (reflection, fired from the JE's Reflect button)
+#
+# A quiet, contemplative event. No mechanics -- the player is looking in
+# on her, and she is living the day she is living.
+cp_layla.6 = {
+    type = country_event
+    orphan = yes
+
+    title = cp_layla.6.t
+    desc  = cp_layla.6.d
+    flavor = cp_layla.6.f
+
+    icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+    event_image = {
+        texture = "gfx/event_pictures/cp_layla_intro.dds"
+    }
+
+    duration = 3
+
+    trigger = {
+        exists = scope:cp_layla
+    }
+
+    option = {
+        name = cp_layla.6.a
+        default_option = yes
+    }
+}
+
+# cp_layla.5 -- "The First Cry" (childbirth, mother survives)
+#
+# Triggered manually for now (future: cp_pregnant=1 + 1 year passed + survival
+# roll).
+cp_layla.5 = {
+    type = country_event
+    orphan = yes
+
+    title = cp_layla.5.t
+    desc  = cp_layla.5.d
+    flavor = cp_layla.5.f
+
+    icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+    event_image = {
+        texture = "gfx/event_pictures/cp_layla_childbirth.dds"
+    }
+
+    duration = 3
+
+    trigger = {
+        exists = scope:cp_layla
+    }
+
+    option = {
+        name = cp_layla.5.a
+        default_option = yes
+        scope:cp_layla = {
+            change_variable = { name = cp_children add = 1 }
+            set_variable = cp_has_children
+            set_variable = cp_pregnant_no
+        }
+    }
+}
+
+###############################################################################
+# Slice-of-life "check on her" events (cp_layla.10 -- cp_layla.15)
+#
+# Dispatched from cp_layla_check_button's random_list. Pattern B, orphan, no
+# state mutation -- pure reflection beats. Three of them gate on specific
+# life situations (war / homesteader / serfdom); three are always-on.
+###############################################################################
+
+# cp_layla.10 -- "The Letter That Has Not Come" (Ahmed at war)
+cp_layla.10 = {
+    type = country_event
+    orphan = yes
+
+    title = cp_layla.10.t
+    desc  = cp_layla.10.d
+    flavor = cp_layla.10.f
+
+    icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+    event_image = {
+        texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+    }
+
+    duration = 3
+
+    trigger = {
+        exists = scope:cp_layla
+    }
+
+    option = {
+        name = cp_layla.10.a
+        default_option = yes
+    }
+}
+
+# cp_layla.11 -- "Walking the Field She Owns" (homesteader)
+cp_layla.11 = {
+    type = country_event
+    orphan = yes
+
+    title = cp_layla.11.t
+    desc  = cp_layla.11.d
+    flavor = cp_layla.11.f
+
+    icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+    event_image = {
+        texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+    }
+
+    duration = 3
+
+    trigger = {
+        exists = scope:cp_layla
+    }
+
+    option = {
+        name = cp_layla.11.a
+        default_option = yes
+    }
+}
+
+# cp_layla.12 -- "Under the Bey's Eye" (serfdom restored)
+cp_layla.12 = {
+    type = country_event
+    orphan = yes
+
+    title = cp_layla.12.t
+    desc  = cp_layla.12.d
+    flavor = cp_layla.12.f
+
+    icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+    event_image = {
+        texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+    }
+
+    duration = 3
+
+    trigger = {
+        exists = scope:cp_layla
+    }
+
+    option = {
+        name = cp_layla.12.a
+        default_option = yes
+    }
+}
+
+# cp_layla.13 -- "A Day With No Wind" (always available)
+cp_layla.13 = {
+    type = country_event
+    orphan = yes
+
+    title = cp_layla.13.t
+    desc  = cp_layla.13.d
+    flavor = cp_layla.13.f
+
+    icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+    event_image = {
+        texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+    }
+
+    duration = 3
+
+    trigger = {
+        exists = scope:cp_layla
+    }
+
+    option = {
+        name = cp_layla.13.a
+        default_option = yes
+    }
+}
+
+# cp_layla.14 -- "The Neighbour's Boy in the Lane" (always available)
+cp_layla.14 = {
+    type = country_event
+    orphan = yes
+
+    title = cp_layla.14.t
+    desc  = cp_layla.14.d
+    flavor = cp_layla.14.f
+
+    icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+    event_image = {
+        texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+    }
+
+    duration = 3
+
+    trigger = {
+        exists = scope:cp_layla
+    }
+
+    option = {
+        name = cp_layla.14.a
+        default_option = yes
+    }
+}
+
+# cp_layla.15 -- "Her Mother's Left Hand" (always available)
+cp_layla.15 = {
+    type = country_event
+    orphan = yes
+
+    title = cp_layla.15.t
+    desc  = cp_layla.15.d
+    flavor = cp_layla.15.f
+
+    icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+    event_image = {
+        texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+    }
+
+    duration = 3
+
+    trigger = {
+        exists = scope:cp_layla
+    }
+
+    option = {
+        name = cp_layla.15.a
+        default_option = yes
+    }
+}

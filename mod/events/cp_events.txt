@@ -1,0 +1,17 @@
+﻿###############################################################################
+# Common People -- error suppression namespace
+#
+# The compatibility/error-suppression event. Exists to silence the "unused
+# global variable" error for cp_is_loaded, which other mods may read to detect
+# our mod.
+###############################################################################
+
+namespace = cp_error_suppression
+
+cp_error_suppression.0001 = {
+    hidden = yes
+    orphan = yes
+    trigger = {
+        exists = global_var:cp_is_loaded
+    }
+}

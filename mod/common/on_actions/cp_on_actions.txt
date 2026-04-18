@@ -1,0 +1,42 @@
+﻿###############################################################################
+# Common People -- on_actions
+#
+# Hooks into game on_actions to fire our own custom pulse actions and dispatch
+# events. We NEVER override base-game on_actions; we always subscribe to them.
+#
+# Naming: cp_ prefix for every custom on_action and global variable.
+# 1.12 target; forward-compatible for 1.13 National Cast.
+#
+# Current subscriptions:
+#   on_game_started -- initial seeding for MVP countries (EGY only for now)
+#
+# Planned subscriptions (from MVP):
+#   on_law_enacted           -- dispatches Layla reactions to land reform
+#   on_monthly_pulse_country -- Layla's monthly life pulse (10% fire)
+#   on_war_started           -- Ahmed conscription reaction
+#   on_war_ended             -- Ahmed homecoming / death
+#   on_revolution_start      -- Layla hides with the family
+###############################################################################
+
+# Game start: dispatch to our startup on_action.
+on_game_started = {
+    on_actions = {
+        cp_on_start
+    }
+}
+
+# cp_on_start -- initial seeding for every MVP country.
+# Sets the inter-mod detection flag and fires per-country startup events.
+cp_on_start = {
+    effect = {
+        set_global_variable = {
+            name = cp_is_loaded
+            value = yes
+        }
+
+        # Seed EGY (Layla). Scope directly; simpler than every_country + limit.
+        c:EGY ?= {
+            trigger_event = { id = cp_startup.1 }
+        }
+    }
+}

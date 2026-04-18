@@ -1,0 +1,214 @@
+
+Paradox Wikis
+Victoria 3 Wiki
+
+Search
+Search Victoria 3 Wiki
+Log in
+Navigation menu
+PageDiscussion
+ReadEditEdit sourceView history
+Victoria 3 Wiki
+Recent changes
+Random page
+Paradox Wikis
+- Main portal
+- Wikis discord
+- Contact us
+- Style guidelines
+V3 links
+- Forums
+- Game discord
+- Mods
+- Store
+- Twitch
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+Migration
+Jump to navigationJump to search
+Please help with verifying or updating older sections of this article.
+At least some were last verified for version 1.9.
+
+Pops
+Culture • Religion
+Profession • Qualifications
+Standard of Living • Needs
+Migration
+
+Migration change and migration attraction on the state population screen.
+Migration is the movement of pops between states. There are two types of migration in Victoria 3: intra-market migration and mass migration.
+
+
+Contents
+1	Migration types
+2	Migration attraction
+3	Migration law
+4	Intra-market migration
+4.1	Migration desire
+4.2	Cultural communities
+4.3	Target and size
+4.4	Power blocs
+5	Mass migration
+5.1	Migration target
+6	Slavery
+7	References
+Migration types
+There are two types of migration in Victoria 3:
+
+Intra-market migration is the movement of pops between two states that are part of the same market.
+Mass migration is a mechanic that models the migration of large amounts of people to places such as the USA, Brazil, and Australia in the 19th century. Mass migration can happen when a particular culture experiences State status turmoil.png turmoil, which is a product of having a large number of Political radical.png radicalized pops.
+Migration attraction
+Migration attraction represents how likely a pop is to move to or from a state. It is a summary of various factors including available jobs and average standard of living. Pops generally immigrate to states with the highest attraction and emigrate from states with the lowest attraction.
+
+Migration attraction is calculated according to the following factors:
+
+Reason	Factor
+Per point of average SoL	+2
+Per 10K available jobs
+Max 200K	+1.5
+Max +30
+Per 10K available subsistence jobs
+Max 600K	+0.5
+Max +30
+Per 10K unemployed population
+Max 500K	−1
+Max −50
+State has no pops	+100
+Additionally, many state traits and other modifiers affect migration attraction, often multiplying the sum of the above factors.
+
+Migration attraction applies to both intra-market migration and mass migration.
+
+For intra-market migration only, migration attraction of a target state is increased for a particular pop by +50% if it is discriminated in its current state and would be accepted in the target state; similarly, the attraction is increased by +20% if the target state is a cultural homeland for the pop.
+
+Migration law
+See also: Human rights laws#Migration
+The Migration law of a country determines whether a pop can migrate to or from other countries, determined by base cultural acceptance:
+
+Law	Valid migrant status
+No Migration Controls No Migration Controls	Any acceptance
+Migration Controls Migration Controls	At least 60 cultural acceptance
+Closed Borders Closed Borders	No acceptance
+The Land Reform law also affects the migration of Pop peasants.png peasants:
+
+Law	Pop peasants.png Peasants migration
+Serfdom Serfdom	None
+Tenant Farmers Tenant Farmers	Mass migration only
+All others	Any
+If a pop is moving between countries, the migration laws of both countries are considered. Religious discrimination does not affect migration ability, though it might affect a pop's choice of target.
+
+Intra-market migration
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.9.
+Most migration is intra-market migration, where pops migrate between states within the same market. There are several thresholds that must be met in order for a pop to migrate within a market. These include the presence of a cultural community in the target, a pop's migration desire, and its discrimination and the migration laws in both the source and target.
+
+Migration desire
+Status	Score	Migration
+desire
+Violent Hostility Violent Hostility	0-19	100
+Cultural Erasure Cultural Erasure	20-39	100
+Open Prejudice Open Prejudice	40-59	50
+Second-class Citizen Second-class Citizen	60-79	20
+Full Acceptance Full Acceptance	80-100	0
+A pop's migration desire determines how likely a pop is to migrate. It is based on the inverse of the pop's job satisfaction and increased by discriminated statuses. Thus highly satisfied pops are very unlikely to migrate, and less accepted pops are more likely to migrate than more accepted pops.
+
+Cultural communities
+In order for a pop to migrate within a market, the target state must have a matching cultural community. Cultural communities are present in each state that contains one or more pops of that culture. Additionally, each month, a new cultural community can appear in any state as long as that culture is present in the market. If a state has no pops of a given culture, that cultural community disappears after three weeks.[1]
+
+The chance for a new cultural community to appear in a state has the following factors. This chance is calculated individually for each culture present in the market. If a state has 50 or more devastation, 60 or more turmoil, or is isolated, it cannot gain a new cultural community. The maximum chance is 4% for each culture for each state.
+
+Cultural community chance factors
+When a new cultural community first appears, it adds a −30 local acceptance penalty to its culture. This penalty decays each month by +0.25.
+
+Target and size
+In order for a state to be selected for immigration, it must have at least 25% higher migration attraction than the average in the entire market. Similarly, for a state to be selected for emigration, it must have at least 25% lower migration attraction than the average in the entire market. Finally, all eligible states with at least 75% of the migration attraction of the most attractive state receive some immigration. Pops do not migrate if their current state and target state are within 5 points of migration attraction.
+
+Once it is determined that one or more pops will migrate, the number of individuals that migrate is 5 times the difference in migration attraction plus 1 more per point per 100K population in a state. For any given pop, at least 5% of that pop must migrate or no part of the pop does.
+
+Each week a state that experiences migration can have no more than
+500
++
+(
+5
+∗
+Infrastructure
+)
+{\displaystyle 500+(5*{\text{Infrastructure}})} individuals migrate in or out of the state. Additionally, no more than 0.5% of a state's population can emigrate per week. These limits are scaled down in states with less than 100K population to zero emigration below 20K population. Finally, 5% of the unemployment size of a state is added to its max emigration and removed its max immigration.
+
+Depending on relative migration attraction between states in a country, the same state may receive immigrants and send out emigrants in the same week.
+
+Power blocs
+Intra-market migration can occur within power blocs that are Power bloc trade league.png Trade Leagues or have the principle
+Principle tier II.png
+Market Unification
+ Market Unification II or
+Principle tier III.png
+Freedom of Movement
+ Freedom of Movement III.
+
+The Freedom of Movement principle also increases the amount of migration by +25% (from tier 1) and the attraction for mass migration by +50% (from tier 2).
+
+Mass migration
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.9.
+A Mass Migration occurs when a culture is radical enough for pops to leave their homeland. Unlike intra-market migration, mass migrations are always between different countries and they often occur between markets, though they can occur within a market as well. Assuming Migration laws do not prevent their movement, pops of that culture migrate over a period of 12 months and the same culture cannot mass migrate from the same country again for another 48 months. A country is eligible to become the source of a mass migration if it has:
+
+at least 15% State status turmoil.png turmoil in a culture whose homelands its owns
+at least 100,000 potential emigrants
+Pops that do not have a cultural homeland (such as Ashkenazi) can never mass migrate.
+
+The chance of a mass migration starting each week for each combination of eligible culture and country is 2% times the cultural turmoil plus another 0.2% per point of average standard of living for the culture below 10 and finally plus another 1% per point of average SoL for the culture below 5. For example, a culture with 30% turmoil has a 60% chance of starting a mass migration, if the average standard of living for that culture is 4, that rises to 62.2%.
+
+Migration target
+Once a country meets the origin requirements, the mass migration searches for an eligible State status mass migration.png migration target state. A state is eligible if:
+
+it is incorporated
+its owner has 30% or less turmoil in the migrating culture
+it has 10 or more arable land
+it has at least 70% market access
+Each country has an attraction score which equals the average migration attraction of all its eligible states. Countries with fewer than 4 eligible states receive a penalty of 20% for each fewer state, up to 60% penalty for a country with only one eligible state. A country is semi-randomly chosen, with higher attraction scores more likely to be chosen, then a semi-random eligible state within that country is chosen as the migration target. The source and target countries must be trading with each other on the world market.
+
+The culture affected by mass migration must also have at least 30 acceptance in the target country under its Citizenship laws. The culture also seeks to increase its acceptance by at least 10 from its current country, but may mass migrate for less if attraction is high enough. Increased acceptance in the target can result in up to five times as much migration, depending on the ratio of acceptance between origin and target.
+
+Pops that mass migrate arrive either in the migration target or its neighboring states. With each neighboring state receiving approximately half as many individuals as the main target, scaled by the various factors.
+
+Slavery
+Pop slaves.png Slaves are never allowed to migrate, even with No Migration Controls. Countries with the Slave Trade Slave Trade law can 'import' slaves, even when they have Closed Borders. These newly imported slaves can arrive in any state with available jobs that can be filled by slaves.
+
+References
+ CULTURAL_COMMUNITY_LINGER_TIME_WEEKS in /Victoria 3/game/common/defines/00_defines.txt
+Game concepts
+Pops	Pops • Acceptance • Culture • Migration • Needs • Professions • Religion • Standard of living
+Government	Government • Capacities • Characters • Decrees • Institutions • Laws • Technology
+Politics	Elections • Ideology • Interest group • Political lobby • Political movement • Political party • Revolution
+Economy	Buildings • Goods • Harvest condition • Infrastructure • Market • Production methods • State • Treasury
+Diplomacy	Diplomacy • Diplomatic action • Diplomatic play • Power bloc • Ranks • Subjects • Treaties
+Warfare	Warfare • Land warfare • Naval warfare • Wargoals • Conscription
+Others	Countries • Decisions • Events • Journal • Objectives • Vickypedia
+Categories: Potentially outdated1.9Game concepts
+Privacy policyAbout Victoria 3 WikiDisclaimersMobile view
+Attribution-ShareAlike 3.0Powered by MediaWiki
+
+Games
+Discover
+Our Brands
+Browse
+Play on Paradox technology
+Community
+Paradox Forums
+Paradox Wikis
+Support
+About
+News
+About us
+Careers
+Join our playtests
+Media contact
+Social Media
+Legal Information
+EU Online Dispute Resolution
+Report Illegal Content

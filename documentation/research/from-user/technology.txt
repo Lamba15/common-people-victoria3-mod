@@ -1,0 +1,261 @@
+
+Paradox Wikis
+Victoria 3 Wiki
+
+Search
+Search Victoria 3 Wiki
+Log in
+Navigation menu
+PageDiscussion
+ReadEditEdit sourceView history
+Victoria 3 Wiki
+Recent changes
+Random page
+Paradox Wikis
+- Main portal
+- Wikis discord
+- Contact us
+- Style guidelines
+V3 links
+- Forums
+- Game discord
+- Mods
+- Store
+- Twitch
+Tools
+What links here
+Related changes
+Special pages
+Printable version
+Permanent link
+Page information
+Technology
+Jump to navigationJump to search
+Please help with verifying or updating older sections of this article.
+At least some were last verified for version 1.10.
+
+Technology
+Production technology
+Military technology
+Society technology
+
+An overview of the beginning of the production tech tree.
+Technologies represent new inventions, doctrines, and philosophies that are developed over the course of the game. Each technology belongs to one of three technology trees: Production, Military, and Society.
+
+There are 177 technologies across the three technology trees (and 1 exclusive technology, Sericulture, for 178). Each tree has two starting technologies, and all other technologies require one or more other technologies to be researched before becoming available for researchable. Many countries start with around 20 to 30 of these technologies already researched – representing their existing research and knowledge at the start of the game. On average, countries can research one new technology every 2 to 3 years, though this pace can vary greatly from country to country. Additionally, countries which are behind the leading edge receive technology spread which unlocks a new technology in each tree slowly over time.
+
+Many technologies have no direct effect on a country, but instead unlock new buildings, production methods, laws, military units, or other mechanics. Other technologies – particularly society and military technologies – also have direct benefits, such as increasing army offense and defense, reducing loan interest rates, or providing more Hud influence.png influence or Hud authority.png authority. Technologies can also have 'hidden' effects, such as unlocking new leader ideologies, revealing journal entries, or allowing for certain national unifications.
+
+Researching a new technology is a simple as clicking on its icon in the technology tree and waiting for it be completed. Technologies can also be queued by ⇧Shift clicking the icon so that the next technology begins as soon as the current one completes. Clicking a technology with unresearched prerequisites queues each required technology and finally the selected technology.
+
+
+Contents
+1	Technology trees
+1.1	Production technology
+1.2	Military technology
+1.3	Society technology
+2	Eras
+3	Innovation
+3.1	Maximum innovation investment
+3.2	Literacy
+3.2.1	Education access
+3.3	Technology spread
+4	Formulas
+5	Strategy
+5.1	Slingshot method
+6	References
+Technology trees
+Production technology
+Main article: Production technology
+Production technologies tend to be very concrete inventions which increase the output or yields of all kinds of buildings. Some are more abstract, such as more effectively utilizing labor in the manufacturing industries. Production technologies also include advances to railways, and some even unlock goods unknown at the start of the game such as Goods rubber.png rubber, Goods electricity.png electricity, and Goods automobiles.png automobiles.
+
+Military technology
+Main article: Military technology
+Military technologies improve the army and navy. These consist of a mix of new weapon technologies, doctrines, and ways of organizing servicemen and officers. The naval part of the tree is mostly dedicated to the invention of new ship types, but also includes a few new naval strategies as well as upgrades to civilian ports to improve the country's supply network and trade capacity.
+
+Society technology
+Main article: Society technology
+Society technologies include ideas pertaining to politics, finance, and diplomacy, among others. Several technologies in this tree also unlocks specific ideologies which may appear with new interest group leaders and shake up the political landscape. Society technologies also often unlock diplomatic actions, laws, and other benefits for managing a country such as increased maximums for institution levels.
+
+Eras
+Eras are a rough classification of which time period a certain idea was first discovered or developed.
+
+Era I inventions are well-known in many parts of the world prior to 1836.
+Era II inventions are associated with the First Industrial Revolution (1836 to mid-19th century).
+Era III is a period of evolution, stabilization, and standardization that runs until late 19th century.
+Era IV corresponds with the second industrial revolution around the turn of the 20th century.
+Era V inventions are transformative, modern ideas of the early 20th century.
+Eras act as an indicator of roughly where the country is in a given tree, but also serve a role in ensuring that rushing a certain late-game technology is difficult. Not only do technologies in later eras take more innovation to research, but each technology from previous eras which has not yet been researched in a given tree makes it harder and harder to make progress. This means technologies are not unlocked in specific years, but there is never a hard block to research technologies earlier than they were historically invented. Though it is typically a less efficient use of time, so acquiring a specific technology ahead of time is usually only beneficial for certain strategies.
+
+Innovation
+Each technology has an Innovation.png innovation cost, representing the amount of effort it takes to discover or develop that technology. The base innovation cost depends on the technology's era, later eras have a higher cost; additionally, if there are unresearched technologies from a previous era in a tree, later technologies have an increased cost.
+
+All countries start with a base of 50 innovation generation. Countries can increase their innovation generation by constructing Building university.png university buildings. Each university level – when fully staffed – produces a base of 1 to 2 innovation, depending on its current production method.
+
+All generated innovation, up to the innovation capacity, is applied each week to the currently researched technology. The amount of innovation applied to a technology so far is saved if another technology is selected as the current research.
+
+Maximum innovation investment
+The amount of innovation that can be used for directed research is capped. All countries start with 50 max innovation investment, and each 1% of a country's national literacy adds +1.5 max innovation investment. National literacy is the average Literacy.png literacy of pops in the country's State status incorporated.png incorporated states.
+
+Literacy
+A pop's Literacy.png literacy score represents approximately what percent of individuals in that pop can read and write. Literacy is a major factor for most qualifications, thereby affecting for which professions individuals can change to. Literacy also affects a country's research by limiting the maximum amount of innovation for directed research and increasing the amount of technology spread.
+
+A high average literacy also increases a culture's Fervor.png fervor up to a maximum of 25.
+
+Education access
+Literacy increases over time toward a pop's education access. Base education access is +0.5% per wealth, which is further increased by certain society technologies. The Education Education institution also increases education access and certain professions have inherent additional education access. The Promote Social Mobility Promote Social Mobility decree increases education access by +25%, and certain events or other sources increase education access as well.
+Source	Education access
+Rationalism Rationalism	+1% Per wealth
+Academia Academia	+0.5% Per wealth
+Empiricism Empiricism	+0.5% Per wealth
+IG trait pious fiction.png Pious Fiction	−10%
+Profession	Education access
+Pop clerks.png Clerks	+25%
+Pop engineers.png Engineers	+25%
+Pop academics.png Academics	+50%
+Pop bureaucrats.png Bureaucrats	+50%
+Pop clergymen.png Clergymen	+50%
+Education institution law	Per level effects
+Religious Schools Religious Schools	+10% Access
+Public Schools Public Schools	+12.5% Access
+Private Schools Private Schools	+0.5% Access per wealth
+Companies	Education access
+Ericsson (Flag of Sweden Sweden)	+0.5% Per wealth
+If a pop's literacy is above its education access, it slowly declines as literate individuals die over time.
+
+Technology spread
+Aside from directed research, countries can also gain new technologies from technology spread. Once any country has researched a technology, other countries that can research that technology may have it spread to them passively. Each country may have one new technology spreading to it in each tree. Countries on the leading edge of technology often cannot gain new technologies this way, as they have researched more technologies than any other country.
+
+The speed at which technology spreads to a country is highly dependent on its population's Literacy.png literacy. In addition, any innovation being generated in excess of the innovation cap is funneled into improving technology spread rate, though at a reduced efficiency. Technology spread is also affected by Free Speech laws and a country's diplomatic recognition or, more precisely, lack of recognition. A country can bolster technology spread by selecting the same technology for directed research. If it does so, both the technology spread and directed research apply innovation to the same technology.
+
+The combination of innovation capacity and technology spread prevents large, wealthy countries from pulling too far ahead in technology compared to smaller, poorer countries and allows countries to more easily catch up once they can afford more universities. In both cases, a highly educated population is key to quickly researching new technologies.
+
+Formulas
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+Technology cost
+Era	Era cost
+1	7,500
+2	10,000
+3	12,500
+4	15,000
+5	17,500
+A technology's innovation cost is based on its era and the number of unresearched technologies from earlier eras in the same tree. Each era has a base cost as in the table on the right. The full formula is as below.
+
+Tech cost
+=
+Era cost
++
+#
+ of unresearched tech
+⋅
+(
+era difference
+⋅
+0.25
+⋅
+Era cost
+)
+{\displaystyle {\text{Tech cost}}={\text{Era cost}}+\#{\text{ of unresearched tech}}\cdot ({\text{era difference}}\cdot 0.25\cdot {\text{Era cost}})}
+
+For example, Dynamite (an era 3 technology) has a base cost of 12,500 points. If two technologies from era 2 were unresearched, the cost would increase by Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle 2 \cdot (1 \cdot 0.25 \cdot 12,500) = 2 \cdot 3,125 = 6,250} additional points. The unresearched penalty only applies for technologies within the same tree; so unresearched military technologies do not penalize society research, for example.
+
+The power bloc principle
+Principle tier II.png
+Advanced Research
+ Advanced Research II reduces the unresearched penalty by −5% per level of Education Education. With this principle and the Education institution at level 5, the example above would add only Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle 4687.5} additional points to the technology cost.
+
+Innovation gain
+All countries have a base innovation gain of +50 plus the output of their Building universities.png Universities, which is a base of 2 to 4 per level, depending on production method, scaled by employment and throughput bonuses. Certain modifiers can further increase or decrease innovation gain by a flat amount or multiplier.
+
+Maximum innovation investment
+The maximum amount of points that can be allocated per week to a technology is 50 plus 1.5 times the country's average literacy. The prosperity bonus of the Philips company adds +15 max innovation investment; the power bloc principle
+Principle tier III.png
+Advanced Research
+ Advanced Research III adds +5 max innovation investment per level of Education Education.
+
+For example, a country with 60% Literacy.png literacy has an innovation cap of Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle 50 + 60 \cdot 1.5 = 140} . A country with 80% Literacy.png literacy, Philips prosperity bonus, and
+Principle tier III.png
+Advanced Research
+ Advanced Research III with Level 5 Education Education institution has an innovation cap of Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle 50 + 80 \cdot 1.5 + 15 + 5 \cdot 5 = 210} .
+
+Research speed
+Research speed is a bonus or penalty to innovation applied when researching technologies. It is applied to the weekly innovation and can increase the points applied past the innovation cap. Research speed modifiers can be general for all technology or specific to one of the three trees. Multiple modifiers are additive together.
+
+There are three consistent research speed bonuses from the happy traits of the IG industrialists.png Industrialists – IG trait engines of progress.png Engines of Progress, IG armed forces.png Armed Forces – IG trait veteran consultation.png Veteran Consultation, and IG intelligensia.png Intelligentsia – IG trait avant garde.png Avant-garde, which increase the speed of production, military, and society technologies by +10% respectively (doubled when the IG is powerful). Conversely, the law Industry Banned Industry Banned inflicts a research speed penalty to production technologies of −25%. Finally, a number of temporary modifiers can be gained from various events or journal entries.
+
+Technology spread
+Each week, for each technology spreading in each tree, a country accumulates innovation points – based primarily on literacy – with an additional random factor so spread is not entirely predictable
+
+Failed to parse (SVG (MathML can be enabled via browser plugin): Invalid response ("Math extension cannot connect to Restbase.") from server "https://en.wikipedia.org/api/rest_v1/":): {\displaystyle \text{Spread} = (25 + [0.2 \cdot \text{Unspent innovation}] + [0.75 \cdot \text {Literacy percentage}]) \cdot \textstyle \sum \text{Modifiers} \cdot \text{rand}(0.5,1.5)}
+
+Unspent innovation is the amount by which innovation exceeds the maximum innovation investment. If no technology is selected for research, all innovation becomes unspent.
+
+The main modifiers for spread depend on laws and country status:
+
+Modifier	Cause
+Laws
+−15%	Outlawed Dissent Outlawed Dissent Free Speech law
+−10%	Censorship Censorship Free Speech law
+0%	Right of Assembly Right of Assembly Free Speech law
++25%	Protected Speech Protected Speech Free Speech law
+−15%	Isolationism Isolationism Trade Policy law
+−25%	Industry Banned Industry Banned Economic System law
+Only for production technology
+Unrecognized Status
+−15%	Unrecognized major power.png Unrecognized Major Power
+−20%	Unrecognized regional power.png Unrecognized Regional Power
+−25%	Unrecognized power.png Unrecognized Power
+Other
+−10%
+−20% if powerful	IG trait old ways.png Old Ways trait from IG rural folk.png Rural Folk
+−10%
+−20% if powerful	IG trait old ways.png Traditsye trait from Jewish Jewish IG devout.png Devout
++10%	Role ruler.png Ruler with Trait innovative.png Innovative trait
++5%	Advanced Research Advanced Research principle
+Per level of Education Education institution
+Varies	Various event modifiers
+Varies	Various companies prosperity bonuses
+Strategy
+Ambox outdated info.png
+Please help with verifying or updating this section. It was last verified for version 1.10.
+Slingshot method
+The slingshot method is a useful strategy to manage tech spread. You choose not to research a tech that is currently spreading even if it is a desirable tech with the idea of maximizing the amount of weeks that tech spread is working to your benefit. When a spreading technology is finished, another is chosen at random, which is not guaranteed to be a priority. Instead you choose to begin researching a different technology, that still has an ahead-of-time malus. You do not intend to finish the technology, but only to research it up until the point, where it would have been completed without the ahead-of-time malus. When the spreading technology is finished, the malus is removed from the top, meaning the more expensive technology is now merely 1 week away from completion.
+
+A common example is all countries that start with every era 1 production technology except for Lathe Lathe. In this scenario it is guaranteed that Lathes will begin to spread as the first technology. Instead you begin to research Atmospheric Engine Atmospheric Engine, an equally desirable tech. If lathes is fully completed, and then atmospheric engine is fully completed afterwards, it will cost a total of 17,500 innovations (7,500+10,000), but it is not guaranteed that tech spread will help with the second tech. If atmospheric engine is completed followed by lathes, it will cost 20,000 innovation (7,500+12,500), but tech spread will help with virtually the entire process. With the slingshot method, the cost will still be 17,500, and it is guaranteed that tech spread will help with virtually the entire process.
+
+References
+To update page content see reference files in folder /Victoria 3/game/common/technology/technologies:
+Each tech tree has its own txt file (named after the tech tree).
+To update era details see reference file in folder /Victoria 3/game/common/technology/era/00_eras.txt:
+Game concepts
+Pops	Pops • Acceptance • Culture • Migration • Needs • Professions • Religion • Standard of living
+Government	Government • Capacities • Characters • Decrees • Institutions • Laws • Technology
+Politics	Elections • Ideology • Interest group • Political lobby • Political movement • Political party • Revolution
+Economy	Buildings • Goods • Harvest condition • Infrastructure • Market • Production methods • State • Treasury
+Diplomacy	Diplomacy • Diplomatic action • Diplomatic play • Power bloc • Ranks • Subjects • Treaties
+Warfare	Warfare • Land warfare • Naval warfare • Wargoals • Conscription
+Others	Countries • Decisions • Events • Journal • Objectives • Vickypedia
+Categories: Potentially outdated1.10TechnologyGame conceptsPages with math errorsPages with math render errors
+Privacy policyAbout Victoria 3 WikiDisclaimersMobile view
+Attribution-ShareAlike 3.0Powered by MediaWiki
+
+Games
+Discover
+Our Brands
+Browse
+Play on Paradox technology
+Community
+Paradox Forums
+Paradox Wikis
+Support
+About
+News
+About us
+Careers
+Join our playtests
+Media contact
+Social Media
+Legal Information
+EU Online Dispute Resolution
+Report Illegal Content

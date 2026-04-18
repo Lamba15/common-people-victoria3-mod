@@ -1,0 +1,34 @@
+﻿###############################################################################
+# Common People -- character templates
+#
+# These are TEMPLATES (definitions), not spawned characters. They are
+# instantiated by events using:
+#     create_character = { template = cp_layla on_created = { ... } }
+#
+# Trait names drop the "trait_" prefix (vanilla convention). Traits are chosen
+# from the 25 verified personality traits. See documentation/characters/<name>/
+# for each character's design rationale.
+#
+# Pattern followed from vanilla game/common/character_templates/country_egy.txt
+# (Aisha Taymur template; a 22-year-old Misri woman with traits
+# { persistent tactful aesthete literary }).
+###############################################################################
+
+# Layla al-Sharif -- the farmer's daughter, Lower Egypt, 1836
+cp_layla = {
+    first_name = cp_name_layla
+    last_name = cp_name_alsharif
+    historical = yes
+    female = yes
+    culture = cu:misri
+    religion = rel:sunni
+    birth_date = 1814.1.1   # Age 22 at 1836.1.1 start
+    # No interest_group, no ideology -- she is not a political figure.
+    # She spawns "unaffiliated" and events shape her over time.
+    traits = {
+        persistent    # endurance through hardship (vanilla Egyptian default)
+        pious         # traditional religious devotion (fits a village fellaha)
+        reserved      # quiet, withheld, not a talker
+        compliant     # yields to family/community/tradition
+    }
+}
