@@ -1,0 +1,1405 @@
+List of state regions
+Jump to navigationJump to search
+This article has been verified for the current version (1.12) of the game.
+
+See also: Strategic region, List of state hubs
+This is a list of all 673 land state regions in the game. It represents the situation at the start of the game which can change considerably throughout a campaign. If a state region is split between states of different countries, its information is merged in this table.
+
+Jump to section
+Anatolia • Arabia • Arctic Russia • Balkans • Belarus • Bengal • Bombay • Brazil • Canada • Caribbean • Caucasus • Central America • Central Asia • Central India • Congo • Danubia • Delhi • Dixie • Dnieper • East Siberia • England • Ethiopia • Finland • France • Gran Colombia • Great Plains • Himalayas • Iberia • Indochina • Indonesia • Italy • Japan • La Plata • Livonia • Madras • Manchuria • Mexico • New England • Niger • Nile • North Africa • North China • North Germany • North Sea • Occitania • Oceania • Pacific Coast • Persia • Poland • Rhine • Russia • Scandinavia • Senegal • South China • South Germany • Southern Africa • The Andes • The Midwest • Urals • West Siberia • Zanj
+References
+Name	Region	State region tag	Arable land	Pops	Homelands	Owners	Traits
+Adana	Anatolia	STATE_ADANA	15	368.4K	Turkish, Armenian, Kurdish	Flag of Egypt Egypt, Flag of Turkey Turkey
+Euphrates River Euphrates River
+Ankara	Anatolia	STATE_ANKARA	65	1.57M	Turkish	Flag of Turkey Turkey
+Anatolian Plateau Anatolian Plateau
+Aydin	Anatolia	STATE_AYDIN	35	1.0M	Turkish, Greek	Flag of Turkey Turkey
+Natural Harbors Natural Harbors
+Cyprus	Anatolia	STATE_CYPRUS	9	148.66K	Turkish, Greek	Flag of Turkey Turkey
+Diyarbakir	Anatolia	STATE_DIYARBAKIR	40	712.23K	Turkish, Armenian, Kurdish, Mashriqi, Assyrian	Flag of Turkey Turkey
+Tigris River Tigris River
+Euphrates River Euphrates River
+Zagros Mountains Zagros Mountains
+East Aegean Islands	Anatolia	STATE_EAST_AEGEAN_ISLANDS	5	93.98K	Turkish, Greek	Flag of Turkey Turkey
+Eastern Thrace	Anatolia	STATE_EASTERN_THRACE	30	1.34M	Greek, Turkish	Flag of Turkey Turkey
+The Bosporus The Bosporus
+Erzurum	Anatolia	STATE_ERZURUM	40	880.84K	Turkish, Armenian, Kurdish	Flag of Turkey Turkey
+Zagros Mountains Zagros Mountains
+Hudavendigar	Anatolia	STATE_HUDAVENDIGAR	40	1.03M	Turkish, Greek	Flag of Turkey Turkey
+Kastamonu	Anatolia	STATE_KASTAMONU	35	774.81K	Turkish	Flag of Turkey Turkey
+Pontus Pontus
+Zonguldak Basin Zonguldak Basin
+Konya	Anatolia	STATE_KONYA	40	801.71K	Turkish	Flag of Turkey Turkey
+Anatolian Plateau Anatolian Plateau
+Trabzon	Anatolia	STATE_TRABZON	40	913.61K	Turkish, Armenian, Greek	Flag of Turkey Turkey
+Pontus Pontus
+Aleppo	Arabia	STATE_ALEPPO	40	593.0K	Mashriqi, Turkish, Kurdish	Flag of Egypt Egypt
+Euphrates River Euphrates River
+Baghdad	Arabia	STATE_BAGHDAD	40	500.99K	Mashriqi, Bedouin	Flag of Turkey Turkey
+Mesopotamian Floodplain Mesopotamian Floodplain
+Tigris River Tigris River
+Euphrates River Euphrates River
+Basra	Arabia	STATE_BASRA	30	425.9K	Mashriqi, Bedouin	Flag of Turkey Turkey
+Mesopotamian Floodplain Mesopotamian Floodplain
+Tigris River Tigris River
+Euphrates River Euphrates River
+Deir-Ez-Zor	Arabia	STATE_DEIR_EZ_ZOR	20	254.09K	Mashriqi, Kurdish, Assyrian	Flag of Turkey Turkey
+Euphrates River Euphrates River
+Hail	Arabia	STATE_HAIL	5	118.73K	Bedouin	Flag of Jabal Shammar Jabal Shammar, Flag of Nejd Nejd
+Arabian Desert Arabian Desert
+Hedjaz	Arabia	STATE_HEDJAZ	20	463.1K	Bedouin, Mashriqi	Flag of Hedjaz Hedjaz
+Tihamah Tihamah
+Lebanon	Arabia	STATE_LEBANON	30	378.0K	Mashriqi	Flag of Egypt Egypt
+Mount Lebanon Mount Lebanon
+Mosul	Arabia	STATE_MOSUL	30	593.8K	Mashriqi, Turkish, Kurdish, Assyrian	Flag of Turkey Turkey
+Tigris River Tigris River
+Nejd	Arabia	STATE_NEJD	10	122.99K	Bedouin	Flag of Nejd Nejd
+Arabian Desert Arabian Desert
+Oman	Arabia	STATE_OMAN	10	234.0K	Bedouin	Flag of Oman Oman
+Palestine	Arabia	STATE_PALESTINE	30	370.5K	Mashriqi	Flag of Egypt Egypt
+Syria	Arabia	STATE_SYRIA	30	540.2K	Mashriqi	Flag of Egypt Egypt
+Euphrates River Euphrates River
+Transjordan	Arabia	STATE_TRANSJORDAN	5	40.0K	Mashriqi, Bedouin	Flag of Egypt Egypt
+Trucial Coast	Arabia	STATE_ABU_DHABI	5	94.25K	Bedouin	Flag of Trucial States Trucial States, Flag of Oman Oman, Flag of Bahrain Bahrain
+Yemen	Arabia	STATE_YEMEN	70	1.16M	Bedouin, Yemenite	Flag of Azal Azal, Flag of Hedjaz Hedjaz, Flag of Lahej Lahej, Flag of Mahra Mahra, Flag of Kathiri Kathiri
+Natural Harbors Natural Harbors
+Yemeni Highlands Yemeni Highlands
+Arkhangelsk	Arctic Russia	STATE_ARKHANGELSK	15	238.52K	Russian, Ugrian	Flag of Russia Russia
+Russian Taiga Forests Russian Taiga Forests
+Nenetsia	Arctic Russia	STATE_NENETSIA	5	31.07K	Russian, Ugrian	Flag of Russia Russia
+Arctic Terrain Arctic Terrain
+Vologda	Arctic Russia	STATE_GALICH	70	746.5K	Russian	Flag of Russia Russia
+Russian Taiga Forests Russian Taiga Forests
+Albania	Balkans	STATE_ALBANIA	50	1.26M	Albanian	Flag of Turkey Turkey
+Terra Rossa Terra Rossa
+Attica	Balkans	STATE_ATTICA	25	637.59K	Greek	Flag of Greece Greece
+Saronic Gulf Saronic Gulf
+Bosnia	Balkans	STATE_BOSNIA	40	864.5K	Bosniak, Serbian, Croatian	Flag of Turkey Turkey
+Bulgaria	Balkans	STATE_BULGARIA	35	874.4K	Turkish, Bulgarian	Flag of Turkey Turkey
+Danube River Danube River
+Crete	Balkans	STATE_CRETE	8	139.99K	Turkish, Greek	Flag of Egypt Egypt
+Croatia	Balkans	STATE_CROATIA	35	827.99K	Croatian, Serbian	Flag of Croatia Croatia
+Drava River Drava River
+Terra Rossa Terra Rossa
+Dalmatia	Balkans	STATE_DALMATIA	20	397.8K	Croatian, Serbian	Flag of Austria Austria
+Krka Falls Krka Falls
+Terra Rossa Terra Rossa
+Eastern Serbia	Balkans	STATE_EASTERN_SERBIA	45	535.75K	Serbian	Flag of Turkey Turkey, Flag of Serbia Serbia
+Danube River Danube River
+Ionian Islands	Balkans	STATE_IONIAN_ISLANDS	10	188.42K	Greek	Flag of Ionian Islands Ionian Islands
+Kosovo	Balkans	STATE_KOSOVO	45	308.89K	Serbian, Albanian	Flag of Turkey Turkey
+Macedonia	Balkans	STATE_MACEDONIA	20	446.1K	Greek, Turkish	Flag of Turkey Turkey
+Montenegro	Balkans	STATE_MONTENEGRO	38	314.12K	Serbian, Albanian	Flag of Turkey Turkey, Flag of Montenegro Montenegro, Flag of Austria Austria
+Terra Rossa Terra Rossa
+Northern Thrace	Balkans	STATE_NORTHERN_THRACE	30	853.6K	Turkish, Bulgarian	Flag of Turkey Turkey
+Peloponnese	Balkans	STATE_PELOPONNESE	10	221.99K	Greek	Flag of Greece Greece
+Skopia	Balkans	STATE_SKOPIA	30	736.89K	Greek, Bulgarian, Turkish, Albanian	Flag of Turkey Turkey
+Slavonia	Balkans	STATE_SLAVONIA	20	366.22K	Croatian, Serbian	Flag of Croatia Croatia
+Danube River Danube River
+Slovenia	Balkans	STATE_SLOVENIA	25	485.78K	South German, Slovene	Flag of Austria Austria
+Drava River Drava River
+Thessaly	Balkans	STATE_THESSALIA	50	1.13M	Greek	Flag of Turkey Turkey
+West Aegean Islands	Balkans	STATE_WEST_AEGEAN_ISLANDS	5	80.4K	Greek	Flag of Greece Greece
+Isle of Syros Isle of Syros
+Western Serbia	Balkans	STATE_WESTERN_SERBIA	35	512.25K	Serbian	Flag of Serbia Serbia, Flag of Turkey Turkey
+Danube River Danube River
+Western Thrace	Balkans	STATE_WESTERN_THRACE	20	732.6K	Greek, Turkish, Bulgarian	Flag of Turkey Turkey
+Hrodna	Belarus	STATE_BREST	75	771.33K	Byelorussian	Flag of Russia Russia
+Magiliow	Belarus	STATE_MOGILEV	70	624.82K	Byelorussian, Russian	Flag of Russia Russia
+Russian Taiga Forests Russian Taiga Forests
+Minsk	Belarus	STATE_MINSK	90	788.02K	Russian, Byelorussian	Flag of Russia Russia
+Vitsyebsk	Belarus	STATE_VITEBSK	55	410.13K	Byelorussian	Flag of Russia Russia
+Russian Taiga Forests Russian Taiga Forests
+Assam	Bengal	STATE_ASSAM	105	2.42M	Assamese, Bengali, Manipuri, Naga	Flag of East India East India, Flag of Assam Assam, Flag of Naga Naga, Flag of Manipur Manipur, Flag of Tipperah Tipperah, Flag of Kuki Kuki, Flag of Khasi Khasi
+Brahmaputra River Brahmaputra River
+Himalayan Foothills Himalayan Foothills
+Digboi Oil Fields Digboi Oil Fields
+Bihar	Bengal	STATE_BIHAR	375	12.24M	Bihari	Flag of East India East India
+Ganges River Ganges River
+Jharia-Dhanbad Coalfield Jharia-Dhanbad Coalfield
+East Bengal	Bengal	STATE_EAST_BENGAL	601	21.55M	Bengali	Flag of East India East India
+Bengal Delta Bengal Delta
+Natural Harbors Natural Harbors
+Orissa	Bengal	STATE_ORISSA	83	1.31M	Oria	Flag of East India East India, Flag of Mayurbhanj Mayurbhanj, Flag of Patna Patna, Flag of Narsinghpur Narsinghpur
+West Bengal	Bengal	STATE_WEST_BENGAL	553	17.51M	Bengali	Flag of East India East India, Flag of Cooch Behar Cooch Behar
+Bengal Delta Bengal Delta
+Natural Harbors Natural Harbors
+Raniganj Coalfield Raniganj Coalfield
+Baluchistan	Bombay	STATE_BALUCHISTAN	63	1.07M	Baluchi, Pashtun	Flag of Oman Oman, Flag of Kalat Kalat, Flag of Makran Makran, Flag of Kandahar Kandahar
+Bombay	Bombay	STATE_BOMBAY	400	13.5M	Marathi, Kannada, Deccani	Flag of Portugal Portugal, Flag of East India East India, Flag of Satara Satara, Flag of Kolhapur Kolhapur
+Natural Harbors Natural Harbors
+Western Ghats Western Ghats
+Gujarat	Bombay	STATE_GUJARAT	335	5.39M	Gujarati, Sindi	Flag of Baroda Baroda, Flag of Kutch Kutch, Flag of Portugal Portugal, Flag of Dharampur Dharampur, Flag of Idar Idar, Flag of Nawanagar Nawanagar, Flag of Palanpur Palanpur, Flag of East India East India, Flag of Junagadh Junagadh, Flag of Bhavnagar Bhavnagar
+Natural Harbors Natural Harbors
+Sindh	Bombay	STATE_SINDH	75	1.96M	Sindi	Flag of Sindh Sindh
+Indus River Indus River
+Indus Valley Indus Valley
+Amazonas	Brazil	STATE_AMAZONAS	40	77.25K	Amazonian	Flag of Colombia Colombia, Flag of Grão-Pará Grão-Pará, Flag of Bolivia Bolivia
+Amazon Rainforest Amazon Rainforest
+Bahia	Brazil	STATE_BAHIA	80	731.5K	Brazilian, Nordestino, Afro-Brazilian, Tupinamba	Flag of Brazil Brazil
+Recôncavo Recôncavo
+Mata Atlântica Mata Atlântica
+Sertão Sertão
+Ceará	Brazil	STATE_CEARA	30	211.45K	Brazilian, Nordestino, Afro-Brazilian, Tupinamba	Flag of Brazil Brazil
+Sertão Sertão
+Goiás	Brazil	STATE_GOIAS	40	73.91K	Brazilian, Nordestino, Afro-Brazilian, Tupinamba	Flag of Brazil Brazil
+Amazon Rainforest Amazon Rainforest
+Maranhão	Brazil	STATE_MARANHAO	30	148.24K	Brazilian, Amazonic, Nordestino, Afro-Brazilian, Tupinamba	Flag of Brazil Brazil
+Amazon Rainforest Amazon Rainforest
+Mato Grosso	Brazil	STATE_MATO_GROSSO	60	142.49K	Brazilian, Paulista, Amazonian, Guarani	Flag of Paraguay Paraguay, Flag of Brazil Brazil, Flag of Bolivia Bolivia
+Amazon Rainforest Amazon Rainforest
+Pantanal Pantanal
+Terra Roxa Terra Roxa
+Minas Gerais	Brazil	STATE_MINAS_GERAIS	150	729.9K	Brazilian, Afro-Brazilian	Flag of Brazil Brazil
+Paraná	Brazil	STATE_PARANA	40	36.56K	Brazilian, Paulista, Sulista, Guarani	Flag of Brazil Brazil
+Paraná River Paraná River
+Terra Roxa Terra Roxa
+Paraíba	Brazil	STATE_PARAIBA	50	135.76K	Brazilian, Nordestino, Afro-Brazilian	Flag of Brazil Brazil
+Sertão Sertão
+Mata Atlântica Mata Atlântica
+Pará	Brazil	STATE_PARA	30	302.53K	Brazilian, Amazonic, Amazonian, Afro-Brazilian	Flag of Grão-Pará Grão-Pará
+Amazon Rainforest Amazon Rainforest
+Serra Dos Carajás Serra Dos Carajás
+Pernambuco	Brazil	STATE_PERNAMBUCO	60	707.76K	Brazilian, Nordestino, Afro-Brazilian	Flag of Brazil Brazil
+Sertão Sertão
+Mata Atlântica Mata Atlântica
+Piauí	Brazil	STATE_PIAUI	30	94.93K	Brazilian, Nordestino, Afro-Brazilian, Tupinamba	Flag of Brazil Brazil
+Sertão Sertão
+Rio Grande do Norte	Brazil	STATE_RIO_GRANDE_DO_NORTE	30	87.94K	Brazilian, Nordestino, Afro-Brazilian, Tupinamba	Flag of Brazil Brazil
+Sertão Sertão
+Mata Atlântica Mata Atlântica
+Rio Grande do Sul	Brazil	STATE_RIO_GRANDE_DO_SUL	80	202.94K	Brazilian, Sulista, Afro-Brazilian, Guarani	Flag of Piratini Piratini
+Uruguay River Uruguay River
+Pampas Pampas
+Rio de Janeiro	Brazil	STATE_RIO_DE_JANEIRO	80	582.8K	Brazilian, Afro-Brazilian	Flag of Brazil Brazil
+Mata Atlântica Mata Atlântica
+Santa Catarina	Brazil	STATE_SANTA_CATARINA	40	61.75K	Brazilian, Sulista, Guarani	Flag of Brazil Brazil
+Terra Roxa Terra Roxa
+São Paulo	Brazil	STATE_SAO_PAULO	130	334.07K	Brazilian, Paulista, Afro-Brazilian	Flag of Brazil Brazil
+Paraná River Paraná River
+Mata Atlântica Mata Atlântica
+Terra Roxa Terra Roxa
+Uruguay	Brazil	STATE_URUGUAY	100	139.86K	Platinean	Flag of Uruguay Uruguay
+Uruguay River Uruguay River
+Pampas Pampas
+Natural Harbors Natural Harbors
+Manitoba	Canada	STATE_MANITOBA	60	78.84K	Métis, Anglo-Canadian	Flag of Hudson's Bay Company Hudson's Bay Company, Flag of Iron Confederacy Iron Confederacy
+Canadian Prairie Canadian Prairie
+Newfoundland	Canada	STATE_NEWFOUNDLAND	20	87.97K	Anglo-Canadian	Flag of Great Britain Great Britain
+Grand Banks Fisheries Grand Banks Fisheries
+Northwest Territories	Canada	STATE_NORTHWEST_TERRITORIES	20	16.0K	Anglo-Canadian, Athabaskan	Flag of Hudson's Bay Company Hudson's Bay Company
+Northern Canadian Terrain Northern Canadian Terrain
+Nunavut	Canada	STATE_NUNAVUT	20	11.98K	Inuit, Anglo-Canadian	Flag of Hudson's Bay Company Hudson's Bay Company
+Northern Canadian Terrain Northern Canadian Terrain
+Ontario	Canada	STATE_ONTARIO	200	458.99K	Anglo-Canadian, Iroquoian, Algonquian	Flag of Hudson's Bay Company Hudson's Bay Company, Flag of Ontario Ontario
+Great Lakes Great Lakes
+Niagara Falls Niagara Falls
+Quebec	Canada	STATE_QUEBEC	200	604.6K	Franco-Canadian	Flag of Quebec Quebec, Flag of Hudson's Bay Company Hudson's Bay Company
+St Lawrence River St Lawrence River
+Bahamas	Caribbean	STATE_BAHAMAS	10	119.6K	Afro-Antillean, Afro-Caribbean	Flag of Great Britain Great Britain
+Central Cuba	Caribbean	STATE_CENTRAL_CUBA	71	281.91K	Caribeño	Flag of Cuba Cuba
+Tierra Roja Tierra Roja
+Camagüey Plains Camagüey Plains
+Eastern Cuba	Caribbean	STATE_EASTERN_CUBA	40	217.39K	Caribeño	Flag of Cuba Cuba
+Guantanamo Bay Guantanamo Bay
+Sierra Maestra Sierra Maestra
+Haiti	Caribbean	STATE_HAITI	35	858.27K	Afro-Antillean	Flag of Haiti Haiti
+Volcanic Fertility Volcanic Fertility
+Jamaica	Caribbean	STATE_JAMAICA	20	381.63K	Afro-Caribbean	Flag of Great Britain Great Britain
+Kingston Harbor Kingston Harbor
+Volcanic Fertility Volcanic Fertility
+Porto Rico	Caribbean	STATE_PUERTO_RICO	15	294.66K	Caribeño, Afro-Caribeño	Flag of Puerto Rico Puerto Rico
+Natural Harbors Natural Harbors
+Santo Domingo	Caribbean	STATE_SANTO_DOMINGO	30	131.53K	Afro-Caribeño, Caribeño	Flag of Haiti Haiti
+Volcanic Fertility Volcanic Fertility
+West Indies	Caribbean	STATE_WEST_INDIES	30	592.44K	Afro-Antillean, Afro-Caribbean	Flag of France France, Flag of Denmark Denmark, Flag of Great Britain Great Britain, Flag of Netherlands Netherlands, Flag of Venezuela Venezuela
+Volcanic Fertility Volcanic Fertility
+Western Cuba	Caribbean	STATE_WESTERN_CUBA	92	405.47K	Caribeño	Flag of Cuba Cuba
+Havana Harbor Havana Harbor
+Tierra Roja Tierra Roja
+Armenia	Caucasus	STATE_ARMENIA	60	252.96K	Armenian, Azerbaijani	Flag of Russia Russia
+Astrakhan	Caucasus	STATE_ASTRAKHAN	45	264.79K	Russian	Flag of Russia Russia
+Volga River Volga River
+Western Steppe Western Steppe
+Baku	Caucasus	STATE_AZERBAIJAN	30	285.28K	Armenian, Azerbaijani	Flag of Russia Russia
+Dagestan	Caucasus	STATE_DAGESTAN	25	371.12K	North Caucasian	Flag of Russia Russia, Flag of Chechnya Chechnya
+Caucasus Mountain Range Caucasus Mountain Range
+Elizavetpol	Caucasus	STATE_ELIZAVETPOL	35	260.79K	Armenian, Azerbaijani	Flag of Russia Russia
+Kalmykia	Caucasus	STATE_KALMYKIA	8	125.76K	Kalmyk	Flag of Russia Russia
+Western Steppe Western Steppe
+Kars	Caucasus	STATE_KARS	10	189.7K	Turkish, Armenian, Kurdish, Georgian	Flag of Turkey Turkey, Flag of Russia Russia
+Kuban	Caucasus	STATE_KUBAN	105	1.02M	Circassian	Flag of Russia Russia, Flag of Circassia Circassia
+Western Steppe Western Steppe
+Black Soil Black Soil
+North Caucasus	Caucasus	STATE_NORTH_CAUCASUS	25	379.17K	North Caucasian, Chechen	Flag of Russia Russia, Flag of Chechnya Chechnya, Flag of Circassia Circassia
+Caucasus Mountain Range Caucasus Mountain Range
+Rostov	Caucasus	STATE_ROSTOV	125	631.67K	Ukrainian, Russian	Flag of Russia Russia
+Don River Don River
+Western Steppe Western Steppe
+Black Soil Black Soil
+Stavropol	Caucasus	STATE_STAVROPOL	100	508.28K	Russian	Flag of Russia Russia
+Western Steppe Western Steppe
+Black Soil Black Soil
+Tiflis	Caucasus	STATE_GREATER_CAUCASUS	75	1.45M	Georgian, Armenian	Flag of Russia Russia
+Caucasus Mountain Range Caucasus Mountain Range
+Chiapas	Central America	STATE_CHIAPAS	40	146.67K	Mexican, Maya	Flag of Mexico Mexico, Flag of Central America Central America
+Central American Cordilleras Central American Cordilleras
+Costa Rica	Central America	STATE_COSTA_RICA	15	83.99K	Central American	Flag of Central America Central America
+Central American Cordilleras Central American Cordilleras
+Guatemala	Central America	STATE_GUATEMALA	40	483.61K	Maya, Central American	Flag of Central America Central America, Flag of Great Britain Great Britain
+Central American Cordilleras Central American Cordilleras
+Honduras	Central America	STATE_HONDURAS	35	388.2K	Central American	Flag of Central America Central America
+Central American Cordilleras Central American Cordilleras
+Nicaragua	Central America	STATE_NICARAGUA	50	350.0K	Central American, Miskito	Flag of Central America Central America, Flag of Miskitia Miskitia
+Central American Cordilleras Central American Cordilleras
+Panama	Central America	STATE_PANAMA	20	128.19K	Central American, Afro-Caribeño	Flag of Colombia Colombia
+San Salvador	Central America	STATE_SAN_SALVADOR	25	428.2K	Central American	Flag of Central America Central America
+Central American Cordilleras Central American Cordilleras
+Yucatán	Central America	STATE_YUCATAN	80	616.96K	Mexican, Maya	Flag of Mexico Mexico
+Akmolinsk	Central Asia	STATE_AKMOLINSK	45	167.53K	Kazakh, Uzbek	Flag of Orta Zhuz Orta Zhuz, Flag of Russia Russia
+Western Steppe Western Steppe
+Aktobe	Central Asia	STATE_AKTOBE	24	127.7K	Kazakh	Flag of Kishi Zhuz Kishi Zhuz
+Western Steppe Western Steppe
+Chorasmia	Central Asia	STATE_KHIVA	85	954.77K	Uzbek, Kazakh	Flag of Khiva Khiva, Flag of Kishi Zhuz Kishi Zhuz, Flag of Turkmenia Turkmenia
+Dzungaria	Central Asia	STATE_DZUNGARIA	30	240.2K	Uighur, Mongol	Flag of China China
+Fergana	Central Asia	STATE_FERGANA	150	838.75K	Kyrgyz, Uzbek, Tajik	Flag of Kokand Kokand
+Ili	Central Asia	STATE_JETISY	50	133.64K	Kazakh, Uighur, Kyrgyz	Flag of China China
+Kirghizia	Central Asia	STATE_KIRGHIZIA	50	476.7K	Uzbek, Kyrgyz	Flag of Kokand Kokand, Flag of China China
+Merv	Central Asia	STATE_MERZ	38	252.82K	Turkmen	Flag of Turkmenia Turkmenia, Flag of Bukhara Bukhara, Flag of Khiva Khiva
+Semipalatinsk	Central Asia	STATE_SEMIRECHE	32	242.67K	Kazakh, Kyrgyz	Flag of Orta Zhuz Orta Zhuz
+Western Steppe Western Steppe
+Irtysh River Irtysh River
+Syrdarya	Central Asia	STATE_SYRDARYA	65	448.35K	Kazakh, Uzbek	Flag of Orta Zhuz Orta Zhuz, Flag of Kishi Zhuz Kishi Zhuz, Flag of Kokand Kokand, Flag of Uly Zhuz Uly Zhuz
+Tajikistan	Central Asia	STATE_TAJIKISTAN	55	567.68K	Uzbek, Tajik	Flag of Kokand Kokand, Flag of Bukhara Bukhara
+Tarim Basin	Central Asia	STATE_TIANSHAN	40	370.2K	Uighur	Flag of China China
+Taklamakan Desert Taklamakan Desert
+Turkmenia	Central Asia	STATE_TURKMENIA	25	402.27K	Uzbek, Turkmen	Flag of Turkmenia Turkmenia, Flag of Khiva Khiva
+Uralsk	Central Asia	STATE_URALSK	35	235.23K	Kazakh	Flag of Russia Russia, Flag of Kishi Zhuz Kishi Zhuz, Flag of Turkmenia Turkmenia
+Western Steppe Western Steppe
+Uzbekia	Central Asia	STATE_UZBEKIA	100	1.02M	Uzbek, Kazakh	Flag of Bukhara Bukhara
+Agra	Central India	STATE_AGRA	483	21.12M	Hindustani, Pathan	Flag of East India East India, Flag of Garhwal Garhwal
+Ganges River Ganges River
+Bundelkhand	Central India	STATE_BUNDELKHAND	174	2.49M	Bundeli, Bagheli, Chhattisgarhi	Flag of Rewah Rewah, Flag of Orchha Orchha, Flag of Surguja Surguja, Flag of Jhansi Jhansi
+Central Provinces	Central India	STATE_CENTRAL_PROVINCES	205	6.89M	Marathi, Chhattisgarhi, Gondi, Deccani, Bagheli, Bundeli	Flag of Hyderabad Hyderabad, Flag of Nagpur Nagpur, Flag of Bastar Bastar, Flag of East India East India
+Malwa	Central India	STATE_MALWA	131	2.28M	Marathi, Bundeli	Flag of Indore Indore, Flag of Gwalior Gwalior, Flag of Bhopal Bhopal
+Good Soils Good Soils
+Oudh	Central India	STATE_AWADH	371	8.5M	Avadhi	Flag of Awadh Awadh, Flag of East India East India
+Ganges River Ganges River
+Congo	Congo	STATE_CONGO	50	152.4K	Bakongo, Fluvial Bantu	Flag of Bobangi Bobangi, Flag of Loango Loango, Flag of Teke Teke
+Severe Malaria Severe Malaria
+Congo River Congo River
+Congolian Rainforest Congolian Rainforest
+East Angola	Congo	STATE_EAST_ANGOLA	60	584.79K	Ovimbundu, Lunda, Kavango Bantu	Flag of Chokwe Chokwe, Flag of Lunda Lunda, Flag of Kasanje Kasanje, Flag of Barotse Barotse
+Severe Malaria Severe Malaria
+Zambezi River Zambezi River
+Equateur	Congo	STATE_EQUATEUR	50	877.21K	Mongo, Fluvial Bantu	Flag of Bangala Bangala, Flag of Bobangi Bobangi
+Severe Malaria Severe Malaria
+Congo River Congo River
+Congolian Rainforest Congolian Rainforest
+Gabon	Congo	STATE_GABON	40	316.0K	Fang, Equatorial Bantu, Bakongo	Flag of Fang Fang, Flag of Loango Loango
+Severe Malaria Severe Malaria
+Kasai	Congo	STATE_KASAI	70	1.29M	Luba, Fluvial Bantu	Flag of Kuba Kuba, Flag of Luba Luba
+Severe Malaria Severe Malaria
+Congolian Rainforest Congolian Rainforest
+Katanga	Congo	STATE_KATANGA	90	634.8K	Lunda, Luba, Fluvial Bantu	Flag of Kazembe Kazembe, Flag of Lunda Lunda, Flag of Luba Luba
+Severe Malaria Severe Malaria
+Lower Congo	Congo	STATE_BAS_CONGO	50	876.0K	Bakongo, Lunda, Fluvial Bantu	Flag of Kongo Kongo, Flag of Yaka Yaka
+Severe Malaria Severe Malaria
+Congo River Congo River
+Congolian Rainforest Congolian Rainforest
+Lualaba	Congo	STATE_CONGO_ORIENTALE	80	1.56M	Azande, Luba, Fluvial Bantu	Flag of Mangbetu Mangbetu, Flag of Azande Azande, Flag of Lega Lega, Flag of Hemba Hemba, Flag of Luba Luba
+Severe Malaria Severe Malaria
+Congo River Congo River
+Congolian Rainforest Congolian Rainforest
+North Angola	Congo	STATE_NORTH_ANGOLA	50	473.17K	Bakongo, Kavango Bantu	Flag of Portugal Portugal, Flag of Kongo Kongo
+Malaria Malaria
+South Angola	Congo	STATE_SOUTH_ANGOLA	70	592.1K	Ovimbundu, Kavango Bantu	Flag of Herero Herero, Flag of Portugal Portugal, Flag of Ovimbundu Ovimbundu, Flag of Ovambo Ovambo
+Malaria Malaria
+South Cameroon	Congo	STATE_SOUTH_CAMEROON	70	1.28M	Fang, Equatorial Bantu	Flag of Sierra Leone Sierra Leone, Flag of Portugal Portugal, Flag of Fang Fang, Flag of Duala Duala
+Malaria Malaria
+Ubangi-Shari	Congo	STATE_UBANGI_SHARI	40	355.4K	Azande, Sara, Equatorial Bantu	Flag of Dar al Kuti Dar al Kuti, Flag of Azande Azande
+Severe Malaria Severe Malaria
+Zambia	Congo	STATE_ZAMBIA	60	128.49K	Kavango Bantu, Lunda, Chewa	Flag of Barotse Barotse, Flag of Bemba Bemba
+Severe Malaria Severe Malaria
+Zambezi River Zambezi River
+Banat	Danubia	STATE_BANAT	70	1.18M	Hungarian, Romanian, Serbian	Flag of Hungary Hungary
+Pannonian Plain Pannonian Plain
+Danube River Danube River
+Bessarabia	Danubia	STATE_BESSARABIA	50	544.45K	Romanian, Ukrainian	Flag of Russia Russia
+Bukovina	Danubia	STATE_BUKOVINA	100	372.41K	Ukrainian, Romanian	Flag of Austria Austria
+Dobrudja	Danubia	STATE_DOBRUDJA	10	253.6K	Bulgarian, Romanian, Turkish	Flag of Turkey Turkey, Flag of Russia Russia
+Danube River Danube River
+Great Hungarian Plain	Danubia	STATE_CENTRAL_HUNGARY	110	1.19M	Hungarian	Flag of Hungary Hungary
+Danube River Danube River
+Pannonian Plain Pannonian Plain
+Moldavia	Danubia	STATE_MOLDAVIA	100	1.35M	Romanian	Flag of Moldavia Moldavia
+Northern Transylvania	Danubia	STATE_NORTHERN_TRANSYLVANIA	50	1.01M	Hungarian, Szekler, Romanian	Flag of Transylvania Transylvania
+Partium	Danubia	STATE_BEKES	80	1.52M	Hungarian, Romanian	Flag of Hungary Hungary
+Pannonian Plain Pannonian Plain
+Ruthenia	Danubia	STATE_RUTHENIA	70	342.15K	Ukrainian, Slovak, Hungarian	Flag of Hungary Hungary
+Slovakia	Danubia	STATE_SLOVAKIA	105	2.04M	Slovak, Hungarian	Flag of Hungary Hungary
+Danube River Danube River
+Southern Transylvania	Danubia	STATE_SOUTHERN_TRANSYLVANIA	50	1.04M	Hungarian, Szekler, Romanian	Flag of Transylvania Transylvania
+Transdanubia	Danubia	STATE_TRANSDANUBIA	125	2.35M	Hungarian	Flag of Hungary Hungary
+Danube River Danube River
+Pannonian Plain Pannonian Plain
+Vojvodina	Danubia	STATE_DELVIDEK	50	761.39K	Hungarian, Serbian	Flag of Hungary Hungary
+Danube River Danube River
+Pannonian Plain Pannonian Plain
+Wallachia	Danubia	STATE_WALLACHIA	85	2.22M	Romanian	Flag of Wallachia Wallachia
+Danube River Danube River
+Delhi	Delhi	STATE_DELHI	252	3.42M	Hindustani	Flag of East India East India, Flag of Hindustan Hindustan, Flag of Patiala Patiala
+Ganges River Ganges River
+Punjab Hills	Delhi	STATE_HILL_PUNJAB	182	2.46M	Pahari, Punjabi	Flag of East India East India, Flag of Garhwal Garhwal, Flag of Punjab Punjab, Flag of Patiala Patiala
+Indus River Indus River
+Himalayan Foothills Himalayan Foothills
+Punjab	Delhi	STATE_PUNJAB	505	5.7M	Punjabi	Flag of Punjab Punjab, Flag of Bahawalpur Bahawalpur
+Indus River Indus River
+Indus Valley Indus Valley
+Rajputana	Delhi	STATE_RAJPUTANA	199	5.29M	Rajput	Flag of Bikaner Bikaner, Flag of Jaisalmer Jaisalmer, Flag of Mewar Mewar, Flag of Marwar Marwar, Flag of Dhundhar Dhundhar, Flag of East India East India, Flag of Alwar Alwar, Flag of Kotah Kotah, Flag of Gwalior Gwalior, Flag of Indore Indore
+Alabama	Dixie	STATE_ALABAMA	170	600.48K	Dixie, Afro-American, Caddoan	Flag of America America
+American Chestnut Forests American Chestnut Forests
+Arkansas	Dixie	STATE_ARKANSAS	180	92.62K	Dixie, Cherokee, Cajun	Flag of America America
+Mississippi River Mississippi River
+Delaware	Dixie	STATE_DELAWARE	15	96.52K	Dixie, Yankee	Flag of America America
+District of Columbia	Dixie	STATE_DISTRICT_OF_COLUMBIA	3	121.62K	Dixie, Yankee	Flag of America America
+Florida	Dixie	STATE_FLORIDA	100	92.99K	Dixie, Afro-American, Muskogean	Flag of America America, Flag of Yat’siminoli Yat’siminoli
+Floridian Wetlands Floridian Wetlands
+Bone Valley Bone Valley
+Georgia	Dixie	STATE_GEORGIA	180	598.57K	Dixie, Afro-American	Flag of America America
+Louisiana	Dixie	STATE_LOUISIANA	120	294.68K	Dixie, Afro-American, Cajun, Afro-Antillean	Flag of America America
+Mississippi River Mississippi River
+Maryland	Dixie	STATE_MARYLAND	25	359.0K	Dixie, Yankee	Flag of America America
+Mississippi	Dixie	STATE_MISSISSIPPI	160	260.8K	Dixie, Afro-American	Flag of America America
+Mississippi River Mississippi River
+American Chestnut Forests American Chestnut Forests
+North Carolina	Dixie	STATE_NORTH_CAROLINA	180	740.14K	Dixie	Flag of America America
+Appalachian Coalfields Appalachian Coalfields
+Oklahoma	Dixie	STATE_OKLAHOMA	220	80.0K	Cherokee, Siouan	Flag of Indian Territory Indian Territory, Flag of Comanche Comanche
+South Carolina	Dixie	STATE_SOUTH_CAROLINA	100	588.58K	Dixie, Afro-American	Flag of America America
+Texas	Dixie	STATE_TEXAS	500	93.26K	Dixie, Afro-American, Mexican, Comanche	Flag of Texas Texas, Flag of Mexico Mexico, Flag of Comanche Comanche
+Rio Grande Rio Grande
+Virginia	Dixie	STATE_VIRGINIA	180	818.79K	Dixie	Flag of America America
+Appalachian Coalfields Appalachian Coalfields
+American Chestnut Forests American Chestnut Forests
+Aleksandrovsk	Dnieper	STATE_TAURIDA	110	1.29M	Russian, Ukrainian	Flag of Russia Russia
+Black Soil Black Soil
+Dnieper River Dnieper River
+Western Steppe Western Steppe
+Chernihiv	Dnieper	STATE_CHERNIHIV	75	1.42M	Ukrainian, Russian	Flag of Russia Russia
+Dnieper River Dnieper River
+Crimea	Dnieper	STATE_CRIMEA	40	209.25K	Russian, Tatar, Ukrainian	Flag of Russia Russia
+Black Soil Black Soil
+Natural Harbors Natural Harbors
+Kharkiv	Dnieper	STATE_KHARKOV	150	2.95M	Ukrainian, Russian	Flag of Russia Russia
+Black Soil Black Soil
+Dnieper River Dnieper River
+Kyiv	Dnieper	STATE_KIEV	175	3.31M	Ukrainian	Flag of Russia Russia
+Black Soil Black Soil
+Dnieper River Dnieper River
+Odessa	Dnieper	STATE_CHERSON	80	962.86K	Ukrainian	Flag of Russia Russia
+Black Soil Black Soil
+Dnieper River Dnieper River
+Western Steppe Western Steppe
+Volhynia	Dnieper	STATE_VOLHYNIA	40	716.84K	Ukrainian	Flag of Russia Russia
+Buryatia	East Siberia	STATE_BURYATIA	15	175.58K	Russian, Buryat	Flag of Russia Russia
+Chita	East Siberia	STATE_TRANS_BAIKAL	36	195.14K	Russian, Buryat	Flag of Russia Russia
+Chukotka	East Siberia	STATE_CHUKOTKA	2	13.02K	Inuit, Siberian	Flag of Russia Russia
+Arctic Terrain Arctic Terrain
+Irkutsk	East Siberia	STATE_IRKUTSK	30	261.36K	Russian, Buryat	Flag of Russia Russia
+Angara River Angara River
+Kamchatka	East Siberia	STATE_KAMCHATKA	4	6.0K	Siberian	Flag of Russia Russia
+Kolyma	East Siberia	STATE_KOLYMA	4	41.82K	Russian, Yakut	Flag of Russia Russia
+Arctic Terrain Arctic Terrain
+Okhotsk	East Siberia	STATE_OKHOTSK	2	11.87K	Siberian, Russian	Flag of Russia Russia
+Arctic Terrain Arctic Terrain
+Yakutsk	East Siberia	STATE_YAKUTSK	14	146.75K	Russian, Yakut	Flag of Russia Russia
+Arctic Terrain Arctic Terrain
+East Anglia	England	STATE_EAST_ANGLIA	40	1.57M	English	Flag of Great Britain Great Britain
+Good Soils Good Soils
+Natural Harbors Natural Harbors
+Home Counties	England	STATE_HOME_COUNTIES	40	2.8M	English	Flag of Great Britain Great Britain
+Good Soils Good Soils
+London Docklands London Docklands
+Lancashire	England	STATE_LANCASHIRE	45	2.15M	English	Flag of Great Britain Great Britain
+Lancashire Coalfield Lancashire Coalfield
+Natural Harbors Natural Harbors
+Midlands	England	STATE_MIDLANDS	80	2.58M	English	Flag of Great Britain Great Britain
+Black Country Black Country
+Wales	England	STATE_WALES	40	973.19K	English, Welsh	Flag of Great Britain Great Britain
+South Wales Valleys South Wales Valleys
+West Country	England	STATE_WEST_COUNTRY	60	1.98M	English	Flag of Great Britain Great Britain
+Natural Harbors Natural Harbors
+Yorkshire	England	STATE_YORKSHIRE	50	2.09M	English	Flag of Great Britain Great Britain
+South Yorkshire Coalfield South Yorkshire Coalfield
+Amhara	Ethiopia	STATE_AMHARA	140	2.37M	Oromo, Amhara, Sidama	Flag of Welega Welega, Flag of Hadiya Hadiya, Flag of Borana Borana, Flag of Kaffa Kaffa, Flag of Anuak Anuak, Flag of Omo Omo, Flag of Sidamo Sidamo, Flag of Wolaita Wolaita
+Malaria Malaria
+Eritrea	Ethiopia	STATE_ERITREA	30	219.96K	Tigray, Afar	Flag of Egypt Egypt, Flag of Aussa Aussa
+Gonder	Ethiopia	STATE_GONDER	160	2.94M	Oromo, Amhara, Tigray, Afar	Flag of Qwara Qwara, Flag of Begemder Begemder, Flag of Aussa Aussa, Flag of Tigray Tigray, Flag of Gojjam Gojjam
+Malaria Malaria
+Oromia	Ethiopia	STATE_OROMIA	130	1.69M	Oromo, Amhara, Somali	Flag of Harar Harar, Flag of Shewa Shewa, Flag of Arsiland Arsiland, Flag of Ogaden Ogaden
+Malaria Malaria
+Somaliland	Ethiopia	STATE_SOMALILAND	80	804.39K	Somali	Flag of Isaaq Isaaq, Flag of Warsangali Warsangali, Flag of Geledi Geledi, Flag of Majerteen Majerteen
+Malaria Malaria
+East Karelia	Finland	STATE_EAST_KARELIA	10	169.01K	Russian, Karelian, Finnish	Flag of Russia Russia
+Scandinavian Forests Scandinavian Forests
+Kola	Finland	STATE_KOLA	2	6.27K	Russian, Sámi, Finnish	Flag of Russia Russia
+Scandinavian Forests Scandinavian Forests
+Kuopio	Finland	STATE_KUOPIO	25	302.93K	Finnish	Flag of Finland Finland
+Scandinavian Forests Scandinavian Forests
+Ostrobothnia	Finland	STATE_OSTROBOTHNIA	15	202.0K	Finnish, Swedish	Flag of Finland Finland
+Scandinavian Forests Scandinavian Forests
+Oulu	Finland	STATE_OULU	8	125.0K	Finnish, Sámi, Swedish	Flag of Finland Finland
+Scandinavian Forests Scandinavian Forests
+Uusimaa	Finland	STATE_UUSIMAA	32	538.27K	Finnish, Swedish	Flag of Finland Finland
+Scandinavian Forests Scandinavian Forests
+West Karelia	Finland	STATE_WEST_KARELIA	22	249.0K	Finnish	Flag of Finland Finland
+Scandinavian Forests Scandinavian Forests
+Åland	Finland	STATE_ALAND	2	27.0K	Swedish	Flag of Finland Finland
+Brittany	France	STATE_BRITTANY	120	2.62M	French, Breton	Flag of France France
+Loire River Loire River
+Burgundy	France	STATE_BURGUNDY	80	1.57M	French	Flag of France France
+Loire River Loire River
+Great Terroir Great Terroir
+Champagne	France	STATE_CHAMPAGNE	80	1.16M	French	Flag of France France
+Great Terroir Great Terroir
+Franche-Comté	France	STATE_FRANCHE_COMTE	50	934.92K	French	Flag of France France
+French Low Countries	France	STATE_FRENCH_LOW_COUNTRIES	70	1.69M	French, Flemish	Flag of France France
+Good Soils Good Soils
+Nord-Pas-de-Calais Coalfield Nord-Pas-de-Calais Coalfield
+Lorraine	France	STATE_LORRAINE	55	1.15M	French	Flag of France France
+Maine-Anjou	France	STATE_MAINE_ANJOU	112	1.61M	French	Flag of France France
+Loire River Loire River
+Normandy	France	STATE_NORMANDY	120	2.68M	French	Flag of France France
+Seine River Seine River
+Natural Harbors Natural Harbors
+Orléanais-Berry	France	STATE_ORLEANS	70	1.37M	French	Flag of France France
+Loire River Loire River
+Good Soils Good Soils
+Picardy	France	STATE_PICARDY	80	1.47M	French	Flag of France France
+Good Soils Good Soils
+Poitou-Saintonge	France	STATE_POITOU	90	1.74M	French	Flag of France France
+Île-de-France	France	STATE_ILE_DE_FRANCE	40	1.88M	French	Flag of France France
+Seine River Seine River
+Good Soils Good Soils
+Antioquia	Gran Colombia	STATE_ANTIOQUIA	120	537.81K	North Andean, Afro-Caribeño, Guajiro, Cariban	Flag of Colombia Colombia
+Andes Andes
+Bolívar	Gran Colombia	STATE_BOLIVAR	40	198.16K	North Andean, Afro-Caribeño, Amazonian, Cariban	Flag of Venezuela Venezuela
+Cauca	Gran Colombia	STATE_CAUCA	80	284.39K	North Andean, Afro-Caribeño, Quechua	Flag of Colombia Colombia
+Andes Andes
+Cundinamarca	Gran Colombia	STATE_CUNDINAMARCA	50	527.6K	North Andean, Afro-Caribeño, Muisca	Flag of Colombia Colombia
+Andes Andes
+Guaviare	Gran Colombia	STATE_GUAVIARE	60	128.39K	North Andean, Afro-Caribeño, Amazonian	Flag of Colombia Colombia
+Amazon Rainforest Amazon Rainforest
+Guyana	Gran Colombia	STATE_GUAYANA	30	180.0K	Amazonian, Afro-Antillean, Afro-Caribbean	Flag of Netherlands Netherlands, Flag of France France, Flag of Great Britain Great Britain
+Amazon Rainforest Amazon Rainforest
+Miranda	Gran Colombia	STATE_MIRANDA	60	359.12K	North Andean, Afro-Caribeño, Cariban	Flag of Venezuela Venezuela
+Zulia	Gran Colombia	STATE_ZULIA	80	431.11K	North Andean, Afro-Caribeño, Guajiro, Cariban	Flag of Venezuela Venezuela
+Lake Maracaibo Lake Maracaibo
+Alberta	Great Plains	STATE_ALBERTA	80	67.6K	Cree, Métis, Anglo-Canadian, Athabaskan	Flag of Hudson's Bay Company Hudson's Bay Company, Flag of Iron Confederacy Iron Confederacy, Flag of Niitsitapi Niitsitapi
+Rocky Mountains Rocky Mountains
+Colorado	Great Plains	STATE_COLORADO	160	22.6K	Siouan, Paiute	Flag of Mexico Mexico, Flag of Arapaho Arapaho, Flag of Ute Ute, Flag of America America
+Rocky Mountains Rocky Mountains
+Kansas	Great Plains	STATE_KANSAS	240	24.0K	Siouan	Flag of America America, Flag of Pawnee Pawnee, Flag of Comanche Comanche
+Great Plains Great Plains
+Montana	Great Plains	STATE_MONTANA	200	63.6K	Dakota, Siouan, Salish	Flag of America America, Flag of Séliš Séliš, Flag of Absaroka Absaroka, Flag of Lakota Lakota, Flag of Niitsitapi Niitsitapi
+Rocky Mountains Rocky Mountains
+Nebraska	Great Plains	STATE_NEBRASKA	240	20.0K	Dakota	Flag of America America, Flag of Lakota Lakota, Flag of Pawnee Pawnee
+Great Plains Great Plains
+New Mexico	Great Plains	STATE_NEW_MEXICO	40	67.79K	Navajo, Mexican, Pueblo, Comanche, Apache	Flag of Mexico Mexico, Flag of Navajo Navajo, Flag of Comanche Comanche, Flag of Apache Apache
+Rio Grande Rio Grande
+North Dakota	Great Plains	STATE_NORTH_DAKOTA	240	40.0K	Dakota	Flag of America America, Flag of Lakota Lakota
+Great Plains Great Plains
+Saskatchewan	Great Plains	STATE_SASKATCHEWAN	60	55.2K	Cree, Métis, Anglo-Canadian, Athabaskan	Flag of Hudson's Bay Company Hudson's Bay Company, Flag of Iron Confederacy Iron Confederacy
+Canadian Prairie Canadian Prairie
+South Dakota	Great Plains	STATE_SOUTH_DAKOTA	240	38.0K	Dakota	Flag of Lakota Lakota, Flag of America America
+Great Plains Great Plains
+Wyoming	Great Plains	STATE_WYOMING	160	42.1K	Siouan, Paiute	Flag of America America, Flag of Lakota Lakota, Flag of Arapaho Arapaho, Flag of Pannakwati Pannakwati, Flag of Séliš Séliš, Flag of Absaroka Absaroka
+Rocky Mountains Rocky Mountains
+Eastern Himalayas	Himalayas	STATE_EASTERN_HIMALAYAS	30	390.93K	Tibetan	Flag of Sikkim Sikkim, Flag of Tibet Tibet, Flag of Bhutan Bhutan
+Himalayas Mountain Range Himalayas Mountain Range
+Kashmir	Himalayas	STATE_KASHMIR	85	1.68M	Kashmiri, Tibetan	Flag of Kashmir Kashmir, Flag of Chitral Chitral, Flag of Ladakh Ladakh
+Indus River Indus River
+Lhasa	Himalayas	STATE_LHASA	100	1.82M	Tibetan	Flag of Tibet Tibet
+Himalayas Mountain Range Himalayas Mountain Range
+Ngari	Himalayas	STATE_NGARI	60	890.0K	Tibetan	Flag of Tibet Tibet
+Himalayas Mountain Range Himalayas Mountain Range
+Qinghai	Himalayas	STATE_QINGHAI	60	1.24M	Mongol, Tibetan	Flag of China China
+Yellow River Yellow River
+Western Himalayas	Himalayas	STATE_HIMALAYAS	111	4.24M	Tibetan, Nepali	Flag of Nepal Nepal
+Himalayas Mountain Range Himalayas Mountain Range
+Alentejo	Iberia	STATE_ALENTEJO	25	457.01K	Portuguese	Flag of Portugal Portugal
+Tagus River Tagus River
+Aragon	Iberia	STATE_ARAGON	34	734.68K	Spanish, Aragonese	Flag of Spain Spain, Flag of Carlist Spain Carlist Spain
+Asturias	Iberia	STATE_ASTURIAS	21	438.56K	Spanish, Asturleonese	Flag of Spain Spain
+Cuencas Mineras Cuencas Mineras
+Azores	Iberia	STATE_AZORES	6	210.53K	Portuguese	Flag of Portugal Portugal
+Volcanic Fertility Volcanic Fertility
+Balearic Islands	Iberia	STATE_BALEARIC_ISLANDS	11	231.26K	Spanish, Catalan	Flag of Spain Spain
+Port Mahon Port Mahon
+Basque Country	Iberia	STATE_BASQUE_COUNTRY	42	523.14K	Spanish, Basque	Flag of Carlist Spain Carlist Spain
+Somorrostro Valley Somorrostro Valley
+Great Terroir Great Terroir
+Beira	Iberia	STATE_BEIRA	65	1.1M	Portuguese	Flag of Portugal Portugal
+Great Terroir Great Terroir
+Canary Islands	Iberia	STATE_CANARY_ISLANDS	7	231.26K	Spanish	Flag of Spain Spain
+Volcanic Fertility Volcanic Fertility
+Cape Verde	Iberia	STATE_CAPE_VERDE	4	78.81K	Afro-Brazilian	Flag of Portugal Portugal
+Volcanic Fertility Volcanic Fertility
+Catalonia	Iberia	STATE_CATALONIA	56	1.05M	Spanish, Catalan	Flag of Spain Spain, Flag of Carlist Spain Carlist Spain
+Entre Douro and Minho	Iberia	STATE_ENTRE_DOURO_E_MINHO	60	1.2M	Portuguese	Flag of Portugal Portugal
+Douro Valley Douro Valley
+Douro River Douro River
+Estremadura	Iberia	STATE_ESTREMADURA	30	791.01K	Portuguese	Flag of Portugal Portugal
+Tagus River Tagus River
+Tagus Estuary Tagus Estuary
+Extremadura	Iberia	STATE_EXTREMADURA	34	552.36K	Spanish, Asturleonese	Flag of Spain Spain
+Tagus River Tagus River
+Galicia	Iberia	STATE_GALICIA	51	1.48M	Spanish, Galician	Flag of Spain Spain
+Ria of Ferrol Ria of Ferrol
+Leon	Iberia	STATE_LEON	41	642.92K	Spanish, Asturleonese	Flag of Spain Spain
+Douro River Douro River
+Lower Andalusia	Iberia	STATE_LOWER_ANDALUSIA	67	1.21M	Spanish	Flag of Spain Spain
+Guadalquivir River Guadalquivir River
+Bay of Cádiz Bay of Cádiz
+Riotinto Basin Riotinto Basin
+Madeira	Iberia	STATE_MADEIRA	9	110.2K	Portuguese	Flag of Portugal Portugal
+Volcanic Fertility Volcanic Fertility
+Murcia	Iberia	STATE_MURCIA	24	474.3K	Spanish	Flag of Spain Spain
+Sierra Minera de Cartagena Sierra Minera de Cartagena
+Bay of Cartagena Bay of Cartagena
+New Castile	Iberia	STATE_NEW_CASTILE	51	1.57M	Spanish	Flag of Spain Spain
+Tagus River Tagus River
+Old Castile	Iberia	STATE_OLD_CASTILE	69	1.27M	Spanish	Flag of Spain Spain
+Good Soils Good Soils
+Douro River Douro River
+Upper Andalusia	Iberia	STATE_UPPER_ANDALUSIA	53	1.2M	Spanish	Flag of Spain Spain, Flag of Great Britain Great Britain
+Guadalquivir River Guadalquivir River
+Valencia	Iberia	STATE_VALENCIA	56	965.78K	Catalan, Spanish	Flag of Spain Spain
+Annam	Indochina	STATE_ANNAM	60	2.4M	Vietnamese	Flag of Dai Nam Dai Nam
+Indochinese Forests Indochinese Forests
+Arakan	Indochina	STATE_ARAKAN	32	214.2K	Burmese, Lushai	Flag of East India East India, Flag of Kuki Kuki
+Bangkok	Indochina	STATE_BANGKOK	50	1.71M	Thai	Flag of Siam Siam
+Chao Phraya Delta Chao Phraya Delta
+Natural Harbors Natural Harbors
+Cambodia	Indochina	STATE_CAMBODIA	35	960.74K	Khmer, Champa	Flag of Siam Siam, Flag of Cambodia Cambodia, Flag of Khmer Loeu Khmer Loeu
+Indochinese Forests Indochinese Forests
+Mekong River Mekong River
+Chiang Mai	Indochina	STATE_CHIANG_MAI	30	924.2K	Thai, Shan	Flag of Chiang Mai Chiang Mai
+Laos	Indochina	STATE_LAOS	40	712.33K	Lao, Khmu	Flag of Luang Prabang Luang Prabang, Flag of Siam Siam, Flag of Champasak Champasak, Flag of Dai Nam Dai Nam, Flag of Sip Song Chau Tai Sip Song Chau Tai
+Indochinese Forests Indochinese Forests
+Mekong River Mekong River
+Malaya	Indochina	STATE_MALAYA	35	1.21M	Malay	Flag of Johore Johore, Flag of Siam Siam, Flag of East India East India, Flag of Perak Perak, Flag of Selangor Selangor
+Natural Harbors Natural Harbors
+Mandalay	Indochina	STATE_MANDALAY	48	1.08M	Burmese, Kachin	Flag of Burma Burma, Flag of Kuki Kuki
+Burmese Teak Burmese Teak
+Yenangyaung Oil Fields Yenangyaung Oil Fields
+Mekong	Indochina	STATE_MEKONG	60	1.81M	Vietnamese, Khmer, Champa	Flag of Dai Nam Dai Nam, Flag of Degar Degar
+Mekong Delta Mekong Delta
+Indochinese Forests Indochinese Forests
+Nakhon Ratchasima	Indochina	STATE_NAKHON_RATCHASIMA	40	1.18M	Thai, Lao	Flag of Siam Siam
+Indochinese Forests Indochinese Forests
+Pegu	Indochina	STATE_PEGU	40	1.32M	Karen, Mon, Burmese	Flag of Burma Burma, Flag of East India East India, Flag of Denmark Denmark
+Irrwaddy Delta Irrwaddy Delta
+Burmese Teak Burmese Teak
+Sagaing	Indochina	STATE_KACHIN	38	638.17K	Burmese, Kachin, Shan	Flag of Burma Burma
+Burmese Teak Burmese Teak
+Shan States	Indochina	STATE_SHAN_STATES	33	1.09M	Kachin, Shan	Flag of Burma Burma, Flag of Shan Shan
+Burmese Teak Burmese Teak
+Tenasserim	Indochina	STATE_TENASSERIM	20	706.39K	Burmese, Karen, Thai, Malay	Flag of East India East India, Flag of Siam Siam
+Tonkin	Indochina	STATE_TONKIN	60	2.34M	Vietnamese, Zhuang	Flag of Dai Nam Dai Nam, Flag of Sip Song Chau Tai Sip Song Chau Tai
+Indochinese Forests Indochinese Forests
+Aceh	Indonesia	STATE_ACEH	40	561.92K	Sumatran	Flag of Aceh Aceh, Flag of Siak Siak, Flag of East Indies East Indies
+Natural Harbors Natural Harbors
+Celebes	Indonesia	STATE_CELEBES	40	558.92K	Moluccan	Flag of Sulawesi Sulawesi, Flag of East Indies East Indies, Flag of Buton Buton, Flag of Tidore Tidore
+Malaria Malaria
+Central Java	Indonesia	STATE_CENTRAL_JAVA	80	2.2M	Javan	Flag of East Indies East Indies, Flag of Yogyakarta Yogyakarta, Flag of Surakarta Surakarta
+Volcanic Fertility Volcanic Fertility
+East Borneo	Indonesia	STATE_EAST_BORNEO	40	445.29K	Bornean, Dayak	Flag of East Indies East Indies, Flag of Bulungan Bulungan, Flag of Banjar Banjar, Flag of Kutai Kutai
+Borneo Rainforest Borneo Rainforest
+East Java	Indonesia	STATE_EAST_JAVA	60	2.08M	Javan	Flag of East Indies East Indies
+Natural Harbors Natural Harbors
+Volcanic Fertility Volcanic Fertility
+Eastern New Guinea	Indonesia	STATE_EASTERN_NEW_GUINEA	30	400.1K	Melanesian	Flag of Papua Papua
+Severe Malaria Severe Malaria
+Luzón	Indonesia	STATE_LUZON	80	1.47M	Filipino Mestizo, Tagalog, Ilocano	Flag of Philippines Philippines, Flag of Sulu Sulu
+Manila Bay Manila Bay
+Mindanao	Indonesia	STATE_MINDANAO	40	991.15K	Filipino Mestizo, Visayan, Lumad, Moro	Flag of Philippines Philippines, Flag of Sulu Sulu, Flag of Mindanao Mindanao, Flag of Maguindanao Maguindanao
+Moluccas	Indonesia	STATE_MOLUCCAS	20	477.76K	Moluccan	Flag of East Indies East Indies, Flag of Tidore Tidore
+North Borneo	Indonesia	STATE_NORTH_BORNEO	20	265.52K	Bornean, Dayak	Flag of Brunei Brunei, Flag of Sulu Sulu, Flag of Bulungan Bulungan
+Sarawak River Sarawak River
+Borneo Rainforest Borneo Rainforest
+North Sumatra	Indonesia	STATE_NORTH_SUMATRA	60	708.0K	Sumatran, Batak	Flag of East Indies East Indies, Flag of Siak Siak, Flag of Jambi Jambi
+South Sumatra	Indonesia	STATE_SOUTH_SUMATRA	40	132.69K	Sumatran, Batak	Flag of East Indies East Indies
+Sunda Islands	Indonesia	STATE_SUNDA_ISLANDS	60	1.63M	Moluccan, Balinese	Flag of Bali Bali, Flag of Portugal Portugal, Flag of East Indies East Indies
+Visayas	Indonesia	STATE_VISAYAS	60	1.03M	Filipino Mestizo, Visayan	Flag of Philippines Philippines
+West Borneo	Indonesia	STATE_WEST_BORNEO	22	370.06K	Bornean, Dayak	Flag of Lanfang Lanfang, Flag of East Indies East Indies, Flag of Sambas Sambas, Flag of Pontianak Pontianak, Flag of Sintang Sintang
+Kapuas River Kapuas River
+Borneo Rainforest Borneo Rainforest
+West Java	Indonesia	STATE_WEST_JAVA	110	3.86M	Javan	Flag of East Indies East Indies
+Volcanic Fertility Volcanic Fertility
+Western New Guinea	Indonesia	STATE_WESTERN_NEW_GUINEA	40	435.4K	Melanesian	Flag of Papua Papua, Flag of Tidore Tidore
+Severe Malaria Severe Malaria
+Abruzzo	Italy	STATE_ABRUZZO	25	660.44K	South Italian	Flag of Two Sicilies Two Sicilies
+Apulia	Italy	STATE_APULIA	60	1.28M	South Italian	Flag of Two Sicilies Two Sicilies
+Terra Rossa Terra Rossa
+Calabria	Italy	STATE_CALABRIA	30	882.84K	South Italian	Flag of Two Sicilies Two Sicilies
+Campania	Italy	STATE_CAMPANIA	90	2.55M	South Italian	Flag of Two Sicilies Two Sicilies
+Corsica	Italy	STATE_CORSICA	10	207.88K	Corsican	Flag of France France
+Emilia	Italy	STATE_EMILIA	60	1.22M	North Italian	Flag of Parma Parma, Flag of Lucca Lucca, Flag of Modena Modena
+Istria	Italy	STATE_ISTRIA	25	680.09K	Croatian, Slovene, North Italian	Flag of Austria Austria
+Terra Rossa Terra Rossa
+Gulf of Trieste Gulf of Trieste
+Lazio	Italy	STATE_LAZIO	60	1.33M	South Italian	Flag of Rome Rome
+Lombardy	Italy	STATE_LOMBARDY	110	2.37M	North Italian	Flag of Austria Austria
+Po River Po River
+Malta	Italy	STATE_MALTA	5	119.98K	Maltese	Flag of Great Britain Great Britain
+Natural Harbors Natural Harbors
+Piedmont	Italy	STATE_PIEDMONT	90	2.46M	North Italian	Flag of Sardinia-Piedmont Sardinia-Piedmont
+Po River Po River
+Romagna	Italy	STATE_ROMAGNA	40	803.6K	North Italian	Flag of Rome Rome
+Sardinia	Italy	STATE_SARDINIA	15	524.08K	South Italian	Flag of Sardinia-Piedmont Sardinia-Piedmont
+Sicily	Italy	STATE_SICILY	60	1.64M	South Italian	Flag of Two Sicilies Two Sicilies
+Sicilian Sulfur Deposits Sicilian Sulfur Deposits
+South Tyrol	Italy	STATE_SOUTH_TYROL	30	491.0K	South German, North Italian	Flag of Austria Austria
+Alps Mountain Range Alps Mountain Range
+Tuscany	Italy	STATE_TUSCANY	60	1.63M	North Italian	Flag of Tuscany Tuscany
+Great Terroir Great Terroir
+Umbria	Italy	STATE_UMBRIA	20	451.0K	South Italian	Flag of Rome Rome
+Venetia	Italy	STATE_VENETIA	70	1.85M	North Italian	Flag of Austria Austria
+Po River Po River
+Venetian Lagoon Venetian Lagoon
+Chubu	Japan	STATE_CHUBU	150	5.87M	Japanese	Flag of Japan Japan
+Chugoku	Japan	STATE_CHUGOKU	75	2.76M	Japanese	Flag of Japan Japan
+Seto Inland Sea Seto Inland Sea
+Hokkaido	Japan	STATE_HOKKAIDO	25	61.53K	Japanese, Ainu	Flag of Ainu Mosir Ainu Mosir, Flag of Japan Japan
+Ishikari Coalfield Ishikari Coalfield
+Kansai	Japan	STATE_KANSAI	190	7.86M	Japanese	Flag of Japan Japan
+Nara Basin Nara Basin
+Seto Inland Sea Seto Inland Sea
+Kanto	Japan	STATE_KANTO	130	5.17M	Japanese	Flag of Japan Japan
+Edo Bay Edo Bay
+Kanto Plain Kanto Plain
+Kyushu	Japan	STATE_KYUSHU	100	4.25M	Japanese	Flag of Japan Japan
+Chikuho Coalfield Chikuho Coalfield
+Nagasaki Bay Nagasaki Bay
+Ryukyu Islands	Japan	STATE_RYUKYU_ISLANDS	15	259.18K	Japanese	Flag of Japan Japan
+Sakhalin	Japan	STATE_SAKHALIN	10	40.0K	Siberian, Ainu	Flag of Sakhalin Sakhalin
+Shikoku	Japan	STATE_SHIKOKU	40	1.51M	Japanese	Flag of Japan Japan
+Seto Inland Sea Seto Inland Sea
+Tohoku	Japan	STATE_TOHOKU	80	3.29M	Japanese	Flag of Japan Japan
+Alto Paraguay	La Plata	STATE_ALTO_PARAGUAY	20	12.03K	Platinean, Guarani	Flag of Guarani (GNI) Guarani (GNI)
+Gran Chaco Gran Chaco
+Araucania	La Plata	STATE_ARAUCANIA	10	95.4K	Patagonian	Flag of Chile Chile, Flag of Tehuelche Tehuelche, Flag of Selk’nam Selk’nam
+Andes Andes
+Canales Patagónicos Canales Patagónicos
+Bajo Paraguay	La Plata	STATE_BAJO_PARAGUAY	120	249.88K	Platinean, Guarani	Flag of Paraguay Paraguay
+Paraguay River Paraguay River
+Buenos Aires	La Plata	STATE_BUENOS_AIRES	300	272.6K	Platinean, Patagonian	Flag of Argentina Argentina, Flag of Mapuche Mapuche
+Pampas Pampas
+Natural Harbors Natural Harbors
+Chaco	La Plata	STATE_CHACO	60	46.9K	Platinean, Guarani	Flag of Guarani (GNI) Guarani (GNI), Flag of Argentina Argentina
+Gran Chaco Gran Chaco
+Corrientes	La Plata	STATE_CORRIENTES	120	156.19K	Platinean, Sulista, Guarani	Flag of Argentina Argentina
+Paraná River Paraná River
+Paraguay River Paraguay River
+Pampas Pampas
+Córdoba	La Plata	STATE_LA_PAMPA	150	176.0K	Platinean, Patagonian	Flag of Argentina Argentina
+Los Ríos	La Plata	STATE_LOS_RIOS	70	252.89K	South Andean, Patagonian	Flag of Chile Chile
+Andes Andes
+Cordillera de la Costa Cordillera de la Costa
+Valle Central Valle Central
+Mendoza	La Plata	STATE_RIO_NEGRO	120	43.99K	Platinean, Patagonian	Flag of Argentina Argentina, Flag of Mapuche Mapuche
+Andes Andes
+Patagonia	La Plata	STATE_PATAGONIA	150	64.2K	Patagonian	Flag of Tehuelche Tehuelche, Flag of Mapuche Mapuche
+Andes Andes
+Santa Fe	La Plata	STATE_SANTA_FE	80	104.0K	Platinean	Flag of Guarani (GNI) Guarani (GNI), Flag of Argentina Argentina
+Paraná River Paraná River
+Pampas Pampas
+Santiago	La Plata	STATE_SANTIAGO	50	656.8K	South Andean	Flag of Chile Chile
+Andes Andes
+Cordillera de la Costa Cordillera de la Costa
+Valle Central Valle Central
+South Atlantic Islands	La Plata	STATE_SOUTH_ATLANTIC_ISLANDS	10	14.54K	English	Flag of Great Britain Great Britain
+Antarctic Whaling Antarctic Whaling
+Tucumán	La Plata	STATE_TUCUMAN	60	79.0K	Platinean	Flag of Argentina Argentina
+Andes Andes
+Courland	Livonia	STATE_COURLAND	22	467.75K	Eastern German, Latvian	Flag of United Baltic Provinces United Baltic Provinces
+Lithuania	Livonia	STATE_KAUNAS	56	607.03K	Lithuanian	Flag of Russia Russia
+North Livonia	Livonia	STATE_TARTU	18	311.22K	Eastern German, Estonian	Flag of United Baltic Provinces United Baltic Provinces
+South Livonia	Livonia	STATE_RIGA	38	686.32K	Eastern German, Latvian	Flag of Russia Russia, Flag of United Baltic Provinces United Baltic Provinces
+Talinn	Livonia	STATE_TALINN	22	312.83K	Eastern German, Estonian	Flag of United Baltic Provinces United Baltic Provinces
+Vilnius	Livonia	STATE_VILNIUS	31	522.13K	Lithuanian	Flag of Russia Russia
+Carnatic	Madras	STATE_MADRAS	375	8.83M	Tamil, Kannada	Flag of France France, Flag of Denmark Denmark, Flag of East India East India, Flag of Pudukottai Pudukottai
+Cauvery Delta Cauvery Delta
+Natural Harbors Natural Harbors
+Western Ghats Western Ghats
+Ceded Districts	Madras	STATE_KURNOOL	63	1.74M	Telugu, Kannada, Deccani	Flag of East India East India, Flag of Kurnool Kurnool
+Ceylon	Madras	STATE_CEYLON	30	1.25M	Tamil, Sinhala	Flag of Ceylon Ceylon, Flag of Maldives Maldives, Flag of Great Britain Great Britain
+Galle Harbor Galle Harbor
+Hyderabad	Madras	STATE_HYDERABAD	250	8.54M	Telugu, Deccani, Marathi, Kannada	Flag of Hyderabad Hyderabad
+Malabar	Madras	STATE_TRAVANCORE	120	2.67M	Malayalam	Flag of Travancore Travancore, Flag of East India East India, Flag of Cochin Cochin
+Western Ghats Western Ghats
+Mysore	Madras	STATE_MYSORE	210	4.33M	Kannada, Deccani	Flag of Mysore Mysore, Flag of East India East India
+Western Ghats Western Ghats
+Northern Circars	Madras	STATE_CIRCARS	181	3.34M	Telugu	Flag of East India East India, Flag of Jeypore Jeypore
+Gwanbuk	Manchuria	STATE_SARIWON	40	1.62M	Korean	Flag of Korea Korea
+Gyeonggi	Manchuria	STATE_SEOUL	70	2.81M	Korean	Flag of Korea Korea
+Northern Heilongjiang	Manchuria	STATE_AMUR	30	82.61K	Siberian	Flag of China China
+Northern Jilin	Manchuria	STATE_OUTER_MANCHURIA	25	76.0K	Manchu, Siberian	Flag of China China
+Golden Horn Bay Golden Horn Bay
+Shengjing	Manchuria	STATE_SHENGJING	75	2.17M	Han, Manchu	Flag of China China
+Dalian Bay Dalian Bay
+Southern Heilongjiang	Manchuria	STATE_NORTHERN_MANCHURIA	140	3.08M	Manchu	Flag of China China
+Eastern Steppe Eastern Steppe
+Southern Jilin	Manchuria	STATE_SOUTHERN_MANCHURIA	200	8.81M	Manchu	Flag of China China
+Yangho	Manchuria	STATE_YANGHO	110	4.55M	Korean	Flag of Korea Korea
+Honam Plain Honam Plain
+Yangseo	Manchuria	STATE_PYONGYANG	100	3.61M	Korean	Flag of Korea Korea
+Yeongnam	Manchuria	STATE_BUSAN	85	3.59M	Korean	Flag of Korea Korea
+Bajío	Mexico	STATE_BAJIO	100	950.33K	Nahua, Mexican	Flag of Mexico Mexico
+Chihuahua	Mexico	STATE_CHIHUAHUA	40	163.89K	Mexican, O’odham, Apache	Flag of Mexico Mexico
+Sierra Madre Oriental Sierra Madre Oriental
+Rio Grande Rio Grande
+Durango	Mexico	STATE_DURANGO	60	156.99K	Mexican	Flag of Mexico Mexico
+Sierra Madre Occidental Sierra Madre Occidental
+Guerrero	Mexico	STATE_GUERRERO	120	231.32K	Mexican, Nahua, Zapotec	Flag of Mexico Mexico
+Sierra Madre Oriental Sierra Madre Oriental
+Jalisco	Mexico	STATE_JALISCO	80	1.19M	Mexican	Flag of Mexico Mexico
+Sierra Madre Occidental Sierra Madre Occidental
+Natural Harbors Natural Harbors
+México	Mexico	STATE_MEXICO	160	1.81M	Mexican, Nahua, Zapotec, Mixtec	Flag of Mexico Mexico
+Sierra Madre Oriental Sierra Madre Oriental
+Oaxaca	Mexico	STATE_OAXACA	120	479.67K	Mexican, Zapotec, Mixtec	Flag of Mexico Mexico
+Sierra Madre Oriental Sierra Madre Oriental
+Río Grande	Mexico	STATE_RIO_GRANDE	40	224.5K	Mexican	Flag of Mexico Mexico
+Rio Grande Rio Grande
+Sinaloa	Mexico	STATE_SINALOA	60	134.94K	Mexican	Flag of Mexico Mexico
+Sierra Madre Occidental Sierra Madre Occidental
+Sonora	Mexico	STATE_SONORA	40	112.72K	Mexican, O’odham	Flag of Mexico Mexico
+Sierra Madre Occidental Sierra Madre Occidental
+Veracruz	Mexico	STATE_VERACRUZ	160	251.06K	Mexican, Nahua	Flag of Mexico Mexico
+Sierra Madre Oriental Sierra Madre Oriental
+Zacatecas	Mexico	STATE_ZACATECAS	80	313.3K	Mexican, Nahua	Flag of Mexico Mexico
+Sierra Madre Oriental Sierra Madre Oriental
+Bermuda	New England	STATE_BERMUDA	10	27.2K	Afro-Caribbean	Flag of Great Britain Great Britain
+Connecticut	New England	STATE_CONNECTICUT	15	199.22K	Yankee	Flag of America America
+New England Whaling New England Whaling
+American Chestnut Forests American Chestnut Forests
+Maine	New England	STATE_MAINE	20	397.22K	Yankee	Flag of America America
+New England Whaling New England Whaling
+American Chestnut Forests American Chestnut Forests
+Maritimes	New England	STATE_NEW_BRUNSWICK	40	322.43K	Anglo-Canadian, Franco-Canadian	Flag of New Brunswick New Brunswick, Flag of Nova Scotia Nova Scotia
+Halifax Harbor Halifax Harbor
+Massachusetts	New England	STATE_MASSACHUSETTS	20	847.28K	Yankee	Flag of America America
+New England Whaling New England Whaling
+American Chestnut Forests American Chestnut Forests
+Natural Harbors Natural Harbors
+New Hampshire	New England	STATE_NEW_HAMPSHIRE	15	279.3K	Yankee	Flag of America America
+New England Whaling New England Whaling
+American Chestnut Forests American Chestnut Forests
+New Jersey	New England	STATE_NEW_JERSEY	40	347.19K	Yankee	Flag of America America
+Newark Harbor Newark Harbor
+New York	New England	STATE_NEW_YORK	120	2.22M	Yankee, Iroquoian	Flag of America America
+Niagara Falls Niagara Falls
+American Chestnut Forests American Chestnut Forests
+New York Harbor New York Harbor
+Pennsylvania	New England	STATE_PENNSYLVANIA	180	1.5M	Yankee	Flag of America America
+Ohio River Ohio River
+Appalachian Coalfields Appalachian Coalfields
+American Chestnut Forests American Chestnut Forests
+Rhode Island	New England	STATE_RHODE_ISLAND	10	104.82K	Yankee	Flag of America America
+New England Whaling New England Whaling
+American Chestnut Forests American Chestnut Forests
+Vermont	New England	STATE_VERMONT	25	282.84K	Yankee	Flag of America America
+American Chestnut Forests American Chestnut Forests
+Benin	Niger	STATE_BENIN	100	1.67M	Yoruba, Tiv, Ibo, Edo, Fulbe	Flag of Benin Benin
+Malaria Malaria
+Niger River Niger River
+Bornu	Niger	STATE_BORNU	60	635.98K	Kanuri, Fulbe	Flag of Bornu Bornu
+Malaria Malaria
+Chad	Niger	STATE_CHAD	30	355.96K	Tubu, Bedouin, Fur, Equatorial Bantu	Flag of Wadai Wadai, Flag of Tubu Tubu, Flag of Bornu Bornu
+Malaria Malaria
+Sahel Sahel
+Dahomey	Niger	STATE_DAHOMEY	60	609.9K	Fon, Yoruba, Fulbe, Akan, Songhai	Flag of Dahomey Dahomey, Flag of Borgu Borgu
+Malaria Malaria
+East Hausaland	Niger	STATE_EAST_HAUSALAND	140	2.4M	Hausa, Fulbe	Flag of Sokoto Sokoto
+Malaria Malaria
+Hausaland	Niger	STATE_HAUSALAND	110	1.5M	Fulbe, Hausa, Yoruba, Equatorial Bantu, Songhai	Flag of Sokoto Sokoto, Flag of Borgu Borgu
+Malaria Malaria
+Niger River Niger River
+Niger Delta	Niger	STATE_NIGER_DELTA	120	2.34M	Ibo, Ibibio, Equatorial Bantu	Flag of Igbo Igbo
+Malaria Malaria
+Niger River Niger River
+Niger	Niger	STATE_NIGER	40	145.19K	Hausa, Tuareg, Fulbe	Flag of Kel Air Kel Air, Flag of Tubu Tubu, Flag of Kel Dinnik Kel Dinnik, Flag of Kel Ajjer Kel Ajjer
+Malaria Malaria
+Sahel Sahel
+Nigeria	Niger	STATE_NIGERIA	60	576.3K	Hausa, Tiv, Equatorial Bantu, Fulbe	Flag of Sokoto Sokoto
+Malaria Malaria
+North Cameroon	Niger	STATE_NORTH_CAMEROON	70	916.59K	Fulbe, Equatorial Bantu	Flag of Sokoto Sokoto, Flag of Bamum Bamum
+Malaria Malaria
+Outer Hausaland	Niger	STATE_OUTER_HAUSALAND	60	698.9K	Hausa, Kanuri, Fulbe, Equatorial Bantu, Tuareg, Dyula, Songhai	Flag of Sokoto Sokoto, Flag of Gobir Gobir, Flag of Bornu Bornu
+Malaria Malaria
+Niger River Niger River
+Sahel Sahel
+Togo	Niger	STATE_TOGO	80	988.0K	Ewe, Akan, Fon, Mossi	Flag of Ashanti Ashanti, Flag of Ewe Ewe
+Malaria Malaria
+Waddai	Niger	STATE_WADDAI	40	354.99K	Fur, Sara, Baguirmi, Equatorial Bantu	Flag of Wadai Wadai, Flag of Bagirmi Bagirmi, Flag of Bornu Bornu
+Malaria Malaria
+Yoruba States	Niger	STATE_YORUBA_STATES	100	1.57M	Yoruba, Fon	Flag of Oyo Oyo
+Malaria Malaria
+Blue Nile	Nile	STATE_BLUE_NILE	60	1.14M	Bedouin, Sudanese, Dinka, Nuer, Nuba	Flag of Egypt Egypt
+Nile River Nile River
+Darfur	Nile	STATE_DARFUR	20	235.99K	Fur, Dinka	Flag of Darfur Darfur
+Sahel Sahel
+Dongola	Nile	STATE_DONGOLA	40	364.0K	Bedouin, Sudanese, Beja	Flag of Egypt Egypt
+Nile River Nile River
+Egyptian Desert	Nile	STATE_EGYPTIAN_DESERT	5	36.04K	Misri, Bedouin	Flag of Egypt Egypt
+Sahara Desert Sahara Desert
+Equatoria	Nile	STATE_EQUATORIA	60	1.0M	Nuer, Azande, Luo, Dinka, Nilotic, Fur, Nuba	Flag of Dinka Dinka, Flag of Nuer Nuer, Flag of Dar Fertit Dar Fertit, Flag of Toposa Toposa
+Malaria Malaria
+White Nile White Nile
+Kordofan	Nile	STATE_KORDOFAN	40	524.8K	Bedouin, Sudanese, Dinka, Nuba	Flag of Egypt Egypt
+Sahel Sahel
+Lower Egypt	Nile	STATE_LOWER_EGYPT	80	2.67M	Misri	Flag of Egypt Egypt
+Nile River Nile River
+Matruh	Nile	STATE_MATRUH	3	22.05K	Misri, Bedouin, Amazigh	Flag of Egypt Egypt
+Sahara Desert Sahara Desert
+Middle Egypt	Nile	STATE_MIDDLE_EGYPT	50	1.15M	Misri	Flag of Egypt Egypt
+Nile River Nile River
+Sinai	Nile	STATE_SINAI	10	20.61K	Misri	Flag of Egypt Egypt
+Upper Egypt	Nile	STATE_UPPER_EGYPT	40	391.74K	Misri, Bedouin, Beja	Flag of Egypt Egypt
+Nile River Nile River
+Algiers	North Africa	STATE_ALGIERS	82	1.41M	Maghrebi, Amazigh	Flag of Mascara Mascara, Flag of France France
+Mitidja Plain Mitidja Plain
+Atlas Mountains Atlas Mountains
+Constantine	North Africa	STATE_CONSTANTINE	99	1.81M	Maghrebi, Amazigh	Flag of Constantine Constantine, Flag of France France, Flag of Ait Abbas Ait Abbas
+Mokta El Hadid Mokta El Hadid
+Atlas Mountains Atlas Mountains
+Cyrenaica	North Africa	STATE_LIBYA	28	442.52K	Maghrebi, Bedouin, Tubu	Flag of Tripolitania Tripolitania, Flag of Tubu Tubu, Flag of Zuwayya Zuwayya
+Sahara Desert Sahara Desert
+East Sahara	North Africa	STATE_EAST_SAHARA	10	107.4K	Tuareg, Amazigh	Flag of Kel Ahaggar Kel Ahaggar, Flag of Touggourt Touggourt, Flag of Kel Ajjer Kel Ajjer, Flag of Chaamba Chaamba, Flag of Kel Adagh Kel Adagh
+Sahara Desert Sahara Desert
+Fez	North Africa	STATE_FEZ	70	1.12M	Maghrebi, Amazigh	Flag of Morocco Morocco
+Fezzan	North Africa	STATE_LIBYAN_DESERT	10	64.0K	Tubu, Tuareg, Bedouin	Flag of Fezzan Fezzan, Flag of Kel Ajjer Kel Ajjer, Flag of Tubu Tubu, Flag of Zuwayya Zuwayya
+Sahara Desert Sahara Desert
+Inner Morocco	North Africa	STATE_INNER_MOROCCO	50	622.12K	Maghrebi, Amazigh	Flag of Morocco Morocco, Flag of Tekna Tekna
+Atlas Mountains Atlas Mountains
+Marrakech	North Africa	STATE_MARRAKECH	60	1.02M	Maghrebi, Amazigh	Flag of Morocco Morocco
+Khouribga Basin Khouribga Basin
+Oran	North Africa	STATE_ORAN	53	784.77K	Maghrebi, Amazigh	Flag of Mascara Mascara, Flag of France France
+Atlas Mountains Atlas Mountains
+Sahara	North Africa	STATE_SAHARA	10	61.57K	Amazigh, Tuareg	Flag of Mzab Mzab, Flag of Tuat Tuat, Flag of Reguibat Reguibat, Flag of Tekna Tekna, Flag of Chaamba Chaamba
+Sahara Desert Sahara Desert
+Tripoli	North Africa	STATE_TRIPOLI	30	512.22K	Maghrebi, Bedouin, Amazigh	Flag of Tripolitania Tripolitania, Flag of Fezzan Fezzan, Flag of Zuwayya Zuwayya
+Tunisia	North Africa	STATE_TUNISIA	70	1.31M	Maghrebi, Amazigh	Flag of Tunis Tunis
+West Sahara	North Africa	STATE_WEST_SAHARA	20	60.13K	Amazigh, Bidan, Haratin	Flag of Delim Delim, Flag of Tekna Tekna, Flag of Reguibat Reguibat
+Sahara Desert Sahara Desert
+al Rif	North Africa	STATE_AL_RIF	50	509.19K	Maghrebi, Amazigh	Flag of Morocco Morocco, Flag of Spain Spain
+Alxa	North China	STATE_ALXA	11	44.78K	Mongol	Flag of China China
+Gobi Desert Gobi Desert
+Beijing	North China	STATE_BEIJING	340	15.02M	Han	Flag of China China
+Kaiping Coalfield Kaiping Coalfield
+Gansu	North China	STATE_GANSU	150	6.42M	Han, Mongol	Flag of China China
+Hebei	North China	STATE_ZHILI	200	8.5M	Han	Flag of China China
+Yellow River Yellow River
+Henan	North China	STATE_HENAN	500	20.93M	Han	Flag of China China
+Yellow River Yellow River
+Inner Mongolia	North China	STATE_HINGGAN	102	2.13M	Mongol	Flag of China China
+Yellow River Yellow River
+Eastern Steppe Eastern Steppe
+Jiangsu	North China	STATE_JIANGSU	280	10.99M	Han	Flag of China China
+Ningxia	North China	STATE_NINGXIA	200	8.82M	Han	Flag of China China
+Yellow River Yellow River
+Northern Anhui	North China	STATE_NORTHERN_ANHUI	270	10.66M	Han	Flag of China China
+Shandong	North China	STATE_SHANDONG	350	15.17M	Han	Flag of China China
+Yellow River Yellow River
+Shanxi	North China	STATE_SHANXI	375	14.84M	Han	Flag of China China
+Loess Plateau Loess Plateau
+Yellow River Yellow River
+Uliastai	North China	STATE_ULIASTAI	30	283.62K	Mongol	Flag of China China
+Eastern Steppe Eastern Steppe
+Urga	North China	STATE_URGA	40	340.99K	Mongol	Flag of China China
+Eastern Steppe Eastern Steppe
+Xi’an	North China	STATE_XIAN	250	9.69M	Han, Mongol	Flag of China China
+Loess Plateau Loess Plateau
+Anhalt	North Germany	STATE_ANHALT	75	1.57M	North German	Flag of Prussia Prussia, Flag of Anhalt Anhalt
+Elbe River Elbe River
+Brandenburg	North Germany	STATE_BRANDENBURG	50	1.63M	North German	Flag of Prussia Prussia
+Oder River Oder River
+Brunswick	North Germany	STATE_BRUNSWICK	30	520.4K	North German	Flag of Hanover Hanover, Flag of Brunswick Brunswick, Flag of Prussia Prussia
+Elbe	North Germany	STATE_ELBE	30	769.19K	North German	Flag of Bremen Bremen, Flag of Hamburg Hamburg, Flag of Hanover Hanover
+Elbe River Elbe River
+Hamburger Hafen Hamburger Hafen
+Hanover	North Germany	STATE_HANNOVER	60	1.4M	North German	Flag of Oldenburg Oldenburg, Flag of Hanover Hanover
+Hesse	North Germany	STATE_HESSE	80	1.93M	North German	Flag of Frankfurt Frankfurt, Flag of Hesse Hesse, Flag of Hesse-Kassel Hesse-Kassel, Flag of Nassau Nassau, Flag of Waldeck Waldeck
+Lower Silesia	North Germany	STATE_LOWER_SILESIA	90	1.91M	North German, Sorb	Flag of Prussia Prussia
+Oder River Oder River
+Mecklenburg	North Germany	STATE_MECKLENBURG	25	579.0K	North German	Flag of Mecklenburg Mecklenburg, Flag of Mecklenburg-Strelitz Mecklenburg-Strelitz
+Pomerania	North Germany	STATE_POMERANIA	55	1.14M	North German	Flag of Prussia Prussia
+Oder River Oder River
+Saxony	North Germany	STATE_SAXONY	100	2.3M	North German, Sorb	Flag of Saxony Saxony, Flag of Saxe-Meiningen Saxe-Meiningen, Flag of Saxe-Weimar Saxe-Weimar, Flag of Saxe-Coburg-Gotha Saxe-Coburg-Gotha, Flag of Schwarzburg Schwarzburg
+Elbe River Elbe River
+Schleswig-Holstein	North Germany	STATE_SCHLESWIG_HOLSTEIN	40	825.4K	Danish, North German	Flag of Holstein Holstein, Flag of Lübeck Lübeck, Flag of Schleswig Schleswig
+Connaught	North Sea	STATE_CONNAUGHT	75	1.39M	Irish	Flag of Great Britain Great Britain
+Greenland	North Sea	STATE_GREENLAND	3	11.17K	Inuit	Flag of Denmark Denmark
+Arctic Whaling Arctic Whaling
+Highlands	North Sea	STATE_HIGHLANDS	30	751.56K	Scottish, Gael	Flag of Great Britain Great Britain
+Scottish Highlands Scottish Highlands
+North Sea Fishing North Sea Fishing
+Iceland	North Sea	STATE_ICELAND	5	63.72K	Icelandic	Flag of Denmark Denmark
+Arctic Whaling Arctic Whaling
+Leinster	North Sea	STATE_LEINSTER	95	1.93M	Irish	Flag of Great Britain Great Britain
+Lowlands	North Sea	STATE_LOWLANDS	60	1.63M	Scottish, Gael	Flag of Great Britain Great Britain
+Central Belt Coalfield Central Belt Coalfield
+North Sea Fishing North Sea Fishing
+Munster	North Sea	STATE_MUNSTER	130	2.34M	Irish	Flag of Great Britain Great Britain
+Golden Vale Golden Vale
+Natural Harbors Natural Harbors
+Ulster	North Sea	STATE_ULSTER	130	2.35M	Irish, English, Scottish	Flag of Great Britain Great Britain
+Aquitaine	Occitania	STATE_AQUITAINE	90	1.84M	French, Occitan	Flag of France France
+Auvergne-Limousin	Occitania	STATE_AUVERGNE_LIMOUSIN	110	2.32M	French, Occitan	Flag of France France
+Guyenne	Occitania	STATE_GUYENNE	90	1.73M	French, Occitan	Flag of France France
+Languedoc	Occitania	STATE_LANGUEDOC	120	2.37M	French, Occitan	Flag of France France
+Provence	Occitania	STATE_PROVENCE	60	1.26M	French, Occitan	Flag of Sardinia-Piedmont Sardinia-Piedmont, Flag of France France
+Rhone River Rhone River
+Natural Harbors Natural Harbors
+Rhône	Occitania	STATE_RHONE	110	2.6M	French, Occitan, Franco-Provençal	Flag of France France
+Rhone River Rhone River
+Loire Coalfield Loire Coalfield
+Savoy	Occitania	STATE_SAVOY	20	468.8K	North Italian, French, Franco-Provençal	Flag of Sardinia-Piedmont Sardinia-Piedmont
+Alps Mountain Range Alps Mountain Range
+Bougainville	Oceania	STATE_BOUGAINVILLE	5	48.0K	Melanesian	Flag of Halia Halia
+Severe Malaria Severe Malaria
+East Micronesia	Oceania	STATE_EAST_MICRONESIA	5	24.22K	Micronesian	Flag of Micronesia Micronesia
+Severe Malaria Severe Malaria
+Fiji	Oceania	STATE_FIJI	5	82.0K	Melanesian	Flag of Fiji Fiji
+Severe Malaria Severe Malaria
+Hawaiian Islands	Oceania	STATE_HAWAIIAN_ISLANDS	15	192.1K	Hawaiian	Flag of Hawaii Hawaii
+Sandalwood Forestry Sandalwood Forestry
+Volcanic Fertility Volcanic Fertility
+Kanak	Oceania	STATE_KANAK	5	56.0K	Melanesian	Flag of Kanak Kanak
+New Caledonian Nickel New Caledonian Nickel
+Severe Malaria Severe Malaria
+Nauru	Oceania	STATE_NAURU	5	1.25K	Melanesian	Flag of Nauru Nauru
+Severe Malaria Severe Malaria
+New South Wales	Oceania	STATE_NEW_SOUTH_WALES	40	180.66K	Australian, Aboriginal	Flag of New South Wales New South Wales
+Great Dividing Range Great Dividing Range
+Murray–Darling Basin Murray–Darling Basin
+Natural Harbors Natural Harbors
+North Island	Oceania	STATE_NORTH_ISLAND	30	93.0K	Australian, Māori	Flag of United Tribes United Tribes, Flag of New South Wales New South Wales, Flag of Ngāti Toa Ngāti Toa
+Northern Territory	Oceania	STATE_NORTHERN_TERRITORY	10	41.5K	Australian, Aboriginal	Flag of Wati Wati, Flag of New South Wales New South Wales
+Australian Desert Australian Desert
+Queensland	Oceania	STATE_QUEENSLAND	20	63.2K	Australian, Aboriginal	Flag of New South Wales New South Wales
+Great Dividing Range Great Dividing Range
+Solomon Islands	Oceania	STATE_SOLOMON_ISLANDS	5	52.4K	Melanesian	Flag of Bilua Bilua
+Severe Malaria Severe Malaria
+South Australia	Oceania	STATE_SOUTH_AUSTRALIA	30	92.3K	Australian, Aboriginal	Flag of South Australia South Australia, Flag of Wati Wati, Flag of Kaurna Kaurna
+Australian Desert Australian Desert
+Copper Coast Copper Coast
+South Island	Oceania	STATE_SOUTH_ISLAND	30	76.42K	Australian, Māori	Flag of Ngāti Toa Ngāti Toa, Flag of Ngāi Tahu Ngāi Tahu
+Tahiti	Oceania	STATE_TAHITI	10	169.56K	Polynesian	Flag of Tahiti Tahiti
+Severe Malaria Severe Malaria
+Tasmania	Oceania	STATE_TASMANIA	15	41.4K	Australian, Aboriginal	Flag of Tasmania Tasmania
+Tasmanian Rainforest Tasmanian Rainforest
+Tonga	Oceania	STATE_TONGA	5	40.0K	Polynesian	Flag of Tonga Tonga
+Severe Malaria Severe Malaria
+Vanuatu	Oceania	STATE_VANUATU	5	92.0K	Melanesian	Flag of Vanuatu Vanuatu
+Severe Malaria Severe Malaria
+Victoria	Oceania	STATE_VICTORIA	40	55.79K	Australian, Aboriginal	Flag of New South Wales New South Wales
+West Micronesia	Oceania	STATE_WEST_MICRONESIA	5	33.21K	Micronesian	Flag of Micronesia Micronesia, Flag of Philippines Philippines
+Severe Malaria Severe Malaria
+Western Australia	Oceania	STATE_WESTERN_AUSTRALIA	30	98.06K	Australian, Aboriginal	Flag of Western Australia Western Australia, Flag of Noongar Noongar, Flag of Wati Wati, Flag of Mirning Mirning
+Australian Desert Australian Desert
+Alaska	Pacific Coast	STATE_ALASKA	20	58.02K	Inuit, Salish, Athabaskan	Flag of Alaska Alaska, Flag of Athabaska Athabaska
+Yukon River Salmon Run Yukon River Salmon Run
+Arctic Terrain Arctic Terrain
+Arizona	Pacific Coast	STATE_ARIZONA	40	49.0K	Navajo, Apache, Pueblo	Flag of Mexico Mexico, Flag of Navajo Navajo, Flag of Apache Apache
+Baja California	Pacific Coast	STATE_BAJA_CALIFORNIA	20	22.86K	Mexican, O’odham	Flag of Mexico Mexico
+California	Pacific Coast	STATE_CALIFORNIA	300	63.99K	Hokan	Flag of Mexico Mexico
+Central Valley Central Valley
+Northern California Coastal Forests Northern California Coastal Forests
+Idaho	Pacific Coast	STATE_IDAHO	60	64.0K	Nez Perce, Paiute	Flag of Oregon Oregon, Flag of Pannakwati Pannakwati, Flag of Nimíipuu Nimíipuu
+Rocky Mountains Rocky Mountains
+Nevada	Pacific Coast	STATE_NEVADA	40	28.0K	Paiute	Flag of Mexico Mexico, Flag of Pannakwati Pannakwati
+Great Basin Desert Great Basin Desert
+Northern Columbia	Pacific Coast	STATE_BRITISH_COLUMBIA	40	90.59K	Anglo-Canadian, Athabaskan, Salish	Flag of Oregon Oregon, Flag of Athabaska Athabaska, Flag of Hudson's Bay Company Hudson's Bay Company
+Rocky Mountains Rocky Mountains
+Columbia River Columbia River
+Oregon	Pacific Coast	STATE_OREGON	200	24.84K	Salish, Nez Perce	Flag of Oregon Oregon
+Columbia River Columbia River
+Cascades Cascades
+Southern Columbia	Pacific Coast	STATE_WASHINGTON	180	22.0K	Nez Perce, Salish	Flag of Oregon Oregon
+Columbia River Columbia River
+Cascades Cascades
+Utah	Pacific Coast	STATE_UTAH	50	20.0K	Paiute	Flag of Mexico Mexico, Flag of Navajo Navajo, Flag of Ute Ute
+Wasatch Range Wasatch Range
+Yukon Territory	Pacific Coast	STATE_YUKON_TERRITORY	20	12.0K	Anglo-Canadian, Athabaskan	Flag of Athabaska Athabaska, Flag of Hudson's Bay Company Hudson's Bay Company
+Northern Canadian Terrain Northern Canadian Terrain
+Arabistan	Persia	STATE_KHUZESTAN	60	458.49K	Persian, Mashriqi, Luri	Flag of Arabistan Arabistan
+Bampur	Persia	STATE_SISTAN	30	148.94K	Persian, Baluchi	Flag of Makran Makran, Flag of Kandahar Kandahar, Flag of Oman Oman
+Fars	Persia	STATE_FARS	70	538.43K	Persian, Luri	Flag of Persia Persia
+Zagros Mountains Zagros Mountains
+Hazaristan	Persia	STATE_CENTRAL_HIGHLANDS	40	168.48K	Pashtun, Hazara, Tajik	Flag of Kabul Kabul, Flag of Herat Herat, Flag of Kandahar Kandahar
+Herat	Persia	STATE_HERAT	50	897.58K	Pashtun, Persian	Flag of Herat Herat
+Hormuz	Persia	STATE_LARISTAN	30	110.98K	Persian, Bedouin	Flag of Persia Persia, Flag of Oman Oman, Flag of Bahrain Bahrain
+Natural Harbors Natural Harbors
+Irak-i-Ajami	Persia	STATE_IRAKAJEMI	50	1.5M	Persian	Flag of Persia Persia
+Isfahan	Persia	STATE_ISFAHAN	90	499.38K	Persian	Flag of Persia Persia
+Cobalt Deposits Cobalt Deposits
+Kabulistan	Persia	STATE_KABUL	80	1.07M	Pashtun, Tajik, Hazara	Flag of Kabul Kabul, Flag of Kafiristan Kafiristan
+Kandahar	Persia	STATE_KANDAHAR	50	868.45K	Pashtun, Tajik, Hazara	Flag of Kandahar Kandahar
+Kerman	Persia	STATE_KERMAN	20	227.68K	Persian	Flag of Persia Persia
+Bam-Narmashir Oasis Bam-Narmashir Oasis
+Khorasan	Persia	STATE_KHORASAN	90	715.82K	Persian, Turkmen, Kurdish	Flag of Persia Persia
+Luristan	Persia	STATE_LURISTAN	40	325.2K	Persian, Luri	Flag of Persia Persia
+Zagros Mountains Zagros Mountains
+Mazandaran	Persia	STATE_MAZANDARAN	70	1.02M	Mazanderani, Persian, Turkmen	Flag of Persia Persia
+Hyrcanian Forests Hyrcanian Forests
+Alborz Mountains Alborz Mountains
+Northern Baluchistan	Persia	STATE_NORTHERN_BALUCHISTAN	10	30.52K	Baluchi, Pashtun	Flag of Kandahar Kandahar
+Pashtunistan	Persia	STATE_PASHTUNISTAN	150	2.26M	Pashtun	Flag of Kabul Kabul, Flag of Punjab Punjab, Flag of Chitral Chitral
+Indus River Indus River
+Persian Kurdistan	Persia	STATE_PERSIAN_KURDISTAN	50	401.37K	Persian, Kurdish	Flag of Persia Persia
+Zagros Mountains Zagros Mountains
+Quetta	Persia	STATE_QUETTA	42	291.92K	Pashtun	Flag of Kabul Kabul, Flag of Kandahar Kandahar
+Semnan	Persia	STATE_SEMNAN	20	59.31K	Persian	Flag of Persia Persia
+Southern Turkestan	Persia	STATE_BALKH	40	265.2K	Pashtun, Uzbek, Tajik, Hazara, Turkmen	Flag of Kunduz Kunduz, Flag of Bukhara Bukhara, Flag of Maimana Maimana
+Tabriz	Persia	STATE_TABRIZ	110	914.08K	Persian, Armenian, Azerbaijani	Flag of Persia Persia
+Urmia	Persia	STATE_URMIA	50	360.94K	Persian, Kurdish, Azerbaijani, Armenian, Assyrian	Flag of Persia Persia
+Zagros Mountains Zagros Mountains
+East Galicia	Poland	STATE_EAST_GALICIA	145	2.44M	Polish, Ukrainian	Flag of Austria Austria
+East Prussia	Poland	STATE_EAST_PRUSSIA	40	859.79K	North German, Polish, Lithuanian	Flag of Prussia Prussia
+Lublin	Poland	STATE_LESSER_POLAND	60	992.19K	Polish	Flag of Russia Russia
+Posen	Poland	STATE_POSEN	90	1.56M	North German, Polish	Flag of Prussia Prussia
+Płock	Poland	STATE_MAZOVIA	75	1.31M	Polish	Flag of Russia Russia
+Upper Silesia	Poland	STATE_UPPER_SILESIA	45	1.13M	North German, Polish, Czech	Flag of Prussia Prussia, Flag of Austria Austria
+Oder River Oder River
+Upper Silesia Coalfield Upper Silesia Coalfield
+Warszawa	Poland	STATE_GREATER_POLAND	132	2.58M	Polish	Flag of Russia Russia
+West Galicia	Poland	STATE_WEST_GALICIA	145	2.28M	Polish	Flag of Austria Austria, Flag of Krakow Krakow
+West Prussia	Poland	STATE_WEST_PRUSSIA	40	797.0K	North German, Polish	Flag of Prussia Prussia
+Natural Harbors Natural Harbors
+Alsace-Lorraine	Rhine	STATE_ALSACE_LORRAINE	65	1.43M	French, South German, Alemannic	Flag of France France
+Saar Coalfield Saar Coalfield
+Rhine River Rhine River
+Flanders	Rhine	STATE_FLANDERS	90	2.49M	Flemish	Flag of Belgium Belgium
+Friesland	Rhine	STATE_FRIESLAND	30	674.07K	Dutch	Flag of Netherlands Netherlands
+Gelre	Rhine	STATE_GELRE	40	892.66K	Dutch	Flag of Netherlands Netherlands, Flag of Belgium Belgium
+Rhine River Rhine River
+Holland	Rhine	STATE_HOLLAND	30	1.23M	Dutch	Flag of Netherlands Netherlands
+Rhine River Rhine River
+Natural Harbors Natural Harbors
+North Rhine	Rhine	STATE_NORTH_RHINE	77	1.01M	North German	Flag of Prussia Prussia
+Rhine River Rhine River
+Ruhr Coalfield Ruhr Coalfield
+Rhineland	Rhine	STATE_RHINELAND	55	1.31M	North German	Flag of Prussia Prussia, Flag of Bavaria Bavaria
+Rhine River Rhine River
+Great Terroir Great Terroir
+Ruhr	Rhine	STATE_RUHR	39	856.28K	North German	Flag of Prussia Prussia
+Rhine River Rhine River
+Ruhr Coalfield Ruhr Coalfield
+Wallonia	Rhine	STATE_WALLONIA	55	1.66M	Wallonian	Flag of Luxembourg Luxembourg, Flag of Belgium Belgium
+Borinage Coalfield Borinage Coalfield
+Westphalia	Rhine	STATE_WESTPHALIA	60	1.38M	North German	Flag of Prussia Prussia, Flag of Lippe Lippe, Flag of Schaumburg-Lippe Schaumburg-Lippe
+Ruhr Coalfield Ruhr Coalfield
+Cheboksary	Russia	STATE_CHUVASHIA	45	555.44K	Russian, Chuvash, Mari	Flag of Russia Russia
+Volga River Volga River
+Ingria	Russia	STATE_INGRIA	50	976.26K	Russian	Flag of Russia Russia
+Russian Taiga Forests Russian Taiga Forests
+Kotlin Island Kotlin Island
+Kursk	Russia	STATE_KURSK	115	2.18M	Ukrainian, Russian	Flag of Russia Russia
+Don River Don River
+Black Soil Black Soil
+Moscow	Russia	STATE_MOSCOW	60	1.23M	Russian	Flag of Russia Russia
+Volga River Volga River
+Russian Taiga Forests Russian Taiga Forests
+Nizhny Novgorod	Russia	STATE_NIZHNY_NOVGOROD	80	1.58M	Russian	Flag of Russia Russia
+Volga River Volga River
+Russian Taiga Forests Russian Taiga Forests
+Novgorod	Russia	STATE_NOVGOROD	70	820.11K	Russian	Flag of Russia Russia
+Russian Taiga Forests Russian Taiga Forests
+Pskov	Russia	STATE_PSKOV	52	706.88K	Russian	Flag of Russia Russia
+Russian Taiga Forests Russian Taiga Forests
+Ryazan	Russia	STATE_RYAZAN	65	1.24M	Russian	Flag of Russia Russia
+Saratov	Russia	STATE_TARTARIA	90	1.18M	Eastern German, Russian, Tatar	Flag of Russia Russia
+Volga River Volga River
+Western Steppe Western Steppe
+Black Soil Black Soil
+Smolensk	Russia	STATE_SMOLENSK	62	1.02M	Russian	Flag of Russia Russia
+Russian Taiga Forests Russian Taiga Forests
+Tambov	Russia	STATE_TAMBOV	155	2.64M	Russian, Mordvin	Flag of Russia Russia
+Black Soil Black Soil
+Tula	Russia	STATE_ORYOL	180	3.35M	Russian	Flag of Russia Russia
+Tver	Russia	STATE_TVER	68	1.23M	Russian	Flag of Russia Russia
+Russian Taiga Forests Russian Taiga Forests
+Volga River Volga River
+Yaroslavl	Russia	STATE_YAROSLAVL	185	3.01M	Russian	Flag of Russia Russia
+Volga River Volga River
+Russian Taiga Forests Russian Taiga Forests
+Eastern Norway	Scandinavia	STATE_EASTERN_NORWAY	20	352.8K	Norwegian	Flag of Norway Norway
+Christianiafjorden Christianiafjorden
+Kongsberg Kongsberg
+Gotland	Scandinavia	STATE_GOTLAND	3	33.2K	Swedish	Flag of Sweden Sweden
+Good Soils Good Soils
+Götaland	Scandinavia	STATE_GOTALAND	35	809.3K	Swedish	Flag of Sweden Sweden
+Scandinavian Forests Scandinavian Forests
+Jutland	Scandinavia	STATE_JUTLAND	35	548.9K	Danish	Flag of Denmark Denmark
+Good Soils Good Soils
+Norrland	Scandinavia	STATE_NORRLAND	22	327.39K	Swedish, Sámi	Flag of Sweden Sweden
+Malmberget Malmberget
+Scandinavian Forests Scandinavian Forests
+Northern Norway	Scandinavia	STATE_NORTHERN_NORWAY	20	337.26K	Norwegian, Sámi	Flag of Norway Norway
+North Sea Fishing North Sea Fishing
+Arctic Whaling Arctic Whaling
+Trondhjemsfjorden Trondhjemsfjorden
+Scania	Scandinavia	STATE_SCANIA	20	513.05K	Swedish	Flag of Sweden Sweden
+Scanian Soils Scanian Soils
+Natural Harbors Natural Harbors
+Svealand	Scandinavia	STATE_SVEALAND	30	1.11M	Swedish	Flag of Sweden Sweden
+Bergslagen Bergslagen
+Scandinavian Forests Scandinavian Forests
+Natural Harbors Natural Harbors
+Western Norway	Scandinavia	STATE_WESTERN_NORWAY	20	546.79K	Norwegian	Flag of Norway Norway
+North Sea Fishing North Sea Fishing
+Hardangerfjorden Hardangerfjorden
+Zealand	Scandinavia	STATE_ZEALAND	25	656.79K	Danish	Flag of Denmark Denmark
+Øresund Øresund
+Odensefjorden Odensefjorden
+Eastern Mali	Senegal	STATE_EASTERN_MALI	70	980.1K	Bambara, Fulbe, Mande, Senufo	Flag of Massina Massina
+Malaria Malaria
+Niger River Niger River
+Gold Coast	Senegal	STATE_GOLD_COAST	80	767.2K	Akan, Mossi, Ewe	Flag of Denmark Denmark, Flag of Sierra Leone Sierra Leone, Flag of Netherlands Netherlands, Flag of Ashanti Ashanti
+Malaria Malaria
+Grain Coast	Senegal	STATE_LIBERIA	70	831.86K	Mande, Kru, Bassa, Kissi, Afro-American	Flag of Liberia Liberia, Flag of Mandinka Mandinka, Flag of Kru Kru
+Malaria Malaria
+Guinea	Senegal	STATE_GUINEA	80	1.04M	Fulbe, Mande, Dyula, Kissi	Flag of Mandinka Mandinka, Flag of Susu Susu, Flag of Futa Jallon Futa Jallon, Flag of Portugal Portugal, Flag of Kaabu Kaabu
+Malaria Malaria
+Niger River Niger River
+Inner Mauritania	Senegal	STATE_INNER_MAURITANIA	20	63.03K	Bidan, Mande, Haratin	Flag of Tagant Tagant, Flag of Reguibat Reguibat, Flag of Adrar Adrar
+Malaria Malaria
+Sahara Desert Sahara Desert
+Ivory Coast	Senegal	STATE_IVORY_COAST	50	448.01K	Akan, Senufo, Dyula	Flag of France France, Flag of Baule Baule, Flag of Kong Kong, Flag of Anyi Anyi
+Malaria Malaria
+Mauritania	Senegal	STATE_MAURITANIA	30	337.81K	Bidan, Haratin	Flag of Tagant Tagant, Flag of Trarza Trarza, Flag of Futa Toro Futa Toro, Flag of Delim Delim, Flag of Adrar Adrar, Flag of Brakna Brakna
+Malaria Malaria
+Sahel Sahel
+Senegal	Senegal	STATE_SENEGAL	120	1.65M	Fulbe, Wolof, Mande, Dyula	Flag of France France, Flag of Jolof Jolof, Flag of Cayor Cayor, Flag of Futa Toro Futa Toro, Flag of Sierra Leone Sierra Leone, Flag of Serer Serer, Flag of Bundu Bundu, Flag of Diola Diola, Flag of Kaabu Kaabu, Flag of Portugal Portugal
+Malaria Malaria
+Sahel Sahel
+Cap-Vert Cap-Vert
+Sierra Leone	Senegal	STATE_SIERRA_LEONE	70	156.39K	Mande, Akan, Kissi, Fulbe	Flag of Temne Temne, Flag of Sierra Leone Sierra Leone, Flag of Mandinka Mandinka
+Malaria Malaria
+Timbuktu	Senegal	STATE_TIMBUKTU	40	370.79K	Tuareg, Songhai, Fulbe, Mande	Flag of Kel Adagh Kel Adagh, Flag of Massina Massina, Flag of Reguibat Reguibat, Flag of Adrar Adrar, Flag of Kel Ataram Kel Ataram, Flag of Tagant Tagant
+Malaria Malaria
+Sahel Sahel
+Niger River Niger River
+Volta	Senegal	STATE_VOLTA	100	1.53M	Mossi, Fulbe, Bambara, Mande, Dyula	Flag of Mossi Mossi, Flag of Kong Kong
+Malaria Malaria
+Western Mali	Senegal	STATE_WESTERN_MALI	50	460.0K	Bambara, Fulbe, Mande	Flag of Segou Segou, Flag of Kaarta Kaarta
+Malaria Malaria
+Niger River Niger River
+Windward Coast	Senegal	STATE_WINDWARD_COAST	70	464.0K	Kru, Mande, Akan, Dyula	Flag of Kabadougou Kabadougou, Flag of Baule Baule, Flag of Kru Kru
+Malaria Malaria
+Chongqing	South China	STATE_CHONGQING	500	20.09M	Han	Flag of China China
+Yangtze River Yangtze River
+Red Basin Red Basin
+Eastern Guangdong	South China	STATE_SHAOZHOU	200	8.91M	Yue, Han, Hakka	Flag of China China
+Natural Harbors Natural Harbors
+Eastern Hubei	South China	STATE_EASTERN_HUBEI	320	13.52M	Han	Flag of China China
+Yangtze River Yangtze River
+Formosa	South China	STATE_FORMOSA	80	2.9M	Han, Min, Yuanzhumin	Flag of China China
+Fujian	South China	STATE_FUJIAN	400	16.32M	Han, Min, Hakka	Flag of China China
+Guangxi	South China	STATE_GUANGXI	400	14.93M	Yue, Han, Zhuang	Flag of China China
+Pearl River Pearl River
+Guizhou	South China	STATE_GUIZHOU	110	4.63M	Han, Yi, Zhuang	Flag of China China
+Pearl River Pearl River
+Hunan	South China	STATE_HUNAN	330	13.39M	Han	Flag of China China
+Yangtze River Yangtze River
+Jiangxi	South China	STATE_JIANGXI	600	24.21M	Han, Hakka	Flag of China China
+Yangtze River Yangtze River
+Nanjing	South China	STATE_NANJING	360	11.13M	Han	Flag of China China
+Yangtze River Yangtze River
+Sichuan	South China	STATE_SICHUAN	330	14.0M	Han, Tibetan, Yi	Flag of China China
+Yangtze River Yangtze River
+Red Basin Red Basin
+Southern Anhui	South China	STATE_SOUTHERN_ANHUI	550	22.83M	Han	Flag of China China
+Yangtze River Yangtze River
+Suzhou	South China	STATE_SUZHOU	400	17.67M	Han	Flag of China China
+Yangtze River Yangtze River
+Natural Harbors Natural Harbors
+Western Guangdong	South China	STATE_GUANGDONG	330	13.01M	Yue, Min, Han, Miao	Flag of China China, Flag of Portugal Portugal
+Pearl River Pearl River
+Natural Harbors Natural Harbors
+Western Hubei	South China	STATE_WESTERN_HUBEI	320	13.15M	Han	Flag of China China
+Yangtze River Yangtze River
+Yunnan	South China	STATE_YUNNAN	150	6.23M	Han, Yi, Zhuang	Flag of China China
+Yangtze River Yangtze River
+Zhejiang	South China	STATE_ZHEJIANG	250	9.47M	Han	Flag of China China
+Austria	South Germany	STATE_AUSTRIA	80	2.01M	South German	Flag of Austria Austria
+Danube River Danube River
+Baden	South Germany	STATE_BADEN	50	1.3M	South German, Alemannic	Flag of Baden Baden
+Rhine River Rhine River
+Black Forest Black Forest
+Bavaria	South Germany	STATE_BAVARIA	65	1.74M	South German	Flag of Bavaria Bavaria
+Danube River Danube River
+Bohemia	South Germany	STATE_BOHEMIA	195	4.15M	Czech, South German	Flag of Austria Austria
+Elbe River Elbe River
+East Switzerland	South Germany	STATE_EAST_SWITZERLAND	40	895.2K	Alemannic	Flag of Switzerland Switzerland
+Alps Mountain Range Alps Mountain Range
+Rhine River Rhine River
+Franconia	South Germany	STATE_FRANCONIA	80	1.87M	South German	Flag of Bavaria Bavaria
+Moravia	South Germany	STATE_MORAVIA	80	1.69M	Czech, South German	Flag of Austria Austria
+Styria	South Germany	STATE_STYRIA	40	736.79K	South German	Flag of Austria Austria
+Drava River Drava River
+Tyrol	South Germany	STATE_TYROL	30	559.3K	South German	Flag of Austria Austria
+Alps Mountain Range Alps Mountain Range
+West Switzerland	South Germany	STATE_WEST_SWITZERLAND	50	1.07M	Alemannic, Franco-Provençal	Flag of Switzerland Switzerland
+Alps Mountain Range Alps Mountain Range
+Rhine River Rhine River
+Württemberg	South Germany	STATE_WURTTEMBERG	70	1.78M	South German, Alemannic	Flag of Württemberg Württemberg, Flag of Hohenzollern Hohenzollern
+Black Forest Black Forest
+Botswana	Southern Africa	STATE_BOTSWANA	40	94.56K	Tswana, Herero, Khoisan, Nguni	Flag of Tswana Tswana, Flag of Barotse Barotse, Flag of San San
+Severe Malaria Severe Malaria
+Cape Colony	Southern Africa	STATE_CAPE_COLONY	50	451.6K	Boer, Sotho, Khoisan	Flag of South Africa South Africa, Flag of Nama Nama
+Natural Harbors Natural Harbors
+Eastern Cape	Southern Africa	STATE_EASTERN_CAPE	60	268.39K	Xhosa, Khoisan	Flag of South Africa South Africa, Flag of Xhosa Xhosa
+Hereroland	Southern Africa	STATE_HEREROLAND	40	193.43K	Herero, Khoisan, Kavango Bantu	Flag of Herero Herero, Flag of San San, Flag of Ovambo Ovambo
+Severe Malaria Severe Malaria
+Lourenço Marques	Southern Africa	STATE_LOURENCO_MARQUES	80	973.8K	Tonga, Nguni, Shona	Flag of Portugal Portugal, Flag of Gaza Gaza
+Malaria Malaria
+Namaqualand	Southern Africa	STATE_NAMAQUALAND	30	64.0K	Khoisan, Tswana	Flag of Nama Nama, Flag of San San
+Severe Malaria Severe Malaria
+Northern Cape	Southern Africa	STATE_NORTHERN_CAPE	40	281.0K	Boer, Griqua, Sotho, Khoisan, Tswana	Flag of South Africa South Africa, Flag of Tswana Tswana, Flag of Griqualand Griqualand, Flag of San San
+Transorangia	Southern Africa	STATE_VRYSTAAT	40	101.6K	Griqua, Sotho, Nguni, Boer	Flag of Oranje Oranje, Flag of Philippolis Philippolis, Flag of Basutoland Basutoland
+Transvaal	Southern Africa	STATE_TRANSVAAL	50	841.38K	Sotho, Nguni, Tswana, Zulu, Boer	Flag of Ndebele Ndebele, Flag of Transvaal Transvaal, Flag of Pedi Pedi, Flag of Swaziland Swaziland, Flag of Venda Venda
+Malaria Malaria
+Waterberg Coalfield Waterberg Coalfield
+Zambezi	Southern Africa	STATE_ZAMBEZI	70	424.0K	Shona, Nguni, Lacustrine Bantu	Flag of Mashona Mashona, Flag of Manica Manica, Flag of Mutapa Mutapa
+Severe Malaria Severe Malaria
+Zambezi River Zambezi River
+Zululand	Southern Africa	STATE_ZULULAND	40	409.89K	Sotho, Zulu	Flag of Zulu Zulu, Flag of Basutoland Basutoland
+Malaria Malaria
+Acre	The Andes	STATE_ACRE	5	16.35K	Amazonian	Flag of Bolivia Bolivia
+Amazon Rainforest Amazon Rainforest
+Antofagasta	The Andes	STATE_ANTOFAGASTA	10	112.19K	South Andean, Aimara	Flag of Bolivia Bolivia
+Andes Andes
+Atacama Desert Atacama Desert
+Arequipa	The Andes	STATE_AREQUIPA	25	277.39K	South Andean, Quechua, Aimara	Flag of South Peru South Peru
+Andes Andes
+Cajamarca	The Andes	STATE_CAJAMARCA	60	306.5K	South Andean, Quechua	Flag of North Peru North Peru
+Andes Andes
+Ecuador	The Andes	STATE_ECUADOR	50	928.72K	North Andean, Quechua	Flag of Ecuador Ecuador
+Andes Andes
+La Costa La Costa
+Ica	The Andes	STATE_ICA	50	406.7K	South Andean, Quechua	Flag of South Peru South Peru, Flag of Iquicha Iquicha
+Andes Andes
+Jujuy	The Andes	STATE_JUJUY	50	72.4K	Platinean	Flag of Bolivia Bolivia, Flag of Argentina Argentina
+Gran Chaco Gran Chaco
+La Paz	The Andes	STATE_LA_PAZ	120	856.99K	South Andean, Aimara, Quechua, Amazonian	Flag of Bolivia Bolivia
+Lima	The Andes	STATE_LIMA	40	504.1K	South Andean, Quechua	Flag of North Peru North Peru
+Andes Andes
+Chincha Islands Chincha Islands
+Pastaza	The Andes	STATE_PASTAZA	30	92.9K	Amazonian	Flag of North Peru North Peru, Flag of Ecuador Ecuador
+Amazon Rainforest Amazon Rainforest
+Potosí	The Andes	STATE_POTOSI	20	159.99K	South Andean, Aimara	Flag of Bolivia Bolivia
+Andes Andes
+Santa Cruz	The Andes	STATE_SANTA_CRUZ	100	171.0K	South Andean, Guarani, Quechua	Flag of Bolivia Bolivia
+Amazon Rainforest Amazon Rainforest
+Tarapacá	The Andes	STATE_TARAPACA	10	52.0K	South Andean, Aimara	Flag of South Peru South Peru
+Andes Andes
+Atacama Desert Atacama Desert
+Cordillera de la Costa Cordillera de la Costa
+Illinois	The Midwest	STATE_ILLINOIS	270	456.4K	Yankee	Flag of America America
+Mississippi River Mississippi River
+Indiana	The Midwest	STATE_INDIANA	220	663.5K	Yankee	Flag of America America
+Ohio River Ohio River
+Iowa	The Midwest	STATE_IOWA	240	43.99K	Yankee, Dakota	Flag of America America
+Mississippi River Mississippi River
+Kentucky	The Midwest	STATE_KENTUCKY	180	744.37K	Dixie, Yankee	Flag of America America
+Appalachian Coalfields Appalachian Coalfields
+Ohio River Ohio River
+American Chestnut Forests American Chestnut Forests
+Michigan	The Midwest	STATE_MICHIGAN	180	152.0K	Yankee, Algonquian	Flag of America America
+Great Lakes Great Lakes
+Minnesota	The Midwest	STATE_MINNESOTA	200	38.0K	Yankee, Dakota, Algonquian	Flag of America America, Flag of Lakota Lakota
+Mississippi River Mississippi River
+Missouri	The Midwest	STATE_MISSOURI	230	367.5K	Dixie, Yankee, Cajun	Flag of America America
+Mississippi River Mississippi River
+Ohio	The Midwest	STATE_OHIO	180	1.34M	Yankee	Flag of America America
+Ohio River Ohio River
+Tennessee	The Midwest	STATE_TENNESSEE	180	772.12K	Dixie, Yankee	Flag of America America
+Mississippi River Mississippi River
+American Chestnut Forests American Chestnut Forests
+West Virginia	The Midwest	STATE_WEST_VIRGINIA	50	208.8K	Dixie, Yankee	Flag of America America
+Appalachian Coalfields Appalachian Coalfields
+American Chestnut Forests American Chestnut Forests
+Wisconsin	The Midwest	STATE_WISCONSIN	180	36.0K	Yankee, Dakota, Algonquian	Flag of America America
+Great Lakes Great Lakes
+Chelyabinsk	Urals	STATE_CHELYABINSK	42	509.13K	Russian, Bashkir	Flag of Russia Russia, Flag of Kishi Zhuz Kishi Zhuz, Flag of Orta Zhuz Orta Zhuz
+Uralic Iron Ore Deposits Uralic Iron Ore Deposits
+Kazan	Urals	STATE_KAZAN	85	1.1M	Russian, Tatar	Flag of Russia Russia
+Volga River Volga River
+Perm	Urals	STATE_PERM	70	777.77K	Russian, Ugrian	Flag of Russia Russia
+Russian Taiga Forests Russian Taiga Forests
+Uralic Iron Ore Deposits Uralic Iron Ore Deposits
+Samara	Urals	STATE_SAMARA	95	1.76M	Russian, Tatar	Flag of Russia Russia, Flag of Kishi Zhuz Kishi Zhuz
+Volga River Volga River
+Western Steppe Western Steppe
+Ufa	Urals	STATE_UFA	75	369.53K	Bashkir, Russian	Flag of Russia Russia
+Uralic Iron Ore Deposits Uralic Iron Ore Deposits
+Ural	Urals	STATE_URAL	60	377.8K	Russian, Ugrian	Flag of Russia Russia
+Uralic Iron Ore Deposits Uralic Iron Ore Deposits
+Vyatka	Urals	STATE_VYATKA	115	1.51M	Russian, Udmurt	Flag of Russia Russia
+Russian Taiga Forests Russian Taiga Forests
+Altai	West Siberia	STATE_ALTAI	10	31.0K	Russian, Mongol	Flag of China China
+Krasnoyarsk	West Siberia	STATE_KRASNOYARSK	45	196.44K	Russian	Flag of Russia Russia
+Yenisei River Yenisei River
+Ob	West Siberia	STATE_OB	2	5.91K	Ugrian	Flag of Russia Russia
+Arctic Terrain Arctic Terrain
+Ob River Ob River
+Surgut	West Siberia	STATE_SURGUT	4	12.05K	Ugrian, Russian	Flag of Russia Russia
+Ob River Ob River
+Tobolsk	West Siberia	STATE_TOBOLSK	53	417.04K	Russian, Siberian, Ugrian	Flag of Russia Russia
+Western Steppe Western Steppe
+Irtysh River Irtysh River
+Tomsk	West Siberia	STATE_TOMSK	90	361.8K	Siberian, Russian	Flag of Russia Russia
+Western Steppe Western Steppe
+Ob River Ob River
+Kuznetsk Basin Kuznetsk Basin
+Tuva	West Siberia	STATE_TUVA	15	49.0K	Tuvan	Flag of China China
+Eastern Steppe Eastern Steppe
+Yenisei River Yenisei River
+Upper Yeniseysk	West Siberia	STATE_UPPER_YENISEYSK	10	35.19K	Russian, Siberian	Flag of Russia Russia
+Arctic Terrain Arctic Terrain
+Yenisei River Yenisei River
+Indian Ocean Territory	Zanj	STATE_INDIAN_OCEAN_TERRITORY	15	209.39K		Flag of France France, Flag of Great Britain Great Britain
+Mascarene Plateau Mascarene Plateau
+Volcanic Fertility Volcanic Fertility
+Kazembe	Zanj	STATE_KAZEMBE	60	403.2K	Lunda, Chewa, Lacustrine Bantu	Flag of Bemba Bemba, Flag of Kazembe Kazembe, Flag of Maravi Maravi
+Malaria Malaria
+Kenya	Zanj	STATE_KENYA	80	643.7K	Somali, Kikuyu, Lacustrine Bantu, Swahili, Maasai	Flag of Kikuyu Kikuyu, Flag of Sakuye Sakuye, Flag of Mombasa Mombasa, Flag of Witu Witu, Flag of Oman Oman, Flag of Mijikenda Mijikenda, Flag of Orma Orma, Flag of Ajuran Ajuran, Flag of Aulihan Aulihan
+Malaria Malaria
+Mocambique	Zanj	STATE_MOCAMBIQUE	80	1.2M	Makua, Sena, Chewa, Yao, Lomwe, Lacustrine Bantu	Flag of Portugal Portugal, Flag of Maravi Maravi, Flag of Tungi Tungi, Flag of Angoche Angoche
+Malaria Malaria
+North Madagascar	Zanj	STATE_NORTH_MADAGASCAR	80	1.04M	Malagasy	Flag of Madagascar Madagascar
+Malaria Malaria
+Rift Valley	Zanj	STATE_RIFT_VALLEY	60	351.6K	Luo, Nilotic, Maasai, Kikuyu	Flag of Masai Masai, Flag of Luo Luo, Flag of Turkana Turkana
+Malaria Malaria
+Lake Victoria Lake Victoria
+Rufiji	Zanj	STATE_LINDI	70	567.9K	Yao, Makua, Nyamwezi, Lacustrine Bantu, Chewa	Flag of Hehe Hehe, Flag of Gogo Gogo, Flag of Sangu Sangu
+Malaria Malaria
+South Madagascar	Zanj	STATE_SOUTH_MADAGASCAR	80	897.8K	Malagasy	Flag of Madagascar Madagascar
+Malaria Malaria
+Tanganyika	Zanj	STATE_TANGANYIKA	150	1.95M	Lacustrine Bantu, Nyamwezi, Rundi, Ruanda, Sukuma, Maasai, Luo	Flag of Unyamwezi Unyamwezi, Flag of Masai Masai, Flag of Usukuma Usukuma, Flag of Karagwe Karagwe, Flag of Rwanda Rwanda, Flag of Burundi Burundi
+Malaria Malaria
+Lake Victoria Lake Victoria
+Uganda	Zanj	STATE_UGANDA	100	1.46M	Baganda, Lacustrine Bantu, Luo	Flag of Buganda Buganda, Flag of Bunyoro Bunyoro, Flag of Ankole Ankole, Flag of Acholi Acholi
+Malaria Malaria
+Lake Victoria Lake Victoria
+Zambezia	Zanj	STATE_ZAMBEZIA	70	1.28M	Sena, Shona, Lacustrine Bantu	Flag of Portugal Portugal, Flag of Maseko Maseko, Flag of Manica Manica, Flag of Gaza Gaza, Flag of Mutapa Mutapa
+Malaria Malaria
+Zambezi River Zambezi River
+Zanzibar	Zanj	STATE_ZANZIBAR	70	1.17M	Lacustrine Bantu, Swahili, Sukuma	Flag of Oman Oman
+Natural Harbors Natural Harbors
+Malaria Malaria
