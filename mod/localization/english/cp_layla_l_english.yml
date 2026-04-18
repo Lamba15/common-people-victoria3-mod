@@ -6,7 +6,7 @@
 
  # ----- Journal entry: cp_je_layla -----
  cp_je_layla:0 "Layla al-Sharif"
- cp_je_layla_reason:0 "#b age#! #v [Country.MakeScope.Var('cp_age').GetValue|D]#!  ·  #b SoL#! #v [Country.MakeScope.Var('cp_sol').GetValue|D]#!  ·  #b literacy#! #v [Country.MakeScope.Var('cp_literacy').GetValue|D]#!  ·  #b hope#! #v [Country.MakeScope.Var('cp_hope').GetValue|D]#!  ·  #b radical#! #v [Country.MakeScope.Var('cp_radical').GetValue|D]#!  ·  #b loyal#! #v [Country.MakeScope.Var('cp_loyalist').GetValue|D]#!\n\n[ROOT.GetCountry.GetCustom('cp_layla_housing_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_possessions_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_routine_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_savings_desc')]"
+ cp_je_layla_reason:0 "#b age#! #v [Country.MakeScope.Var('cp_age').GetValue|D]#!  ·  #b SoL#! #v [Country.MakeScope.Var('cp_sol').GetValue|D]#!  ·  #b hope#! #v [Country.MakeScope.Var('cp_hope').GetValue|D]#!  ·  #b literacy#! #v [ROOT.GetCountry.GetCustom('cp_layla_literacy_label')]#!  ·  #b mood#! #v [ROOT.GetCountry.GetCustom('cp_layla_mood_label')]#!\n\n[ROOT.GetCountry.GetCustom('cp_layla_housing_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_possessions_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_routine_desc')]\n\n[ROOT.GetCountry.GetCustom('cp_layla_savings_desc')]"
 
  # ----- Events -----
 
@@ -142,6 +142,19 @@
  cp_layla.14.d:0 "The neighbour's boy is crying in the lane again. His mother is at the well."
  cp_layla.14.f:0 "His grandmother died in the winter and there is no one in the house to pick him up. Layla listens for a long moment with her hands in the dough. The crying is the kind that is not about anything and will pass; the mother — Fatma, six months older than Layla, with the new baby who almost did not live — will be back in a quarter-hour. Layla does not go out. She knows that if Fatma returns and finds another woman holding her son, it will be a wound that does not heal the right way. But she leaves the dough and steps into the doorway, so that the boy, if he turns his head, will see that there is a face. Sometimes being seen is enough. He turns his head. She lifts her chin. He keeps crying; but he keeps crying at her, now, instead of at nothing."
  cp_layla.14.a:0 "She stays in the doorway."
+
+ # ----- Word labels for the debug readout -----
+ cp_layla_literacy_label_illiterate:0 "illiterate"
+ cp_layla_literacy_label_signs:0 "signs her name"
+ cp_layla_literacy_label_reading:0 "reading slowly"
+ cp_layla_literacy_label_literate:0 "literate"
+ cp_layla_literacy_label_well_read:0 "well-read"
+
+ cp_layla_mood_label_steady:0 "steady"
+ cp_layla_mood_label_restive:0 "restive"
+ cp_layla_mood_label_radicalized:0 "radicalized"
+ cp_layla_mood_label_loyal:0 "loyal"
+ cp_layla_mood_label_devoted:0 "devoted"
 
  # ----- Customizable-localization variants for cp_je_layla_reason -----
  # See mod/common/customizable_localization/cp_custom_loc.txt for the

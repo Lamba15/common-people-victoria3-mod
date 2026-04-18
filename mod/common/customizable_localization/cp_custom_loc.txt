@@ -22,6 +22,62 @@
 
 
 # ============================================================================
+# LITERACY LABEL -- word tier for the JE's debug readout
+# ============================================================================
+cp_layla_literacy_label = {
+	type = country
+
+	text = {
+		trigger = { var:cp_literacy >= 70 }
+		localization_key = cp_layla_literacy_label_well_read
+	}
+	text = {
+		trigger = { var:cp_literacy >= 40 }
+		localization_key = cp_layla_literacy_label_literate
+	}
+	text = {
+		trigger = { var:cp_literacy >= 15 }
+		localization_key = cp_layla_literacy_label_reading
+	}
+	text = {
+		trigger = { var:cp_literacy >= 5 }
+		localization_key = cp_layla_literacy_label_signs
+	}
+	text = {
+		localization_key = cp_layla_literacy_label_illiterate
+	}
+}
+
+
+# ============================================================================
+# MOOD LABEL -- single word that combines the radical/loyalist mutex
+# ============================================================================
+cp_layla_mood_label = {
+	type = country
+
+	text = {
+		trigger = { var:cp_loyalist >= 50 }
+		localization_key = cp_layla_mood_label_devoted
+	}
+	text = {
+		trigger = { var:cp_loyalist >= 20 }
+		localization_key = cp_layla_mood_label_loyal
+	}
+	text = {
+		trigger = { var:cp_radical >= 50 }
+		localization_key = cp_layla_mood_label_radicalized
+	}
+	text = {
+		trigger = { var:cp_radical >= 20 }
+		localization_key = cp_layla_mood_label_restive
+	}
+	text = {
+		localization_key = cp_layla_mood_label_steady
+	}
+}
+
+
+# ============================================================================
 # HOUSING -- where and how she lives
 # ============================================================================
 cp_layla_housing_desc = {
