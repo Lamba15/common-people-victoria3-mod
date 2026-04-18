@@ -566,3 +566,60 @@ cp_debug.39 = {
 		}
 	}
 }
+
+# cp_debug.40 -- Force-pass law_women_in_the_fields. Dispatcher should fire
+# cp_layla.93 on first enactment.
+cp_debug.40 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_women_in_the_fields
+		}
+	}
+}
+
+# cp_debug.41 -- Force-pass law_women_own_property. Fires cp_layla.94.
+cp_debug.41 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_women_own_property
+		}
+	}
+}
+
+# cp_debug.42 -- Force-pass law_women_in_the_workplace. Fires cp_layla.95.
+cp_debug.42 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_women_in_the_workplace
+		}
+	}
+}
+
+# cp_debug.43 -- Force-pass law_womens_suffrage. Fires cp_layla.96.
+# Requires feminism tech + a suffrage-permitting distribution-of-power law
+# (census/landed/wealth/universal/single-party/anarchy). Shove both first.
+cp_debug.43 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			add_technology_researched = feminism
+			activate_law = law_type:law_wealth_voting
+			activate_law = law_type:law_womens_suffrage
+		}
+	}
+}

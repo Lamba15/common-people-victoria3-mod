@@ -1395,3 +1395,307 @@ cp_layla.70 = {
 		cp_family_refuses_cairo = yes
 	}
 }
+
+
+# =============================================================================
+# Women's rights enactments -- cp_layla.93..96
+# =============================================================================
+# Four first-time-enactment reactions, one per rung above no_womens_rights.
+# Each is gated on a permanent cp_seen_womens_rights_* flag so the event
+# fires exactly once per life, even if the law is rolled back and re-enacted.
+# Dispatcher lives in cp_on_law_enacted and checks the same flag before
+# trigger_event; the flag is set inside the option so console-fired test
+# runs still work without a dispatcher.
+#
+# The law ladder in lawgroup_rights_of_women:
+#   law_no_womens_rights    (starting point, nothing to react to)
+#   law_women_in_the_fields (quasi-corvée; a grim "recognition" by the state)
+#   law_women_own_property  (she can hold a deed in her own name)
+#   law_women_in_the_workplace (unlocks self-employment crossroads)
+#   law_womens_suffrage     (her name on the rolls)
+# =============================================================================
+
+# cp_layla.93 -- "The Law Catches Up to Us" (law_women_in_the_fields)
+#
+# A grim "progression": the state now requires women in the fields. For a
+# peasant like Layla, it's not liberation — it's the formalisation of what
+# she already does. For a city household, it's a notice that her hours are
+# claimed. Radicalism rises if she is already struggling; exhaustion always
+# rises because this rung always means more work.
+cp_layla.93 = {
+	type = country_event
+
+	title = cp_layla.93.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.93.d.peasant
+				trigger = {
+					OR = {
+						has_variable = cp_profession_peasants
+						has_variable = cp_profession_farmers
+					}
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla.93.d.city
+				trigger = { has_variable = cp_in_city }
+			}
+			triggered_desc = {
+				desc = cp_layla.93.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.93.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_womens_rights_fields }
+	}
+
+	immediate = {
+		set_variable = cp_seen_womens_rights_fields
+	}
+
+	# Option A: weary recognition. Yes. We were already doing it.
+	option = {
+		name = cp_layla.93.a
+		default_option = yes
+		cp_shift_exhaustion = { delta = 1 }
+	}
+	# Option B: the small anger. The state's name for her labour is still
+	# not payment. Weight toward land_reform (she wants something deeper).
+	option = {
+		name = cp_layla.93.b
+		cp_shift_radical = { delta = 1 }
+		cp_shift_weight = { weight = land_reform delta = 1 }
+	}
+}
+
+
+# cp_layla.94 -- "A Paper with My Name" (law_women_own_property)
+#
+# The first rung that actually opens a door for her. A deed, a signature,
+# a thing held in her own hand. Hope rises; her weight on land_reform
+# deepens because now she has a stake. If she is already a homesteader
+# or owns the small concern, the event takes a different register: not
+# "I can own" but "what I own is finally mine in law."
+cp_layla.94 = {
+	type = country_event
+
+	title = cp_layla.94.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.94.d.already_owns
+				trigger = {
+					OR = {
+						has_variable = cp_owns_land
+						has_variable = cp_owns_small_concern
+					}
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla.94.d.widow
+				trigger = {
+					has_variable = cp_ahmed_alive
+					var:cp_ahmed_alive = 0
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla.94.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.94.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_womens_rights_property }
+	}
+
+	immediate = {
+		set_variable = cp_seen_womens_rights_property
+		set_variable = cp_may_own_property
+	}
+
+	# Option A: the proud claim. Hope rises, weight on land_reform rises.
+	option = {
+		name = cp_layla.94.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+		cp_shift_weight = { weight = land_reform delta = 1 }
+		cp_shift_loyalist = { delta = 1 }
+	}
+	# Option B: the skeptical claim. Paper is paper; will the village
+	# agree? Small hope, small weight, no loyalism.
+	option = {
+		name = cp_layla.94.b
+		cp_shift_hope = { delta = 1 }
+	}
+}
+
+
+# cp_layla.95 -- "They Are Hiring Women Now" (law_women_in_the_workplace)
+#
+# The law that unlocks the self-employment crossroads (Slice D). For a
+# village Layla, the event is theoretical; for a city Layla, it's the
+# day her neighbour walks past the mill gate and is not turned back.
+# Sets cp_may_work flag that downstream events will read.
+cp_layla.95 = {
+	type = country_event
+
+	title = cp_layla.95.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.95.d.city
+				trigger = { has_variable = cp_in_city }
+			}
+			triggered_desc = {
+				desc = cp_layla.95.d.village
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.95.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_womens_rights_workplace }
+	}
+
+	immediate = {
+		set_variable = cp_seen_womens_rights_workplace
+		set_variable = cp_may_work
+	}
+
+	# Option A: she watches and considers. Hope small; loyalism small.
+	option = {
+		name = cp_layla.95.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+		cp_shift_loyalist = { delta = 1 }
+	}
+	# Option B: Ahmed's voice. Some husbands do not bless this; the
+	# prose lets the player choose the household's register. Small
+	# exhaustion for the unspoken argument.
+	option = {
+		name = cp_layla.95.b
+		trigger = {
+			has_variable = cp_ahmed_alive
+			var:cp_ahmed_alive > 0
+		}
+		cp_shift_exhaustion = { delta = 1 }
+	}
+	# Option C: the older woman's scorn — she says nothing aloud but
+	# remembers the rung her mother never got. No effect.
+	option = {
+		name = cp_layla.95.c
+	}
+}
+
+
+# cp_layla.96 -- "I Am on the Rolls" (law_womens_suffrage)
+#
+# The farthest rung. Her name recorded. For a literate city Layla this
+# is a kind of recognition she has been waiting for since the first law
+# passed; for a village peasant it is a strange rumour, a rumour she
+# does not dismiss. Sets cp_may_vote; cp_has_voted is set later via a
+# pulse event when an election actually happens near her.
+cp_layla.96 = {
+	type = country_event
+
+	title = cp_layla.96.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.96.d.literate
+				trigger = { var:cp_literacy >= 20 }
+			}
+			triggered_desc = {
+				desc = cp_layla.96.d.village
+				trigger = {
+					OR = {
+						has_variable = cp_profession_peasants
+						has_variable = cp_profession_farmers
+					}
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla.96.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.96.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_womens_rights_suffrage }
+	}
+
+	immediate = {
+		set_variable = cp_seen_womens_rights_suffrage
+		set_variable = cp_may_vote
+	}
+
+	# Option A: the proud claim. Hope +2, loyalism +3, weight on
+	# womens_rights rises because the world just proved her right to
+	# have cared.
+	option = {
+		name = cp_layla.96.a
+		default_option = yes
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 3 }
+		cp_shift_weight = { weight = womens_rights delta = 1 }
+	}
+	# Option B: the disbelieving smile. The farther reach — she has
+	# been told too often that her name did not matter — softens only
+	# half. Small hope, no loyalism.
+	option = {
+		name = cp_layla.96.b
+		cp_shift_hope = { delta = 1 }
+	}
+	# Option C: the radical reading. It is not enough; the paper does
+	# not fill the stove. Small radical bump.
+	option = {
+		name = cp_layla.96.c
+		cp_shift_radical = { delta = 1 }
+		cp_shift_weight = { weight = revolution delta = 1 }
+	}
+}

@@ -788,3 +788,40 @@
  cp_layla.8.a:0 "Go to sleep."
  cp_layla.8.b:0 "#italic Curse the ones who decide such things.#!"
 
+ # ----- cp_layla.93 -- "The Law Catches Up to Us" (law_women_in_the_fields) -----
+ cp_layla.93.t:0 "The Law Catches Up to Us"
+ cp_layla.93.d.peasant:0 "A man from the town reads a paper in the square. The women, he says, are required now. She listens from the doorway, holding the water jar. She has been required since she was seven."
+ cp_layla.93.d.city:0 "A notice is posted on the wall of the alley. The women of the household are to be counted among the workers. Her hours — which had been nobody's business — are now, by paper, the state's."
+ cp_layla.93.d.default:0 "A paper goes up on the wall. The women, it says, are required. It is not a new thing. It is only that someone has written it down."
+ cp_layla.93.f:0 "Ahmed is at the mosque. The children are at her feet. The water jar is on her hip. The man with the paper is speaking slowly because he is speaking to women and he has been told to speak slowly to women, which is the same mistake all such men make — she hears every word the first time and she hears also what lies between them. The paper in his hand is a law. The law says that she, and her sister-in-law, and her neighbour, and her mother when she was young, and her grandmother who was sold to the bey's house and died there, and every woman in the lane and the next lane and the country — that all of them are required, now, to give their hands to the field when the field asks. She has given her hands to the field since she was seven. The difference, she thinks, is that before, the field asked. Now the paper asks. She is not sure which is worse. The paper does not have to sleep at night. The paper cannot be reasoned with at dusk when the water is low and the child is feverish. The paper simply stays — a thing written — and comes back in the morning when you have forgotten it. She turns to go inside. The man finishes his reading. Nobody thanks him. Nobody needs to. He folds the paper. He goes away."
+ cp_layla.93.a:0 "#italic Yes. We were already doing it.#!"
+ cp_layla.93.b:0 "#italic The state's name for what I do is still not payment.#!"
+
+ # ----- cp_layla.94 -- "A Paper with My Name" (law_women_own_property) -----
+ cp_layla.94.t:0 "A Paper with My Name"
+ cp_layla.94.d.already_owns:0 "The deed is not a new thing. The law is. Until yesterday she held what was hers on sufferance. Today she holds it by right."
+ cp_layla.94.d.widow:0 "The paper is brought to her house. It bears her name. It bears no man's name. She is told that the house is hers — that it has been hers — and that the law now says so out loud."
+ cp_layla.94.d.default:0 "The village is told at the well. A woman may now hold a deed, a shop, a field, in her own name. The older women make small sounds — half scoffing, half something else. She makes no sound."
+ cp_layla.94.f:0 "She turns the word over in her mouth: #italic deed#!. She has not owned a thing in her life that was not given to her by a man — the water jar was her mother's, the shawl was Ahmed's mother's, the bed was her father's, the house is in Ahmed's name though it was her dowry that helped build the eastern wall. The law says: this can change. She is not naïve enough to think the law is the village. The village is not the law. The village will go on calling her Ahmed's wife when the deed says otherwise. But paper is paper. Paper outlives a man. Paper lasts longer than a harvest; paper lasts longer than a quarrel between brothers. If a day comes — she does not let herself think of that day, and yet she thinks of it — when Ahmed is not here, a paper with her name on it will mean that the house will not be carried off by his brothers. She does not say this aloud. She only turns the word over: #italic deed#!. It sits oddly in her mouth, like a fruit she has not tasted, and is not sure yet whether she will like."
+ cp_layla.94.a:0 "#italic So now it is mine.#!"
+ cp_layla.94.b:0 "#italic Paper is paper. The village will see.#!"
+
+ # ----- cp_layla.95 -- "They Are Hiring Women Now" (law_women_in_the_workplace) -----
+ cp_layla.95.t:0 "They Are Hiring Women Now"
+ cp_layla.95.d.city:0 "At the mill gate, a foreman calls the names. A name she knows answers. A woman she knows walks through."
+ cp_layla.95.d.village:0 "A letter comes from a cousin in the city. The mills, she writes, have begun to hire women. She writes it twice, underlined both times, so that the pen's meaning cannot be mistaken."
+ cp_layla.95.f:0 "She is at the window — of the tenement flat, or the village door; both are the same window in the telling — and she sees her neighbour walk through a gate she had not been allowed to walk through before. The neighbour does not look back. The neighbour does not wave. The neighbour has a lunch tin in one hand and a headscarf tied the way her mother never tied one, and she walks into the mill yard the way men walk into mill yards: without asking. Layla does not know whether she will ever walk through such a gate herself. She is older than the neighbour. She has children. She has Ahmed, or she does not. The question of whether she #italic will#! is separate from the question of whether she #italic can#!. For the first time in her life, the second question has been answered, and she has not been the one who answered it. Somebody in a room she has never seen has answered it. She sits with this a long time. She does not finish her tea."
+ cp_layla.95.a:0 "#italic A gate has opened. I will look at it.#!"
+ cp_layla.95.b:0 "#italic Ahmed will not like this.#!"
+ cp_layla.95.c:0 "#italic The older women will say she has forgotten who she is.#!"
+
+ # ----- cp_layla.96 -- "I Am on the Rolls" (law_womens_suffrage) -----
+ cp_layla.96.t:0 "I Am on the Rolls"
+ cp_layla.96.d.literate:0 "She can read it herself. Her name is in the list. It is spelled correctly. The ink is fresh enough to smudge if a finger lingers on it."
+ cp_layla.96.d.village:0 "A man comes from the town with a book. He reads the names of the women. He reads hers. She does not know what it means, except that he has said her name aloud in a book, which has never happened before."
+ cp_layla.96.d.default:0 "The announcement is shouted in the square. The women of the country, they say, are on the rolls. The women in the square do not cheer. They look at each other. They do not know yet what cheering would mean."
+ cp_layla.96.f:0 "It is a small thing and it is a great thing. It is a line of ink in a book she will never see, in a building she has never entered, in a city whose streets she has walked in only in her imagination. It says her name. Her name — not her father's name with hers attached at the end, not her husband's name with hers in the margin, but her name, standing alone, the way it has stood only on her tongue all her life. She repeats the name to herself, quietly, the way she repeats a prayer. She thinks: #italic I am on the rolls.#! She thinks: #italic Somewhere in the country, a man is reading my name.#! She thinks of her mother, who died before any such book was written, and whose name is only in her own mouth and in the mouths of the daughters she left, and she thinks: if my mother could have stood beside me this morning, she would have smiled. That is enough. The rest is argument. The rest is the slow walk down a long road. The first stone has been laid. She touches the wall of her house as she goes inside, the way she touched the jamb when she came here as a bride, and the year she was a bride feels, for the first time in a long time, like a shorter distance from today than she had been told."
+ cp_layla.96.a:0 "#italic So it has come. Let them read the name.#!"
+ cp_layla.96.b:0 "#italic A line in a book. We will see what it is worth.#!"
+ cp_layla.96.c:0 "#italic Ink does not fill the stove.#!"
+
