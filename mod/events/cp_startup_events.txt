@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- startup events
 #
 # Fires once at game start for each country we have content for. Layla is not

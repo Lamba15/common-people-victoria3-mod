@@ -1,23 +1,23 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- debug events
 #
 # Console-only test events. orphan = yes is legitimate here because these
 # are explicitly fired via `event cp_debug.N` from the in-game console. They
 # are NOT wired to dispatchers or random lists. See plan §10 rule 3.
 #
+# Scope-safe: the console's `event cp_debug.N` fires the event with an empty
+# scope target (no owning country), so each event wraps its effect in
+# `c:EGY ?= { ... }` to resolve to Egypt.
+#
 # Usage (in-game debug console):
-#   event cp_debug.1   -- dump Layla's current state as a country modifier
-#                         tooltip
-#   event cp_debug.2   -- console-pass Homesteading law (for dispatcher test)
+#   event cp_debug.1   -- show Layla's current state in a visible event
+#   event cp_debug.2   -- activate Homesteading law in Egypt
 #   event cp_debug.3   -- fast-forward Layla's age by 10 years
 ###############################################################################
 
 namespace = cp_debug
 
 # cp_debug.1 -- State dump
-#
-# Shows a visible event with Layla's current state read into the flavor
-# text. Not a permanent record; close and re-fire to see updated state.
 cp_debug.1 = {
 	type = country_event
 	orphan = yes
@@ -27,20 +27,24 @@ cp_debug.1 = {
 	desc = cp_debug.1.d
 	flavor = cp_debug.1.f
 
+	duration = 3
+
 	option = {
 		name = cp_debug.1.a
 		default_option = yes
 	}
 }
 
-# cp_debug.2 -- Force Homesteading law
+# cp_debug.2 -- Force Homesteading law in Egypt
 cp_debug.2 = {
 	type = country_event
 	hidden = yes
 	orphan = yes
 
 	immediate = {
-		activate_law = law_type:law_homesteading
+		c:EGY ?= {
+			activate_law = law_type:law_homesteading
+		}
 	}
 }
 
@@ -51,6 +55,8 @@ cp_debug.3 = {
 	orphan = yes
 
 	immediate = {
-		change_variable = { name = cp_age add = 10 }
+		c:EGY ?= {
+			change_variable = { name = cp_age add = 10 }
+		}
 	}
 }

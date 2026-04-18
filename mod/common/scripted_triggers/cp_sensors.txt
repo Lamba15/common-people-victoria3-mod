@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- sensors
 #
 # The only layer that asks questions of the V3 world. Events consume sensors;

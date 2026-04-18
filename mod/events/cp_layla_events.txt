@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- Layla story events
 #
 # All Layla events are country_event (root = c:EGY). Layla's state lives as
@@ -211,14 +211,12 @@ cp_layla.6 = {
 #
 # Fired from cp_layla_check_button's random_list. No state mutation -- pure
 # reflection beats. Three gate on specific life situations (war / homesteader
-# / serfdom); three are always-on. All orphan = yes because the button's
-# random list is their only entry point.
+# / serfdom); three are always-on.
 ###############################################################################
 
 # cp_layla.10 -- "The Letter That Has Not Come"
 cp_layla.10 = {
 	type = country_event
-	orphan = yes
 
 	title = cp_layla.10.t
 	desc  = cp_layla.10.d
@@ -245,7 +243,6 @@ cp_layla.10 = {
 # cp_layla.11 -- "Walking the Field She Owns"
 cp_layla.11 = {
 	type = country_event
-	orphan = yes
 
 	title = cp_layla.11.t
 	desc  = cp_layla.11.d
@@ -272,7 +269,6 @@ cp_layla.11 = {
 # cp_layla.12 -- "Under the Bey's Eye"
 cp_layla.12 = {
 	type = country_event
-	orphan = yes
 
 	title = cp_layla.12.t
 	desc  = cp_layla.12.d
@@ -299,7 +295,6 @@ cp_layla.12 = {
 # cp_layla.13 -- "A Day With No Wind"
 cp_layla.13 = {
 	type = country_event
-	orphan = yes
 
 	title = cp_layla.13.t
 	desc  = cp_layla.13.d
@@ -326,7 +321,6 @@ cp_layla.13 = {
 # cp_layla.14 -- "The Neighbour's Boy in the Lane"
 cp_layla.14 = {
 	type = country_event
-	orphan = yes
 
 	title = cp_layla.14.t
 	desc  = cp_layla.14.d
@@ -353,7 +347,6 @@ cp_layla.14 = {
 # cp_layla.15 -- "Her Mother's Left Hand"
 cp_layla.15 = {
 	type = country_event
-	orphan = yes
 
 	title = cp_layla.15.t
 	desc  = cp_layla.15.d

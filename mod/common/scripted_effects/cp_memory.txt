@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- memory
 #
 # The only layer that writes to Layla's country variables. Events mutate state

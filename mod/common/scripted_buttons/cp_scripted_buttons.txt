@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- scripted buttons
 #
 # cp_layla_check_button -- the "Check on Layla" action on her JE. Dispatches

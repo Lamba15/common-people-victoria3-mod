@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- debug effects
 #
 # Diagnostic effects for Phase A verification and ongoing development.

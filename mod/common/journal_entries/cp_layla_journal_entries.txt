@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- journal entries
 #
 # cp_je_layla -- Layla's life. Pinned by default for Egypt at game start.
@@ -25,11 +25,6 @@ cp_je_layla = {
 	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
 
 	group = je_group_internal_affairs
-
-	# Only pinnable while Layla is alive.
-	possible = {
-		has_variable = cp_layla_alive
-	}
 
 	# Monthly-updating status. first_valid picks the first matching branch,
 	# so more specific conditions (situation + mood) come before general
@@ -138,14 +133,6 @@ cp_je_layla = {
 		effect = {
 			cp_age_increment = yes
 		}
-	}
-
-	# During Phase A verification, the current-value tracks the debug tick
-	# so the user can confirm the pulse fires without leaving the JE panel.
-	# Remove this block (and the cp_debug_tick loc in the status line) when
-	# the gate closes and Phase A ships.
-	current_value = {
-		value = root.var:cp_debug_tick
 	}
 
 	weight = 100

@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- scripted progress bars
 #
 # cp_layla_life_bar -- her life shown as months lived since her 22nd birthday.

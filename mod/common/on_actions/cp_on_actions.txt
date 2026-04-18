@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- on_actions
 #
 # Hooks into base-game on_actions to drive the dispatcher layer. We NEVER
@@ -64,35 +64,26 @@ on_law_enactment_pass = {
 
 cp_on_law_enacted = {
 	effect = {
-		# Egypt-only for now. Future characters in other countries get their
-		# own if-branches here, gated on their home country tag.
+		# Homesteading granted -- she owns the field.
+		# Pattern mirrors vanilla 00_monarchy.txt: c:TAG ?= this + ROOT.currently_enacting_law.type ?= law_type:X.
 		if = {
 			limit = {
-				THIS = c:EGY
+				c:EGY ?= this
 				has_variable = cp_layla_alive
+				ROOT.currently_enacting_law.type ?= law_type:law_homesteading
+				NOT = { has_variable = cp_seen_homesteading }
 			}
-
-			# Homesteading granted -- she owns the field.
-			if = {
-				limit = {
-					currently_enacting_law = {
-						type = law_type:law_homesteading
-					}
-					NOT = { has_variable = cp_seen_homesteading }
-				}
-				trigger_event = { id = cp_layla.2 }
+			trigger_event = { id = cp_layla.2 }
+		}
+		# Serfdom restored (regressed from Tenant Farmers or Homesteading).
+		else_if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				ROOT.currently_enacting_law.type ?= law_type:law_serfdom
+				NOT = { has_variable = cp_seen_serfdom_restored }
 			}
-
-			# Serfdom restored (regressed from Tenant Farmers or Homesteading).
-			else_if = {
-				limit = {
-					currently_enacting_law = {
-						type = law_type:law_serfdom
-					}
-					NOT = { has_variable = cp_seen_serfdom_restored }
-				}
-				trigger_event = { id = cp_layla.3 }
-			}
+			trigger_event = { id = cp_layla.3 }
 		}
 	}
 }
@@ -114,7 +105,7 @@ cp_on_war_started = {
 	effect = {
 		if = {
 			limit = {
-				THIS = c:EGY
+				c:EGY ?= this
 				has_variable = cp_layla_alive
 				has_variable = cp_ahmed_alive
 				NOT = { has_variable = cp_ahmed_at_war }
