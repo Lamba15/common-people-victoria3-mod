@@ -1825,3 +1825,66 @@ cp_layla.97 = {
 		cp_decline_self_employment = yes
 	}
 }
+
+
+# cp_layla.24 -- "Election Day" (first vote)
+#
+# Fires from the JE's monthly random pool. Internal trigger gates on
+# cp_may_vote (set by cp_layla.96's immediate) AND NOT cp_has_voted so
+# the event only fires on the first election she is eligible for. The
+# event sets cp_has_voted permanently, unlocking the voter JE anchor.
+#
+# No choices. The event is a register shift, not a decision; her
+# decision to vote was made the day the law passed. Today is simply
+# the day the ballot arrives in her hand.
+cp_layla.24 = {
+	type = country_event
+
+	title = cp_layla.24.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.24.d.literate
+				trigger = { var:cp_literacy >= 30 }
+			}
+			triggered_desc = {
+				desc = cp_layla.24.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla.24.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		has_variable = cp_may_vote
+		NOT = { has_variable = cp_has_voted }
+	}
+
+	immediate = {
+		set_variable = cp_has_voted
+	}
+
+	# A — she votes. Proud, deliberate, a day she will remember.
+	option = {
+		name = cp_layla.24.a
+		default_option = yes
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 2 }
+		cp_shift_weight = { weight = womens_rights delta = 1 }
+	}
+	# B — she votes with teeth. The ballot does not undo the decades.
+	option = {
+		name = cp_layla.24.b
+		cp_shift_hope = { delta = 1 }
+		cp_shift_radical = { delta = 1 }
+	}
+}

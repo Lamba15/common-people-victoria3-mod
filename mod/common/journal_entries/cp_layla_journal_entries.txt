@@ -80,6 +80,36 @@ cp_je_layla = {
 			triggered_desc = { trigger = { var:cp_ahmed_alive = 0  var:cp_status_variant = 2 } desc = cp_je_layla_status_widow_mid_alt }
 			triggered_desc = { trigger = { var:cp_ahmed_alive = 0 } desc = cp_je_layla_status_widow_mid_alt2 }
 
+			# --- Pensioner (age 65+ AND pension law active) ---
+			# A strong daily reality: the envelope is the month's shape. Ranks
+			# above wealthy because a 65yo peasant pensioner's life is defined
+			# by the pension; ranks below widow because widowhood is the more
+			# acute organising condition.
+			triggered_desc = { trigger = { var:cp_age >= 65  has_law = law_type:law_old_age_pension  var:cp_mood_roll >= 7  var:cp_status_variant = 1 } desc = cp_je_layla_status_pensioner_high }
+			triggered_desc = { trigger = { var:cp_age >= 65  has_law = law_type:law_old_age_pension  var:cp_mood_roll >= 7  var:cp_status_variant = 2 } desc = cp_je_layla_status_pensioner_high_alt }
+			triggered_desc = { trigger = { var:cp_age >= 65  has_law = law_type:law_old_age_pension  var:cp_mood_roll >= 7  var:cp_status_variant = 3 } desc = cp_je_layla_status_pensioner_high_alt2 }
+			triggered_desc = { trigger = { var:cp_age >= 65  has_law = law_type:law_old_age_pension  var:cp_mood_roll <= 3  var:cp_status_variant = 1 } desc = cp_je_layla_status_pensioner_low }
+			triggered_desc = { trigger = { var:cp_age >= 65  has_law = law_type:law_old_age_pension  var:cp_mood_roll <= 3  var:cp_status_variant = 2 } desc = cp_je_layla_status_pensioner_low_alt }
+			triggered_desc = { trigger = { var:cp_age >= 65  has_law = law_type:law_old_age_pension  var:cp_mood_roll <= 3  var:cp_status_variant = 3 } desc = cp_je_layla_status_pensioner_low_alt2 }
+			triggered_desc = { trigger = { var:cp_age >= 65  has_law = law_type:law_old_age_pension  var:cp_status_variant = 1 } desc = cp_je_layla_status_pensioner_mid }
+			triggered_desc = { trigger = { var:cp_age >= 65  has_law = law_type:law_old_age_pension  var:cp_status_variant = 2 } desc = cp_je_layla_status_pensioner_mid_alt }
+			triggered_desc = { trigger = { var:cp_age >= 65  has_law = law_type:law_old_age_pension } desc = cp_je_layla_status_pensioner_mid_alt2 }
+
+			# --- Voter (cp_has_voted flag, permanent identity shift) ---
+			# Ranks here because the first time a woman of her culture has
+			# voted re-frames everything. The prose is quieter than the
+			# suffrage enactment event — voting has become a thing she does,
+			# no longer a thing that just happened.
+			triggered_desc = { trigger = { has_variable = cp_has_voted  var:cp_mood_roll >= 7  var:cp_status_variant = 1 } desc = cp_je_layla_status_voter_high }
+			triggered_desc = { trigger = { has_variable = cp_has_voted  var:cp_mood_roll >= 7  var:cp_status_variant = 2 } desc = cp_je_layla_status_voter_high_alt }
+			triggered_desc = { trigger = { has_variable = cp_has_voted  var:cp_mood_roll >= 7  var:cp_status_variant = 3 } desc = cp_je_layla_status_voter_high_alt2 }
+			triggered_desc = { trigger = { has_variable = cp_has_voted  var:cp_mood_roll <= 3  var:cp_status_variant = 1 } desc = cp_je_layla_status_voter_low }
+			triggered_desc = { trigger = { has_variable = cp_has_voted  var:cp_mood_roll <= 3  var:cp_status_variant = 2 } desc = cp_je_layla_status_voter_low_alt }
+			triggered_desc = { trigger = { has_variable = cp_has_voted  var:cp_mood_roll <= 3  var:cp_status_variant = 3 } desc = cp_je_layla_status_voter_low_alt2 }
+			triggered_desc = { trigger = { has_variable = cp_has_voted  var:cp_status_variant = 1 } desc = cp_je_layla_status_voter_mid }
+			triggered_desc = { trigger = { has_variable = cp_has_voted  var:cp_status_variant = 2 } desc = cp_je_layla_status_voter_mid_alt }
+			triggered_desc = { trigger = { has_variable = cp_has_voted } desc = cp_je_layla_status_voter_mid_alt2 }
+
 			# --- Wealthy (SoL 30+, Affluent tier and above) ---
 			# Takes precedence over homesteader and tenant — at this SoL she
 			# is no longer the woman the land-focused prose is written for.
@@ -160,6 +190,11 @@ cp_je_layla = {
 			10 = cp_layla.21   # Dust on the water
 			10 = cp_layla.22   # The younger brother's letter
 			10 = cp_layla.23   # The mule that will not move
+
+			# Post-suffrage: Election Day. Gated inside the event on
+			# cp_may_vote && NOT cp_has_voted so the pulse reaches the
+			# event but the trigger blocks it when she already has voted.
+			10 = cp_layla.24   # Election day — the first vote
 		}
 	}
 
