@@ -341,6 +341,16 @@
  cp_layla.50.b:0 "She wonders whether her sons, when they come, will walk to that gate at dawn."
 
 
+ # ----- Revolution reactions (cp_layla.60..) -----
+
+ # cp_layla.60 -- "The Shutters Close"
+ cp_layla.60.t:0 "The Shutters Close"
+ cp_layla.60.d:0 "Riders came through the village at dusk with rifles on their backs and a flag she did not recognise. They did not stop. They rode on toward the river."
+ cp_layla.60.f:0 "She put out the lamp without needing to be told. She sat with the children in the dark, on the far side of the room from the window, and she did not speak, and she did not let them speak. Across the lane, the neighbour woman had done the same — Layla could tell by the dark where there should have been a lamp. Somewhere, not far enough, a rifle was fired, and then another, and then nothing. They sat in the dark for a long time. The country had split open. She had heard the word — inqilab — from her grandfather once, about a thing that happened when he was young, and now the word was here, in her lane, on the road to the river. In the morning she would sweep, and she would draw water, and she would give the children their bread, because that is what one does, because the country does not know her name and therefore the country cannot come for her directly — only through her husband, her sons, her door. But tonight she sat in the dark, and she did not hope, and she did not pray, because hoping and praying were both noises and tonight she had learned the value of silence."
+ cp_layla.60.a:0 "She sits in the dark until dawn."
+ cp_layla.60.b:0 "She listens for hoofbeats. She begins, quietly, to calculate."
+
+
  # ============================================================================
  # Imagined audience with the Pasha
  # See documentation/characters/layla/conversation.md

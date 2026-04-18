@@ -932,3 +932,42 @@ cp_layla.50 = {
 		cp_shift_weight = { weight = labor_laws delta = 1 }
 	}
 }
+
+
+###############################################################################
+# Revolution reactions (cp_layla.60..69)
+#
+# Fired by cp_on_revolution when Egypt itself enters civil war. Not on
+# revolutions elsewhere — she would not hear of those directly.
+###############################################################################
+
+# cp_layla.60 -- "The Shutters Close"
+cp_layla.60 = {
+	type = country_event
+
+	title = cp_layla.60.t
+	desc  = cp_layla.60.d
+	flavor = cp_layla.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	option = {
+		name = cp_layla.60.a
+		default_option = yes
+		cp_shift_exhaustion = { delta = 1 }
+	}
+	option = {
+		name = cp_layla.60.b
+		cp_shift_weight = { weight = revolution delta = 1 }
+	}
+}

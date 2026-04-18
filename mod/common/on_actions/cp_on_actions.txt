@@ -429,3 +429,34 @@ cp_on_building_built = {
 		}
 	}
 }
+
+
+# ============================================================================
+# Revolution start -- the country tears; she shutters the house
+# ============================================================================
+# on_revolution_start fires with root = the country where the revolution
+# begins. We fire Layla's fear event when EGY is that country. One-shot
+# per revolution via cp_seen_revolution flag; the flag is timed so a
+# later revolution (different year, different cause) can re-fire.
+# ============================================================================
+
+on_revolution_start = {
+	on_actions = {
+		cp_on_revolution
+	}
+}
+
+cp_on_revolution = {
+	effect = {
+		if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				NOT = { has_variable = cp_seen_revolution }
+			}
+			trigger_event = { id = cp_layla.60 }
+			# Timed 10-year flag so a later revolution can re-fire the prose.
+			set_variable = { name = cp_seen_revolution days = 3650 }
+		}
+	}
+}
