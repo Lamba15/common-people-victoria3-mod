@@ -1,0 +1,56 @@
+###############################################################################
+# Common People -- debug events
+#
+# Console-only test events. orphan = yes is legitimate here because these
+# are explicitly fired via `event cp_debug.N` from the in-game console. They
+# are NOT wired to dispatchers or random lists. See plan §10 rule 3.
+#
+# Usage (in-game debug console):
+#   event cp_debug.1   -- dump Layla's current state as a country modifier
+#                         tooltip
+#   event cp_debug.2   -- console-pass Homesteading law (for dispatcher test)
+#   event cp_debug.3   -- fast-forward Layla's age by 10 years
+###############################################################################
+
+namespace = cp_debug
+
+# cp_debug.1 -- State dump
+#
+# Shows a visible event with Layla's current state read into the flavor
+# text. Not a permanent record; close and re-fire to see updated state.
+cp_debug.1 = {
+	type = country_event
+	orphan = yes
+	placement = root
+
+	title = cp_debug.1.t
+	desc = cp_debug.1.d
+	flavor = cp_debug.1.f
+
+	option = {
+		name = cp_debug.1.a
+		default_option = yes
+	}
+}
+
+# cp_debug.2 -- Force Homesteading law
+cp_debug.2 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		activate_law = law_type:law_homesteading
+	}
+}
+
+# cp_debug.3 -- Age Layla by 10 years
+cp_debug.3 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		change_variable = { name = cp_age add = 10 }
+	}
+}

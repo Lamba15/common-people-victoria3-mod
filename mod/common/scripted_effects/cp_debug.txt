@@ -1,0 +1,15 @@
+###############################################################################
+# Common People -- debug effects
+#
+# Diagnostic effects for Phase A verification and ongoing development.
+# Not called from production code; only from cp_debug_events.txt and from
+# the JE's on_monthly_pulse (cp_debug_tick_increment, temporarily).
+#
+# Once Phase A is proven and the JE pulse is confirmed firing, the status-
+# line reference to cp_debug_tick is removed. The variable itself stays as
+# a quiet monotonic counter we can inspect anytime.
+###############################################################################
+
+cp_debug_tick_increment = {
+	change_variable = { name = cp_debug_tick add = 1 }
+}

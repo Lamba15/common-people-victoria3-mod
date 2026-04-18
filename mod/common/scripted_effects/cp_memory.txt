@@ -1,0 +1,208 @@
+###############################################################################
+# Common People -- memory
+#
+# The only layer that writes to Layla's country variables. Events mutate state
+# by calling effects here; they never call set_variable / change_variable
+# directly inside an option block. This is the single source of truth for
+# "what changes hope / SoL / class / anchor".
+#
+# Conventions:
+#   - Every effect is named cp_<verb>_<field>.
+#   - All run in country scope (root = c:EGY).
+#   - Clamping uses V3's built-in clamp_variable primitive.
+#   - Composite effects call primitives so the library is layered.
+###############################################################################
+
+
+# ============================================================================
+# Inner state (0..10 scales -- personality, not V3-mirrored)
+# ============================================================================
+
+cp_shift_hope = {
+	change_variable = { name = cp_hope add = $delta$ }
+	clamp_variable = { name = cp_hope min = 0 max = 10 }
+}
+
+cp_shift_exhaustion = {
+	change_variable = { name = cp_exhaustion add = $delta$ }
+	clamp_variable = { name = cp_exhaustion min = 0 max = 10 }
+}
+
+# weight is the variable name suffix, e.g. weight = land_reform -> cp_w_land_reform.
+cp_shift_weight = {
+	change_variable = { name = cp_w_$weight$ add = $delta$ }
+	clamp_variable = { name = cp_w_$weight$ min = 0 max = 10 }
+}
+
+# tag is lowercase country tag, e.g. tag = fra -> cp_opinion_fra.
+cp_shift_opinion = {
+	change_variable = { name = cp_opinion_$tag$ add = $delta$ }
+	clamp_variable = { name = cp_opinion_$tag$ min = -100 max = 100 }
+}
+
+
+# ============================================================================
+# V3-mirroring state (scales match V3 itself)
+# ============================================================================
+
+# Standard of Living 1..99.
+cp_shift_sol = {
+	change_variable = { name = cp_sol add = $delta$ }
+	clamp_variable = { name = cp_sol min = 1 max = 99 }
+}
+
+# Literacy 0..100 (percent).
+cp_shift_literacy = {
+	change_variable = { name = cp_literacy add = $delta$ }
+	clamp_variable = { name = cp_literacy min = 0 max = 100 }
+}
+
+# Radicalism and loyalism are mutually exclusive (V3 rule).
+cp_shift_radical = {
+	change_variable = { name = cp_radical add = $delta$ }
+	clamp_variable = { name = cp_radical min = 0 max = 100 }
+	if = {
+		limit = { var:cp_radical > 0 }
+		set_variable = { name = cp_loyalist value = 0 }
+	}
+}
+
+cp_shift_loyalist = {
+	change_variable = { name = cp_loyalist add = $delta$ }
+	clamp_variable = { name = cp_loyalist min = 0 max = 100 }
+	if = {
+		limit = { var:cp_loyalist > 0 }
+		set_variable = { name = cp_radical value = 0 }
+	}
+}
+
+
+# ============================================================================
+# Profession transitions -- exactly one cp_profession_* flag at a time
+# ============================================================================
+
+cp_clear_profession = {
+	remove_variable = cp_profession_peasants
+	remove_variable = cp_profession_laborers
+	remove_variable = cp_profession_farmers
+	remove_variable = cp_profession_machinists
+	remove_variable = cp_profession_shopkeepers
+	remove_variable = cp_profession_clerks
+}
+
+cp_become_laborer = {
+	cp_clear_profession = yes
+	set_variable = cp_profession_laborers
+}
+
+cp_become_farmer = {
+	cp_clear_profession = yes
+	set_variable = cp_profession_farmers
+}
+
+cp_become_machinist = {
+	cp_clear_profession = yes
+	set_variable = cp_profession_machinists
+}
+
+cp_become_shopkeeper = {
+	cp_clear_profession = yes
+	set_variable = cp_profession_shopkeepers
+}
+
+cp_become_clerk = {
+	cp_clear_profession = yes
+	set_variable = cp_profession_clerks
+}
+
+
+# ============================================================================
+# Home state transitions -- exactly one cp_home_state_* flag at a time
+# ============================================================================
+
+cp_clear_home_state = {
+	remove_variable = cp_home_state_lower_egypt
+	remove_variable = cp_home_state_cairo
+	remove_variable = cp_home_state_alexandria
+}
+
+cp_move_to_cairo = {
+	cp_clear_home_state = yes
+	set_variable = cp_home_state_cairo
+}
+
+cp_move_to_alexandria = {
+	cp_clear_home_state = yes
+	set_variable = cp_home_state_alexandria
+}
+
+
+# ============================================================================
+# Life milestones
+# ============================================================================
+
+cp_age_increment = {
+	change_variable = { name = cp_age add = 1 }
+}
+
+# id is the short event suffix, e.g. id = homesteading -> cp_seen_homesteading.
+# Timed flag; auto-expires after 540 days (~18 months).
+cp_mark_event_seen = {
+	set_variable = { name = cp_seen_$id$ days = 540 }
+}
+
+cp_flag_recent_joy = {
+	set_variable = { name = cp_recent_joy days = 180 }
+}
+
+cp_flag_recent_hardship = {
+	set_variable = { name = cp_recent_hardship days = 180 }
+}
+
+
+# ============================================================================
+# Composites -- the verbs events actually call
+# ============================================================================
+
+cp_experience_joy = {
+	cp_shift_hope = { delta = 1 }
+	cp_flag_recent_joy = yes
+}
+
+cp_experience_hardship = {
+	cp_shift_hope = { delta = -1 }
+	cp_shift_exhaustion = { delta = 1 }
+	cp_flag_recent_hardship = yes
+}
+
+cp_ahmed_conscripted = {
+	set_variable = cp_ahmed_at_war
+	cp_shift_exhaustion = { delta = 2 }
+	cp_shift_hope = { delta = -1 }
+}
+
+cp_ahmed_homecoming = {
+	remove_variable = cp_ahmed_at_war
+	set_variable = cp_ahmed_home_from_war
+	cp_shift_hope = { delta = 2 }
+	cp_shift_exhaustion = { delta = -1 }
+}
+
+cp_ahmed_killed = {
+	remove_variable = cp_ahmed_at_war
+	set_variable = { name = cp_ahmed_alive value = 0 }
+	cp_shift_hope = { delta = -4 }
+	cp_shift_exhaustion = { delta = 3 }
+}
+
+cp_grant_homesteading = {
+	set_variable = cp_owns_land
+	remove_variable = cp_under_serfdom
+	cp_shift_hope = { delta = 2 }
+}
+
+cp_restore_serfdom = {
+	set_variable = cp_under_serfdom
+	cp_shift_hope = { delta = -2 }
+	cp_shift_exhaustion = { delta = 1 }
+}

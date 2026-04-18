@@ -1,0 +1,508 @@
+###############################################################################
+# Common People -- sensors
+#
+# The only layer that asks questions of the V3 world. Events consume sensors;
+# sensors never mutate state. Each sensor reads its answer from the live game
+# state (market, pops, laws, institutions, decrees, buildings, techs) and
+# returns a boolean.
+#
+# Conventions:
+#   - Every sensor is named cp_sensor_<short_question>.
+#   - Most run in country scope (root = c:EGY inside a country_event).
+#   - State-scoped sensors wrap their state lookup explicitly.
+#
+# Consumption basket: organized by popneed_* (V3's pop consumption groups).
+# Rationale: Layla is statistically a peasant pop -- what she cares about is
+# what pops in her wealth tier actually buy. See documentation/research/
+# engine/buy_packages.md and /media/.../game/common/pop_needs/00_pop_needs.txt.
+#
+# At wealth_5 (her starting tier) she buys: simple_clothing, crude_items,
+# basic_food, heating, intoxicants. wealth_6 adds stimulants. wealth_10 adds
+# services, household_items, standard_clothing, free_movement. Higher tiers
+# unlock luxury_food, luxury_items, luxury_drinks, communication, leisure.
+#
+# Reference: documentation/research/engine/ for trigger names.
+###############################################################################
+
+
+# ============================================================================
+# Life / guard
+# ============================================================================
+
+cp_sensor_layla_alive = {
+	has_variable = cp_layla_alive
+}
+
+
+# ============================================================================
+# popneed_basic_food -- the plate in front of her every day
+# Maps: grain (bread), fish (Friday), meat (rare), fruit, groceries (urban)
+# ============================================================================
+
+cp_sensor_grain_is_expensive = {
+	c:EGY.market = { mg:grain = { market_goods_pricier > 0.20 } }
+}
+
+cp_sensor_grain_is_cheap = {
+	c:EGY.market = { mg:grain = { market_goods_cheaper >= 0.10 } }
+}
+
+cp_sensor_grain_is_scarce = {
+	c:EGY.market = { mg:grain = { market_goods_shortage_ratio > 0.10 } }
+}
+
+cp_sensor_fish_is_affordable = {
+	c:EGY.market = { mg:fish = { market_goods_buy_orders > 50 } }
+	c:EGY.market = { mg:fish = { NOT = { market_goods_pricier > 0.20 } } }
+}
+
+cp_sensor_fish_is_scarce = {
+	c:EGY.market = { mg:fish = { market_goods_shortage_ratio > 0.10 } }
+}
+
+cp_sensor_meat_is_a_rare_treat = {
+	c:EGY.market = { mg:meat = { market_goods_cheaper >= 0.15 } }
+}
+
+cp_sensor_meat_is_too_dear = {
+	c:EGY.market = { mg:meat = { market_goods_pricier > 0.30 } }
+}
+
+cp_sensor_fruit_is_affordable = {
+	c:EGY.market = { mg:fruit = { market_goods_buy_orders > 50 } }
+	c:EGY.market = { mg:fruit = { NOT = { market_goods_pricier > 0.15 } } }
+}
+
+cp_sensor_fruit_is_expensive = {
+	c:EGY.market = { mg:fruit = { market_goods_pricier > 0.25 } }
+}
+
+# Groceries (tinned/urban prepared food) arrive with industrial food processing.
+cp_sensor_groceries_available = {
+	c:EGY.market = { mg:groceries = { market_goods_buy_orders > 100 } }
+}
+
+
+# ============================================================================
+# popneed_simple_clothing -- her scarves, her dresses, Ahmed's gallabiya
+# Maps: fabric, clothes
+# ============================================================================
+
+cp_sensor_fabric_is_expensive = {
+	c:EGY.market = { mg:fabric = { market_goods_pricier > 0.20 } }
+}
+
+cp_sensor_fabric_is_cheap = {
+	c:EGY.market = { mg:fabric = { market_goods_cheaper >= 0.10 } }
+}
+
+# Ready-made clothes -- the modern alternative to homespun.
+cp_sensor_ready_made_clothes_affordable = {
+	c:EGY.market = { mg:clothes = { market_goods_buy_orders > 100 } }
+	c:EGY.market = { mg:clothes = { NOT = { market_goods_pricier > 0.15 } } }
+}
+
+
+# ============================================================================
+# popneed_heating -- fuel for cooking and warmth
+# Maps: wood (firewood), fabric (padding), coal, oil (kerosene), electricity
+# ============================================================================
+
+cp_sensor_wood_is_expensive = {
+	c:EGY.market = { mg:wood = { market_goods_pricier > 0.20 } }
+}
+
+cp_sensor_wood_is_cheap = {
+	c:EGY.market = { mg:wood = { market_goods_cheaper >= 0.10 } }
+}
+
+cp_sensor_wood_is_scarce = {
+	c:EGY.market = { mg:wood = { market_goods_shortage_ratio > 0.10 } }
+}
+
+cp_sensor_coal_reaches_egypt = {
+	c:EGY.market = { mg:coal = { market_goods_buy_orders > 50 } }
+}
+
+cp_sensor_oil_lamps_arrive = {
+	c:EGY.market = { mg:oil = { market_goods_buy_orders > 50 } }
+}
+
+cp_sensor_electricity_lights_her_street = {
+	c:EGY.market = { mg:electricity = { market_goods_buy_orders > 100 } }
+	has_variable = cp_home_state_cairo
+}
+
+
+# ============================================================================
+# popneed_crude_items -- the texture of village life
+# Maps: wood (tools), furniture
+# ============================================================================
+
+cp_sensor_furniture_is_getting_affordable = {
+	c:EGY.market = { mg:furniture = { market_goods_cheaper >= 0.10 } }
+	c:EGY.market = { mg:furniture = { market_goods_buy_orders > 50 } }
+}
+
+
+# ============================================================================
+# popneed_intoxicants -- sunni taboos liquor and wine; effective basket is
+# tobacco + (rarely) opium. Misri culture obsesses coffee, but coffee is
+# in stimulants not intoxicants.
+# ============================================================================
+
+cp_sensor_tobacco_is_cheap = {
+	c:EGY.market = { mg:tobacco = { market_goods_cheaper >= 0.10 } }
+}
+
+cp_sensor_tobacco_is_expensive = {
+	c:EGY.market = { mg:tobacco = { market_goods_pricier > 0.20 } }
+}
+
+cp_sensor_opium_floods_market = {
+	c:EGY.market = { mg:opium = { market_goods_cheaper >= 0.20 } }
+	c:EGY.market = { mg:opium = { market_goods_buy_orders > 100 } }
+}
+
+
+# ============================================================================
+# popneed_stimulants -- unlocks at wealth_6 (SoL 6+)
+# Maps: sugar, tea, coffee, tobacco
+# Misri culture obsesses coffee (see documentation/research/engine/cultures_misri.md)
+# ============================================================================
+
+cp_sensor_tea_is_affordable = {
+	c:EGY.market = { mg:tea = { market_goods_buy_orders > 50 } }
+	c:EGY.market = { mg:tea = { NOT = { market_goods_pricier > 0.15 } } }
+}
+
+cp_sensor_tea_is_expensive = {
+	c:EGY.market = { mg:tea = { market_goods_pricier > 0.25 } }
+}
+
+cp_sensor_coffee_is_abundant = {
+	c:EGY.market = { mg:coffee = { market_goods_buy_orders > 200 } }
+	c:EGY.market = { mg:coffee = { NOT = { market_goods_pricier > 0.15 } } }
+}
+
+cp_sensor_coffee_is_scarce = {
+	c:EGY.market = { mg:coffee = { market_goods_shortage_ratio > 0.10 } }
+}
+
+cp_sensor_coffee_reaches_egypt = {
+	c:EGY.market = { mg:coffee = { market_goods_import_share > 0.10 } }
+}
+
+cp_sensor_sugar_is_abundant = {
+	c:EGY.market = { mg:sugar = { market_goods_buy_orders > 100 } }
+	c:EGY.market = { mg:sugar = { market_goods_cheaper >= 0.05 } }
+}
+
+cp_sensor_sugar_is_scarce = {
+	c:EGY.market = { mg:sugar = { market_goods_shortage_ratio > 0.10 } }
+}
+
+
+# ============================================================================
+# popneed_household_items -- unlocks at wealth_10 (Middling, urban life)
+# Maps: furniture, glass, paper
+# ============================================================================
+
+cp_sensor_glass_is_common_now = {
+	c:EGY.market = { mg:glass = { market_goods_buy_orders > 100 } }
+}
+
+cp_sensor_paper_is_in_the_house = {
+	c:EGY.market = { mg:paper = { market_goods_buy_orders > 50 } }
+}
+
+
+# ============================================================================
+# popneed_standard_clothing -- urban middle-strata signaling
+# ============================================================================
+
+cp_sensor_standard_clothes_available = {
+	c:EGY.market = { mg:clothes = { market_goods_buy_orders > 200 } }
+}
+
+
+# ============================================================================
+# popneed_services / popneed_free_movement / popneed_communication
+# Urban modernity: streetcars, trains, telephones
+# ============================================================================
+
+cp_sensor_services_reach_her_quarter = {
+	c:EGY.market = { mg:services = { market_goods_buy_orders > 100 } }
+	has_variable = cp_home_state_cairo
+}
+
+cp_sensor_transportation_reaches_her = {
+	c:EGY.market = { mg:transportation = { market_goods_buy_orders > 100 } }
+}
+
+cp_sensor_telephones_reach_her = {
+	c:EGY.market = { mg:telephones = { market_goods_buy_orders > 50 } }
+}
+
+
+# ============================================================================
+# popneed_luxury_* -- her or her children might taste these
+# ============================================================================
+
+cp_sensor_silk_in_the_bazaar = {
+	c:EGY.market = { mg:silk = { market_goods_buy_orders > 50 } }
+}
+
+cp_sensor_porcelain_in_the_window = {
+	c:EGY.market = { mg:porcelain = { market_goods_buy_orders > 50 } }
+}
+
+cp_sensor_luxury_clothes_in_fashion = {
+	c:EGY.market = { mg:luxury_clothes = { market_goods_buy_orders > 50 } }
+}
+
+cp_sensor_luxury_furniture_in_homes = {
+	c:EGY.market = { mg:luxury_furniture = { market_goods_buy_orders > 30 } }
+}
+
+cp_sensor_fine_art_has_a_market = {
+	c:EGY.market = { mg:fine_art = { market_goods_buy_orders > 30 } }
+}
+
+cp_sensor_radios_sold_in_egypt = {
+	c:EGY.market = { mg:radios = { market_goods_buy_orders > 100 } }
+}
+
+cp_sensor_automobiles_circulating = {
+	c:EGY.market = { mg:automobiles = { market_goods_buy_orders > 50 } }
+}
+
+
+# ============================================================================
+# Composite food/fuel sensors -- "a hard week in the kitchen"
+# ============================================================================
+
+cp_sensor_her_kitchen_is_tight = {
+	OR = {
+		cp_sensor_grain_is_expensive = yes
+		cp_sensor_grain_is_scarce = yes
+	}
+	OR = {
+		cp_sensor_wood_is_expensive = yes
+		cp_sensor_wood_is_scarce = yes
+	}
+}
+
+cp_sensor_food_is_generally_expensive = {
+	OR = {
+		cp_sensor_grain_is_expensive = yes
+		cp_sensor_fruit_is_expensive = yes
+		cp_sensor_meat_is_too_dear = yes
+	}
+}
+
+cp_sensor_a_good_year_for_the_village = {
+	cp_sensor_grain_is_cheap = yes
+	cp_sensor_fish_is_affordable = yes
+	NOT = { cp_sensor_wood_is_expensive = yes }
+}
+
+
+# ============================================================================
+# Pop-group sensors -- read the misri-sunni population of her home state
+# ============================================================================
+
+cp_sensor_her_pop_group_is_angry = {
+	s:STATE_LOWER_EGYPT = {
+		any_scope_pop = {
+			culture = cu:misri
+			religion = rel:sunni
+			radicalism >= 50
+		}
+	}
+}
+
+cp_sensor_her_pop_group_is_loyal = {
+	s:STATE_LOWER_EGYPT = {
+		any_scope_pop = {
+			culture = cu:misri
+			religion = rel:sunni
+			loyalism >= 50
+		}
+	}
+}
+
+cp_sensor_her_pop_group_struggles = {
+	s:STATE_LOWER_EGYPT = {
+		any_scope_pop = {
+			culture = cu:misri
+			religion = rel:sunni
+			pop_type = peasants
+			standard_of_living <= 8
+		}
+	}
+}
+
+cp_sensor_her_pop_group_is_prospering = {
+	s:STATE_LOWER_EGYPT = {
+		any_scope_pop = {
+			culture = cu:misri
+			religion = rel:sunni
+			pop_type = peasants
+			standard_of_living >= 15
+		}
+	}
+}
+
+
+# ============================================================================
+# Hunger / pollution sensors (R-17, R-18)
+# ============================================================================
+
+# state food_security trigger: 0.0..1.0. <0.4 mild starvation; <0.2 severe.
+cp_sensor_her_family_is_hungry = {
+	s:STATE_LOWER_EGYPT = { food_security < 0.4 }
+}
+
+cp_sensor_her_family_is_starving = {
+	s:STATE_LOWER_EGYPT = { food_security < 0.2 }
+}
+
+cp_sensor_her_family_has_full_plates = {
+	s:STATE_LOWER_EGYPT = { food_security > 0.7 }
+}
+
+cp_sensor_her_air_is_polluted = {
+	s:STATE_LOWER_EGYPT = { pollution_generation >= 50 }
+}
+
+cp_sensor_her_air_is_choking = {
+	s:STATE_LOWER_EGYPT = { pollution_generation >= 150 }
+}
+
+
+# ============================================================================
+# Cultural obsession (R-20)
+# ============================================================================
+
+cp_sensor_her_culture_loves_coffee = {
+	cu:misri = { has_cultural_obsession = coffee }
+}
+
+cp_sensor_her_culture_loves_opium = {
+	cu:misri = { has_cultural_obsession = opium }
+}
+
+cp_sensor_her_culture_loves_tea = {
+	cu:misri = { has_cultural_obsession = tea }
+}
+
+cp_sensor_her_culture_loves_fine_art = {
+	cu:misri = { has_cultural_obsession = fine_art }
+}
+
+
+# ============================================================================
+# Law-state sensors -- cheap wrappers so event triggers read semantically
+# ============================================================================
+
+cp_sensor_she_is_locked_in_serfdom = {
+	c:EGY = { has_law = law_type:law_serfdom }
+	has_variable = cp_profession_peasants
+}
+
+cp_sensor_egypt_has_tenant_farmers = {
+	c:EGY = { has_law = law_type:law_tenant_farmers }
+}
+
+cp_sensor_egypt_has_homesteading = {
+	c:EGY = { has_law = law_type:law_homesteading }
+}
+
+cp_sensor_egypt_has_public_schools = {
+	c:EGY = { has_law = law_type:law_public_schools }
+}
+
+cp_sensor_egypt_abolishes_slavery = {
+	c:EGY = {
+		OR = {
+			has_law = law_type:law_slavery_banned
+			has_law = law_type:law_debt_slavery
+		}
+	}
+}
+
+
+# ============================================================================
+# Personal life-stage sensors (read Layla's own variables)
+# ============================================================================
+
+cp_sensor_she_is_old       = { var:cp_age >= 50 }
+cp_sensor_she_is_very_old  = { var:cp_age >= 70 }
+cp_sensor_she_is_literate  = { var:cp_literacy > 20 }
+cp_sensor_she_is_radical   = { var:cp_radical >= 50 }
+cp_sensor_she_is_loyalist  = { var:cp_loyalist >= 50 }
+
+# SoL tier sensors (V3's 1..99 scale, official tier boundaries).
+cp_sensor_she_is_destitute   = { var:cp_sol <= 4 }
+cp_sensor_she_is_struggling  = { var:cp_sol >= 5  var:cp_sol <= 9 }
+cp_sensor_she_is_impoverished = { var:cp_sol >= 10 var:cp_sol <= 14 }
+cp_sensor_she_is_middling    = { var:cp_sol >= 15 var:cp_sol <= 19 }
+cp_sensor_she_is_secure      = { var:cp_sol >= 20 var:cp_sol <= 24 }
+cp_sensor_she_is_prosperous  = { var:cp_sol >= 25 var:cp_sol <= 29 }
+cp_sensor_she_is_affluent    = { var:cp_sol >= 30 }
+
+
+# ============================================================================
+# Information-flow sensors -- does Layla plausibly hear the news?
+# ============================================================================
+
+cp_sensor_she_hears_foreign_news = {
+	OR = {
+		var:cp_literacy > 20
+		AND = {
+			has_variable = cp_home_state_cairo
+			c:EGY = { has_technology_researched = telegraphs }
+		}
+	}
+}
+
+cp_sensor_radio_voice_in_the_house = {
+	has_variable = cp_owns_radio
+	c:EGY = { has_technology_researched = radio }
+}
+
+
+# ============================================================================
+# Purchasing-pattern sensors -- market availability + wealth + profession
+# ============================================================================
+
+cp_sensor_can_plausibly_own_radio = {
+	c:EGY.market = { mg:radios = { market_goods_buy_orders > 100 } }
+	var:cp_sol >= 15
+	OR = {
+		has_variable = cp_home_state_cairo
+		has_variable = cp_profession_laborers
+		has_variable = cp_profession_machinists
+		has_variable = cp_profession_shopkeepers
+		has_variable = cp_profession_clerks
+	}
+}
+
+cp_sensor_can_plausibly_own_car = {
+	c:EGY.market = { mg:automobiles = { market_goods_buy_orders > 50 } }
+	var:cp_sol >= 25
+	OR = {
+		has_variable = cp_profession_shopkeepers
+		has_variable = cp_profession_clerks
+	}
+}
+
+cp_sensor_can_plausibly_own_telephone = {
+	c:EGY.market = { mg:telephones = { market_goods_buy_orders > 50 } }
+	var:cp_sol >= 20
+	OR = {
+		has_variable = cp_home_state_cairo
+		has_variable = cp_home_state_alexandria
+	}
+}

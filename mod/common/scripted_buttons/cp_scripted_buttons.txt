@@ -1,44 +1,44 @@
 ###############################################################################
 # Common People -- scripted buttons
 #
-# cp_layla_check_button -- the "Check on Layla" action on her JE.
-# Dispatches to one of several slice-of-life reflection events. Each branch
-# has a trigger gating it to her current situation; V3 skips branches whose
-# trigger fails, so only appropriate events compete for the roll. The three
-# always-on branches guarantee the button never misfires.
+# cp_layla_check_button -- the "Check on Layla" action on her JE. Dispatches
+# to one of several reflection events. Each branch has a trigger gating it to
+# her current situation; V3 skips branches whose trigger fails, so only
+# appropriate events compete. Three always-on branches guarantee a hit.
 #
-# Pattern follows vanilla ig_leaders.20 (random_list with branch triggers).
+# Scope at effect time: country (c:EGY, the JE owner). All Layla state reads
+# as `has_variable = X` / `var:X` directly (no scope:cp_layla dance).
 ###############################################################################
 
 cp_layla_check_button = {
-    name = "cp_layla_check_button_name"
-    desc = "cp_layla_check_button_desc"
+	name = "cp_layla_check_button_name"
+	desc = "cp_layla_check_button_desc"
 
-    visible = {
-        always = yes
-    }
+	visible = {
+		always = yes
+	}
 
-    possible = {
-        exists = scope:cp_layla
-    }
+	possible = {
+		has_variable = cp_layla_alive
+	}
 
-    effect = {
-        random_list = {
-            15 = {
-                trigger = { scope:cp_layla ?= { has_variable = cp_ahmed_at_war } }
-                trigger_event = { id = cp_layla.10 popup = yes }
-            }
-            15 = {
-                trigger = { scope:cp_layla ?= { has_variable = cp_owns_land } }
-                trigger_event = { id = cp_layla.11 popup = yes }
-            }
-            15 = {
-                trigger = { scope:cp_layla ?= { has_variable = cp_under_serfdom } }
-                trigger_event = { id = cp_layla.12 popup = yes }
-            }
-            10 = { trigger_event = { id = cp_layla.13 popup = yes } }
-            10 = { trigger_event = { id = cp_layla.14 popup = yes } }
-            10 = { trigger_event = { id = cp_layla.15 popup = yes } }
-        }
-    }
+	effect = {
+		random_list = {
+			15 = {
+				trigger = { has_variable = cp_ahmed_at_war }
+				trigger_event = { id = cp_layla.10 popup = yes }
+			}
+			15 = {
+				trigger = { has_variable = cp_owns_land }
+				trigger_event = { id = cp_layla.11 popup = yes }
+			}
+			15 = {
+				trigger = { has_variable = cp_under_serfdom }
+				trigger_event = { id = cp_layla.12 popup = yes }
+			}
+			10 = { trigger_event = { id = cp_layla.13 popup = yes } }
+			10 = { trigger_event = { id = cp_layla.14 popup = yes } }
+			10 = { trigger_event = { id = cp_layla.15 popup = yes } }
+		}
+	}
 }
