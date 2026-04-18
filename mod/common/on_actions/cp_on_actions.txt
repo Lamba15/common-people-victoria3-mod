@@ -41,6 +41,14 @@ cp_on_start = {
 		}
 
 		c:EGY ?= {
+			# Migration: backfill variables added after a save was created.
+			# Each block guards with NOT has_variable so new games and saves
+			# already carrying the variable both pass through cleanly.
+			if = {
+				limit = { has_variable = cp_layla_alive  NOT = { has_variable = cp_status_variant } }
+				set_variable = { name = cp_status_variant value = 1 }
+			}
+
 			trigger_event = { id = cp_startup.1 }
 		}
 	}
@@ -68,6 +76,11 @@ cp_on_monthly = {
 			limit = {
 				THIS = c:EGY
 				has_variable = cp_layla_alive
+			}
+			# Self-heal: backfill cp_status_variant on saves that predate it.
+			if = {
+				limit = { NOT = { has_variable = cp_status_variant } }
+				set_variable = { name = cp_status_variant value = 1 }
 			}
 			cp_debug_tick_increment = yes
 			# Mood bucket (1..10 -> low/mid/high bucket)
