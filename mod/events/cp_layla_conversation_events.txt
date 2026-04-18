@@ -10,16 +10,17 @@
 # Full design: documentation/characters/layla/conversation.md
 #
 # Event numbering:
-#   cp_conversation.1      -- Root: she sets the scene, picks the topic
-#   cp_conversation.10..19 -- The Land topic
-#   cp_conversation.20..29 -- The Ahmed topic (reacts to his state)
-#   cp_conversation.30..39 -- The Children topic (gated on cp_children > 0)
-#   cp_conversation.40..49 -- The Room in the City (gated on cp_in_city)
-#   cp_conversation.50..59 -- The Paper (gated on cp_owns_land)
-#   cp_conversation.60..69 -- The Politics (gated on cp_radical or cp_loyalist)
-#   cp_conversation.70..79 -- The Boss (gated on laborer + city)
-#   cp_conversation.80..89 -- A Small Thing (always available fallback)
-#   cp_conversation.90     -- Shared closer (fantasy dissolves)
+#   cp_conversation.1         -- Root: she sets the scene, picks the topic
+#   cp_conversation.10..19    -- The Land topic
+#   cp_conversation.20..29    -- The Ahmed topic (reacts to his state)
+#   cp_conversation.30..39    -- The Children topic (gated on cp_children > 0)
+#   cp_conversation.40..49    -- The Room in the City (gated on cp_in_city)
+#   cp_conversation.50..59    -- The Paper (gated on cp_owns_land)
+#   cp_conversation.60..69    -- The Politics (gated on cp_radical or cp_loyalist)
+#   cp_conversation.70..79    -- The Boss (gated on laborer + city)
+#   cp_conversation.80..89    -- A Small Thing (always available fallback)
+#   cp_conversation.90        -- Shared closer (fantasy dissolves)
+#   cp_conversation.100..109  -- The Distance (gated on cp_sol >= 25 — wealth)
 ###############################################################################
 
 namespace = cp_conversation
@@ -147,6 +148,19 @@ cp_conversation.1 = {
 		}
 		set_variable = { name = cp_seen_audience_boss months = 18 }
 		trigger_event = { id = cp_conversation.70 popup = yes }
+	}
+
+	# About wealth — when it came, and what it feels like. Only if she's
+	# crossed into Prosperous (SoL 25+).
+	option = {
+		name = cp_conversation.1.i
+		trigger = {
+			has_variable = cp_sol
+			var:cp_sol >= 25
+			NOT = { has_variable = cp_seen_audience_distance }
+		}
+		set_variable = { name = cp_seen_audience_distance months = 18 }
+		trigger_event = { id = cp_conversation.100 popup = yes }
 	}
 
 	# A small thing. Always available. Shorter cooldown (6 months) because
@@ -1290,6 +1304,141 @@ cp_conversation.73 = {
 		# She does not give names. She keeps her own counsel. The act
 		# of keeping counsel hardens labor-law conviction.
 		cp_shift_weight = { weight = labor_laws delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.100..103 -- The Distance (when wealth came)
+# ============================================================================
+# Gated on cp_sol >= 25 (Prosperous tier and above). Opening varies by
+# HOW she got there: landowner-made-rich (cp_owns_land), urban-prosperous
+# (cp_in_city), or wealthy-widow (Ahmed gone, but the household
+# survived). Three Pasha responses: he wants more like her (fold her
+# into policy), he is suspicious (how did a peasant come to this),
+# he is philosophical (did you imagine this, when you were young?).
+# ============================================================================
+
+cp_conversation.100 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.100.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.100.d.widow
+				trigger = { var:cp_ahmed_alive = 0 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.100.d.urban
+				trigger = { has_variable = cp_in_city }
+			}
+			triggered_desc = {
+				desc = cp_conversation.100.d.landowner
+				trigger = { has_variable = cp_owns_land }
+			}
+			triggered_desc = {
+				desc = cp_conversation.100.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.100.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_distance
+	}
+
+	option = {
+		name = cp_conversation.100.a
+		trigger_event = { id = cp_conversation.101 popup = yes }
+	}
+	option = {
+		name = cp_conversation.100.b
+		trigger_event = { id = cp_conversation.102 popup = yes }
+	}
+	option = {
+		name = cp_conversation.100.c
+		trigger_event = { id = cp_conversation.103 popup = yes }
+	}
+}
+
+cp_conversation.101 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.101.t
+	desc = cp_conversation.101.d
+	flavor = cp_conversation.101.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.101.a
+		default_option = yes
+		# He has folded her into the country's story. That gives her
+		# a new comfort with the regime — modest loyalist drift.
+		cp_shift_loyalist = { delta = 3 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.102 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.102.t
+	desc = cp_conversation.102.d
+	flavor = cp_conversation.102.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.102.a
+		default_option = yes
+		# Being accused of theft by the man who runs the country
+		# hardens her — land-reform weight up, loyalism burned off.
+		cp_shift_weight = { weight = land_reform delta = 1 }
+		cp_shift_radical = { delta = 3 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.103 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.103.t
+	desc = cp_conversation.103.d
+	flavor = cp_conversation.103.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.103.a
+		default_option = yes
+		# A quiet evening reflecting on a life. Hope up a small step.
+		cp_shift_hope = { delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }

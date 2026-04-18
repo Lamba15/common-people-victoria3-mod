@@ -65,6 +65,19 @@ cp_je_layla = {
 			triggered_desc = { trigger = { has_variable = cp_under_serfdom } desc = cp_je_layla_status_serfdom_mid_alt2 }
 
 			# --- She owns the field ---
+			# --- Wealthy (SoL 30+, Affluent tier and above) ---
+			# Takes precedence over homesteader and tenant — at this SoL she
+			# is no longer the woman the land-focused prose is written for.
+			triggered_desc = { trigger = { var:cp_sol >= 30  var:cp_mood_roll >= 7  var:cp_status_variant = 1 } desc = cp_je_layla_status_wealthy_high }
+			triggered_desc = { trigger = { var:cp_sol >= 30  var:cp_mood_roll >= 7  var:cp_status_variant = 2 } desc = cp_je_layla_status_wealthy_high_alt }
+			triggered_desc = { trigger = { var:cp_sol >= 30  var:cp_mood_roll >= 7  var:cp_status_variant = 3 } desc = cp_je_layla_status_wealthy_high_alt2 }
+			triggered_desc = { trigger = { var:cp_sol >= 30  var:cp_mood_roll <= 3  var:cp_status_variant = 1 } desc = cp_je_layla_status_wealthy_low }
+			triggered_desc = { trigger = { var:cp_sol >= 30  var:cp_mood_roll <= 3  var:cp_status_variant = 2 } desc = cp_je_layla_status_wealthy_low_alt }
+			triggered_desc = { trigger = { var:cp_sol >= 30  var:cp_mood_roll <= 3  var:cp_status_variant = 3 } desc = cp_je_layla_status_wealthy_low_alt2 }
+			triggered_desc = { trigger = { var:cp_sol >= 30  var:cp_status_variant = 1 } desc = cp_je_layla_status_wealthy_mid }
+			triggered_desc = { trigger = { var:cp_sol >= 30  var:cp_status_variant = 2 } desc = cp_je_layla_status_wealthy_mid_alt }
+			triggered_desc = { trigger = { var:cp_sol >= 30 } desc = cp_je_layla_status_wealthy_mid_alt2 }
+
 			triggered_desc = { trigger = { has_variable = cp_owns_land  var:cp_mood_roll >= 7  var:cp_status_variant = 1 } desc = cp_je_layla_status_homesteader_high }
 			triggered_desc = { trigger = { has_variable = cp_owns_land  var:cp_mood_roll >= 7  var:cp_status_variant = 2 } desc = cp_je_layla_status_homesteader_high_alt }
 			triggered_desc = { trigger = { has_variable = cp_owns_land  var:cp_mood_roll >= 7  var:cp_status_variant = 3 } desc = cp_je_layla_status_homesteader_high_alt2 }
