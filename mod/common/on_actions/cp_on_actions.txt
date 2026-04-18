@@ -226,6 +226,40 @@ cp_on_yearly = {
 					75 = { }
 				}
 			}
+
+			# Crossroads: the Small Concern. An urban household with
+			# savings and literacy is offered a partnership in a small
+			# workshop. Fires once per life. Eligibility covers lower-
+			# to-middle strata (laborers, machinists, clerks, engineers)
+			# — per V3's profession ladder, these are the pops with
+			# enough income + literacy to plausibly buy capital. She
+			# still needs a permissive economy law (laissez-faire or
+			# interventionism). 20% roll per qualifying year.
+			if = {
+				limit = {
+					has_variable = cp_in_city
+					NOT = { has_variable = cp_seen_ownership_offer }
+					OR = {
+						has_variable = cp_profession_laborers
+						has_variable = cp_profession_machinists
+						has_variable = cp_profession_clerks
+						has_variable = cp_profession_engineers
+					}
+					var:cp_sol >= 20
+					var:cp_literacy >= 10
+					OR = {
+						has_law = law_type:law_laissez_faire
+						has_law = law_type:law_interventionism
+					}
+				}
+				random_list = {
+					20 = {
+						trigger_event = { id = cp_layla.71 }
+						set_variable = cp_seen_ownership_offer
+					}
+					80 = { }
+				}
+			}
 		}
 	}
 }

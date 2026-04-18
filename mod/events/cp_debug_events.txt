@@ -38,6 +38,7 @@
 #   cp_debug.29  -- NEW: fire textile-mill-arrival event directly.
 #   cp_debug.30  -- NEW: fire revolution-fear event directly.
 #   cp_debug.31  -- NEW: fire the Cairo-crossroads event directly.
+#   cp_debug.32  -- NEW: fire the Small-Concern ownership crossroads.
 #
 # Retired (obsolete probes; removed in the April cleanup):
 #   cp_debug.2/.3/.4 -- direct law-event fires (superseded by .5 + dispatcher)
@@ -442,6 +443,21 @@ cp_debug.31 = {
 	immediate = {
 		c:EGY ?= {
 			trigger_event = { id = cp_layla.70 }
+		}
+	}
+}
+
+# cp_debug.32 -- Fire the Small-Concern ownership crossroads directly.
+# Used with cp_debug.20/.21/.etc to test each profession variant of the
+# opening prose.
+cp_debug.32 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.71 }
 		}
 	}
 }

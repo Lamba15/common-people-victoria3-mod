@@ -109,6 +109,22 @@ cp_read_cohort_only = {
 		limit = { root = { has_variable = cp_profession_clerks } }
 		cp_read_cohort_here_for = { poptype = clerks }
 	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_engineers } }
+		cp_read_cohort_here_for = { poptype = engineers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_academics } }
+		cp_read_cohort_here_for = { poptype = academics }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_bureaucrats } }
+		cp_read_cohort_here_for = { poptype = bureaucrats }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_capitalists } }
+		cp_read_cohort_here_for = { poptype = capitalists }
+	}
 	else = {
 		cp_read_cohort_here_for = { poptype = peasants }
 	}
@@ -370,6 +386,22 @@ cp_read_cohort_literacy_only = {
 		limit = { root = { has_variable = cp_profession_clerks } }
 		cp_read_cohort_literacy_for = { poptype = clerks }
 	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_engineers } }
+		cp_read_cohort_literacy_for = { poptype = engineers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_academics } }
+		cp_read_cohort_literacy_for = { poptype = academics }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_bureaucrats } }
+		cp_read_cohort_literacy_for = { poptype = bureaucrats }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_profession_capitalists } }
+		cp_read_cohort_literacy_for = { poptype = capitalists }
+	}
 	else = {
 		cp_read_cohort_literacy_for = { poptype = peasants }
 	}
@@ -461,7 +493,8 @@ cp_shift_loyalist = {
 # (V3's mutual-exclusion rule encoded in the library).
 # ----------------------------------------------------------------------------
 cp_pop_tick_political_mood = {
-	# Expected SoL for her current profession.
+	# Expected SoL for her current profession. Lower strata 5, middle 10,
+	# upper 20 (capitalists / aristocrats per V3 profession.txt).
 	set_variable = { name = cp_expected_sol value = 5 }
 	if = {
 		limit = {
@@ -469,9 +502,19 @@ cp_pop_tick_political_mood = {
 				has_variable = cp_profession_clerks
 				has_variable = cp_profession_shopkeepers
 				has_variable = cp_profession_machinists
+				has_variable = cp_profession_engineers
+				has_variable = cp_profession_academics
+				has_variable = cp_profession_bureaucrats
+				has_variable = cp_profession_farmers
 			}
 		}
 		set_variable = { name = cp_expected_sol value = 10 }
+	}
+	if = {
+		limit = {
+			has_variable = cp_profession_capitalists
+		}
+		set_variable = { name = cp_expected_sol value = 20 }
 	}
 
 	# cp_sol_gap = expected - cp_sol. Positive → she's below expected.
@@ -522,6 +565,10 @@ cp_clear_profession = {
 	remove_variable = cp_profession_machinists
 	remove_variable = cp_profession_shopkeepers
 	remove_variable = cp_profession_clerks
+	remove_variable = cp_profession_engineers
+	remove_variable = cp_profession_academics
+	remove_variable = cp_profession_bureaucrats
+	remove_variable = cp_profession_capitalists
 }
 
 cp_become_laborer = {
@@ -547,6 +594,26 @@ cp_become_shopkeeper = {
 cp_become_clerk = {
 	cp_clear_profession = yes
 	set_variable = cp_profession_clerks
+}
+
+cp_become_engineer = {
+	cp_clear_profession = yes
+	set_variable = cp_profession_engineers
+}
+
+cp_become_academic = {
+	cp_clear_profession = yes
+	set_variable = cp_profession_academics
+}
+
+cp_become_bureaucrat = {
+	cp_clear_profession = yes
+	set_variable = cp_profession_bureaucrats
+}
+
+cp_become_capitalist = {
+	cp_clear_profession = yes
+	set_variable = cp_profession_capitalists
 }
 
 
@@ -757,4 +824,33 @@ cp_ahmed_goes_to_cairo_alone = {
 cp_family_refuses_cairo = {
 	cp_shift_weight = { weight = land_reform delta = 1 }
 	cp_shift_hope = { delta = 1 }
+}
+
+# The household buys half of a small workshop outright. Laborer → shopkeeper
+# (V3's canonical first rung into middle strata). cp_owns_business gates
+# future arcs; cp_recent_ownership flags "fresh capital" for variant prose.
+# SoL resamples from her new cohort (misri-sunni-shopkeepers in Lower Egypt).
+cp_open_small_concern = {
+	cp_become_shopkeeper = yes
+	set_variable = cp_ahmed_profession_shopkeeper
+	remove_variable = cp_ahmed_profession_laborer
+	set_variable = cp_owns_business
+	set_variable = { name = cp_recent_ownership days = 730 }
+	cp_refresh_sol_from_pop = yes
+	cp_shift_hope = { delta = 2 }
+	cp_shift_exhaustion = { delta = 2 }
+}
+
+# Same transition, but with debt. The household is over-leveraged on the
+# workshop; cp_business_debt gates downside-risk events later.
+cp_open_small_concern_on_credit = {
+	cp_open_small_concern = yes
+	set_variable = cp_business_debt
+}
+
+# They decline the partnership and keep the savings. Small conviction
+# drift toward economic thinking — she has learned the vocabulary by
+# turning it down.
+cp_decline_small_concern = {
+	cp_shift_weight = { weight = economy delta = 1 }
 }

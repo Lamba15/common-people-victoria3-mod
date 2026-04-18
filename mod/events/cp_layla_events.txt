@@ -982,6 +982,90 @@ cp_layla.60 = {
 # opportunity arrives.
 ###############################################################################
 
+# cp_layla.71 -- "The Small Concern" (ownership crossroads)
+cp_layla.71 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla.71.t
+	# Opening varies by current household profession — the partnership
+	# looks different from across the threshold of a clerk's flat than
+	# from across a laborer's tenement table.
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.71.d.engineer
+				trigger = { has_variable = cp_profession_engineers }
+			}
+			triggered_desc = {
+				desc = cp_layla.71.d.clerk
+				trigger = { has_variable = cp_profession_clerks }
+			}
+			triggered_desc = {
+				desc = cp_layla.71.d.machinist
+				trigger = { has_variable = cp_profession_machinists }
+			}
+			triggered_desc = {
+				desc = cp_layla.71.d.laborer
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla.71.f.middle
+				trigger = {
+					OR = {
+						has_variable = cp_profession_engineers
+						has_variable = cp_profession_clerks
+						has_variable = cp_profession_machinists
+					}
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla.71.f.laborer
+				trigger = { always = yes }
+			}
+		}
+	}
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	# Option A: invest their savings. Cleanest entry into ownership.
+	option = {
+		name = cp_layla.71.a
+		default_option = yes
+		cp_open_small_concern = yes
+	}
+	# Option B: Ahmed takes the loan. Only if alive and at home.
+	option = {
+		name = cp_layla.71.b
+		trigger = {
+			has_variable = cp_ahmed_alive
+			var:cp_ahmed_alive > 0
+			NOT = { has_variable = cp_ahmed_at_war }
+		}
+		cp_open_small_concern_on_credit = yes
+	}
+	# Option C: decline. Keep the wages. Keep the pot behind the brick.
+	option = {
+		name = cp_layla.71.c
+		cp_decline_small_concern = yes
+	}
+}
+
+
 # cp_layla.70 -- "Cairo Is Calling" (first migration crossroads)
 cp_layla.70 = {
 	type = country_event
