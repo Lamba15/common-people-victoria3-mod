@@ -199,6 +199,10 @@ cp_layla.6 = {
 		has_variable = cp_layla_alive
 	}
 
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
+	}
+
 	option = {
 		name = cp_layla.6.a
 		default_option = yes
@@ -234,6 +238,10 @@ cp_layla.10 = {
 		has_variable = cp_layla_alive
 	}
 
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
+	}
+
 	option = {
 		name = cp_layla.10.a
 		default_option = yes
@@ -258,6 +266,10 @@ cp_layla.11 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
+	}
+
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -286,6 +298,10 @@ cp_layla.12 = {
 		has_variable = cp_layla_alive
 	}
 
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
+	}
+
 	option = {
 		name = cp_layla.12.a
 		default_option = yes
@@ -310,6 +326,10 @@ cp_layla.13 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
+	}
+
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -338,6 +358,10 @@ cp_layla.14 = {
 		has_variable = cp_layla_alive
 	}
 
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
+	}
+
 	option = {
 		name = cp_layla.14.a
 		default_option = yes
@@ -362,6 +386,10 @@ cp_layla.15 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
+	}
+
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -400,6 +428,10 @@ cp_layla.16 = {
 		has_variable = cp_layla_alive
 	}
 
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
+	}
+
 	option = {
 		name = cp_layla.16.a
 		default_option = yes
@@ -424,6 +456,10 @@ cp_layla.17 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
+	}
+
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -452,6 +488,10 @@ cp_layla.18 = {
 		has_variable = cp_layla_alive
 	}
 
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
+	}
+
 	option = {
 		name = cp_layla.18.a
 		default_option = yes
@@ -476,6 +516,10 @@ cp_layla.19 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
+	}
+
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -504,6 +548,10 @@ cp_layla.20 = {
 		has_variable = cp_layla_alive
 	}
 
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
+	}
+
 	option = {
 		name = cp_layla.20.a
 		default_option = yes
@@ -528,6 +576,10 @@ cp_layla.21 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
+	}
+
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -556,6 +608,10 @@ cp_layla.22 = {
 		has_variable = cp_layla_alive
 	}
 
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
+	}
+
 	option = {
 		name = cp_layla.22.a
 		default_option = yes
@@ -580,6 +636,10 @@ cp_layla.23 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
+	}
+
+	immediate = {
+		set_variable = { name = cp_button_cooldown days = 90 }
 	}
 
 	option = {

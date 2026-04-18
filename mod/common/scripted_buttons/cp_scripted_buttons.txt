@@ -25,8 +25,10 @@ cp_layla_check_button = {
 		NOT = { has_variable = cp_button_cooldown }
 	}
 
+	# The cooldown is set by each reflection event's immediate block
+	# (cp_layla.10..23), so clicking the button AND the JE's monthly
+	# random_events auto-fire use the same 90-day lockout.
 	effect = {
-		set_variable = { name = cp_button_cooldown days = 30 }
 		random_list = {
 			# Situation-specific: letter that has not come (Ahmed at war)
 			15 = {
