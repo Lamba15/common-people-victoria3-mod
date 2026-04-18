@@ -123,6 +123,32 @@ cp_conversation.1 = {
 		trigger_event = { id = cp_conversation.50 popup = yes }
 	}
 
+	# About politics. Only if she has a stance (radical or loyalist).
+	option = {
+		name = cp_conversation.1.f
+		trigger = {
+			OR = {
+				AND = { has_variable = cp_radical   var:cp_radical   > 0 }
+				AND = { has_variable = cp_loyalist  var:cp_loyalist  > 0 }
+			}
+			NOT = { has_variable = cp_seen_audience_politics }
+		}
+		set_variable = { name = cp_seen_audience_politics months = 18 }
+		trigger_event = { id = cp_conversation.60 popup = yes }
+	}
+
+	# About the mill, and the boss. Only if she's an urban laborer.
+	option = {
+		name = cp_conversation.1.g
+		trigger = {
+			has_variable = cp_profession_laborers
+			has_variable = cp_in_city
+			NOT = { has_variable = cp_seen_audience_boss }
+		}
+		set_variable = { name = cp_seen_audience_boss months = 18 }
+		trigger_event = { id = cp_conversation.70 popup = yes }
+	}
+
 	# A small thing. Always available. Shorter cooldown (6 months) because
 	# it's the "I don't have a speech tonight" option and should be reachable
 	# more often than the big topics.
@@ -986,6 +1012,284 @@ cp_conversation.53 = {
 		# exhaustion from re-learning a thing she hoped she'd stopped
 		# having to know.
 		cp_shift_exhaustion = { delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.60..63 -- The Politics
+# ============================================================================
+# Gated on her having a political stance (cp_radical > 0 OR cp_loyalist > 0).
+# Opening varies dramatically: radical woman entering the room is not a
+# loyalist woman. Three Pasha responses: hears her out, refuses to be
+# softened, meets her stance with its own weight.
+# ============================================================================
+
+cp_conversation.60 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.60.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.60.d.radical_strong
+				trigger = { var:cp_radical >= 30 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.60.d.loyalist
+				trigger = { var:cp_loyalist > 0 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.60.d.radical_soft
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.60.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_politics
+	}
+
+	option = {
+		name = cp_conversation.60.a
+		trigger_event = { id = cp_conversation.61 popup = yes }
+	}
+	option = {
+		name = cp_conversation.60.b
+		trigger_event = { id = cp_conversation.62 popup = yes }
+	}
+	option = {
+		name = cp_conversation.60.c
+		trigger_event = { id = cp_conversation.63 popup = yes }
+	}
+}
+
+cp_conversation.61 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.61.t
+	desc = cp_conversation.61.d
+	flavor = cp_conversation.61.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.61.a
+		default_option = yes
+		# Being heard when one is political is a rare thing. Small hope.
+		cp_shift_hope = { delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.62 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.62.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.62.d.radical
+				trigger = { var:cp_radical > 0 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.62.d.loyalist
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.62.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.62.a
+		default_option = yes
+		# Refusal to be softened hardens whichever stance she walked in with.
+		if = {
+			limit = { var:cp_radical > 0 }
+			cp_shift_radical = { delta = 5 }
+		}
+		else = {
+			cp_shift_loyalist = { delta = 5 }
+		}
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.63 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.63.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.63.d.radical
+				trigger = { var:cp_radical > 0 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.63.d.loyalist
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.63.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.63.a
+		default_option = yes
+		# He has met her eye. The exchange changes her — but not toward
+		# either pole. It settles into conviction: weight on the issue
+		# she walked in with, not a swing.
+		cp_shift_weight = { weight = revolution delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.70..73 -- The Boss (the mill)
+# ============================================================================
+# Gated on cp_profession_laborers + cp_in_city. Opening variants: fresh
+# from an angry day (cp_radical > 0) or settled into the routine.
+# Three Pasha responses: sympathetic (laws are being considered),
+# dismissive (the mill pays what it pays), and political (who is
+# teaching you these things?).
+# ============================================================================
+
+cp_conversation.70 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.70.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_conversation.70.d.angry
+				trigger = { var:cp_radical > 0 }
+			}
+			triggered_desc = {
+				desc = cp_conversation.70.d.settled
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_conversation.70.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_mill
+	}
+
+	option = {
+		name = cp_conversation.70.a
+		trigger_event = { id = cp_conversation.71 popup = yes }
+	}
+	option = {
+		name = cp_conversation.70.b
+		trigger_event = { id = cp_conversation.72 popup = yes }
+	}
+	option = {
+		name = cp_conversation.70.c
+		trigger_event = { id = cp_conversation.73 popup = yes }
+	}
+}
+
+cp_conversation.71 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.71.t
+	desc = cp_conversation.71.d
+	flavor = cp_conversation.71.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.71.a
+		default_option = yes
+		cp_shift_weight = { weight = labor_laws delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.72 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.72.t
+	desc = cp_conversation.72.d
+	flavor = cp_conversation.72.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.72.a
+		default_option = yes
+		cp_shift_radical = { delta = 3 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.73 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.73.t
+	desc = cp_conversation.73.d
+	flavor = cp_conversation.73.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.73.a
+		default_option = yes
+		# She does not give names. She keeps her own counsel. The act
+		# of keeping counsel hardens labor-law conviction.
+		cp_shift_weight = { weight = labor_laws delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
