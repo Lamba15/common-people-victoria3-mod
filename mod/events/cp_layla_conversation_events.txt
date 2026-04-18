@@ -196,6 +196,22 @@ cp_conversation.1 = {
 		trigger_event = { id = cp_conversation.130 popup = yes }
 	}
 
+	# About the Nile. Available for rural/land-bound households.
+	option = {
+		name = cp_conversation.1.m
+		trigger = {
+			OR = {
+				has_variable = cp_profession_peasants
+				has_variable = cp_profession_farmers
+				has_variable = cp_owns_land
+				has_variable = cp_under_serfdom
+			}
+			NOT = { has_variable = cp_seen_audience_nile }
+		}
+		set_variable = { name = cp_seen_audience_nile months = 18 }
+		trigger_event = { id = cp_conversation.140 popup = yes }
+	}
+
 	# A small thing. Always available. Shorter cooldown (6 months) because
 	# it's the "I don't have a speech tonight" option and should be reachable
 	# more often than the big topics.
@@ -1958,6 +1974,127 @@ cp_conversation.133 = {
 		cp_shift_hope = { delta = 2 }
 		cp_shift_loyalist = { delta = 1 }
 		cp_shift_weight = { weight = economy delta = 2 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.140..143 -- The Nile (gated on rural)
+# ============================================================================
+# She speaks of the river because the river is the country, and because
+# the country is about to adjust the river (dams, barrages, cotton-water
+# diversion). Pasha responses: the engineer's voice / the poet's /
+# the bailiff's.
+# ============================================================================
+
+cp_conversation.140 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.140.t
+	desc  = cp_conversation.140.d
+	flavor = cp_conversation.140.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_nile
+	}
+
+	option = {
+		name = cp_conversation.140.a
+		trigger_event = { id = cp_conversation.141 popup = yes }
+	}
+	option = {
+		name = cp_conversation.140.b
+		trigger_event = { id = cp_conversation.142 popup = yes }
+	}
+	option = {
+		name = cp_conversation.140.c
+		trigger_event = { id = cp_conversation.143 popup = yes }
+	}
+}
+
+cp_conversation.141 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.141.t
+	desc = cp_conversation.141.d
+	flavor = cp_conversation.141.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.141.a
+		default_option = yes
+		# The engineer's voice. He speaks of cubic yards and cotton and
+		# barrages. She understands one word in three, and the one-in-
+		# three she understands is §Iwater#!. Weight on economy up;
+		# small radicalism because the engineer does not name her village.
+		cp_shift_weight = { weight = economy delta = 1 }
+		cp_shift_radical = { delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.142 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.142.t
+	desc = cp_conversation.142.d
+	flavor = cp_conversation.142.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.142.a
+		default_option = yes
+		# The poet's voice. He speaks about the river as his mother did.
+		# She recognises the tone but notices that he does not, at any
+		# point, mention harvests. Small loyalism; weight on religion up.
+		cp_shift_loyalist = { delta = 1 }
+		cp_shift_weight = { weight = religion delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.143 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.143.t
+	desc = cp_conversation.143.d
+	flavor = cp_conversation.143.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.143.a
+		default_option = yes
+		# The bailiff's voice: "and how much does the canal pay in taxes
+		# this year?" She notices the word §Ipay#! before the word
+		# §Icanal#!. Radical up, weight on land_reform up.
+		cp_shift_radical = { delta = 2 }
+		cp_shift_weight = { weight = land_reform delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
