@@ -971,3 +971,57 @@ cp_layla.60 = {
 		cp_shift_weight = { weight = revolution delta = 1 }
 	}
 }
+
+
+###############################################################################
+# Crossroads (cp_layla.70..79)
+#
+# Whole-life branches. Each fires exactly once per save and reshapes which
+# pulses + reactions are available afterward. The composite effects live
+# in cp_memory.txt; the dispatcher in cp_on_yearly decides when the
+# opportunity arrives.
+###############################################################################
+
+# cp_layla.70 -- "Cairo Is Calling" (first migration crossroads)
+cp_layla.70 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla.70.t
+	desc  = cp_layla.70.d
+	flavor = cp_layla.70.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 5
+
+	trigger = {
+		has_variable = cp_layla_alive
+	}
+
+	# Option A: the family moves together
+	option = {
+		name = cp_layla.70.a
+		default_option = yes
+		cp_move_family_to_cairo = yes
+	}
+	# Option B: Ahmed goes alone (only if alive, at home, not at war)
+	option = {
+		name = cp_layla.70.b
+		trigger = {
+			has_variable = cp_ahmed_alive
+			var:cp_ahmed_alive > 0
+			NOT = { has_variable = cp_ahmed_at_war }
+		}
+		cp_ahmed_goes_to_cairo_alone = yes
+	}
+	# Option C: they stay
+	option = {
+		name = cp_layla.70.c
+		cp_family_refuses_cairo = yes
+	}
+}

@@ -203,6 +203,29 @@ cp_on_yearly = {
 				set_variable = cp_seen_grain_tax
 			}
 			set_variable = { name = cp_tax_burden_prev value = var:cp_tax_burden }
+
+			# Crossroads: Cairo offers work. Fires once per life when
+			# prerequisites align — a mill exists in her state, she's
+			# still a village peasant, SoL is pressed, and migration is
+			# legally possible (NOT serfdom). 25% roll per qualifying
+			# year so it feels like a choice arriving rather than an
+			# obligation on a timer.
+			if = {
+				limit = {
+					has_variable = cp_seen_first_textile_mill
+					NOT = { has_variable = cp_seen_cairo_offer }
+					NOT = { has_law = law_type:law_serfdom }
+					has_variable = cp_profession_peasants
+					var:cp_sol <= 12
+				}
+				random_list = {
+					25 = {
+						trigger_event = { id = cp_layla.70 }
+						set_variable = cp_seen_cairo_offer
+					}
+					75 = { }
+				}
+			}
 		}
 	}
 }

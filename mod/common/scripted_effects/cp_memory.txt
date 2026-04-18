@@ -716,3 +716,42 @@ cp_restore_serfdom = {
 	cp_shift_hope = { delta = -2 }
 	cp_shift_exhaustion = { delta = 1 }
 }
+
+
+# ============================================================================
+# Crossroads composites -- whole-life branches
+# ============================================================================
+# A crossroads mutates enough state in one go that its effects deserve
+# named composites. Each composite is what it says on the tin.
+
+# The family takes the mill job. She and Ahmed move to Cairo; her cohort
+# shifts from misri-sunni-peasants to misri-sunni-laborers. Both cp_in_cairo
+# flags + laborer profession + resample SoL from the new cohort in one step.
+# The state marker (STATE_LOWER_EGYPT) stays put — Cairo is a city within
+# Lower Egypt, not a separate V3 state.
+cp_move_family_to_cairo = {
+	cp_enter_cairo = yes
+	cp_become_laborer = yes
+	set_variable = cp_ahmed_profession_laborer
+	remove_variable = cp_ahmed_profession_peasant
+	cp_refresh_sol_from_pop = yes
+	cp_shift_hope = { delta = 1 }
+	cp_shift_exhaustion = { delta = 2 }
+}
+
+# Ahmed commutes; she stays in the village with the children. His
+# profession flips; hers does not. Flag cp_ahmed_in_cairo lets prose branch
+# on the split household.
+cp_ahmed_goes_to_cairo_alone = {
+	set_variable = cp_ahmed_profession_laborer
+	remove_variable = cp_ahmed_profession_peasant
+	set_variable = cp_ahmed_in_cairo
+	cp_shift_exhaustion = { delta = 1 }
+}
+
+# They stay. The decision itself is an act — rooted, defiant, and she
+# feels it as reinforcement of the land-reform weight.
+cp_family_refuses_cairo = {
+	cp_shift_weight = { weight = land_reform delta = 1 }
+	cp_shift_hope = { delta = 1 }
+}

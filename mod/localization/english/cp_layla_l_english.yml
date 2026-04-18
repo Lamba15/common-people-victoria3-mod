@@ -351,6 +351,17 @@
  cp_layla.60.b:0 "She listens for hoofbeats. She begins, quietly, to calculate."
 
 
+ # ----- Crossroads (cp_layla.70..) -----
+
+ # cp_layla.70 -- "Cairo Is Calling" (migration crossroads)
+ cp_layla.70.t:0 "Cairo Is Calling"
+ cp_layla.70.d:0 "Word has come from a cousin who lives in the city. The mills are hiring. Ahmed's hands, the cousin writes, are the right hands. The pay is in coins, weekly. There is a room, small, in a building with many rooms."
+ cp_layla.70.f:0 "She sits with Ahmed in the dark after the children have been put to bed. The lamp is low. The letter the cousin dictated to a friend's son sits on the low table between them. The son's handwriting is careful — he writes like a boy practising for an exam he hopes to pass. Ahmed has read the letter aloud to her twice. She has not asked him to read it a third time, because she does not want him to know she is trying to memorise it. The letter says: we can help. There is work. There is a room. She stares at the lamp. She stares at the letter. She thinks of her field, which is not theirs on paper, which may never be theirs on paper, which has fed her family and may not always. She thinks of the mill she saw once from the far bank of the canal, the one with the smoke, the one that vibrated the ground. She thinks of her mother's grave, and of Ahmed's mother's grave, and of the heron that stands in the irrigation channel, and of a room she has never seen, and of a city she has never seen, and of the sound — imagined — of children she has not yet had, speaking a kind of Arabic she does not yet know, in a kind of street she cannot picture. What do they decide?"
+ cp_layla.70.a:0 "All of us go. We will learn the city. The family stays together."
+ cp_layla.70.b:0 "Ahmed goes alone. I stay with the children. We will see each other when we can."
+ cp_layla.70.c:0 "We stay. The field has been ours for generations. It will have to keep being ours."
+
+
  # ============================================================================
  # Imagined audience with the Pasha
  # See documentation/characters/layla/conversation.md

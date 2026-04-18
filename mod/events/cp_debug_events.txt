@@ -37,6 +37,7 @@
 #   cp_debug.28  -- NEW: fire Ahmed death-notice event directly.
 #   cp_debug.29  -- NEW: fire textile-mill-arrival event directly.
 #   cp_debug.30  -- NEW: fire revolution-fear event directly.
+#   cp_debug.31  -- NEW: fire the Cairo-crossroads event directly.
 #
 # Retired (obsolete probes; removed in the April cleanup):
 #   cp_debug.2/.3/.4 -- direct law-event fires (superseded by .5 + dispatcher)
@@ -426,6 +427,21 @@ cp_debug.30 = {
 	immediate = {
 		c:EGY ?= {
 			trigger_event = { id = cp_layla.60 }
+		}
+	}
+}
+
+# cp_debug.31 -- Fire the Cairo-crossroads event directly. Skips the
+# yearly-pulse random roll and prereq gate; useful for reviewing prose
+# + testing each of the three option composites (move / split / stay).
+cp_debug.31 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.70 }
 		}
 	}
 }
