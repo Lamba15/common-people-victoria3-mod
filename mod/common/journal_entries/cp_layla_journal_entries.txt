@@ -26,6 +26,11 @@ cp_je_layla = {
 
 	group = je_group_internal_affairs
 
+	# Visible monthly-ticking bar. V3 engine increments this automatically
+	# each month via the monthly_progress hook on the scripted_progress_bar.
+	# If the bar fills, the engine's monthly tick is firing.
+	scripted_progress_bar = cp_layla_life_bar
+
 	# Monthly-updating status. first_valid picks the first matching branch,
 	# so more specific conditions (situation + mood) come before general
 	# (situation only, then mood only, then default).
