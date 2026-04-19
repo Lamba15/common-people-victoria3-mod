@@ -3518,3 +3518,194 @@ cp_layla.117 = {
 		cp_shift_weight = { weight = revolution delta = 2 }
 	}
 }
+
+
+# =============================================================================
+# Migration + economic system reactions -- cp_layla.121..124
+# =============================================================================
+# cp_layla.121: law_no_migration_controls (the lane grows foreign)
+# cp_layla.122: law_closed_borders (the cousin in Beirut cannot come)
+# cp_layla.123: law_laissez_faire (the market eats the village)
+# cp_layla.124: law_command_economy (the ministry comes for the stall)
+# =============================================================================
+
+# cp_layla.121 -- "Strangers in the Lane" (law_no_migration_controls)
+cp_layla.121 = {
+	type = country_event
+
+	title = cp_layla.121.t
+	desc  = cp_layla.121.d
+	flavor = cp_layla.121.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_no_migration_controls }
+	}
+
+	immediate = {
+		set_variable = cp_seen_no_migration_controls
+	}
+
+	# A: she rents the room above the kitchen to the Syrian family that
+	# arrives looking for work. Hope up, weight on economy up.
+	option = {
+		name = cp_layla.121.a
+		default_option = yes
+		cp_shift_hope = { delta = 2 }
+		cp_shift_weight = { weight = economy delta = 1 }
+	}
+	# B: she does not rent. She does not greet. She watches the new
+	# faces and is tired. Weight on religion up, exhaustion up.
+	option = {
+		name = cp_layla.121.b
+		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_weight = { weight = religion delta = 1 }
+	}
+}
+
+
+# cp_layla.122 -- "The Gate Closes" (law_closed_borders)
+cp_layla.122 = {
+	type = country_event
+
+	title = cp_layla.122.t
+	desc  = cp_layla.122.d
+	flavor = cp_layla.122.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_closed_borders }
+	}
+
+	immediate = {
+		set_variable = cp_seen_closed_borders
+	}
+
+	# A: she folds the letter from the cousin in Beirut and sets it
+	# aside. Hope down, exhaustion up.
+	option = {
+		name = cp_layla.122.a
+		default_option = yes
+		cp_shift_hope = { delta = -2 }
+		cp_shift_exhaustion = { delta = 1 }
+	}
+	# B: she is, in spite of herself, quietly glad. The lane is hers.
+	# Loyalism up, weight on religion up.
+	option = {
+		name = cp_layla.122.b
+		cp_shift_loyalist = { delta = 2 }
+		cp_shift_weight = { weight = religion delta = 1 }
+	}
+}
+
+
+# cp_layla.123 -- "The Market Eats the Village" (law_laissez_faire)
+cp_layla.123 = {
+	type = country_event
+
+	title = cp_layla.123.t
+	desc  = cp_layla.123.d
+	flavor = cp_layla.123.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_laissez_faire }
+	}
+
+	immediate = {
+		set_variable = cp_seen_laissez_faire
+	}
+
+	# A: she watches the foreign company plant its sign in the field.
+	# Exhaustion up, radical up, weight on land_reform up.
+	option = {
+		name = cp_layla.123.a
+		default_option = yes
+		cp_shift_exhaustion = { delta = 2 }
+		cp_shift_radical = { delta = 2 }
+		cp_shift_weight = { weight = land_reform delta = 2 }
+	}
+	# B: her stall does, in fact, sell more. Hope up, loyalism up,
+	# weight on economy up.
+	option = {
+		name = cp_layla.123.b
+		trigger = {
+			has_variable = cp_self_employed
+		}
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 1 }
+		cp_shift_weight = { weight = economy delta = 2 }
+	}
+}
+
+
+# cp_layla.124 -- "The Ministry Comes for the Stall" (law_command_economy)
+cp_layla.124 = {
+	type = country_event
+
+	title = cp_layla.124.t
+	desc  = cp_layla.124.d
+	flavor = cp_layla.124.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_command_economy }
+	}
+
+	immediate = {
+		set_variable = cp_seen_command_economy
+	}
+
+	# A: she signs the collectivisation papers. Loyalism up, weight on
+	# economy up; exhaustion up because the stall is no longer hers.
+	option = {
+		name = cp_layla.124.a
+		default_option = yes
+		cp_shift_loyalist = { delta = 1 }
+		cp_shift_exhaustion = { delta = 2 }
+		cp_shift_weight = { weight = economy delta = 1 }
+	}
+	# B: she does not sign. She closes the stall. Radical up, weight
+	# on revolution up.
+	option = {
+		name = cp_layla.124.b
+		trigger = {
+			has_variable = cp_self_employed
+		}
+		cp_shift_radical = { delta = 3 }
+		cp_shift_weight = { weight = revolution delta = 2 }
+		cp_shift_weight = { weight = economy delta = -1 }
+	}
+}

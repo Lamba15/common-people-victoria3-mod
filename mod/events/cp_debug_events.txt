@@ -1012,3 +1012,55 @@ cp_debug.72 = {
 		}
 	}
 }
+
+# cp_debug.73 -- Force-pass law_no_migration_controls → cp_layla.121.
+cp_debug.73 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_no_migration_controls
+		}
+	}
+}
+
+# cp_debug.74 -- Force-pass law_closed_borders → cp_layla.122.
+cp_debug.74 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_closed_borders
+		}
+	}
+}
+
+# cp_debug.75 -- Force-pass law_laissez_faire → cp_layla.123.
+cp_debug.75 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_laissez_faire
+		}
+	}
+}
+
+# cp_debug.76 -- Force-pass law_command_economy → cp_layla.124.
+cp_debug.76 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_command_economy
+		}
+	}
+}
