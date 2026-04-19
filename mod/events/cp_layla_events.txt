@@ -1014,6 +1014,10 @@ cp_layla.80 = {
 
 	immediate = {
 		cp_layla_dies = yes
+		# Schedule the forty-days coda. Fires in country scope 40 days
+		# from now. cp_layla_alive is already cleared; the coda does
+		# not gate on it.
+		trigger_event = { id = cp_layla.83 days = 40 }
 	}
 
 	option = {
@@ -3707,5 +3711,272 @@ cp_layla.124 = {
 		cp_shift_radical = { delta = 3 }
 		cp_shift_weight = { weight = revolution delta = 2 }
 		cp_shift_weight = { weight = economy delta = -1 }
+	}
+}
+
+
+# =============================================================================
+# Editor-audit additions -- cp_layla.83, .125, .126, .127, .128
+# =============================================================================
+# Per documentation/characters/layla/editor-audit.md §"Structural
+# suggestions" + §"Twelve specific line-level edits" (#12).
+#
+# .83  -- The Forty Days (post-death coda — fires after .80 clears alive)
+# .125 -- The District Office (grounds the Pasha fantasy in real failure)
+# .126 -- The Imam's Visit (installs Sheikh Abdallah as recurring)
+# .127 -- The Small Victory (the comic beat)
+# .128 -- Mariam Writes from Cairo (letter-from-the-cousin)
+# =============================================================================
+
+# cp_layla.83 -- "The Forty Days" (fires 40 days after Layla's death)
+#
+# Special: fires AFTER cp_layla_alive = 0. Owned by c:EGY still, so
+# it runs against a country variable rather than a character scope.
+# One-shot; clears cp_layla_alive_recently at the end so no other
+# Layla event can fire.
+cp_layla.83 = {
+	type = country_event
+
+	title = cp_layla.83.t
+	desc  = cp_layla.83.d
+	flavor = cp_layla.83.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 5
+
+	trigger = {
+		# Fires from inside cp_layla.80's option effect (scheduled via days = 40).
+		# No extra gate needed; .80 is the one-shot.
+		always = yes
+	}
+
+	option = {
+		name = cp_layla.83.a
+		default_option = yes
+		# The life has been handed forward. No state changes — it is
+		# already gone. The option is ceremonial.
+	}
+}
+
+
+# cp_layla.125 -- "The District Office" (the real audience that fails)
+#
+# Fires once per life, randomly, when she has attempted at least one
+# law-related action (welfare, suffrage, a deed). The real office
+# takes her down, politely, to the floor. The fantasy Pasha audience
+# is, thereafter, a survival mechanism, not decoration.
+cp_layla.125 = {
+	type = country_event
+
+	title = cp_layla.125.t
+	desc  = cp_layla.125.d
+	flavor = cp_layla.125.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	trigger = {
+		has_variable = cp_layla_alive
+		var:cp_age >= 35
+		NOT = { has_variable = cp_seen_district_office }
+	}
+
+	immediate = {
+		set_variable = cp_seen_district_office
+	}
+
+	# A: she accepts the dismissal. Exhaustion up, hope down; the
+	# fantasy-audience cooldown resets (she needs it tonight).
+	option = {
+		name = cp_layla.125.a
+		default_option = yes
+		cp_shift_hope = { delta = -2 }
+		cp_shift_exhaustion = { delta = 2 }
+		# Reset the conversation cooldown so she can go to Cairo-in-
+		# her-mind tonight, if the variable exists.
+		if = {
+			limit = { has_variable = cp_audience_cooldown }
+			remove_variable = cp_audience_cooldown
+		}
+	}
+	# B: she does not come back a third time. Radical up; weight on
+	# revolution up. She has learned something about rooms.
+	option = {
+		name = cp_layla.125.b
+		cp_shift_radical = { delta = 2 }
+		cp_shift_weight = { weight = revolution delta = 1 }
+	}
+}
+
+
+# cp_layla.126 -- "The Imam's Visit"
+#
+# Pulse event. Sheikh Abdallah comes to the door on some Friday.
+# He sits. He drinks tea. He leaves. Installs the imam as a
+# recurring presence. Long cooldown so it feels like a visit, not
+# a routine.
+cp_layla.126 = {
+	type = country_event
+
+	title = cp_layla.126.t
+	desc  = cp_layla.126.d
+	flavor = cp_layla.126.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_imam_visit }
+		NOT = { has_law = law_type:law_state_atheism }
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_imam_visit days = 1825 }
+	}
+
+	# A: she gives him tea. Hope up, weight on religion up.
+	option = {
+		name = cp_layla.126.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+		cp_shift_weight = { weight = religion delta = 1 }
+	}
+	# B: she also gives him a coin for the zakat box. Hope up more;
+	# loyalism up; SoL dip (the coin was not extra).
+	option = {
+		name = cp_layla.126.b
+		trigger = {
+			var:cp_sol >= 8
+		}
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 1 }
+		cp_shift_weight = { weight = religion delta = 2 }
+	}
+}
+
+
+# cp_layla.127 -- "The Small Victory" (the comic beat)
+#
+# Pulse. A cousin returns from Cairo dressed as a pasha and falls in
+# the mud at the well. Layla and Um Yusuf laugh. The mod's one
+# legitimate moment of uncomplicated levity.
+cp_layla.127 = {
+	type = country_event
+
+	title = cp_layla.127.t
+	desc  = cp_layla.127.d
+	flavor = cp_layla.127.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_small_victory }
+		# Requires some material improvement — SoL above struggling, and
+		# at least one ally gesture (welfare active, vote rights, or a
+		# law passed). The laughter is earned.
+		var:cp_sol >= 10
+		OR = {
+			has_variable = cp_receives_welfare
+			has_variable = cp_has_voted
+			has_variable = cp_owns_land
+		}
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_small_victory days = 3650 }
+	}
+
+	# A: she laughs with Um Yusuf. Hope way up, exhaustion down.
+	option = {
+		name = cp_layla.127.a
+		default_option = yes
+		cp_shift_hope = { delta = 3 }
+		cp_shift_exhaustion = { delta = -2 }
+	}
+	# B: she laughs — and helps him up, and does not mention it again
+	# for the rest of the month. Hope up; loyalism up slightly (the
+	# cohesion of the lane is its own small government).
+	option = {
+		name = cp_layla.127.b
+		cp_shift_hope = { delta = 2 }
+		cp_shift_loyalist = { delta = 1 }
+	}
+}
+
+
+# cp_layla.128 -- "Mariam Writes from Cairo"
+#
+# Pulse. A letter from the cousin Mariam arrives. Nūr reads it
+# aloud. The world-outside-the-village enters the kitchen without
+# Layla having to leave the kitchen.
+cp_layla.128 = {
+	type = country_event
+
+	title = cp_layla.128.t
+	desc  = cp_layla.128.d
+	flavor = cp_layla.128.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		# Nūr must be old enough and literate — gated on the daughter-
+		# literate flag (set by cp_layla.101 via cp_may_work-adjacent
+		# logic; approximate with daughter_at_school for now).
+		OR = {
+			has_variable = cp_daughter_at_school
+			var:cp_literacy >= 10
+		}
+		NOT = { has_variable = cp_seen_mariam_letter }
+	}
+
+	immediate = {
+		set_variable = { name = cp_seen_mariam_letter days = 1460 }
+	}
+
+	# A: she asks Nūr to read the letter again. Hope up; weight on
+	# education up.
+	option = {
+		name = cp_layla.128.a
+		default_option = yes
+		cp_shift_hope = { delta = 2 }
+		cp_shift_weight = { weight = education delta = 1 }
+	}
+	# B: she puts the letter away after one reading; she is not ready
+	# for what Mariam has become. Exhaustion up slightly; weight on
+	# religion up (the old order is the familiar order).
+	option = {
+		name = cp_layla.128.b
+		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_weight = { weight = religion delta = 1 }
 	}
 }

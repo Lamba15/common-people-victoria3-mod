@@ -1064,3 +1064,68 @@ cp_debug.76 = {
 		}
 	}
 }
+
+# cp_debug.77 -- Fire cp_layla.83 (The Forty Days) directly.
+cp_debug.77 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.83 }
+		}
+	}
+}
+
+# cp_debug.78 -- Fire cp_layla.125 (The District Office) directly.
+cp_debug.78 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.125 }
+		}
+	}
+}
+
+# cp_debug.79 -- Fire cp_layla.126 (The Imam's Visit) directly.
+cp_debug.79 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.126 }
+		}
+	}
+}
+
+# cp_debug.80 -- Fire cp_layla.127 (The Small Victory) directly.
+cp_debug.80 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.127 }
+		}
+	}
+}
+
+# cp_debug.81 -- Fire cp_layla.128 (Mariam Writes from Cairo) directly.
+cp_debug.81 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_layla.128 }
+		}
+	}
+}

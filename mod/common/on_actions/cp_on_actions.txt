@@ -485,6 +485,30 @@ cp_on_yearly = {
 					70 = { }
 				}
 			}
+
+			# The District Office (cp_layla.125). Per the editor audit:
+			# she makes the real trip that the fantasy audience is a
+			# survival mechanism for. Fires once per life, 10% per
+			# qualifying year, gated on age and at least one prior
+			# law-touching experience.
+			if = {
+				limit = {
+					var:cp_age >= 35
+					NOT = { has_variable = cp_seen_district_office }
+					OR = {
+						has_variable = cp_receives_welfare
+						has_variable = cp_has_voted
+						has_variable = cp_owns_land
+						has_variable = cp_self_employed
+					}
+				}
+				random_list = {
+					10 = {
+						trigger_event = { id = cp_layla.125 }
+					}
+					90 = { }
+				}
+			}
 		}
 	}
 }

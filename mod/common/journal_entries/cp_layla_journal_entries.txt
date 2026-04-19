@@ -225,6 +225,12 @@ cp_je_layla = {
 			# Labour: a strike in her city. Gated on her being a laborer
 			# (or Ahmed) + right-to-associate laws + 5yr cooldown.
 			5  = cp_layla.113  # The strike
+
+			# Editor-audit additions. Each one-shot or long-cooldown; the
+			# triggers on the events themselves gate availability.
+			5  = cp_layla.126  # The Imam's Visit
+			5  = cp_layla.127  # The Small Victory
+			5  = cp_layla.128  # Mariam Writes from Cairo
 		}
 	}
 
