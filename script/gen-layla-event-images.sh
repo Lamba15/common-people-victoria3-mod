@@ -654,4 +654,93 @@ run_one "cp_conversation_school" \
   "Imagined palace hall. Layla (older, headscarf, village-to-urban dress) stands on the carpet holding a folded paper out at a reading distance — the pose of a mother describing her daughter's handwriting. Her face softened by unexpected pride. Warm palace light. Her other hand lifted slightly as if tracing an alif in the air." \
   "she has come about the daughter who can, now, read"
 
+
+###############################################################################
+# TIER 6 -- remaining placeholder events (14 images)
+###############################################################################
+
+run_one "cp_layla_tax_collector" \
+  "The Tax Collector" \
+  "a clerk sits at Layla's wooden chest in the courtyard writing in a ledger; she stands to one side, hands folded" \
+  "Packed-earth courtyard of a Lower Egyptian mud-brick house. A clerk (middle-aged man, dark formal jacket, tarboosh, tired face) sits on a low stool at Layla's wooden wedding chest, writing into a large open ledger with a reed pen. Beside the chest: an open coffer with a few coins. In the foreground, Layla (early 30s, headscarf, simple working dress) stands with her hands folded at her waist, her gaze on the ledger. Across the yard in shadow, Ahmed (bearded, gallabiya) watches with arms crossed. Harsh midday light, dust in the air." \
+  "the state's hand in the household's accounts"
+
+run_one "cp_layla_loaf" \
+  "The Price of the Loaf" \
+  "Layla at a baker's counter receiving a smaller loaf than usual for the same coin; other women in line behind her" \
+  "Interior of a small village bakery. Warm wood counter dusted with flour. Hajj Rashid the baker (older man, white cap, apron) hands a loaf of aish baladi across the counter to Layla (mid-30s, headscarf, basket on her arm). The loaf is visibly smaller than it should be; his eyes avoid hers, quiet apology in his posture. A low round oven in the background; two other village women wait their turn in the background. Warm light from the oven casts amber tones." \
+  "a tax that changes the shape of bread"
+
+run_one "cp_layla_election_day" \
+  "Election Day" \
+  "a small polling station in a village hall; Layla stepping away from the ballot box with a private expression" \
+  "Interior of a small rural polling station (village hall or converted schoolhouse). A wooden ballot box on a plain table; an election official (middle-aged man, modest dark jacket, tarboosh) seated behind it with a ledger. Layla (middle-aged, headscarf, best dress — clean but simple) is in the act of turning away from the ballot box, her hand still near the slot where her folded slip has just been dropped. Her expression is inward and mundane-historic; she is not smiling but her eyes are steady. Two other women wait their turn behind her. Flat daylight through a small window." \
+  "the first vote; mundane and historic in equal parts"
+
+run_one "cp_layla_foreman_runner" \
+  "The Foreman's Runner" \
+  "a young mill-boy at Layla's tenement doorway, cap in hand, unable to speak; Layla at the threshold already understanding" \
+  "Exterior/interior threshold of a Cairo tenement apartment, grey morning light. A mill-boy (12-14 years old, thin, dusty working clothes, flat cap twisted in his hands) stands in the open doorway, his face empty of words. Opposite him in the doorway, Layla (middle-aged, headscarf, wiping her hands on an apron) has gone very still. Her expression: she has understood from his face before he has spoken. The stairwell of the tenement visible behind him. Cool desaturated palette; muted, grave." \
+  "the accident has already happened; the news is the echo"
+
+run_one "cp_layla_own_stall" \
+  "Her Own Stall" \
+  "Layla behind a new small market stall with vegetables, scale, and a battered tin box; customers in foreground" \
+  "Morning market, bright ochre light. In the center foreground, Layla (middle-aged, headscarf, apron) stands behind a small rough wooden market stall of her own. On the stall: woven baskets of onions, cucumbers, a pyramid of eggplants, a small brass two-pan balance, a battered tin coin-box in the corner. She is wiping her hands on the apron, faintly proud, faintly nervous. A woman customer in the foreground examines the onions. Another stall and village lane visible behind. Warm palette." \
+  "the stall is hers; the responsibility is entirely hers"
+
+run_one "cp_layla_month_without" \
+  "The Month Without" \
+  "Layla kneels at a water-jar that is almost empty; the hearth is cold; a child sits in the corner" \
+  "Interior of a modest tenement room, dim cold grey-blue morning light from a single window. Layla (middle-aged, headscarf, a worn shawl around her shoulders) kneels on the floor beside a tall clay water-jar, tilting it forward to reach the last of the water. Opposite her: a small cold hearth with the ashes from yesterday's fire but no new fire lit. In the far corner: a small child of 4-5 sits on a worn cushion, knees drawn up, watching. No other figures. Palette muted — cold ochre, ash grey, pale cream. Quiet want." \
+  "the month that does not, this year, have what the previous months had"
+
+run_one "cp_layla_not_on_deed" \
+  "Her Name Is Not on the Deed" \
+  "Layla sorting beans at the kitchen table, the deed unfolded between her hands, a child behind her reading over her shoulder" \
+  "Interior of a mud-brick kitchen, late afternoon light. Layla (middle-aged, headscarf) seated on the floor mat at the low wooden table; her hands have paused over a spread of sorted and unsorted beans in front of her. Between her hands, unfolded on the table, is the deed paper for the field — with Ahmed's name visible on it in Arabic script. Behind her shoulder stands her daughter Nūr (early teenage, serious face, headscarf) also looking down at the deed, her finger about to point. Two small clay bowls of beans, one with weevilled beans set aside. Warm quiet palette." \
+  "the field she walks is not the field her name walks"
+
+run_one "cp_layla_daughter_reads" \
+  "The Daughter Reads" \
+  "Layla seated cross-legged on a mat with Nūr beside her; Nūr reads aloud from a letter; Layla has her hand at her own throat, eyes closed" \
+  "Close-medium interior scene on a worn woven mat. On the left, Layla (middle-aged, headscarf) sits cross-legged, her right hand raised to her own throat, her eyes closed, her face softened by an emotion she is trying not to show. On the right beside her, Nūr (8-9 years old, small headscarf, serious concentration) holds an unfolded handwritten Arabic letter in her lap and reads aloud with one finger tracing the line. Soft single-source lamplight from an oil lamp on a low chest. Warm cream and amber palette. Intimate." \
+  "the word on the page has entered the house via a child"
+
+run_one "cp_layla_compound" \
+  "The Compound on the Edge of the Village" \
+  "a walled plantation compound at the edge of the village; Layla walks past on the road without turning her head" \
+  "Rural road on the edge of a Lower Egyptian village in the heat of midday. On one side of the road: a high plaster-over-mud-brick wall topped with shards of broken pottery, a heavy iron gate set in it; through the gate's grille, the suggestion of bowed figures labouring in a sun-scorched yard beyond. On the road in the foreground, Layla (middle-aged, headscarf, water jar balanced on her shoulder) walks past the gate without turning her head, her eyes fixed on the road ahead. A few palm trees cast hard shadows. Harsh ochre light." \
+  "the village's oldest shame in daily passing"
+
+run_one "cp_layla_every_man" \
+  "Every Man, They Say" \
+  "a line of village men queued at a district registration office; Layla watches from outside with her daughter beside her" \
+  "Dusty village main street in front of a small flat-roofed district office building. A long ragged line of village men (assorted ages, gallabiyas, fezes, tarbooshes, a few in European-cut jackets) waits to register at the open doorway where a clerk sits at a wooden table with an open ledger. Across the street in the foreground, Layla (middle-aged or older, headscarf) stands watching with Nūr (teenage, slightly shorter, also headscarf) beside her. Both of them watching, not entering. Warm midday light, dust haze." \
+  "the word 'every' has a narrow reading and a wide one"
+
+run_one "cp_layla_poster" \
+  "The Poster on the Wall" \
+  "Layla passes a freshly pasted single-party political poster on a whitewashed wall; two policemen stand nearby" \
+  "Village main street, early afternoon. On a whitewashed mud-brick wall at the center of the frame: a large, freshly pasted political poster — single-party emblem, bold Arabic slogan, stark colour — still damp at its lower edge. In the middle distance, two policemen in dark uniforms stand near the poster, hands clasped behind their backs, watching the lane. In the foreground, Layla (middle-aged, headscarf, basket on her hip) walks past with her head slightly lowered, not stopping, her eyes on the path. Flat harsh light." \
+  "a face she is expected to recognise on a wall she used to use for laundry"
+
+run_one "cp_layla_insurance_man" \
+  "The Man with the Bag" \
+  "a European insurance salesman at Layla's doorway with leather bag and printed leaflet; she holds the leaflet at an angle, not understanding the French" \
+  "Doorway of a modest Cairo tenement apartment, morning light. A European salesman (40s, neat brown suit, small bowler hat, leather satchel slung on his shoulder, printed leaflets in his hand) stands on the landing outside her door. He extends a leaflet toward Layla; she (middle-aged, headscarf, apron, wiping her hands) holds the leaflet at a tilt, examining the French-language text with the polite incomprehension of a woman who cannot read what she is holding. Her expression neither rude nor welcoming." \
+  "a door opened to the wrong kind of help"
+
+run_one "cp_layla_strangers" \
+  "Strangers in the Lane" \
+  "Layla on her doorstep holding a covered plate; a Syrian woman across the lane receives it" \
+  "Narrow Egyptian village lane, warm late afternoon light. In the foreground on her doorstep: Layla (middle-aged, headscarf, simple village dress) extends both hands holding a small covered plate of bamya. Across the lane, a Syrian woman (early 30s, different headscarf of Levantine cut, more ornate embroidery on her dress) receives the plate with both hands, smiling a small modest smile. Between them: two small Syrian boys playing in the dust, paying no attention. Warm palette, dust in the air." \
+  "a plate crossing a lane that has just become larger"
+
+run_one "cp_layla_letter_folded" \
+  "The Gate Closes" \
+  "Layla at the low table, hands folded over an open letter from Beirut, the envelope beside it" \
+  "Interior of a modest kitchen, flat late-morning light. Layla (older, headscarf, lined face) sits at the low wooden table. Her hands are folded motionless over an open handwritten Arabic letter that has been unfolded on the table in front of her. A torn-open envelope sits beside it, the Beirut postmark visible. Behind her, a drawer is slightly open, revealing a few other folded letters inside. Her face is composed and private; she is not weeping. Quiet palette." \
+  "a letter folded into the smallest square"
+
 echo "[$(date +%H:%M:%S)] all done"
