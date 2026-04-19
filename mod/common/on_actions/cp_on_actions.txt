@@ -715,6 +715,51 @@ cp_on_law_enacted = {
 			}
 			trigger_event = { id = cp_layla.112 }
 		}
+
+		# Church/state: the hardest beat (state atheism) and the softer
+		# middle (freedom of conscience). Starting rungs (state_religion /
+		# people_of_the_book / millet_system) are Egypt's default and
+		# produce no reaction event.
+		if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				ROOT.currently_enacting_law.type ?= law_type:law_state_atheism
+				NOT = { has_variable = cp_seen_state_atheism }
+			}
+			trigger_event = { id = cp_layla.114 }
+		}
+		else_if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				ROOT.currently_enacting_law.type ?= law_type:law_freedom_of_conscience
+				NOT = { has_variable = cp_seen_freedom_of_conscience }
+			}
+			trigger_event = { id = cp_layla.115 }
+		}
+
+		# Free speech: the opening (right_of_assembly) and the closing
+		# (outlawed_dissent). Middle rungs (censorship / protected_speech)
+		# do not get their own beat this slice.
+		if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				ROOT.currently_enacting_law.type ?= law_type:law_right_of_assembly
+				NOT = { has_variable = cp_seen_right_of_assembly }
+			}
+			trigger_event = { id = cp_layla.116 }
+		}
+		else_if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				ROOT.currently_enacting_law.type ?= law_type:law_outlawed_dissent
+				NOT = { has_variable = cp_seen_outlawed_dissent }
+			}
+			trigger_event = { id = cp_layla.117 }
+		}
 	}
 }
 

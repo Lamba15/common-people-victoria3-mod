@@ -907,3 +907,55 @@ cp_debug.64 = {
 		}
 	}
 }
+
+# cp_debug.65 -- Force-pass law_state_atheism → cp_layla.114.
+cp_debug.65 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_state_atheism
+		}
+	}
+}
+
+# cp_debug.66 -- Force-pass law_freedom_of_conscience → cp_layla.115.
+cp_debug.66 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_freedom_of_conscience
+		}
+	}
+}
+
+# cp_debug.67 -- Force-pass law_right_of_assembly → cp_layla.116.
+cp_debug.67 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_right_of_assembly
+		}
+	}
+}
+
+# cp_debug.68 -- Force-pass law_outlawed_dissent → cp_layla.117.
+cp_debug.68 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_outlawed_dissent
+		}
+	}
+}

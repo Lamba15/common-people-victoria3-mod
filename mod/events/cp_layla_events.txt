@@ -3194,3 +3194,192 @@ cp_layla.73 = {
 		cp_stall_becomes_primary = yes
 	}
 }
+
+
+# =============================================================================
+# Church/state + free speech law reactions -- cp_layla.114..117
+# =============================================================================
+# cp_layla.114: law_state_atheism (the muezzin is silenced)
+# cp_layla.115: law_freedom_of_conscience (the Coptic procession passes in peace)
+# cp_layla.116: law_right_of_assembly (her first demonstration in the square)
+# cp_layla.117: law_outlawed_dissent (the neighbour is taken for a letter)
+# =============================================================================
+
+# cp_layla.114 -- "The Minaret's Silence" (law_state_atheism)
+cp_layla.114 = {
+	type = country_event
+
+	title = cp_layla.114.t
+	desc  = cp_layla.114.d
+	flavor = cp_layla.114.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_state_atheism }
+	}
+
+	immediate = {
+		set_variable = cp_seen_state_atheism
+	}
+
+	# A: she prays behind the door, softer. Grief up, weight on religion up.
+	option = {
+		name = cp_layla.114.a
+		default_option = yes
+		cp_shift_hope = { delta = -2 }
+		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_weight = { weight = religion delta = 2 }
+		cp_shift_radical = { delta = 1 }
+	}
+	# B: she stops praying aloud at all; the house gets quieter. Weight on
+	# revolution up, exhaustion up. The mood sours.
+	option = {
+		name = cp_layla.114.b
+		cp_shift_hope = { delta = -3 }
+		cp_shift_exhaustion = { delta = 2 }
+		cp_shift_weight = { weight = revolution delta = 2 }
+		cp_shift_radical = { delta = 2 }
+	}
+}
+
+
+# cp_layla.115 -- "The Procession Passes" (law_freedom_of_conscience)
+cp_layla.115 = {
+	type = country_event
+
+	title = cp_layla.115.t
+	desc  = cp_layla.115.d
+	flavor = cp_layla.115.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_freedom_of_conscience }
+	}
+
+	immediate = {
+		set_variable = cp_seen_freedom_of_conscience
+	}
+
+	# A: she watches them, makes the sign of God under her breath for them
+	# too. Small hope, softened weight on religion.
+	option = {
+		name = cp_layla.115.a
+		default_option = yes
+		cp_shift_hope = { delta = 1 }
+		cp_shift_loyalist = { delta = 1 }
+		cp_shift_weight = { weight = religion delta = -1 }
+	}
+	# B: she turns her face away. Weight on religion up, opinion on the
+	# state softens only slightly.
+	option = {
+		name = cp_layla.115.b
+		cp_shift_weight = { weight = religion delta = 1 }
+	}
+}
+
+
+# cp_layla.116 -- "The Square Fills and Does Not Empty" (law_right_of_assembly)
+cp_layla.116 = {
+	type = country_event
+
+	title = cp_layla.116.t
+	desc  = cp_layla.116.d
+	flavor = cp_layla.116.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_right_of_assembly }
+	}
+
+	immediate = {
+		set_variable = cp_seen_right_of_assembly
+	}
+
+	# A: she watches from the window and goes back inside. Exhaustion up,
+	# loyalism up, weight on revolution down.
+	option = {
+		name = cp_layla.116.a
+		default_option = yes
+		cp_shift_loyalist = { delta = 1 }
+		cp_shift_weight = { weight = revolution delta = -1 }
+	}
+	# B: she stays and listens. Hope up, weight on revolution up, weight
+	# on womens_rights up (she thinks: if they can stand here, then so
+	# could I, one day).
+	option = {
+		name = cp_layla.116.b
+		cp_shift_hope = { delta = 2 }
+		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_weight = { weight = womens_rights delta = 1 }
+		cp_shift_radical = { delta = 1 }
+	}
+}
+
+
+# cp_layla.117 -- "The Letter That Should Not Have Been Written" (law_outlawed_dissent)
+cp_layla.117 = {
+	type = country_event
+
+	title = cp_layla.117.t
+	desc  = cp_layla.117.d
+	flavor = cp_layla.117.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_layla_alive
+		NOT = { has_variable = cp_seen_outlawed_dissent }
+	}
+
+	immediate = {
+		set_variable = cp_seen_outlawed_dissent
+	}
+
+	# A: she burns the letters she kept. Hope down, exhaustion up,
+	# weight on revolution down (fear wins). Compliance.
+	option = {
+		name = cp_layla.117.a
+		default_option = yes
+		cp_shift_hope = { delta = -2 }
+		cp_shift_exhaustion = { delta = 2 }
+		cp_shift_weight = { weight = revolution delta = -1 }
+	}
+	# B: she keeps one. Hope down, but radicalism up; the memory is now
+	# contraband and will not be forgiven.
+	option = {
+		name = cp_layla.117.b
+		cp_shift_hope = { delta = -1 }
+		cp_shift_radical = { delta = 2 }
+		cp_shift_weight = { weight = revolution delta = 2 }
+	}
+}
