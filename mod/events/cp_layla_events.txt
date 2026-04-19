@@ -3,7 +3,7 @@
 #
 # All Layla events are country_event (root = c:EGY). Layla's state lives as
 # country variables on c:EGY, so reads are unqualified (`has_variable = X`,
-# `var:cp_hope`) and writes go through cp_memory scripted_effects.
+# `var:cp_layla_hope`) and writes go through cp_memory scripted_effects.
 #
 # Pattern B (image-led):
 #   - event_image with custom DDS
@@ -47,7 +47,7 @@ cp_layla.1 = {
 	option = {
 		name = cp_layla.1.a
 		default_option = yes
-		set_variable = cp_met_player
+		set_variable = cp_layla_met_player
 	}
 }
 
@@ -77,7 +77,7 @@ cp_layla.2 = {
 		name = cp_layla.2.a
 		default_option = yes
 		cp_grant_homesteading = yes
-		cp_mark_event_seen = { id = homesteading }
+		cp_mark_event_seen = { person = layla id = homesteading days = 540 }
 	}
 }
 
@@ -108,7 +108,7 @@ cp_layla.3 = {
 		name = cp_layla.3.a
 		default_option = yes
 		cp_restore_serfdom = yes
-		cp_mark_event_seen = { id = serfdom_restored }
+		cp_mark_event_seen = { person = layla id = serfdom_restored days = 540 }
 	}
 }
 
@@ -132,21 +132,21 @@ cp_layla.4 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		has_variable = cp_ahmed_alive
-		NOT = { has_variable = cp_ahmed_at_war }
+		has_variable = cp_layla_ahmed_alive
+		NOT = { has_variable = cp_layla_ahmed_at_war }
 	}
 
 	option = {
 		name = cp_layla.4.a
 		default_option = yes
 		cp_ahmed_conscripted = yes
-		cp_mark_event_seen = { id = ahmed_conscripted }
+		cp_mark_event_seen = { person = layla id = ahmed_conscripted days = 540 }
 	}
 }
 
 # cp_layla.7 -- "The Tax Collector" (tax burden spikes into crushing tier)
 #
-# Fires from cp_on_yearly when cp_tax_burden >= 7 and wasn't last year.
+# Fires from cp_on_yearly when cp_layla_tax_burden >= 7 and wasn't last year.
 # A real tax visit in a Delta village: assessor, two guards, a ledger.
 cp_layla.7 = {
 	type = country_event
@@ -170,15 +170,15 @@ cp_layla.7 = {
 	option = {
 		name = cp_layla.7.a
 		default_option = yes
-		cp_shift_hope = { delta = -1 }
-		cp_shift_exhaustion = { delta = 1 }
-		cp_shift_weight = { weight = land_reform delta = 1 }
+		cp_shift_hope = { person = layla delta = -1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = land_reform delta = 1 }
 	}
 	option = {
 		name = cp_layla.7.b
-		cp_shift_hope = { delta = -2 }
-		cp_shift_radical = { delta = 5 }
-		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_hope = { person = layla delta = -2 }
+		cp_shift_radical = { person = layla delta = 5 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
 	}
 }
 
@@ -187,7 +187,7 @@ cp_layla.7 = {
 #
 # Fires the first time the government levies a consumption tax on grain
 # during her lifetime. Grain is the loaf; the loaf is the day. Sets
-# cp_seen_grain_tax permanently so it doesn't re-fire.
+# cp_layla_seen_grain_tax permanently so it doesn't re-fire.
 cp_layla.8 = {
 	type = country_event
 
@@ -210,12 +210,12 @@ cp_layla.8 = {
 	option = {
 		name = cp_layla.8.a
 		default_option = yes
-		cp_shift_hope = { delta = -1 }
+		cp_shift_hope = { person = layla delta = -1 }
 	}
 	option = {
 		name = cp_layla.8.b
-		cp_shift_hope = { delta = -1 }
-		cp_shift_weight = { weight = economy delta = 1 }
+		cp_shift_hope = { person = layla delta = -1 }
+		cp_shift_weight = { person = layla weight = economy delta = 1 }
 	}
 }
 
@@ -246,8 +246,8 @@ cp_layla.5 = {
 	option = {
 		name = cp_layla.5.a
 		default_option = yes
-		change_variable = { name = cp_children add = 1 }
-		set_variable = cp_has_children
+		change_variable = { name = cp_layla_children add = 1 }
+		set_variable = cp_layla_has_children
 	}
 }
 
@@ -276,7 +276,7 @@ cp_layla.6 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -315,7 +315,7 @@ cp_layla.10 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -345,7 +345,7 @@ cp_layla.11 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -375,7 +375,7 @@ cp_layla.12 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -405,7 +405,7 @@ cp_layla.13 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -435,7 +435,7 @@ cp_layla.14 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -465,7 +465,7 @@ cp_layla.15 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -505,7 +505,7 @@ cp_layla.16 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -535,7 +535,7 @@ cp_layla.17 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -565,7 +565,7 @@ cp_layla.18 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -595,7 +595,7 @@ cp_layla.19 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -625,7 +625,7 @@ cp_layla.20 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -655,7 +655,7 @@ cp_layla.21 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -685,7 +685,7 @@ cp_layla.22 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -715,7 +715,7 @@ cp_layla.23 = {
 	}
 
 	immediate = {
-		set_variable = { name = cp_button_cooldown days = 90 }
+		set_variable = { name = cp_layla_button_cooldown days = 90 }
 	}
 
 	option = {
@@ -756,7 +756,7 @@ cp_layla.30 = {
 	option = {
 		name = cp_layla.30.a
 		default_option = yes
-		cp_shift_weight = { weight = economy delta = 1 }
+		cp_shift_weight = { person = layla weight = economy delta = 1 }
 	}
 	option = {
 		name = cp_layla.30.b
@@ -789,7 +789,7 @@ cp_layla.31 = {
 	}
 	option = {
 		name = cp_layla.31.b
-		cp_shift_weight = { weight = religion delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = 1 }
 	}
 }
 
@@ -826,7 +826,7 @@ cp_layla.32 = {
 ###############################################################################
 # War-end reactions (cp_layla.40..41)
 #
-# Fired by cp_on_war_end when Ahmed was conscripted (cp_ahmed_at_war set).
+# Fired by cp_on_war_end when Ahmed was conscripted (cp_layla_ahmed_at_war set).
 # The dispatcher rolls outcome weighted by recently_won_war /
 # recently_lost_war, then fires one of these. The composite effect
 # (cp_ahmed_homecoming / cp_ahmed_killed) runs in immediate so the state
@@ -851,7 +851,7 @@ cp_layla.40 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		has_variable = cp_ahmed_alive
+		has_variable = cp_layla_ahmed_alive
 	}
 
 	immediate = {
@@ -925,11 +925,11 @@ cp_layla.50 = {
 	option = {
 		name = cp_layla.50.a
 		default_option = yes
-		cp_shift_weight = { weight = economy delta = 1 }
+		cp_shift_weight = { person = layla weight = economy delta = 1 }
 	}
 	option = {
 		name = cp_layla.50.b
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 	}
 }
 
@@ -964,11 +964,11 @@ cp_layla.60 = {
 	option = {
 		name = cp_layla.60.a
 		default_option = yes
-		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
 	}
 	option = {
 		name = cp_layla.60.b
-		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
 	}
 }
 
@@ -986,8 +986,8 @@ cp_layla.60 = {
 # Mortality (cp_layla.80..82)
 #
 # Fired from cp_on_yearly's mortality rolls. Pressures in cp_memory:
-# cp_mortality_pressure (Layla), cp_worker_risk (Ahmed at shop floor).
-# Children roll when cp_children >= 1 and mortality_pressure >= 5.
+# cp_layla_mortality_pressure (Layla), cp_layla_worker_risk (Ahmed at shop floor).
+# Children roll when cp_layla_children >= 1 and mortality_pressure >= 5.
 ###############################################################################
 
 # cp_layla.80 -- "The Last Morning" (Layla dies)
@@ -1030,7 +1030,7 @@ cp_layla.80 = {
 # cp_layla.81 -- "The Foreman's Runner" (Ahmed dies at the mill)
 #
 # Runs when the yearly worker-risk roll catches him. Reuses cp_ahmed_killed
-# (zeros cp_ahmed_alive, flips her hope/exhaustion). Different prose from
+# (zeros cp_layla_ahmed_alive, flips her hope/exhaustion). Different prose from
 # the war-death event — this is an industrial death, not a military one.
 cp_layla.81 = {
 	type = country_event
@@ -1078,7 +1078,7 @@ cp_layla.90 = {
 				desc = cp_layla.90.d.pension
 				trigger = {
 					has_law = law_type:law_old_age_pension
-					var:cp_age >= 60
+					var:cp_layla_age >= 60
 				}
 			}
 			triggered_desc = {
@@ -1108,14 +1108,14 @@ cp_layla.90 = {
 	}
 
 	immediate = {
-		set_variable = cp_receives_welfare
+		set_variable = cp_layla_receives_welfare
 	}
 
 	option = {
 		name = cp_layla.90.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
-		cp_shift_loyalist = { delta = 3 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 3 }
 	}
 	option = {
 		name = cp_layla.90.b
@@ -1123,8 +1123,8 @@ cp_layla.90 = {
 		# forgotten who withheld it for so long. Small loyalism, no hope
 		# bump; a small radical tick remains because the silence before
 		# the envelope does not un-happen when the envelope arrives.
-		cp_shift_loyalist = { delta = 1 }
-		cp_shift_radical = { delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
 	}
 }
 
@@ -1142,15 +1142,15 @@ cp_layla.91 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.91.d.pension
-				trigger = { var:cp_welfare_tier = 4 }
+				trigger = { var:cp_layla_welfare_tier = 4 }
 			}
 			triggered_desc = {
 				desc = cp_layla.91.d.subsidies
-				trigger = { var:cp_welfare_tier = 3 }
+				trigger = { var:cp_layla_welfare_tier = 3 }
 			}
 			triggered_desc = {
 				desc = cp_layla.91.d.poor
-				trigger = { var:cp_welfare_tier = 2 }
+				trigger = { var:cp_layla_welfare_tier = 2 }
 			}
 			triggered_desc = {
 				desc = cp_layla.91.d.default
@@ -1175,13 +1175,13 @@ cp_layla.91 = {
 	option = {
 		name = cp_layla.91.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
-		cp_shift_loyalist = { delta = 2 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 2 }
 	}
 	option = {
 		name = cp_layla.91.b
 		# She'll believe it when she sees it.
-		cp_shift_weight = { weight = economy delta = 1 }
+		cp_shift_weight = { person = layla weight = economy delta = 1 }
 	}
 }
 
@@ -1199,7 +1199,7 @@ cp_layla.92 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.92.d.none
-				trigger = { var:cp_welfare_tier = 0 }
+				trigger = { var:cp_layla_welfare_tier = 0 }
 			}
 			triggered_desc = {
 				desc = cp_layla.92.d.partial
@@ -1224,21 +1224,21 @@ cp_layla.92 = {
 	option = {
 		name = cp_layla.92.a
 		default_option = yes
-		cp_shift_hope = { delta = -1 }
-		cp_shift_radical = { delta = 3 }
-		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_hope = { person = layla delta = -1 }
+		cp_shift_radical = { person = layla delta = 3 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
 	}
 	option = {
 		name = cp_layla.92.b
 		# The quiet absorption of a loss she had half-expected.
-		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
 	}
 }
 
 
 # cp_layla.82 -- "The Child" (a child dies of illness)
 #
-# cp_children decrements; cp_lost_a_child permanent flag set; hope drops
+# cp_layla_children decrements; cp_layla_lost_a_child permanent flag set; hope drops
 # sharply. Prose does not name the child specifically — the loss is left
 # open so repeat firings (for families with many children) do not contradict
 # themselves.
@@ -1285,15 +1285,15 @@ cp_layla.71 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.71.d.engineer
-				trigger = { has_variable = cp_profession_engineers }
+				trigger = { has_variable = cp_layla_profession_engineers }
 			}
 			triggered_desc = {
 				desc = cp_layla.71.d.clerk
-				trigger = { has_variable = cp_profession_clerks }
+				trigger = { has_variable = cp_layla_profession_clerks }
 			}
 			triggered_desc = {
 				desc = cp_layla.71.d.machinist
-				trigger = { has_variable = cp_profession_machinists }
+				trigger = { has_variable = cp_layla_profession_machinists }
 			}
 			triggered_desc = {
 				desc = cp_layla.71.d.laborer
@@ -1307,9 +1307,9 @@ cp_layla.71 = {
 				desc = cp_layla.71.f.middle
 				trigger = {
 					OR = {
-						has_variable = cp_profession_engineers
-						has_variable = cp_profession_clerks
-						has_variable = cp_profession_machinists
+						has_variable = cp_layla_profession_engineers
+						has_variable = cp_layla_profession_clerks
+						has_variable = cp_layla_profession_machinists
 					}
 				}
 			}
@@ -1342,9 +1342,9 @@ cp_layla.71 = {
 	option = {
 		name = cp_layla.71.b
 		trigger = {
-			has_variable = cp_ahmed_alive
-			var:cp_ahmed_alive > 0
-			NOT = { has_variable = cp_ahmed_at_war }
+			has_variable = cp_layla_ahmed_alive
+			var:cp_layla_ahmed_alive > 0
+			NOT = { has_variable = cp_layla_ahmed_at_war }
 		}
 		cp_open_small_concern_on_credit = yes
 	}
@@ -1387,9 +1387,9 @@ cp_layla.70 = {
 	option = {
 		name = cp_layla.70.b
 		trigger = {
-			has_variable = cp_ahmed_alive
-			var:cp_ahmed_alive > 0
-			NOT = { has_variable = cp_ahmed_at_war }
+			has_variable = cp_layla_ahmed_alive
+			var:cp_layla_ahmed_alive > 0
+			NOT = { has_variable = cp_layla_ahmed_at_war }
 		}
 		cp_ahmed_goes_to_cairo_alone = yes
 	}
@@ -1405,7 +1405,7 @@ cp_layla.70 = {
 # Women's rights enactments -- cp_layla.93..96
 # =============================================================================
 # Four first-time-enactment reactions, one per rung above no_womens_rights.
-# Each is gated on a permanent cp_seen_womens_rights_* flag so the event
+# Each is gated on a permanent cp_layla_seen_womens_rights_* flag so the event
 # fires exactly once per life, even if the law is rolled back and re-enacted.
 # Dispatcher lives in cp_on_law_enacted and checks the same flag before
 # trigger_event; the flag is set inside the option so console-fired test
@@ -1436,14 +1436,14 @@ cp_layla.93 = {
 				desc = cp_layla.93.d.peasant
 				trigger = {
 					OR = {
-						has_variable = cp_profession_peasants
-						has_variable = cp_profession_farmers
+						has_variable = cp_layla_profession_peasants
+						has_variable = cp_layla_profession_farmers
 					}
 				}
 			}
 			triggered_desc = {
 				desc = cp_layla.93.d.city
-				trigger = { has_variable = cp_in_city }
+				trigger = { has_variable = cp_layla_in_city }
 			}
 			triggered_desc = {
 				desc = cp_layla.93.d.default
@@ -1463,25 +1463,25 @@ cp_layla.93 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_womens_rights_fields }
+		NOT = { has_variable = cp_layla_seen_womens_rights_fields }
 	}
 
 	immediate = {
-		set_variable = cp_seen_womens_rights_fields
+		set_variable = cp_layla_seen_womens_rights_fields
 	}
 
 	# Option A: weary recognition. Yes. We were already doing it.
 	option = {
 		name = cp_layla.93.a
 		default_option = yes
-		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
 	}
 	# Option B: the small anger. The state's name for her labour is still
 	# not payment. Weight toward land_reform (she wants something deeper).
 	option = {
 		name = cp_layla.93.b
-		cp_shift_radical = { delta = 1 }
-		cp_shift_weight = { weight = land_reform delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = land_reform delta = 1 }
 	}
 }
 
@@ -1503,16 +1503,16 @@ cp_layla.94 = {
 				desc = cp_layla.94.d.already_owns
 				trigger = {
 					OR = {
-						has_variable = cp_owns_land
-						has_variable = cp_owns_small_concern
+						has_variable = cp_layla_owns_land
+						has_variable = cp_layla_owns_small_concern
 					}
 				}
 			}
 			triggered_desc = {
 				desc = cp_layla.94.d.widow
 				trigger = {
-					has_variable = cp_ahmed_alive
-					var:cp_ahmed_alive = 0
+					has_variable = cp_layla_ahmed_alive
+					var:cp_layla_ahmed_alive = 0
 				}
 			}
 			triggered_desc = {
@@ -1533,27 +1533,27 @@ cp_layla.94 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_womens_rights_property }
+		NOT = { has_variable = cp_layla_seen_womens_rights_property }
 	}
 
 	immediate = {
-		set_variable = cp_seen_womens_rights_property
-		set_variable = cp_may_own_property
+		set_variable = cp_layla_seen_womens_rights_property
+		set_variable = cp_layla_may_own_property
 	}
 
 	# Option A: the proud claim. Hope rises, weight on land_reform rises.
 	option = {
 		name = cp_layla.94.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
-		cp_shift_weight = { weight = land_reform delta = 1 }
-		cp_shift_loyalist = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = land_reform delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
 	}
 	# Option B: the skeptical claim. Paper is paper; will the village
 	# agree? Small hope, small weight, no loyalism.
 	option = {
 		name = cp_layla.94.b
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 	}
 }
 
@@ -1563,7 +1563,7 @@ cp_layla.94 = {
 # The law that unlocks the self-employment crossroads (Slice D). For a
 # village Layla, the event is theoretical; for a city Layla, it's the
 # day her neighbour walks past the mill gate and is not turned back.
-# Sets cp_may_work flag that downstream events will read.
+# Sets cp_layla_may_work flag that downstream events will read.
 cp_layla.95 = {
 	type = country_event
 
@@ -1572,7 +1572,7 @@ cp_layla.95 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.95.d.city
-				trigger = { has_variable = cp_in_city }
+				trigger = { has_variable = cp_layla_in_city }
 			}
 			triggered_desc = {
 				desc = cp_layla.95.d.village
@@ -1592,20 +1592,20 @@ cp_layla.95 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_womens_rights_workplace }
+		NOT = { has_variable = cp_layla_seen_womens_rights_workplace }
 	}
 
 	immediate = {
-		set_variable = cp_seen_womens_rights_workplace
-		set_variable = cp_may_work
+		set_variable = cp_layla_seen_womens_rights_workplace
+		set_variable = cp_layla_may_work
 	}
 
 	# Option A: she watches and considers. Hope small; loyalism small.
 	option = {
 		name = cp_layla.95.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
-		cp_shift_loyalist = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
 	}
 	# Option B: Ahmed's voice. Some husbands do not bless this; the
 	# prose lets the player choose the household's register. Small
@@ -1613,10 +1613,10 @@ cp_layla.95 = {
 	option = {
 		name = cp_layla.95.b
 		trigger = {
-			has_variable = cp_ahmed_alive
-			var:cp_ahmed_alive > 0
+			has_variable = cp_layla_ahmed_alive
+			var:cp_layla_ahmed_alive > 0
 		}
-		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
 	}
 	# Option C: the older woman's scorn — she says nothing aloud but
 	# remembers the rung her mother never got. No effect.
@@ -1631,7 +1631,7 @@ cp_layla.95 = {
 # The farthest rung. Her name recorded. For a literate city Layla this
 # is a kind of recognition she has been waiting for since the first law
 # passed; for a village peasant it is a strange rumour, a rumour she
-# does not dismiss. Sets cp_may_vote; cp_has_voted is set later via a
+# does not dismiss. Sets cp_layla_may_vote; cp_layla_has_voted is set later via a
 # pulse event when an election actually happens near her.
 cp_layla.96 = {
 	type = country_event
@@ -1641,14 +1641,14 @@ cp_layla.96 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.96.d.literate
-				trigger = { var:cp_literacy >= 20 }
+				trigger = { var:cp_layla_literacy >= 20 }
 			}
 			triggered_desc = {
 				desc = cp_layla.96.d.village
 				trigger = {
 					OR = {
-						has_variable = cp_profession_peasants
-						has_variable = cp_profession_farmers
+						has_variable = cp_layla_profession_peasants
+						has_variable = cp_layla_profession_farmers
 					}
 				}
 			}
@@ -1670,12 +1670,12 @@ cp_layla.96 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_womens_rights_suffrage }
+		NOT = { has_variable = cp_layla_seen_womens_rights_suffrage }
 	}
 
 	immediate = {
-		set_variable = cp_seen_womens_rights_suffrage
-		set_variable = cp_may_vote
+		set_variable = cp_layla_seen_womens_rights_suffrage
+		set_variable = cp_layla_may_vote
 	}
 
 	# Option A: the proud claim. Hope +2, loyalism +3, weight on
@@ -1684,37 +1684,37 @@ cp_layla.96 = {
 	option = {
 		name = cp_layla.96.a
 		default_option = yes
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 3 }
-		cp_shift_weight = { weight = womens_rights delta = 1 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 3 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 1 }
 	}
 	# Option B: the disbelieving smile. The farther reach — she has
 	# been told too often that her name did not matter — softens only
 	# half. Small hope, no loyalism.
 	option = {
 		name = cp_layla.96.b
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 	}
 	# Option C: the radical reading. It is not enough; the paper does
 	# not fill the stove. Small radical bump.
 	option = {
 		name = cp_layla.96.c
-		cp_shift_radical = { delta = 1 }
-		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
 	}
 }
 
 
 # cp_layla.97 -- "Her Own Stall" (self-employment crossroads)
 #
-# Gated on law_women_in_the_workplace being active AND cp_may_work (set by
+# Gated on law_women_in_the_workplace being active AND cp_layla_may_work (set by
 # cp_layla.95's immediate). Fires in two registers:
 #   - Forced: widowed + SoL pressed, OR unemployed peasant in city without
 #     Ahmed's wages. No decline option; the choice is only what kind of
 #     stall (shop / street / service).
 #   - Chosen: law active, not under duress. Three options including decline.
 #
-# One-shot per life via cp_seen_self_employment. Can be retriggered if the
+# One-shot per life via cp_layla_seen_self_employment. Can be retriggered if the
 # flag is cleared by a later event (e.g. shop fails).
 cp_layla.97 = {
 	type = country_event
@@ -1728,17 +1728,17 @@ cp_layla.97 = {
 			triggered_desc = {
 				desc = cp_layla.97.d.forced_widow
 				trigger = {
-					has_variable = cp_ahmed_alive
-					var:cp_ahmed_alive = 0
+					has_variable = cp_layla_ahmed_alive
+					var:cp_layla_ahmed_alive = 0
 				}
 			}
 			triggered_desc = {
 				desc = cp_layla.97.d.forced_poor
-				trigger = { var:cp_sol <= 8 }
+				trigger = { var:cp_layla_sol <= 8 }
 			}
 			triggered_desc = {
 				desc = cp_layla.97.d.chosen_city
-				trigger = { has_variable = cp_in_city }
+				trigger = { has_variable = cp_layla_in_city }
 			}
 			triggered_desc = {
 				desc = cp_layla.97.d.chosen_village
@@ -1751,13 +1751,13 @@ cp_layla.97 = {
 			triggered_desc = {
 				desc = cp_layla.97.f.widow
 				trigger = {
-					has_variable = cp_ahmed_alive
-					var:cp_ahmed_alive = 0
+					has_variable = cp_layla_ahmed_alive
+					var:cp_layla_ahmed_alive = 0
 				}
 			}
 			triggered_desc = {
 				desc = cp_layla.97.f.poor
-				trigger = { var:cp_sol <= 8 }
+				trigger = { var:cp_layla_sol <= 8 }
 			}
 			triggered_desc = {
 				desc = cp_layla.97.f.chosen
@@ -1776,19 +1776,19 @@ cp_layla.97 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		has_variable = cp_may_work
-		NOT = { has_variable = cp_seen_self_employment }
-		NOT = { has_variable = cp_self_employed }
+		has_variable = cp_layla_may_work
+		NOT = { has_variable = cp_layla_seen_self_employment }
+		NOT = { has_variable = cp_layla_self_employed }
 	}
 
 	immediate = {
-		set_variable = cp_seen_self_employment
+		set_variable = cp_layla_seen_self_employment
 	}
 
 	# Option A: open a stall. Default option.
 	# Prose register differs by forced/chosen but the mechanic is the
 	# same: she is now a shopkeeper, her household's SoL lifts, her
-	# exhaustion rises. Forced register ALSO sets cp_self_employed_forced
+	# exhaustion rises. Forced register ALSO sets cp_layla_self_employed_forced
 	# which downstream events can read for prose colour.
 	option = {
 		name = cp_layla.97.a
@@ -1798,10 +1798,10 @@ cp_layla.97 = {
 			limit = {
 				OR = {
 					AND = {
-						has_variable = cp_ahmed_alive
-						var:cp_ahmed_alive = 0
+						has_variable = cp_layla_ahmed_alive
+						var:cp_layla_ahmed_alive = 0
 					}
-					var:cp_sol <= 8
+					var:cp_layla_sol <= 8
 				}
 			}
 			cp_start_self_employed_forced = yes
@@ -1819,10 +1819,10 @@ cp_layla.97 = {
 			NOT = {
 				OR = {
 					AND = {
-						has_variable = cp_ahmed_alive
-						var:cp_ahmed_alive = 0
+						has_variable = cp_layla_ahmed_alive
+						var:cp_layla_ahmed_alive = 0
 					}
-					var:cp_sol <= 8
+					var:cp_layla_sol <= 8
 				}
 			}
 		}
@@ -1850,13 +1850,13 @@ cp_layla.98 = {
 			triggered_desc = {
 				desc = cp_layla.98.d.widow
 				trigger = {
-					has_variable = cp_ahmed_alive
-					var:cp_ahmed_alive = 0
+					has_variable = cp_layla_ahmed_alive
+					var:cp_layla_ahmed_alive = 0
 				}
 			}
 			triggered_desc = {
 				desc = cp_layla.98.d.old
-				trigger = { var:cp_age >= 60 }
+				trigger = { var:cp_layla_age >= 60 }
 			}
 			triggered_desc = {
 				desc = cp_layla.98.d.default
@@ -1877,29 +1877,29 @@ cp_layla.98 = {
 	trigger = {
 		has_variable = cp_layla_alive
 		has_law = law_type:law_no_social_security
-		var:cp_sol <= 8
-		var:cp_age >= 50
-		NOT = { has_variable = cp_seen_month_without }
+		var:cp_layla_sol <= 8
+		var:cp_layla_age >= 50
+		NOT = { has_variable = cp_layla_seen_month_without }
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_month_without days = 1460 }
+		set_variable = { name = cp_layla_seen_month_without days = 1460 }
 	}
 
 	# A: she sits with the arithmetic. Radical + weight on labor_laws.
 	option = {
 		name = cp_layla.98.a
 		default_option = yes
-		cp_shift_radical = { delta = 2 }
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_radical = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 	}
 	# B: she remembers her mother, who had no envelope either. The
 	# grief is older than the law, which does not make it smaller. Hope
 	# down, exhaustion up.
 	option = {
 		name = cp_layla.98.b
-		cp_shift_hope = { delta = -1 }
-		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_hope = { person = layla delta = -1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
 	}
 }
 
@@ -1919,14 +1919,14 @@ cp_layla.99 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.99.d.field
-				trigger = { has_variable = cp_owns_land }
+				trigger = { has_variable = cp_layla_owns_land }
 			}
 			triggered_desc = {
 				desc = cp_layla.99.d.shop
 				trigger = {
 					OR = {
-						has_variable = cp_owns_business
-						has_variable = cp_self_employed
+						has_variable = cp_layla_owns_business
+						has_variable = cp_layla_self_employed
 					}
 				}
 			}
@@ -1948,32 +1948,32 @@ cp_layla.99 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_may_own_property }
+		NOT = { has_variable = cp_layla_may_own_property }
 		OR = {
-			has_variable = cp_owns_land
-			has_variable = cp_owns_business
-			has_variable = cp_self_employed
+			has_variable = cp_layla_owns_land
+			has_variable = cp_layla_owns_business
+			has_variable = cp_layla_self_employed
 		}
-		NOT = { has_variable = cp_seen_not_on_deed }
+		NOT = { has_variable = cp_layla_seen_not_on_deed }
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_not_on_deed days = 1460 }
+		set_variable = { name = cp_layla_seen_not_on_deed days = 1460 }
 	}
 
 	# A: she sets her jaw. Weight on womens_rights rises; small radical.
 	option = {
 		name = cp_layla.99.a
 		default_option = yes
-		cp_shift_weight = { weight = womens_rights delta = 2 }
-		cp_shift_radical = { delta = 1 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 2 }
+		cp_shift_radical = { person = layla delta = 1 }
 	}
 	# B: she lets it pass. Exhaustion, weight on womens_rights still up
 	# because the cut landed even if she did not mark it.
 	option = {
 		name = cp_layla.99.b
-		cp_shift_exhaustion = { delta = 1 }
-		cp_shift_weight = { weight = womens_rights delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 1 }
 	}
 }
 
@@ -1981,9 +1981,9 @@ cp_layla.99 = {
 # cp_layla.24 -- "Election Day" (first vote)
 #
 # Fires from the JE's monthly random pool. Internal trigger gates on
-# cp_may_vote (set by cp_layla.96's immediate) AND NOT cp_has_voted so
+# cp_layla_may_vote (set by cp_layla.96's immediate) AND NOT cp_layla_has_voted so
 # the event only fires on the first election she is eligible for. The
-# event sets cp_has_voted permanently, unlocking the voter JE anchor.
+# event sets cp_layla_has_voted permanently, unlocking the voter JE anchor.
 #
 # No choices. The event is a register shift, not a decision; her
 # decision to vote was made the day the law passed. Today is simply
@@ -1996,7 +1996,7 @@ cp_layla.24 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.24.d.literate
-				trigger = { var:cp_literacy >= 30 }
+				trigger = { var:cp_layla_literacy >= 30 }
 			}
 			triggered_desc = {
 				desc = cp_layla.24.d.default
@@ -2016,27 +2016,27 @@ cp_layla.24 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		has_variable = cp_may_vote
-		NOT = { has_variable = cp_has_voted }
+		has_variable = cp_layla_may_vote
+		NOT = { has_variable = cp_layla_has_voted }
 	}
 
 	immediate = {
-		set_variable = cp_has_voted
+		set_variable = cp_layla_has_voted
 	}
 
 	# A — she votes. Proud, deliberate, a day she will remember.
 	option = {
 		name = cp_layla.24.a
 		default_option = yes
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 2 }
-		cp_shift_weight = { weight = womens_rights delta = 1 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 1 }
 	}
 	# B — she votes with teeth. The ballot does not undo the decades.
 	option = {
 		name = cp_layla.24.b
-		cp_shift_hope = { delta = 1 }
-		cp_shift_radical = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
 	}
 }
 
@@ -2064,7 +2064,7 @@ cp_layla.100 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.100.d.has_kids
-				trigger = { var:cp_children > 0 }
+				trigger = { var:cp_layla_children > 0 }
 			}
 			triggered_desc = {
 				desc = cp_layla.100.d.default
@@ -2084,20 +2084,20 @@ cp_layla.100 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_public_schools }
+		NOT = { has_variable = cp_layla_seen_public_schools }
 	}
 
 	immediate = {
-		set_variable = cp_seen_public_schools
+		set_variable = cp_layla_seen_public_schools
 	}
 
 	# A: she believes it. Hope up, weight on education up.
 	option = {
 		name = cp_layla.100.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
-		cp_shift_weight = { weight = education delta = 1 }
-		cp_shift_loyalist = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = education delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
 	}
 	# B: she'll believe it when she sees the schoolroom. No effect.
 	option = {
@@ -2120,7 +2120,7 @@ cp_layla.101 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.101.d.has_kids
-				trigger = { var:cp_children > 0 }
+				trigger = { var:cp_layla_children > 0 }
 			}
 			triggered_desc = {
 				desc = cp_layla.101.d.default
@@ -2140,16 +2140,16 @@ cp_layla.101 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_compulsory_school }
+		NOT = { has_variable = cp_layla_seen_compulsory_school }
 	}
 
 	immediate = {
-		set_variable = cp_seen_compulsory_school
+		set_variable = cp_layla_seen_compulsory_school
 		if = {
 			# If she has kids, the daughter goes. Flag it. Literacy
 			# pop-tick will carry her upward more aggressively from now.
-			limit = { var:cp_children > 0 }
-			set_variable = cp_daughter_at_school
+			limit = { var:cp_layla_children > 0 }
+			set_variable = cp_layla_daughter_at_school
 		}
 	}
 
@@ -2157,32 +2157,32 @@ cp_layla.101 = {
 	option = {
 		name = cp_layla.101.a
 		default_option = yes
-		cp_shift_hope = { delta = 2 }
-		cp_shift_weight = { weight = education delta = 2 }
-		cp_shift_loyalist = { delta = 2 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = education delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 2 }
 	}
 	# B: she resents the lost hands in the field. Only reachable if
 	# she has children AND is still on the land.
 	option = {
 		name = cp_layla.101.b
 		trigger = {
-			var:cp_children > 0
+			var:cp_layla_children > 0
 			OR = {
-				has_variable = cp_profession_peasants
-				has_variable = cp_profession_farmers
+				has_variable = cp_layla_profession_peasants
+				has_variable = cp_layla_profession_farmers
 			}
 		}
-		cp_shift_exhaustion = { delta = 1 }
-		cp_shift_radical = { delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
 	}
 }
 
 
 # cp_layla.102 -- "The Daughter's Letter" (pulse: her daughter reads to her)
 #
-# Fires from the JE pool once cp_daughter_at_school is set. A scene: the
+# Fires from the JE pool once cp_layla_daughter_at_school is set. A scene: the
 # child reads aloud to the mother who cannot read, in a language the
-# mother half-recognises. Sets cp_seen_daughter_reads flag with cooldown
+# mother half-recognises. Sets cp_layla_seen_daughter_reads flag with cooldown
 # so the same scene doesn't repeat more than yearly.
 cp_layla.102 = {
 	type = country_event
@@ -2201,19 +2201,19 @@ cp_layla.102 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		has_variable = cp_daughter_at_school
-		NOT = { has_variable = cp_seen_daughter_reads }
+		has_variable = cp_layla_daughter_at_school
+		NOT = { has_variable = cp_layla_seen_daughter_reads }
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_daughter_reads days = 365 }
+		set_variable = { name = cp_layla_seen_daughter_reads days = 365 }
 	}
 
 	option = {
 		name = cp_layla.102.a
 		default_option = yes
-		cp_shift_hope = { delta = 2 }
-		cp_shift_weight = { weight = education delta = 1 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = education delta = 1 }
 	}
 }
 
@@ -2241,11 +2241,11 @@ cp_layla.103 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_emancipation }
+		NOT = { has_variable = cp_layla_seen_emancipation }
 	}
 
 	immediate = {
-		set_variable = cp_seen_emancipation
+		set_variable = cp_layla_seen_emancipation
 	}
 
 	# A: she prays for them. Hope up, loyalism up, weight on revolution
@@ -2253,18 +2253,18 @@ cp_layla.103 = {
 	option = {
 		name = cp_layla.103.a
 		default_option = yes
-		cp_shift_hope = { delta = 3 }
-		cp_shift_loyalist = { delta = 3 }
-		cp_shift_weight = { weight = revolution delta = -1 }
+		cp_shift_hope = { person = layla delta = 3 }
+		cp_shift_loyalist = { person = layla delta = 3 }
+		cp_shift_weight = { person = layla weight = revolution delta = -1 }
 	}
 	# B: she looks at her own life and sees how close she has stood to
 	# that line all along. Radical up, weight on land_reform up, weight
 	# on revolution up.
 	option = {
 		name = cp_layla.103.b
-		cp_shift_radical = { delta = 1 }
-		cp_shift_weight = { weight = land_reform delta = 1 }
-		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = land_reform delta = 1 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
 	}
 }
 
@@ -2284,7 +2284,7 @@ cp_layla.104 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.104.d.child
-				trigger = { var:cp_age <= 30 }
+				trigger = { var:cp_layla_age <= 30 }
 			}
 			triggered_desc = {
 				desc = cp_layla.104.d.older
@@ -2310,11 +2310,11 @@ cp_layla.104 = {
 			has_law = law_type:law_debt_slavery
 			has_law = law_type:law_colonial_slavery
 		}
-		NOT = { has_variable = cp_seen_slaves_pulse }
+		NOT = { has_variable = cp_layla_seen_slaves_pulse }
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_slaves_pulse days = 1460 }
+		set_variable = { name = cp_layla_seen_slaves_pulse days = 1460 }
 	}
 
 	# A: she prays for them. No mechanical effect; the prayer is not
@@ -2327,8 +2327,8 @@ cp_layla.104 = {
 	# Weight on revolution up; it is a thin comfort, and she knows it.
 	option = {
 		name = cp_layla.104.b
-		cp_shift_weight = { weight = revolution delta = 1 }
-		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
 	}
 }
 
@@ -2359,17 +2359,17 @@ cp_layla.25 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_ramadan }
+		NOT = { has_variable = cp_layla_seen_ramadan }
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_ramadan days = 730 }
+		set_variable = { name = cp_layla_seen_ramadan days = 730 }
 	}
 
 	option = {
 		name = cp_layla.25.a
 		default_option = yes
-		cp_shift_weight = { weight = religion delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = 1 }
 	}
 }
 
@@ -2382,7 +2382,7 @@ cp_layla.26 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.26.d.good
-				trigger = { var:cp_sol >= 10 }
+				trigger = { var:cp_layla_sol >= 10 }
 			}
 			triggered_desc = {
 				desc = cp_layla.26.d.bad
@@ -2402,23 +2402,23 @@ cp_layla.26 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_flood }
+		NOT = { has_variable = cp_layla_seen_flood }
 		# Only reaches her if she's still on the land.
 		OR = {
-			has_variable = cp_profession_peasants
-			has_variable = cp_profession_farmers
-			has_variable = cp_owns_land
+			has_variable = cp_layla_profession_peasants
+			has_variable = cp_layla_profession_farmers
+			has_variable = cp_layla_owns_land
 		}
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_flood days = 730 }
+		set_variable = { name = cp_layla_seen_flood days = 730 }
 	}
 
 	option = {
 		name = cp_layla.26.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 	}
 }
 
@@ -2440,18 +2440,18 @@ cp_layla.27 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_hajj }
+		NOT = { has_variable = cp_layla_seen_hajj }
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_hajj days = 730 }
+		set_variable = { name = cp_layla_seen_hajj days = 730 }
 	}
 
 	option = {
 		name = cp_layla.27.a
 		default_option = yes
-		cp_shift_weight = { weight = religion delta = 1 }
-		cp_shift_hope = { delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 	}
 }
 
@@ -2473,11 +2473,11 @@ cp_layla.28 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_midwife_lamp }
+		NOT = { has_variable = cp_layla_seen_midwife_lamp }
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_midwife_lamp days = 730 }
+		set_variable = { name = cp_layla_seen_midwife_lamp days = 730 }
 	}
 
 	option = {
@@ -2504,17 +2504,17 @@ cp_layla.29 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_date_harvest }
+		NOT = { has_variable = cp_layla_seen_date_harvest }
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_date_harvest days = 730 }
+		set_variable = { name = cp_layla_seen_date_harvest days = 730 }
 	}
 
 	option = {
 		name = cp_layla.29.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 	}
 }
 
@@ -2545,21 +2545,21 @@ cp_layla.33 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_coffee_arrival }
-		var:cp_sol >= 10
+		NOT = { has_variable = cp_layla_seen_coffee_arrival }
+		var:cp_layla_sol >= 10
 		c:EGY.market = {
 			mg:coffee = { market_goods_buy_orders > 100 }
 		}
 	}
 
 	immediate = {
-		set_variable = cp_seen_coffee_arrival
+		set_variable = cp_layla_seen_coffee_arrival
 	}
 
 	option = {
 		name = cp_layla.33.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 	}
 }
 
@@ -2581,20 +2581,20 @@ cp_layla.34 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_sugar_cheap }
+		NOT = { has_variable = cp_layla_seen_sugar_cheap }
 		c:EGY.market = {
 			mg:sugar = { market_goods_cheaper >= 0.10 }
 		}
 	}
 
 	immediate = {
-		set_variable = cp_seen_sugar_cheap
+		set_variable = cp_layla_seen_sugar_cheap
 	}
 
 	option = {
 		name = cp_layla.34.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 	}
 }
 
@@ -2616,21 +2616,21 @@ cp_layla.35 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_cloth_affordable }
-		var:cp_sol >= 12
+		NOT = { has_variable = cp_layla_seen_cloth_affordable }
+		var:cp_layla_sol >= 12
 		c:EGY.market = {
 			mg:clothes = { market_goods_buy_orders > 200 }
 		}
 	}
 
 	immediate = {
-		set_variable = cp_seen_cloth_affordable
+		set_variable = cp_layla_seen_cloth_affordable
 	}
 
 	option = {
 		name = cp_layla.35.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 	}
 }
 
@@ -2652,7 +2652,7 @@ cp_layla.72 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.72.d.literate
-				trigger = { has_variable = cp_daughter_at_school }
+				trigger = { has_variable = cp_layla_daughter_at_school }
 			}
 			triggered_desc = {
 				desc = cp_layla.72.d.default
@@ -2680,10 +2680,10 @@ cp_layla.72 = {
 	option = {
 		name = cp_layla.72.a
 		default_option = yes
-		set_variable = cp_daughter_married
-		set_variable = cp_daughter_married_village
-		cp_shift_hope = { delta = 1 }
-		cp_shift_weight = { weight = land_reform delta = 1 }
+		set_variable = cp_layla_daughter_married
+		set_variable = cp_layla_daughter_married_village
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = land_reform delta = 1 }
 	}
 	# Option B: marry her to the shopkeeper's son in Cairo (or the city).
 	# The girl moves. The girl rises. The mother will see her four times
@@ -2693,16 +2693,16 @@ cp_layla.72 = {
 		name = cp_layla.72.b
 		trigger = {
 			OR = {
-				has_variable = cp_in_city
-				has_variable = cp_seen_first_textile_mill
-				has_variable = cp_seen_railway
+				has_variable = cp_layla_in_city
+				has_variable = cp_layla_seen_first_textile_mill
+				has_variable = cp_layla_seen_railway
 			}
 		}
-		set_variable = cp_daughter_married
-		set_variable = cp_daughter_married_city
-		cp_shift_hope = { delta = 2 }
-		cp_shift_exhaustion = { delta = 2 }
-		cp_shift_weight = { weight = womens_rights delta = 1 }
+		set_variable = cp_layla_daughter_married
+		set_variable = cp_layla_daughter_married_city
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_exhaustion = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 1 }
 	}
 	# Option C: refuse. The girl is not ready; OR the mother is holding
 	# out for a better match; OR — in the schooled variant — the girl
@@ -2710,10 +2710,10 @@ cp_layla.72 = {
 	# Available always; if schooled, prose implies the girl chose.
 	option = {
 		name = cp_layla.72.c
-		set_variable = cp_daughter_marriage_delayed
-		cp_shift_hope = { delta = 1 }
-		cp_shift_exhaustion = { delta = 1 }
-		cp_shift_weight = { weight = womens_rights delta = 1 }
+		set_variable = cp_layla_daughter_marriage_delayed
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 1 }
 	}
 }
 
@@ -2738,7 +2738,7 @@ cp_layla.105 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.105.d.voter
-				trigger = { has_variable = cp_has_voted }
+				trigger = { has_variable = cp_layla_has_voted }
 			}
 			triggered_desc = {
 				desc = cp_layla.105.d.not_yet
@@ -2758,26 +2758,26 @@ cp_layla.105 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_universal_suffrage }
+		NOT = { has_variable = cp_layla_seen_universal_suffrage }
 	}
 
 	immediate = {
-		set_variable = cp_seen_universal_suffrage
+		set_variable = cp_layla_seen_universal_suffrage
 	}
 
 	# A: the country came around. Hope up, loyalism up.
 	option = {
 		name = cp_layla.105.a
 		default_option = yes
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 2 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 2 }
 	}
 	# B: it is late. The men have gotten it at the same moment as
 	# everyone else; for most of those men this is not a change in
 	# what they have. Small loyalism.
 	option = {
 		name = cp_layla.105.b
-		cp_shift_loyalist = { delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
 	}
 }
 
@@ -2804,24 +2804,24 @@ cp_layla.106 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_single_party }
+		NOT = { has_variable = cp_layla_seen_single_party }
 	}
 
 	immediate = {
-		set_variable = cp_seen_single_party
+		set_variable = cp_layla_seen_single_party
 	}
 
 	# A: she lowers her head and carries on. Exhaustion up.
 	option = {
 		name = cp_layla.106.a
 		default_option = yes
-		cp_shift_exhaustion = { delta = 2 }
+		cp_shift_exhaustion = { person = layla delta = 2 }
 	}
 	# B: she marks the faces of the ones who shout loudest. Radical up.
 	option = {
 		name = cp_layla.106.b
-		cp_shift_radical = { delta = 2 }
-		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_radical = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
 	}
 }
 
@@ -2849,25 +2849,25 @@ cp_layla.107 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_multicultural }
+		NOT = { has_variable = cp_layla_seen_multicultural }
 	}
 
 	immediate = {
-		set_variable = cp_seen_multicultural
+		set_variable = cp_layla_seen_multicultural
 	}
 
 	# A: she is glad. Hope up, loyalism up.
 	option = {
 		name = cp_layla.107.a
 		default_option = yes
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 2 }
-		cp_shift_weight = { weight = religion delta = -1 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = religion delta = -1 }
 	}
 	# B: she is quieter — a paper law is not a village. Small hope.
 	option = {
 		name = cp_layla.107.b
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 	}
 }
 
@@ -2901,22 +2901,22 @@ cp_layla.108 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_charitable_health }
+		NOT = { has_variable = cp_layla_seen_charitable_health }
 	}
 
 	immediate = {
-		set_variable = cp_seen_charitable_health
+		set_variable = cp_layla_seen_charitable_health
 	}
 
 	option = {
 		name = cp_layla.108.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
-		cp_shift_weight = { weight = religion delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = 1 }
 	}
 	option = {
 		name = cp_layla.108.b
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 	}
 }
 
@@ -2929,7 +2929,7 @@ cp_layla.109 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_layla.109.d.can_afford
-				trigger = { var:cp_sol >= 20 }
+				trigger = { var:cp_layla_sol >= 20 }
 			}
 			triggered_desc = {
 				desc = cp_layla.109.d.cannot
@@ -2949,22 +2949,22 @@ cp_layla.109 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_private_health }
+		NOT = { has_variable = cp_layla_seen_private_health }
 	}
 
 	immediate = {
-		set_variable = cp_seen_private_health
+		set_variable = cp_layla_seen_private_health
 	}
 
 	option = {
 		name = cp_layla.109.a
 		default_option = yes
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 	}
 	option = {
 		name = cp_layla.109.b
-		trigger = { var:cp_sol >= 20 }
-		cp_shift_loyalist = { delta = 1 }
+		trigger = { var:cp_layla_sol >= 20 }
+		cp_shift_loyalist = { person = layla delta = 1 }
 	}
 }
 
@@ -2986,24 +2986,24 @@ cp_layla.110 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_public_health }
+		NOT = { has_variable = cp_layla_seen_public_health }
 	}
 
 	immediate = {
-		set_variable = cp_seen_public_health
+		set_variable = cp_layla_seen_public_health
 	}
 
 	option = {
 		name = cp_layla.110.a
 		default_option = yes
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 2 }
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 	}
 	option = {
 		name = cp_layla.110.b
-		cp_shift_hope = { delta = 1 }
-		cp_shift_radical = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
 	}
 }
 
@@ -3025,24 +3025,24 @@ cp_layla.111 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_worker_protections }
+		NOT = { has_variable = cp_layla_seen_worker_protections }
 	}
 
 	immediate = {
-		set_variable = cp_seen_worker_protections
+		set_variable = cp_layla_seen_worker_protections
 	}
 
 	option = {
 		name = cp_layla.111.a
 		default_option = yes
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 2 }
-		cp_shift_weight = { weight = labor_laws delta = 2 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 2 }
 	}
 	option = {
 		name = cp_layla.111.b
-		cp_shift_radical = { delta = 1 }
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 	}
 }
 
@@ -3064,24 +3064,24 @@ cp_layla.112 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_right_to_associate }
+		NOT = { has_variable = cp_layla_seen_right_to_associate }
 	}
 
 	immediate = {
-		set_variable = cp_seen_right_to_associate
+		set_variable = cp_layla_seen_right_to_associate
 	}
 
 	option = {
 		name = cp_layla.112.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
-		cp_shift_weight = { weight = labor_laws delta = 2 }
-		cp_shift_weight = { weight = revolution delta = -1 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 2 }
+		cp_shift_weight = { person = layla weight = revolution delta = -1 }
 	}
 	option = {
 		name = cp_layla.112.b
-		cp_shift_radical = { delta = 1 }
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 	}
 }
 
@@ -3107,33 +3107,33 @@ cp_layla.113 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		has_variable = cp_in_city
+		has_variable = cp_layla_in_city
 		OR = {
-			has_variable = cp_profession_laborers
-			has_variable = cp_profession_machinists
-			has_variable = cp_ahmed_profession_laborer
+			has_variable = cp_layla_profession_laborers
+			has_variable = cp_layla_profession_machinists
+			has_variable = cp_layla_ahmed_profession_laborer
 		}
 		OR = {
 			has_law = law_type:law_right_to_associate
 			has_law = law_type:law_corporatized_unions
 			has_law = law_type:law_factory_councils
 		}
-		NOT = { has_variable = cp_seen_strike }
+		NOT = { has_variable = cp_layla_seen_strike }
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_strike days = 1825 }
+		set_variable = { name = cp_layla_seen_strike days = 1825 }
 	}
 
 	option = {
 		name = cp_layla.113.a
 		default_option = yes
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 	}
 	option = {
 		name = cp_layla.113.b
-		cp_shift_weight = { weight = labor_laws delta = 2 }
-		cp_shift_radical = { delta = 1 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 2 }
+		cp_shift_radical = { person = layla delta = 1 }
 	}
 }
 
@@ -3142,8 +3142,8 @@ cp_layla.113 = {
 # cp_layla.73 -- "The Mill Closes" (economic-downturn crossroads)
 # =============================================================================
 # Fires when she is city-based + laborer household + economic stress
-# (cp_sol falls below a certain threshold). Three paths reshape the
-# household's strategy. One-shot via cp_seen_mill_closed.
+# (cp_layla_sol falls below a certain threshold). Three paths reshape the
+# household's strategy. One-shot via cp_layla_seen_mill_closed.
 # =============================================================================
 cp_layla.73 = {
 	type = country_event
@@ -3170,7 +3170,7 @@ cp_layla.73 = {
 	option = {
 		name = cp_layla.73.a
 		default_option = yes
-		set_variable = cp_seen_mill_closed
+		set_variable = cp_layla_seen_mill_closed
 		cp_flee_city_for_village = yes
 	}
 	# B: Ahmed takes the lower wage as a machinist apprentice. Only
@@ -3179,12 +3179,12 @@ cp_layla.73 = {
 	option = {
 		name = cp_layla.73.b
 		trigger = {
-			has_variable = cp_ahmed_alive
-			var:cp_ahmed_alive > 0
-			NOT = { has_variable = cp_ahmed_at_war }
-			var:cp_literacy >= 5
+			has_variable = cp_layla_ahmed_alive
+			var:cp_layla_ahmed_alive > 0
+			NOT = { has_variable = cp_layla_ahmed_at_war }
+			var:cp_layla_literacy >= 5
 		}
-		set_variable = cp_seen_mill_closed
+		set_variable = cp_layla_seen_mill_closed
 		cp_ahmed_apprentices_machinist = yes
 	}
 	# C: the stall becomes the household's primary income. Requires
@@ -3192,9 +3192,9 @@ cp_layla.73 = {
 	option = {
 		name = cp_layla.73.c
 		trigger = {
-			has_variable = cp_self_employed
+			has_variable = cp_layla_self_employed
 		}
-		set_variable = cp_seen_mill_closed
+		set_variable = cp_layla_seen_mill_closed
 		cp_stall_becomes_primary = yes
 	}
 }
@@ -3227,30 +3227,30 @@ cp_layla.114 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_state_atheism }
+		NOT = { has_variable = cp_layla_seen_state_atheism }
 	}
 
 	immediate = {
-		set_variable = cp_seen_state_atheism
+		set_variable = cp_layla_seen_state_atheism
 	}
 
 	# A: she prays behind the door, softer. Grief up, weight on religion up.
 	option = {
 		name = cp_layla.114.a
 		default_option = yes
-		cp_shift_hope = { delta = -2 }
-		cp_shift_exhaustion = { delta = 1 }
-		cp_shift_weight = { weight = religion delta = 2 }
-		cp_shift_radical = { delta = 1 }
+		cp_shift_hope = { person = layla delta = -2 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = 2 }
+		cp_shift_radical = { person = layla delta = 1 }
 	}
 	# B: she stops praying aloud at all; the house gets quieter. Weight on
 	# revolution up, exhaustion up. The mood sours.
 	option = {
 		name = cp_layla.114.b
-		cp_shift_hope = { delta = -3 }
-		cp_shift_exhaustion = { delta = 2 }
-		cp_shift_weight = { weight = revolution delta = 2 }
-		cp_shift_radical = { delta = 2 }
+		cp_shift_hope = { person = layla delta = -3 }
+		cp_shift_exhaustion = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = revolution delta = 2 }
+		cp_shift_radical = { person = layla delta = 2 }
 	}
 }
 
@@ -3273,11 +3273,11 @@ cp_layla.115 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_freedom_of_conscience }
+		NOT = { has_variable = cp_layla_seen_freedom_of_conscience }
 	}
 
 	immediate = {
-		set_variable = cp_seen_freedom_of_conscience
+		set_variable = cp_layla_seen_freedom_of_conscience
 	}
 
 	# A: she watches them, makes the sign of God under her breath for them
@@ -3285,15 +3285,15 @@ cp_layla.115 = {
 	option = {
 		name = cp_layla.115.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
-		cp_shift_loyalist = { delta = 1 }
-		cp_shift_weight = { weight = religion delta = -1 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = -1 }
 	}
 	# B: she turns her face away. Weight on religion up, opinion on the
 	# state softens only slightly.
 	option = {
 		name = cp_layla.115.b
-		cp_shift_weight = { weight = religion delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = 1 }
 	}
 }
 
@@ -3316,11 +3316,11 @@ cp_layla.116 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_right_of_assembly }
+		NOT = { has_variable = cp_layla_seen_right_of_assembly }
 	}
 
 	immediate = {
-		set_variable = cp_seen_right_of_assembly
+		set_variable = cp_layla_seen_right_of_assembly
 	}
 
 	# A: she watches from the window and goes back inside. Exhaustion up,
@@ -3328,18 +3328,18 @@ cp_layla.116 = {
 	option = {
 		name = cp_layla.116.a
 		default_option = yes
-		cp_shift_loyalist = { delta = 1 }
-		cp_shift_weight = { weight = revolution delta = -1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = revolution delta = -1 }
 	}
 	# B: she stays and listens. Hope up, weight on revolution up, weight
 	# on womens_rights up (she thinks: if they can stand here, then so
 	# could I, one day).
 	option = {
 		name = cp_layla.116.b
-		cp_shift_hope = { delta = 2 }
-		cp_shift_weight = { weight = revolution delta = 1 }
-		cp_shift_weight = { weight = womens_rights delta = 1 }
-		cp_shift_radical = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
 	}
 }
 
@@ -3362,20 +3362,20 @@ cp_layla.118 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_restricted_child_labor }
+		NOT = { has_variable = cp_layla_seen_restricted_child_labor }
 	}
 
 	immediate = {
-		set_variable = cp_seen_restricted_child_labor
+		set_variable = cp_layla_seen_restricted_child_labor
 	}
 
 	# A: small relief. Loyalism up, weight on education up.
 	option = {
 		name = cp_layla.118.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
-		cp_shift_loyalist = { delta = 1 }
-		cp_shift_weight = { weight = education delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = education delta = 1 }
 	}
 	# B: the household's wage is now one less; she understands the law
 	# is right and also that the rent is the rent. Exhaustion up.
@@ -3383,12 +3383,12 @@ cp_layla.118 = {
 		name = cp_layla.118.b
 		trigger = {
 			OR = {
-				has_variable = cp_profession_laborers
-				has_variable = cp_ahmed_profession_laborer
+				has_variable = cp_layla_profession_laborers
+				has_variable = cp_layla_ahmed_profession_laborer
 			}
 		}
-		cp_shift_exhaustion = { delta = 2 }
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 	}
 }
 
@@ -3411,11 +3411,11 @@ cp_layla.119 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_dedicated_police }
+		NOT = { has_variable = cp_layla_seen_dedicated_police }
 	}
 
 	immediate = {
-		set_variable = cp_seen_dedicated_police
+		set_variable = cp_layla_seen_dedicated_police
 	}
 
 	# A: she walks past the window with her head down. Loyalism up,
@@ -3423,15 +3423,15 @@ cp_layla.119 = {
 	option = {
 		name = cp_layla.119.a
 		default_option = yes
-		cp_shift_loyalist = { delta = 1 }
-		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
 	}
 	# B: the corporal is from the village — she greets him by name.
 	# Hope up, loyalism up.
 	option = {
 		name = cp_layla.119.b
-		cp_shift_hope = { delta = 1 }
-		cp_shift_loyalist = { delta = 2 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 2 }
 	}
 }
 
@@ -3454,11 +3454,11 @@ cp_layla.120 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_militarized_police }
+		NOT = { has_variable = cp_layla_seen_militarized_police }
 	}
 
 	immediate = {
-		set_variable = cp_seen_militarized_police
+		set_variable = cp_layla_seen_militarized_police
 	}
 
 	# A: she crosses the street before reaching the square. Exhaustion
@@ -3466,15 +3466,15 @@ cp_layla.120 = {
 	option = {
 		name = cp_layla.120.a
 		default_option = yes
-		cp_shift_exhaustion = { delta = 2 }
-		cp_shift_radical = { delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 2 }
+		cp_shift_radical = { person = layla delta = 1 }
 	}
 	# B: she meets the corporal's eyes and does not look away. Radical
 	# up, weight on revolution up.
 	option = {
 		name = cp_layla.120.b
-		cp_shift_radical = { delta = 2 }
-		cp_shift_weight = { weight = revolution delta = 2 }
+		cp_shift_radical = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = revolution delta = 2 }
 	}
 }
 
@@ -3497,11 +3497,11 @@ cp_layla.117 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_outlawed_dissent }
+		NOT = { has_variable = cp_layla_seen_outlawed_dissent }
 	}
 
 	immediate = {
-		set_variable = cp_seen_outlawed_dissent
+		set_variable = cp_layla_seen_outlawed_dissent
 	}
 
 	# A: she burns the letters she kept. Hope down, exhaustion up,
@@ -3509,17 +3509,17 @@ cp_layla.117 = {
 	option = {
 		name = cp_layla.117.a
 		default_option = yes
-		cp_shift_hope = { delta = -2 }
-		cp_shift_exhaustion = { delta = 2 }
-		cp_shift_weight = { weight = revolution delta = -1 }
+		cp_shift_hope = { person = layla delta = -2 }
+		cp_shift_exhaustion = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = revolution delta = -1 }
 	}
 	# B: she keeps one. Hope down, but radicalism up; the memory is now
 	# contraband and will not be forgiven.
 	option = {
 		name = cp_layla.117.b
-		cp_shift_hope = { delta = -1 }
-		cp_shift_radical = { delta = 2 }
-		cp_shift_weight = { weight = revolution delta = 2 }
+		cp_shift_hope = { person = layla delta = -1 }
+		cp_shift_radical = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = revolution delta = 2 }
 	}
 }
 
@@ -3551,11 +3551,11 @@ cp_layla.121 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_no_migration_controls }
+		NOT = { has_variable = cp_layla_seen_no_migration_controls }
 	}
 
 	immediate = {
-		set_variable = cp_seen_no_migration_controls
+		set_variable = cp_layla_seen_no_migration_controls
 	}
 
 	# A: she rents the room above the kitchen to the Syrian family that
@@ -3563,15 +3563,15 @@ cp_layla.121 = {
 	option = {
 		name = cp_layla.121.a
 		default_option = yes
-		cp_shift_hope = { delta = 2 }
-		cp_shift_weight = { weight = economy delta = 1 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = economy delta = 1 }
 	}
 	# B: she does not rent. She does not greet. She watches the new
 	# faces and is tired. Weight on religion up, exhaustion up.
 	option = {
 		name = cp_layla.121.b
-		cp_shift_exhaustion = { delta = 1 }
-		cp_shift_weight = { weight = religion delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = 1 }
 	}
 }
 
@@ -3594,11 +3594,11 @@ cp_layla.122 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_closed_borders }
+		NOT = { has_variable = cp_layla_seen_closed_borders }
 	}
 
 	immediate = {
-		set_variable = cp_seen_closed_borders
+		set_variable = cp_layla_seen_closed_borders
 	}
 
 	# A: she folds the letter from the cousin in Beirut and sets it
@@ -3606,15 +3606,15 @@ cp_layla.122 = {
 	option = {
 		name = cp_layla.122.a
 		default_option = yes
-		cp_shift_hope = { delta = -2 }
-		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_hope = { person = layla delta = -2 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
 	}
 	# B: she is, in spite of herself, quietly glad. The lane is hers.
 	# Loyalism up, weight on religion up.
 	option = {
 		name = cp_layla.122.b
-		cp_shift_loyalist = { delta = 2 }
-		cp_shift_weight = { weight = religion delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = religion delta = 1 }
 	}
 }
 
@@ -3637,11 +3637,11 @@ cp_layla.123 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_laissez_faire }
+		NOT = { has_variable = cp_layla_seen_laissez_faire }
 	}
 
 	immediate = {
-		set_variable = cp_seen_laissez_faire
+		set_variable = cp_layla_seen_laissez_faire
 	}
 
 	# A: she watches the foreign company plant its sign in the field.
@@ -3649,20 +3649,20 @@ cp_layla.123 = {
 	option = {
 		name = cp_layla.123.a
 		default_option = yes
-		cp_shift_exhaustion = { delta = 2 }
-		cp_shift_radical = { delta = 2 }
-		cp_shift_weight = { weight = land_reform delta = 2 }
+		cp_shift_exhaustion = { person = layla delta = 2 }
+		cp_shift_radical = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = land_reform delta = 2 }
 	}
 	# B: her stall does, in fact, sell more. Hope up, loyalism up,
 	# weight on economy up.
 	option = {
 		name = cp_layla.123.b
 		trigger = {
-			has_variable = cp_self_employed
+			has_variable = cp_layla_self_employed
 		}
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 1 }
-		cp_shift_weight = { weight = economy delta = 2 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = economy delta = 2 }
 	}
 }
 
@@ -3685,11 +3685,11 @@ cp_layla.124 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_command_economy }
+		NOT = { has_variable = cp_layla_seen_command_economy }
 	}
 
 	immediate = {
-		set_variable = cp_seen_command_economy
+		set_variable = cp_layla_seen_command_economy
 	}
 
 	# A: she signs the collectivisation papers. Loyalism up, weight on
@@ -3697,20 +3697,20 @@ cp_layla.124 = {
 	option = {
 		name = cp_layla.124.a
 		default_option = yes
-		cp_shift_loyalist = { delta = 1 }
-		cp_shift_exhaustion = { delta = 2 }
-		cp_shift_weight = { weight = economy delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = economy delta = 1 }
 	}
 	# B: she does not sign. She closes the stall. Radical up, weight
 	# on revolution up.
 	option = {
 		name = cp_layla.124.b
 		trigger = {
-			has_variable = cp_self_employed
+			has_variable = cp_layla_self_employed
 		}
-		cp_shift_radical = { delta = 3 }
-		cp_shift_weight = { weight = revolution delta = 2 }
-		cp_shift_weight = { weight = economy delta = -1 }
+		cp_shift_radical = { person = layla delta = 3 }
+		cp_shift_weight = { person = layla weight = revolution delta = 2 }
+		cp_shift_weight = { person = layla weight = economy delta = -1 }
 	}
 }
 
@@ -3787,12 +3787,12 @@ cp_layla.125 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		var:cp_age >= 35
-		NOT = { has_variable = cp_seen_district_office }
+		var:cp_layla_age >= 35
+		NOT = { has_variable = cp_layla_seen_district_office }
 	}
 
 	immediate = {
-		set_variable = cp_seen_district_office
+		set_variable = cp_layla_seen_district_office
 	}
 
 	# A: she accepts the dismissal. Exhaustion up, hope down; the
@@ -3800,21 +3800,21 @@ cp_layla.125 = {
 	option = {
 		name = cp_layla.125.a
 		default_option = yes
-		cp_shift_hope = { delta = -2 }
-		cp_shift_exhaustion = { delta = 2 }
+		cp_shift_hope = { person = layla delta = -2 }
+		cp_shift_exhaustion = { person = layla delta = 2 }
 		# Reset the conversation cooldown so she can go to Cairo-in-
 		# her-mind tonight, if the variable exists.
 		if = {
-			limit = { has_variable = cp_audience_cooldown }
-			remove_variable = cp_audience_cooldown
+			limit = { has_variable = cp_layla_audience_cooldown }
+			remove_variable = cp_layla_audience_cooldown
 		}
 	}
 	# B: she does not come back a third time. Radical up; weight on
 	# revolution up. She has learned something about rooms.
 	option = {
 		name = cp_layla.125.b
-		cp_shift_radical = { delta = 2 }
-		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_radical = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
 	}
 }
 
@@ -3842,31 +3842,31 @@ cp_layla.126 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_imam_visit }
+		NOT = { has_variable = cp_layla_seen_imam_visit }
 		NOT = { has_law = law_type:law_state_atheism }
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_imam_visit days = 1825 }
+		set_variable = { name = cp_layla_seen_imam_visit days = 1825 }
 	}
 
 	# A: she gives him tea. Hope up, weight on religion up.
 	option = {
 		name = cp_layla.126.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
-		cp_shift_weight = { weight = religion delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = 1 }
 	}
 	# B: she also gives him a coin for the zakat box. Hope up more;
 	# loyalism up; SoL dip (the coin was not extra).
 	option = {
 		name = cp_layla.126.b
 		trigger = {
-			var:cp_sol >= 8
+			var:cp_layla_sol >= 8
 		}
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 1 }
-		cp_shift_weight = { weight = religion delta = 2 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = 2 }
 	}
 }
 
@@ -3893,36 +3893,36 @@ cp_layla.127 = {
 
 	trigger = {
 		has_variable = cp_layla_alive
-		NOT = { has_variable = cp_seen_small_victory }
+		NOT = { has_variable = cp_layla_seen_small_victory }
 		# Requires some material improvement — SoL above struggling, and
 		# at least one ally gesture (welfare active, vote rights, or a
 		# law passed). The laughter is earned.
-		var:cp_sol >= 10
+		var:cp_layla_sol >= 10
 		OR = {
-			has_variable = cp_receives_welfare
-			has_variable = cp_has_voted
-			has_variable = cp_owns_land
+			has_variable = cp_layla_receives_welfare
+			has_variable = cp_layla_has_voted
+			has_variable = cp_layla_owns_land
 		}
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_small_victory days = 3650 }
+		set_variable = { name = cp_layla_seen_small_victory days = 3650 }
 	}
 
 	# A: she laughs with Um Yusuf. Hope way up, exhaustion down.
 	option = {
 		name = cp_layla.127.a
 		default_option = yes
-		cp_shift_hope = { delta = 3 }
-		cp_shift_exhaustion = { delta = -2 }
+		cp_shift_hope = { person = layla delta = 3 }
+		cp_shift_exhaustion = { person = layla delta = -2 }
 	}
 	# B: she laughs — and helps him up, and does not mention it again
 	# for the rest of the month. Hope up; loyalism up slightly (the
 	# cohesion of the lane is its own small government).
 	option = {
 		name = cp_layla.127.b
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 1 }
 	}
 }
 
@@ -3950,17 +3950,17 @@ cp_layla.128 = {
 	trigger = {
 		has_variable = cp_layla_alive
 		# Nūr must be old enough and literate — gated on the daughter-
-		# literate flag (set by cp_layla.101 via cp_may_work-adjacent
+		# literate flag (set by cp_layla.101 via cp_layla_may_work-adjacent
 		# logic; approximate with daughter_at_school for now).
 		OR = {
-			has_variable = cp_daughter_at_school
-			var:cp_literacy >= 10
+			has_variable = cp_layla_daughter_at_school
+			var:cp_layla_literacy >= 10
 		}
-		NOT = { has_variable = cp_seen_mariam_letter }
+		NOT = { has_variable = cp_layla_seen_mariam_letter }
 	}
 
 	immediate = {
-		set_variable = { name = cp_seen_mariam_letter days = 1460 }
+		set_variable = { name = cp_layla_seen_mariam_letter days = 1460 }
 	}
 
 	# A: she asks Nūr to read the letter again. Hope up; weight on
@@ -3968,15 +3968,15 @@ cp_layla.128 = {
 	option = {
 		name = cp_layla.128.a
 		default_option = yes
-		cp_shift_hope = { delta = 2 }
-		cp_shift_weight = { weight = education delta = 1 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = education delta = 1 }
 	}
 	# B: she puts the letter away after one reading; she is not ready
 	# for what Mariam has become. Exhaustion up slightly; weight on
 	# religion up (the old order is the familiar order).
 	option = {
 		name = cp_layla.128.b
-		cp_shift_exhaustion = { delta = 1 }
-		cp_shift_weight = { weight = religion delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = 1 }
 	}
 }

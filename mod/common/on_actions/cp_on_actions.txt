@@ -45,13 +45,13 @@ cp_on_start = {
 			# Each block guards with NOT has_variable so new games and saves
 			# already carrying the variable both pass through cleanly.
 			if = {
-				limit = { has_variable = cp_layla_alive  NOT = { has_variable = cp_status_variant } }
-				set_variable = { name = cp_status_variant value = 1 }
+				limit = { has_variable = cp_layla_alive  NOT = { has_variable = cp_layla_status_variant } }
+				set_variable = { name = cp_layla_status_variant value = 1 }
 			}
 			if = {
-				limit = { has_variable = cp_layla_alive  NOT = { has_variable = cp_sol_prev } }
-				set_variable = { name = cp_sol_prev value = var:cp_sol }
-				set_variable = { name = cp_sol_delta value = 0 }
+				limit = { has_variable = cp_layla_alive  NOT = { has_variable = cp_layla_sol_prev } }
+				set_variable = { name = cp_layla_sol_prev value = var:cp_layla_sol }
+				set_variable = { name = cp_layla_sol_delta value = 0 }
 			}
 			# Saves from before the data-driven home-state refactor lack
 			# the region_state marker. Backfill to Lower Egypt (her start)
@@ -96,30 +96,30 @@ cp_on_monthly = {
 				THIS = c:EGY
 				has_variable = cp_layla_alive
 			}
-			# Self-heal: backfill cp_status_variant on saves that predate it.
+			# Self-heal: backfill cp_layla_status_variant on saves that predate it.
 			if = {
-				limit = { NOT = { has_variable = cp_status_variant } }
-				set_variable = { name = cp_status_variant value = 1 }
+				limit = { NOT = { has_variable = cp_layla_status_variant } }
+				set_variable = { name = cp_layla_status_variant value = 1 }
 			}
 			cp_debug_tick_increment = yes
 			# Mood bucket (1..10 -> low/mid/high bucket)
 			random_list = {
-				10 = { set_variable = { name = cp_mood_roll value = 1 } }
-				10 = { set_variable = { name = cp_mood_roll value = 2 } }
-				10 = { set_variable = { name = cp_mood_roll value = 3 } }
-				10 = { set_variable = { name = cp_mood_roll value = 4 } }
-				10 = { set_variable = { name = cp_mood_roll value = 5 } }
-				10 = { set_variable = { name = cp_mood_roll value = 6 } }
-				10 = { set_variable = { name = cp_mood_roll value = 7 } }
-				10 = { set_variable = { name = cp_mood_roll value = 8 } }
-				10 = { set_variable = { name = cp_mood_roll value = 9 } }
-				10 = { set_variable = { name = cp_mood_roll value = 10 } }
+				10 = { set_variable = { name = cp_layla_mood_roll value = 1 } }
+				10 = { set_variable = { name = cp_layla_mood_roll value = 2 } }
+				10 = { set_variable = { name = cp_layla_mood_roll value = 3 } }
+				10 = { set_variable = { name = cp_layla_mood_roll value = 4 } }
+				10 = { set_variable = { name = cp_layla_mood_roll value = 5 } }
+				10 = { set_variable = { name = cp_layla_mood_roll value = 6 } }
+				10 = { set_variable = { name = cp_layla_mood_roll value = 7 } }
+				10 = { set_variable = { name = cp_layla_mood_roll value = 8 } }
+				10 = { set_variable = { name = cp_layla_mood_roll value = 9 } }
+				10 = { set_variable = { name = cp_layla_mood_roll value = 10 } }
 			}
 			# Variant within bucket (1..3)
 			random_list = {
-				33 = { set_variable = { name = cp_status_variant value = 1 } }
-				33 = { set_variable = { name = cp_status_variant value = 2 } }
-				34 = { set_variable = { name = cp_status_variant value = 3 } }
+				33 = { set_variable = { name = cp_layla_status_variant value = 1 } }
+				33 = { set_variable = { name = cp_layla_status_variant value = 2 } }
+				34 = { set_variable = { name = cp_layla_status_variant value = 3 } }
 			}
 		}
 	}
@@ -151,24 +151,24 @@ cp_on_yearly = {
 			}
 			# Self-heal: backfill snapshot variables on older saves.
 			if = {
-				limit = { NOT = { has_variable = cp_sol_prev } }
-				set_variable = { name = cp_sol_prev value = var:cp_sol }
-				set_variable = { name = cp_sol_delta value = 0 }
+				limit = { NOT = { has_variable = cp_layla_sol_prev } }
+				set_variable = { name = cp_layla_sol_prev value = var:cp_layla_sol }
+				set_variable = { name = cp_layla_sol_delta value = 0 }
 			}
 			if = {
-				limit = { NOT = { has_variable = cp_tax_burden } }
-				set_variable = { name = cp_tax_burden value = 0 }
+				limit = { NOT = { has_variable = cp_layla_tax_burden } }
+				set_variable = { name = cp_layla_tax_burden value = 0 }
 				cp_refresh_tax_burden = yes
-				set_variable = { name = cp_tax_burden_prev value = var:cp_tax_burden }
+				set_variable = { name = cp_layla_tax_burden_prev value = var:cp_layla_tax_burden }
 			}
 			if = {
-				limit = { NOT = { has_variable = cp_welfare_tier } }
-				set_variable = { name = cp_welfare_tier value = 0 }
-				set_variable = { name = cp_welfare_tier_prev value = 0 }
+				limit = { NOT = { has_variable = cp_layla_welfare_tier } }
+				set_variable = { name = cp_layla_welfare_tier value = 0 }
+				set_variable = { name = cp_layla_welfare_tier_prev value = 0 }
 				cp_refresh_welfare_tier = yes
 			}
-			# Resample cp_sol from her pop group BEFORE computing delta.
-			cp_refresh_sol_from_pop = yes
+			# Resample cp_layla_sol from her pop group BEFORE computing delta.
+			cp_layla_refresh_sol = yes
 
 			# Pop-tick: literacy drifts toward cohort, political mood drifts
 			# from expected-SoL gap. Both mirror the SoL resample pattern.
@@ -177,10 +177,10 @@ cp_on_yearly = {
 			# Delta = current - prev. Computed via multiply-by-(-1)
 			# because `change_variable = { subtract = var:X }` is not
 			# reliably supported; `add = var:X` is. So negate prev, then add.
-			set_variable = { name = cp_sol_delta value = var:cp_sol_prev }
-			multiply_variable = { name = cp_sol_delta value = -1 }
-			change_variable = { name = cp_sol_delta add = var:cp_sol }
-			set_variable = { name = cp_sol_prev value = var:cp_sol }
+			set_variable = { name = cp_layla_sol_delta value = var:cp_layla_sol_prev }
+			multiply_variable = { name = cp_layla_sol_delta value = -1 }
+			change_variable = { name = cp_layla_sol_delta add = var:cp_layla_sol }
+			set_variable = { name = cp_layla_sol_prev value = var:cp_layla_sol }
 
 			# Tax burden: same pattern. Recompute, then fire the tax-spike
 			# event if burden jumped by ≥3 since last year (the tax
@@ -188,27 +188,27 @@ cp_on_yearly = {
 			cp_refresh_tax_burden = yes
 			if = {
 				limit = {
-					NOT = { has_variable = cp_seen_tax_spike }
-					var:cp_tax_burden >= 7
+					NOT = { has_variable = cp_layla_seen_tax_spike }
+					var:cp_layla_tax_burden >= 7
 					# current - prev >= 3  via multiply-by-(-1) trick
-					var:cp_tax_burden >= var:cp_tax_burden_prev
+					var:cp_layla_tax_burden >= var:cp_layla_tax_burden_prev
 					# We cannot express var - var >= 3 directly; approximate
 					# with absolute threshold (>=7) + the trend guard above.
 				}
 				trigger_event = { id = cp_layla.7 }
-				set_variable = { name = cp_seen_tax_spike days = 1800 }
+				set_variable = { name = cp_layla_seen_tax_spike days = 1800 }
 			}
 			# First-bite event: consumption tax on grain lands for the
 			# first time since she's been alive.
 			if = {
 				limit = {
-					NOT = { has_variable = cp_seen_grain_tax }
+					NOT = { has_variable = cp_layla_seen_grain_tax }
 					has_consumption_tax = g:grain
 				}
 				trigger_event = { id = cp_layla.8 }
-				set_variable = cp_seen_grain_tax
+				set_variable = cp_layla_seen_grain_tax
 			}
-			set_variable = { name = cp_tax_burden_prev value = var:cp_tax_burden }
+			set_variable = { name = cp_layla_tax_burden_prev value = var:cp_layla_tax_burden }
 
 			# Crossroads: Cairo offers work. Fires once per life when
 			# prerequisites align — a mill exists in her state, she's
@@ -218,16 +218,16 @@ cp_on_yearly = {
 			# obligation on a timer.
 			if = {
 				limit = {
-					has_variable = cp_seen_first_textile_mill
-					NOT = { has_variable = cp_seen_cairo_offer }
+					has_variable = cp_layla_seen_first_textile_mill
+					NOT = { has_variable = cp_layla_seen_cairo_offer }
 					NOT = { has_law = law_type:law_serfdom }
-					has_variable = cp_profession_peasants
-					var:cp_sol <= 12
+					has_variable = cp_layla_profession_peasants
+					var:cp_layla_sol <= 12
 				}
 				random_list = {
 					25 = {
 						trigger_event = { id = cp_layla.70 }
-						set_variable = cp_seen_cairo_offer
+						set_variable = cp_layla_seen_cairo_offer
 					}
 					75 = { }
 				}
@@ -242,27 +242,27 @@ cp_on_yearly = {
 			# its own eligibility test; any match triggers the event.
 			if = {
 				limit = {
-					NOT = { has_variable = cp_seen_first_envelope }
+					NOT = { has_variable = cp_layla_seen_first_envelope }
 					OR = {
 						# Old-age pension and she's of age.
 						AND = {
 							has_law = law_type:law_old_age_pension
-							var:cp_age >= 60
+							var:cp_layla_age >= 60
 						}
 						# Poor laws and she's poor.
 						AND = {
 							has_law = law_type:law_poor_laws
-							var:cp_sol <= 10
+							var:cp_layla_sol <= 10
 						}
 						# Wage subsidies and her household earns wages.
 						AND = {
 							has_law = law_type:law_wage_subsidies
-							var:cp_sol <= 15
+							var:cp_layla_sol <= 15
 							OR = {
-								has_variable = cp_profession_laborers
-								has_variable = cp_profession_machinists
-								has_variable = cp_profession_farmers
-								has_variable = cp_profession_clerks
+								has_variable = cp_layla_profession_laborers
+								has_variable = cp_layla_profession_machinists
+								has_variable = cp_layla_profession_farmers
+								has_variable = cp_layla_profession_clerks
 							}
 						}
 					}
@@ -272,7 +272,7 @@ cp_on_yearly = {
 				random_list = {
 					50 = {
 						trigger_event = { id = cp_layla.90 }
-						set_variable = cp_seen_first_envelope
+						set_variable = cp_layla_seen_first_envelope
 					}
 					50 = { }
 				}
@@ -286,18 +286,18 @@ cp_on_yearly = {
 			# should kill her (childbirth, famine, factory), not timers.
 			if = {
 				limit = {
-					var:cp_age >= 35
-					var:cp_mortality_pressure >= 1
+					var:cp_layla_age >= 35
+					var:cp_layla_mortality_pressure >= 1
 				}
 				if = {
-					limit = { var:cp_mortality_pressure >= 7 }
+					limit = { var:cp_layla_mortality_pressure >= 7 }
 					random_list = {
 						10 = { trigger_event = { id = cp_layla.80 } }
 						90 = { }
 					}
 				}
 				else_if = {
-					limit = { var:cp_mortality_pressure >= 4 }
+					limit = { var:cp_layla_mortality_pressure >= 4 }
 					random_list = {
 						4 = { trigger_event = { id = cp_layla.80 } }
 						96 = { }
@@ -311,19 +311,19 @@ cp_on_yearly = {
 				}
 			}
 
-			# Ahmed's worker-accident roll. Gated on cp_worker_risk which
+			# Ahmed's worker-accident roll. Gated on cp_layla_worker_risk which
 			# is only non-zero when he works a shop floor. Worker-
 			# protections law clamps the worst away; no-workers-rights
 			# (or early industrialisation under regulatory_bodies) makes
 			# accidents real and annual.
 			if = {
 				limit = {
-					has_variable = cp_ahmed_alive
-					var:cp_ahmed_alive > 0
-					var:cp_worker_risk >= 3
+					has_variable = cp_layla_ahmed_alive
+					var:cp_layla_ahmed_alive > 0
+					var:cp_layla_worker_risk >= 3
 				}
 				if = {
-					limit = { var:cp_worker_risk >= 7 }
+					limit = { var:cp_layla_worker_risk >= 7 }
 					random_list = {
 						6 = { trigger_event = { id = cp_layla.81 } }
 						94 = { }
@@ -344,8 +344,8 @@ cp_on_yearly = {
 			# more vulnerable to what the adults can survive.
 			if = {
 				limit = {
-					var:cp_children >= 1
-					var:cp_mortality_pressure >= 5
+					var:cp_layla_children >= 1
+					var:cp_layla_mortality_pressure >= 5
 				}
 				random_list = {
 					3 = { trigger_event = { id = cp_layla.82 } }
@@ -363,16 +363,16 @@ cp_on_yearly = {
 			# interventionism). 20% roll per qualifying year.
 			if = {
 				limit = {
-					has_variable = cp_in_city
-					NOT = { has_variable = cp_seen_ownership_offer }
+					has_variable = cp_layla_in_city
+					NOT = { has_variable = cp_layla_seen_ownership_offer }
 					OR = {
-						has_variable = cp_profession_laborers
-						has_variable = cp_profession_machinists
-						has_variable = cp_profession_clerks
-						has_variable = cp_profession_engineers
+						has_variable = cp_layla_profession_laborers
+						has_variable = cp_layla_profession_machinists
+						has_variable = cp_layla_profession_clerks
+						has_variable = cp_layla_profession_engineers
 					}
-					var:cp_sol >= 20
-					var:cp_literacy >= 10
+					var:cp_layla_sol >= 20
+					var:cp_layla_literacy >= 10
 					OR = {
 						has_law = law_type:law_laissez_faire
 						has_law = law_type:law_interventionism
@@ -381,13 +381,13 @@ cp_on_yearly = {
 				random_list = {
 					20 = {
 						trigger_event = { id = cp_layla.71 }
-						set_variable = cp_seen_ownership_offer
+						set_variable = cp_layla_seen_ownership_offer
 					}
 					80 = { }
 				}
 			}
 
-			# Crossroads: self-employment (Slice D). Gated on cp_may_work
+			# Crossroads: self-employment (Slice D). Gated on cp_layla_may_work
 			# (set by cp_layla.95 when law_women_in_the_workplace enacts).
 			# Two paths:
 			#   - FORCED: she has to. Widowhood + pressed SoL, or
@@ -395,25 +395,25 @@ cp_on_yearly = {
 			#     because survival arrives faster than vocation.
 			#   - CHOSEN: law active, household OK, small yearly chance.
 			#     15% roll per qualifying year.
-			# One-shot per life via cp_seen_self_employment; flag is set
+			# One-shot per life via cp_layla_seen_self_employment; flag is set
 			# inside the event's immediate.
 			if = {
 				limit = {
-					has_variable = cp_may_work
-					NOT = { has_variable = cp_seen_self_employment }
-					NOT = { has_variable = cp_self_employed }
+					has_variable = cp_layla_may_work
+					NOT = { has_variable = cp_layla_seen_self_employment }
+					NOT = { has_variable = cp_layla_self_employed }
 					# Forced: widow with SoL <=10, or low SoL without
 					# Ahmed's profession carrying them.
 					OR = {
 						AND = {
-							has_variable = cp_ahmed_alive
-							var:cp_ahmed_alive = 0
-							var:cp_sol <= 10
+							has_variable = cp_layla_ahmed_alive
+							var:cp_layla_ahmed_alive = 0
+							var:cp_layla_sol <= 10
 						}
 						AND = {
-							var:cp_sol <= 8
-							NOT = { has_variable = cp_profession_shopkeepers }
-							NOT = { has_variable = cp_profession_capitalists }
+							var:cp_layla_sol <= 8
+							NOT = { has_variable = cp_layla_profession_shopkeepers }
+							NOT = { has_variable = cp_layla_profession_capitalists }
 						}
 					}
 				}
@@ -429,12 +429,12 @@ cp_on_yearly = {
 				# self-employed or in a profession that makes this
 				# redundant. Low roll so it feels optional.
 				limit = {
-					has_variable = cp_may_work
-					NOT = { has_variable = cp_seen_self_employment }
-					NOT = { has_variable = cp_self_employed }
-					NOT = { has_variable = cp_profession_shopkeepers }
-					NOT = { has_variable = cp_profession_capitalists }
-					var:cp_sol >= 9
+					has_variable = cp_layla_may_work
+					NOT = { has_variable = cp_layla_seen_self_employment }
+					NOT = { has_variable = cp_layla_self_employed }
+					NOT = { has_variable = cp_layla_profession_shopkeepers }
+					NOT = { has_variable = cp_layla_profession_capitalists }
+					var:cp_layla_sol >= 9
 				}
 				random_list = {
 					15 = {
@@ -446,19 +446,19 @@ cp_on_yearly = {
 
 			# Crossroads: daughter's marriage. Fires once per life when
 			# the mother is old enough that a first child born around
-			# cp_age 22 would now be of marrying age. 20% roll per
+			# cp_layla_age 22 would now be of marrying age. 20% roll per
 			# qualifying year so the crossroads arrives when it does.
 			if = {
 				limit = {
-					var:cp_age >= 38
-					var:cp_children >= 1
-					NOT = { has_variable = cp_seen_daughter_marriage }
-					NOT = { has_variable = cp_daughter_married }
+					var:cp_layla_age >= 38
+					var:cp_layla_children >= 1
+					NOT = { has_variable = cp_layla_seen_daughter_marriage }
+					NOT = { has_variable = cp_layla_daughter_married }
 				}
 				random_list = {
 					20 = {
 						trigger_event = { id = cp_layla.72 }
-						set_variable = cp_seen_daughter_marriage
+						set_variable = cp_layla_seen_daughter_marriage
 					}
 					80 = { }
 				}
@@ -470,13 +470,13 @@ cp_on_yearly = {
 			# not scheduled.
 			if = {
 				limit = {
-					has_variable = cp_in_city
-					NOT = { has_variable = cp_seen_mill_closed }
+					has_variable = cp_layla_in_city
+					NOT = { has_variable = cp_layla_seen_mill_closed }
 					OR = {
-						has_variable = cp_ahmed_profession_laborer
-						has_variable = cp_profession_laborers
+						has_variable = cp_layla_ahmed_profession_laborer
+						has_variable = cp_layla_profession_laborers
 					}
-					var:cp_sol <= 9
+					var:cp_layla_sol <= 9
 				}
 				random_list = {
 					30 = {
@@ -493,13 +493,13 @@ cp_on_yearly = {
 			# law-touching experience.
 			if = {
 				limit = {
-					var:cp_age >= 35
-					NOT = { has_variable = cp_seen_district_office }
+					var:cp_layla_age >= 35
+					NOT = { has_variable = cp_layla_seen_district_office }
 					OR = {
-						has_variable = cp_receives_welfare
-						has_variable = cp_has_voted
-						has_variable = cp_owns_land
-						has_variable = cp_self_employed
+						has_variable = cp_layla_receives_welfare
+						has_variable = cp_layla_has_voted
+						has_variable = cp_layla_owns_land
+						has_variable = cp_layla_self_employed
 					}
 				}
 				random_list = {
@@ -537,7 +537,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_homesteading
-				NOT = { has_variable = cp_seen_homesteading }
+				NOT = { has_variable = cp_layla_seen_homesteading }
 			}
 			trigger_event = { id = cp_layla.2 }
 		}
@@ -547,7 +547,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_serfdom
-				NOT = { has_variable = cp_seen_serfdom_restored }
+				NOT = { has_variable = cp_layla_seen_serfdom_restored }
 			}
 			trigger_event = { id = cp_layla.3 }
 		}
@@ -568,22 +568,22 @@ cp_on_law_enacted = {
 				}
 			}
 			# Snapshot the prior tier into a temp var before refresh.
-			set_variable = { name = cp_welfare_tier_prev value = var:cp_welfare_tier }
+			set_variable = { name = cp_layla_welfare_tier_prev value = var:cp_layla_welfare_tier }
 			cp_refresh_welfare_tier = yes
 			# Up transition: new > prev.
 			if = {
-				limit = { var:cp_welfare_tier > var:cp_welfare_tier_prev }
+				limit = { var:cp_layla_welfare_tier > var:cp_layla_welfare_tier_prev }
 				trigger_event = { id = cp_layla.91 }
 			}
 			else_if = {
 				# Down transition: new < prev. (Repeal / regression.)
-				limit = { var:cp_welfare_tier < var:cp_welfare_tier_prev }
+				limit = { var:cp_layla_welfare_tier < var:cp_layla_welfare_tier_prev }
 				trigger_event = { id = cp_layla.92 }
 			}
 		}
 
 		# Women's rights enactments. First-time-only per rung; the one-shot
-		# gate is the cp_seen_womens_rights_* flag set inside each event's
+		# gate is the cp_layla_seen_womens_rights_* flag set inside each event's
 		# immediate block. Rollback events are not fired (user-design: each
 		# rung is a "first enactment" memory, not a ladder mirror).
 		if = {
@@ -591,7 +591,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_women_in_the_fields
-				NOT = { has_variable = cp_seen_womens_rights_fields }
+				NOT = { has_variable = cp_layla_seen_womens_rights_fields }
 			}
 			trigger_event = { id = cp_layla.93 }
 		}
@@ -600,7 +600,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_women_own_property
-				NOT = { has_variable = cp_seen_womens_rights_property }
+				NOT = { has_variable = cp_layla_seen_womens_rights_property }
 			}
 			trigger_event = { id = cp_layla.94 }
 		}
@@ -609,7 +609,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_women_in_the_workplace
-				NOT = { has_variable = cp_seen_womens_rights_workplace }
+				NOT = { has_variable = cp_layla_seen_womens_rights_workplace }
 			}
 			trigger_event = { id = cp_layla.95 }
 		}
@@ -618,7 +618,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_womens_suffrage
-				NOT = { has_variable = cp_seen_womens_rights_suffrage }
+				NOT = { has_variable = cp_layla_seen_womens_rights_suffrage }
 			}
 			trigger_event = { id = cp_layla.96 }
 		}
@@ -630,7 +630,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_public_schools
-				NOT = { has_variable = cp_seen_public_schools }
+				NOT = { has_variable = cp_layla_seen_public_schools }
 			}
 			trigger_event = { id = cp_layla.100 }
 		}
@@ -639,7 +639,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_compulsory_primary_school
-				NOT = { has_variable = cp_seen_compulsory_school }
+				NOT = { has_variable = cp_layla_seen_compulsory_school }
 			}
 			trigger_event = { id = cp_layla.101 }
 		}
@@ -653,7 +653,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_slavery_banned
-				NOT = { has_variable = cp_seen_emancipation }
+				NOT = { has_variable = cp_layla_seen_emancipation }
 			}
 			trigger_event = { id = cp_layla.103 }
 		}
@@ -664,7 +664,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_universal_suffrage
-				NOT = { has_variable = cp_seen_universal_suffrage }
+				NOT = { has_variable = cp_layla_seen_universal_suffrage }
 			}
 			trigger_event = { id = cp_layla.105 }
 		}
@@ -673,7 +673,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_single_party_state
-				NOT = { has_variable = cp_seen_single_party }
+				NOT = { has_variable = cp_layla_seen_single_party }
 			}
 			trigger_event = { id = cp_layla.106 }
 		}
@@ -684,7 +684,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_multicultural
-				NOT = { has_variable = cp_seen_multicultural }
+				NOT = { has_variable = cp_layla_seen_multicultural }
 			}
 			trigger_event = { id = cp_layla.107 }
 		}
@@ -695,7 +695,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_charitable_health_system
-				NOT = { has_variable = cp_seen_charitable_health }
+				NOT = { has_variable = cp_layla_seen_charitable_health }
 			}
 			trigger_event = { id = cp_layla.108 }
 		}
@@ -704,7 +704,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_private_health_insurance
-				NOT = { has_variable = cp_seen_private_health }
+				NOT = { has_variable = cp_layla_seen_private_health }
 			}
 			trigger_event = { id = cp_layla.109 }
 		}
@@ -713,7 +713,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_public_health_insurance
-				NOT = { has_variable = cp_seen_public_health }
+				NOT = { has_variable = cp_layla_seen_public_health }
 			}
 			trigger_event = { id = cp_layla.110 }
 		}
@@ -724,7 +724,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_worker_protections
-				NOT = { has_variable = cp_seen_worker_protections }
+				NOT = { has_variable = cp_layla_seen_worker_protections }
 			}
 			trigger_event = { id = cp_layla.111 }
 		}
@@ -735,7 +735,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_right_to_associate
-				NOT = { has_variable = cp_seen_right_to_associate }
+				NOT = { has_variable = cp_layla_seen_right_to_associate }
 			}
 			trigger_event = { id = cp_layla.112 }
 		}
@@ -749,7 +749,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_state_atheism
-				NOT = { has_variable = cp_seen_state_atheism }
+				NOT = { has_variable = cp_layla_seen_state_atheism }
 			}
 			trigger_event = { id = cp_layla.114 }
 		}
@@ -758,7 +758,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_freedom_of_conscience
-				NOT = { has_variable = cp_seen_freedom_of_conscience }
+				NOT = { has_variable = cp_layla_seen_freedom_of_conscience }
 			}
 			trigger_event = { id = cp_layla.115 }
 		}
@@ -771,7 +771,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_right_of_assembly
-				NOT = { has_variable = cp_seen_right_of_assembly }
+				NOT = { has_variable = cp_layla_seen_right_of_assembly }
 			}
 			trigger_event = { id = cp_layla.116 }
 		}
@@ -780,7 +780,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_outlawed_dissent
-				NOT = { has_variable = cp_seen_outlawed_dissent }
+				NOT = { has_variable = cp_layla_seen_outlawed_dissent }
 			}
 			trigger_event = { id = cp_layla.117 }
 		}
@@ -793,7 +793,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_restricted_child_labor
-				NOT = { has_variable = cp_seen_restricted_child_labor }
+				NOT = { has_variable = cp_layla_seen_restricted_child_labor }
 			}
 			trigger_event = { id = cp_layla.118 }
 		}
@@ -805,7 +805,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_dedicated_police
-				NOT = { has_variable = cp_seen_dedicated_police }
+				NOT = { has_variable = cp_layla_seen_dedicated_police }
 			}
 			trigger_event = { id = cp_layla.119 }
 		}
@@ -814,7 +814,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_militarized_police
-				NOT = { has_variable = cp_seen_militarized_police }
+				NOT = { has_variable = cp_layla_seen_militarized_police }
 			}
 			trigger_event = { id = cp_layla.120 }
 		}
@@ -826,7 +826,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_no_migration_controls
-				NOT = { has_variable = cp_seen_no_migration_controls }
+				NOT = { has_variable = cp_layla_seen_no_migration_controls }
 			}
 			trigger_event = { id = cp_layla.121 }
 		}
@@ -835,7 +835,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_closed_borders
-				NOT = { has_variable = cp_seen_closed_borders }
+				NOT = { has_variable = cp_layla_seen_closed_borders }
 			}
 			trigger_event = { id = cp_layla.122 }
 		}
@@ -848,7 +848,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_laissez_faire
-				NOT = { has_variable = cp_seen_laissez_faire }
+				NOT = { has_variable = cp_layla_seen_laissez_faire }
 			}
 			trigger_event = { id = cp_layla.123 }
 		}
@@ -857,7 +857,7 @@ cp_on_law_enacted = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				ROOT.currently_enacting_law.type ?= law_type:law_command_economy
-				NOT = { has_variable = cp_seen_command_economy }
+				NOT = { has_variable = cp_layla_seen_command_economy }
 			}
 			trigger_event = { id = cp_layla.124 }
 		}
@@ -883,11 +883,11 @@ cp_on_war_started = {
 			limit = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
-				has_variable = cp_ahmed_alive
-				NOT = { has_variable = cp_ahmed_at_war }
-				NOT = { has_variable = cp_seen_ahmed_conscripted }
-				var:cp_ahmed_age >= 18
-				var:cp_ahmed_age <= 45
+				has_variable = cp_layla_ahmed_alive
+				NOT = { has_variable = cp_layla_ahmed_at_war }
+				NOT = { has_variable = cp_layla_seen_ahmed_conscripted }
+				var:cp_layla_ahmed_age >= 18
+				var:cp_layla_ahmed_age <= 45
 			}
 			trigger_event = { id = cp_layla.4 }
 		}
@@ -916,13 +916,13 @@ cp_on_war_end = {
 			limit = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
-				has_variable = cp_ahmed_alive
-				has_variable = cp_ahmed_at_war
+				has_variable = cp_layla_ahmed_alive
+				has_variable = cp_layla_ahmed_at_war
 			}
 			# Clear the conscription gate so the next war can fire cp_layla.4
-			# again. cp_ahmed_at_war itself is cleared by the outcome effect
+			# again. cp_layla_ahmed_at_war itself is cleared by the outcome effect
 			# in cp_memory (cp_ahmed_homecoming / cp_ahmed_killed).
-			remove_variable = cp_seen_ahmed_conscripted
+			remove_variable = cp_layla_seen_ahmed_conscripted
 
 			# Outcome weights by war result. recently_won_war and
 			# recently_lost_war are vanilla-set on country scope at
@@ -980,30 +980,30 @@ cp_on_tech = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				has_technology_researched = railways
-				NOT = { has_variable = cp_seen_railway }
+				NOT = { has_variable = cp_layla_seen_railway }
 			}
 			trigger_event = { id = cp_layla.30 }
-			set_variable = cp_seen_railway
+			set_variable = cp_layla_seen_railway
 		}
 		if = {
 			limit = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				has_technology_researched = electric_telegraph
-				NOT = { has_variable = cp_seen_telegraph }
+				NOT = { has_variable = cp_layla_seen_telegraph }
 			}
 			trigger_event = { id = cp_layla.31 }
-			set_variable = cp_seen_telegraph
+			set_variable = cp_layla_seen_telegraph
 		}
 		if = {
 			limit = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
 				has_technology_researched = radio
-				NOT = { has_variable = cp_seen_radio }
+				NOT = { has_variable = cp_layla_seen_radio }
 			}
 			trigger_event = { id = cp_layla.32 }
-			set_variable = cp_seen_radio
+			set_variable = cp_layla_seen_radio
 		}
 	}
 }
@@ -1034,13 +1034,13 @@ cp_on_building_built = {
 				owner ?= {
 					THIS = c:EGY
 					has_variable = cp_layla_alive
-					NOT = { has_variable = cp_seen_first_textile_mill }
+					NOT = { has_variable = cp_layla_seen_first_textile_mill }
 				}
 				state = { has_variable = cp_layla_lives_here }
 			}
 			owner ?= {
 				trigger_event = { id = cp_layla.50 }
-				set_variable = cp_seen_first_textile_mill
+				set_variable = cp_layla_seen_first_textile_mill
 			}
 		}
 	}
@@ -1052,7 +1052,7 @@ cp_on_building_built = {
 # ============================================================================
 # on_revolution_start fires with root = the country where the revolution
 # begins. We fire Layla's fear event when EGY is that country. One-shot
-# per revolution via cp_seen_revolution flag; the flag is timed so a
+# per revolution via cp_layla_seen_revolution flag; the flag is timed so a
 # later revolution (different year, different cause) can re-fire.
 # ============================================================================
 
@@ -1068,11 +1068,11 @@ cp_on_revolution = {
 			limit = {
 				c:EGY ?= this
 				has_variable = cp_layla_alive
-				NOT = { has_variable = cp_seen_revolution }
+				NOT = { has_variable = cp_layla_seen_revolution }
 			}
 			trigger_event = { id = cp_layla.60 }
 			# Timed 10-year flag so a later revolution can re-fire the prose.
-			set_variable = { name = cp_seen_revolution days = 3650 }
+			set_variable = { name = cp_layla_seen_revolution days = 3650 }
 		}
 	}
 }

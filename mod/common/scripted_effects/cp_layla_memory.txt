@@ -1,0 +1,1099 @@
+﻿###############################################################################
+# Common People -- memory
+#
+# The only layer that writes to Layla's country variables. Events mutate state
+# by calling effects here; they never call set_variable / change_variable
+# directly inside an option block. This is the single source of truth for
+# "what changes hope / SoL / class / anchor".
+#
+# Conventions:
+#   - Every effect is named cp_<verb>_<field>.
+#   - All run in country scope (root = c:EGY).
+#   - Clamping uses V3's built-in clamp_variable primitive.
+#   - Composite effects call primitives so the library is layered.
+###############################################################################
+
+
+# ============================================================================
+# cp_layla_refresh_sol — Layla's pop-cohort SoL read (wraps shared primitive)
+# ============================================================================
+# Wraps cp_refresh_sol_from_pop (in cp_shared_memory.txt) with Layla's
+# literal culture/religion/profession baked in. V3 macro substitution is
+# load-time, not runtime, so each person needs a thin wrapper with literals.
+# Called from cp_on_yearly via `cp_layla_refresh_sol = yes`.
+cp_layla_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = layla
+		culture = misri
+		religion = sunni
+		poptype = peasants
+	}
+}
+
+
+# ============================================================================
+# Inner state (0..10 scales -- personality, not V3-mirrored)
+# ============================================================================
+
+
+# ============================================================================
+# V3-mirroring state (scales match V3 itself)
+# ============================================================================
+
+# Home state is data-driven, not enumerated. Exactly one region_state
+# carries var:cp_layla_lives_here at any time. cp_move_to_state sets it
+# and clears the previous marker. cp_refresh_sol_from_pop iterates to
+# find her current state instead of branching on a flag-per-state list.
+#
+# This keeps us agnostic to Egypt's shifting borders: Muhammad Ali's
+# Egypt spans the Delta, Hejaz, Sudan, the Levant. If EGY annexes or
+# loses a state, nothing here breaks.
+#
+# Vanilla pattern source:
+#   - 00_slavery.txt  (every_scope_state + limit = { has_variable = X })
+#   - 00_belle_epoque.txt  (s:STATE_X ?= { random_scope_state })
+#   - ordered_scope_pop with order_by = total_pops / position = 0
+
+# Dispatch cohort read based on her profession, called from inside
+# region_state scope. Expects scope to already be on the region_state.
+# Saves scope:tmp_cohort_sol when a matching pop exists.
+cp_read_cohort_here_for = {
+	ordered_scope_pop = {
+		limit = {
+			culture = cu:misri
+			religion = rel:sunni
+			is_pop_type = $poptype$
+		}
+		order_by = total_pops
+		position = 0
+		check_range_bounds = no
+		save_temporary_scope_value_as = {
+			name = tmp_cohort_sol
+			value = standard_of_living
+		}
+	}
+}
+
+# Cohort-only dispatch (no state-avg capture). Scope must be on region_state.
+# Profession flags live on c:EGY; vanilla pattern for cross-scope reads is
+# the nested-block form `root = { has_variable = X }`, not `root.has_variable`.
+cp_read_cohort_only = {
+	if = {
+		limit = { root = { has_variable = cp_layla_profession_laborers } }
+		cp_read_cohort_here_for = { poptype = laborers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_farmers } }
+		cp_read_cohort_here_for = { poptype = farmers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_machinists } }
+		cp_read_cohort_here_for = { poptype = machinists }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_shopkeepers } }
+		cp_read_cohort_here_for = { poptype = shopkeepers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_clerks } }
+		cp_read_cohort_here_for = { poptype = clerks }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_engineers } }
+		cp_read_cohort_here_for = { poptype = engineers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_academics } }
+		cp_read_cohort_here_for = { poptype = academics }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_bureaucrats } }
+		cp_read_cohort_here_for = { poptype = bureaucrats }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_capitalists } }
+		cp_read_cohort_here_for = { poptype = capitalists }
+	}
+	else = {
+		cp_read_cohort_here_for = { poptype = peasants }
+	}
+}
+
+# Read cohort + state average in the current region_state.
+cp_read_cohort_here = {
+	cp_read_cohort_only = yes
+	save_temporary_scope_value_as = {
+		name = tmp_state_sol
+		value = average_sol
+	}
+}
+
+# Diaspora fallback: read her cohort's SoL in the Egyptian Delta
+# (STATE_LOWER_EGYPT — the canonical home of misri-sunni pops). Called
+# when her current state has zero members of her cohort. Narratively:
+# she carries her people's economic reality with her; a displaced Layla
+# lives materially closer to a Delta cousin than to her Sudanese neighbours.
+cp_read_diaspora_cohort = {
+	s:STATE_LOWER_EGYPT ?= {
+		random_scope_state = {
+			limit = { owner = c:EGY }
+			cp_read_cohort_only = yes
+		}
+	}
+}
+
+
+# ============================================================================
+# Taxation -- cp_layla_tax_burden 0..10, how hard the tax regime hits HER
+# ============================================================================
+# V3 tracks five tax levels (very_low/low/medium/high/very_high) and five
+# tax methods (land / per_capita / proportional / graduated / consumption).
+# A peasant under Land-Based Taxation at Very High is crushed; the same
+# peasant under Per-Capita Taxation at Very High is exempt. Consumption
+# taxes on basic goods (grain, fish, fabric) hurt the poor more than the
+# rich because peasants spend a larger share of wages on them.
+#
+# Vanilla triggers used:
+#   tax_level >= high                    (country scope)
+#   has_law = law_type:law_X             (country scope)
+#   has_consumption_tax = g:grain        (country scope)
+# ============================================================================
+cp_refresh_tax_burden = {
+	set_variable = { name = cp_layla_tax_burden value = 0 }
+
+	# Who pays the main tax method? Peasants + subsistence farmers are
+	# land-taxed; middle strata pay per-capita / proportional; laborers
+	# pay a sliver through proportional + consumption.
+	if = {
+		limit = {
+			OR = {
+				has_variable = cp_layla_profession_peasants
+				has_variable = cp_layla_profession_farmers
+			}
+		}
+		# Land-Based Taxation hits her directly as a peasant.
+		if = {
+			limit = { has_law = law_type:law_land_based_taxation }
+			if = {
+				limit = { tax_level >= very_high }
+				change_variable = { name = cp_layla_tax_burden add = 8 }
+			}
+			else_if = {
+				limit = { tax_level >= high }
+				change_variable = { name = cp_layla_tax_burden add = 6 }
+			}
+			else_if = {
+				limit = { tax_level >= medium }
+				change_variable = { name = cp_layla_tax_burden add = 4 }
+			}
+			else_if = {
+				limit = { tax_level >= low }
+				change_variable = { name = cp_layla_tax_burden add = 2 }
+			}
+			# very_low = +0 (effectively untaxed)
+		}
+		# Per-Capita taxation exempts peasants entirely — she pays nothing.
+		# Proportional/graduated tax wages; peasants have none.
+		# So no other tax-method branch fires for her under the peasant arc.
+	}
+	else = {
+		# Middle/upper strata pay per-capita, proportional, or graduated.
+		if = {
+			limit = {
+				OR = {
+					has_law = law_type:law_per_capita_based_taxation
+					has_law = law_type:law_proportional_taxation
+					has_law = law_type:law_graduated_taxation
+				}
+			}
+			if = {
+				limit = { tax_level >= very_high }
+				change_variable = { name = cp_layla_tax_burden add = 6 }
+			}
+			else_if = {
+				limit = { tax_level >= high }
+				change_variable = { name = cp_layla_tax_burden add = 4 }
+			}
+			else_if = {
+				limit = { tax_level >= medium }
+				change_variable = { name = cp_layla_tax_burden add = 2 }
+			}
+			else_if = {
+				limit = { tax_level >= low }
+				change_variable = { name = cp_layla_tax_burden add = 1 }
+			}
+		}
+	}
+
+	# Consumption taxes on goods she actually consumes. Weights reflect
+	# how central each good is to a peasant household's buy package:
+	# grain is the loaf; fabric is clothes; fish/meat sometimes; sugar
+	# and coffee are later-game luxuries.
+	if = {
+		limit = { has_consumption_tax = g:grain }
+		change_variable = { name = cp_layla_tax_burden add = 2 }
+	}
+	if = {
+		limit = { has_consumption_tax = g:fish }
+		change_variable = { name = cp_layla_tax_burden add = 1 }
+	}
+	if = {
+		limit = { has_consumption_tax = g:fabric }
+		change_variable = { name = cp_layla_tax_burden add = 1 }
+	}
+	if = {
+		limit = { has_consumption_tax = g:meat }
+		change_variable = { name = cp_layla_tax_burden add = 0.5 }
+	}
+	if = {
+		limit = { has_consumption_tax = g:sugar }
+		change_variable = { name = cp_layla_tax_burden add = 0.5 }
+	}
+	if = {
+		limit = { has_consumption_tax = g:coffee }
+		change_variable = { name = cp_layla_tax_burden add = 0.3 }
+	}
+
+	clamp_variable = { name = cp_layla_tax_burden min = 0 max = 10 }
+}
+
+
+# ----------------------------------------------------------------------------
+# Literacy pop-tick -- drift cp_layla_literacy toward her pop cohort's literacy_rate.
+#
+# Same state-marker + diaspora-fallback topology as cp_refresh_sol_from_pop.
+# V3's literacy_rate on pop scope is a fraction 0..1; we multiply to 0..100
+# to compare against cp_layla_literacy. Drift is UP only (she doesn't forget what
+# she learned). Age bands slow the rate: <30 = +3/yr, <40 = +2/yr,
+# <60 = +1/yr, 60+ = no drift.
+#
+# Cohort literacy itself rises when Egypt builds institutions and techs,
+# so we don't need to read the institution level directly — the cohort
+# average captures it.
+# ----------------------------------------------------------------------------
+
+# Reads cohort literacy_rate from current region_state scope.
+# Saves scope:tmp_cohort_literacy (0..1) when a matching pop exists.
+cp_read_cohort_literacy_for = {
+	ordered_scope_pop = {
+		limit = {
+			culture = cu:misri
+			religion = rel:sunni
+			is_pop_type = $poptype$
+		}
+		order_by = total_pops
+		position = 0
+		check_range_bounds = no
+		save_temporary_scope_value_as = {
+			name = tmp_cohort_literacy
+			value = literacy_rate
+		}
+	}
+}
+
+# Profession dispatcher for the literacy read. Scope must be on region_state.
+cp_read_cohort_literacy_only = {
+	if = {
+		limit = { root = { has_variable = cp_layla_profession_laborers } }
+		cp_read_cohort_literacy_for = { poptype = laborers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_farmers } }
+		cp_read_cohort_literacy_for = { poptype = farmers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_machinists } }
+		cp_read_cohort_literacy_for = { poptype = machinists }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_shopkeepers } }
+		cp_read_cohort_literacy_for = { poptype = shopkeepers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_clerks } }
+		cp_read_cohort_literacy_for = { poptype = clerks }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_engineers } }
+		cp_read_cohort_literacy_for = { poptype = engineers }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_academics } }
+		cp_read_cohort_literacy_for = { poptype = academics }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_bureaucrats } }
+		cp_read_cohort_literacy_for = { poptype = bureaucrats }
+	}
+	else_if = {
+		limit = { root = { has_variable = cp_layla_profession_capitalists } }
+		cp_read_cohort_literacy_for = { poptype = capitalists }
+	}
+	else = {
+		cp_read_cohort_literacy_for = { poptype = peasants }
+	}
+}
+
+# Diaspora fallback for literacy (Delta cohort read).
+cp_read_diaspora_cohort_literacy = {
+	s:STATE_LOWER_EGYPT ?= {
+		random_scope_state = {
+			limit = { owner = c:EGY }
+			cp_read_cohort_literacy_only = yes
+		}
+	}
+}
+
+cp_pop_tick_literacy = {
+	# Try local cohort first.
+	every_scope_state = {
+		limit = { has_variable = cp_layla_lives_here }
+		cp_read_cohort_literacy_only = yes
+	}
+	# Diaspora fallback.
+	if = {
+		limit = { NOT = { exists = scope:tmp_cohort_literacy } }
+		cp_read_diaspora_cohort_literacy = yes
+	}
+
+	if = {
+		limit = { exists = scope:tmp_cohort_literacy }
+		# Convert cohort fraction (0..1) to percent (0..100) for comparison.
+		set_variable = { name = cp_layla_cohort_literacy_target value = scope:tmp_cohort_literacy }
+		multiply_variable = { name = cp_layla_cohort_literacy_target value = 100 }
+
+		# Drift UP only when cohort is ahead of her. Age-banded.
+		if = {
+			limit = {
+				var:cp_layla_cohort_literacy_target > var:cp_layla_literacy
+				var:cp_layla_age < 60
+			}
+			if = {
+				limit = { var:cp_layla_age < 30 }
+				change_variable = { name = cp_layla_literacy add = 3 }
+			}
+			else_if = {
+				limit = { var:cp_layla_age < 40 }
+				change_variable = { name = cp_layla_literacy add = 2 }
+			}
+			else = {
+				change_variable = { name = cp_layla_literacy add = 1 }
+			}
+		}
+		clamp_variable = { name = cp_layla_literacy min = 0 max = 100 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# Political-mood pop-tick -- expected-SoL gap drives radicalism/loyalism.
+#
+# V3's own formula (standardofliving.txt): a pop below expected SoL gains
+# +0.2% radicalism per level-gap per month (cap 15%). Above expected SoL
+# produces loyalism. Peasants have sol_change_impact = 0.01 so year-over-
+# year SoL SWINGS barely move them — what radicalises peasants is the
+# chronic gap between actual and expected.
+#
+# Expected SoL per the plan §0.5: lower strata = 5, middle = 10.
+# On a yearly tick we scale roughly 12× monthly: a 1-point gap ≈ +2.4%/yr;
+# we bucket it as +1 per small gap, +2 per mid, +3 per wide.
+#
+# cp_shift_radical / cp_shift_loyalist zero the opposite automatically
+# (V3's mutual-exclusion rule encoded in the library).
+# ----------------------------------------------------------------------------
+cp_pop_tick_political_mood = {
+	# Expected SoL for her current profession. Lower strata 5, middle 10,
+	# upper 20 (capitalists / aristocrats per V3 profession.txt).
+	set_variable = { name = cp_layla_expected_sol value = 5 }
+	if = {
+		limit = {
+			OR = {
+				has_variable = cp_layla_profession_clerks
+				has_variable = cp_layla_profession_shopkeepers
+				has_variable = cp_layla_profession_machinists
+				has_variable = cp_layla_profession_engineers
+				has_variable = cp_layla_profession_academics
+				has_variable = cp_layla_profession_bureaucrats
+				has_variable = cp_layla_profession_farmers
+			}
+		}
+		set_variable = { name = cp_layla_expected_sol value = 10 }
+	}
+	if = {
+		limit = {
+			has_variable = cp_layla_profession_capitalists
+		}
+		set_variable = { name = cp_layla_expected_sol value = 20 }
+	}
+
+	# cp_layla_sol_gap = expected - cp_layla_sol. Positive → she's below expected.
+	# multiply-by-(-1) trick because `subtract = var:X` is unreliable.
+	set_variable = { name = cp_layla_sol_gap value = var:cp_layla_sol }
+	multiply_variable = { name = cp_layla_sol_gap value = -1 }
+	change_variable = { name = cp_layla_sol_gap add = var:cp_layla_expected_sol }
+
+	# Below expected → radicalism drift.
+	if = {
+		limit = { var:cp_layla_sol_gap >= 5 }
+		cp_shift_radical = { person = layla delta = 3 }
+	}
+	else_if = {
+		limit = { var:cp_layla_sol_gap >= 2 }
+		cp_shift_radical = { person = layla delta = 2 }
+	}
+	else_if = {
+		limit = { var:cp_layla_sol_gap >= 1 }
+		cp_shift_radical = { person = layla delta = 1 }
+	}
+	# Above expected → loyalism drift.
+	else_if = {
+		limit = { var:cp_layla_sol_gap <= -5 }
+		cp_shift_loyalist = { person = layla delta = 3 }
+	}
+	else_if = {
+		limit = { var:cp_layla_sol_gap <= -2 }
+		cp_shift_loyalist = { person = layla delta = 2 }
+	}
+	else_if = {
+		limit = { var:cp_layla_sol_gap <= -1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
+	}
+	# Gap ≈ 0 → no drift; the mutually-exclusive pair decays slowly via
+	# V3's own tick and through event-driven cp_shift_* calls.
+}
+
+
+# ============================================================================
+# Profession transitions -- exactly one cp_profession_* flag at a time
+# ============================================================================
+
+cp_clear_profession = {
+	remove_variable = cp_layla_profession_peasants
+	remove_variable = cp_layla_profession_laborers
+	remove_variable = cp_layla_profession_farmers
+	remove_variable = cp_layla_profession_machinists
+	remove_variable = cp_layla_profession_shopkeepers
+	remove_variable = cp_layla_profession_clerks
+	remove_variable = cp_layla_profession_engineers
+	remove_variable = cp_layla_profession_academics
+	remove_variable = cp_layla_profession_bureaucrats
+	remove_variable = cp_layla_profession_capitalists
+}
+
+cp_become_laborer = {
+	cp_clear_profession = yes
+	set_variable = cp_layla_profession_laborers
+}
+
+cp_become_peasant = {
+	cp_clear_profession = yes
+	set_variable = cp_layla_profession_peasants
+}
+
+cp_become_farmer = {
+	cp_clear_profession = yes
+	set_variable = cp_layla_profession_farmers
+}
+
+cp_become_machinist = {
+	cp_clear_profession = yes
+	set_variable = cp_layla_profession_machinists
+}
+
+cp_become_shopkeeper = {
+	cp_clear_profession = yes
+	set_variable = cp_layla_profession_shopkeepers
+}
+
+cp_become_clerk = {
+	cp_clear_profession = yes
+	set_variable = cp_layla_profession_clerks
+}
+
+cp_become_engineer = {
+	cp_clear_profession = yes
+	set_variable = cp_layla_profession_engineers
+}
+
+cp_become_academic = {
+	cp_clear_profession = yes
+	set_variable = cp_layla_profession_academics
+}
+
+cp_become_bureaucrat = {
+	cp_clear_profession = yes
+	set_variable = cp_layla_profession_bureaucrats
+}
+
+cp_become_capitalist = {
+	cp_clear_profession = yes
+	set_variable = cp_layla_profession_capitalists
+}
+
+
+# ============================================================================
+# Home state transitions -- data-driven via region_state marker + pointer
+# ============================================================================
+
+# Clear the cp_layla_lives_here marker from wherever it currently sits.
+# Run from country scope (root = c:EGY). We search across EVERY country's
+# states in case she's been displaced by border changes and now lives in
+# a state EGY no longer owns.
+cp_clear_home_state = {
+	every_country = {
+		every_scope_state = {
+			limit = { has_variable = cp_layla_lives_here }
+			remove_variable = cp_layla_lives_here
+		}
+	}
+	# Urban sub-locators (cities within her state — Cairo, Alexandria,
+	# Damascus, etc.) are still flag-per-hub on the country because
+	# they name the hub, not the state.
+	remove_variable = cp_layla_in_city
+	remove_variable = cp_layla_in_cairo
+	remove_variable = cp_layla_in_alexandria
+}
+
+# Move Layla to the specified state. Takes $state$ as a V3 state region
+# id. Muhammad Ali's Egypt at 1836 owns a huge arc of states:
+#   Nile region:  STATE_LOWER_EGYPT, STATE_MIDDLE_EGYPT, STATE_UPPER_EGYPT,
+#                 STATE_EGYPTIAN_DESERT, STATE_SINAI, STATE_MATRUH,
+#                 STATE_DONGOLA, STATE_KORDOFAN, STATE_BLUE_NILE
+#   Arabia:       STATE_ALEPPO, STATE_LEBANON, STATE_PALESTINE, STATE_SYRIA,
+#                 STATE_TRANSJORDAN
+#   Anatolia:     STATE_ADANA (shared with Turkey)
+#   Ethiopia:     STATE_ERITREA
+#   Balkans:      STATE_CRETE
+# Any of these is a valid $state$ input; see gamestates.txt for the full
+# V3 state catalogue.
+#
+# Sets the marker on whichever region_state in that region is owned by
+# EGY; if EGY doesn't own any of it, falls back to the first region_state
+# so the marker still lands (she's living under foreign rule).
+#
+# Also stores a pointer to her state as a country variable, so the JE
+# label can render the state's vanilla name via
+# [Country.Var('cp_layla_state_pointer').GetState.GetStateRegion.GetName]
+# (vanilla pattern: expedition_location_var in 00_expedition_effects.txt).
+cp_move_to_state = {
+	cp_clear_home_state = yes
+	s:$state$ ?= {
+		# Prefer the EGY-owned region_state when present (her home country).
+		if = {
+			limit = {
+				any_scope_state = { owner = c:EGY }
+			}
+			random_scope_state = {
+				limit = { owner = c:EGY }
+				set_variable = cp_layla_lives_here
+				root = {
+					set_variable = { name = cp_layla_state_pointer value = prev }
+				}
+			}
+		}
+		else = {
+			# EGY doesn't own any of this region — she's under foreign
+			# rule. Pick any region_state so the marker still lands.
+			random_scope_state = {
+				set_variable = cp_layla_lives_here
+				root = {
+					set_variable = { name = cp_layla_state_pointer value = prev }
+				}
+			}
+		}
+	}
+}
+
+# Urban sub-locators. Cairo and Alexandria are CITY HUBS within
+# STATE_LOWER_EGYPT, not V3 states — see gamestates.txt. These flags are
+# orthogonal to her home state: cp_layla_in_cairo + cp_layla_lives_here on
+# STATE_LOWER_EGYPT means "in the city of Cairo". If she moves states,
+# cp_clear_home_state wipes these.
+cp_enter_cairo = {
+	set_variable = cp_layla_in_city
+	set_variable = cp_layla_in_cairo
+	remove_variable = cp_layla_in_alexandria
+}
+
+cp_enter_alexandria = {
+	set_variable = cp_layla_in_city
+	set_variable = cp_layla_in_alexandria
+	remove_variable = cp_layla_in_cairo
+}
+
+cp_leave_city = {
+	remove_variable = cp_layla_in_city
+	remove_variable = cp_layla_in_cairo
+	remove_variable = cp_layla_in_alexandria
+}
+
+
+# ============================================================================
+# Life milestones
+# ============================================================================
+
+
+# ============================================================================
+# Composites -- the verbs events actually call
+# ============================================================================
+
+cp_experience_joy = {
+	cp_shift_hope = { person = layla delta = 1 }
+	cp_flag_recent_joy = { person = layla }
+}
+
+cp_experience_hardship = {
+	cp_shift_hope = { person = layla delta = -1 }
+	cp_shift_exhaustion = { person = layla delta = 1 }
+	cp_flag_recent_hardship = { person = layla }
+}
+
+cp_ahmed_conscripted = {
+	set_variable = cp_layla_ahmed_at_war
+	cp_shift_exhaustion = { person = layla delta = 2 }
+	cp_shift_hope = { person = layla delta = -1 }
+}
+
+cp_ahmed_homecoming = {
+	remove_variable = cp_layla_ahmed_at_war
+	set_variable = cp_layla_ahmed_home_from_war
+	cp_shift_hope = { person = layla delta = 2 }
+	cp_shift_exhaustion = { person = layla delta = -1 }
+}
+
+cp_ahmed_killed = {
+	remove_variable = cp_layla_ahmed_at_war
+	set_variable = { name = cp_layla_ahmed_alive value = 0 }
+	cp_shift_hope = { person = layla delta = -4 }
+	cp_shift_exhaustion = { person = layla delta = 3 }
+}
+
+cp_grant_homesteading = {
+	set_variable = cp_layla_owns_land
+	remove_variable = cp_layla_under_serfdom
+	cp_shift_hope = { person = layla delta = 2 }
+}
+
+cp_restore_serfdom = {
+	set_variable = cp_layla_under_serfdom
+	cp_shift_hope = { person = layla delta = -2 }
+	cp_shift_exhaustion = { person = layla delta = 1 }
+}
+
+
+# ============================================================================
+# Crossroads composites -- whole-life branches
+# ============================================================================
+# A crossroads mutates enough state in one go that its effects deserve
+# named composites. Each composite is what it says on the tin.
+
+# The family takes the mill job. She and Ahmed move to Cairo; her cohort
+# shifts from misri-sunni-peasants to misri-sunni-laborers. Both cp_layla_in_cairo
+# flags + laborer profession + resample SoL from the new cohort in one step.
+# The state marker (STATE_LOWER_EGYPT) stays put — Cairo is a city within
+# Lower Egypt, not a separate V3 state.
+cp_move_family_to_cairo = {
+	cp_enter_cairo = yes
+	cp_become_laborer = yes
+	set_variable = cp_layla_ahmed_profession_laborer
+	remove_variable = cp_layla_ahmed_profession_peasant
+	cp_layla_refresh_sol = yes
+	cp_shift_hope = { person = layla delta = 1 }
+	cp_shift_exhaustion = { person = layla delta = 2 }
+	# Timed flag marks the move as recent — conversation variants key on it
+	# ("fresh from the move" vs "settled into the city"). 2 years = 730 days.
+	set_variable = { name = cp_layla_recent_city_move days = 730 }
+}
+
+# Ahmed commutes; she stays in the village with the children. His
+# profession flips; hers does not. Flag cp_layla_ahmed_in_cairo lets prose branch
+# on the split household.
+cp_ahmed_goes_to_cairo_alone = {
+	set_variable = cp_layla_ahmed_profession_laborer
+	remove_variable = cp_layla_ahmed_profession_peasant
+	set_variable = cp_layla_ahmed_in_cairo
+	cp_shift_exhaustion = { person = layla delta = 1 }
+}
+
+# They stay. The decision itself is an act — rooted, defiant, and she
+# feels it as reinforcement of the land-reform weight.
+cp_family_refuses_cairo = {
+	cp_shift_weight = { person = layla weight = land_reform delta = 1 }
+	cp_shift_hope = { person = layla delta = 1 }
+}
+
+# The household buys half of a small workshop outright. Laborer → shopkeeper
+# (V3's canonical first rung into middle strata). cp_layla_owns_business gates
+# future arcs; cp_layla_recent_ownership flags "fresh capital" for variant prose.
+# SoL resamples from her new cohort (misri-sunni-shopkeepers in Lower Egypt).
+cp_open_small_concern = {
+	cp_become_shopkeeper = yes
+	set_variable = cp_layla_ahmed_profession_shopkeeper
+	remove_variable = cp_layla_ahmed_profession_laborer
+	set_variable = cp_layla_owns_business
+	set_variable = { name = cp_layla_recent_ownership days = 730 }
+	cp_layla_refresh_sol = yes
+	cp_shift_hope = { person = layla delta = 2 }
+	cp_shift_exhaustion = { person = layla delta = 2 }
+}
+
+# Same transition, but with debt. The household is over-leveraged on the
+# workshop; cp_layla_business_debt gates downside-risk events later.
+cp_open_small_concern_on_credit = {
+	cp_open_small_concern = yes
+	set_variable = cp_layla_business_debt
+}
+
+# They decline the partnership and keep the savings. Small conviction
+# drift toward economic thinking — she has learned the vocabulary by
+# turning it down.
+cp_decline_small_concern = {
+	cp_shift_weight = { person = layla weight = economy delta = 1 }
+}
+
+
+# ============================================================================
+# Mill closes (Slice S) -- economic downturn crossroads outcomes
+# ============================================================================
+# The crossroads fires when the industry Ahmed works in contracts. Three
+# paths:
+#   - Return to village: she drops cp_layla_in_city, Ahmed reverts to peasants,
+#     SoL contracts, weight on land_reform up (reflux of village identity).
+#   - Ahmed apprentices: he takes a pay cut to re-skill as a machinist.
+#     Short-term SoL pain, long-term setup for better trajectory.
+#   - She expands the stall: their income source swaps hands. Requires
+#     cp_layla_self_employed; sets cp_layla_primary_earner.
+# All three set cp_layla_seen_mill_closed permanent flag.
+# ============================================================================
+
+cp_flee_city_for_village = {
+	cp_leave_city = yes
+	cp_become_peasant = yes
+	set_variable = cp_layla_ahmed_profession_peasant
+	remove_variable = cp_layla_ahmed_profession_laborer
+	cp_layla_refresh_sol = yes
+	cp_shift_hope = { person = layla delta = -1 }
+	cp_shift_exhaustion = { person = layla delta = 2 }
+	cp_shift_weight = { person = layla weight = land_reform delta = 2 }
+	cp_shift_radical = { person = layla delta = 1 }
+}
+
+cp_ahmed_apprentices_machinist = {
+	cp_shift_sol = { person = layla delta = -2 }
+	cp_shift_hope = { person = layla delta = 1 }
+	cp_shift_exhaustion = { person = layla delta = 2 }
+	cp_shift_weight = { person = layla weight = education delta = 1 }
+	cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
+	set_variable = cp_layla_ahmed_apprentice_period
+}
+
+cp_stall_becomes_primary = {
+	set_variable = cp_layla_primary_earner
+	cp_shift_hope = { person = layla delta = 2 }
+	cp_shift_exhaustion = { person = layla delta = 2 }
+	cp_shift_weight = { person = layla weight = womens_rights delta = 2 }
+	cp_shift_weight = { person = layla weight = economy delta = 1 }
+}
+
+
+# ============================================================================
+# Self-employment (Slice D) -- she opens her own stall/shop/service
+# ============================================================================
+# Slice D's crossroads: gated on law_women_in_the_workplace. Unlike
+# cp_open_small_concern (which is a household-level partnership taken up by
+# Ahmed as the wage-earner), this is specifically HER earnings, HER name on
+# the stall. The event shape has two registers:
+#   - Forced: widowhood / poverty drove her out the door. SoL ticks up
+#     because she is now earning; hope rises from self-possession; but
+#     cp_layla_self_employed_forced flag carries the bitter taste downstream.
+#   - Chosen: the law exists, the law opens the gate, and she walks
+#     through by choice. Smaller SoL bump; hope + loyalism; weight
+#     toward economy + womens_rights.
+# Her profession variable becomes cp_layla_profession_shopkeepers because V3
+# models the pop group that fits best; pop-tick reads shopkeeper cohort
+# from now on.
+# ============================================================================
+
+# Forced entry: widowhood or poverty pushed her. The stall is survival.
+cp_start_self_employed_forced = {
+	cp_become_shopkeeper = yes
+	set_variable = cp_layla_self_employed
+	set_variable = cp_layla_self_employed_forced
+	set_variable = { name = cp_layla_recent_ownership days = 730 }
+	# Survival bump — she was teetering on SoL 6; a small stall pulls
+	# the household to subsistence-plus. Not a boom. Enough to breathe.
+	cp_shift_sol = { person = layla delta = 2 }
+	cp_shift_hope = { person = layla delta = 1 }
+	cp_shift_exhaustion = { person = layla delta = 2 }
+	cp_layla_refresh_sol = yes
+}
+
+# Chosen entry: the law opened the gate, she stepped through. Clean
+# self-possession. No debt. No bitterness.
+cp_start_self_employed_chosen = {
+	cp_become_shopkeeper = yes
+	set_variable = cp_layla_self_employed
+	set_variable = { name = cp_layla_recent_ownership days = 730 }
+	cp_shift_sol = { person = layla delta = 1 }
+	cp_shift_hope = { person = layla delta = 2 }
+	cp_shift_loyalist = { person = layla delta = 1 }
+	cp_shift_weight = { person = layla weight = economy delta = 1 }
+	cp_shift_weight = { person = layla weight = womens_rights delta = 1 }
+	cp_layla_refresh_sol = yes
+}
+
+# She declines. Only reachable when the crossroads is by choice (not
+# under forced register). Small exhaustion for the refused possibility.
+cp_decline_self_employment = {
+	cp_shift_exhaustion = { person = layla delta = 1 }
+}
+
+
+# ============================================================================
+# Mortality pressure -- yearly risk synthesised from age, health laws, SoL
+# ============================================================================
+# cp_layla_mortality_pressure 0..10 captures how close she sits to the edge of her
+# life in any given year. Computed yearly from:
+#   - age (the main driver; rises sharply past 60)
+#   - SoL (low SoL = malnutrition risk)
+#   - country health law (public > private > charitable for the poor)
+#   - wealth + private insurance access
+#   - pollution in her state (industrial cities erode the lungs)
+#
+# V3 baselines (standardofliving.txt wiki): mild starvation +30% mortality,
+# severe +100%; pollution +0.5% per impact. We compress these into a 0..10
+# dial that downstream random rolls read.
+# ============================================================================
+cp_refresh_mortality_pressure = {
+	set_variable = { name = cp_layla_mortality_pressure value = 0 }
+
+	# Age bands. Peasants in 1836 did not typically see 70; a 70-yr-old is
+	# already living on borrowed time.
+	if = {
+		limit = { var:cp_layla_age >= 70 }
+		change_variable = { name = cp_layla_mortality_pressure add = 4 }
+	}
+	else_if = {
+		limit = { var:cp_layla_age >= 60 }
+		change_variable = { name = cp_layla_mortality_pressure add = 3 }
+	}
+	else_if = {
+		limit = { var:cp_layla_age >= 50 }
+		change_variable = { name = cp_layla_mortality_pressure add = 2 }
+	}
+	else_if = {
+		limit = { var:cp_layla_age >= 40 }
+		change_variable = { name = cp_layla_mortality_pressure add = 1 }
+	}
+
+	# Low SoL: malnutrition / exposure. V3's food-security numbers suggest
+	# mortality rises sharply below Struggling (SoL 5).
+	if = {
+		limit = { var:cp_layla_sol <= 3 }
+		change_variable = { name = cp_layla_mortality_pressure add = 3 }
+	}
+	else_if = {
+		limit = { var:cp_layla_sol <= 5 }
+		change_variable = { name = cp_layla_mortality_pressure add = 2 }
+	}
+	else_if = {
+		limit = { var:cp_layla_sol <= 8 }
+		change_variable = { name = cp_layla_mortality_pressure add = 1 }
+	}
+
+	# Health-care law. V3 ships three: charitable (default, worst), private
+	# (helps those who can pay), public (helps everyone).
+	if = {
+		limit = { has_law = law_type:law_public_health_insurance }
+		change_variable = { name = cp_layla_mortality_pressure add = -2 }
+	}
+	else_if = {
+		limit = { has_law = law_type:law_private_health_insurance }
+		# Private insurance only helps households that can afford it.
+		if = {
+			limit = { var:cp_layla_sol >= 25 }
+			change_variable = { name = cp_layla_mortality_pressure add = -2 }
+		}
+		else_if = {
+			limit = { var:cp_layla_sol >= 15 }
+			change_variable = { name = cp_layla_mortality_pressure add = -1 }
+		}
+		# Below SoL 15 private insurance is out of reach — no bonus.
+	}
+	else_if = {
+		limit = { has_law = law_type:law_charitable_health_system }
+		# Charitable system covers the poorest a little.
+		if = {
+			limit = { var:cp_layla_sol <= 10 }
+			change_variable = { name = cp_layla_mortality_pressure add = -1 }
+		}
+	}
+
+	# Urban pollution: an indutrial city erodes the lungs. Approximation
+	# while state_pollution trigger names are being finalised — we gate
+	# on cp_layla_in_city + cp_layla_seen_first_textile_mill as a proxy for "she
+	# breathes industrial air".
+	if = {
+		limit = {
+			has_variable = cp_layla_in_city
+			has_variable = cp_layla_seen_first_textile_mill
+		}
+		change_variable = { name = cp_layla_mortality_pressure add = 1 }
+	}
+
+	# Welfare. V3 ships a 5-rung lawgroup_welfare AND an accompanying
+	# institution_social_security whose investment level (0..5) scales the
+	# law's real effect. A nominally pension-law country at institution
+	# level 0 is barely better than no_social_security; at level 5 it is
+	# meaningfully protective. We stack the modifiers: the law decides WHICH
+	# cohort is eligible, the institution level decides HOW MUCH help.
+	#
+	# Pattern verified via vanilla 06_portugal_politics.txt:656 — the
+	# institution_investment_level trigger takes institution + value.
+	if = {
+		limit = {
+			has_law = law_type:law_poor_laws
+			var:cp_layla_sol <= 10
+		}
+		change_variable = { name = cp_layla_mortality_pressure add = -1 }
+		if = {
+			limit = {
+				institution_investment_level = { institution = institution_social_security value >= 3 }
+			}
+			change_variable = { name = cp_layla_mortality_pressure add = -1 }
+		}
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_wage_subsidies
+			var:cp_layla_sol <= 15
+			OR = {
+				has_variable = cp_layla_profession_laborers
+				has_variable = cp_layla_profession_machinists
+				has_variable = cp_layla_profession_farmers
+				has_variable = cp_layla_profession_clerks
+			}
+		}
+		change_variable = { name = cp_layla_mortality_pressure add = -1 }
+		if = {
+			limit = {
+				institution_investment_level = { institution = institution_social_security value >= 3 }
+			}
+			change_variable = { name = cp_layla_mortality_pressure add = -1 }
+		}
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_old_age_pension
+			var:cp_layla_age >= 60
+		}
+		change_variable = { name = cp_layla_mortality_pressure add = -1 }
+		if = {
+			limit = {
+				institution_investment_level = { institution = institution_social_security value >= 2 }
+			}
+			change_variable = { name = cp_layla_mortality_pressure add = -1 }
+		}
+		if = {
+			limit = {
+				institution_investment_level = { institution = institution_social_security value >= 4 }
+			}
+			change_variable = { name = cp_layla_mortality_pressure add = -1 }
+		}
+	}
+
+	clamp_variable = { name = cp_layla_mortality_pressure min = 0 max = 10 }
+}
+
+
+# ============================================================================
+# Worker-safety pressure -- Ahmed's annual accident risk at the mill
+# ============================================================================
+# cp_layla_worker_risk 0..10 drives the Ahmed-at-work-dies random roll. Weighted
+# by whether Ahmed has an industrial job, the country's worker-rights law,
+# and whether the household owns the mill (owners don't tend machines).
+# ============================================================================
+cp_refresh_worker_safety_pressure = {
+	set_variable = { name = cp_layla_worker_risk value = 0 }
+
+	# Only if Ahmed is on a shop floor. Owners (shopkeepers/capitalists)
+	# don't take mill-accident risk, even if they used to.
+	if = {
+		limit = {
+			has_variable = cp_layla_ahmed_alive
+			var:cp_layla_ahmed_alive > 0
+			OR = {
+				has_variable = cp_layla_ahmed_profession_laborer
+			}
+		}
+		# Base industrial risk.
+		change_variable = { name = cp_layla_worker_risk add = 3 }
+
+		# Law gates. No worker rights = worst; protections cut risk.
+		if = {
+			limit = { has_law = law_type:law_no_workers_rights }
+			change_variable = { name = cp_layla_worker_risk add = 3 }
+		}
+		else_if = {
+			limit = { has_law = law_type:law_worker_protections }
+			change_variable = { name = cp_layla_worker_risk add = -2 }
+		}
+		# law_regulatory_bodies is the implicit baseline; no modifier.
+	}
+
+	clamp_variable = { name = cp_layla_worker_risk min = 0 max = 10 }
+}
+
+
+# Layla's own death. Sets cp_layla_alive = 0; downstream triggers that
+# gate on it stop firing. The JE will deactivate via its complete condition
+# in a subsequent pass.
+cp_layla_dies = {
+	set_variable = { name = cp_layla_alive value = 0 }
+}
+
+
+# ============================================================================
+# Welfare tier tracking -- which rung of the welfare ladder is EGY on
+# ============================================================================
+# cp_layla_welfare_tier 0..4 captures the country's current position on the
+# lawgroup_welfare ladder. Updated on law enactment; compared to its prior
+# value to fire up/down transition events. Ordering is the canonical V3
+# rung order (no_social_security lowest, old_age_pension highest).
+#
+#   0 = law_no_social_security (default)
+#   1 = law_chiefs_distribute_aid (Mongolia variant, ~= poor_laws)
+#   2 = law_poor_laws
+#   3 = law_wage_subsidies
+#   4 = law_old_age_pension
+# ============================================================================
+cp_refresh_welfare_tier = {
+	if = {
+		limit = { has_law = law_type:law_old_age_pension }
+		set_variable = { name = cp_layla_welfare_tier value = 4 }
+	}
+	else_if = {
+		limit = { has_law = law_type:law_wage_subsidies }
+		set_variable = { name = cp_layla_welfare_tier value = 3 }
+	}
+	else_if = {
+		limit = { has_law = law_type:law_poor_laws }
+		set_variable = { name = cp_layla_welfare_tier value = 2 }
+	}
+	else_if = {
+		limit = { has_law = law_type:law_chiefs_distribute_aid }
+		set_variable = { name = cp_layla_welfare_tier value = 1 }
+	}
+	else = {
+		set_variable = { name = cp_layla_welfare_tier value = 0 }
+	}
+}
+
+# A child dies of illness. cp_layla_children decrements; a permanent scar flag
+# records the loss so future prose can refer to it.
+cp_child_dies = {
+	change_variable = { name = cp_layla_children add = -1 }
+	clamp_variable = { name = cp_layla_children min = 0 max = 10 }
+	set_variable = cp_layla_lost_a_child
+	cp_shift_hope = { person = layla delta = -3 }
+	cp_shift_exhaustion = { person = layla delta = 2 }
+}

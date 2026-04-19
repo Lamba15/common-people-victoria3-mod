@@ -10,7 +10,7 @@
 #   cp_debug.6   -- Age Layla by 10 years (hidden; verify with JE panel).
 #   cp_debug.7   -- Bump SoL by +3 (hidden; check JE numeric).
 #   cp_debug.8   -- Force-run the yearly delta computation now.
-#   cp_debug.11  -- Read country average_sol -> cp_sol. Works (returns 7.84).
+#   cp_debug.11  -- Read country average_sol -> cp_layla_sol. Works (returns 7.84).
 #   cp_debug.13  -- Run cp_refresh_sol_from_pop. After the P-N cutover to
 #                   ordered_scope_pop, this returns her cohort's SoL
 #                   (roughly 8 for 1836 misri-sunni-peasants).
@@ -18,7 +18,7 @@
 #                   good: returns 8.28 for EGY-Lower-Egypt at 1836.
 #   cp_debug.19  -- Pop-group SoL via ordered_scope_pop in region_state.
 #                   Known good: returns 8 for largest misri-sunni-peasant pop.
-#   cp_debug.20  -- NEW: move Layla to STATE_SINAI and resample cp_sol.
+#   cp_debug.20  -- NEW: move Layla to STATE_SINAI and resample cp_layla_sol.
 #                   Tests the data-driven home-state plumbing end-to-end.
 #                   SoL should change to Sinai's peasant cohort value.
 #   cp_debug.21  -- NEW: move Layla to STATE_NUBIA (Upper-Egypt-ish); if
@@ -26,11 +26,11 @@
 #                   falls through to state-region avg.
 #   cp_debug.22  -- NEW: move Layla back to STATE_LOWER_EGYPT. Sanity
 #                   check that repeated moves don't leave stale markers.
-#   cp_debug.24  -- NEW: recompute cp_tax_burden from the live tax regime.
+#   cp_debug.24  -- NEW: recompute cp_layla_tax_burden from the live tax regime.
 #                   JE "tax" field should update to the new tier label.
 #   cp_debug.25  -- NEW: force-run the pop-tick (literacy + political mood).
-#                   Inspect cp_literacy, cp_radical, cp_loyalist,
-#                   cp_expected_sol, cp_sol_gap after.
+#                   Inspect cp_layla_literacy, cp_layla_radical, cp_layla_loyalist,
+#                   cp_layla_expected_sol, cp_layla_sol_gap after.
 #   cp_debug.26  -- NEW: force-grant railways + telegraph + radio to EGY
 #                   so the tech dispatcher fires cp_layla.30/.31/.32.
 #   cp_debug.27  -- NEW: fire Ahmed homecoming event directly.
@@ -41,7 +41,7 @@
 #   cp_debug.32  -- NEW: fire the Small-Concern ownership crossroads.
 #   cp_debug.33  -- NEW: fire Layla's death event directly.
 #   cp_debug.34  -- NEW: fire Ahmed's mill-accident death.
-#   cp_debug.35  -- NEW: fire a child's death (needs cp_children >= 1).
+#   cp_debug.35  -- NEW: fire a child's death (needs cp_layla_children >= 1).
 #   cp_debug.36  -- NEW: recompute mortality + worker-risk pressures now.
 #   cp_debug.37  -- NEW: fire the First-Envelope welfare event directly.
 #   cp_debug.38  -- NEW: simulate welfare UP transition (enact poor_laws).
@@ -103,7 +103,7 @@ cp_debug.6 = {
 
 	immediate = {
 		c:EGY ?= {
-			change_variable = { name = cp_age add = 10 }
+			change_variable = { name = cp_layla_age add = 10 }
 		}
 	}
 }
@@ -116,7 +116,7 @@ cp_debug.7 = {
 
 	immediate = {
 		c:EGY ?= {
-			change_variable = { name = cp_sol add = 3 }
+			change_variable = { name = cp_layla_sol add = 3 }
 		}
 	}
 }
@@ -131,16 +131,16 @@ cp_debug.8 = {
 
 	immediate = {
 		c:EGY ?= {
-			# delta = cp_sol - cp_sol_prev  (via multiply-by-(-1))
-			set_variable = { name = cp_sol_delta value = var:cp_sol_prev }
-			multiply_variable = { name = cp_sol_delta value = -1 }
-			change_variable = { name = cp_sol_delta add = var:cp_sol }
-			set_variable = { name = cp_sol_prev value = var:cp_sol }
+			# delta = cp_layla_sol - cp_layla_sol_prev  (via multiply-by-(-1))
+			set_variable = { name = cp_layla_sol_delta value = var:cp_layla_sol_prev }
+			multiply_variable = { name = cp_layla_sol_delta value = -1 }
+			change_variable = { name = cp_layla_sol_delta add = var:cp_layla_sol }
+			set_variable = { name = cp_layla_sol_prev value = var:cp_layla_sol }
 		}
 	}
 }
 
-# cp_debug.11 -- Read country-level average_sol directly into cp_sol.
+# cp_debug.11 -- Read country-level average_sol directly into cp_layla_sol.
 # If this works, the readout will show Egypt's actual average SoL (probably
 # ~8-10 at 1836). If it fails or returns 0, we know the direct-read path
 # does not work for this value.
@@ -152,16 +152,16 @@ cp_debug.11 = {
 	immediate = {
 		c:EGY ?= {
 			# Pre-write a marker so we can tell if the next line fires.
-			set_variable = { name = cp_sol value = 88 }
-			# Attempt the read. If it lands, cp_sol becomes the real value.
-			set_variable = { name = cp_sol value = average_sol }
+			set_variable = { name = cp_layla_sol value = 88 }
+			# Attempt the read. If it lands, cp_layla_sol becomes the real value.
+			set_variable = { name = cp_layla_sol value = average_sol }
 		}
 	}
 }
 
-# cp_debug.13 -- Run the pop-group bisection now. Sets cp_sol to 0 first,
+# cp_debug.13 -- Run the pop-group bisection now. Sets cp_layla_sol to 0 first,
 # then walks the 24-threshold cascade. If the any_scope_pop + standard_of_living
-# trigger pattern works, cp_sol will land near her pop group's ceiling SoL
+# trigger pattern works, cp_layla_sol will land near her pop group's ceiling SoL
 # (probably 5-8 for misri-sunni-peasants in Lower Egypt 1836).
 cp_debug.13 = {
 	type = country_event
@@ -170,7 +170,7 @@ cp_debug.13 = {
 
 	immediate = {
 		c:EGY ?= {
-			cp_refresh_sol_from_pop = yes
+			cp_layla_refresh_sol = yes
 		}
 	}
 }
@@ -188,7 +188,7 @@ cp_debug.18 = {
 
 	immediate = {
 		c:EGY ?= {
-			set_variable = { name = cp_sol value = 66 }
+			set_variable = { name = cp_layla_sol value = 66 }
 			s:STATE_LOWER_EGYPT ?= {
 				random_scope_state = {
 					limit = { owner = c:EGY }
@@ -198,7 +198,7 @@ cp_debug.18 = {
 					}
 				}
 			}
-			set_variable = { name = cp_sol value = scope:tmp_state_sol }
+			set_variable = { name = cp_layla_sol value = scope:tmp_state_sol }
 		}
 	}
 }
@@ -215,7 +215,7 @@ cp_debug.19 = {
 
 	immediate = {
 		c:EGY ?= {
-			set_variable = { name = cp_sol value = 66 }
+			set_variable = { name = cp_layla_sol value = 66 }
 			s:STATE_LOWER_EGYPT ?= {
 				random_scope_state = {
 					limit = { owner = c:EGY }
@@ -235,7 +235,7 @@ cp_debug.19 = {
 					}
 				}
 			}
-			set_variable = { name = cp_sol value = scope:tmp_pop_sol }
+			set_variable = { name = cp_layla_sol value = scope:tmp_pop_sol }
 		}
 	}
 }
@@ -251,7 +251,7 @@ cp_debug.20 = {
 	immediate = {
 		c:EGY ?= {
 			cp_move_to_state = { state = STATE_SINAI }
-			cp_refresh_sol_from_pop = yes
+			cp_layla_refresh_sol = yes
 		}
 	}
 }
@@ -269,7 +269,7 @@ cp_debug.21 = {
 	immediate = {
 		c:EGY ?= {
 			cp_move_to_state = { state = STATE_BLUE_NILE }
-			cp_refresh_sol_from_pop = yes
+			cp_layla_refresh_sol = yes
 		}
 	}
 }
@@ -286,13 +286,13 @@ cp_debug.22 = {
 	immediate = {
 		c:EGY ?= {
 			cp_move_to_state = { state = STATE_LOWER_EGYPT }
-			cp_refresh_sol_from_pop = yes
+			cp_layla_refresh_sol = yes
 		}
 	}
 }
 
 # cp_debug.23 -- Stage-by-stage probe for cp_refresh_sol_from_pop.
-# Writes a marker to cp_sol at each stage so we can see how far it
+# Writes a marker to cp_layla_sol at each stage so we can see how far it
 # gets if it silently fails somewhere.
 #   11 = effect entered at all
 #   22 = home-state marker found by every_scope_state
@@ -306,33 +306,33 @@ cp_debug.23 = {
 
 	immediate = {
 		c:EGY ?= {
-			set_variable = { name = cp_sol value = 11 }
+			set_variable = { name = cp_layla_sol value = 11 }
 
 			# Stage A: home-state marker exists?
 			every_scope_state = {
 				limit = { has_variable = cp_layla_lives_here }
-				root = { set_variable = { name = cp_sol value = 22 } }
+				root = { set_variable = { name = cp_layla_sol value = 22 } }
 			}
 
 			# Stage B: diaspora fallback path
 			s:STATE_LOWER_EGYPT ?= {
 				random_scope_state = {
 					limit = { owner = c:EGY }
-					c:EGY = { set_variable = { name = cp_sol value = 33 } }
+					c:EGY = { set_variable = { name = cp_layla_sol value = 33 } }
 					cp_read_cohort_only = yes
 				}
 			}
 			if = {
 				limit = { exists = scope:tmp_cohort_sol }
-				set_variable = { name = cp_sol value = 44 }
+				set_variable = { name = cp_layla_sol value = 44 }
 				# Overwrite 44 with the actual cohort value so we see it
-				set_variable = { name = cp_sol value = scope:tmp_cohort_sol }
+				set_variable = { name = cp_layla_sol value = scope:tmp_cohort_sol }
 			}
 		}
 	}
 }
 
-# cp_debug.24 -- Force-recompute cp_tax_burden. Use after changing tax
+# cp_debug.24 -- Force-recompute cp_layla_tax_burden. Use after changing tax
 # laws or tax level via console to see the JE tier-label update immediately
 # instead of waiting for the next yearly pulse.
 cp_debug.24 = {
@@ -348,8 +348,8 @@ cp_debug.24 = {
 }
 
 # cp_debug.25 -- Force-run the pop-tick (literacy + political mood).
-# Use to test drift without waiting for January 1. Inspect cp_literacy,
-# cp_radical, cp_loyalist, cp_expected_sol, cp_sol_gap after.
+# Use to test drift without waiting for January 1. Inspect cp_layla_literacy,
+# cp_layla_radical, cp_layla_loyalist, cp_layla_expected_sol, cp_layla_sol_gap after.
 cp_debug.25 = {
 	type = country_event
 	hidden = yes
@@ -389,14 +389,14 @@ cp_debug.27 = {
 
 	immediate = {
 		c:EGY ?= {
-			set_variable = cp_ahmed_at_war
+			set_variable = cp_layla_ahmed_at_war
 			trigger_event = { id = cp_layla.40 }
 		}
 	}
 }
 
 # cp_debug.28 -- Fire the death-notice directly. Tests prose +
-# cp_ahmed_killed composite. Clears cp_ahmed_alive.
+# cp_ahmed_killed composite. Clears cp_layla_ahmed_alive.
 cp_debug.28 = {
 	type = country_event
 	hidden = yes
@@ -404,7 +404,7 @@ cp_debug.28 = {
 
 	immediate = {
 		c:EGY ?= {
-			set_variable = cp_ahmed_at_war
+			set_variable = cp_layla_ahmed_at_war
 			trigger_event = { id = cp_layla.41 }
 		}
 	}
@@ -472,7 +472,7 @@ cp_debug.32 = {
 # cp_debug.33/.34/.35 -- Fire each mortality event directly.
 #   .33 = Layla dies (closes the arc)
 #   .34 = Ahmed dies at the mill
-#   .35 = a child dies of illness (requires cp_children >= 1)
+#   .35 = a child dies of illness (requires cp_layla_children >= 1)
 cp_debug.33 = {
 	type = country_event
 	hidden = yes
@@ -539,7 +539,7 @@ cp_debug.37 = {
 	}
 }
 
-# cp_debug.38 -- Simulate a welfare-ladder UP transition. Sets cp_welfare_tier
+# cp_debug.38 -- Simulate a welfare-ladder UP transition. Sets cp_layla_welfare_tier
 # low, then passes a higher-tier law so cp_on_law_enacted fires cp_layla.91.
 cp_debug.38 = {
 	type = country_event
@@ -625,7 +625,7 @@ cp_debug.43 = {
 }
 
 # cp_debug.44 -- Fire the self-employment crossroads directly (cp_layla.97).
-# Grants cp_may_work first so the trigger passes.
+# Grants cp_layla_may_work first so the trigger passes.
 cp_debug.44 = {
 	type = country_event
 	hidden = yes
@@ -633,13 +633,13 @@ cp_debug.44 = {
 
 	immediate = {
 		c:EGY ?= {
-			set_variable = cp_may_work
+			set_variable = cp_layla_may_work
 			trigger_event = { id = cp_layla.97 }
 		}
 	}
 }
 
-# cp_debug.45 -- Fire election-day directly (cp_layla.24). Grants cp_may_vote.
+# cp_debug.45 -- Fire election-day directly (cp_layla.24). Grants cp_layla_may_vote.
 cp_debug.45 = {
 	type = country_event
 	hidden = yes
@@ -647,7 +647,7 @@ cp_debug.45 = {
 
 	immediate = {
 		c:EGY ?= {
-			set_variable = cp_may_vote
+			set_variable = cp_layla_may_vote
 			trigger_event = { id = cp_layla.24 }
 		}
 	}
@@ -662,7 +662,7 @@ cp_debug.46 = {
 
 	immediate = {
 		c:EGY ?= {
-			set_variable = { name = cp_age value = 65 }
+			set_variable = { name = cp_layla_age value = 65 }
 			activate_law = law_type:law_old_age_pension
 		}
 	}
@@ -721,7 +721,7 @@ cp_debug.50 = {
 }
 
 # cp_debug.51 -- Fire the daughter-reads pulse directly. Sets
-# cp_daughter_at_school so the trigger passes, then triggers the event.
+# cp_layla_daughter_at_school so the trigger passes, then triggers the event.
 cp_debug.51 = {
 	type = country_event
 	hidden = yes
@@ -729,8 +729,8 @@ cp_debug.51 = {
 
 	immediate = {
 		c:EGY ?= {
-			set_variable = { name = cp_children value = 2 }
-			set_variable = cp_daughter_at_school
+			set_variable = { name = cp_layla_children value = 2 }
+			set_variable = cp_layla_daughter_at_school
 			trigger_event = { id = cp_layla.102 }
 		}
 	}
@@ -770,8 +770,8 @@ cp_debug.54 = {
 
 	immediate = {
 		c:EGY ?= {
-			set_variable = { name = cp_children value = 2 }
-			set_variable = { name = cp_age value = 40 }
+			set_variable = { name = cp_layla_children value = 2 }
+			set_variable = { name = cp_layla_age value = 40 }
 			trigger_event = { id = cp_layla.72 }
 		}
 	}
@@ -960,7 +960,7 @@ cp_debug.68 = {
 	}
 }
 
-# cp_debug.69 -- Set cp_daughter_at_school and fire conversation .160 directly.
+# cp_debug.69 -- Set cp_layla_daughter_at_school and fire conversation .160 directly.
 cp_debug.69 = {
 	type = country_event
 	hidden = yes
@@ -968,7 +968,7 @@ cp_debug.69 = {
 
 	immediate = {
 		c:EGY ?= {
-			set_variable = cp_daughter_at_school
+			set_variable = cp_layla_daughter_at_school
 			trigger_event = { id = cp_conversation.160 }
 		}
 	}

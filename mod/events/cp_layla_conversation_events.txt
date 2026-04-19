@@ -13,14 +13,14 @@
 #   cp_conversation.1         -- Root: she sets the scene, picks the topic
 #   cp_conversation.10..19    -- The Land topic
 #   cp_conversation.20..29    -- The Ahmed topic (reacts to his state)
-#   cp_conversation.30..39    -- The Children topic (gated on cp_children > 0)
-#   cp_conversation.40..49    -- The Room in the City (gated on cp_in_city)
-#   cp_conversation.50..59    -- The Paper (gated on cp_owns_land)
-#   cp_conversation.60..69    -- The Politics (gated on cp_radical or cp_loyalist)
+#   cp_conversation.30..39    -- The Children topic (gated on cp_layla_children > 0)
+#   cp_conversation.40..49    -- The Room in the City (gated on cp_layla_in_city)
+#   cp_conversation.50..59    -- The Paper (gated on cp_layla_owns_land)
+#   cp_conversation.60..69    -- The Politics (gated on cp_layla_radical or cp_layla_loyalist)
 #   cp_conversation.70..79    -- The Boss (gated on laborer + city)
 #   cp_conversation.80..89    -- A Small Thing (always available fallback)
 #   cp_conversation.90        -- Shared closer (fantasy dissolves)
-#   cp_conversation.100..109  -- The Distance (gated on cp_sol >= 25 — wealth)
+#   cp_conversation.100..109  -- The Distance (gated on cp_layla_sol >= 25 — wealth)
 ###############################################################################
 
 namespace = cp_conversation
@@ -42,11 +42,11 @@ cp_conversation.1 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.1.d.widow
-				trigger = { var:cp_ahmed_alive = 0 }
+				trigger = { var:cp_layla_ahmed_alive = 0 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.1.d.at_war
-				trigger = { has_variable = cp_ahmed_at_war }
+				trigger = { has_variable = cp_layla_ahmed_at_war }
 			}
 			triggered_desc = {
 				desc = cp_conversation.1.d.default
@@ -57,7 +57,7 @@ cp_conversation.1 = {
 	flavor = cp_conversation.1.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_audience.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_audience.dds"
 	}
 
 	duration = 5
@@ -67,14 +67,14 @@ cp_conversation.1 = {
 		name = cp_conversation.1.a
 		trigger = {
 			OR = {
-				has_variable = cp_profession_peasants
-				has_variable = cp_profession_farmers
-				has_variable = cp_owns_land
-				has_variable = cp_under_serfdom
+				has_variable = cp_layla_profession_peasants
+				has_variable = cp_layla_profession_farmers
+				has_variable = cp_layla_owns_land
+				has_variable = cp_layla_under_serfdom
 			}
-			NOT = { has_variable = cp_seen_audience_land }
+			NOT = { has_variable = cp_layla_seen_audience_land }
 		}
-		set_variable = { name = cp_seen_audience_land months = 18 }
+		set_variable = { name = cp_layla_seen_audience_land months = 18 }
 		trigger_event = { id = cp_conversation.10 popup = yes }
 	}
 
@@ -83,10 +83,10 @@ cp_conversation.1 = {
 	option = {
 		name = cp_conversation.1.b
 		trigger = {
-			has_variable = cp_married
-			NOT = { has_variable = cp_seen_audience_ahmed }
+			has_variable = cp_layla_married
+			NOT = { has_variable = cp_layla_seen_audience_ahmed }
 		}
-		set_variable = { name = cp_seen_audience_ahmed months = 18 }
+		set_variable = { name = cp_layla_seen_audience_ahmed months = 18 }
 		trigger_event = { id = cp_conversation.20 popup = yes }
 	}
 
@@ -94,11 +94,11 @@ cp_conversation.1 = {
 	option = {
 		name = cp_conversation.1.c
 		trigger = {
-			has_variable = cp_children
-			var:cp_children > 0
-			NOT = { has_variable = cp_seen_audience_children }
+			has_variable = cp_layla_children
+			var:cp_layla_children > 0
+			NOT = { has_variable = cp_layla_seen_audience_children }
 		}
-		set_variable = { name = cp_seen_audience_children months = 18 }
+		set_variable = { name = cp_layla_seen_audience_children months = 18 }
 		trigger_event = { id = cp_conversation.30 popup = yes }
 	}
 
@@ -106,10 +106,10 @@ cp_conversation.1 = {
 	option = {
 		name = cp_conversation.1.d
 		trigger = {
-			has_variable = cp_in_city
-			NOT = { has_variable = cp_seen_audience_city }
+			has_variable = cp_layla_in_city
+			NOT = { has_variable = cp_layla_seen_audience_city }
 		}
-		set_variable = { name = cp_seen_audience_city months = 18 }
+		set_variable = { name = cp_layla_seen_audience_city months = 18 }
 		trigger_event = { id = cp_conversation.40 popup = yes }
 	}
 
@@ -117,10 +117,10 @@ cp_conversation.1 = {
 	option = {
 		name = cp_conversation.1.e
 		trigger = {
-			has_variable = cp_owns_land
-			NOT = { has_variable = cp_seen_audience_paper }
+			has_variable = cp_layla_owns_land
+			NOT = { has_variable = cp_layla_seen_audience_paper }
 		}
-		set_variable = { name = cp_seen_audience_paper months = 18 }
+		set_variable = { name = cp_layla_seen_audience_paper months = 18 }
 		trigger_event = { id = cp_conversation.50 popup = yes }
 	}
 
@@ -129,12 +129,12 @@ cp_conversation.1 = {
 		name = cp_conversation.1.f
 		trigger = {
 			OR = {
-				AND = { has_variable = cp_radical   var:cp_radical   > 0 }
-				AND = { has_variable = cp_loyalist  var:cp_loyalist  > 0 }
+				AND = { has_variable = cp_layla_radical   var:cp_layla_radical   > 0 }
+				AND = { has_variable = cp_layla_loyalist  var:cp_layla_loyalist  > 0 }
 			}
-			NOT = { has_variable = cp_seen_audience_politics }
+			NOT = { has_variable = cp_layla_seen_audience_politics }
 		}
-		set_variable = { name = cp_seen_audience_politics months = 18 }
+		set_variable = { name = cp_layla_seen_audience_politics months = 18 }
 		trigger_event = { id = cp_conversation.60 popup = yes }
 	}
 
@@ -142,11 +142,11 @@ cp_conversation.1 = {
 	option = {
 		name = cp_conversation.1.g
 		trigger = {
-			has_variable = cp_profession_laborers
-			has_variable = cp_in_city
-			NOT = { has_variable = cp_seen_audience_boss }
+			has_variable = cp_layla_profession_laborers
+			has_variable = cp_layla_in_city
+			NOT = { has_variable = cp_layla_seen_audience_boss }
 		}
-		set_variable = { name = cp_seen_audience_boss months = 18 }
+		set_variable = { name = cp_layla_seen_audience_boss months = 18 }
 		trigger_event = { id = cp_conversation.70 popup = yes }
 	}
 
@@ -155,11 +155,11 @@ cp_conversation.1 = {
 	option = {
 		name = cp_conversation.1.i
 		trigger = {
-			has_variable = cp_sol
-			var:cp_sol >= 25
-			NOT = { has_variable = cp_seen_audience_distance }
+			has_variable = cp_layla_sol
+			var:cp_layla_sol >= 25
+			NOT = { has_variable = cp_layla_seen_audience_distance }
 		}
-		set_variable = { name = cp_seen_audience_distance months = 18 }
+		set_variable = { name = cp_layla_seen_audience_distance months = 18 }
 		trigger_event = { id = cp_conversation.100 popup = yes }
 	}
 
@@ -167,10 +167,10 @@ cp_conversation.1 = {
 	option = {
 		name = cp_conversation.1.j
 		trigger = {
-			has_variable = cp_receives_welfare
-			NOT = { has_variable = cp_seen_audience_envelope }
+			has_variable = cp_layla_receives_welfare
+			NOT = { has_variable = cp_layla_seen_audience_envelope }
 		}
-		set_variable = { name = cp_seen_audience_envelope months = 18 }
+		set_variable = { name = cp_layla_seen_audience_envelope months = 18 }
 		trigger_event = { id = cp_conversation.110 popup = yes }
 	}
 
@@ -178,10 +178,10 @@ cp_conversation.1 = {
 	option = {
 		name = cp_conversation.1.k
 		trigger = {
-			has_variable = cp_has_voted
-			NOT = { has_variable = cp_seen_audience_vote }
+			has_variable = cp_layla_has_voted
+			NOT = { has_variable = cp_layla_seen_audience_vote }
 		}
-		set_variable = { name = cp_seen_audience_vote months = 18 }
+		set_variable = { name = cp_layla_seen_audience_vote months = 18 }
 		trigger_event = { id = cp_conversation.120 popup = yes }
 	}
 
@@ -189,10 +189,10 @@ cp_conversation.1 = {
 	option = {
 		name = cp_conversation.1.l
 		trigger = {
-			has_variable = cp_self_employed
-			NOT = { has_variable = cp_seen_audience_stall }
+			has_variable = cp_layla_self_employed
+			NOT = { has_variable = cp_layla_seen_audience_stall }
 		}
-		set_variable = { name = cp_seen_audience_stall months = 18 }
+		set_variable = { name = cp_layla_seen_audience_stall months = 18 }
 		trigger_event = { id = cp_conversation.130 popup = yes }
 	}
 
@@ -201,14 +201,14 @@ cp_conversation.1 = {
 		name = cp_conversation.1.m
 		trigger = {
 			OR = {
-				has_variable = cp_profession_peasants
-				has_variable = cp_profession_farmers
-				has_variable = cp_owns_land
-				has_variable = cp_under_serfdom
+				has_variable = cp_layla_profession_peasants
+				has_variable = cp_layla_profession_farmers
+				has_variable = cp_layla_owns_land
+				has_variable = cp_layla_under_serfdom
 			}
-			NOT = { has_variable = cp_seen_audience_nile }
+			NOT = { has_variable = cp_layla_seen_audience_nile }
 		}
-		set_variable = { name = cp_seen_audience_nile months = 18 }
+		set_variable = { name = cp_layla_seen_audience_nile months = 18 }
 		trigger_event = { id = cp_conversation.140 popup = yes }
 	}
 
@@ -217,10 +217,10 @@ cp_conversation.1 = {
 	option = {
 		name = cp_conversation.1.n
 		trigger = {
-			has_variable = cp_lost_a_child
-			NOT = { has_variable = cp_seen_audience_lost_child }
+			has_variable = cp_layla_lost_a_child
+			NOT = { has_variable = cp_layla_seen_audience_lost_child }
 		}
-		set_variable = { name = cp_seen_audience_lost_child months = 36 }
+		set_variable = { name = cp_layla_seen_audience_lost_child months = 36 }
 		trigger_event = { id = cp_conversation.150 popup = yes }
 	}
 
@@ -228,10 +228,10 @@ cp_conversation.1 = {
 	option = {
 		name = cp_conversation.1.o
 		trigger = {
-			has_variable = cp_daughter_at_school
-			NOT = { has_variable = cp_seen_audience_school }
+			has_variable = cp_layla_daughter_at_school
+			NOT = { has_variable = cp_layla_seen_audience_school }
 		}
-		set_variable = { name = cp_seen_audience_school months = 18 }
+		set_variable = { name = cp_layla_seen_audience_school months = 18 }
 		trigger_event = { id = cp_conversation.160 popup = yes }
 	}
 
@@ -241,9 +241,9 @@ cp_conversation.1 = {
 	option = {
 		name = cp_conversation.1.h
 		trigger = {
-			NOT = { has_variable = cp_seen_audience_small_thing }
+			NOT = { has_variable = cp_layla_seen_audience_small_thing }
 		}
-		set_variable = { name = cp_seen_audience_small_thing months = 6 }
+		set_variable = { name = cp_layla_seen_audience_small_thing months = 6 }
 		trigger_event = { id = cp_conversation.80 popup = yes }
 	}
 
@@ -273,11 +273,11 @@ cp_conversation.10 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.10.d.serf
-				trigger = { has_variable = cp_under_serfdom }
+				trigger = { has_variable = cp_layla_under_serfdom }
 			}
 			triggered_desc = {
 				desc = cp_conversation.10.d.owner
-				trigger = { has_variable = cp_owns_land }
+				trigger = { has_variable = cp_layla_owns_land }
 			}
 			triggered_desc = {
 				desc = cp_conversation.10.d.default
@@ -288,7 +288,7 @@ cp_conversation.10 = {
 	flavor = cp_conversation.10.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_land.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_land.dds"
 	}
 
 	duration = 5
@@ -296,7 +296,7 @@ cp_conversation.10 = {
 	immediate = {
 		# Topic-memory flag. Set here (not in .90) so save-across-branch
 		# preserves the fact that she has spoken of land at least once.
-		set_variable = cp_has_spoken_of_land
+		set_variable = cp_layla_has_spoken_of_land
 	}
 
 	# Pasha: dismissive
@@ -330,7 +330,7 @@ cp_conversation.11 = {
 	flavor = cp_conversation.11.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_land.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_land.dds"
 	}
 
 	duration = 5
@@ -361,7 +361,7 @@ cp_conversation.12 = {
 	flavor = cp_conversation.12.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_land.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_land.dds"
 	}
 
 	duration = 5
@@ -392,7 +392,7 @@ cp_conversation.13 = {
 	flavor = cp_conversation.13.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_land.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_land.dds"
 	}
 
 	duration = 5
@@ -423,7 +423,7 @@ cp_conversation.14 = {
 	flavor = cp_conversation.14.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_land.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_land.dds"
 	}
 
 	duration = 5
@@ -448,7 +448,7 @@ cp_conversation.15 = {
 	flavor = cp_conversation.15.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_land.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_land.dds"
 	}
 
 	duration = 5
@@ -473,7 +473,7 @@ cp_conversation.16 = {
 	flavor = cp_conversation.16.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_land.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_land.dds"
 	}
 
 	duration = 5
@@ -498,7 +498,7 @@ cp_conversation.17 = {
 	flavor = cp_conversation.17.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_land.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_land.dds"
 	}
 
 	duration = 5
@@ -507,7 +507,7 @@ cp_conversation.17 = {
 	# her claim against a soldier's. Small personality drift.
 	option = {
 		name = cp_conversation.17.a
-		cp_shift_weight = { weight = land_reform delta = 1 }
+		cp_shift_weight = { person = layla weight = land_reform delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -526,7 +526,7 @@ cp_conversation.18 = {
 	flavor = cp_conversation.18.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_land.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_land.dds"
 	}
 
 	duration = 5
@@ -551,7 +551,7 @@ cp_conversation.19 = {
 	flavor = cp_conversation.19.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_land.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_land.dds"
 	}
 
 	duration = 5
@@ -560,7 +560,7 @@ cp_conversation.19 = {
 	# her something. Small but real.
 	option = {
 		name = cp_conversation.19.a
-		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -584,11 +584,11 @@ cp_conversation.20 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.20.d.widow
-				trigger = { var:cp_ahmed_alive = 0 }
+				trigger = { var:cp_layla_ahmed_alive = 0 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.20.d.at_war
-				trigger = { has_variable = cp_ahmed_at_war }
+				trigger = { has_variable = cp_layla_ahmed_at_war }
 			}
 			triggered_desc = {
 				desc = cp_conversation.20.d.home
@@ -599,13 +599,13 @@ cp_conversation.20 = {
 	flavor = cp_conversation.20.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_ahmed.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_ahmed.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_ahmed
+		set_variable = cp_layla_has_spoken_of_ahmed
 	}
 
 	# Pasha: compassionate. Always available.
@@ -618,8 +618,8 @@ cp_conversation.20 = {
 	option = {
 		name = cp_conversation.20.b
 		trigger = {
-			has_variable = cp_ahmed_alive
-			var:cp_ahmed_alive > 0
+			has_variable = cp_layla_ahmed_alive
+			var:cp_layla_ahmed_alive > 0
 		}
 		trigger_event = { id = cp_conversation.22 popup = yes }
 	}
@@ -644,7 +644,7 @@ cp_conversation.21 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.21.d.widow
-				trigger = { var:cp_ahmed_alive = 0 }
+				trigger = { var:cp_layla_ahmed_alive = 0 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.21.d.default
@@ -655,7 +655,7 @@ cp_conversation.21 = {
 	flavor = cp_conversation.21.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_ahmed.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_ahmed.dds"
 	}
 
 	duration = 5
@@ -664,7 +664,7 @@ cp_conversation.21 = {
 		name = cp_conversation.21.a
 		default_option = yes
 		# She allows herself to feel seen. A small hope.
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -686,7 +686,7 @@ cp_conversation.22 = {
 	flavor = cp_conversation.22.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_ahmed.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_ahmed.dds"
 	}
 
 	duration = 5
@@ -696,8 +696,8 @@ cp_conversation.22 = {
 		default_option = yes
 		# She tastes, for the first time in this imagined room, the shape
 		# of opposition. It is small. It is real.
-		cp_shift_weight = { weight = war delta = 1 }
-		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_weight = { person = layla weight = war delta = 1 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -716,7 +716,7 @@ cp_conversation.23 = {
 	flavor = cp_conversation.23.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_ahmed.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_ahmed.dds"
 	}
 
 	duration = 5
@@ -725,7 +725,7 @@ cp_conversation.23 = {
 		name = cp_conversation.23.a
 		default_option = yes
 		# Being dismissed by the man in her own fantasy costs her.
-		cp_shift_hope = { delta = -1 }
+		cp_shift_hope = { person = layla delta = -1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -749,11 +749,11 @@ cp_conversation.30 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.30.d.grown
-				trigger = { var:cp_age >= 38 }
+				trigger = { var:cp_layla_age >= 38 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.30.d.many
-				trigger = { var:cp_children >= 2 }
+				trigger = { var:cp_layla_children >= 2 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.30.d.one
@@ -764,13 +764,13 @@ cp_conversation.30 = {
 	flavor = cp_conversation.30.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_children.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_children.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_children
+		set_variable = cp_layla_has_spoken_of_children
 	}
 
 	option = {
@@ -796,7 +796,7 @@ cp_conversation.31 = {
 	flavor = cp_conversation.31.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_children.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_children.dds"
 	}
 
 	duration = 5
@@ -804,7 +804,7 @@ cp_conversation.31 = {
 	option = {
 		name = cp_conversation.31.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -818,7 +818,7 @@ cp_conversation.32 = {
 	flavor = cp_conversation.32.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_children.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_children.dds"
 	}
 
 	duration = 5
@@ -826,7 +826,7 @@ cp_conversation.32 = {
 	option = {
 		name = cp_conversation.32.a
 		default_option = yes
-		cp_shift_weight = { weight = education delta = 1 }
+		cp_shift_weight = { person = layla weight = education delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -840,7 +840,7 @@ cp_conversation.33 = {
 	flavor = cp_conversation.33.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_children.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_children.dds"
 	}
 
 	duration = 5
@@ -848,7 +848,7 @@ cp_conversation.33 = {
 	option = {
 		name = cp_conversation.33.a
 		default_option = yes
-		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -857,9 +857,9 @@ cp_conversation.33 = {
 # ============================================================================
 # cp_conversation.40..43 -- The Room in the City
 # ============================================================================
-# Gated on cp_in_city. Opening variants: fresh from the move (within
-# 2 years, via cp_recent_city_move), settled in, or struggling
-# (cp_sol below 8). Three Pasha responses: curious, dismissive, political.
+# Gated on cp_layla_in_city. Opening variants: fresh from the move (within
+# 2 years, via cp_layla_recent_city_move), settled in, or struggling
+# (cp_layla_sol below 8). Three Pasha responses: curious, dismissive, political.
 # ============================================================================
 
 cp_conversation.40 = {
@@ -871,11 +871,11 @@ cp_conversation.40 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.40.d.fresh
-				trigger = { has_variable = cp_recent_city_move }
+				trigger = { has_variable = cp_layla_recent_city_move }
 			}
 			triggered_desc = {
 				desc = cp_conversation.40.d.struggling
-				trigger = { var:cp_sol < 8 }
+				trigger = { var:cp_layla_sol < 8 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.40.d.settled
@@ -886,13 +886,13 @@ cp_conversation.40 = {
 	flavor = cp_conversation.40.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_room.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_room.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_city
+		set_variable = cp_layla_has_spoken_of_city
 	}
 
 	option = {
@@ -918,7 +918,7 @@ cp_conversation.41 = {
 	flavor = cp_conversation.41.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_room.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_room.dds"
 	}
 
 	duration = 5
@@ -926,7 +926,7 @@ cp_conversation.41 = {
 	option = {
 		name = cp_conversation.41.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -940,7 +940,7 @@ cp_conversation.42 = {
 	flavor = cp_conversation.42.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_room.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_room.dds"
 	}
 
 	duration = 5
@@ -948,7 +948,7 @@ cp_conversation.42 = {
 	option = {
 		name = cp_conversation.42.a
 		default_option = yes
-		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -962,7 +962,7 @@ cp_conversation.43 = {
 	flavor = cp_conversation.43.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_room.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_room.dds"
 	}
 
 	duration = 5
@@ -972,7 +972,7 @@ cp_conversation.43 = {
 		default_option = yes
 		# Learning the word "neighbourhood" as a political unit. A small
 		# step toward noticing the shape of urban collective action.
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -981,8 +981,8 @@ cp_conversation.43 = {
 # ============================================================================
 # cp_conversation.50..53 -- The Paper (she owns her field)
 # ============================================================================
-# Gated on cp_owns_land. Opening variants: fresh from the deed (within
-# 540 days via cp_seen_homesteading), or settled. Three Pasha responses:
+# Gated on cp_layla_owns_land. Opening variants: fresh from the deed (within
+# 540 days via cp_layla_seen_homesteading), or settled. Three Pasha responses:
 # proud, political (what of your neighbours?), cautious (papers can be
 # un-written).
 # ============================================================================
@@ -996,7 +996,7 @@ cp_conversation.50 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.50.d.fresh
-				trigger = { has_variable = cp_seen_homesteading }
+				trigger = { has_variable = cp_layla_seen_homesteading }
 			}
 			triggered_desc = {
 				desc = cp_conversation.50.d.settled
@@ -1007,13 +1007,13 @@ cp_conversation.50 = {
 	flavor = cp_conversation.50.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_paper.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_paper.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_paper
+		set_variable = cp_layla_has_spoken_of_paper
 	}
 
 	option = {
@@ -1039,7 +1039,7 @@ cp_conversation.51 = {
 	flavor = cp_conversation.51.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_paper.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_paper.dds"
 	}
 
 	duration = 5
@@ -1047,8 +1047,8 @@ cp_conversation.51 = {
 	option = {
 		name = cp_conversation.51.a
 		default_option = yes
-		cp_shift_hope = { delta = 1 }
-		cp_shift_loyalist = { delta = 2 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 2 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1062,7 +1062,7 @@ cp_conversation.52 = {
 	flavor = cp_conversation.52.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_paper.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_paper.dds"
 	}
 
 	duration = 5
@@ -1072,7 +1072,7 @@ cp_conversation.52 = {
 		default_option = yes
 		# She has been asked to reckon with her own fortune against her
 		# neighbours' — nudges land-reform conviction.
-		cp_shift_weight = { weight = land_reform delta = 1 }
+		cp_shift_weight = { person = layla weight = land_reform delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1086,7 +1086,7 @@ cp_conversation.53 = {
 	flavor = cp_conversation.53.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_paper.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_paper.dds"
 	}
 
 	duration = 5
@@ -1097,7 +1097,7 @@ cp_conversation.53 = {
 		# The cold possibility of its reversal sticks in her. Small
 		# exhaustion from re-learning a thing she hoped she'd stopped
 		# having to know.
-		cp_shift_exhaustion = { delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1106,7 +1106,7 @@ cp_conversation.53 = {
 # ============================================================================
 # cp_conversation.60..63 -- The Politics
 # ============================================================================
-# Gated on her having a political stance (cp_radical > 0 OR cp_loyalist > 0).
+# Gated on her having a political stance (cp_layla_radical > 0 OR cp_layla_loyalist > 0).
 # Opening varies dramatically: radical woman entering the room is not a
 # loyalist woman. Three Pasha responses: hears her out, refuses to be
 # softened, meets her stance with its own weight.
@@ -1121,11 +1121,11 @@ cp_conversation.60 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.60.d.radical_strong
-				trigger = { var:cp_radical >= 30 }
+				trigger = { var:cp_layla_radical >= 30 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.60.d.loyalist
-				trigger = { var:cp_loyalist > 0 }
+				trigger = { var:cp_layla_loyalist > 0 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.60.d.radical_soft
@@ -1136,13 +1136,13 @@ cp_conversation.60 = {
 	flavor = cp_conversation.60.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_country.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_country.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_politics
+		set_variable = cp_layla_has_spoken_of_politics
 	}
 
 	option = {
@@ -1168,7 +1168,7 @@ cp_conversation.61 = {
 	flavor = cp_conversation.61.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_country.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_country.dds"
 	}
 
 	duration = 5
@@ -1177,7 +1177,7 @@ cp_conversation.61 = {
 		name = cp_conversation.61.a
 		default_option = yes
 		# Being heard when one is political is a rare thing. Small hope.
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1191,7 +1191,7 @@ cp_conversation.62 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.62.d.radical
-				trigger = { var:cp_radical > 0 }
+				trigger = { var:cp_layla_radical > 0 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.62.d.loyalist
@@ -1202,7 +1202,7 @@ cp_conversation.62 = {
 	flavor = cp_conversation.62.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_country.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_country.dds"
 	}
 
 	duration = 5
@@ -1212,11 +1212,11 @@ cp_conversation.62 = {
 		default_option = yes
 		# Refusal to be softened hardens whichever stance she walked in with.
 		if = {
-			limit = { var:cp_radical > 0 }
-			cp_shift_radical = { delta = 5 }
+			limit = { var:cp_layla_radical > 0 }
+			cp_shift_radical = { person = layla delta = 5 }
 		}
 		else = {
-			cp_shift_loyalist = { delta = 5 }
+			cp_shift_loyalist = { person = layla delta = 5 }
 		}
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
@@ -1231,7 +1231,7 @@ cp_conversation.63 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.63.d.radical
-				trigger = { var:cp_radical > 0 }
+				trigger = { var:cp_layla_radical > 0 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.63.d.loyalist
@@ -1242,7 +1242,7 @@ cp_conversation.63 = {
 	flavor = cp_conversation.63.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_country.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_country.dds"
 	}
 
 	duration = 5
@@ -1253,7 +1253,7 @@ cp_conversation.63 = {
 		# He has met her eye. The exchange changes her — but not toward
 		# either pole. It settles into conviction: weight on the issue
 		# she walked in with, not a swing.
-		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1262,8 +1262,8 @@ cp_conversation.63 = {
 # ============================================================================
 # cp_conversation.70..73 -- The Boss (the mill)
 # ============================================================================
-# Gated on cp_profession_laborers + cp_in_city. Opening variants: fresh
-# from an angry day (cp_radical > 0) or settled into the routine.
+# Gated on cp_layla_profession_laborers + cp_layla_in_city. Opening variants: fresh
+# from an angry day (cp_layla_radical > 0) or settled into the routine.
 # Three Pasha responses: sympathetic (laws are being considered),
 # dismissive (the mill pays what it pays), and political (who is
 # teaching you these things?).
@@ -1278,7 +1278,7 @@ cp_conversation.70 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.70.d.angry
-				trigger = { var:cp_radical > 0 }
+				trigger = { var:cp_layla_radical > 0 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.70.d.settled
@@ -1289,13 +1289,13 @@ cp_conversation.70 = {
 	flavor = cp_conversation.70.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_mill.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_mill.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_mill
+		set_variable = cp_layla_has_spoken_of_mill
 	}
 
 	option = {
@@ -1321,7 +1321,7 @@ cp_conversation.71 = {
 	flavor = cp_conversation.71.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_mill.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_mill.dds"
 	}
 
 	duration = 5
@@ -1329,7 +1329,7 @@ cp_conversation.71 = {
 	option = {
 		name = cp_conversation.71.a
 		default_option = yes
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1343,7 +1343,7 @@ cp_conversation.72 = {
 	flavor = cp_conversation.72.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_mill.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_mill.dds"
 	}
 
 	duration = 5
@@ -1351,7 +1351,7 @@ cp_conversation.72 = {
 	option = {
 		name = cp_conversation.72.a
 		default_option = yes
-		cp_shift_radical = { delta = 3 }
+		cp_shift_radical = { person = layla delta = 3 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1365,7 +1365,7 @@ cp_conversation.73 = {
 	flavor = cp_conversation.73.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_mill.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_mill.dds"
 	}
 
 	duration = 5
@@ -1375,7 +1375,7 @@ cp_conversation.73 = {
 		default_option = yes
 		# She does not give names. She keeps her own counsel. The act
 		# of keeping counsel hardens labor-law conviction.
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1384,9 +1384,9 @@ cp_conversation.73 = {
 # ============================================================================
 # cp_conversation.100..103 -- The Distance (when wealth came)
 # ============================================================================
-# Gated on cp_sol >= 25 (Prosperous tier and above). Opening varies by
-# HOW she got there: landowner-made-rich (cp_owns_land), urban-prosperous
-# (cp_in_city), or wealthy-widow (Ahmed gone, but the household
+# Gated on cp_layla_sol >= 25 (Prosperous tier and above). Opening varies by
+# HOW she got there: landowner-made-rich (cp_layla_owns_land), urban-prosperous
+# (cp_layla_in_city), or wealthy-widow (Ahmed gone, but the household
 # survived). Three Pasha responses: he wants more like her (fold her
 # into policy), he is suspicious (how did a peasant come to this),
 # he is philosophical (did you imagine this, when you were young?).
@@ -1401,15 +1401,15 @@ cp_conversation.100 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.100.d.widow
-				trigger = { var:cp_ahmed_alive = 0 }
+				trigger = { var:cp_layla_ahmed_alive = 0 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.100.d.urban
-				trigger = { has_variable = cp_in_city }
+				trigger = { has_variable = cp_layla_in_city }
 			}
 			triggered_desc = {
 				desc = cp_conversation.100.d.landowner
-				trigger = { has_variable = cp_owns_land }
+				trigger = { has_variable = cp_layla_owns_land }
 			}
 			triggered_desc = {
 				desc = cp_conversation.100.d.default
@@ -1420,13 +1420,13 @@ cp_conversation.100 = {
 	flavor = cp_conversation.100.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_distance.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_distance.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_distance
+		set_variable = cp_layla_has_spoken_of_distance
 	}
 
 	option = {
@@ -1452,7 +1452,7 @@ cp_conversation.101 = {
 	flavor = cp_conversation.101.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_distance.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_distance.dds"
 	}
 
 	duration = 5
@@ -1462,7 +1462,7 @@ cp_conversation.101 = {
 		default_option = yes
 		# He has folded her into the country's story. That gives her
 		# a new comfort with the regime — modest loyalist drift.
-		cp_shift_loyalist = { delta = 3 }
+		cp_shift_loyalist = { person = layla delta = 3 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1476,7 +1476,7 @@ cp_conversation.102 = {
 	flavor = cp_conversation.102.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_distance.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_distance.dds"
 	}
 
 	duration = 5
@@ -1486,8 +1486,8 @@ cp_conversation.102 = {
 		default_option = yes
 		# Being accused of theft by the man who runs the country
 		# hardens her — land-reform weight up, loyalism burned off.
-		cp_shift_weight = { weight = land_reform delta = 1 }
-		cp_shift_radical = { delta = 3 }
+		cp_shift_weight = { person = layla weight = land_reform delta = 1 }
+		cp_shift_radical = { person = layla delta = 3 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1501,7 +1501,7 @@ cp_conversation.103 = {
 	flavor = cp_conversation.103.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_distance.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_distance.dds"
 	}
 
 	duration = 5
@@ -1510,7 +1510,7 @@ cp_conversation.103 = {
 		name = cp_conversation.103.a
 		default_option = yes
 		# A quiet evening reflecting on a life. Hope up a small step.
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1534,13 +1534,13 @@ cp_conversation.80 = {
 	flavor = cp_conversation.80.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_small.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_small.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_small_thing
+		set_variable = cp_layla_has_spoken_of_small_thing
 	}
 
 	option = {
@@ -1562,7 +1562,7 @@ cp_conversation.81 = {
 	flavor = cp_conversation.81.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_small.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_small.dds"
 	}
 
 	duration = 5
@@ -1571,7 +1571,7 @@ cp_conversation.81 = {
 		name = cp_conversation.81.a
 		default_option = yes
 		# The simple act of being heard lifts her a full point of hope.
-		cp_shift_hope = { delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1585,7 +1585,7 @@ cp_conversation.82 = {
 	flavor = cp_conversation.82.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_small.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_small.dds"
 	}
 
 	duration = 5
@@ -1602,7 +1602,7 @@ cp_conversation.82 = {
 
 
 # ============================================================================
-# cp_conversation.110..113 -- The Envelope (gated on cp_receives_welfare)
+# cp_conversation.110..113 -- The Envelope (gated on cp_layla_receives_welfare)
 # ============================================================================
 # What she wants to say about the envelope: thanks, complaint, pride.
 # Pasha responses: he takes credit / he dismisses / he says he did not know.
@@ -1619,7 +1619,7 @@ cp_conversation.110 = {
 				desc = cp_conversation.110.d.pension
 				trigger = {
 					has_law = law_type:law_old_age_pension
-					var:cp_age >= 60
+					var:cp_layla_age >= 60
 				}
 			}
 			triggered_desc = {
@@ -1635,13 +1635,13 @@ cp_conversation.110 = {
 	flavor = cp_conversation.110.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_envelope.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_envelope.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_envelope
+		set_variable = cp_layla_has_spoken_of_envelope
 	}
 
 	# Pasha: takes credit
@@ -1671,7 +1671,7 @@ cp_conversation.111 = {
 	flavor = cp_conversation.111.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_envelope.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_envelope.dds"
 	}
 
 	duration = 5
@@ -1682,8 +1682,8 @@ cp_conversation.111 = {
 		# He has claimed her small relief as his generosity. She accepts
 		# the envelope without accepting his self-portrait — small loyalism,
 		# small hardening.
-		cp_shift_loyalist = { delta = 1 }
-		cp_shift_radical = { delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1697,7 +1697,7 @@ cp_conversation.112 = {
 	flavor = cp_conversation.112.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_envelope.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_envelope.dds"
 	}
 
 	duration = 5
@@ -1708,8 +1708,8 @@ cp_conversation.112 = {
 		# "It is only a coin." The smallness of his framing against the
 		# largeness of what the coin buys lands as a class cut. Radical up,
 		# weight on labor_laws up.
-		cp_shift_radical = { delta = 2 }
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_radical = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1723,7 +1723,7 @@ cp_conversation.113 = {
 	flavor = cp_conversation.113.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_envelope.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_envelope.dds"
 	}
 
 	duration = 5
@@ -1733,15 +1733,15 @@ cp_conversation.113 = {
 		default_option = yes
 		# He admits ignorance. The admission, which would be small from
 		# anyone else, is large from him. Hope up two; loyalism small.
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 2 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 2 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
 
 
 # ============================================================================
-# cp_conversation.120..123 -- The Vote (gated on cp_has_voted)
+# cp_conversation.120..123 -- The Vote (gated on cp_layla_has_voted)
 # ============================================================================
 # What she wants to say about her name on the rolls. Pasha responses: he
 # congratulates her (hollow) / he warns her (paternal) / he listens.
@@ -1756,7 +1756,7 @@ cp_conversation.120 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.120.d.literate
-				trigger = { var:cp_literacy >= 30 }
+				trigger = { var:cp_layla_literacy >= 30 }
 			}
 			triggered_desc = {
 				desc = cp_conversation.120.d.default
@@ -1767,13 +1767,13 @@ cp_conversation.120 = {
 	flavor = cp_conversation.120.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_rolls.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_rolls.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_vote
+		set_variable = cp_layla_has_spoken_of_vote
 	}
 
 	# Pasha: hollow congratulation
@@ -1802,7 +1802,7 @@ cp_conversation.121 = {
 	flavor = cp_conversation.121.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_rolls.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_rolls.dds"
 	}
 
 	duration = 5
@@ -1813,8 +1813,8 @@ cp_conversation.121 = {
 		# The Pasha's congratulation is polite emptiness. She takes it
 		# the way she takes watered tea — courteously, without mistaking
 		# it for what it was meant to be. Small radical.
-		cp_shift_radical = { delta = 1 }
-		cp_shift_weight = { weight = womens_rights delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1828,7 +1828,7 @@ cp_conversation.122 = {
 	flavor = cp_conversation.122.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_rolls.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_rolls.dds"
 	}
 
 	duration = 5
@@ -1838,9 +1838,9 @@ cp_conversation.122 = {
 		default_option = yes
 		# Paternal warning: "vote carefully, child." She marks the word
 		# §Ichild§! and does not forget it. Radical hardens.
-		cp_shift_radical = { delta = 2 }
-		cp_shift_weight = { weight = womens_rights delta = 1 }
-		cp_shift_weight = { weight = revolution delta = 1 }
+		cp_shift_radical = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 1 }
+		cp_shift_weight = { person = layla weight = revolution delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1854,7 +1854,7 @@ cp_conversation.123 = {
 	flavor = cp_conversation.123.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_rolls.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_rolls.dds"
 	}
 
 	duration = 5
@@ -1864,16 +1864,16 @@ cp_conversation.123 = {
 		default_option = yes
 		# He listens. An unusual response from this role, and she notices.
 		# Hope +2, loyalism +2, weight on womens_rights up.
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 2 }
-		cp_shift_weight = { weight = womens_rights delta = 1 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
 
 
 # ============================================================================
-# cp_conversation.130..133 -- The Stall (gated on cp_self_employed)
+# cp_conversation.130..133 -- The Stall (gated on cp_layla_self_employed)
 # ============================================================================
 # What she wants to say to the Pasha about the small enterprise that is
 # hers. Pasha responses: tax collector's voice / patronising / he asks
@@ -1889,7 +1889,7 @@ cp_conversation.130 = {
 		first_valid = {
 			triggered_desc = {
 				desc = cp_conversation.130.d.forced
-				trigger = { has_variable = cp_self_employed_forced }
+				trigger = { has_variable = cp_layla_self_employed_forced }
 			}
 			triggered_desc = {
 				desc = cp_conversation.130.d.chosen
@@ -1900,13 +1900,13 @@ cp_conversation.130 = {
 	flavor = cp_conversation.130.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_stall.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_stall.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_stall
+		set_variable = cp_layla_has_spoken_of_stall
 	}
 
 	# Pasha: tax collector
@@ -1935,7 +1935,7 @@ cp_conversation.131 = {
 	flavor = cp_conversation.131.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_stall.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_stall.dds"
 	}
 
 	duration = 5
@@ -1945,8 +1945,8 @@ cp_conversation.131 = {
 		default_option = yes
 		# "And what does the stall pay?" — the Pasha's first question
 		# is the bailiff's first question. Radicalises.
-		cp_shift_radical = { delta = 2 }
-		cp_shift_weight = { weight = economy delta = 1 }
+		cp_shift_radical = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = economy delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1960,7 +1960,7 @@ cp_conversation.132 = {
 	flavor = cp_conversation.132.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_stall.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_stall.dds"
 	}
 
 	duration = 5
@@ -1969,8 +1969,8 @@ cp_conversation.132 = {
 		name = cp_conversation.132.a
 		default_option = yes
 		# "Charming." Small radical, weight on womens_rights up.
-		cp_shift_radical = { delta = 1 }
-		cp_shift_weight = { weight = womens_rights delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -1984,7 +1984,7 @@ cp_conversation.133 = {
 	flavor = cp_conversation.133.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_stall.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_stall.dds"
 	}
 
 	duration = 5
@@ -1994,9 +1994,9 @@ cp_conversation.133 = {
 		default_option = yes
 		# He asks about the ledger with real interest — an economic
 		# question framed without contempt. Hope up, weight on economy up.
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 1 }
-		cp_shift_weight = { weight = economy delta = 2 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = economy delta = 2 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -2020,13 +2020,13 @@ cp_conversation.140 = {
 	flavor = cp_conversation.140.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_nile.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_nile.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_nile
+		set_variable = cp_layla_has_spoken_of_nile
 	}
 
 	option = {
@@ -2052,7 +2052,7 @@ cp_conversation.141 = {
 	flavor = cp_conversation.141.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_nile.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_nile.dds"
 	}
 
 	duration = 5
@@ -2064,8 +2064,8 @@ cp_conversation.141 = {
 		# barrages. She understands one word in three, and the one-in-
 		# three she understands is §Iwater#!. Weight on economy up;
 		# small radicalism because the engineer does not name her village.
-		cp_shift_weight = { weight = economy delta = 1 }
-		cp_shift_radical = { delta = 1 }
+		cp_shift_weight = { person = layla weight = economy delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -2079,7 +2079,7 @@ cp_conversation.142 = {
 	flavor = cp_conversation.142.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_nile.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_nile.dds"
 	}
 
 	duration = 5
@@ -2090,8 +2090,8 @@ cp_conversation.142 = {
 		# The poet's voice. He speaks about the river as his mother did.
 		# She recognises the tone but notices that he does not, at any
 		# point, mention harvests. Small loyalism; weight on religion up.
-		cp_shift_loyalist = { delta = 1 }
-		cp_shift_weight = { weight = religion delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -2105,7 +2105,7 @@ cp_conversation.143 = {
 	flavor = cp_conversation.143.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_nile.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_nile.dds"
 	}
 
 	duration = 5
@@ -2116,15 +2116,15 @@ cp_conversation.143 = {
 		# The bailiff's voice: "and how much does the canal pay in taxes
 		# this year?" She notices the word §Ipay#! before the word
 		# §Icanal#!. Radical up, weight on land_reform up.
-		cp_shift_radical = { delta = 2 }
-		cp_shift_weight = { weight = land_reform delta = 1 }
+		cp_shift_radical = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = land_reform delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
 
 
 # ============================================================================
-# cp_conversation.150..153 -- The Child Who Did Not Live (gated on cp_lost_a_child)
+# cp_conversation.150..153 -- The Child Who Did Not Live (gated on cp_layla_lost_a_child)
 # ============================================================================
 # She does not raise it lightly. The Pasha responses are the three things
 # men of power say to grieving women: the platitude; the silence; the
@@ -2140,13 +2140,13 @@ cp_conversation.150 = {
 	flavor = cp_conversation.150.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_lost_child.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_lost_child.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_lost_child
+		set_variable = cp_layla_has_spoken_of_lost_child
 	}
 
 	option = {
@@ -2172,7 +2172,7 @@ cp_conversation.151 = {
 	flavor = cp_conversation.151.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_lost_child.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_lost_child.dds"
 	}
 
 	duration = 5
@@ -2184,8 +2184,8 @@ cp_conversation.151 = {
 		# She knows this sentence. She has said it to other women. Hearing
 		# it from the Pasha tastes different. Small radical; weight on
 		# labor_laws up (because public health could have saved the child).
-		cp_shift_radical = { delta = 1 }
-		cp_shift_weight = { weight = labor_laws delta = 1 }
+		cp_shift_radical = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = labor_laws delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -2199,7 +2199,7 @@ cp_conversation.152 = {
 	flavor = cp_conversation.152.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_lost_child.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_lost_child.dds"
 	}
 
 	duration = 5
@@ -2210,8 +2210,8 @@ cp_conversation.152 = {
 		# He does not speak. The silence is the response she had not
 		# rehearsed for. Small hope — the silence, unexpectedly,
 		# contains more than the platitude did. Weight on religion up.
-		cp_shift_hope = { delta = 1 }
-		cp_shift_weight = { weight = religion delta = 1 }
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_weight = { person = layla weight = religion delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -2225,7 +2225,7 @@ cp_conversation.153 = {
 	flavor = cp_conversation.153.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_lost_child.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_lost_child.dds"
 	}
 
 	duration = 5
@@ -2235,15 +2235,15 @@ cp_conversation.153 = {
 		default_option = yes
 		# He says his own child's name. The grief becomes, briefly, a
 		# thing two people are carrying. Hope up; loyalism up.
-		cp_shift_hope = { delta = 2 }
-		cp_shift_loyalist = { delta = 2 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_loyalist = { person = layla delta = 2 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
 
 
 # ============================================================================
-# cp_conversation.160..163 -- The School (gated on cp_daughter_at_school)
+# cp_conversation.160..163 -- The School (gated on cp_layla_daughter_at_school)
 # ============================================================================
 # She brings the daughter's schooling to the Pasha. Three responses: the
 # administrator who approves because it is an administrative efficiency;
@@ -2260,13 +2260,13 @@ cp_conversation.160 = {
 	flavor = cp_conversation.160.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_school.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_school.dds"
 	}
 
 	duration = 5
 
 	immediate = {
-		set_variable = cp_has_spoken_of_school
+		set_variable = cp_layla_has_spoken_of_school
 	}
 
 	option = {
@@ -2292,7 +2292,7 @@ cp_conversation.161 = {
 	flavor = cp_conversation.161.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_school.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_school.dds"
 	}
 
 	duration = 5
@@ -2302,8 +2302,8 @@ cp_conversation.161 = {
 		default_option = yes
 		# Administrator's voice: the girl is a future clerk, and clerks are
 		# what the state is short of. Weight on economy up; small loyalism.
-		cp_shift_weight = { weight = economy delta = 1 }
-		cp_shift_loyalist = { delta = 1 }
+		cp_shift_weight = { person = layla weight = economy delta = 1 }
+		cp_shift_loyalist = { person = layla delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -2317,7 +2317,7 @@ cp_conversation.162 = {
 	flavor = cp_conversation.162.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_school.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_school.dds"
 	}
 
 	duration = 5
@@ -2327,8 +2327,8 @@ cp_conversation.162 = {
 		default_option = yes
 		# Traditionalist's voice: the girl will disappoint you. Weight on
 		# womens_rights up (she digs in); radical up.
-		cp_shift_weight = { weight = womens_rights delta = 2 }
-		cp_shift_radical = { delta = 1 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 2 }
+		cp_shift_radical = { person = layla delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -2342,7 +2342,7 @@ cp_conversation.163 = {
 	flavor = cp_conversation.163.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_school.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_school.dds"
 	}
 
 	duration = 5
@@ -2352,9 +2352,9 @@ cp_conversation.163 = {
 		default_option = yes
 		# Father-of-a-daughter's voice: he has walked this road; he offers
 		# her a map, not an approval. Hope up; weight on womens_rights up.
-		cp_shift_hope = { delta = 2 }
-		cp_shift_weight = { weight = womens_rights delta = 1 }
-		cp_shift_weight = { weight = education delta = 1 }
+		cp_shift_hope = { person = layla delta = 2 }
+		cp_shift_weight = { person = layla weight = womens_rights delta = 1 }
+		cp_shift_weight = { person = layla weight = education delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
@@ -2376,8 +2376,8 @@ cp_conversation.90 = {
 			triggered_desc = {
 				desc = cp_conversation.90.d.widow
 				trigger = {
-					has_variable = cp_has_spoken_of_ahmed
-					var:cp_ahmed_alive = 0
+					has_variable = cp_layla_has_spoken_of_ahmed
+					var:cp_layla_ahmed_alive = 0
 				}
 			}
 			triggered_desc = {
@@ -2389,7 +2389,7 @@ cp_conversation.90 = {
 	flavor = cp_conversation.90.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_conversation_kitchen.dds"
+		texture = "gfx/event_pictures/cp_layla_conversation_kitchen.dds"
 	}
 
 	duration = 5
@@ -2398,10 +2398,10 @@ cp_conversation.90 = {
 		# Permanent flag set by ANY completed audience. Per-topic flags
 		# are now set in each topic's opening event (.10, .20) so
 		# save-across-branch preserves which topic she spoke of.
-		set_variable = cp_has_stood_before_pasha
+		set_variable = cp_layla_has_stood_before_pasha
 		# Cooldown set here (not on the button) so mid-audience save/quit
 		# does not lock the player out.
-		set_variable = { name = cp_audience_cooldown days = 90 }
+		set_variable = { name = cp_layla_audience_cooldown days = 90 }
 	}
 
 	option = {

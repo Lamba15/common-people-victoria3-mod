@@ -130,7 +130,7 @@ cp_sensor_oil_lamps_arrive = {
 
 cp_sensor_electricity_lights_her_street = {
 	c:EGY.market = { mg:electricity = { market_goods_buy_orders > 100 } }
-	has_variable = cp_in_cairo
+	has_variable = cp_layla_in_cairo
 }
 
 
@@ -233,7 +233,7 @@ cp_sensor_standard_clothes_available = {
 
 cp_sensor_services_reach_her_quarter = {
 	c:EGY.market = { mg:services = { market_goods_buy_orders > 100 } }
-	has_variable = cp_in_cairo
+	has_variable = cp_layla_in_cairo
 }
 
 cp_sensor_transportation_reaches_her = {
@@ -408,7 +408,7 @@ cp_sensor_her_culture_loves_fine_art = {
 
 cp_sensor_she_is_locked_in_serfdom = {
 	c:EGY = { has_law = law_type:law_serfdom }
-	has_variable = cp_profession_peasants
+	has_variable = cp_layla_profession_peasants
 }
 
 cp_sensor_egypt_has_tenant_farmers = {
@@ -437,20 +437,20 @@ cp_sensor_egypt_abolishes_slavery = {
 # Personal life-stage sensors (read Layla's own variables)
 # ============================================================================
 
-cp_sensor_she_is_old       = { var:cp_age >= 50 }
-cp_sensor_she_is_very_old  = { var:cp_age >= 70 }
-cp_sensor_she_is_literate  = { var:cp_literacy > 20 }
-cp_sensor_she_is_radical   = { var:cp_radical >= 50 }
-cp_sensor_she_is_loyalist  = { var:cp_loyalist >= 50 }
+cp_sensor_she_is_old       = { var:cp_layla_age >= 50 }
+cp_sensor_she_is_very_old  = { var:cp_layla_age >= 70 }
+cp_sensor_she_is_literate  = { var:cp_layla_literacy > 20 }
+cp_sensor_she_is_radical   = { var:cp_layla_radical >= 50 }
+cp_sensor_she_is_loyalist  = { var:cp_layla_loyalist >= 50 }
 
 # SoL tier sensors (V3's 1..99 scale, official tier boundaries).
-cp_sensor_she_is_destitute   = { var:cp_sol <= 4 }
-cp_sensor_she_is_struggling  = { var:cp_sol >= 5  var:cp_sol <= 9 }
-cp_sensor_she_is_impoverished = { var:cp_sol >= 10 var:cp_sol <= 14 }
-cp_sensor_she_is_middling    = { var:cp_sol >= 15 var:cp_sol <= 19 }
-cp_sensor_she_is_secure      = { var:cp_sol >= 20 var:cp_sol <= 24 }
-cp_sensor_she_is_prosperous  = { var:cp_sol >= 25 var:cp_sol <= 29 }
-cp_sensor_she_is_affluent    = { var:cp_sol >= 30 }
+cp_sensor_she_is_destitute   = { var:cp_layla_sol <= 4 }
+cp_sensor_she_is_struggling  = { var:cp_layla_sol >= 5  var:cp_layla_sol <= 9 }
+cp_sensor_she_is_impoverished = { var:cp_layla_sol >= 10 var:cp_layla_sol <= 14 }
+cp_sensor_she_is_middling    = { var:cp_layla_sol >= 15 var:cp_layla_sol <= 19 }
+cp_sensor_she_is_secure      = { var:cp_layla_sol >= 20 var:cp_layla_sol <= 24 }
+cp_sensor_she_is_prosperous  = { var:cp_layla_sol >= 25 var:cp_layla_sol <= 29 }
+cp_sensor_she_is_affluent    = { var:cp_layla_sol >= 30 }
 
 
 # ============================================================================
@@ -459,16 +459,16 @@ cp_sensor_she_is_affluent    = { var:cp_sol >= 30 }
 
 cp_sensor_she_hears_foreign_news = {
 	OR = {
-		var:cp_literacy > 20
+		var:cp_layla_literacy > 20
 		AND = {
-			has_variable = cp_in_cairo
+			has_variable = cp_layla_in_cairo
 			c:EGY = { has_technology_researched = telegraphs }
 		}
 	}
 }
 
 cp_sensor_radio_voice_in_the_house = {
-	has_variable = cp_owns_radio
+	has_variable = cp_layla_owns_radio
 	c:EGY = { has_technology_researched = radio }
 }
 
@@ -479,31 +479,31 @@ cp_sensor_radio_voice_in_the_house = {
 
 cp_sensor_can_plausibly_own_radio = {
 	c:EGY.market = { mg:radios = { market_goods_buy_orders > 100 } }
-	var:cp_sol >= 15
+	var:cp_layla_sol >= 15
 	OR = {
-		has_variable = cp_in_cairo
-		has_variable = cp_profession_laborers
-		has_variable = cp_profession_machinists
-		has_variable = cp_profession_shopkeepers
-		has_variable = cp_profession_clerks
+		has_variable = cp_layla_in_cairo
+		has_variable = cp_layla_profession_laborers
+		has_variable = cp_layla_profession_machinists
+		has_variable = cp_layla_profession_shopkeepers
+		has_variable = cp_layla_profession_clerks
 	}
 }
 
 cp_sensor_can_plausibly_own_car = {
 	c:EGY.market = { mg:automobiles = { market_goods_buy_orders > 50 } }
-	var:cp_sol >= 25
+	var:cp_layla_sol >= 25
 	OR = {
-		has_variable = cp_profession_shopkeepers
-		has_variable = cp_profession_clerks
+		has_variable = cp_layla_profession_shopkeepers
+		has_variable = cp_layla_profession_clerks
 	}
 }
 
 cp_sensor_can_plausibly_own_telephone = {
 	c:EGY.market = { mg:telephones = { market_goods_buy_orders > 50 } }
-	var:cp_sol >= 20
+	var:cp_layla_sol >= 20
 	OR = {
-		has_variable = cp_in_cairo
-		has_variable = cp_in_alexandria
+		has_variable = cp_layla_in_cairo
+		has_variable = cp_layla_in_alexandria
 	}
 }
 
@@ -511,24 +511,24 @@ cp_sensor_can_plausibly_own_telephone = {
 # ============================================================================
 # Taxation sensors
 # ============================================================================
-# cp_tax_burden is our 0..10 synthesis of (tax method × profession × tax
+# cp_layla_tax_burden is our 0..10 synthesis of (tax method × profession × tax
 # level × consumption taxes). These sensors read it so events and prose
 # can branch on the felt weight rather than each underlying law.
 
 cp_sensor_taxes_are_crushing = {
-	has_variable = cp_tax_burden
-	var:cp_tax_burden >= 7
+	has_variable = cp_layla_tax_burden
+	var:cp_layla_tax_burden >= 7
 }
 
 cp_sensor_taxes_are_heavy = {
-	has_variable = cp_tax_burden
-	var:cp_tax_burden >= 5
-	NOT = { var:cp_tax_burden >= 7 }
+	has_variable = cp_layla_tax_burden
+	var:cp_layla_tax_burden >= 5
+	NOT = { var:cp_layla_tax_burden >= 7 }
 }
 
 cp_sensor_taxes_are_fair = {
-	has_variable = cp_tax_burden
-	var:cp_tax_burden <= 3
+	has_variable = cp_layla_tax_burden
+	var:cp_layla_tax_burden <= 3
 }
 
 # The loaf is taxed. Hits the peasant household disproportionately hard.
@@ -540,7 +540,7 @@ cp_sensor_grain_is_taxed = {
 cp_sensor_she_pays_land_tax = {
 	has_law = law_type:law_land_based_taxation
 	OR = {
-		has_variable = cp_profession_peasants
-		has_variable = cp_profession_farmers
+		has_variable = cp_layla_profession_peasants
+		has_variable = cp_layla_profession_farmers
 	}
 }
