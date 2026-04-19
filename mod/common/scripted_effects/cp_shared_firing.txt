@@ -1,0 +1,110 @@
+###############################################################################
+# Common People -- shared firing gatekeepers (r5)
+#
+# Every event fire in the mod flows through one of four gatekeepers, picked
+# by the event's tier:
+#
+#   AMBIENT        — small life beats, conversations, seasonal pulses.
+#                    Gated by a 180-day global cooldown and a 365-day
+#                    per-person cooldown. Target: 0–2 fires per in-game year
+#                    across ALL persons combined.
+#
+#   LAW-REACTION   — events tied to a specific law enactment. Bypasses the
+#                    ambient cooldown (laws set their own rules — a year with
+#                    two laws gets two law events). Already one-shot via the
+#                    event's own cp_$person$_seen_$id$ flag.
+#
+#   MILESTONE      — critical life beats: death, Cairo offer, suitor, first
+#                    welfare envelope, revolution. Bypasses cooldowns; fires
+#                    on event-specific probability rolls in the dispatcher.
+#
+#   BUTTON         — player-initiated via the Check-on-Layla button or
+#                    equivalent. Always fires. Per-event seen-flags still
+#                    apply (no repeats of the same beat within its cooldown).
+#
+# See documentation/characters/_shared/firing.md for the full protocol.
+###############################################################################
+
+
+# ============================================================================
+# cp_try_fire_ambient
+# ============================================================================
+# Fire an ambient event if both the global and per-person cooldowns are clear.
+# Sets both cooldown flags after a successful fire so subsequent ambient
+# attempts no-op until the cooldowns expire.
+#
+# Parameters:
+#   event   = event id (e.g. cp_layla.13)
+#   person  = name token (e.g. layla)
+# ============================================================================
+
+cp_try_fire_ambient = {
+	if = {
+		limit = {
+			NOT = { has_global_variable = cp_global_ambient_cooldown }
+			NOT = { has_global_variable = cp_person_$person$_ambient_cooldown }
+		}
+		trigger_event = { id = $event$ }
+		set_global_variable = {
+			name = cp_global_ambient_cooldown
+			days = 180
+		}
+		set_global_variable = {
+			name = cp_person_$person$_ambient_cooldown
+			days = 365
+		}
+	}
+}
+
+
+# ============================================================================
+# cp_try_fire_law_reaction
+# ============================================================================
+# Fire a law-reaction event. Bypasses the ambient cooldown because laws have
+# their own pacing — we want the player to feel the consequence of their
+# legislative choice. One-shot per life is enforced by the event's own
+# cp_$person$_seen_$id$ flag set in the event's immediate block.
+#
+# Parameters:
+#   event   = event id
+#   person  = name token (for symmetry; currently unused internally)
+# ============================================================================
+
+cp_try_fire_law_reaction = {
+	trigger_event = { id = $event$ }
+}
+
+
+# ============================================================================
+# cp_try_fire_milestone
+# ============================================================================
+# Fire a milestone event (death, major crossroads, first welfare). Bypasses
+# cooldowns. The dispatcher decides probability via random_list; by the time
+# this gatekeeper is called the roll has succeeded.
+#
+# Parameters:
+#   event   = event id
+#   person  = name token
+# ============================================================================
+
+cp_try_fire_milestone = {
+	trigger_event = { id = $event$ }
+}
+
+
+# ============================================================================
+# cp_button_fire
+# ============================================================================
+# Fire an event in response to a player click on a scripted button. Always
+# fires — a player click is a promise to show them something. Per-event
+# seen-flags still gate repeats; that's handled by the button's own random_list
+# trigger clauses.
+#
+# Parameters:
+#   event   = event id
+#   person  = name token
+# ============================================================================
+
+cp_button_fire = {
+	trigger_event = { id = $event$ }
+}

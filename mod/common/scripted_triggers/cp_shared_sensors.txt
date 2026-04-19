@@ -1,0 +1,77 @@
+###############################################################################
+# Common People -- shared person-parameterised sensors (r5)
+#
+# Sensors answer yes/no questions about the world or about a person's state.
+# The shared ones take $person$ (and sometimes $culture$/$religion$/$poptype$)
+# so they generalise across persons; per-person sensors in
+# cp_<person>_sensors.txt wrap them with literals.
+#
+# Sensors never mutate state. They only READ.
+###############################################################################
+
+
+# ============================================================================
+# Personal-state sensors
+# ============================================================================
+
+cp_person_is_alive = {
+	has_variable = cp_$person$_alive
+	var:cp_$person$_alive = 1
+}
+
+cp_person_is_old = {
+	var:cp_$person$_age >= 50
+}
+
+cp_person_is_very_old = {
+	var:cp_$person$_age >= 70
+}
+
+cp_person_is_literate = {
+	var:cp_$person$_literacy >= 10
+}
+
+
+# ============================================================================
+# Personal-SoL band sensors
+# ============================================================================
+# V3's canonical SoL tiers (per r4 §0.5): Destitute 1-4, Struggling 5-9,
+# Impoverished 10-14, Middling 15-19, Secure 20-24, Prosperous 25-29,
+# Affluent 30-39, Wealthy 40-49, Lavish 50-59, Opulent 60+.
+
+cp_person_destitute      = { var:cp_$person$_sol <= 4 }
+cp_person_struggling     = { var:cp_$person$_sol >= 5   var:cp_$person$_sol <= 9 }
+cp_person_impoverished   = { var:cp_$person$_sol >= 10  var:cp_$person$_sol <= 14 }
+cp_person_middling       = { var:cp_$person$_sol >= 15  var:cp_$person$_sol <= 19 }
+cp_person_secure         = { var:cp_$person$_sol >= 20  var:cp_$person$_sol <= 24 }
+cp_person_prosperous     = { var:cp_$person$_sol >= 25  var:cp_$person$_sol <= 29 }
+cp_person_affluent       = { var:cp_$person$_sol >= 30  var:cp_$person$_sol <= 39 }
+cp_person_wealthy_plus   = { var:cp_$person$_sol >= 40 }
+
+
+# ============================================================================
+# Personal-political sensors
+# ============================================================================
+
+cp_person_is_radical = {
+	has_variable = cp_$person$_radical
+	var:cp_$person$_radical >= 30
+}
+
+cp_person_is_loyalist = {
+	has_variable = cp_$person$_loyalist
+	var:cp_$person$_loyalist >= 30
+}
+
+
+# ============================================================================
+# Budget sensors (used by gatekeepers, but exposable for debugging)
+# ============================================================================
+
+cp_ambient_budget_clear = {
+	NOT = { has_global_variable = cp_global_ambient_cooldown }
+}
+
+cp_person_ambient_budget_clear = {
+	NOT = { has_global_variable = cp_person_$person$_ambient_cooldown }
+}

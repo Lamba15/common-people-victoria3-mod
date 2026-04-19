@@ -1,0 +1,66 @@
+###############################################################################
+# Common People -- shared startup events (r5)
+#
+# Single entry point for registering every person in the mod. Called from
+# cp_on_start (on_game_started subscription) after the existing cp_startup.1
+# intro runs.
+#
+# r5 note: cp_startup.1 (in cp_startup_events.txt) still initialises Layla's
+# country-variable block AND fires her intro event; it will be rewritten in
+# Commit 2 to delegate variable setup to cp_register_person here. For
+# Commit 1 this file is dormant — no one calls cp_shared_startup.1 yet.
+###############################################################################
+
+namespace = cp_shared_startup
+
+
+# cp_shared_startup.1 -- "Register all persons"
+#
+# Fires after cp_startup.1 sets up the mod-loaded flag. Iterates each
+# registered person (via a fixed list — V3 cannot loop over arbitrary
+# names). Every person's cp_register_person call bakes in the culture,
+# religion, home_state, profession, and starting age for their life.
+#
+# Adding a new person: add one cp_register_person call here, create their
+# cp_<person>_memory.txt + cp_<person>_events.txt, and add one if-block
+# per hook to cp_on_actions.txt. No existing file is modified.
+
+cp_shared_startup.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+	}
+
+	immediate = {
+		# Person 1 -- Layla al-Sharif of Mīt al-Nakhla, Lower Egypt.
+		# Misri Sunni peasant, 22 in 1836.
+		cp_register_person = {
+			person = layla
+			country = EGY
+			culture = misri
+			religion = sunni
+			home_state = STATE_LOWER_EGYPT
+			profession = peasants
+			age = 22
+		}
+
+		# Future persons — register conditionally or unconditionally here.
+		# Example (commented out; template for when we add the Bey):
+		# cp_register_person = {
+		#     person = bey
+		#     country = EGY
+		#     culture = misri
+		#     religion = sunni
+		#     home_state = STATE_LOWER_EGYPT
+		#     profession = capitalists
+		#     age = 42
+		# }
+	}
+
+	option = {
+		name = cp_shared_startup.1.a
+		default_option = yes
+	}
+}

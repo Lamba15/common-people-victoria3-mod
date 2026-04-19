@@ -1,0 +1,163 @@
+###############################################################################
+# Common People -- shared person-parameterised primitives (r5)
+#
+# Every primitive here takes `person = <name>` and writes to
+# cp_$person$_<attr>. Callsites look like:
+#
+#   cp_shift_hope = { person = layla delta = +2 }
+#
+# Complex effects that read the person's pop cohort (SoL drift, literacy
+# drift, radicalism drift) also take culture/religion/poptype because V3
+# cannot dereference cu:$var$ at runtime — these must be literals at the
+# macro-substitution point. Each person gets a thin wrapper in their own
+# cp_<person>_memory.txt that bakes in their culture/religion.
+#
+# See documentation/characters/_shared/registry.md for the full spec.
+###############################################################################
+
+
+# ============================================================================
+# Inner-state shifters (0..10 scales, personality)
+# ============================================================================
+
+cp_shift_hope = {
+	change_variable = { name = cp_$person$_hope add = $delta$ }
+	clamp_variable  = { name = cp_$person$_hope min = 0 max = 10 }
+}
+
+cp_shift_exhaustion = {
+	change_variable = { name = cp_$person$_exhaustion add = $delta$ }
+	clamp_variable  = { name = cp_$person$_exhaustion min = 0 max = 10 }
+}
+
+cp_shift_weight = {
+	change_variable = { name = cp_$person$_w_$weight$ add = $delta$ }
+	clamp_variable  = { name = cp_$person$_w_$weight$ min = -10 max = 10 }
+}
+
+cp_shift_opinion = {
+	change_variable = { name = cp_$person$_opinion_$tag$ add = $delta$ }
+	clamp_variable  = { name = cp_$person$_opinion_$tag$ min = -100 max = 100 }
+}
+
+
+# ============================================================================
+# V3-mirror shifters (scales match V3's own numbers)
+# ============================================================================
+
+cp_shift_sol = {
+	change_variable = { name = cp_$person$_sol add = $delta$ }
+	clamp_variable  = { name = cp_$person$_sol min = 1 max = 99 }
+}
+
+cp_shift_literacy = {
+	change_variable = { name = cp_$person$_literacy add = $delta$ }
+	clamp_variable  = { name = cp_$person$_literacy min = 0 max = 100 }
+}
+
+# Radicalism / loyalism are mutually exclusive on V3 pops; we mirror that
+# by zeroing the other whenever we bump one.
+cp_shift_radical = {
+	change_variable = { name = cp_$person$_radical add = $delta$ }
+	clamp_variable  = { name = cp_$person$_radical min = 0 max = 100 }
+	if = {
+		limit = { var:cp_$person$_radical > 0 }
+		set_variable = { name = cp_$person$_loyalist value = 0 }
+	}
+}
+
+cp_shift_loyalist = {
+	change_variable = { name = cp_$person$_loyalist add = $delta$ }
+	clamp_variable  = { name = cp_$person$_loyalist min = 0 max = 100 }
+	if = {
+		limit = { var:cp_$person$_loyalist > 0 }
+		set_variable = { name = cp_$person$_radical value = 0 }
+	}
+}
+
+
+# ============================================================================
+# Timed event-seen flags + timed mood flags
+# ============================================================================
+
+cp_mark_event_seen = {
+	set_variable = {
+		name = cp_$person$_seen_$id$
+		days = $days$
+	}
+}
+
+cp_flag_recent_joy = {
+	set_variable = {
+		name = cp_$person$_recent_joy
+		days = 180
+	}
+}
+
+cp_flag_recent_hardship = {
+	set_variable = {
+		name = cp_$person$_recent_hardship
+		days = 180
+	}
+}
+
+
+# ============================================================================
+# Age + aging
+# ============================================================================
+
+cp_age_increment = {
+	change_variable = { name = cp_$person$_age add = 1 }
+}
+
+
+# ============================================================================
+# Pop-cohort reads (require culture + religion + poptype literals)
+# ============================================================================
+# Reads the largest pop in the person's home state that matches their
+# culture + religion + profession. Writes the cohort's SoL into
+# cp_$person$_sol.
+#
+# Callsite must supply person + culture + religion + poptype as LITERALS
+# (not variables) because V3 macro-substitution is load-time. See
+# cp_layla_memory.txt::cp_layla_refresh_sol for the Layla wrapper.
+
+cp_refresh_sol_from_pop = {
+	every_scope_state = {
+		limit = { has_variable = cp_$person$_lives_here }
+		ordered_scope_pop = {
+			limit = {
+				culture     = cu:$culture$
+				religion    = rel:$religion$
+				is_pop_type = $poptype$
+			}
+			order_by = total_pops
+			position = 0
+			save_temporary_scope_value_as = {
+				name = tmp_cohort_sol
+				value = standard_of_living
+			}
+		}
+	}
+	if = {
+		limit = { exists = scope:tmp_cohort_sol }
+		set_variable = { name = cp_$person$_sol value = scope:tmp_cohort_sol }
+		clamp_variable = { name = cp_$person$_sol min = 1 max = 99 }
+	}
+}
+
+
+# ============================================================================
+# Composite narrative shifters
+# ============================================================================
+
+cp_shift_life_joy = {
+	cp_shift_hope = { person = $person$ delta = +1 }
+	cp_flag_recent_joy = { person = $person$ }
+}
+
+cp_shift_life_hardship = {
+	cp_shift_hope = { person = $person$ delta = -1 }
+	cp_shift_exhaustion = { person = $person$ delta = +1 }
+	cp_flag_recent_hardship = { person = $person$ }
+}

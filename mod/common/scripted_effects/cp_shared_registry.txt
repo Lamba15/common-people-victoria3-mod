@@ -1,0 +1,90 @@
+###############################################################################
+# Common People -- shared person registry (r5)
+#
+# A "person" is a narrative object owned by the mod: a character whose life we
+# narrate through events. Each person has:
+#   - a name token (lowercase, used as $person$ parameter everywhere)
+#   - a country they live in (their events fire when that country scope matches)
+#   - a culture, religion, and profession (used for cohort reads)
+#   - a home_state (region_state pointer, used for migration + pop reads)
+#   - a starting age
+#
+# Persons live as country variables on their country, plus a small global
+# registry that lets the dispatcher know who is alive across the map.
+#
+# Registered here are Layla (person 1) and — by convention — the Bey, Tarek,
+# Samier etc. when added. See documentation/characters/_shared/registry.md
+# for the full protocol.
+###############################################################################
+
+
+# ============================================================================
+# cp_register_person
+# ============================================================================
+# Register a person with the mod. Called from cp_shared_startup.1 (or later
+# events when a person enters conditionally — e.g. a French physician only
+# after France gains a colonial interest in Egypt).
+#
+# Parameters:
+#   person     = name token (layla, bey, pierre)       REQUIRED
+#   country    = country tag (EGY, FRA, RUS)           REQUIRED
+#   culture    = culture id (misri, francien, russian) REQUIRED (for docs)
+#   religion   = religion id (sunni, catholic)         REQUIRED (for docs)
+#   home_state = state region (STATE_LOWER_EGYPT, ...) REQUIRED
+#   profession = starting pop_type                     REQUIRED
+#   age        = starting age                          REQUIRED
+#
+# Side effects:
+#   - Global variables: cp_person_$person$_alive, cp_person_$person$_country
+#   - Country variables on c:$country$:
+#       cp_$person$_alive, cp_$person$_age, cp_$person$_hope,
+#       cp_$person$_exhaustion, cp_$person$_sol, cp_$person$_literacy,
+#       cp_$person$_profession_$profession$
+#   - State marker on home_state: cp_$person$_lives_here
+# ============================================================================
+
+cp_register_person = {
+	set_global_variable = { name = cp_person_$person$_alive   value = yes }
+	set_global_variable = { name = cp_person_$person$_country value = $country$ }
+
+	c:$country$ = {
+		set_variable = { name = cp_$person$_alive      value = 1 }
+		set_variable = { name = cp_$person$_age        value = $age$ }
+		set_variable = { name = cp_$person$_hope       value = 5 }
+		set_variable = { name = cp_$person$_exhaustion value = 3 }
+		set_variable = { name = cp_$person$_sol        value = 5 }
+		set_variable = { name = cp_$person$_literacy   value = 0 }
+		set_variable = { name = cp_$person$_radical    value = 0 }
+		set_variable = { name = cp_$person$_loyalist   value = 0 }
+		set_variable = { name = cp_$person$_profession_$profession$ value = 1 }
+
+		# State marker: the state the person currently lives in.
+		# Used by cohort reads, migration sensors, pollution exposure.
+		s:$home_state$ = {
+			random_scope_state = {
+				limit = { owner = c:$country$ }
+				set_variable = cp_$person$_lives_here
+			}
+		}
+	}
+}
+
+
+# ============================================================================
+# cp_person_dies
+# ============================================================================
+# Mark a person dead. Does NOT wipe their variables — post-death prose
+# (e.g. cp_layla.83 "The Forty Days") can still read them. The registry
+# global is cleared so the dispatcher stops routing events to them.
+#
+# Parameters:
+#   person  = name token
+#   country = country tag (where they were living at death)
+# ============================================================================
+
+cp_person_dies = {
+	c:$country$ = {
+		set_variable = { name = cp_$person$_alive value = 0 }
+	}
+	remove_global_variable = cp_person_$person$_alive
+}
