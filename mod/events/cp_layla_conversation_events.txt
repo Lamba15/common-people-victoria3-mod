@@ -57,7 +57,7 @@ cp_conversation.1 = {
 	flavor = cp_conversation.1.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_audience.dds"
 	}
 
 	duration = 5
@@ -288,7 +288,7 @@ cp_conversation.10 = {
 	flavor = cp_conversation.10.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_land.dds"
 	}
 
 	duration = 5
@@ -330,7 +330,7 @@ cp_conversation.11 = {
 	flavor = cp_conversation.11.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_land.dds"
 	}
 
 	duration = 5
@@ -361,7 +361,7 @@ cp_conversation.12 = {
 	flavor = cp_conversation.12.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_land.dds"
 	}
 
 	duration = 5
@@ -392,7 +392,7 @@ cp_conversation.13 = {
 	flavor = cp_conversation.13.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_land.dds"
 	}
 
 	duration = 5
@@ -423,7 +423,7 @@ cp_conversation.14 = {
 	flavor = cp_conversation.14.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_land.dds"
 	}
 
 	duration = 5
@@ -448,7 +448,7 @@ cp_conversation.15 = {
 	flavor = cp_conversation.15.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_land.dds"
 	}
 
 	duration = 5
@@ -473,7 +473,7 @@ cp_conversation.16 = {
 	flavor = cp_conversation.16.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_land.dds"
 	}
 
 	duration = 5
@@ -498,7 +498,7 @@ cp_conversation.17 = {
 	flavor = cp_conversation.17.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_land.dds"
 	}
 
 	duration = 5
@@ -526,7 +526,7 @@ cp_conversation.18 = {
 	flavor = cp_conversation.18.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_land.dds"
 	}
 
 	duration = 5
@@ -551,7 +551,7 @@ cp_conversation.19 = {
 	flavor = cp_conversation.19.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_land.dds"
 	}
 
 	duration = 5
@@ -599,7 +599,7 @@ cp_conversation.20 = {
 	flavor = cp_conversation.20.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+		texture = "gfx/event_pictures/cp_conversation_ahmed.dds"
 	}
 
 	duration = 5
@@ -655,7 +655,7 @@ cp_conversation.21 = {
 	flavor = cp_conversation.21.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_conversation_ahmed.dds"
 	}
 
 	duration = 5
@@ -686,7 +686,7 @@ cp_conversation.22 = {
 	flavor = cp_conversation.22.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+		texture = "gfx/event_pictures/cp_conversation_ahmed.dds"
 	}
 
 	duration = 5
@@ -716,7 +716,7 @@ cp_conversation.23 = {
 	flavor = cp_conversation.23.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_ahmed.dds"
 	}
 
 	duration = 5
@@ -764,7 +764,7 @@ cp_conversation.30 = {
 	flavor = cp_conversation.30.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_childbirth.dds"
+		texture = "gfx/event_pictures/cp_conversation_children.dds"
 	}
 
 	duration = 5
@@ -796,7 +796,7 @@ cp_conversation.31 = {
 	flavor = cp_conversation.31.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_conversation_children.dds"
 	}
 
 	duration = 5
@@ -818,7 +818,7 @@ cp_conversation.32 = {
 	flavor = cp_conversation.32.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_children.dds"
 	}
 
 	duration = 5
@@ -840,7 +840,7 @@ cp_conversation.33 = {
 	flavor = cp_conversation.33.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_children.dds"
 	}
 
 	duration = 5
@@ -886,7 +886,7 @@ cp_conversation.40 = {
 	flavor = cp_conversation.40.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_room.dds"
 	}
 
 	duration = 5
@@ -918,7 +918,7 @@ cp_conversation.41 = {
 	flavor = cp_conversation.41.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_room.dds"
 	}
 
 	duration = 5
@@ -940,7 +940,7 @@ cp_conversation.42 = {
 	flavor = cp_conversation.42.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_room.dds"
 	}
 
 	duration = 5
@@ -962,7 +962,7 @@ cp_conversation.43 = {
 	flavor = cp_conversation.43.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_conversation_room.dds"
 	}
 
 	duration = 5
@@ -1007,7 +1007,7 @@ cp_conversation.50 = {
 	flavor = cp_conversation.50.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_paper.dds"
 	}
 
 	duration = 5
@@ -1039,7 +1039,7 @@ cp_conversation.51 = {
 	flavor = cp_conversation.51.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_paper.dds"
 	}
 
 	duration = 5
@@ -1062,7 +1062,7 @@ cp_conversation.52 = {
 	flavor = cp_conversation.52.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_paper.dds"
 	}
 
 	duration = 5
@@ -1086,7 +1086,7 @@ cp_conversation.53 = {
 	flavor = cp_conversation.53.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_paper.dds"
 	}
 
 	duration = 5
@@ -1136,7 +1136,7 @@ cp_conversation.60 = {
 	flavor = cp_conversation.60.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_country.dds"
 	}
 
 	duration = 5
@@ -1168,7 +1168,7 @@ cp_conversation.61 = {
 	flavor = cp_conversation.61.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_country.dds"
 	}
 
 	duration = 5
@@ -1202,7 +1202,7 @@ cp_conversation.62 = {
 	flavor = cp_conversation.62.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_conversation_country.dds"
 	}
 
 	duration = 5
@@ -1242,7 +1242,7 @@ cp_conversation.63 = {
 	flavor = cp_conversation.63.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+		texture = "gfx/event_pictures/cp_conversation_country.dds"
 	}
 
 	duration = 5
@@ -1289,7 +1289,7 @@ cp_conversation.70 = {
 	flavor = cp_conversation.70.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_mill.dds"
 	}
 
 	duration = 5
@@ -1321,7 +1321,7 @@ cp_conversation.71 = {
 	flavor = cp_conversation.71.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_mill.dds"
 	}
 
 	duration = 5
@@ -1343,7 +1343,7 @@ cp_conversation.72 = {
 	flavor = cp_conversation.72.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_conversation_mill.dds"
 	}
 
 	duration = 5
@@ -1365,7 +1365,7 @@ cp_conversation.73 = {
 	flavor = cp_conversation.73.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_mill.dds"
 	}
 
 	duration = 5
@@ -1420,7 +1420,7 @@ cp_conversation.100 = {
 	flavor = cp_conversation.100.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_distance.dds"
 	}
 
 	duration = 5
@@ -1452,7 +1452,7 @@ cp_conversation.101 = {
 	flavor = cp_conversation.101.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_distance.dds"
 	}
 
 	duration = 5
@@ -1476,7 +1476,7 @@ cp_conversation.102 = {
 	flavor = cp_conversation.102.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_distance.dds"
 	}
 
 	duration = 5
@@ -1501,7 +1501,7 @@ cp_conversation.103 = {
 	flavor = cp_conversation.103.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_distance.dds"
 	}
 
 	duration = 5
@@ -1534,7 +1534,7 @@ cp_conversation.80 = {
 	flavor = cp_conversation.80.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_small.dds"
 	}
 
 	duration = 5
@@ -1562,7 +1562,7 @@ cp_conversation.81 = {
 	flavor = cp_conversation.81.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_small.dds"
 	}
 
 	duration = 5
@@ -1585,7 +1585,7 @@ cp_conversation.82 = {
 	flavor = cp_conversation.82.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_conversation_small.dds"
 	}
 
 	duration = 5
@@ -1635,7 +1635,7 @@ cp_conversation.110 = {
 	flavor = cp_conversation.110.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_envelope.dds"
 	}
 
 	duration = 5
@@ -1671,7 +1671,7 @@ cp_conversation.111 = {
 	flavor = cp_conversation.111.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_envelope.dds"
 	}
 
 	duration = 5
@@ -1697,7 +1697,7 @@ cp_conversation.112 = {
 	flavor = cp_conversation.112.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_envelope.dds"
 	}
 
 	duration = 5
@@ -1723,7 +1723,7 @@ cp_conversation.113 = {
 	flavor = cp_conversation.113.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_envelope.dds"
 	}
 
 	duration = 5
@@ -1767,7 +1767,7 @@ cp_conversation.120 = {
 	flavor = cp_conversation.120.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_rolls.dds"
 	}
 
 	duration = 5
@@ -1802,7 +1802,7 @@ cp_conversation.121 = {
 	flavor = cp_conversation.121.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_rolls.dds"
 	}
 
 	duration = 5
@@ -1828,7 +1828,7 @@ cp_conversation.122 = {
 	flavor = cp_conversation.122.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_rolls.dds"
 	}
 
 	duration = 5
@@ -1854,7 +1854,7 @@ cp_conversation.123 = {
 	flavor = cp_conversation.123.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_rolls.dds"
 	}
 
 	duration = 5
@@ -1900,7 +1900,7 @@ cp_conversation.130 = {
 	flavor = cp_conversation.130.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_conversation_stall.dds"
 	}
 
 	duration = 5
@@ -1935,7 +1935,7 @@ cp_conversation.131 = {
 	flavor = cp_conversation.131.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_stall.dds"
 	}
 
 	duration = 5
@@ -1960,7 +1960,7 @@ cp_conversation.132 = {
 	flavor = cp_conversation.132.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_stall.dds"
 	}
 
 	duration = 5
@@ -1984,7 +1984,7 @@ cp_conversation.133 = {
 	flavor = cp_conversation.133.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_stall.dds"
 	}
 
 	duration = 5
@@ -2020,7 +2020,7 @@ cp_conversation.140 = {
 	flavor = cp_conversation.140.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_conversation_nile.dds"
 	}
 
 	duration = 5
@@ -2052,7 +2052,7 @@ cp_conversation.141 = {
 	flavor = cp_conversation.141.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_nile.dds"
 	}
 
 	duration = 5
@@ -2079,7 +2079,7 @@ cp_conversation.142 = {
 	flavor = cp_conversation.142.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_nile.dds"
 	}
 
 	duration = 5
@@ -2105,7 +2105,7 @@ cp_conversation.143 = {
 	flavor = cp_conversation.143.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_nile.dds"
 	}
 
 	duration = 5
@@ -2140,7 +2140,7 @@ cp_conversation.150 = {
 	flavor = cp_conversation.150.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_conversation_lost_child.dds"
 	}
 
 	duration = 5
@@ -2172,7 +2172,7 @@ cp_conversation.151 = {
 	flavor = cp_conversation.151.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_lost_child.dds"
 	}
 
 	duration = 5
@@ -2199,7 +2199,7 @@ cp_conversation.152 = {
 	flavor = cp_conversation.152.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_lost_child.dds"
 	}
 
 	duration = 5
@@ -2225,7 +2225,7 @@ cp_conversation.153 = {
 	flavor = cp_conversation.153.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_lost_child.dds"
 	}
 
 	duration = 5
@@ -2260,7 +2260,7 @@ cp_conversation.160 = {
 	flavor = cp_conversation.160.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_conversation_school.dds"
 	}
 
 	duration = 5
@@ -2292,7 +2292,7 @@ cp_conversation.161 = {
 	flavor = cp_conversation.161.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_school.dds"
 	}
 
 	duration = 5
@@ -2317,7 +2317,7 @@ cp_conversation.162 = {
 	flavor = cp_conversation.162.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_conversation_school.dds"
 	}
 
 	duration = 5
@@ -2342,7 +2342,7 @@ cp_conversation.163 = {
 	flavor = cp_conversation.163.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_conversation_school.dds"
 	}
 
 	duration = 5
@@ -2389,7 +2389,7 @@ cp_conversation.90 = {
 	flavor = cp_conversation.90.f
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_conversation_kitchen.dds"
 	}
 
 	duration = 5

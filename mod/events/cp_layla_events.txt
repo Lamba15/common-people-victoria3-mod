@@ -266,7 +266,7 @@ cp_layla.6 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_layla_moment.dds"
 	}
 
 	duration = 3
@@ -305,7 +305,7 @@ cp_layla.10 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+		texture = "gfx/event_pictures/cp_layla_letter_not_come.dds"
 	}
 
 	duration = 3
@@ -335,7 +335,7 @@ cp_layla.11 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_walking_field.dds"
 	}
 
 	duration = 3
@@ -365,7 +365,7 @@ cp_layla.12 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_layla_bey_eye.dds"
 	}
 
 	duration = 3
@@ -495,7 +495,7 @@ cp_layla.16 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_layla_hen.dds"
 	}
 
 	duration = 3
@@ -525,7 +525,7 @@ cp_layla.17 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_layla_merchants_scale.dds"
 	}
 
 	duration = 3
@@ -555,7 +555,7 @@ cp_layla.18 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_layla_river_low.dds"
 	}
 
 	duration = 3
@@ -585,7 +585,7 @@ cp_layla.19 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_layla_old_woman.dds"
 	}
 
 	duration = 3
@@ -615,7 +615,7 @@ cp_layla.20 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_layla_bread_not_rise.dds"
 	}
 
 	duration = 3
@@ -645,7 +645,7 @@ cp_layla.21 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_layla_dust_on_water.dds"
 	}
 
 	duration = 3
@@ -675,7 +675,7 @@ cp_layla.22 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+		texture = "gfx/event_pictures/cp_layla_brothers_letter.dds"
 	}
 
 	duration = 3
@@ -705,7 +705,7 @@ cp_layla.23 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_layla_mule.dds"
 	}
 
 	duration = 3
@@ -744,7 +744,7 @@ cp_layla.30 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_railway.dds"
 	}
 
 	duration = 3
@@ -774,7 +774,7 @@ cp_layla.31 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_layla_telegraph.dds"
 	}
 
 	duration = 3
@@ -804,7 +804,7 @@ cp_layla.32 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_layla_radio.dds"
 	}
 
 	duration = 3
@@ -844,7 +844,7 @@ cp_layla.40 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+		texture = "gfx/event_pictures/cp_layla_column_returns.dds"
 	}
 
 	duration = 3
@@ -875,7 +875,7 @@ cp_layla.41 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_layla_clerks_letter.dds"
 	}
 
 	duration = 3
@@ -913,7 +913,7 @@ cp_layla.50 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_mill_smoke.dds"
 	}
 
 	duration = 3
@@ -952,7 +952,7 @@ cp_layla.60 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_layla_shutters.dds"
 	}
 
 	duration = 3
@@ -1003,7 +1003,7 @@ cp_layla.80 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_layla_last_morning.dds"
 	}
 
 	duration = 3
@@ -1098,7 +1098,7 @@ cp_layla.90 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_first_envelope.dds"
 	}
 
 	duration = 3
@@ -1252,7 +1252,7 @@ cp_layla.82 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_childbirth.dds"
+		texture = "gfx/event_pictures/cp_layla_child_fever.dds"
 	}
 
 	duration = 3
@@ -1368,7 +1368,7 @@ cp_layla.70 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_cairo_calling.dds"
 	}
 
 	duration = 5
@@ -1456,7 +1456,7 @@ cp_layla.93 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_layla_women_fields.dds"
 	}
 
 	duration = 3
@@ -1526,7 +1526,7 @@ cp_layla.94 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_paper_my_name.dds"
 	}
 
 	duration = 3
@@ -1585,7 +1585,7 @@ cp_layla.95 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_layla_women_hiring.dds"
 	}
 
 	duration = 3
@@ -1663,7 +1663,7 @@ cp_layla.96 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_layla_on_rolls.dds"
 	}
 
 	duration = 3
@@ -2077,7 +2077,7 @@ cp_layla.100 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_layla_school_built.dds"
 	}
 
 	duration = 3
@@ -2133,7 +2133,7 @@ cp_layla.101 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_layla_children_school.dds"
 	}
 
 	duration = 3
@@ -2234,7 +2234,7 @@ cp_layla.103 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_chains.dds"
 	}
 
 	duration = 5
@@ -2352,7 +2352,7 @@ cp_layla.25 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_layla_ramadan.dds"
 	}
 
 	duration = 3
@@ -2395,7 +2395,7 @@ cp_layla.26 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_nile_rises.dds"
 	}
 
 	duration = 3
@@ -2433,7 +2433,7 @@ cp_layla.27 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_layla_hajj.dds"
 	}
 
 	duration = 3
@@ -2466,7 +2466,7 @@ cp_layla.28 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_childbirth.dds"
+		texture = "gfx/event_pictures/cp_layla_midwife_lamp.dds"
 	}
 
 	duration = 3
@@ -2497,7 +2497,7 @@ cp_layla.29 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_layla_dates.dds"
 	}
 
 	duration = 3
@@ -2538,7 +2538,7 @@ cp_layla.33 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_layla_coffee.dds"
 	}
 
 	duration = 3
@@ -2574,7 +2574,7 @@ cp_layla.34 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_layla_sugar.dds"
 	}
 
 	duration = 3
@@ -2609,7 +2609,7 @@ cp_layla.35 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_layla_cloth.dds"
 	}
 
 	duration = 3
@@ -2665,7 +2665,7 @@ cp_layla.72 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_layla_suitor.dds"
 	}
 
 	duration = 5
@@ -2842,7 +2842,7 @@ cp_layla.107 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_layla_coptic_neighbour.dds"
 	}
 
 	duration = 3
@@ -2894,7 +2894,7 @@ cp_layla.108 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_layla_mosque_doctor.dds"
 	}
 
 	duration = 3
@@ -2979,7 +2979,7 @@ cp_layla.110 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_next_village_doctor.dds"
 	}
 
 	duration = 3
@@ -3018,7 +3018,7 @@ cp_layla.111 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_layla_guard.dds"
 	}
 
 	duration = 3
@@ -3057,7 +3057,7 @@ cp_layla.112 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_layla_meeting.dds"
 	}
 
 	duration = 3
@@ -3100,7 +3100,7 @@ cp_layla.113 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_layla_strike.dds"
 	}
 
 	duration = 3
@@ -3156,7 +3156,7 @@ cp_layla.73 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_layla_mill_closed.dds"
 	}
 
 	duration = 5
@@ -3220,7 +3220,7 @@ cp_layla.114 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_layla_minaret_silence.dds"
 	}
 
 	duration = 3
@@ -3266,7 +3266,7 @@ cp_layla.115 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_layla_procession.dds"
 	}
 
 	duration = 3
@@ -3309,7 +3309,7 @@ cp_layla.116 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_layla_square_fills.dds"
 	}
 
 	duration = 3
@@ -3355,7 +3355,7 @@ cp_layla.118 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_layla_children_leave.dds"
 	}
 
 	duration = 3
@@ -3404,7 +3404,7 @@ cp_layla.119 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_layla_station.dds"
 	}
 
 	duration = 3
@@ -3447,7 +3447,7 @@ cp_layla.120 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_layla_rifles.dds"
 	}
 
 	duration = 3
@@ -3490,7 +3490,7 @@ cp_layla.117 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_layla_burning_letters.dds"
 	}
 
 	duration = 3
@@ -3630,7 +3630,7 @@ cp_layla.123 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_factory_field.dds"
 	}
 
 	duration = 3
@@ -3678,7 +3678,7 @@ cp_layla.124 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_layla_ministry.dds"
 	}
 
 	duration = 3
@@ -3744,7 +3744,7 @@ cp_layla.83 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_layla_forty_days.dds"
 	}
 
 	duration = 5
@@ -3780,7 +3780,7 @@ cp_layla.125 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_layla_district_office.dds"
 	}
 
 	duration = 5
@@ -3835,7 +3835,7 @@ cp_layla.126 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_layla_imam_visit.dds"
 	}
 
 	duration = 3
@@ -3886,7 +3886,7 @@ cp_layla.127 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_layla_small_victory.dds"
 	}
 
 	duration = 3
@@ -3942,7 +3942,7 @@ cp_layla.128 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_mariam_letter.dds"
 	}
 
 	duration = 3
