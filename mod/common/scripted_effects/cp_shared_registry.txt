@@ -44,29 +44,15 @@
 # ============================================================================
 
 cp_register_person = {
+	# Global registry — these flags let the shared dispatcher know this
+	# person exists and which country they currently live in.
 	set_global_variable = { name = cp_person_$person$_alive   value = yes }
 	set_global_variable = { name = cp_person_$person$_country value = $country$ }
 
-	c:$country$ = {
-		set_variable = { name = cp_$person$_alive      value = 1 }
-		set_variable = { name = cp_$person$_age        value = $age$ }
-		set_variable = { name = cp_$person$_hope       value = 5 }
-		set_variable = { name = cp_$person$_exhaustion value = 3 }
-		set_variable = { name = cp_$person$_sol        value = 5 }
-		set_variable = { name = cp_$person$_literacy   value = 0 }
-		set_variable = { name = cp_$person$_radical    value = 0 }
-		set_variable = { name = cp_$person$_loyalist   value = 0 }
-		set_variable = { name = cp_$person$_profession_$profession$ value = 1 }
-
-		# State marker: the state the person currently lives in.
-		# Used by cohort reads, migration sensors, pollution exposure.
-		s:$home_state$ = {
-			random_scope_state = {
-				limit = { owner = c:$country$ }
-				set_variable = cp_$person$_lives_here
-			}
-		}
-	}
+	# Each person's detailed country-variable init happens in their own
+	# startup event (e.g. cp_startup.1 for Layla). That event reads the
+	# registry flag to know whether it should run. Keeping this effect
+	# minimal avoids overwriting anything the per-person init set.
 }
 
 

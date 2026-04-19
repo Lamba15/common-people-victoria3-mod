@@ -69,6 +69,14 @@ cp_on_start = {
 			}
 
 			trigger_event = { id = cp_startup.1 }
+
+			# r5: shared person registry. cp_shared_startup.1 calls
+			# cp_register_person for every mod person (Layla today, Bey /
+			# Tarek / Samier when added). Fires after cp_startup.1 has
+			# done Layla's detailed country-variable init, so the globals
+			# that cp_register_person sets are non-conflicting. Safe on
+			# reload — cp_register_person is idempotent.
+			trigger_event = { id = cp_shared_startup.1 }
 		}
 	}
 }
@@ -121,6 +129,14 @@ cp_on_monthly = {
 				33 = { set_variable = { name = cp_layla_status_variant value = 2 } }
 				34 = { set_variable = { name = cp_layla_status_variant value = 3 } }
 			}
+		}
+		# r5: the shared ambient router. Runs once per month on every
+		# country. cp_roll_for_event has its own guards; it's safe to call
+		# unconditionally — the 93% nothing-fires branch keeps the mod
+		# quiet, and cp_try_fire_ambient enforces the 180-day cooldown.
+		if = {
+			limit = { THIS = c:EGY }
+			cp_roll_for_event = yes
 		}
 	}
 }
@@ -195,7 +211,7 @@ cp_on_yearly = {
 					# We cannot express var - var >= 3 directly; approximate
 					# with absolute threshold (>=7) + the trend guard above.
 				}
-				trigger_event = { id = cp_layla.7 }
+				cp_try_fire_milestone = { event = cp_layla.7 person = layla }
 				set_variable = { name = cp_layla_seen_tax_spike days = 1800 }
 			}
 			# First-bite event: consumption tax on grain lands for the
@@ -205,7 +221,7 @@ cp_on_yearly = {
 					NOT = { has_variable = cp_layla_seen_grain_tax }
 					has_consumption_tax = g:grain
 				}
-				trigger_event = { id = cp_layla.8 }
+				cp_try_fire_milestone = { event = cp_layla.8 person = layla }
 				set_variable = cp_layla_seen_grain_tax
 			}
 			set_variable = { name = cp_layla_tax_burden_prev value = var:cp_layla_tax_burden }
@@ -226,7 +242,7 @@ cp_on_yearly = {
 				}
 				random_list = {
 					25 = {
-						trigger_event = { id = cp_layla.70 }
+						cp_try_fire_milestone = { event = cp_layla.70 person = layla }
 						set_variable = cp_layla_seen_cairo_offer
 					}
 					75 = { }
@@ -271,7 +287,7 @@ cp_on_yearly = {
 				# the first envelope feels like an arrival, not a raffle.
 				random_list = {
 					50 = {
-						trigger_event = { id = cp_layla.90 }
+						cp_try_fire_milestone = { event = cp_layla.90 person = layla }
 						set_variable = cp_layla_seen_first_envelope
 					}
 					50 = { }
@@ -292,20 +308,20 @@ cp_on_yearly = {
 				if = {
 					limit = { var:cp_layla_mortality_pressure >= 7 }
 					random_list = {
-						10 = { trigger_event = { id = cp_layla.80 } }
+						10 = { cp_try_fire_milestone = { event = cp_layla.80 person = layla } }
 						90 = { }
 					}
 				}
 				else_if = {
 					limit = { var:cp_layla_mortality_pressure >= 4 }
 					random_list = {
-						4 = { trigger_event = { id = cp_layla.80 } }
+						4 = { cp_try_fire_milestone = { event = cp_layla.80 person = layla } }
 						96 = { }
 					}
 				}
 				else = {
 					random_list = {
-						1 = { trigger_event = { id = cp_layla.80 } }
+						1 = { cp_try_fire_milestone = { event = cp_layla.80 person = layla } }
 						99 = { }
 					}
 				}
@@ -325,13 +341,13 @@ cp_on_yearly = {
 				if = {
 					limit = { var:cp_layla_worker_risk >= 7 }
 					random_list = {
-						6 = { trigger_event = { id = cp_layla.81 } }
+						6 = { cp_try_fire_milestone = { event = cp_layla.81 person = layla } }
 						94 = { }
 					}
 				}
 				else = {
 					random_list = {
-						2 = { trigger_event = { id = cp_layla.81 } }
+						2 = { cp_try_fire_milestone = { event = cp_layla.81 person = layla } }
 						98 = { }
 					}
 				}
@@ -348,7 +364,7 @@ cp_on_yearly = {
 					var:cp_layla_mortality_pressure >= 5
 				}
 				random_list = {
-					3 = { trigger_event = { id = cp_layla.82 } }
+					3 = { cp_try_fire_milestone = { event = cp_layla.82 person = layla } }
 					97 = { }
 				}
 			}
@@ -380,7 +396,7 @@ cp_on_yearly = {
 				}
 				random_list = {
 					20 = {
-						trigger_event = { id = cp_layla.71 }
+						cp_try_fire_milestone = { event = cp_layla.71 person = layla }
 						set_variable = cp_layla_seen_ownership_offer
 					}
 					80 = { }
@@ -419,7 +435,7 @@ cp_on_yearly = {
 				}
 				random_list = {
 					50 = {
-						trigger_event = { id = cp_layla.97 }
+						cp_try_fire_milestone = { event = cp_layla.97 person = layla }
 					}
 					50 = { }
 				}
@@ -438,7 +454,7 @@ cp_on_yearly = {
 				}
 				random_list = {
 					15 = {
-						trigger_event = { id = cp_layla.97 }
+						cp_try_fire_milestone = { event = cp_layla.97 person = layla }
 					}
 					85 = { }
 				}
@@ -457,7 +473,7 @@ cp_on_yearly = {
 				}
 				random_list = {
 					20 = {
-						trigger_event = { id = cp_layla.72 }
+						cp_try_fire_milestone = { event = cp_layla.72 person = layla }
 						set_variable = cp_layla_seen_daughter_marriage
 					}
 					80 = { }
@@ -480,7 +496,7 @@ cp_on_yearly = {
 				}
 				random_list = {
 					30 = {
-						trigger_event = { id = cp_layla.73 }
+						cp_try_fire_milestone = { event = cp_layla.73 person = layla }
 					}
 					70 = { }
 				}
@@ -504,7 +520,7 @@ cp_on_yearly = {
 				}
 				random_list = {
 					10 = {
-						trigger_event = { id = cp_layla.125 }
+						cp_try_fire_milestone = { event = cp_layla.125 person = layla }
 					}
 					90 = { }
 				}
@@ -539,7 +555,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_homesteading
 				NOT = { has_variable = cp_layla_seen_homesteading }
 			}
-			trigger_event = { id = cp_layla.2 }
+			cp_try_fire_law_reaction = { event = cp_layla.2 person = layla }
 		}
 		# Serfdom restored (regressed from Tenant Farmers or Homesteading).
 		else_if = {
@@ -549,7 +565,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_serfdom
 				NOT = { has_variable = cp_layla_seen_serfdom_restored }
 			}
-			trigger_event = { id = cp_layla.3 }
+			cp_try_fire_law_reaction = { event = cp_layla.3 person = layla }
 		}
 
 		# Welfare-ladder transition. Any lawgroup_welfare change reaches
@@ -573,12 +589,12 @@ cp_on_law_enacted = {
 			# Up transition: new > prev.
 			if = {
 				limit = { var:cp_layla_welfare_tier > var:cp_layla_welfare_tier_prev }
-				trigger_event = { id = cp_layla.91 }
+				cp_try_fire_law_reaction = { event = cp_layla.91 person = layla }
 			}
 			else_if = {
 				# Down transition: new < prev. (Repeal / regression.)
 				limit = { var:cp_layla_welfare_tier < var:cp_layla_welfare_tier_prev }
-				trigger_event = { id = cp_layla.92 }
+				cp_try_fire_law_reaction = { event = cp_layla.92 person = layla }
 			}
 		}
 
@@ -593,7 +609,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_women_in_the_fields
 				NOT = { has_variable = cp_layla_seen_womens_rights_fields }
 			}
-			trigger_event = { id = cp_layla.93 }
+			cp_try_fire_law_reaction = { event = cp_layla.93 person = layla }
 		}
 		else_if = {
 			limit = {
@@ -602,7 +618,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_women_own_property
 				NOT = { has_variable = cp_layla_seen_womens_rights_property }
 			}
-			trigger_event = { id = cp_layla.94 }
+			cp_try_fire_law_reaction = { event = cp_layla.94 person = layla }
 		}
 		else_if = {
 			limit = {
@@ -611,7 +627,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_women_in_the_workplace
 				NOT = { has_variable = cp_layla_seen_womens_rights_workplace }
 			}
-			trigger_event = { id = cp_layla.95 }
+			cp_try_fire_law_reaction = { event = cp_layla.95 person = layla }
 		}
 		else_if = {
 			limit = {
@@ -620,7 +636,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_womens_suffrage
 				NOT = { has_variable = cp_layla_seen_womens_rights_suffrage }
 			}
-			trigger_event = { id = cp_layla.96 }
+			cp_try_fire_law_reaction = { event = cp_layla.96 person = layla }
 		}
 
 		# Education ladder: public schools + compulsory primary school.
@@ -632,7 +648,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_public_schools
 				NOT = { has_variable = cp_layla_seen_public_schools }
 			}
-			trigger_event = { id = cp_layla.100 }
+			cp_try_fire_law_reaction = { event = cp_layla.100 person = layla }
 		}
 		else_if = {
 			limit = {
@@ -641,7 +657,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_compulsory_primary_school
 				NOT = { has_variable = cp_layla_seen_compulsory_school }
 			}
-			trigger_event = { id = cp_layla.101 }
+			cp_try_fire_law_reaction = { event = cp_layla.101 person = layla }
 		}
 
 		# Slavery: emancipation is the big beat. The starting states
@@ -655,7 +671,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_slavery_banned
 				NOT = { has_variable = cp_layla_seen_emancipation }
 			}
-			trigger_event = { id = cp_layla.103 }
+			cp_try_fire_law_reaction = { event = cp_layla.103 person = layla }
 		}
 
 		# Regime: universal suffrage + single-party state. One-shot each.
@@ -666,7 +682,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_universal_suffrage
 				NOT = { has_variable = cp_layla_seen_universal_suffrage }
 			}
-			trigger_event = { id = cp_layla.105 }
+			cp_try_fire_law_reaction = { event = cp_layla.105 person = layla }
 		}
 		else_if = {
 			limit = {
@@ -675,7 +691,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_single_party_state
 				NOT = { has_variable = cp_layla_seen_single_party }
 			}
-			trigger_event = { id = cp_layla.106 }
+			cp_try_fire_law_reaction = { event = cp_layla.106 person = layla }
 		}
 
 		# Citizenship: multicultural. One-shot.
@@ -686,7 +702,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_multicultural
 				NOT = { has_variable = cp_layla_seen_multicultural }
 			}
-			trigger_event = { id = cp_layla.107 }
+			cp_try_fire_law_reaction = { event = cp_layla.107 person = layla }
 		}
 
 		# Health system rungs. Each one-shot.
@@ -697,7 +713,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_charitable_health_system
 				NOT = { has_variable = cp_layla_seen_charitable_health }
 			}
-			trigger_event = { id = cp_layla.108 }
+			cp_try_fire_law_reaction = { event = cp_layla.108 person = layla }
 		}
 		else_if = {
 			limit = {
@@ -706,7 +722,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_private_health_insurance
 				NOT = { has_variable = cp_layla_seen_private_health }
 			}
-			trigger_event = { id = cp_layla.109 }
+			cp_try_fire_law_reaction = { event = cp_layla.109 person = layla }
 		}
 		else_if = {
 			limit = {
@@ -715,7 +731,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_public_health_insurance
 				NOT = { has_variable = cp_layla_seen_public_health }
 			}
-			trigger_event = { id = cp_layla.110 }
+			cp_try_fire_law_reaction = { event = cp_layla.110 person = layla }
 		}
 
 		# Labor rights: worker protections (top rung of lawgroup_labor_rights).
@@ -726,7 +742,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_worker_protections
 				NOT = { has_variable = cp_layla_seen_worker_protections }
 			}
-			trigger_event = { id = cp_layla.111 }
+			cp_try_fire_law_reaction = { event = cp_layla.111 person = layla }
 		}
 
 		# Labour associations: right to associate (unions legal).
@@ -737,7 +753,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_right_to_associate
 				NOT = { has_variable = cp_layla_seen_right_to_associate }
 			}
-			trigger_event = { id = cp_layla.112 }
+			cp_try_fire_law_reaction = { event = cp_layla.112 person = layla }
 		}
 
 		# Church/state: the hardest beat (state atheism) and the softer
@@ -751,7 +767,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_state_atheism
 				NOT = { has_variable = cp_layla_seen_state_atheism }
 			}
-			trigger_event = { id = cp_layla.114 }
+			cp_try_fire_law_reaction = { event = cp_layla.114 person = layla }
 		}
 		else_if = {
 			limit = {
@@ -760,7 +776,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_freedom_of_conscience
 				NOT = { has_variable = cp_layla_seen_freedom_of_conscience }
 			}
-			trigger_event = { id = cp_layla.115 }
+			cp_try_fire_law_reaction = { event = cp_layla.115 person = layla }
 		}
 
 		# Free speech: the opening (right_of_assembly) and the closing
@@ -773,7 +789,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_right_of_assembly
 				NOT = { has_variable = cp_layla_seen_right_of_assembly }
 			}
-			trigger_event = { id = cp_layla.116 }
+			cp_try_fire_law_reaction = { event = cp_layla.116 person = layla }
 		}
 		else_if = {
 			limit = {
@@ -782,7 +798,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_outlawed_dissent
 				NOT = { has_variable = cp_layla_seen_outlawed_dissent }
 			}
-			trigger_event = { id = cp_layla.117 }
+			cp_try_fire_law_reaction = { event = cp_layla.117 person = layla }
 		}
 
 		# Children's rights: restricted child labor (the kids leave the floor).
@@ -795,7 +811,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_restricted_child_labor
 				NOT = { has_variable = cp_layla_seen_restricted_child_labor }
 			}
-			trigger_event = { id = cp_layla.118 }
+			cp_try_fire_law_reaction = { event = cp_layla.118 person = layla }
 		}
 
 		# Policing: the two enactments that change the lane. Starting rung
@@ -807,7 +823,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_dedicated_police
 				NOT = { has_variable = cp_layla_seen_dedicated_police }
 			}
-			trigger_event = { id = cp_layla.119 }
+			cp_try_fire_law_reaction = { event = cp_layla.119 person = layla }
 		}
 		else_if = {
 			limit = {
@@ -816,7 +832,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_militarized_police
 				NOT = { has_variable = cp_layla_seen_militarized_police }
 			}
-			trigger_event = { id = cp_layla.120 }
+			cp_try_fire_law_reaction = { event = cp_layla.120 person = layla }
 		}
 
 		# Migration: the two ends of the ladder. Middle rung
@@ -828,7 +844,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_no_migration_controls
 				NOT = { has_variable = cp_layla_seen_no_migration_controls }
 			}
-			trigger_event = { id = cp_layla.121 }
+			cp_try_fire_law_reaction = { event = cp_layla.121 person = layla }
 		}
 		else_if = {
 			limit = {
@@ -837,7 +853,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_closed_borders
 				NOT = { has_variable = cp_layla_seen_closed_borders }
 			}
-			trigger_event = { id = cp_layla.122 }
+			cp_try_fire_law_reaction = { event = cp_layla.122 person = layla }
 		}
 
 		# Economic system: the two rungs that reshape a village's
@@ -850,7 +866,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_laissez_faire
 				NOT = { has_variable = cp_layla_seen_laissez_faire }
 			}
-			trigger_event = { id = cp_layla.123 }
+			cp_try_fire_law_reaction = { event = cp_layla.123 person = layla }
 		}
 		else_if = {
 			limit = {
@@ -859,7 +875,7 @@ cp_on_law_enacted = {
 				ROOT.currently_enacting_law.type ?= law_type:law_command_economy
 				NOT = { has_variable = cp_layla_seen_command_economy }
 			}
-			trigger_event = { id = cp_layla.124 }
+			cp_try_fire_law_reaction = { event = cp_layla.124 person = layla }
 		}
 	}
 }
@@ -889,7 +905,7 @@ cp_on_war_started = {
 				var:cp_layla_ahmed_age >= 18
 				var:cp_layla_ahmed_age <= 45
 			}
-			trigger_event = { id = cp_layla.4 }
+			cp_try_fire_milestone = { event = cp_layla.4 person = layla }
 		}
 	}
 }
@@ -930,23 +946,23 @@ cp_on_war_end = {
 			if = {
 				limit = { has_variable = recently_won_war }
 				random_list = {
-					75 = { trigger_event = { id = cp_layla.40 } }
-					25 = { trigger_event = { id = cp_layla.41 } }
+					75 = { cp_try_fire_milestone = { event = cp_layla.40 person = layla } }
+					25 = { cp_try_fire_milestone = { event = cp_layla.41 person = layla } }
 				}
 			}
 			else_if = {
 				limit = { has_variable = recently_lost_war }
 				random_list = {
-					40 = { trigger_event = { id = cp_layla.40 } }
-					60 = { trigger_event = { id = cp_layla.41 } }
+					40 = { cp_try_fire_milestone = { event = cp_layla.40 person = layla } }
+					60 = { cp_try_fire_milestone = { event = cp_layla.41 person = layla } }
 				}
 			}
 			else = {
 				# Neither side fully capitulated (white peace, stalemate).
 				# Still brutal; still a coin flip with a slight pull toward home.
 				random_list = {
-					55 = { trigger_event = { id = cp_layla.40 } }
-					45 = { trigger_event = { id = cp_layla.41 } }
+					55 = { cp_try_fire_milestone = { event = cp_layla.40 person = layla } }
+					45 = { cp_try_fire_milestone = { event = cp_layla.41 person = layla } }
 				}
 			}
 		}
@@ -982,7 +998,7 @@ cp_on_tech = {
 				has_technology_researched = railways
 				NOT = { has_variable = cp_layla_seen_railway }
 			}
-			trigger_event = { id = cp_layla.30 }
+			cp_try_fire_milestone = { event = cp_layla.30 person = layla }
 			set_variable = cp_layla_seen_railway
 		}
 		if = {
@@ -992,7 +1008,7 @@ cp_on_tech = {
 				has_technology_researched = electric_telegraph
 				NOT = { has_variable = cp_layla_seen_telegraph }
 			}
-			trigger_event = { id = cp_layla.31 }
+			cp_try_fire_milestone = { event = cp_layla.31 person = layla }
 			set_variable = cp_layla_seen_telegraph
 		}
 		if = {
@@ -1002,7 +1018,7 @@ cp_on_tech = {
 				has_technology_researched = radio
 				NOT = { has_variable = cp_layla_seen_radio }
 			}
-			trigger_event = { id = cp_layla.32 }
+			cp_try_fire_milestone = { event = cp_layla.32 person = layla }
 			set_variable = cp_layla_seen_radio
 		}
 	}
@@ -1039,7 +1055,7 @@ cp_on_building_built = {
 				state = { has_variable = cp_layla_lives_here }
 			}
 			owner ?= {
-				trigger_event = { id = cp_layla.50 }
+				cp_try_fire_milestone = { event = cp_layla.50 person = layla }
 				set_variable = cp_layla_seen_first_textile_mill
 			}
 		}
@@ -1070,7 +1086,7 @@ cp_on_revolution = {
 				has_variable = cp_layla_alive
 				NOT = { has_variable = cp_layla_seen_revolution }
 			}
-			trigger_event = { id = cp_layla.60 }
+			cp_try_fire_milestone = { event = cp_layla.60 person = layla }
 			# Timed 10-year flag so a later revolution can re-fire the prose.
 			set_variable = { name = cp_layla_seen_revolution days = 3650 }
 		}

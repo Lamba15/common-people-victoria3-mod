@@ -1097,3 +1097,81 @@ cp_child_dies = {
 	cp_shift_hope = { person = layla delta = -3 }
 	cp_shift_exhaustion = { person = layla delta = 2 }
 }
+
+
+# ============================================================================
+# cp_roll_ambient_layla -- her ambient-event pool (r5)
+# ============================================================================
+# Called from cp_roll_for_event (in cp_shared_firing.txt) once per month
+# with a 7% chance. Picks one of her ambient events by weighted random_list
+# and calls cp_try_fire_ambient — which applies the 180-day global / 365-day
+# per-person cooldown. Most invocations end up no-op because the cooldown
+# is active; that's the point.
+#
+# Each option carries a trigger{} block that gates per-event seen-flags and
+# per-event context (Ahmed at war only if he IS at war, etc.). V3 drops
+# options whose trigger fails, so the random_list naturally shrinks to
+# whatever is eligible this month.
+cp_roll_ambient_layla = {
+	random_list = {
+		# Situation-specific
+		15 = {
+			trigger = { has_variable = cp_layla_ahmed_at_war  NOT = { has_variable = cp_layla_seen_letter } }
+			cp_try_fire_ambient = { event = cp_layla.10  person = layla }
+		}
+		15 = {
+			trigger = { has_variable = cp_layla_owns_land  NOT = { has_variable = cp_layla_seen_walking_field } }
+			cp_try_fire_ambient = { event = cp_layla.11  person = layla }
+		}
+		15 = {
+			trigger = { has_variable = cp_layla_under_serfdom  NOT = { has_variable = cp_layla_seen_under_beys_eye } }
+			cp_try_fire_ambient = { event = cp_layla.12  person = layla }
+		}
+
+		# Always-available village life (14 variants)
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_no_wind } }         cp_try_fire_ambient = { event = cp_layla.13  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_neighbours_boy } }  cp_try_fire_ambient = { event = cp_layla.14  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_mothers_hand } }    cp_try_fire_ambient = { event = cp_layla.15  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_hen } }             cp_try_fire_ambient = { event = cp_layla.16  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_scale } }           cp_try_fire_ambient = { event = cp_layla.17  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_river_low } }       cp_try_fire_ambient = { event = cp_layla.18  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_old_woman } }       cp_try_fire_ambient = { event = cp_layla.19  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_bread } }           cp_try_fire_ambient = { event = cp_layla.20  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_dust } }            cp_try_fire_ambient = { event = cp_layla.21  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_brother } }         cp_try_fire_ambient = { event = cp_layla.22  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_mule } }            cp_try_fire_ambient = { event = cp_layla.23  person = layla } }
+
+		# Post-suffrage: Election Day
+		10 = { trigger = { has_variable = cp_layla_may_vote  NOT = { has_variable = cp_layla_has_voted } } cp_try_fire_ambient = { event = cp_layla.24  person = layla } }
+
+		# Absence-bite events
+		5  = { trigger = { var:cp_layla_sol <= 10 } cp_try_fire_ambient = { event = cp_layla.98  person = layla } }
+		5  = { trigger = { has_variable = cp_layla_owns_land } cp_try_fire_ambient = { event = cp_layla.99  person = layla } }
+
+		# Education arc: the daughter reads aloud
+		10 = { trigger = { has_variable = cp_layla_daughter_at_school  NOT = { has_variable = cp_layla_seen_daughter_reads } } cp_try_fire_ambient = { event = cp_layla.102  person = layla } }
+
+		# Slavery: ambient compound-pass encounter
+		5  = { trigger = { OR = { has_law = law_type:law_debt_slavery  has_law = law_type:law_legacy_slavery  has_law = law_type:law_slave_trade } NOT = { has_variable = cp_layla_seen_slaves_pulse } } cp_try_fire_ambient = { event = cp_layla.104  person = layla } }
+
+		# Seasonal / cultural / communal life
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_ramadan } }       cp_try_fire_ambient = { event = cp_layla.25  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_flood } }         cp_try_fire_ambient = { event = cp_layla.26  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_hajj } }          cp_try_fire_ambient = { event = cp_layla.27  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_midwife_lamp } }  cp_try_fire_ambient = { event = cp_layla.28  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_date_harvest } }  cp_try_fire_ambient = { event = cp_layla.29  person = layla } }
+
+		# Goods-arrival pulses
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_coffee_arrival } }   cp_try_fire_ambient = { event = cp_layla.33  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_sugar_cheap } }      cp_try_fire_ambient = { event = cp_layla.34  person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_cloth_affordable } } cp_try_fire_ambient = { event = cp_layla.35  person = layla } }
+
+		# Labour: a strike
+		5  = { trigger = { OR = { has_variable = cp_layla_profession_laborers  has_variable = cp_layla_ahmed_profession_laborer } OR = { has_law = law_type:law_right_to_associate  has_law = law_type:law_corporatized_unions  has_law = law_type:law_factory_councils } NOT = { has_variable = cp_layla_seen_strike } } cp_try_fire_ambient = { event = cp_layla.113  person = layla } }
+
+		# Editor-audit additions
+		5  = { trigger = { NOT = { has_variable = cp_layla_seen_imam_visit } }     cp_try_fire_ambient = { event = cp_layla.126  person = layla } }
+		5  = { trigger = { NOT = { has_variable = cp_layla_seen_small_victory } }  cp_try_fire_ambient = { event = cp_layla.127  person = layla } }
+		5  = { trigger = { NOT = { has_variable = cp_layla_seen_mariam_letter } }  cp_try_fire_ambient = { event = cp_layla.128  person = layla } }
+	}
+}

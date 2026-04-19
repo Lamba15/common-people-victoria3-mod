@@ -163,76 +163,13 @@ cp_je_layla = {
 	scripted_button = cp_layla_check_button
 	scripted_button = cp_layla_conversation_button
 
-	# Monthly: 10% chance of a spontaneous reflection event. Same pool the
-	# button picks from; each event has its own "seen recently" gate so
-	# the same beat cannot repeat within 180 days.
-	# Tick-increment and mood-reroll live on on_monthly_pulse_country →
-	# cp_on_monthly (see cp_on_actions.txt) because V3 doesn't allow both
-	# `effect` and `random_events` in a single on_monthly_pulse block.
-	on_monthly_pulse = {
-		random_events = {
-			chance_to_happen = 10
-
-			# Situation-specific
-			15 = cp_layla.10   # Ahmed at war: the letter that has not come
-			15 = cp_layla.11   # Homesteader: walking the field she owns
-			15 = cp_layla.12   # Serfdom restored: under the bey's eye
-
-			# Always-available village life
-			10 = cp_layla.13   # A day with no wind
-			10 = cp_layla.14   # The neighbour's boy in the lane
-			10 = cp_layla.15   # Her mother's left hand
-			10 = cp_layla.16   # The hen that will not lay
-			10 = cp_layla.17   # The merchant's scale
-			10 = cp_layla.18   # Friday, the river low
-			10 = cp_layla.19   # The old woman who sees through walls
-			10 = cp_layla.20   # The bread that did not rise
-			10 = cp_layla.21   # Dust on the water
-			10 = cp_layla.22   # The younger brother's letter
-			10 = cp_layla.23   # The mule that will not move
-
-			# Post-suffrage: Election Day. Gated inside the event on
-			# cp_layla_may_vote && NOT cp_layla_has_voted so the pulse reaches the
-			# event but the trigger blocks it when she already has voted.
-			10 = cp_layla.24   # Election day — the first vote
-
-			# Absence-bite events — fire rarely (low weight) and only
-			# when the country's lack of a law has visible cost on her.
-			5  = cp_layla.98   # The month without (no welfare + grim state)
-			5  = cp_layla.99   # Her name is not on the deed
-
-			# Education arc: the daughter reads aloud. Gated inside on
-			# cp_layla_daughter_at_school + cooldown so it fires at most yearly.
-			10 = cp_layla.102  # The daughter reads to her mother
-
-			# Slavery: her ambient encounter with the compound. Gated
-			# inside on slavery-legal laws + 4yr cooldown.
-			5  = cp_layla.104  # The compound on the edge of the village
-
-			# Seasonal / cultural / communal life. Each 2-year cooldown.
-			10 = cp_layla.25   # The first day of Ramadan
-			10 = cp_layla.26   # The Nile rises (land-bound only)
-			10 = cp_layla.27   # The Hajj returnees
-			10 = cp_layla.28   # The midwife's lamp
-			10 = cp_layla.29   # The date harvest
-
-			# Goods-arrival pulses. One-shot; gated on V3 market_goods_*
-			# reads, so they fire only when the good actually circulates.
-			10 = cp_layla.33   # The cup of coffee
-			10 = cp_layla.34   # The white sugar
-			10 = cp_layla.35   # The cloth from the port
-
-			# Labour: a strike in her city. Gated on her being a laborer
-			# (or Ahmed) + right-to-associate laws + 5yr cooldown.
-			5  = cp_layla.113  # The strike
-
-			# Editor-audit additions. Each one-shot or long-cooldown; the
-			# triggers on the events themselves gate availability.
-			5  = cp_layla.126  # The Imam's Visit
-			5  = cp_layla.127  # The Small Victory
-			5  = cp_layla.128  # Mariam Writes from Cairo
-		}
-	}
+	# r5: the ambient-event pool has moved OUT of the JE.
+	# cp_on_monthly (in cp_on_actions.txt) now calls cp_roll_for_event
+	# (in cp_shared_firing.txt), which delegates to cp_roll_ambient_layla
+	# (in cp_layla_memory.txt) — the replacement for this pool. The new
+	# path respects the global + per-person firing budget: at most
+	# 0–2 ambient events per in-game year across all persons.
+	# The JE is now display-only.
 
 	# Yearly: increment age.
 	on_yearly_pulse = {

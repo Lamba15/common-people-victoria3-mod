@@ -106,5 +106,34 @@ cp_try_fire_milestone = {
 # ============================================================================
 
 cp_button_fire = {
-	trigger_event = { id = $event$ }
+	trigger_event = { id = $event$ popup = yes }
+}
+
+
+# ============================================================================
+# cp_roll_for_event -- monthly router across all registered persons
+# ============================================================================
+# Called from cp_on_monthly (on_monthly_pulse_country). Picks at most one
+# ambient event across all alive persons, OR (most often) nothing.
+#
+# The weights: each person gets a 7/100 branch; the "nothing-fires" branch
+# weighs 86/100 (with just Layla alive; the weights rebalance when more
+# persons are added). Combined with the 180-day global ambient cooldown,
+# this caps ambient fires at ~1–2 per in-game year.
+#
+# Each per-person branch calls that person's cp_roll_ambient_<name> effect,
+# which does a nested random_list over that person's ambient pool and then
+# calls cp_try_fire_ambient — which applies the cooldown check.
+# ============================================================================
+
+cp_roll_for_event = {
+	random_list = {
+		7 = {
+			trigger = { has_variable = cp_layla_alive }
+			cp_roll_ambient_layla = yes
+		}
+		# When Person 2 is registered, add:
+		# 7 = { trigger = { has_variable = cp_bey_alive }  cp_roll_ambient_bey = yes }
+		93 = { }   # most months are silent
+	}
 }

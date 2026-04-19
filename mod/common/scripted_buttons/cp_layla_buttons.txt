@@ -37,7 +37,7 @@ cp_layla_check_button = {
 					NOT = { has_variable = cp_layla_seen_letter }
 				}
 				set_variable = { name = cp_layla_seen_letter days = 180 }
-				trigger_event = { id = cp_layla.10 popup = yes }
+				cp_button_fire = { event = cp_layla.10 person = layla }
 			}
 			# Situation-specific: walking the field (homesteader)
 			15 = {
@@ -46,7 +46,7 @@ cp_layla_check_button = {
 					NOT = { has_variable = cp_layla_seen_walking_field }
 				}
 				set_variable = { name = cp_layla_seen_walking_field days = 180 }
-				trigger_event = { id = cp_layla.11 popup = yes }
+				cp_button_fire = { event = cp_layla.11 person = layla }
 			}
 			# Situation-specific: under the bey's eye (serfdom restored)
 			15 = {
@@ -55,7 +55,7 @@ cp_layla_check_button = {
 					NOT = { has_variable = cp_layla_seen_under_beys_eye }
 				}
 				set_variable = { name = cp_layla_seen_under_beys_eye days = 180 }
-				trigger_event = { id = cp_layla.12 popup = yes }
+				cp_button_fire = { event = cp_layla.12 person = layla }
 			}
 			# Always-on: a day with no wind
 			10 = {
@@ -63,7 +63,7 @@ cp_layla_check_button = {
 					NOT = { has_variable = cp_layla_seen_no_wind }
 				}
 				set_variable = { name = cp_layla_seen_no_wind days = 180 }
-				trigger_event = { id = cp_layla.13 popup = yes }
+				cp_button_fire = { event = cp_layla.13 person = layla }
 			}
 			# Always-on: the neighbour's boy in the lane
 			10 = {
@@ -71,7 +71,7 @@ cp_layla_check_button = {
 					NOT = { has_variable = cp_layla_seen_neighbours_boy }
 				}
 				set_variable = { name = cp_layla_seen_neighbours_boy days = 180 }
-				trigger_event = { id = cp_layla.14 popup = yes }
+				cp_button_fire = { event = cp_layla.14 person = layla }
 			}
 			# Always-on: her mother's left hand
 			10 = {
@@ -79,61 +79,61 @@ cp_layla_check_button = {
 					NOT = { has_variable = cp_layla_seen_mothers_hand }
 				}
 				set_variable = { name = cp_layla_seen_mothers_hand days = 180 }
-				trigger_event = { id = cp_layla.15 popup = yes }
+				cp_button_fire = { event = cp_layla.15 person = layla }
 			}
 			# Always-on: the hen that will not lay
 			10 = {
 				trigger = { NOT = { has_variable = cp_layla_seen_hen } }
 				set_variable = { name = cp_layla_seen_hen days = 180 }
-				trigger_event = { id = cp_layla.16 popup = yes }
+				cp_button_fire = { event = cp_layla.16 person = layla }
 			}
 			# Always-on: the merchant's scale
 			10 = {
 				trigger = { NOT = { has_variable = cp_layla_seen_scale } }
 				set_variable = { name = cp_layla_seen_scale days = 180 }
-				trigger_event = { id = cp_layla.17 popup = yes }
+				cp_button_fire = { event = cp_layla.17 person = layla }
 			}
 			# Always-on: Friday, the river low
 			10 = {
 				trigger = { NOT = { has_variable = cp_layla_seen_river_low } }
 				set_variable = { name = cp_layla_seen_river_low days = 180 }
-				trigger_event = { id = cp_layla.18 popup = yes }
+				cp_button_fire = { event = cp_layla.18 person = layla }
 			}
 			# Always-on: the old woman who sees through walls
 			10 = {
 				trigger = { NOT = { has_variable = cp_layla_seen_old_woman } }
 				set_variable = { name = cp_layla_seen_old_woman days = 180 }
-				trigger_event = { id = cp_layla.19 popup = yes }
+				cp_button_fire = { event = cp_layla.19 person = layla }
 			}
 			# Always-on: the bread that did not rise
 			10 = {
 				trigger = { NOT = { has_variable = cp_layla_seen_bread } }
 				set_variable = { name = cp_layla_seen_bread days = 180 }
-				trigger_event = { id = cp_layla.20 popup = yes }
+				cp_button_fire = { event = cp_layla.20 person = layla }
 			}
 			# Always-on: dust on the water
 			10 = {
 				trigger = { NOT = { has_variable = cp_layla_seen_dust } }
 				set_variable = { name = cp_layla_seen_dust days = 180 }
-				trigger_event = { id = cp_layla.21 popup = yes }
+				cp_button_fire = { event = cp_layla.21 person = layla }
 			}
 			# Always-on: the younger brother's letter
 			10 = {
 				trigger = { NOT = { has_variable = cp_layla_seen_brother } }
 				set_variable = { name = cp_layla_seen_brother days = 180 }
-				trigger_event = { id = cp_layla.22 popup = yes }
+				cp_button_fire = { event = cp_layla.22 person = layla }
 			}
 			# Always-on: the mule that will not move
 			10 = {
 				trigger = { NOT = { has_variable = cp_layla_seen_mule } }
 				set_variable = { name = cp_layla_seen_mule days = 180 }
-				trigger_event = { id = cp_layla.23 popup = yes }
+				cp_button_fire = { event = cp_layla.23 person = layla }
 			}
 			# Safety net: if every branch has been seen recently, fire a
 			# generic reflection (cp_layla.6 "A Moment") so the button
 			# never misfires.
 			1 = {
-				trigger_event = { id = cp_layla.6 popup = yes }
+				cp_button_fire = { event = cp_layla.6 person = layla }
 			}
 		}
 	}
@@ -167,6 +167,6 @@ cp_layla_conversation_button = {
 	# Cooldown is set by cp_conversation.90 (the closer), not here, so
 	# that if the player quits mid-audience the button is not locked.
 	effect = {
-		trigger_event = { id = cp_conversation.1 popup = yes }
+		cp_button_fire = { event = cp_conversation.1 person = layla }
 	}
 }
