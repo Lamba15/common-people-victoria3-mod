@@ -743,4 +743,21 @@ run_one "cp_layla_letter_folded" \
   "Interior of a modest kitchen, flat late-morning light. Layla (older, headscarf, lined face) sits at the low wooden table. Her hands are folded motionless over an open handwritten Arabic letter that has been unfolded on the table in front of her. A torn-open envelope sits beside it, the Beirut postmark visible. Behind her, a drawer is slightly open, revealing a few other folded letters inside. Her face is composed and private; she is not weeping. Quiet palette." \
   "a letter folded into the smallest square"
 
+
+###############################################################################
+# TIER 7 -- the last two holdouts on cp_layla_homesteading.dds
+###############################################################################
+
+run_one "cp_layla_small_concern" \
+  "The Small Concern" \
+  "Layla signs a partnership contract across a workbench in a small urban workshop — one lathe, two benches, an oil lamp" \
+  "Interior of a small Cairo workshop, evening, oil-lamp lit. Central wooden workbench; on it an open contract-paper and an inkpot. On the far side, a partner (middle-aged Egyptian man, fez, simple dark jacket, modest waistcoat) has just extended his hand across the bench. On the near side, Layla (middle-aged to older, headscarf, clean cotton dress, apron) meets his handshake with her right hand while her left steadies the paper. Behind them: one small metal-turning lathe, two workbenches with hand-tools hung above them on pegs. A single oil lamp hanging overhead casts warm amber light. The mood is grave, not triumphant." \
+  "the weight of ownership, soberly shouldered"
+
+run_one "cp_layla_law_new" \
+  "The New Law" \
+  "Layla seated on the threshold in late light, a paper with a printed stamp folded on her lap, the lane quiet behind her" \
+  "Exterior threshold of a Lower Egyptian village mud-brick house, late afternoon golden-hour light. Layla (middle-aged, headscarf, simple working dress) seated on the worn stone step, her hands resting on her knees. On her lap: a folded single-page official paper with a visible printed stamp — a government notice. The lane behind her is empty, quiet, palm-fronds catching the late sun. Her face thoughtful, private, neither hopeful nor resigned — the composed face of a woman who has read a law and is waiting to see whether the law reaches her. Ochre palette." \
+  "laws on paper are not the same as envelopes in the hand"
+
 echo "[$(date +%H:%M:%S)] all done"

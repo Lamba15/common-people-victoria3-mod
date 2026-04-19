@@ -1163,7 +1163,7 @@ cp_layla.91 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_law_new.dds"
 	}
 
 	duration = 3
@@ -1323,7 +1323,7 @@ cp_layla.71 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_small_concern.dds"
 	}
 
 	duration = 5
