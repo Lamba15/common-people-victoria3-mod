@@ -760,6 +760,40 @@ cp_on_law_enacted = {
 			}
 			trigger_event = { id = cp_layla.117 }
 		}
+
+		# Children's rights: restricted child labor (the kids leave the floor).
+		# Starting rung (child_labor_allowed) is default; compulsory_school
+		# is already handled above by cp_layla.101.
+		if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				ROOT.currently_enacting_law.type ?= law_type:law_restricted_child_labor
+				NOT = { has_variable = cp_seen_restricted_child_labor }
+			}
+			trigger_event = { id = cp_layla.118 }
+		}
+
+		# Policing: the two enactments that change the lane. Starting rung
+		# (local_police) produces no event on its own.
+		if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				ROOT.currently_enacting_law.type ?= law_type:law_dedicated_police
+				NOT = { has_variable = cp_seen_dedicated_police }
+			}
+			trigger_event = { id = cp_layla.119 }
+		}
+		else_if = {
+			limit = {
+				c:EGY ?= this
+				has_variable = cp_layla_alive
+				ROOT.currently_enacting_law.type ?= law_type:law_militarized_police
+				NOT = { has_variable = cp_seen_militarized_police }
+			}
+			trigger_event = { id = cp_layla.120 }
+		}
 	}
 }
 

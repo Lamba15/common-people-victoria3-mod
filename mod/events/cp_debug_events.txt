@@ -973,3 +973,42 @@ cp_debug.69 = {
 		}
 	}
 }
+
+# cp_debug.70 -- Force-pass law_restricted_child_labor → cp_layla.118.
+cp_debug.70 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_restricted_child_labor
+		}
+	}
+}
+
+# cp_debug.71 -- Force-pass law_dedicated_police → cp_layla.119.
+cp_debug.71 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_dedicated_police
+		}
+	}
+}
+
+# cp_debug.72 -- Force-pass law_militarized_police → cp_layla.120.
+cp_debug.72 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			activate_law = law_type:law_militarized_police
+		}
+	}
+}
