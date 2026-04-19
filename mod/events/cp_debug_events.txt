@@ -959,3 +959,17 @@ cp_debug.68 = {
 		}
 	}
 }
+
+# cp_debug.69 -- Set cp_daughter_at_school and fire conversation .160 directly.
+cp_debug.69 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			set_variable = cp_daughter_at_school
+			trigger_event = { id = cp_conversation.160 }
+		}
+	}
+}

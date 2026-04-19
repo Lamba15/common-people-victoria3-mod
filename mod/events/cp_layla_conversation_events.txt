@@ -224,6 +224,17 @@ cp_conversation.1 = {
 		trigger_event = { id = cp_conversation.150 popup = yes }
 	}
 
+	# About the school. Only if her daughter attends.
+	option = {
+		name = cp_conversation.1.o
+		trigger = {
+			has_variable = cp_daughter_at_school
+			NOT = { has_variable = cp_seen_audience_school }
+		}
+		set_variable = { name = cp_seen_audience_school months = 18 }
+		trigger_event = { id = cp_conversation.160 popup = yes }
+	}
+
 	# A small thing. Always available. Shorter cooldown (6 months) because
 	# it's the "I don't have a speech tonight" option and should be reachable
 	# more often than the big topics.
@@ -2226,6 +2237,124 @@ cp_conversation.153 = {
 		# thing two people are carrying. Hope up; loyalism up.
 		cp_shift_hope = { delta = 2 }
 		cp_shift_loyalist = { delta = 2 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+
+# ============================================================================
+# cp_conversation.160..163 -- The School (gated on cp_daughter_at_school)
+# ============================================================================
+# She brings the daughter's schooling to the Pasha. Three responses: the
+# administrator who approves because it is an administrative efficiency;
+# the traditionalist who warns her the girl will disappoint her; the
+# father-of-a-daughter who has walked this same road and offers a map.
+# ============================================================================
+
+cp_conversation.160 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.160.t
+	desc  = cp_conversation.160.d
+	flavor = cp_conversation.160.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+	}
+
+	duration = 5
+
+	immediate = {
+		set_variable = cp_has_spoken_of_school
+	}
+
+	option = {
+		name = cp_conversation.160.a
+		trigger_event = { id = cp_conversation.161 popup = yes }
+	}
+	option = {
+		name = cp_conversation.160.b
+		trigger_event = { id = cp_conversation.162 popup = yes }
+	}
+	option = {
+		name = cp_conversation.160.c
+		trigger_event = { id = cp_conversation.163 popup = yes }
+	}
+}
+
+cp_conversation.161 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.161.t
+	desc = cp_conversation.161.d
+	flavor = cp_conversation.161.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_intro.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.161.a
+		default_option = yes
+		# Administrator's voice: the girl is a future clerk, and clerks are
+		# what the state is short of. Weight on economy up; small loyalism.
+		cp_shift_weight = { weight = economy delta = 1 }
+		cp_shift_loyalist = { delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.162 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.162.t
+	desc = cp_conversation.162.d
+	flavor = cp_conversation.162.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.162.a
+		default_option = yes
+		# Traditionalist's voice: the girl will disappoint you. Weight on
+		# womens_rights up (she digs in); radical up.
+		cp_shift_weight = { weight = womens_rights delta = 2 }
+		cp_shift_radical = { delta = 1 }
+		trigger_event = { id = cp_conversation.90 popup = yes }
+	}
+}
+
+cp_conversation.163 = {
+	type = country_event
+	placement = root
+
+	title = cp_conversation.163.t
+	desc = cp_conversation.163.d
+	flavor = cp_conversation.163.f
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+	}
+
+	duration = 5
+
+	option = {
+		name = cp_conversation.163.a
+		default_option = yes
+		# Father-of-a-daughter's voice: he has walked this road; he offers
+		# her a map, not an approval. Hope up; weight on womens_rights up.
+		cp_shift_hope = { delta = 2 }
+		cp_shift_weight = { weight = womens_rights delta = 1 }
+		cp_shift_weight = { weight = education delta = 1 }
 		trigger_event = { id = cp_conversation.90 popup = yes }
 	}
 }
