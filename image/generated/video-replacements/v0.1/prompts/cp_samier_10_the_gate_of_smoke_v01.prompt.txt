@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_samier.10 at mod/events/cp_samier_events.txt:61
+Previous vanilla video placeholder: southamerica_factory_opening
+Target DDS: mod/gfx/event_pictures/cp_samier_10_the_gate_of_smoke_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_samier_10_the_gate_of_smoke_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_samier.10
+Person token: samier
+Title: The Gate of Smoke
+Short description: Samier arrives where the fields have become brick and whistle.
+Flavor text: The mill gate opens with a scrape that seems too large for one morning. Men pass through it without looking up, each carrying his own small hunger, and Samier stands beside the wall with his bundle against his hip. The city has not asked his name. Smoke lies over the roofs like a second ceiling, and beyond it the minarets show themselves in pieces, as if Cairo too must be learned by shift and by wound.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

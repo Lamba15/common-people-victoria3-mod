@@ -1,0 +1,30 @@
+﻿l_english:
+ cp_tarek.10.t:0 "The Mill Ledger"
+ cp_tarek.10.d:0 "Tarek al-Rashidi opens a factory with his father's estate watching from a frame."
+ cp_tarek.10.f:0 "The ledger takes the morning light without complaint. Its ruled pages offer a cleaner inheritance than land ever did: wages, cotton, coal, profit, debt, each number obedient to its column. On the desk, the little picture of the Fayoum house leans backward as if ashamed of being kept. Tarek sets two fingers on the page and listens to the machines begin below him, louder than prayer, steadier than grief."
+ cp_tarek.10.a:0 "The figures balance."
+
+ cp_tarek.20.t:0 "The New Arithmetic"
+ cp_tarek.20.d:0 "Worker protections arrive in Tarek's office as cost, and cost as doubt."
+ cp_tarek.20.f:0 "The clerk waits by the door while Tarek adds the same row for a third time. Fewer hours, safer belts, compensation when a hand is broken: each mercy has found its way into the margin. He thinks of the men below, then of the loan, then of the estate his father could not save. The factory keeps moving through the wall, patient and hungry, as if it has already decided what kindness is worth."
+ cp_tarek.20.a:0 "Ink darkens under his hand."
+
+ cp_tarek.30.t:0 "The New Boiler"
+ cp_tarek.30.d:0 "A machine arrives large enough to rearrange every silence in the mill."
+ cp_tarek.30.f:0 "The boiler comes on a cart with boys running beside it and old men stepping back from the wheels. Tarek walks around the iron belly twice before touching it, his palm leaving a print in the shipping grease. The engineer speaks of pressure, output, fewer stoppages. From the doorway the workers watch the thing that will ask more of their hands and less of their judgment. Tarek hears profit in the hiss before the fire is even lit."
+ cp_tarek.30.a:0 "Steam enters the ledger."
+
+ cp_tarek.40.t:0 "The Account Book"
+ cp_tarek.40.d:0 "Night leaves the office lamp burning over columns that refuse to comfort him."
+ cp_tarek.40.f:0 "After the last cart leaves, Tarek keeps the account book open. Oil pools at the base of the lamp and the numbers blur, recover, blur again. Wages, coal, thread, repairs, bribes small enough to be called hospitality: each line claims innocence by standing alone. Together they make a wall. He hears a worker laugh in the street below and cannot decide whether the sound is gratitude, contempt, or merely a man going home."
+ cp_tarek.40.a:0 "The ink dries unevenly."
+
+ cp_tarek.50.t:0 "The Second Chimney"
+ cp_tarek.50.d:0 "Another factory stack rises where Tarek once expected an orchard."
+ cp_tarek.50.f:0 "The mason marks the height with a charcoal line and the workers cheer when the first ring of brick holds. Tarek smiles because men are watching, because lenders like confidence, because a second chimney means the first one was not a mistake. Beyond the yard a cart of cotton waits under a torn awning, white as sifted flour. For a moment he sees his grandfather's trees standing there instead, and then the foreman calls for more lime and the vision is gone."
+ cp_tarek.50.a:0 "Smoke can look like inheritance from far away."
+
+ cp_tarek.60.t:0 "The Locked Gate"
+ cp_tarek.60.d:0 "Tarek puts a guard between the factory and the men who make it run."
+ cp_tarek.60.f:0 "The new lock is too bright for the gate. It catches the noon sun and throws it back into the workers' eyes while the guard learns where to stand. Tarek tells himself this is prudence, not fear; a factory is expensive, a crowd is changeable, and hunger makes poor arithmetic. Still, when the bell rings, the men pass under his office window without looking up, and their silence enters before they do."
+ cp_tarek.60.a:0 "A closed gate keeps many things inside."

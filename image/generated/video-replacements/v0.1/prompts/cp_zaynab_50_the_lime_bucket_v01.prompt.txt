@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_zaynab.50 at mod/events/cp_zaynab_events.txt:195
+Previous vanilla video placeholder: unspecific_sick_in_hospital
+Target DDS: mod/gfx/event_pictures/cp_zaynab_50_the_lime_bucket_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_zaynab_50_the_lime_bucket_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_zaynab.50
+Person token: zaynab
+Title: The Lime Bucket
+Short description: New health knowledge reaches Zaynab as a bucket, a brush, and a smell that will not leave her hands.
+Flavor text: The young doctor calls it sanitation, as if the word itself has washed. Zaynab calls it lime because that is what burns white on the brush and bites the cracks in her fingers. She scrubs the threshold, the basin stand, the wall where a feverish child had leaned his head. The women laugh when she orders them back from the wet floor, but they obey. By sunset the room smells less like sickness and more like an argument she intends to win.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

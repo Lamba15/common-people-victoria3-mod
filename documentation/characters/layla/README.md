@@ -6,10 +6,11 @@
 
 ## Profile
 
-- **Pop type binding (narrative)**: Farmer. Stored as `cp_social_class = "farmer"` on her character object. Reactions look up a real farmer pop in her home state for SoL/radicalism data.
+- **Name token**: `layla`
+- **Pop type binding (narrative)**: Peasant/farmer household. Stored through `cp_layla_profession_*` country variables; cohort reads sample a real Misri Sunni pop in her marked home state for SoL/radicalism-adjacent data.
 - **Culture**: Misri | **Religion**: Sunni | **Age**: 22 at spawn
 - **Traits**: `persistent` (endurance through hardship), `pious` (traditional faith), `reserved` (quiet temperament), `compliant` (yields to family/tradition). All verified vanilla personality traits; convention drops the `trait_` prefix in script.
-- **Home state**: Lower Egypt. Stored as `cp_home_state` on her character object (1.12 workaround; migrates to 1.13 `set_home_state`).
+- **Home state**: Lower Egypt. Stored as a region-state marker variable (`cp_layla_lives_here`) on the state, plus Layla-specific country variables.
 - **IG affiliation**: Rural Folk (narrative; not a role assignment).
 - **Personality**: Apolitical, family-oriented, wants stability and peace. Weights drift over the decades.
 - **Family**: Married to Ahmed (narrative reference, not a separate character at MVP). Children spawn as narrative references; may be promoted to their own characters later.
@@ -37,7 +38,7 @@ Egypt in 1836 operated under corvee labor. Peasants (fellahin) worked land contr
 ## Key V3 Hooks
 
 - **Spawn**: Country is EGY (or culture=misri tag equivalent), law is `law_type:law_serfdom` or early transition.
-- **Primary on_actions**: `on_law_enacted` (land reform transitions), yearly pulse (harvest/SoL check), `on_war_started` (Ahmed panic), `on_revolution_start`.
+- **Primary on_actions**: `on_law_enactment_pass` (land reform transitions), yearly pulse (harvest/SoL check), `on_diplo_play_war_start` (Ahmed panic), `on_revolution_start`.
 - **State checks**: `any_harvest_condition` on her home state, farmer pop SoL in her home state, `turmoil` in her home state.
 - **Law triggers**:
   - `has_law = law_type:law_serfdom` -- baseline suffering
@@ -48,6 +49,8 @@ Egypt in 1836 operated under corvee labor. Peasants (fellahin) worked land contr
 - **Backward trigger**: if current law < previous law (rollback), fire the backward-transition event.
 
 ## Main Arc (6 chapters)
+
+Current event surface: Layla owns the large legacy-plus-rebuilt event family (`cp_layla.*`, `cp_layla_setup.*`, and `cp_layla_vox.*`). The shared roster treats this as content depth, not special infrastructure; her startup, monthly, yearly, law, war, tech, building, revolution, and button routes still pass through the same person-owned dispatcher/gatekeeper surface used by the newer characters.
 
 1. **"The Farmer's Daughter"** -- Introduction to serfdom at the human level. Layla rises before dawn to work land she doesn't own. Wants a family, a roof, bread, peace. Establishes stakes.
 2. **"Winds from Cairo"** -- Land reform law enacted. Rumors reach the village. The bey is angry. Tension. Player chooses: send administrators (smooth) or let people sort it out (chaotic).
@@ -79,7 +82,7 @@ LAYLA SPAWNS (Egypt, serfdom or early land reform)
   She endures. She does not question.
   |
   v
-[LAND REFORM ENACTED] -- on_law_enacted
+[LAND REFORM ENACTED] -- on_law_enactment_pass
   Which law?
   |
   +-- Tenant Farmers -----> [HALF FREE]

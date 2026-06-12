@@ -1,20 +1,39 @@
 # Layla event image prompts
 
-The authoritative prompt catalog lives in [`catalog.md`](./catalog.md). It lists, for every Layla event, the scene spec that feeds the image-generation pipeline.
+The active replacement queues are [`replacement-batch-v0.7.md`](./replacement-batch-v0.7.md) and [`replacement-batch-v0.8.md`](./replacement-batch-v0.8.md). They are the source of truth for the current rebuild pass: versioned `_vNN` assets, no palace-grandiosity fallback, no retired `cp_conversation_*` source names, and no bulk generator that can silently recreate old art direction.
+
+[`catalog.md`](./catalog.md) is retained as a historical inventory of earlier scene ideas, not as the runnable generation source. Before promoting any old catalog idea, rewrite it into the current batch format and add it to a versioned replacement batch.
 
 ## Pipeline
 
-1. **Edit** `catalog.md` when adding or revising an event's scene.
-2. **Mirror** the `run_one ...` call in `script/gen-layla-event-images.sh` (that's the bash script Codex CLI actually runs).
-3. **Generate** PNGs: `script/gen-layla-event-images.sh [names...]` — no args runs all, positional args run only that subset.
-4. **Convert** PNG → DDS: `script/convert-images-to-dds.sh` — stages the DDS files under `mod/gfx/event_pictures/`.
-5. **Rewire** the event's `event_image = { texture = ... }` line in `mod/events/cp_layla_events.txt` to point at the new DDS.
+1. **Edit** a versioned batch ledger, currently `replacement-batch-v0.7.md` or `replacement-batch-v0.8.md`.
+2. **Export** prompt files and gpt-image-2 batch manifests with `python3 script/export-art-batch-prompts.py --all`. Generated prompt files live under `image/generated/layla/<version>/prompts/`, and each machine-ready manifest lives at `image/generated/layla/<version>/gpt-image-2-batch.jsonl`.
+3. **Validate** each manifest before spending API time:
+   ```bash
+   python3 ~/.codex/skills/.system/imagegen/scripts/image_gen.py generate-batch \
+     --input image/generated/layla/<version>/gpt-image-2-batch.jsonl \
+     --out-dir image/generated/layla/<version> \
+     --dry-run \
+     --no-augment
+   ```
+4. **Generate** candidates into `image/generated/layla/<version>/<asset>.dds.png`, keeping high-resolution archives beside them when available.
+   ```bash
+   python3 ~/.codex/skills/.system/imagegen/scripts/image_gen.py generate-batch \
+     --input image/generated/layla/<version>/gpt-image-2-batch.jsonl \
+     --out-dir image/generated/layla/<version> \
+     --no-augment
+   ```
+5. **Convert** PNG -> DDS with `script/convert-images-to-dds.sh`. The converter defaults to `image/generated/` and rejects retired `cp_conversation_*` source names.
+6. **Audit** the batch with `script/audit-art-batch-plan.py --all`, `script/audit-event-images.py`, and `script/audit-art-provenance.py --rank-missing --limit 30`.
+7. **Promote** accepted batches with `script/promote-art-batch.py <replacement-batch.md> --apply`. The promoter rewires accepted events to versioned `_vNN` DDS files and moves superseded DDS into `image/archive/legacy-event-pictures/<version>-superseded/`.
 
 ## Generation tiers
 
+Start with the v0.7 replacement batch, then v0.8. The v0.5 and v0.6 prototype packs remain useful for provenance, but the active art queue now prioritizes the worst in-game blockers and high-use legacy/no-source images.
+
 Because the catalog covers 70+ events, generate in tiers (see `catalog.md §"Priority tiers"`):
 
-- **Tier 1** — biggest narrative moments (12 images). The bash script has these entries now; run `script/gen-layla-event-images.sh cp_layla_mill_smoke cp_layla_cairo_calling cp_layla_suitor cp_layla_mill_closed cp_layla_last_morning cp_layla_child_fever cp_layla_paper_my_name cp_layla_chains cp_layla_square_fills cp_layla_rifles cp_layla_factory_field cp_layla_ministry`.
+- **Tier 1** — biggest narrative moments and observed blockers. Add them to a versioned replacement batch and export prompts.
 - **Tier 2** — 20 more law-reaction beats. Bash entries to be added.
 - **Tier 3** — tech + market goods. 6 images.
 - **Tier 4** — remaining pulses. ~15 images.

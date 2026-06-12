@@ -1,0 +1,190 @@
+﻿###############################################################################
+# Common People -- Yusuf ibn Mahmud's memory
+#
+# Person 3 scaffold. Yusuf is registered as `soldier`, not as a V3
+# character. All state lives as country variables on c:EGY.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_soldier_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = soldier
+		culture = misri
+		religion = sunni
+		poptype = soldiers
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_soldier_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_soldier_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_soldier_dispatch_yearly = {
+	cp_age_increment = { person = soldier }
+	cp_soldier_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = soldier country = EGY }
+	if = {
+		limit = {
+			has_variable = cp_soldier_at_war
+			has_variable = cp_soldier_seen_notice
+			NOT = { has_variable = cp_soldier_seen_letter_folded }
+		}
+		random_list = {
+			12 = { cp_try_fire_world_response = { event = cp_soldier.50 person = soldier } }
+			88 = { }
+		}
+	}
+}
+
+cp_soldier_dispatch_war_started = {
+	if = {
+		limit = {
+			has_variable = cp_shared_war_start_target_soldier
+			NOT = { has_variable = cp_soldier_at_war }
+			NOT = { has_variable = cp_soldier_seen_notice }
+			var:cp_soldier_age >= 18
+			var:cp_soldier_age <= 45
+		}
+		remove_variable = cp_shared_war_start_target_soldier
+		cp_try_fire_milestone = { event = cp_soldier.20 person = soldier }
+	}
+}
+
+cp_soldier_dispatch_war_end = {
+	if = {
+		limit = {
+			has_variable = cp_soldier_at_war
+			NOT = { has_variable = cp_soldier_seen_return }
+		}
+		cp_try_fire_milestone = { event = cp_soldier.21 person = soldier }
+	}
+}
+
+cp_soldier_dispatch_law_enacted = {
+	cp_person_hook_noop = yes
+}
+
+cp_soldier_dispatch_tech = {
+	if = {
+		limit = {
+			cp_person_home_has_military_industry = { person = soldier }
+			NOT = { has_variable = cp_soldier_seen_arsenal_gate }
+		}
+		cp_try_fire_world_response = { event = cp_soldier.30 person = soldier }
+	}
+}
+
+cp_soldier_dispatch_building = {
+	if = {
+		limit = {
+			OR = {
+				is_building_type = building_arms_industry
+				is_building_type = building_munition_plant
+				is_building_type = building_barrack
+			}
+			cp_building_affects_person_workplace = { person = soldier }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = soldier }
+				NOT = { has_variable = cp_soldier_seen_arsenal_gate }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_soldier.30 person = soldier }
+		}
+	}
+}
+
+cp_soldier_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_soldier_mark_intro = {
+	cp_mark_event_seen = { person = soldier id = intro days = 3650 }
+}
+
+cp_soldier_mark_notice = {
+	cp_mark_event_seen = { person = soldier id = notice days = 1825 }
+	set_variable = cp_soldier_at_war
+	change_variable = { name = cp_soldier_exhaustion add = 3 }
+	clamp_variable = { name = cp_soldier_exhaustion min = 0 max = 10 }
+	change_variable = { name = cp_soldier_hope add = -1 }
+	clamp_variable = { name = cp_soldier_hope min = 0 max = 10 }
+	cp_shift_radical = { person = soldier delta = 1 }
+}
+
+cp_soldier_mark_return = {
+	cp_mark_event_seen = { person = soldier id = return days = 1825 }
+	remove_variable = cp_soldier_at_war
+	change_variable = { name = cp_soldier_exhaustion add = 2 }
+	clamp_variable = { name = cp_soldier_exhaustion min = 0 max = 10 }
+	change_variable = { name = cp_soldier_hope add = 1 }
+	clamp_variable = { name = cp_soldier_hope min = 0 max = 10 }
+	cp_shift_loyalist = { person = soldier delta = 1 }
+}
+
+cp_soldier_mark_arsenal_gate = {
+	cp_mark_event_seen = { person = soldier id = arsenal_gate days = 1825 }
+	change_variable = { name = cp_soldier_literacy add = 1 }
+	clamp_variable = { name = cp_soldier_literacy min = 0 max = 100 }
+	change_variable = { name = cp_soldier_exhaustion add = 1 }
+	clamp_variable = { name = cp_soldier_exhaustion min = 0 max = 10 }
+	cp_shift_weight = { person = soldier weight = war delta = 1 }
+}
+
+cp_soldier_mark_beans_dusk = {
+	cp_mark_event_seen = { person = soldier id = beans_dusk days = 720 }
+	change_variable = { name = cp_soldier_hope add = 1 }
+	clamp_variable = { name = cp_soldier_hope min = 0 max = 10 }
+	cp_shift_weight = { person = soldier weight = family delta = 1 }
+}
+
+cp_soldier_mark_letter_folded = {
+	cp_mark_event_seen = { person = soldier id = letter_folded days = 720 }
+	change_variable = { name = cp_soldier_hope add = -1 }
+	clamp_variable = { name = cp_soldier_hope min = 0 max = 10 }
+	change_variable = { name = cp_soldier_exhaustion add = 1 }
+	clamp_variable = { name = cp_soldier_exhaustion min = 0 max = 10 }
+	cp_shift_weight = { person = soldier weight = family delta = 1 }
+	cp_shift_weight = { person = soldier weight = war delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_soldier = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_soldier_seen_intro }
+				NOT = { has_variable = cp_soldier_at_war }
+			}
+			cp_try_fire_ambient = { event = cp_soldier.10 person = soldier }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_soldier_seen_intro
+				NOT = { has_variable = cp_soldier_at_war }
+				NOT = { has_variable = cp_soldier_seen_beans_dusk }
+			}
+			cp_try_fire_ambient = { event = cp_soldier.40 person = soldier }
+		}
+		7 = {
+			trigger = {
+				has_variable = cp_soldier_at_war
+				has_variable = cp_soldier_seen_notice
+				NOT = { has_variable = cp_soldier_seen_letter_folded }
+			}
+			cp_try_fire_ambient = { event = cp_soldier.50 person = soldier }
+		}
+		75 = { }
+	}
+}

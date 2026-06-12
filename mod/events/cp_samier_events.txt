@@ -1,0 +1,274 @@
+﻿###############################################################################
+# Common People -- Samier events
+#
+# Samier is Person 4: a Misri factory worker whose life enters when Egypt's
+# industrialization has produced factories and unprotected labor.
+###############################################################################
+
+namespace = cp_samier
+
+
+# cp_samier.1 -- hidden setup
+cp_samier.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_samier_alive
+		NOT = { has_variable = cp_samier_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_samier_alive value = 1 }
+		set_variable = { name = cp_samier_age value = 19 }
+		set_variable = { name = cp_samier_hope value = 6 }
+		set_variable = { name = cp_samier_exhaustion value = 4 }
+		set_variable = { name = cp_samier_sol value = 8 }
+		set_variable = { name = cp_samier_literacy value = 3 }
+		set_variable = { name = cp_samier_radical value = 1 }
+		set_variable = { name = cp_samier_loyalist value = 0 }
+		set_variable = { name = cp_samier_anger value = 4 }
+		set_variable = cp_samier_profession_laborers
+		set_variable = { name = cp_samier_w_labor_laws value = 10 }
+		set_variable = { name = cp_samier_w_revolution value = 8 }
+		set_variable = { name = cp_samier_w_economy value = 8 }
+		set_variable = { name = cp_samier_w_education value = 6 }
+		set_variable = { name = cp_samier_w_religion value = 3 }
+
+		cp_set_person_home_state_from_spawn_marker_or_default = { person = samier country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = samier place = bulaq }
+		cp_set_person_workplace_profile = { person = samier profile = manufacturing }
+		cp_samier_refresh_sol = yes
+
+		if = {
+			limit = {
+				NOT = { has_variable = cp_startup_conditional_scan }
+			}
+			random_list = {
+				65 = { cp_try_fire_world_response = { event = cp_samier.10 person = samier } }
+				35 = { }
+			}
+		}
+	}
+}
+
+
+# cp_samier.10 -- "The Gate of Smoke"
+cp_samier.10 = {
+	type = country_event
+
+	title = cp_samier.10.t
+	desc = cp_samier.10.d
+	flavor = cp_samier.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_samier_10_the_gate_of_smoke_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_samier_alive
+		var:cp_samier_alive > 0
+		NOT = { has_variable = cp_samier_seen_intro }
+	}
+
+	immediate = {
+		cp_samier_mark_intro = yes
+	}
+
+	option = {
+		name = cp_samier.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_samier.20 -- "Words on the Board"
+cp_samier.20 = {
+	type = country_event
+
+	title = cp_samier.20.t
+	desc = cp_samier.20.d
+	flavor = cp_samier.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_samier_labor_law.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_samier_alive
+		var:cp_samier_alive > 0
+		NOT = { has_variable = cp_samier_seen_labor_law }
+	}
+
+	immediate = {
+		cp_samier_mark_labor_law = yes
+	}
+
+	option = {
+		name = cp_samier.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_samier.30 -- "The Red Thread"
+cp_samier.30 = {
+	type = country_event
+
+	title = cp_samier.30.t
+	desc = cp_samier.30.d
+	flavor = cp_samier.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_samier_30_the_red_thread_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_samier_alive
+		var:cp_samier_alive > 0
+		NOT = { has_variable = cp_samier_seen_red_thread }
+	}
+
+	immediate = {
+		cp_samier_mark_red_thread = yes
+	}
+
+	option = {
+		name = cp_samier.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_samier.40 -- "Bread at the Gate"
+cp_samier.40 = {
+	type = country_event
+
+	title = cp_samier.40.t
+	desc = cp_samier.40.d
+	flavor = cp_samier.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_samier_40_bread_at_the_gate_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_samier_alive
+		var:cp_samier_alive > 0
+		NOT = { has_variable = cp_samier_seen_gate_bread }
+	}
+
+	immediate = {
+		cp_samier_mark_gate_bread = yes
+	}
+
+	option = {
+		name = cp_samier.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_samier.50 -- "The False Quarter Hour"
+cp_samier.50 = {
+	type = country_event
+
+	title = cp_samier.50.t
+	desc = cp_samier.50.d
+	flavor = cp_samier.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_samier_50_the_false_quarter_hour_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_samier_alive
+		var:cp_samier_alive > 0
+		has_variable = cp_samier_seen_intro
+		cp_country_workers_unprotected = yes
+		NOT = { has_variable = cp_samier_seen_false_quarter }
+	}
+
+	immediate = {
+		cp_samier_mark_false_quarter = yes
+	}
+
+	option = {
+		name = cp_samier.50.a
+		default_option = yes
+	}
+}
+
+
+# cp_samier.60 -- "Letters After the Bell"
+cp_samier.60 = {
+	type = country_event
+
+	title = cp_samier.60.t
+	desc = cp_samier.60.d
+	flavor = cp_samier.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_samier_60_letters_after_the_bell_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_samier_alive
+		var:cp_samier_alive > 0
+		has_variable = cp_samier_seen_intro
+		has_law = law_type:law_public_schools
+		NOT = { has_variable = cp_samier_seen_letters_after_bell }
+	}
+
+	immediate = {
+		cp_samier_mark_letters_after_bell = yes
+	}
+
+	option = {
+		name = cp_samier.60.a
+		default_option = yes
+	}
+}

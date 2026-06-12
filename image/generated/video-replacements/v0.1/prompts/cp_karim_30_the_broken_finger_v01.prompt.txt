@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_karim.30 at mod/events/cp_karim_events.txt:133
+Previous vanilla video placeholder: southamerica_factory_opening
+Target DDS: mod/gfx/event_pictures/cp_karim_30_the_broken_finger_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_karim_30_the_broken_finger_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_karim.30
+Person token: karim
+Title: The Broken Finger
+Short description: The accident is small enough for the shift to continue. That is the first cruelty. Karim's finger is caught, not taken, and because it is not taken the foreman says thanks be to God and points to the unfinished order. Blood darkens the rag around Karim's hand. The boy who sweeps filings stares until Karim tells him to look away. He finishes the piece with his left hand clumsy on the lever, each turn of the wheel sending a bright nail of pain up his arm. By evening the finger has swollen tight and purple, as if the machine has kept part of him and sent the rest home with a warning.
+Flavor text: In the morning he will be expected to prove that a hand can forgive.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

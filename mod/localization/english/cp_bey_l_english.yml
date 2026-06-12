@@ -1,0 +1,30 @@
+﻿l_english:
+ cp_bey.10.t:0 "The Master's Window"
+ cp_bey.10.d:0 "Hassan Bey al-Sayyid watches the fields from an upper room of the estate."
+ cp_bey.10.f:0 "The ledger lies open on the table, its columns neat as irrigation cuts, and beyond the shutter the fields shine with water he did not dig and cotton he will never touch. Men move below him as small as script. He knows their fathers, and their fathers' debts, and the places where each boundary stone was set; he knows all this with the certainty of a man who has never had to ask whether knowledge can also be ownership."
+ cp_bey.10.a:0 "The afternoon holds its breath."
+
+ cp_bey.20.t:0 "The Gate Opens"
+ cp_bey.20.d:0 "Homesteading reaches the estate gate, and the old gestures do not return."
+ cp_bey.20.f:0 "The latch is cold under his palm. Outside, the clerk folds papers with red seals, and men who once waited for the overseer's nod pass in the sun without lowering their eyes. Al-Sayyid searches their faces for gratitude, then for fear, then for the smaller obedience of habit. One by one, each face gives him nothing he can recognize."
+ cp_bey.20.a:0 "The gate remains open."
+
+ cp_bey.21.t:0 "Order Restored"
+ cp_bey.21.d:0 "Serfdom returns, and the village lowers its eyes again."
+ cp_bey.21.f:0 "The road receives him as it used to: dust, hooves, the brief bending of necks. A boy steps aside before the horse reaches him. An old man touches his brow with two fingers. It is all correct, all returned, and still the silence is not the old silence. Al-Sayyid keeps the crop across his knees and tells himself that obedience is a language, even when it has forgotten how to sound grateful."
+ cp_bey.21.a:0 "The village is quiet."
+
+ cp_bey.22.t:0 "The Cotton Merchant"
+ cp_bey.22.d:0 "Commercialized Agriculture brings Cairo money to the veranda."
+ cp_bey.22.f:0 "The merchant sets the paper down between the coffee cups as if a field can be folded, priced, and carried away in a breast pocket. He speaks softly, almost respectfully; that makes it worse. Beyond the arch the cotton opens white under the sun, and Al-Sayyid keeps his hand beside the paper, not on it, preserving the last inch between an offer and an insult."
+ cp_bey.22.a:0 "Ink waits on the table."
+
+ cp_bey.30.t:0 "Smoke at the Boundary"
+ cp_bey.30.d:0 "A factory rises where the estate road used to turn toward the fields."
+ cp_bey.30.f:0 "The wall goes up one brick course at a time, straight and vulgar, with a gate wide enough for carts and men who do not remove their caps. Smoke lifts behind it before the roof is finished. Al-Sayyid stands beside the old boundary stone and watches boys from tenant houses carry timber through the opening, laughing at something he cannot hear over the machines being fitted inside."
+ cp_bey.30.a:0 "The stone keeps its old place."
+
+ cp_bey.40.t:0 "The Visitor's Card"
+ cp_bey.40.d:0 "A new official leaves his card and does not wait for an answer."
+ cp_bey.40.f:0 "The card is small, cream-colored, and printed so cleanly that no hand seems to have touched it. The servant says the gentleman came in a hired carriage and spoke of committees, valuations, and a meeting in Cairo next Tuesday. Al-Sayyid turns the card over, finds nothing on the back, and feels the room grow larger around him, as if the chairs have moved away in politeness."
+ cp_bey.40.a:0 "A name can arrive without a man."

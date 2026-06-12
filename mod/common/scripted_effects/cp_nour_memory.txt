@@ -1,0 +1,152 @@
+﻿###############################################################################
+# Common People -- Nour's memory
+#
+# Person 6 scaffold. Nour is registered as `nour`, not as a V3 character.
+# She carries the women-rights/property-law angle from an ordinary household.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_nour_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = nour
+		culture = misri
+		religion = sunni
+		poptype = shopkeepers
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_nour_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_nour_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_nour_dispatch_yearly = {
+	cp_age_increment = { person = nour }
+	cp_nour_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = nour country = EGY }
+	if = {
+		limit = {
+			cp_country_women_property_rights = yes
+			NOT = { has_variable = cp_nour_seen_rent_receipt }
+		}
+		cp_try_fire_world_response = { event = cp_nour.30 person = nour }
+	}
+}
+
+cp_nour_dispatch_law_enacted = {
+	cp_person_hook_noop = yes
+}
+
+cp_nour_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_nour_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_nour_dispatch_tech = {
+	if = {
+		limit = {
+			cp_country_has_modern_records = yes
+			NOT = { has_variable = cp_nour_seen_register_shelf }
+		}
+		cp_try_fire_world_response = { event = cp_nour.50 person = nour }
+	}
+}
+
+cp_nour_dispatch_building = {
+	if = {
+		limit = {
+			is_building_type = building_government_administration
+			cp_building_affects_person_workplace = { person = nour }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = nour }
+				NOT = { has_variable = cp_nour_seen_register_shelf }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_nour.50 person = nour }
+		}
+	}
+}
+
+cp_nour_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_nour_mark_intro = {
+	cp_mark_event_seen = { person = nour id = intro days = 3650 }
+	cp_shift_hope = { person = nour delta = 1 }
+}
+
+cp_nour_mark_property_rights = {
+	cp_mark_event_seen = { person = nour id = property_rights days = 3650 }
+	set_variable = cp_nour_has_property_paper
+	cp_shift_hope = { person = nour delta = 2 }
+	cp_shift_loyalist = { person = nour delta = 2 }
+	cp_shift_weight = { person = nour weight = womens_rights delta = 1 }
+}
+
+cp_nour_mark_rent_receipt = {
+	cp_mark_event_seen = { person = nour id = rent_receipt days = 1825 }
+	set_variable = cp_nour_has_rent_receipt
+	cp_shift_hope = { person = nour delta = 1 }
+	cp_shift_weight = { person = nour weight = law delta = 1 }
+}
+
+cp_nour_mark_key_under_pillow = {
+	cp_mark_event_seen = { person = nour id = key_under_pillow days = 540 }
+	cp_shift_exhaustion = { person = nour delta = -1 }
+	cp_shift_weight = { person = nour weight = family delta = 1 }
+}
+
+cp_nour_mark_register_shelf = {
+	cp_mark_event_seen = { person = nour id = register_shelf days = 1825 }
+	set_variable = cp_nour_found_in_register
+	cp_shift_literacy = { person = nour delta = 1 }
+	cp_shift_weight = { person = nour weight = law delta = 1 }
+}
+
+cp_nour_mark_morning_account = {
+	cp_mark_event_seen = { person = nour id = morning_account days = 720 }
+	cp_shift_hope = { person = nour delta = 1 }
+	cp_shift_weight = { person = nour weight = work delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_nour = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_nour_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_nour.10 person = nour }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_nour_seen_intro
+				NOT = { has_variable = cp_nour_seen_key_under_pillow }
+			}
+			cp_try_fire_ambient = { event = cp_nour.40 person = nour }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_nour_seen_intro
+				NOT = { has_variable = cp_nour_seen_morning_account }
+			}
+			cp_try_fire_ambient = { event = cp_nour.60 person = nour }
+		}
+		74 = { }
+	}
+}

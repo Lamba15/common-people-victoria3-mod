@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_dawud.40 at mod/events/cp_dawud_events.txt:170
+Previous vanilla video placeholder: africa_city_center
+Target DDS: mod/gfx/event_pictures/cp_dawud_40_salt_on_the_floor_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_dawud_40_salt_on_the_floor_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_dawud.40
+Person token: dawud
+Title: Salt on the Floor
+Short description: Dawud brings the harbor home in the hems of his clothes.
+Flavor text: His wife sweeps after supper and finds salt under the chair, salt near the mat, salt where their little boy slept through the call to prayer and the church bell both. Dawud apologizes with the sheepishness of a man who cannot leave work at the door. The room smells faintly of rope and sea water. Outside, the city talks in several tongues at once, and none of them are quiet enough for sleep.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

@@ -1,0 +1,31 @@
+Common People character seed prompt: nour
+Source ledger: documentation/characters/nour/prompts/seed-v0.1.md
+Prompt heading: Canonical Portrait
+Target source PNG: image/generated/character-seeds/v0.1/nour_01_canonical_portrait.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Use case: historical-scene
+Asset type: Common People canonical character portrait, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism portrait-scene for Nour in the Common People Victoria 3 mod.
+Subject: Nour, Misri Egyptian Sunni woman around thirty-one, olive-brown skin, dark eyes, faded indigo headscarf, modest Lower Egyptian dress, work-worn hands with a brass key.
+Scene/backdrop: small market-house room at dawn, cedar chest open beside folded cloth and simple shelves.
+Foreground action: Nour kneels by the chest, one hand on the brass key and one hand holding a folded account paper.
+Required object/gesture: cedar chest, brass key, and folded paper must be legible at 600x400.
+Composition/framing: close-medium portrait, Nour foreground right, chest and cloth anchoring lower frame.
+Lighting/mood: cool doorway light and warm lamplight, quiet guarded dignity.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic legal pose.
+Avoid: courtroom drama, palace room, Orientalist interior, readable documents.

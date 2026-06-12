@@ -1,0 +1,31 @@
+Common People character seed prompt: samier
+Source ledger: documentation/characters/samier/prompts/seed-v0.1.md
+Prompt heading: Canonical Portrait
+Target source PNG: image/generated/character-seeds/v0.1/samier_01_canonical_portrait.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Use case: historical-scene
+Asset type: Common People canonical character portrait, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism portrait-scene for Samier in the Common People Victoria 3 mod.
+Subject: Samier, young Misri Egyptian Sunni factory laborer around nineteen, slim, restless, olive-brown skin, dark eyes, soot on collar, simple work shirt with one repaired sleeve.
+Scene/backdrop: factory gate in Cairo or Lower Egypt, smoke over the roof, workers entering behind him.
+Foreground action: Samier stands at the gate holding a cloth-wrapped lunch, looking at the factory doors rather than the viewer.
+Required object/gesture: cloth-wrapped lunch and soot-stained collar must be legible at 600x400.
+Composition/framing: close-medium, Samier foreground, factory gate behind.
+Lighting/mood: grey morning, hunger and anger not yet named.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials.
+Constraints: no text, no UI, no border, no watermark, no modern factory equipment.
+Avoid: strike rally, heroic labor poster, owner inspection scene.

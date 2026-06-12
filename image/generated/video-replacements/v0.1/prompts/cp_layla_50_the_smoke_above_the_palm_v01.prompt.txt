@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_layla.50 at mod/events/cp_layla_events.txt:982
+Previous vanilla video placeholder: southamerica_factory_opening
+Target DDS: mod/gfx/event_pictures/cp_layla_50_the_smoke_above_the_palm_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_layla_50_the_smoke_above_the_palm_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_layla.50
+Person token: layla
+Title: The Smoke Above the Palm
+Short description: There is a new tall thing on the horizon, past the canal. It has a chimney. The chimney gives off smoke in a pillar so straight it looks like it has been painted there.
+Flavor text: She passes near it once, on the way to her aunt's house. The ground vibrates — not an earthquake vibration, a steady one, continuous, as if the earth itself has become a slow drum. A few men stand at the gates in clean clothes. Many more men, in less clean clothes, walk in at dawn and do not come out until after sunset. One of her cousins works there now. He sends a little money home and he does not come back for Friday prayers anymore. The cousin says the machines are from Manchester. He says the word 'Manchester' as if it is a place, not far off, where bigger things happen. She nods. She does not know where Manchester is. She does not ask.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

@@ -1,0 +1,289 @@
+﻿###############################################################################
+# Common People -- Huda al-Matariya's memory
+#
+# Person 14 scaffold. Huda is registered as `huda`, not as a V3 character.
+# She enters conditionally when urban growth, construction, trade, or city
+# planning makes rented rooms and street labor visible.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_huda_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = huda
+		culture = misri
+		religion = sunni
+		poptype = laborers
+	}
+}
+
+
+# --- Conditional entry ------------------------------------------------------
+cp_huda_try_spawn = {
+	if = {
+		limit = {
+			c:EGY ?= this
+			NOT = { has_global_variable = cp_person_huda_alive }
+			NOT = { has_variable = cp_huda_alive }
+			cp_country_has_urban_growth = yes
+		}
+		random_list = {
+			45 = {
+				cp_mark_person_spawn_home_from_urban_growth = { person = huda }
+				cp_register_person = {
+					person = huda
+					country = EGY
+				}
+				cp_huda_dispatch_startup = yes
+				trigger_event = { id = cp_huda.1 }
+			}
+			55 = { }
+		}
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_huda_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_huda_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_huda_dispatch_yearly = {
+	cp_age_increment = { person = huda }
+	cp_huda_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = huda country = EGY }
+	if = {
+		limit = {
+			has_variable = cp_huda_seen_intro
+			NOT = { has_variable = cp_huda_seen_rent_book }
+			cp_person_home_has_urban_growth = { person = huda }
+		}
+		random_list = {
+			12 = { cp_try_fire_world_response = { event = cp_huda.40 person = huda } }
+			88 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_technology_researched = modern_sewerage
+			NOT = { has_variable = cp_huda_seen_clean_water }
+		}
+		random_list = {
+			20 = { cp_try_fire_world_response = { event = cp_huda.30 person = huda } }
+			80 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = cp_huda_seen_intro
+			NOT = { has_variable = cp_huda_seen_roof_patch }
+			cp_person_home_has_urban_growth = { person = huda }
+		}
+		random_list = {
+			10 = { cp_try_fire_world_response = { event = cp_huda.50 person = huda } }
+			90 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = cp_huda_seen_intro
+			has_technology_researched = paved_roads
+			NOT = { has_variable = cp_huda_seen_white_road }
+		}
+		random_list = {
+			12 = { cp_try_fire_world_response = { event = cp_huda.60 person = huda } }
+			88 = { }
+		}
+	}
+}
+
+cp_huda_dispatch_law_enacted = {
+	cp_person_hook_noop = yes
+}
+
+cp_huda_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_huda_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_huda_dispatch_tech = {
+	if = {
+		limit = {
+			OR = {
+				has_technology_researched = urban_planning
+				has_technology_researched = steel_frame_buildings
+			}
+			NOT = { has_variable = cp_huda_seen_building_work }
+		}
+		cp_try_fire_world_response = { event = cp_huda.20 person = huda }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_technology_researched = modern_sewerage
+				has_technology_researched = paved_roads
+			}
+			NOT = { has_variable = cp_huda_seen_clean_water }
+		}
+		cp_try_fire_world_response = { event = cp_huda.30 person = huda }
+	}
+	if = {
+		limit = {
+			has_technology_researched = paved_roads
+			has_variable = cp_huda_seen_intro
+			NOT = { has_variable = cp_huda_seen_white_road }
+		}
+		cp_try_fire_world_response = { event = cp_huda.60 person = huda }
+	}
+}
+
+cp_huda_dispatch_building = {
+	if = {
+		limit = {
+			OR = {
+				is_building_type = building_construction_sector
+				is_building_type = building_trade_center
+				is_building_type = building_urban_center
+			}
+			cp_building_affects_person_workplace = { person = huda }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = huda }
+				NOT = { has_variable = cp_huda_seen_intro }
+			}
+		}
+		owner ?= {
+			random_list = {
+				55 = { cp_try_fire_world_response = { event = cp_huda.10 person = huda } }
+				45 = { }
+			}
+		}
+	}
+	if = {
+		limit = {
+			is_building_type = building_construction_sector
+			cp_building_affects_person_workplace = { person = huda }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = huda }
+				NOT = { has_variable = cp_huda_seen_building_work }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_huda.20 person = huda }
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				is_building_type = building_trade_center
+				is_building_type = building_urban_center
+			}
+			cp_building_affects_person_workplace = { person = huda }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = huda }
+				has_variable = cp_huda_seen_intro
+				NOT = { has_variable = cp_huda_seen_roof_patch }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_huda.50 person = huda }
+		}
+	}
+}
+
+cp_huda_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_huda_mark_intro = {
+	cp_mark_event_seen = { person = huda id = intro days = 3650 }
+	cp_shift_literacy = { person = huda delta = 1 }
+	cp_shift_weight = { person = huda weight = city delta = 1 }
+}
+
+cp_huda_mark_building_work = {
+	cp_mark_event_seen = { person = huda id = building_work days = 1825 }
+	cp_shift_exhaustion = { person = huda delta = 1 }
+	cp_shift_weight = { person = huda weight = bricks delta = 2 }
+}
+
+cp_huda_mark_clean_water = {
+	cp_mark_event_seen = { person = huda id = clean_water days = 1825 }
+	cp_shift_hope = { person = huda delta = 1 }
+	cp_shift_weight = { person = huda weight = water delta = 2 }
+}
+
+cp_huda_mark_rent_book = {
+	cp_mark_event_seen = { person = huda id = rent_book days = 720 }
+	cp_shift_exhaustion = { person = huda delta = 1 }
+	cp_shift_radical = { person = huda delta = 1 }
+}
+
+cp_huda_mark_roof_patch = {
+	cp_mark_event_seen = { person = huda id = roof_patch days = 720 }
+	cp_shift_exhaustion = { person = huda delta = 1 }
+	cp_shift_weight = { person = huda weight = rent delta = 1 }
+	cp_shift_weight = { person = huda weight = family delta = 1 }
+}
+
+cp_huda_mark_white_road = {
+	cp_mark_event_seen = { person = huda id = white_road days = 720 }
+	cp_shift_hope = { person = huda delta = 1 }
+	cp_shift_exhaustion = { person = huda delta = 1 }
+	cp_shift_weight = { person = huda weight = city delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_huda = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_huda_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_huda.10 person = huda }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_huda_seen_intro
+				NOT = { has_variable = cp_huda_seen_rent_book }
+			}
+			cp_try_fire_ambient = { event = cp_huda.40 person = huda }
+		}
+		6 = {
+			trigger = {
+				has_variable = cp_huda_seen_intro
+				has_technology_researched = modern_sewerage
+				NOT = { has_variable = cp_huda_seen_clean_water }
+			}
+			cp_try_fire_ambient = { event = cp_huda.30 person = huda }
+		}
+		7 = {
+			trigger = {
+				has_variable = cp_huda_seen_intro
+				NOT = { has_variable = cp_huda_seen_roof_patch }
+			}
+			cp_try_fire_ambient = { event = cp_huda.50 person = huda }
+		}
+		6 = {
+			trigger = {
+				has_variable = cp_huda_seen_intro
+				has_technology_researched = paved_roads
+				NOT = { has_variable = cp_huda_seen_white_road }
+			}
+			cp_try_fire_ambient = { event = cp_huda.60 person = huda }
+		}
+		63 = { }
+	}
+}

@@ -1,0 +1,272 @@
+﻿###############################################################################
+# Common People -- Dawud Hanna events
+#
+# Dawud is Person 10: a Misri Orthodox dockworker whose hands make ports,
+# steamships, and cargo cranes part of ordinary Egyptian life.
+###############################################################################
+
+namespace = cp_dawud
+
+
+# cp_dawud.1 -- hidden setup
+cp_dawud.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_dawud_alive
+		NOT = { has_variable = cp_dawud_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_dawud_alive value = 1 }
+		set_variable = { name = cp_dawud_age value = 28 }
+		set_variable = { name = cp_dawud_hope value = 5 }
+		set_variable = { name = cp_dawud_exhaustion value = 6 }
+		set_variable = { name = cp_dawud_sol value = 10 }
+		set_variable = { name = cp_dawud_literacy value = 7 }
+		set_variable = { name = cp_dawud_radical value = 0 }
+		set_variable = { name = cp_dawud_loyalist value = 0 }
+		set_variable = { name = cp_dawud_rope_scars value = 3 }
+		set_variable = cp_dawud_profession_laborers
+		set_variable = { name = cp_dawud_w_trade value = 10 }
+		set_variable = { name = cp_dawud_w_work value = 8 }
+		set_variable = { name = cp_dawud_w_machinery value = 7 }
+		set_variable = { name = cp_dawud_w_religion value = 5 }
+		set_variable = { name = cp_dawud_w_war value = 4 }
+		set_variable = { name = cp_dawud_w_politics value = 4 }
+
+		cp_set_person_home_state_from_spawn_marker_or_default = { person = dawud country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = dawud place = alexandria_port }
+		cp_set_person_workplace_profile = { person = dawud profile = port }
+		cp_dawud_refresh_sol = yes
+
+		if = {
+			limit = {
+				NOT = { has_variable = cp_startup_conditional_scan }
+			}
+			random_list = {
+				55 = { cp_try_fire_world_response = { event = cp_dawud.10 person = dawud } }
+				45 = { }
+			}
+		}
+	}
+}
+
+
+# cp_dawud.10 -- "The Rope Burn"
+cp_dawud.10 = {
+	type = country_event
+
+	title = cp_dawud.10.t
+	desc = cp_dawud.10.d
+	flavor = cp_dawud.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_dawud_10_the_rope_burn_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_dawud_alive
+		var:cp_dawud_alive > 0
+		NOT = { has_variable = cp_dawud_seen_intro }
+	}
+
+	immediate = {
+		cp_dawud_mark_intro = yes
+	}
+
+	option = {
+		name = cp_dawud.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_dawud.20 -- "The Iron Hook"
+cp_dawud.20 = {
+	type = country_event
+
+	title = cp_dawud.20.t
+	desc = cp_dawud.20.d
+	flavor = cp_dawud.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_dawud_20_the_iron_hook_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_dawud_alive
+		var:cp_dawud_alive > 0
+		NOT = { has_variable = cp_dawud_seen_cranes }
+	}
+
+	immediate = {
+		cp_dawud_mark_cranes = yes
+	}
+
+	option = {
+		name = cp_dawud.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_dawud.30 -- "Smoke at the Quay"
+cp_dawud.30 = {
+	type = country_event
+
+	title = cp_dawud.30.t
+	desc = cp_dawud.30.d
+	flavor = cp_dawud.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_dawud_30_smoke_at_the_quay_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_dawud_alive
+		var:cp_dawud_alive > 0
+		NOT = { has_variable = cp_dawud_seen_steamship }
+	}
+
+	immediate = {
+		cp_dawud_mark_steamship = yes
+	}
+
+	option = {
+		name = cp_dawud.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_dawud.40 -- "Salt on the Floor"
+cp_dawud.40 = {
+	type = country_event
+
+	title = cp_dawud.40.t
+	desc = cp_dawud.40.d
+	flavor = cp_dawud.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_dawud_40_salt_on_the_floor_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_dawud_alive
+		var:cp_dawud_alive > 0
+		NOT = { has_variable = cp_dawud_seen_salt_floor }
+	}
+
+	immediate = {
+		cp_dawud_mark_salt_floor = yes
+	}
+
+	option = {
+		name = cp_dawud.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_dawud.50 -- "The Tariff Chalk"
+cp_dawud.50 = {
+	type = country_event
+
+	title = cp_dawud.50.t
+	desc = cp_dawud.50.d
+	flavor = cp_dawud.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_dawud_50_the_tariff_chalk_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_dawud_alive
+		var:cp_dawud_alive > 0
+		NOT = { has_variable = cp_dawud_seen_tariff_chalk }
+	}
+
+	immediate = {
+		cp_dawud_mark_tariff_chalk = yes
+	}
+
+	option = {
+		name = cp_dawud.50.a
+		default_option = yes
+	}
+}
+
+
+# cp_dawud.60 -- "The Manifest Room"
+cp_dawud.60 = {
+	type = country_event
+
+	title = cp_dawud.60.t
+	desc = cp_dawud.60.d
+	flavor = cp_dawud.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_dawud_60_the_manifest_room_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_dawud_alive
+		var:cp_dawud_alive > 0
+		has_variable = cp_dawud_seen_intro
+		NOT = { has_variable = cp_dawud_seen_manifest_room }
+	}
+
+	immediate = {
+		cp_dawud_mark_manifest_room = yes
+	}
+
+	option = {
+		name = cp_dawud.60.a
+		default_option = yes
+	}
+}

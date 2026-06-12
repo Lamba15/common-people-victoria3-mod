@@ -1,0 +1,30 @@
+﻿l_english:
+ cp_nabil.10.t:0 "The Lamp at the Corner"
+ cp_nabil.10.d:0 "Nabil al-Haras lights the corner lamp with a taper cupped against the wind. The flame catches, trembles, and makes a small yellow room out of the street. His whistle hangs from a cord around his neck. Children call him police when they want to run from him and uncle when they want him to look away. He is neither, not properly. He is a man paid to walk until dawn and remember which doors were bolted, which voices were drunk, which stranger asked twice for the same house. The city sleeps in pieces. Nabil learns the pieces by sound."
+ cp_nabil.10.f:0 "A quiet street is not quiet to the man required to prove it."
+ cp_nabil.10.a:0 "Keep the lamp lit."
+
+ cp_nabil.20.t:0 "The New Station"
+ cp_nabil.20.d:0 "The new station smells of limewash, ink, and boots not yet softened by feet. Nabil stands while the clerk writes his name with the wrong vowel, then corrects it by drawing a line so hard the paper nearly tears. There is a rack for rifles, a desk for complaints, a bench where men will wait pretending not to be afraid. The officer says order will now have a proper address. Nabil looks through the open door at the alley where old women are already measuring the building with their eyes, asking whether it will protect them from thieves or make every quarrel larger."
+ cp_nabil.20.f:0 "A door with a seal over it can open both ways."
+ cp_nabil.20.a:0 "Order has rented a room."
+
+ cp_nabil.30.t:0 "Rifles by the Bakery"
+ cp_nabil.30.d:0 "The rifles arrive before the bread. Four men stand outside the bakery with their straps white against dark jackets, and the morning crowd learns to lower its voice while still arguing over loaves. Nabil is told to keep people moving. He keeps them moving by touching no one. A boy asks whether the soldiers are here for thieves, and his mother closes his mouth with her hand. Across the street, a letter is folded into a sleeve before anyone can read it twice. The smell of hot bread comes through the line of metal and makes the whole arrangement uglier."
+ cp_nabil.30.f:0 "Fear is easiest to organize when everyone is hungry."
+ cp_nabil.30.a:0 "Let them buy bread."
+
+ cp_nabil.40.t:0 "The Square Afterwards"
+ cp_nabil.40.d:0 "By evening the square is full of footprints, orange peels, torn paper, and one sandal no one has claimed. Nabil walks the edge where the crowd had pressed hardest. A speaker's cart is gone. The soldiers are gone. The words remain in the air the way smoke remains in a room after the lamp has been put out. He finds a button near the fountain and turns it over in his palm. Brass, cheap, still warm from the day. Tomorrow the report will say whether the gathering was orderly. Tonight the stones know only that many feet stood on them and did not move when ordered."
+ cp_nabil.40.f:0 "A square remembers pressure better than speeches."
+ cp_nabil.40.a:0 "Sweep slowly."
+
+ cp_nabil.50.t:0 "The Lost Boy"
+ cp_nabil.50.d:0 "A child missing after sunset turns Nabil's patrol into a search."
+ cp_nabil.50.f:0 "The mother gives the boy's name three times, each softer than the last, as if the street might be listening for accuracy. Nabil lifts his lamp to doorways, under carts, into the dry mouth of an alley where cats scatter from the light. He finds the child asleep beside a baker's warm wall, one hand still closed around a fig. When the mother takes him, she does not thank Nabil at first. She presses her cheek to the boy's hair and makes the sound of a door being bolted from inside."
+ cp_nabil.50.a:0 "Keep walking until the lamp burns low."
+
+ cp_nabil.60.t:0 "The Complaint Bench"
+ cp_nabil.60.d:0 "The station gives fear a place to sit and wait its turn."
+ cp_nabil.60.f:0 "By noon the bench has learned more stories than the officer. A widow with a split lip. A merchant whose scales were stolen. Two brothers who will not sit together. Nabil stands beside the door and calls names from a list he cannot fully read, trusting the shape of letters and the impatience of the crowd. The station was built for order, but order arrives carrying bundles, bruises, lies, and children with dust on their knees."
+ cp_nabil.60.a:0 "Let the next voice in."

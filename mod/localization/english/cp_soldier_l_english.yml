@@ -1,0 +1,30 @@
+﻿l_english:
+ cp_soldier.10.t:0 "The Strap"
+ cp_soldier.10.d:0 "Yusuf ibn Mahmud tightens his kit in a Lower Egypt barracks."
+ cp_soldier.10.f:0 "The strap has been repaired with a strip of darker leather, and the needle-holes along it remember other hands. Yusuf pulls it through the buckle once, then again, until the brass tooth catches. By the window the river moves in a square of pale light. The rifles behind him lean together like men too tired to stand alone."
+ cp_soldier.10.a:0 "Morning gathers on the floor."
+
+ cp_soldier.20.t:0 "The Notice"
+ cp_soldier.20.d:0 "War reaches Yusuf's door as paper and silence."
+ cp_soldier.20.f:0 "The clerk reads without lifting his eyes. Yusuf keeps one hand on the cloth bundle and the other at his side, open, useless. Behind the door his mother has stopped breathing loudly enough for the whole lane to hear. The ditch water goes on glittering beside the road, indifferent and exact, carrying green threads of weed toward fields that will not wait for him."
+ cp_soldier.20.a:0 "The road begins at the threshold."
+
+ cp_soldier.21.t:0 "The Road Back"
+ cp_soldier.21.d:0 "The war releases Yusuf, but not everything comes home with him."
+ cp_soldier.21.f:0 "Mud sucks at his boots with each step. The village sits ahead in the low morning light, familiar enough to wound him: the palms, the broken wall, the minaret where swifts used to circle before evening prayer. Yusuf has carried the rifle so long that his hand keeps its shape around the absent order. When the first dog barks, he stops in the road and listens as if it might tell him who he has become."
+ cp_soldier.21.a:0 "The village waits."
+
+ cp_soldier.30.t:0 "The Arsenal Gate"
+ cp_soldier.30.d:0 "Modern industry teaches Yusuf that war has a factory smell."
+ cp_soldier.30.f:0 "The gate opens before dawn and the air inside tastes of oil, coal smoke, and hot iron. Men in aprons pass rifles from bench to bench with the same tired care women use for bread trays. Yusuf watches a boy file a screw head until it shines, and for the first time understands that the order shouted on a parade ground begins here, in a room where no officer has to raise his voice."
+ cp_soldier.30.a:0 "The metal remembers the hand."
+
+ cp_soldier.40.t:0 "Beans at Dusk"
+ cp_soldier.40.d:0 "A quiet evening in the barracks settles around Yusuf's bowl."
+ cp_soldier.40.f:0 "The beans are thin, but the onion is sharp enough to make the men close their eyes after the first bite. Yusuf sits with his back to the wall and tears the bread carefully, saving the soft center. Someone hums a prayer tune under his breath. Outside, the city lamps come on one by one, and for a little while every man's mother is close enough to scold him for eating too fast."
+ cp_soldier.40.a:0 "The bowl warms his hand."
+
+ cp_soldier.50.t:0 "The Letter Folded Twice"
+ cp_soldier.50.d:0 "Yusuf writes home from a table that rocks under every word."
+ cp_soldier.50.f:0 "The paper is too thin for what it must carry. Yusuf writes that he is well, then scratches the line until the page nearly tears. Around him men borrow ink, curse gently, ask how to spell the names of children who were infants when they left. He folds the letter once for his mother, once for himself, and presses the crease with his thumb as if a clean edge could keep fear from leaking through."
+ cp_soldier.50.a:0 "Send what can be sent."

@@ -24,7 +24,7 @@ Primary source: installed vanilla at `/media/aboelsoud/97889587-0454-426f-b9ae-8
 
 The following were confirmed earlier and are documented in the plan's §2a capability matrix. No separate file needed; evidence is cited inline in the plan.
 
-- **R-1**: `common/on_actions/00_code_on_actions.txt` — ~197 hooks; subscriptions used: `on_game_started`, `on_monthly_pulse_country`, `on_yearly_pulse_country`, `on_law_enactment_pass`, `on_war_started`, `on_war_end`, `on_revolution_start`, `on_acquired_technology`, `on_building_built`, `on_production_method_changed`.
+- **R-1**: `common/on_actions/00_code_on_actions.txt` — ~197 hooks; subscriptions used: `on_game_started`, `on_monthly_pulse_country`, `on_yearly_pulse_country`, `on_law_enactment_pass`, `on_diplo_play_war_start`, `on_war_end`, `on_revolution_start`, `on_acquired_technology`, `on_building_built`, `on_production_method_changed`.
 - **R-5**: JE `on_monthly_pulse` fires automatically; 115 vanilla JEs prove the pattern.
 - **R-11**: No `on_pop_migrated` hook. Effect `create_mass_migration` exists. Polling pattern: yearly pulse stores state_population delta in a country variable.
 - **R-13**: 24 `market_goods_*` triggers (list in plan §2a).

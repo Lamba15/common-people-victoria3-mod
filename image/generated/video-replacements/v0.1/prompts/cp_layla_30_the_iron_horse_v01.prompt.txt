@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_layla.30 at mod/events/cp_layla_events.txt:792
+Previous vanilla video placeholder: unspecific_trains
+Target DDS: mod/gfx/event_pictures/cp_layla_30_the_iron_horse_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_layla_30_the_iron_horse_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_layla.30
+Person token: layla
+Title: The Iron Horse
+Short description: Word has come up the canal road. A machine that pulls itself. No mule, no ox. Black smoke against the morning.
+Flavor text: She does not go to see it. She is told, by the boy who delivers bread, that it makes a noise like the end of the world and moves faster than a horse at full gallop. He is twelve and has been crying, and he does not know why. She asks him if he liked it. He thinks for a while. He says he does not know. That evening, washing turnips in the shade of the wall, she tries to picture a mule made of iron and cannot, and then she tries to picture nothing pulling it at all, and she cannot picture that either. The world is getting bigger. She is not sure yet whether a bigger world is a better one.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

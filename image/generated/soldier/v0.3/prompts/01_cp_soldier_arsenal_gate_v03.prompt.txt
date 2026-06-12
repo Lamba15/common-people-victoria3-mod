@@ -1,0 +1,27 @@
+Common People The Soldier v0.3 replacement prompt
+Source ledger: documentation/characters/the-soldier/prompts/replacement-batch-v0.3.md
+Target DDS: mod/gfx/event_pictures/cp_soldier_arsenal_gate_v03.dds
+Source PNG: image/generated/soldier/v0.3/cp_soldier_arsenal_gate_v03.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Yusuf ibn Mahmud, a young Misri Egyptian soldier around 20; worn uniform, observant and uneasy, family-bound, never heroic propaganda.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide. Put Yusuf, the key action, and required object in the left half or center-left; right half can carry barracks, rifles, smoke, bedding, and atmosphere.
+Constraints: no readable text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic parade, no battlefield poster, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_soldier.30 - "The Arsenal Gate"
+Narrative function: military modernization becomes oil, smoke, benches, and hands making the order possible.
+Subject: Yusuf in worn barracks uniform, watching rather than commanding.
+Scene/backdrop: late-19th-century Egyptian arsenal workshop just inside a heavy gate before dawn; benches, rifles, oil, coal smoke, hot iron, men in aprons passing rifle parts.
+Foreground action: Yusuf stands just inside the gate while a boy files a screw head until it shines.
+Required object/gesture: Yusuf's face, open arsenal gate, filed rifle part or screw, oil-dark workbench.
+Background detail: rifle racks, smoke, lamps, quiet workers, dawn beyond the gate.
+Lighting/mood: pre-dawn industrial lamplight, war as manufactured labor, restrained unease.
+Avoid: modern factory machinery, giant steampunk gears, heroic inspection, parade ground, clean museum weapons.

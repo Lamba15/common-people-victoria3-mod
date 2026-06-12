@@ -1,0 +1,239 @@
+﻿###############################################################################
+# Common People -- Samier's memory
+#
+# Person 4 scaffold. Samier is registered as `samier`, not as a V3
+# character. He enters conditionally once Egyptian factories make his life
+# mechanically legible.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_samier_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = samier
+		culture = misri
+		religion = sunni
+		poptype = laborers
+	}
+}
+
+
+# --- Conditional entry ------------------------------------------------------
+cp_samier_try_spawn = {
+	if = {
+		limit = {
+			c:EGY ?= this
+			NOT = { has_global_variable = cp_person_samier_alive }
+			NOT = { has_variable = cp_samier_alive }
+			has_law = law_type:law_no_workers_rights
+			any_scope_state = {
+				is_incorporated = yes
+				any_scope_building = {
+					is_building_group = bg_manufacturing
+				}
+			}
+		}
+		cp_mark_person_spawn_home_from_manufacturing = { person = samier }
+		cp_register_person = {
+			person = samier
+			country = EGY
+		}
+		cp_samier_dispatch_startup = yes
+		trigger_event = { id = cp_samier.1 }
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_samier_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_samier_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_samier_dispatch_yearly = {
+	cp_age_increment = { person = samier }
+	cp_samier_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = samier country = EGY }
+	if = {
+		limit = {
+			has_variable = cp_samier_seen_intro
+			cp_person_home_has_manufacturing = { person = samier }
+			cp_country_workers_unprotected = yes
+			NOT = { has_variable = cp_samier_seen_false_quarter }
+		}
+		random_list = {
+			10 = { cp_try_fire_world_response = { event = cp_samier.50 person = samier } }
+			90 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = cp_samier_seen_intro
+			has_law = law_type:law_public_schools
+			NOT = { has_variable = cp_samier_seen_letters_after_bell }
+		}
+		random_list = {
+			12 = { cp_try_fire_world_response = { event = cp_samier.60 person = samier } }
+			88 = { }
+		}
+	}
+}
+
+cp_samier_dispatch_law_enacted = {
+	if = {
+		limit = {
+			OR = {
+				ROOT.currently_enacting_law.type ?= law_type:law_regulatory_bodies
+				ROOT.currently_enacting_law.type ?= law_type:law_worker_protections
+			}
+			NOT = { has_variable = cp_samier_seen_labor_law }
+		}
+		cp_try_fire_law_reaction = { event = cp_samier.20 person = samier }
+	}
+}
+
+cp_samier_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_samier_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_samier_dispatch_tech = {
+	if = {
+		limit = {
+			cp_person_home_has_manufacturing = { person = samier }
+			cp_country_workers_unprotected = yes
+			NOT = { has_variable = cp_samier_seen_red_thread }
+		}
+		cp_try_fire_world_response = { event = cp_samier.30 person = samier }
+	}
+}
+
+cp_samier_dispatch_building = {
+	if = {
+		limit = {
+			is_building_group = bg_manufacturing
+			cp_building_affects_person_workplace = { person = samier }
+			owner ?= {
+				THIS = c:EGY
+				cp_country_workers_unprotected = yes
+				NOT = { has_variable = cp_samier_seen_red_thread }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_samier.30 person = samier }
+		}
+	}
+	if = {
+		limit = {
+			is_building_group = bg_manufacturing
+			cp_building_affects_person_workplace = { person = samier }
+			owner ?= {
+				THIS = c:EGY
+				cp_country_workers_unprotected = yes
+				has_variable = cp_samier_seen_intro
+				NOT = { has_variable = cp_samier_seen_false_quarter }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_samier.50 person = samier }
+		}
+	}
+}
+
+cp_samier_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_samier_mark_intro = {
+	cp_mark_event_seen = { person = samier id = intro days = 3650 }
+	change_variable = { name = cp_samier_hope add = 1 }
+	clamp_variable = { name = cp_samier_hope min = 0 max = 10 }
+}
+
+cp_samier_mark_labor_law = {
+	cp_mark_event_seen = { person = samier id = labor_law days = 1825 }
+	change_variable = { name = cp_samier_anger add = -3 }
+	clamp_variable = { name = cp_samier_anger min = 0 max = 10 }
+	change_variable = { name = cp_samier_exhaustion add = -1 }
+	clamp_variable = { name = cp_samier_exhaustion min = 0 max = 10 }
+	cp_shift_loyalist = { person = samier delta = 2 }
+}
+
+cp_samier_mark_red_thread = {
+	cp_mark_event_seen = { person = samier id = red_thread days = 1825 }
+	set_variable = cp_samier_machine_scar
+	change_variable = { name = cp_samier_anger add = 2 }
+	clamp_variable = { name = cp_samier_anger min = 0 max = 10 }
+	change_variable = { name = cp_samier_exhaustion add = 2 }
+	clamp_variable = { name = cp_samier_exhaustion min = 0 max = 10 }
+	cp_shift_radical = { person = samier delta = 3 }
+}
+
+cp_samier_mark_gate_bread = {
+	cp_mark_event_seen = { person = samier id = gate_bread days = 540 }
+	change_variable = { name = cp_samier_hope add = 1 }
+	clamp_variable = { name = cp_samier_hope min = 0 max = 10 }
+}
+
+cp_samier_mark_false_quarter = {
+	cp_mark_event_seen = { person = samier id = false_quarter days = 720 }
+	set_variable = cp_samier_clock_fine
+	change_variable = { name = cp_samier_anger add = 1 }
+	clamp_variable = { name = cp_samier_anger min = 0 max = 10 }
+	change_variable = { name = cp_samier_exhaustion add = 1 }
+	clamp_variable = { name = cp_samier_exhaustion min = 0 max = 10 }
+	cp_shift_radical = { person = samier delta = 1 }
+}
+
+cp_samier_mark_letters_after_bell = {
+	cp_mark_event_seen = { person = samier id = letters_after_bell days = 720 }
+	change_variable = { name = cp_samier_hope add = 1 }
+	clamp_variable = { name = cp_samier_hope min = 0 max = 10 }
+	cp_shift_literacy = { person = samier delta = 1 }
+	cp_shift_weight = { person = samier weight = education delta = 2 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_samier = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_samier_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_samier.10 person = samier }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_samier_seen_intro
+				NOT = { has_variable = cp_samier_seen_gate_bread }
+			}
+			cp_try_fire_ambient = { event = cp_samier.40 person = samier }
+		}
+		7 = {
+			trigger = {
+				has_variable = cp_samier_seen_intro
+				cp_country_workers_unprotected = yes
+				NOT = { has_variable = cp_samier_seen_false_quarter }
+			}
+			cp_try_fire_ambient = { event = cp_samier.50 person = samier }
+		}
+		5 = {
+			trigger = {
+				has_variable = cp_samier_seen_intro
+				has_law = law_type:law_public_schools
+				NOT = { has_variable = cp_samier_seen_letters_after_bell }
+			}
+			cp_try_fire_ambient = { event = cp_samier.60 person = samier }
+		}
+		70 = { }
+	}
+}

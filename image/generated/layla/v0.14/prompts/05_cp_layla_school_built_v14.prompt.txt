@@ -1,0 +1,27 @@
+Common People Layla v0.14 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.14.md
+Target DDS: mod/gfx/event_pictures/cp_layla_school_built_v14.dds
+Source PNG: image/generated/layla/v0.14/cp_layla_school_built_v14.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla.100 - "A School in the Next Village"
+Narrative function: public schooling becomes a promised room with chairs, an inkhorn, and Layla's daughter imagined at a desk.
+Subject: Layla hearing older women bring news from the Tuesday market.
+Scene/backdrop: village courtyard or well, basin set down, older women returning from market.
+Foreground action: one woman gestures toward the next village while Layla pauses with a basin in her hands.
+Required object/gesture: simple slate or inkhorn carried by a child or teacher; basin set down; distant unfinished schoolroom implied through open lane.
+Background detail: children listening from the side, market baskets, no classroom pageantry.
+Lighting/mood: afternoon, cautious hope, a room imagined before it exists.
+Avoid: modern school uniforms, blackboard with readable text, big classroom interior, patriotic school poster.

@@ -1,0 +1,228 @@
+﻿###############################################################################
+# Common People -- Nabil al-Haras's memory
+#
+# Person 15 scaffold. Nabil is registered as `nabil`, not as a V3 character.
+# He enters conditionally when policing, dissent, assembly, or revolution make
+# public order visible through an ordinary night watchman's body.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_nabil_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = nabil
+		culture = misri
+		religion = sunni
+		poptype = laborers
+	}
+}
+
+
+# --- Conditional entry ------------------------------------------------------
+cp_nabil_try_spawn = {
+	if = {
+		limit = {
+			c:EGY ?= this
+			NOT = { has_global_variable = cp_person_nabil_alive }
+			NOT = { has_variable = cp_nabil_alive }
+			cp_country_has_public_order_pressure = yes
+		}
+		random_list = {
+			40 = {
+				cp_register_person = {
+					person = nabil
+					country = EGY
+				}
+				cp_nabil_dispatch_startup = yes
+				trigger_event = { id = cp_nabil.1 }
+			}
+			60 = { }
+		}
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_nabil_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_nabil_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_nabil_dispatch_yearly = {
+	cp_age_increment = { person = nabil }
+	cp_nabil_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = nabil country = EGY }
+	if = {
+		limit = {
+			has_variable = cp_nabil_seen_intro
+			cp_country_has_public_order_pressure = yes
+			NOT = { has_variable = cp_nabil_seen_square_afterward }
+		}
+		random_list = {
+			10 = { cp_try_fire_world_response = { event = cp_nabil.40 person = nabil } }
+			90 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = cp_nabil_seen_intro
+			OR = {
+				has_variable = cp_nabil_seen_station
+				has_law = law_type:law_dedicated_police
+			}
+			NOT = { has_variable = cp_nabil_seen_complaint_bench }
+		}
+		random_list = {
+			10 = { cp_try_fire_world_response = { event = cp_nabil.60 person = nabil } }
+			90 = { }
+		}
+	}
+}
+
+cp_nabil_dispatch_law_enacted = {
+	if = {
+		limit = {
+			NOT = { has_variable = cp_shared_public_order_law_handled }
+			NOT = { has_variable = cp_nabil_just_spawned }
+			ROOT.currently_enacting_law.type ?= law_type:law_dedicated_police
+			NOT = { has_variable = cp_nabil_seen_station }
+		}
+		cp_try_fire_law_reaction = { event = cp_nabil.20 person = nabil }
+	}
+	if = {
+		limit = {
+			NOT = { has_variable = cp_shared_public_order_law_handled }
+			NOT = { has_variable = cp_nabil_just_spawned }
+			OR = {
+				ROOT.currently_enacting_law.type ?= law_type:law_militarized_police
+				ROOT.currently_enacting_law.type ?= law_type:law_outlawed_dissent
+			}
+			NOT = { has_variable = cp_nabil_seen_rifles }
+		}
+		cp_try_fire_law_reaction = { event = cp_nabil.30 person = nabil }
+	}
+	if = {
+		limit = {
+			NOT = { has_variable = cp_shared_public_order_law_handled }
+			NOT = { has_variable = cp_nabil_just_spawned }
+			ROOT.currently_enacting_law.type ?= law_type:law_right_of_assembly
+			NOT = { has_variable = cp_nabil_seen_square_afterward }
+		}
+		random_list = {
+			35 = { cp_try_fire_law_reaction = { event = cp_nabil.40 person = nabil } }
+			65 = { }
+		}
+	}
+}
+
+cp_nabil_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_nabil_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_nabil_dispatch_tech = {
+	cp_person_hook_noop = yes
+}
+
+cp_nabil_dispatch_building = {
+	cp_person_hook_noop = yes
+}
+
+cp_nabil_dispatch_revolution = {
+	if = {
+		limit = {
+			has_variable = cp_shared_revolution_target_nabil
+			NOT = { has_variable = cp_nabil_just_spawned }
+			has_variable = cp_nabil_seen_intro
+			NOT = { has_variable = cp_nabil_seen_square_afterward }
+		}
+		remove_variable = cp_shared_revolution_target_nabil
+		cp_try_fire_world_response = { event = cp_nabil.40 person = nabil }
+	}
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_nabil_mark_intro = {
+	cp_mark_event_seen = { person = nabil id = intro days = 3650 }
+	cp_shift_weight = { person = nabil weight = order delta = 1 }
+}
+
+cp_nabil_mark_station = {
+	cp_mark_event_seen = { person = nabil id = station days = 1825 }
+	cp_shift_loyalist = { person = nabil delta = 1 }
+	cp_shift_weight = { person = nabil weight = uniform delta = 2 }
+}
+
+cp_nabil_mark_rifles = {
+	cp_mark_event_seen = { person = nabil id = rifles days = 1825 }
+	cp_shift_exhaustion = { person = nabil delta = 1 }
+	cp_shift_radical = { person = nabil delta = 1 }
+	cp_shift_weight = { person = nabil weight = fear delta = 2 }
+}
+
+cp_nabil_mark_square_afterward = {
+	cp_mark_event_seen = { person = nabil id = square_afterward days = 1825 }
+	cp_shift_exhaustion = { person = nabil delta = 1 }
+	cp_shift_weight = { person = nabil weight = crowd delta = 2 }
+}
+
+cp_nabil_mark_lost_boy = {
+	cp_mark_event_seen = { person = nabil id = lost_boy days = 720 }
+	cp_shift_exhaustion = { person = nabil delta = 1 }
+	cp_shift_hope = { person = nabil delta = 1 }
+	cp_shift_weight = { person = nabil weight = family delta = 1 }
+}
+
+cp_nabil_mark_complaint_bench = {
+	cp_mark_event_seen = { person = nabil id = complaint_bench days = 720 }
+	cp_shift_exhaustion = { person = nabil delta = 1 }
+	cp_shift_weight = { person = nabil weight = order delta = 1 }
+	cp_shift_weight = { person = nabil weight = fear delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_nabil = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_nabil_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_nabil.10 person = nabil }
+		}
+		7 = {
+			trigger = {
+				has_variable = cp_nabil_seen_intro
+				cp_country_has_public_order_pressure = yes
+				NOT = { has_variable = cp_nabil_seen_square_afterward }
+			}
+			cp_try_fire_ambient = { event = cp_nabil.40 person = nabil }
+		}
+		6 = {
+			trigger = {
+				has_variable = cp_nabil_seen_intro
+				NOT = { has_variable = cp_nabil_seen_lost_boy }
+			}
+			cp_try_fire_ambient = { event = cp_nabil.50 person = nabil }
+		}
+		5 = {
+			trigger = {
+				has_variable = cp_nabil_seen_intro
+				OR = {
+					has_variable = cp_nabil_seen_station
+					has_law = law_type:law_dedicated_police
+				}
+				NOT = { has_variable = cp_nabil_seen_complaint_bench }
+			}
+			cp_try_fire_ambient = { event = cp_nabil.60 person = nabil }
+		}
+		72 = { }
+	}
+}

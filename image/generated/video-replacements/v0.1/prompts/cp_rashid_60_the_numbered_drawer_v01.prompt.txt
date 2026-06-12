@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_rashid.60 at mod/events/cp_rashid_events.txt:241
+Previous vanilla video placeholder: unspecific_signed_contract
+Target DDS: mod/gfx/event_pictures/cp_rashid_60_the_numbered_drawer_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_rashid_60_the_numbered_drawer_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_rashid.60
+Person token: rashid
+Title: The Numbered Drawer
+Short description: A carpenter fits numbered drawers against the office wall while the clerks continue working around his ladder. Rashid receives drawer seventeen, then drawer twenty-three, then a key so small he fears losing it inside his own pocket. The room changes at once. A petition no longer waits in a stack; it waits in a place. A widow's claim can be found before the tea cools. A tax roll can vanish more completely because it vanished from a drawer with a number, and therefore looks less like theft. Rashid writes the numbers in a notebook he keeps hidden under the blotter. He tells himself this is order. He tells himself order is mercy. Then he writes one more number beside a name he recognizes and does not tell anyone.
+Flavor text: The drawer slides shut with the soft finality of a mouth deciding what it will not say.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

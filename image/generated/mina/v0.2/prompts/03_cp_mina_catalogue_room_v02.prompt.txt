@@ -1,0 +1,27 @@
+Common People Mina v0.2 replacement prompt
+Source ledger: documentation/characters/mina/prompts/replacement-batch-v0.2.md
+Target DDS: mod/gfx/event_pictures/cp_mina_catalogue_room_v02.dds
+Source PNG: image/generated/mina/v0.2/cp_mina_catalogue_room_v02.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Mina, a young Coptic Egyptian printer's apprentice in late-19th-century Cairo; keep him grounded, unheroic, ink-stained, and visibly shaped by workshop labor.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: event-window readable at small size, close-medium or medium-wide, essential face/action/object in the left half or center-left, right half safe for atmosphere.
+Constraints: no readable text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_mina.50 - "The Catalogue Room"
+Narrative function: universities and offices become tactile through catalogues, margins, cords, and stacks.
+Subject: Mina in a printer's apron, young and concentrated, sorting freshly printed catalogue sheets.
+Scene/backdrop: Cairo print room with shelves of paper, type cases, bundled forms, and an open window with city architecture beyond.
+Foreground action: Mina aligns a stack of catalogues and checks the margins with both hands.
+Required object/gesture: catalogue sheets tied with blue cord or stacked in neat piles, no readable text.
+Background detail: paper shelves, wooden cabinet, ink cup, distant school or mosque dome through the window.
+Lighting/mood: clear daylight, order made by hand, modernization as modest craft.
+Avoid: contract signing scene, office boardroom, female protagonist, modern filing cabinets, readable labels.

@@ -1,0 +1,27 @@
+Common People Layla v0.9 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.9.md
+Target DDS: mod/gfx/event_pictures/cp_layla_children_school_v09.dds
+Source PNG: image/generated/layla/v0.9/cp_layla_children_school_v09.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla.101 - "The School"
+Narrative function: school arrives as a slate, a threshold, and a child leaving household labor for letters.
+Subject: Layla in middle age watching one of her children at a school doorway.
+Scene/backdrop: modest village school or courtyard room in 19th-century Egypt, mud wall, bench, teacher's low table.
+Foreground action: a child holds a slate and steps away from Layla; Layla remains near the threshold.
+Required object/gesture: slate in the child's hand; Layla's hand still holding a small food cloth.
+Background detail: other children seated on mats, teacher partly visible, no modern desks.
+Lighting/mood: morning light, pride mixed with household worry.
+Avoid: modern classroom, cheerful campaign poster, readable letters, idealized schoolyard.

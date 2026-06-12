@@ -1,203 +1,234 @@
 # Image Generation Workflow
 
-> How event images for the mod are produced. Verified end-to-end on 2026-04-17 with the Layla "The Deed" (homesteading) image as proof-of-concept.
+Current rebuild workflow, updated 2026-05-26 for the Layla v0.7-v0.12 replacement batches.
+
+Current art direction lives in [art-bible-v0.5.md](art-bible-v0.5.md). Layla's active replacement queues live in [replacement-batch-v0.7.md](characters/layla/prompts/replacement-batch-v0.7.md), [replacement-batch-v0.8.md](characters/layla/prompts/replacement-batch-v0.8.md), [replacement-batch-v0.9.md](characters/layla/prompts/replacement-batch-v0.9.md), [replacement-batch-v0.10.md](characters/layla/prompts/replacement-batch-v0.10.md), [replacement-batch-v0.11.md](characters/layla/prompts/replacement-batch-v0.11.md), and [replacement-batch-v0.12.md](characters/layla/prompts/replacement-batch-v0.12.md). Use versioned batch ledgers, not old prompt catalogs, when generating replacement art.
 
 ---
 
-## Tooling
+## Rules
 
-- **Codex CLI** (`codex-cli 0.121.0`), authenticated via ChatGPT login (not API key).
-- Config at `~/.codex/config.toml` has `features.image_generation = true` -- this enables the native image tool.
-- Verify before first run:
-  ```bash
-  codex --version
-  codex login status   # should say "Logged in using ChatGPT"
-  grep image_generation ~/.codex/config.toml
-  ```
-
-No OpenAI API key is required; Codex uses the same auth as the ChatGPT app.
+- Generate versioned replacements: `cp_<person>_<scene>_vNN.dds.png` as source, `cp_<person>_<scene>_vNN.dds` as shipped texture.
+- Store generated source PNGs inside this repo under `image/generated/<person>/<version>/`.
+- Do not use retired `cp_conversation_*` source names. The converter rejects them because they can recreate the old pre-r5 conversation art path.
+- Keep high-resolution archives beside accepted sources when available: `cp_<person>_<scene>_vNN_1536.png`.
+- Only wire an image into events after visual review. Move superseded DDS files to `image/archive/legacy-event-pictures/<version>-superseded/`.
 
 ---
 
-## Directory conventions
+## Directory Conventions
 
-**Source images (outside the mod repo):**
-```
-/home/aboelsoud/Pictures/common-people-mod-images/
-├── Layla/
-│   ├── layla.png                           (canonical portrait, face reference)
-│   ├── cp_layla_<event>.dds.png            (600x400 event images, game-ready size)
-│   └── cp_layla_<event>_1536.png           (1536x1024 archive, for re-renders)
-├── <other_character>/
-│   ├── <name>.png
-│   └── ...
+Generated sources:
+
+```text
+image/generated/
+├── layla/
+│   └── v0.7/
+│       ├── gpt-image-2-batch.jsonl
+│       ├── prompts/
+│       │   └── 11_cp_layla_conversation_land_v07.prompt.txt
+│       ├── cp_layla_conversation_land_v07.dds.png
+│       └── cp_layla_conversation_land_v07_1536.png
+│   └── v0.8/
+│       ├── gpt-image-2-batch.jsonl
+│       └── prompts/
+│   └── v0.9/
+│       ├── gpt-image-2-batch.jsonl
+│       └── prompts/
+│   └── v0.10/
+│       ├── gpt-image-2-batch.jsonl
+│       └── prompts/
+│   └── v0.11/
+│       ├── gpt-image-2-batch.jsonl
+│       └── prompts/
+│   └── v0.12/
+│       ├── gpt-image-2-batch.jsonl
+│       └── prompts/
+└── <person>/
 ```
 
-**In-mod images** (shipped with the mod, DDS format required by V3):
-```
+Shipped DDS textures:
+
+```text
 mod/gfx/event_pictures/
-├── cp_layla_homesteading.dds
+├── cp_layla_conversation_land_v07.dds
 └── ...
 ```
 
-The `.dds.png` suffix in the source folder is a typo-friendly placeholder -- the file is a PNG, but we name it for the final DDS it will become after conversion. Keeps the eventify pass's `picture = "cp_layla_homesteading"` references stable.
+The `.dds.png` suffix means "PNG source for this eventual DDS." For replacement batches, the version suffix is part of the asset name.
 
 ---
 
-## Prompt template
+## Prompt Export
 
-Every image prompt follows the same five-section structure. The reliability of the result is directly a function of how tight this prompt is; lazy prompts get generic fantasy-art.
-
-```
-Generate ONE event image for a Victoria 3 mod about Egyptian peasants.
-This is for the event "<Event title>" (<event_id>) -- <one-sentence context of what happens in this scene>.
-
-Reference images attached:
-- First image (<character>.png): canonical portrait of <character> -- <physical description: age, hair, clothing, palette>. Match face, hair, clothing, and palette exactly.
-- Second image (<prior event>.dds.png): visual style to match -- painterly oil, 19th-century genre painting, warm earth tones (ochre, sienna, cream), Egyptian rural setting, cinematic composition, 600x400 landscape aspect, slight painted-canvas texture.
-
-Scene to generate: <who is in frame, what they are doing, where, what time of day, what specific physical details matter -- the deed in hand, the red wax seal, the bey on horseback in the middle distance, etc>.
-
-Mood: <one-sentence description of register -- "quiet gravity, not celebration", "tension before a rupture", etc>. Mahfouz register in painted form.
-
-Resolution: 3:2 landscape aspect, 600x400 if supported.
-
-Save the final PNG to: <absolute target path>.dds.png
-
-Report the final saved file path in your reply.
-```
-
-### Prompt gotchas learned the hard way
-
-- **"ONE image"** in capitals matters; Codex has generated multi-panel composites without it.
-- **Describe face explicitly** in the Reference Images section. Codex's image tool sees attached images as stylistic prompts, *not* as identity locks -- the generated face will be in the character's spirit but will drift across runs. Explicit facial description ("oval face, heavy brows, small mole under left eye") closes some of the gap but not all of it. True face-lock needs a different tool (see [Scaling](#scaling)).
-- **Name the specific physical objects** that must appear (paper, wax seal, horse, ox-cart, specific garment). Abstract mood words without object anchors give mood paintings without narrative.
-- **Mahfouz register** as a prompt phrase nudges composition toward quiet human scale rather than epic heroic framing. Useful even if the model has never read Mahfouz.
-
----
-
-## Command pattern
+Export auditable prompt files from every active replacement ledger:
 
 ```bash
-cat <<'PROMPT_EOF' | codex exec --full-auto \
-  -i /home/aboelsoud/Pictures/common-people-mod-images/Layla/layla.png \
-  -i /home/aboelsoud/Pictures/common-people-mod-images/Layla/cp_layla_serfdom.dds.png
-<full prompt body per template above>
-PROMPT_EOF
+python3 script/export-art-batch-prompts.py --all
+python3 script/export-art-batch-prompts.py --all --check
 ```
 
-### Flag notes
+The exported files pair each target DDS with the shared visual contract and scene-specific prompt. Release readiness checks that these prompt files stay current.
 
-- `-i <file>` attaches a reference image. Repeat for multiple references. Order matters only in that it matches the order you cite them in the prompt body ("first image", "second image").
-- `--full-auto` runs in sandboxed workspace-write mode and skips confirmation prompts. Required for hands-off runs.
-- **Prompt via stdin** -- passing the prompt as a positional argument after `-i` flags fails (the last `-i` greedily consumes the prompt). Piping via heredoc is the reliable pattern.
+The same exporter also writes a machine-ready gpt-image-2 JSONL manifest:
 
-### Alternative: bypass the sandbox entirely
+```text
+image/generated/layla/<version>/gpt-image-2-batch.jsonl
+```
+
+Validate the manifest without spending API time:
 
 ```bash
-codex exec --dangerously-bypass-approvals-and-sandbox -i ... <<'EOF'
-...
-EOF
+python3 ~/.codex/skills/.system/imagegen/scripts/image_gen.py generate-batch \
+  --input image/generated/layla/<version>/gpt-image-2-batch.jsonl \
+  --out-dir image/generated/layla/<version> \
+  --dry-run \
+  --no-augment
 ```
 
-Use this only when the target directory is outside codex's default writable set (see [Sandbox gotcha](#sandbox-gotcha)). Treat it like `sudo` -- fine for this specific task, don't make it a habit.
+Track the current generation/review/promotion state:
+
+```bash
+script/build-art-acceptance-ledger.py
+script/build-art-acceptance-ledger.py --check
+```
+
+The generated ledger at `documentation/art-acceptance-ledger.md` records every planned target's legacy reference count, generated source state, shipped DDS state, promotion state, and next gate.
 
 ---
 
-## Sandbox gotcha
+## Generation
 
-With `--full-auto`, codex writes are restricted to the project-root workspace. `/home/aboelsoud/Pictures/...` is *outside* that workspace and reads as read-only. The image generation itself works, but the final `cp` into the target directory fails with:
+Use the current Codex/OpenAI image tool to generate one candidate per prompt. Each manifest is already configured for `gpt-image-2`, `1536x1024`, high quality PNG outputs, and source filenames that match the converter/provenance audits.
 
+When `OPENAI_API_KEY` is available:
+
+```bash
+python3 ~/.codex/skills/.system/imagegen/scripts/image_gen.py generate-batch \
+  --input image/generated/layla/<version>/gpt-image-2-batch.jsonl \
+  --out-dir image/generated/layla/<version> \
+  --no-augment
 ```
-cp: cannot create regular file '.../cp_layla_<event>.dds.png': Read-only file system
+
+Accepted 600x400 sources must live at:
+
+```text
+image/generated/layla/<version>/<asset>.dds.png
 ```
 
-Codex's workaround in that case: it scales and writes to `/tmp/common-people-mod-images/Layla/<name>.dds.png`. Two ways to finalize from there:
+For example:
 
-1. **Copy from outside the codex session.** After codex reports success and names its /tmp path, run:
-   ```bash
-   cp /tmp/common-people-mod-images/Layla/<name>.dds.png \
-      /home/aboelsoud/Pictures/common-people-mod-images/Layla/
-   cp /home/aboelsoud/.codex/generated_images/<session-id>/ig_<hash>.png \
-      /home/aboelsoud/Pictures/common-people-mod-images/Layla/<name>_1536.png
-   ```
-   (The `_1536` archive is optional but cheap to keep -- it's the pre-downscale original, usable for re-renders at higher resolution later.)
+```text
+image/generated/layla/v0.7/cp_layla_conversation_land_v07.dds.png
+```
 
-2. **Run codex with full access.** Use `--dangerously-bypass-approvals-and-sandbox` as above. Codex writes directly to the target path. Single-command workflow, less copy-paste.
+Keep a high-resolution archive when the tool provides one:
 
-Recommendation: use option 1 for now. Option 2 becomes worth it when generating in bulk.
+```text
+image/generated/layla/v0.7/cp_layla_conversation_land_v07_1536.png
+```
 
 ---
 
-## Post-generation steps
+## Convert PNG To DDS
 
-After each image is in `/home/aboelsoud/Pictures/common-people-mod-images/<Character>/`:
+Victoria 3 event pictures must be DDS textures. Convert generated sources with:
 
-1. **Eyeball it.** Is the character recognizable? Is the scene readable at 600x400? Is the mood right?
-2. If unacceptable, **re-run** with a tightened prompt. Don't edit -- regenerate. It's cheap.
-3. **Commit the PNG to the source folder** (already done by the copy step). That folder isn't in the mod repo and isn't checked into git; it's the asset library.
-4. **Convert PNG -> DDS** for in-mod use. V3 requires `.dds` (BC3 / DXT5) for event pictures. One command covers every image in the asset library:
-   ```bash
-   ./script/convert-images-to-dds.sh
-   ```
-   The script prefers `nvcompress` (apt: `libnvtt-bin`) and falls back to ImageMagick's `magick`. Idempotent -- re-running only converts files whose PNG is newer than the existing DDS. See [event-workflow.md](event-workflow.md#step-4-convert-png--dds) for the script's behavior and env overrides.
-5. **Drop the DDS into the mod:**
-   ```
-   mod/gfx/event_pictures/cp_<character>_<event>.dds
-   ```
-6. **Wire it in the event** (eventify pass):
-   ```
-   cp_<character>.<event> = {
-       ...
-       picture = {
-           texture = "gfx/event_pictures/cp_<character>_<event>.dds"
-       }
-       ...
-   }
-   ```
-
-Step 4 is wired: `script/convert-images-to-dds.sh` walks the Pictures folder and produces DDS siblings inside the mod. Install the converter once (`sudo apt install libnvtt-bin`) and the script runs hands-off thereafter.
-
----
-
-## Proof-of-concept run (2026-04-17)
-
-- Event: Layla homesteading (R2, "The Deed")
-- Command: `codex exec --full-auto -i layla.png -i cp_layla_serfdom.dds.png` with stdin prompt
-- Time: ~25 seconds end-to-end (prompt submission to saved PNG)
-- Output: 1536x1024 original, downscaled via Codex's internal `ffmpeg` call to 600x400
-- Cost: counted against ChatGPT subscription, not a separate API charge
-- Result: acceptable composition and palette; face drifted ~20% from the portrait reference
-- Archive: `~/.codex/generated_images/<session-id>/ig_<hash>.png` (the 1536x1024 original is kept by codex itself)
-
----
-
-## Scaling
-
-Generating ~150 event images (1 per reaction + 1 per distinctive pulse event) by this workflow is feasible -- call it ~1 hour of prompt-write + button-press time + copy-from-/tmp chores. Two improvements make that hour pleasant:
-
-1. **Prompt generation from events.** Write a script that reads `reactions.md` and `pulse.md`, extracts `id`, `prose kernel`, and relevant state tags, and emits a ready-to-run codex command per event. Instead of hand-writing 150 prompts, hand-write the template once.
-2. **Face-lock toolchain.** Codex's native image tool doesn't character-lock. For per-character consistency across 50 images of Layla, use an identity-reference tool:
-   - **Midjourney with `--cref`** -- best out-of-box identity lock; paid subscription, web UI only.
-   - **Ideogram Character Reference** -- similar, API available.
-   - **ComfyUI + InstantID / IPAdapter FaceID** -- local, free, steep setup. SDXL-based; quality is good but not oil-painterly without careful prompting.
-   - **Flux-Dev + PuLID** -- local, excellent identity; newer, less tooling around it.
-
-Decision for now: keep using Codex for proof-of-concept per-character (one hero shot per character), then pick a face-lock tool before generating the full 150-image pool.
-
----
-
-## Files this workflow produces (per event)
-
-For event `cp_<character>_<event>`:
-
-```
-/home/aboelsoud/Pictures/common-people-mod-images/<Character>/
-├── cp_<character>_<event>.dds.png          (600x400 PNG, ready for DDS conversion)
-└── cp_<character>_<event>_1536.png         (1536x1024 archive, kept for re-renders)
-
-mod/gfx/event_pictures/
-└── cp_<character>_<event>.dds              (after PNG -> DDS conversion, shipped with the mod)
+```bash
+script/convert-images-to-dds.sh
 ```
 
-The mod itself ships only the `.dds`. The `.png` sources stay in the asset library for iteration and redo.
+The script defaults to `image/generated/` and writes to `mod/gfx/event_pictures/`. It prefers `nvcompress` from `libnvtt-bin` and falls back to ImageMagick's `magick`.
+
+Use `CP_IMAGES_SRC=/path/to/source` only for a deliberate external source library. The converter rejects `cp_conversation_*` source names in every source root.
+
+---
+
+## Motion Event Art
+
+Victoria 3 event windows support moving event art through `event_image = { video = "..." }`. The installed 1.13.8 GUI renders this with `Event.HasVideo` and `Event.GetVideo`; static `texture = "...dds"` art does not pan by itself.
+
+Vanilla examples use both forms:
+
+```text
+event_image = { video = "middleeast_middleclass_cafe" }
+event_image = { video = "gfx/event_pictures/ip2_india_protest.bk2" }
+```
+
+The shipped moving-art format is `.bk2` under `gfx/event_pictures/`. Until a custom Bink/video export pipeline is proven, the safe options are:
+
+1. keep generated GPT stills as reviewed DDS textures
+2. use vanilla `.bk2` references only as temporary playtest placeholders
+3. promote custom motion only after an in-game-tested `.bk2` pipeline exists
+
+`documentation/motion-art-ledger.md` records every active motion event and
+classifies it as custom motion or vanilla placeholder debt; regenerate it with
+`python3 script/build-motion-art-ledger.py`.
+`script/audit-event-images.py` inventories both referenced DDS textures and BK2
+videos, while `script/audit-event-motion.py` and
+`python3 script/build-motion-art-ledger.py --check` verify that any remaining
+video references resolve and that the motion ledger does not drift. Release candidates must also pass
+`script/audit-generic-video-art.py --strict-no-vanilla-video`. A video
+reference must resolve against the mod or installed Victoria 3
+`gfx/event_pictures` tree.
+
+For vanilla video placeholder replacement, use the generated prompt queue:
+
+```bash
+python3 script/build-video-replacement-prompts.py
+python3 script/build-video-replacement-prompts.py --check
+```
+
+The ledger at `documentation/video-replacement-prompt-ledger.md` maps each
+vanilla-video event to a target DDS name, source event, prompt file, and
+`gpt-image-2` batch manifest. These outputs are planning/review artifacts only;
+event files should not be rewired until generated candidates have been reviewed,
+converted, and checked in-game at event-window scale.
+
+---
+
+## Review And Promote
+
+After generation, rebuild review sheets and inspect the batch before changing event references:
+
+```bash
+script/build-image-contact-sheets.py
+script/build-image-contact-sheets.py --check
+script/audit-event-images.py
+script/audit-art-batch-plan.py --all
+script/build-art-acceptance-ledger.py --check
+script/audit-art-provenance.py --rank-missing --limit 30
+script/audit-release-readiness.py --mode dev
+```
+
+After the reviewed PNGs have been converted to DDS, inspect the promotion status:
+
+```bash
+script/promote-art-batch.py --all
+```
+
+When a full batch is accepted, promote it:
+
+```bash
+script/promote-art-batch.py documentation/characters/layla/prompts/replacement-batch-v0.7.md --apply
+script/promote-art-batch.py documentation/characters/layla/prompts/replacement-batch-v0.8.md --apply
+script/promote-art-batch.py documentation/characters/layla/prompts/replacement-batch-v0.9.md --apply
+script/promote-art-batch.py documentation/characters/layla/prompts/replacement-batch-v0.10.md --apply
+script/promote-art-batch.py documentation/characters/layla/prompts/replacement-batch-v0.11.md --apply
+script/promote-art-batch.py documentation/characters/layla/prompts/replacement-batch-v0.12.md --apply
+```
+
+The promoter rewires event `event_image` references from legacy DDS names to the versioned `_vNN` DDS assets and moves superseded DDS files into `image/archive/legacy-event-pictures/<version>-superseded/`. It refuses to apply unless the generated source PNG and shipped DDS exist for every target in the batch.
+
+When an image is accepted manually:
+
+1. Rewire the event's `event_image = { texture = "gfx/event_pictures/<asset>.dds" }`.
+2. Keep the new texture versioned (`_v07`, `_v08`, etc.).
+3. Move the superseded DDS out of `mod/gfx/event_pictures/` and into the matching archive folder.
+4. Update the batch ledger with any visual QA notes.
+
+---
+
+## Scaling Notes
+
+Prompt ledgers are the scaling unit. Add new characters or Layla follow-up batches as new versioned ledgers, then add the corresponding prompt-export check when the batch becomes active. Avoid reintroducing one-off bulk generators: they drift silently, make prompts hard to audit, and can bring old art direction back into the shipped mod.

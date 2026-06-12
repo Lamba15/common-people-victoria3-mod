@@ -1,109 +1,103 @@
-# Imagined Audience with the Pasha
+# Layla Voice System
 
-A verb on Layla's journal entry labelled **"Imagine an audience with the Pasha."** Where Check-on-Layla is a moment observed, Audience is a fantasy: she is standing in an enormous room she has never seen, in Cairo, before Muhammad Ali Pasha, ruler of Egypt. She is wearing clothes she does not own. She has been granted an hour. She has rehearsed this a hundred times over the quern-stone and over the oven and in the dark before sleep. Tonight she lets it happen.
+Status: legacy Layla-only conversation design, retained for debug review and future salvage.
 
-This is the mental mode of every powerless person who has ever imagined walking into the office of the minister, the president, the king, the boss — the practice-speech that will never be given, the rehearsed argument that dissolves the moment the imagined audience ends.
+The old `cp_conversation.*` audience tree is gone from the shipped event tree. Layla's `cp_layla_vox.*` layer still exists, but the Layla-only JE button **A word between** has been retired because the persistent journal surface is now shared by the roster. Do not re-add a Layla-only button. The next version of this system should be a shared conversation lane that can choose any eligible person.
 
-**The player is Muhammad Ali Pasha, in her imagination.** The player chooses the topic she brings before him, and then — at every turn — the player chooses what the Pasha says back. The player plays the role of the ruler she has invented. She speaks her monologue; the player as Pasha replies; she reacts to the reply; the player as Pasha replies again; the back-and-forth continues until the audience closes.
+This button is not a menu and the player is not cast as the ruler. The player witnesses a scene and steers Layla's answer inside it. The surprise is the point: one click might bring Ahmed home from the fields, another her mother in memory, another the Bey, another the ruler's room, another only Layla speaking to herself.
 
-This is roleplay with asymmetric authorship: **she is fixed, he is player-directed**. Her voice is written; his voice is yours. You choose whether the Pasha she imagines tonight is dismissive, indulgent, cruel, curious, or (most dangerously) understanding. Her reactions branch accordingly — her voice hardens or breaks or persists, depending on the Pasha you chose to be.
+## Runtime Flow
 
----
+1. Debug selectors or future shared conversation infrastructure choose a Layla-vox picker.
+2. `cp_layla_roll_interlocutor` in `mod/common/scripted_effects/cp_layla_memory.txt` remains as legacy routing material.
+3. Rolls one eligible interlocutor with `random_list`
+4. Fires a hidden scenario picker: `cp_layla_vox.10`, `.20`, `.30`, ... `.100`
+5. The picker opens one visible scenario and its branch follow-ups
+6. The scenario sets cooldowns and seen-flags so the same scene does not repeat too quickly
 
-## Frame
+All entry points from the button use `cp_button_fire`; direct `trigger_event` is allowed only inside a scene chain after the first visible popup is already open.
 
-**Who is the Pasha?** Muhammad Ali Pasha (Wāli of Egypt 1805–1848; viceroy under the Ottoman Sultan). In 1836 he is at the height of his power: he has reformed land ownership, modernised the army by conscripting peasants like Ahmed, built textile mills and arsenals, and fought Ottoman wars that killed uncounted Egyptian men. He has never visited Layla's village. He will never know she existed.
+## Interlocutors
 
-**Why he is who she imagines.** She has heard his name all her life. He is the ultimate authority in her world — not God, not the bey, but the man whose orders the bey ultimately obeys. She has seen his image only in vague report. When she imagines the face of power, she imagines him. The way an Egyptian peasant woman in 2026 might imagine addressing the president.
+| Index | Interlocutor | Gate / Weight Shape |
+|---:|---|---|
+| 10 | Ahmed | Requires `cp_layla_ahmed_alive > 0`; high weight while alive |
+| 20 | Daughter / children | Requires `cp_layla_children > 0` |
+| 30 | Her mother | Always eligible; memory/interiority |
+| 40 | Um Yusuf | Rural neighbour; not city |
+| 50 | Umm Mariam | Rural + Layla owns land |
+| 60 | The Bey | Serfdom, ownership, or peasant pressure |
+| 70 | Factory owner / mill world | Laborer, machinist, or Ahmed laborer state |
+| 80 | Stranger | Always eligible, low weight |
+| 90 | Herself / God | Always eligible, inward scenes |
+| 100 | The ruler | Always eligible, low weight; era-aware localization |
 
-**What the fantasy feels like.** Grandiose, shameful, necessary. She knows it is fantasy. She lets it happen because she needs to hear her own voice speaking the things she cannot say aloud. After the audience ends she returns to the oven and does not speak of it.
+## Numbering
 
-**What she calls him.** "Effendim," "Sidi," "my lord in Cairo," "Pasha," "you" (the most daring form). She rarely uses his name. When she does — Muhammad Ali — it is an act.
+`cp_layla_vox.<interlocutor>0` is the hidden picker.
 
----
+Visible scenarios use that interlocutor's decade:
 
-## Structure
+- `11..16`, `19`: Ahmed
+- `21..25`, `29`: daughter / children
+- `31..35`, `39`: her mother
+- `41..44`, `49`: Um Yusuf
+- `51..54`, `59`: Umm Mariam
+- `61..65`, `69`: Bey
+- `71..75`, `79`: factory owner / mill world
+- `81..86`, `89`: stranger
+- `91..96`, `99`: herself / God
+- `101..106`, `109`: ruler
 
-A conversation is a branching tree. Each event is one turn in the dialogue. Odd-numbered layers are HER monologue (flavor text, fixed writing); even-numbered layers are the PASHA (options — player picks what he says).
+Follow-ups are `scenario * 100 + branch`, for example `cp_layla_vox.1021`, `.1022`, `.1023`.
 
-### Layer 1 — Root (narrator setup + topic select)
-`cp_conversation.1` — the narrator tells us she has decided to go to Cairo in her mind. Options = topics. The player picks the subject she brings.
+## Pacing
 
-### Layer 2 — Her opening speech
-One event per topic. The flavor is her opening monologue — 300–500 words of her laying out the case before him. Options = what the Pasha says in reply. Three moods typically: **dismissive**, **engaged**, **cruel**. You choose which Pasha she faces tonight.
+- `cp_layla_audience_cooldown`: 180 days, set by each visible scenario.
+- `cp_layla_spoke_<topic>`: 540 days, per scenario.
+- The former button paced this to roughly two player-initiated scenes per in-game year.
+- Ambient events still use the shared 1-2/year target with a hard mod-wide cap of two passive beats; the button is player-initiated and uses `cp_button_fire`.
 
-### Layer 3 — Her reaction to his reply
-One event per Pasha-mood branch. The flavor is how she receives his reply and what she says next. Options = the Pasha's second response.
+## Localization Contract
 
-### Layer 4 — Her second reaction
-One event per branch. The flavor closes her case, or pushes harder, or retreats. Options = the Pasha's final gesture (or the audience simply ending).
+Use country-root dynamic loc in country events:
 
-### Layer 5 — Closer
-Shared by all branches: the fantasy dissolves. She is back at the quern or the oven. The kitchen is quiet. The button cooldown starts.
+```text
+[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]
+[ROOT.GetCountry.GetRuler.GetFullName]
+```
 
-A rich topic has ~10 events in total (1 opener + 3 reaction branches × 2-3 turns each + 1 closer). Simpler topics have fewer.
+Do not use direct tag loc such as `[c:EGY...]`, and do not use `GetRuler.GetTitle`. `script/audit-common-people.py`, `script/audit-localization-dynamic-scope.py`, and `documentation/localization-dynamic-scope-ledger.md` reject both because they caused in-game `ERROR:[c:EGY.GetRuler...]` text.
 
----
+Do not hardcode the active ruler as Pasha in shipped localization. Use ruler, Cairo, the room, the office, or the dynamic title/full name unless the line is explicitly historical research or archived design context.
 
-## Topics (Phase 1 implementation)
+## Art Contract
 
-Five topics. Each gated on what's knowable to her. Each deeply written. Each sets a permanent flag on completion so future pulses can reference "she has rehearsed this before."
+The active event-art pool is now generated-source covered and/or motion-backed; replacement still happens in versioned batches:
 
-### T10 — The Land
-She tells him the field is hers. She tells him what her grandfathers did. She asks for a paper with her name on it that the bey cannot tear up. Available whenever she is rural (peasant, farmer, or homesteader, or under serfdom).
+```text
+documentation/characters/layla/prompts/replacement-batch-v0.7.md
+image/generated/layla/v0.7/prompts/
+```
 
-### T20 — Ahmed
-She asks for him back, or she asks for him never to be taken, or she tells the Pasha that the war has a price and she is paying it in her one husband. Branch varies by Ahmed's state (at war / home / conscripted recently / long gone).
+The old bulk generator was deleted. Do not generate `cp_conversation_*` source files; `script/convert-images-to-dds.sh` rejects that naming. New accepted images should be versioned (`_v07`, `_v08`, etc.) and superseded DDS files should move to `image/archive/legacy-event-pictures/<version>-superseded/`.
 
-### T30 — The Bey
-She tells the Pasha, quietly, what his bailiff actually does at harvest. She is not asking for revenge. She is asking to be believed. Gated on `has_variable = cp_under_serfdom` OR any time she is tenant under a bey.
+## Debug QA
 
-### T40 — The Water
-She tells him the sluice at the head of her village canal has been broken since before she was a bride. She tells him the cost of a broken sluice in loaves. Always available.
+Visible Layla and Layla-vox events are covered by the shared generated person debug selectors:
 
-### T50 — Herself
-The hardest. She tells him she is a woman and she has a voice and she is here. She does not ask for anything. Always available. Gated on `cp_last_conversation_topic != 50` so it cannot be the first audience.
+```bash
+python3 script/generate-person-debug-wrappers.py --check
+```
 
----
+Console selectors queue the target event. The shared QA button opens the popup from button context, avoiding the Victoria 3 console-thread popup crash. Direct debug events must not fire visible popups directly; `script/audit-common-people.py` enforces this with `DEBUG_POPUP_THREAD`.
 
-## Cooldown and persistence
+## Adding Or Salvaging A Scene
 
-- `cp_audience_cooldown` — timed flag, 90 days. Set on button click. Prevents a second audience in that window.
-- `cp_seen_audience_T<N>` — timed flag, 18 months, per topic. A topic rests between hearings so she does not repeat the same speech twice in a season.
-- `cp_has_stood_before_pasha` — permanent, set the first time any audience completes. Pulse events may reference: *"The woman who, in her mind, has stood before the Pasha."*
-- `cp_has_spoken_of_<topic>` — permanent per topic. Unlocks later deepening events or referenced by future conversations.
-
----
-
-## Writing rules
-
-1. **Never let him speak in his own voice.** He is her projection. What she "hears" from him is her imagination of him. The narrator, when describing his reactions, uses "she imagines him..." or "she sees him..."
-2. **Specific Egypt 1836.** Mud-brick, date palms, the Nile, the muezzin, the dust on the Cairo road, the gold thread on an imagined robe, the brass ink-pot on an imagined desk.
-3. **Long paragraphs.** The monologues breathe. They do not skip. A real speech does not fit in three sentences.
-4. **Her voice, not a poem.** She uses the vocabulary of a Delta peasant woman. She would not say "sovereignty." She would say "the paper that says the field is mine."
-5. **Surprising turns.** Halfway through a speech she says something the player did not expect — a defence of the bey's wife, an admission she prayed for a French soldier, an argument she half-disbelieves even as she delivers it.
-6. **End on a concrete object.** The last image of every monologue is a thing in the world: the gold thread on his sleeve, the brass ink-pot, the red carpet, her own hand.
-
----
-
-## Images
-
-Phase 1 reuses existing DDS files:
-- Root: `cp_layla_intro.dds` (her face, before the fantasy begins)
-- T10 Land: `cp_layla_homesteading.dds` (the field)
-- T20 Ahmed: `cp_layla_ahmed_conscripted.dds` (the soldier)
-- T30 Bey: `cp_layla_serfdom_restored.dds` (authority on horseback)
-- T40 Water: `cp_layla_no_wind.dds` (still canal)
-- T50 Herself: `cp_layla_mothers_hand.dds` (interiority)
-
-Phase 2 will generate purpose-built images: *Layla in an imagined throne-room, Layla seen in profile with the gold-threaded Pasha out of focus, Layla walking back down an imagined palace corridor.*
-
----
-
-## Phase map
-
-- **Phase 1 (this build):** button + root + **The Land** topic fully written (10 events, 5 layers). Proves the pattern, establishes the Pasha-mood branching, exercises the roleplay.
-- **Phase 2:** **Ahmed**, **The Bey**, **The Water** topics (~10 events each). Richer branching; some topics should give the Pasha a fourth mood ("understanding") as a rare, destabilising option.
-- **Phase 3:** **Herself**, **The Children**, **The Boys**, **The Law** — the harder ones. She risks saying things she has never said.
-- **Phase 4:** reactive topics — "The French," "The Railway," "The Newspaper" — gated on tech / law / world events having crossed her awareness.
-- **Phase 5:** she imagines addressing not the Pasha but God, or her mother, or the version of herself at sixteen. The same structure redirected inward. Hardest to write; do last.
+1. Add the visible scenario in `mod/events/cp_layla_vox_events.txt`.
+2. Add localization in `mod/localization/english/cp_layla_vox_l_english.yml`.
+3. Give exactly one option `default_option = yes`.
+4. Add `event_image`, `on_created_soundeffect`, and `on_opened_soundeffect`.
+5. Set `cp_layla_audience_cooldown` and a scenario-specific `cp_layla_spoke_*` timed flag.
+6. Route the scenario only through its hidden picker; do not add a Layla-only journal button.
+7. Rerun the debug wrapper generator and the dev readiness gate.

@@ -1,0 +1,272 @@
+﻿###############################################################################
+# Common People -- Karim al-Nahhas events
+#
+# Karim is Person 13: a Misri machinist whose file-dust, oil burns, and careful
+# hands make machine tools and engines human-scale.
+###############################################################################
+
+namespace = cp_karim
+
+
+# cp_karim.1 -- hidden setup
+cp_karim.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_karim_alive
+		NOT = { has_variable = cp_karim_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_karim_alive value = 1 }
+		set_variable = { name = cp_karim_age value = 24 }
+		set_variable = { name = cp_karim_hope value = 5 }
+		set_variable = { name = cp_karim_exhaustion value = 5 }
+		set_variable = { name = cp_karim_sol value = 10 }
+		set_variable = { name = cp_karim_literacy value = 9 }
+		set_variable = { name = cp_karim_radical value = 0 }
+		set_variable = { name = cp_karim_loyalist value = 0 }
+		set_variable = { name = cp_karim_finger_pain value = 0 }
+		set_variable = cp_karim_profession_machinists
+		set_variable = { name = cp_karim_w_machines value = 10 }
+		set_variable = { name = cp_karim_w_precision value = 8 }
+		set_variable = { name = cp_karim_w_engines value = 8 }
+		set_variable = { name = cp_karim_w_wages value = 6 }
+		set_variable = { name = cp_karim_w_family value = 5 }
+
+		cp_set_person_home_state_from_spawn_marker_or_default = { person = karim country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = karim place = bulaq }
+		cp_set_person_workplace_profile = { person = karim profile = machine }
+		cp_karim_refresh_sol = yes
+
+		if = {
+			limit = {
+				NOT = { has_variable = cp_startup_conditional_scan }
+			}
+			random_list = {
+				55 = { cp_try_fire_world_response = { event = cp_karim.10 person = karim } }
+				45 = { }
+			}
+		}
+	}
+}
+
+
+# cp_karim.10 -- "The Iron Teeth"
+cp_karim.10 = {
+	type = country_event
+
+	title = cp_karim.10.t
+	desc = cp_karim.10.d
+	flavor = cp_karim.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_karim_10_the_iron_teeth_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_karim_alive
+		var:cp_karim_alive > 0
+		NOT = { has_variable = cp_karim_seen_intro }
+	}
+
+	immediate = {
+		cp_karim_mark_intro = yes
+	}
+
+	option = {
+		name = cp_karim.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_karim.20 -- "The Tool Bench"
+cp_karim.20 = {
+	type = country_event
+
+	title = cp_karim.20.t
+	desc = cp_karim.20.d
+	flavor = cp_karim.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_karim_20_the_tool_bench_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_karim_alive
+		var:cp_karim_alive > 0
+		NOT = { has_variable = cp_karim_seen_tool_bench }
+	}
+
+	immediate = {
+		cp_karim_mark_tool_bench = yes
+	}
+
+	option = {
+		name = cp_karim.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_karim.30 -- "The Broken Finger"
+cp_karim.30 = {
+	type = country_event
+
+	title = cp_karim.30.t
+	desc = cp_karim.30.d
+	flavor = cp_karim.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_karim_30_the_broken_finger_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_karim_alive
+		var:cp_karim_alive > 0
+		NOT = { has_variable = cp_karim_seen_broken_finger }
+	}
+
+	immediate = {
+		cp_karim_mark_broken_finger = yes
+	}
+
+	option = {
+		name = cp_karim.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_karim.40 -- "The New Engine"
+cp_karim.40 = {
+	type = country_event
+
+	title = cp_karim.40.t
+	desc = cp_karim.40.d
+	flavor = cp_karim.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_karim_40_the_new_engine_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_karim_alive
+		var:cp_karim_alive > 0
+		NOT = { has_variable = cp_karim_seen_new_engine }
+	}
+
+	immediate = {
+		cp_karim_mark_new_engine = yes
+	}
+
+	option = {
+		name = cp_karim.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_karim.50 -- "The Steel Color"
+cp_karim.50 = {
+	type = country_event
+
+	title = cp_karim.50.t
+	desc = cp_karim.50.d
+	flavor = cp_karim.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_karim_50_the_steel_color_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_karim_alive
+		var:cp_karim_alive > 0
+		has_variable = cp_karim_seen_intro
+		NOT = { has_variable = cp_karim_seen_steel_color }
+	}
+
+	immediate = {
+		cp_karim_mark_steel_color = yes
+	}
+
+	option = {
+		name = cp_karim.50.a
+		default_option = yes
+	}
+}
+
+
+# cp_karim.60 -- "The Night Gauge"
+cp_karim.60 = {
+	type = country_event
+
+	title = cp_karim.60.t
+	desc = cp_karim.60.d
+	flavor = cp_karim.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_karim_60_the_night_gauge_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_karim_alive
+		var:cp_karim_alive > 0
+		has_variable = cp_karim_seen_intro
+		NOT = { has_variable = cp_karim_seen_night_gauge }
+	}
+
+	immediate = {
+		cp_karim_mark_night_gauge = yes
+	}
+
+	option = {
+		name = cp_karim.60.a
+		default_option = yes
+	}
+}

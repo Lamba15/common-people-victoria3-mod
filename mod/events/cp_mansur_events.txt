@@ -1,0 +1,271 @@
+﻿###############################################################################
+# Common People -- Mansur al-Mahalla events
+#
+# Mansur is Person 16: a young Misri factory migrant whose rented mat, wage
+# token, and remittance money make industrial growth a household rupture.
+###############################################################################
+
+namespace = cp_mansur
+
+
+# cp_mansur.1 -- hidden setup
+cp_mansur.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_mansur_alive
+		NOT = { has_variable = cp_mansur_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_mansur_alive value = 1 }
+		set_variable = { name = cp_mansur_age value = 18 }
+		set_variable = { name = cp_mansur_hope value = 5 }
+		set_variable = { name = cp_mansur_exhaustion value = 6 }
+		set_variable = { name = cp_mansur_sol value = 7 }
+		set_variable = { name = cp_mansur_literacy value = 4 }
+		set_variable = { name = cp_mansur_radical value = 0 }
+		set_variable = { name = cp_mansur_loyalist value = 0 }
+		set_variable = { name = cp_mansur_homesick value = 1 }
+		set_variable = cp_mansur_profession_laborers
+		set_variable = { name = cp_mansur_w_loom value = 10 }
+		set_variable = { name = cp_mansur_w_wage value = 8 }
+		set_variable = { name = cp_mansur_w_machines value = 7 }
+		set_variable = { name = cp_mansur_w_family value = 9 }
+
+		cp_set_person_home_state_from_spawn_marker_or_default = { person = mansur country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = mansur place = mahalla }
+		cp_set_person_workplace_profile = { person = mansur profile = manufacturing }
+		cp_mansur_refresh_sol = yes
+
+		if = {
+			limit = {
+				NOT = { has_variable = cp_startup_conditional_scan }
+			}
+			random_list = {
+				55 = { cp_try_fire_world_response = { event = cp_mansur.10 person = mansur } }
+				45 = { }
+			}
+		}
+	}
+}
+
+
+# cp_mansur.10 -- "The Mat Beside the Looms"
+cp_mansur.10 = {
+	type = country_event
+
+	title = cp_mansur.10.t
+	desc = cp_mansur.10.d
+	flavor = cp_mansur.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_mansur_10_the_mat_beside_the_looms_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_mansur_alive
+		var:cp_mansur_alive > 0
+		NOT = { has_variable = cp_mansur_seen_intro }
+	}
+
+	immediate = {
+		cp_mansur_mark_intro = yes
+	}
+
+	option = {
+		name = cp_mansur.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_mansur.20 -- "The First Wage Token"
+cp_mansur.20 = {
+	type = country_event
+
+	title = cp_mansur.20.t
+	desc = cp_mansur.20.d
+	flavor = cp_mansur.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_mansur_20_the_first_wage_token_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_mansur_alive
+		var:cp_mansur_alive > 0
+		NOT = { has_variable = cp_mansur_seen_first_wage }
+	}
+
+	immediate = {
+		cp_mansur_mark_first_wage = yes
+	}
+
+	option = {
+		name = cp_mansur.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_mansur.30 -- "The Belt Does Not Stop"
+cp_mansur.30 = {
+	type = country_event
+
+	title = cp_mansur.30.t
+	desc = cp_mansur.30.d
+	flavor = cp_mansur.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_mansur_30_the_belt_does_not_stop_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_mansur_alive
+		var:cp_mansur_alive > 0
+		NOT = { has_variable = cp_mansur_seen_belt }
+	}
+
+	immediate = {
+		cp_mansur_mark_belt = yes
+	}
+
+	option = {
+		name = cp_mansur.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_mansur.40 -- "Money Sent Home"
+cp_mansur.40 = {
+	type = country_event
+
+	title = cp_mansur.40.t
+	desc = cp_mansur.40.d
+	flavor = cp_mansur.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_mansur_40_money_sent_home_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_mansur_alive
+		var:cp_mansur_alive > 0
+		NOT = { has_variable = cp_mansur_seen_remittance }
+	}
+
+	immediate = {
+		cp_mansur_mark_remittance = yes
+	}
+
+	option = {
+		name = cp_mansur.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_mansur.50 -- "The Bed Rent"
+cp_mansur.50 = {
+	type = country_event
+
+	title = cp_mansur.50.t
+	desc = cp_mansur.50.d
+	flavor = cp_mansur.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_mansur_50_the_bed_rent_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_mansur_alive
+		var:cp_mansur_alive > 0
+		has_variable = cp_mansur_seen_intro
+		NOT = { has_variable = cp_mansur_seen_bed_rent }
+	}
+
+	immediate = {
+		cp_mansur_mark_bed_rent = yes
+	}
+
+	option = {
+		name = cp_mansur.50.a
+		default_option = yes
+	}
+}
+
+
+# cp_mansur.60 -- "The Meal Tin"
+cp_mansur.60 = {
+	type = country_event
+
+	title = cp_mansur.60.t
+	desc = cp_mansur.60.d
+	flavor = cp_mansur.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_mansur_60_the_meal_tin_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_mansur_alive
+		var:cp_mansur_alive > 0
+		has_variable = cp_mansur_seen_first_wage
+		NOT = { has_variable = cp_mansur_seen_meal_tin }
+	}
+
+	immediate = {
+		cp_mansur_mark_meal_tin = yes
+	}
+
+	option = {
+		name = cp_mansur.60.a
+		default_option = yes
+	}
+}

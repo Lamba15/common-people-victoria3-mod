@@ -1,0 +1,27 @@
+Common People Layla v0.13 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.13.md
+Target DDS: mod/gfx/event_pictures/cp_layla_month_without_v13.dds
+Source PNG: image/generated/layla/v0.13/cp_layla_month_without_v13.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla.98 - "The Month Without"
+Narrative function: the absence of social security is measured by four small coin stacks and the envelope that never comes.
+Subject: older Layla alone at a kitchen table at night.
+Scene/backdrop: modest room, worn table, cloth, kerosene lamp, grain sack, squeaking door hinge nearby.
+Foreground action: Layla counts coins into four small stacks and folds the cloth back over them.
+Required object/gesture: four small coin stacks; an empty place where an envelope might have been; Layla's hand pausing over the count.
+Background detail: thin bread, repair string near the door, daughter just outside the light if visible.
+Lighting/mood: low lamplight, arithmetic grief, anger beginning as clarity.
+Avoid: official welfare office, visible cash windfall, readable envelope, melodramatic poverty tableau.

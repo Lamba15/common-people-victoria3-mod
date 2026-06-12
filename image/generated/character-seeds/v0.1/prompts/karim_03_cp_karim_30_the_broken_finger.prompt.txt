@@ -1,0 +1,27 @@
+Common People character seed prompt: karim
+Source ledger: documentation/characters/karim/prompts/seed-v0.1.md
+Prompt heading: `cp_karim.30` - The Broken Finger
+Target source PNG: image/generated/character-seeds/v0.1/karim_03_cp_karim_30_the_broken_finger.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Event: cp_karim.30 - "The Broken Finger"
+Narrative function: Industrial skill has a bodily cost that the ledger does not show.
+Subject: Karim, machinist, older by a few years.
+Scene/backdrop: factory bench after an accident, tools scattered but not chaotic.
+Foreground action: Karim wraps a bandage around a swollen finger while a foreman looks away.
+Required object/gesture: bandaged finger, tool bench, foreman's averted gaze.
+Lighting/mood: dim late shift, pain controlled because work resumes.
+Avoid: gore, melodramatic accident, hospital room, heroic sacrifice.

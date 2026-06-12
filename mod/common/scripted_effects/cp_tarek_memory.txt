@@ -1,0 +1,238 @@
+﻿###############################################################################
+# Common People -- Tarek al-Rashidi's memory
+#
+# Person 5 scaffold. Tarek is registered as `tarek`, not as a V3 character.
+# He enters conditionally once Egypt has factories and land reform has moved
+# beyond the old estate order.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_tarek_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = tarek
+		culture = misri
+		religion = sunni
+		poptype = capitalists
+	}
+}
+
+
+# --- Conditional entry ------------------------------------------------------
+cp_tarek_try_spawn = {
+	if = {
+		limit = {
+			c:EGY ?= this
+			NOT = { has_global_variable = cp_person_tarek_alive }
+			NOT = { has_variable = cp_tarek_alive }
+			NOT = { has_law = law_type:law_serfdom }
+			NOT = { has_law = law_type:law_tenant_farmers }
+			any_scope_state = {
+				is_incorporated = yes
+				any_scope_building = {
+					is_building_group = bg_manufacturing
+				}
+			}
+		}
+		cp_mark_person_spawn_home_from_manufacturing = { person = tarek }
+		cp_register_person = {
+			person = tarek
+			country = EGY
+		}
+		cp_tarek_dispatch_startup = yes
+		trigger_event = { id = cp_tarek.1 }
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_tarek_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_tarek_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_tarek_dispatch_yearly = {
+	cp_age_increment = { person = tarek }
+	cp_tarek_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = tarek country = EGY }
+	if = {
+		limit = {
+			has_variable = cp_tarek_seen_intro
+			cp_person_home_has_manufacturing = { person = tarek }
+			NOT = { has_variable = cp_tarek_seen_second_chimney }
+		}
+		random_list = {
+			10 = { cp_try_fire_world_response = { event = cp_tarek.50 person = tarek } }
+			90 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = cp_tarek_seen_intro
+			cp_country_workers_unprotected = yes
+			NOT = { has_variable = cp_tarek_seen_locked_gate }
+		}
+		random_list = {
+			8 = { cp_try_fire_world_response = { event = cp_tarek.60 person = tarek } }
+			92 = { }
+		}
+	}
+}
+
+cp_tarek_dispatch_law_enacted = {
+	if = {
+		limit = {
+			OR = {
+				ROOT.currently_enacting_law.type ?= law_type:law_regulatory_bodies
+				ROOT.currently_enacting_law.type ?= law_type:law_worker_protections
+			}
+			NOT = { has_variable = cp_tarek_seen_labor_law }
+		}
+		cp_try_fire_law_reaction = { event = cp_tarek.20 person = tarek }
+	}
+}
+
+cp_tarek_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_tarek_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_tarek_dispatch_tech = {
+	if = {
+		limit = {
+			cp_person_home_has_manufacturing = { person = tarek }
+			NOT = { has_variable = cp_tarek_seen_new_boiler }
+		}
+		cp_try_fire_world_response = { event = cp_tarek.30 person = tarek }
+	}
+}
+
+cp_tarek_dispatch_building = {
+	if = {
+		limit = {
+			is_building_group = bg_manufacturing
+			cp_building_affects_person_workplace = { person = tarek }
+			owner ?= {
+				THIS = c:EGY
+				NOT = { has_variable = cp_tarek_seen_new_boiler }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_tarek.30 person = tarek }
+		}
+	}
+	if = {
+		limit = {
+			is_building_group = bg_manufacturing
+			cp_building_affects_person_workplace = { person = tarek }
+			owner ?= {
+				THIS = c:EGY
+				has_variable = cp_tarek_seen_intro
+				NOT = { has_variable = cp_tarek_seen_second_chimney }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_tarek.50 person = tarek }
+		}
+	}
+}
+
+cp_tarek_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_tarek_mark_intro = {
+	cp_mark_event_seen = { person = tarek id = intro days = 3650 }
+	change_variable = { name = cp_tarek_certainty add = 1 }
+	clamp_variable = { name = cp_tarek_certainty min = 0 max = 10 }
+}
+
+cp_tarek_mark_labor_law = {
+	cp_mark_event_seen = { person = tarek id = labor_law days = 1825 }
+	change_variable = { name = cp_tarek_profit_pressure add = 3 }
+	clamp_variable = { name = cp_tarek_profit_pressure min = 0 max = 10 }
+	change_variable = { name = cp_tarek_certainty add = -2 }
+	clamp_variable = { name = cp_tarek_certainty min = 0 max = 10 }
+	cp_shift_radical = { person = tarek delta = 2 }
+}
+
+cp_tarek_mark_new_boiler = {
+	cp_mark_event_seen = { person = tarek id = new_boiler days = 1825 }
+	set_variable = cp_tarek_new_boiler_installed
+	change_variable = { name = cp_tarek_profit_pressure add = 2 }
+	clamp_variable = { name = cp_tarek_profit_pressure min = 0 max = 10 }
+	change_variable = { name = cp_tarek_certainty add = 1 }
+	clamp_variable = { name = cp_tarek_certainty min = 0 max = 10 }
+	cp_shift_loyalist = { person = tarek delta = 1 }
+}
+
+cp_tarek_mark_account_book = {
+	cp_mark_event_seen = { person = tarek id = account_book days = 540 }
+	change_variable = { name = cp_tarek_certainty add = -1 }
+	clamp_variable = { name = cp_tarek_certainty min = 0 max = 10 }
+}
+
+cp_tarek_mark_second_chimney = {
+	cp_mark_event_seen = { person = tarek id = second_chimney days = 720 }
+	set_variable = cp_tarek_second_chimney
+	change_variable = { name = cp_tarek_profit_pressure add = 1 }
+	clamp_variable = { name = cp_tarek_profit_pressure min = 0 max = 10 }
+	change_variable = { name = cp_tarek_certainty add = 1 }
+	clamp_variable = { name = cp_tarek_certainty min = 0 max = 10 }
+	cp_shift_loyalist = { person = tarek delta = 1 }
+}
+
+cp_tarek_mark_locked_gate = {
+	cp_mark_event_seen = { person = tarek id = locked_gate days = 720 }
+	set_variable = cp_tarek_gate_guard
+	change_variable = { name = cp_tarek_profit_pressure add = 1 }
+	clamp_variable = { name = cp_tarek_profit_pressure min = 0 max = 10 }
+	change_variable = { name = cp_tarek_certainty add = -1 }
+	clamp_variable = { name = cp_tarek_certainty min = 0 max = 10 }
+	cp_shift_radical = { person = tarek delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_tarek = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_tarek_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_tarek.10 person = tarek }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_tarek_seen_intro
+				NOT = { has_variable = cp_tarek_seen_account_book }
+			}
+			cp_try_fire_ambient = { event = cp_tarek.40 person = tarek }
+		}
+		7 = {
+			trigger = {
+				has_variable = cp_tarek_seen_intro
+				cp_person_home_has_manufacturing = { person = tarek }
+				NOT = { has_variable = cp_tarek_seen_second_chimney }
+			}
+			cp_try_fire_ambient = { event = cp_tarek.50 person = tarek }
+		}
+		5 = {
+			trigger = {
+				has_variable = cp_tarek_seen_intro
+				cp_country_workers_unprotected = yes
+				NOT = { has_variable = cp_tarek_seen_locked_gate }
+			}
+			cp_try_fire_ambient = { event = cp_tarek.60 person = tarek }
+		}
+		70 = { }
+	}
+}

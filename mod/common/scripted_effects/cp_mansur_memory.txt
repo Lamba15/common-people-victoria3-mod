@@ -1,0 +1,309 @@
+﻿###############################################################################
+# Common People -- Mansur al-Mahalla's memory
+#
+# Person 16 scaffold. Mansur is registered as `mansur`, not as a V3
+# character. He enters conditionally when manufacturing and urban pull turn
+# migration for factory work into an ordinary life the player can meet.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_mansur_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = mansur
+		culture = misri
+		religion = sunni
+		poptype = laborers
+	}
+}
+
+
+# --- Conditional entry ------------------------------------------------------
+cp_mansur_try_spawn = {
+	if = {
+		limit = {
+			c:EGY ?= this
+			NOT = { has_global_variable = cp_person_mansur_alive }
+			NOT = { has_variable = cp_mansur_alive }
+			cp_country_has_factory_migration = yes
+		}
+		random_list = {
+			42 = {
+				cp_mark_person_spawn_home_from_manufacturing = { person = mansur }
+				cp_register_person = {
+					person = mansur
+					country = EGY
+				}
+				cp_mansur_dispatch_startup = yes
+				trigger_event = { id = cp_mansur.1 }
+			}
+			58 = { }
+		}
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_mansur_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_mansur_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_mansur_dispatch_yearly = {
+	cp_age_increment = { person = mansur }
+	cp_mansur_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = mansur country = EGY }
+	if = {
+		limit = {
+			has_variable = cp_mansur_seen_intro
+			NOT = { has_variable = cp_mansur_seen_first_wage }
+			cp_person_home_has_manufacturing = { person = mansur }
+		}
+		random_list = {
+			12 = { cp_try_fire_world_response = { event = cp_mansur.20 person = mansur } }
+			88 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = cp_mansur_seen_intro
+			NOT = { has_variable = cp_mansur_seen_belt }
+			cp_person_home_has_machine_industry = { person = mansur }
+		}
+		random_list = {
+			10 = { cp_try_fire_world_response = { event = cp_mansur.30 person = mansur } }
+			90 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = cp_mansur_seen_first_wage
+			NOT = { has_variable = cp_mansur_seen_remittance }
+		}
+		random_list = {
+			8 = { cp_try_fire_world_response = { event = cp_mansur.40 person = mansur } }
+			92 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = cp_mansur_seen_intro
+			NOT = { has_variable = cp_mansur_seen_bed_rent }
+			cp_person_home_has_manufacturing = { person = mansur }
+		}
+		random_list = {
+			10 = { cp_try_fire_world_response = { event = cp_mansur.50 person = mansur } }
+			90 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = cp_mansur_seen_first_wage
+			NOT = { has_variable = cp_mansur_seen_meal_tin }
+		}
+		random_list = {
+			9 = { cp_try_fire_world_response = { event = cp_mansur.60 person = mansur } }
+			91 = { }
+		}
+	}
+}
+
+cp_mansur_dispatch_law_enacted = {
+	cp_person_hook_noop = yes
+}
+
+cp_mansur_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_mansur_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_mansur_dispatch_tech = {
+	if = {
+		limit = {
+			cp_person_home_has_manufacturing = { person = mansur }
+			NOT = { has_variable = cp_mansur_seen_first_wage }
+		}
+		random_list = {
+			35 = { cp_try_fire_world_response = { event = cp_mansur.20 person = mansur } }
+			65 = { }
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_technology_researched = mechanical_tools
+				has_technology_researched = rotary_valve_engine
+				has_technology_researched = combustion_engine
+			}
+			NOT = { has_variable = cp_mansur_seen_belt }
+		}
+		cp_try_fire_world_response = { event = cp_mansur.30 person = mansur }
+	}
+}
+
+cp_mansur_dispatch_building = {
+	if = {
+		limit = {
+			is_building_group = bg_manufacturing
+			cp_building_affects_person_workplace = { person = mansur }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = mansur }
+				NOT = { has_variable = cp_mansur_seen_intro }
+			}
+		}
+		owner ?= {
+			random_list = {
+				55 = { cp_try_fire_world_response = { event = cp_mansur.10 person = mansur } }
+				45 = { }
+			}
+		}
+	}
+	if = {
+		limit = {
+			is_building_group = bg_manufacturing
+			cp_building_affects_person_workplace = { person = mansur }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = mansur }
+				has_variable = cp_mansur_seen_intro
+				NOT = { has_variable = cp_mansur_seen_first_wage }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_mansur.20 person = mansur }
+		}
+	}
+	if = {
+		limit = {
+			is_building_group = bg_manufacturing
+			cp_building_affects_person_workplace = { person = mansur }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = mansur }
+				has_variable = cp_mansur_seen_intro
+				NOT = { has_variable = cp_mansur_seen_bed_rent }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_mansur.50 person = mansur }
+		}
+	}
+	if = {
+		limit = {
+			is_building_group = bg_manufacturing
+			cp_building_affects_person_workplace = { person = mansur }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = mansur }
+				has_variable = cp_mansur_seen_first_wage
+				NOT = { has_variable = cp_mansur_seen_meal_tin }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_mansur.60 person = mansur }
+		}
+	}
+}
+
+cp_mansur_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_mansur_mark_intro = {
+	cp_mark_event_seen = { person = mansur id = intro days = 3650 }
+	cp_shift_exhaustion = { person = mansur delta = 1 }
+	cp_shift_weight = { person = mansur weight = loom delta = 1 }
+}
+
+cp_mansur_mark_first_wage = {
+	cp_mark_event_seen = { person = mansur id = first_wage days = 1825 }
+	cp_shift_hope = { person = mansur delta = 1 }
+	cp_shift_loyalist = { person = mansur delta = 1 }
+	cp_shift_weight = { person = mansur weight = wage delta = 2 }
+}
+
+cp_mansur_mark_belt = {
+	cp_mark_event_seen = { person = mansur id = belt days = 1825 }
+	cp_shift_exhaustion = { person = mansur delta = 2 }
+	cp_shift_radical = { person = mansur delta = 1 }
+	cp_shift_weight = { person = mansur weight = machines delta = 2 }
+}
+
+cp_mansur_mark_remittance = {
+	cp_mark_event_seen = { person = mansur id = remittance days = 720 }
+	cp_shift_hope = { person = mansur delta = 1 }
+	cp_shift_weight = { person = mansur weight = family delta = 2 }
+}
+
+cp_mansur_mark_bed_rent = {
+	cp_mark_event_seen = { person = mansur id = bed_rent days = 720 }
+	cp_shift_exhaustion = { person = mansur delta = 1 }
+	cp_shift_radical = { person = mansur delta = 1 }
+	cp_shift_weight = { person = mansur weight = wage delta = 1 }
+}
+
+cp_mansur_mark_meal_tin = {
+	cp_mark_event_seen = { person = mansur id = meal_tin days = 720 }
+	cp_shift_exhaustion = { person = mansur delta = 1 }
+	cp_shift_weight = { person = mansur weight = family delta = 1 }
+	cp_shift_weight = { person = mansur weight = loom delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_mansur = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_mansur_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_mansur.10 person = mansur }
+		}
+		7 = {
+			trigger = {
+				has_variable = cp_mansur_seen_intro
+				NOT = { has_variable = cp_mansur_seen_first_wage }
+			}
+			cp_try_fire_ambient = { event = cp_mansur.20 person = mansur }
+		}
+		6 = {
+			trigger = {
+				has_variable = cp_mansur_seen_intro
+				cp_person_home_has_machine_industry = { person = mansur }
+				NOT = { has_variable = cp_mansur_seen_belt }
+			}
+			cp_try_fire_ambient = { event = cp_mansur.30 person = mansur }
+		}
+		5 = {
+			trigger = {
+				has_variable = cp_mansur_seen_first_wage
+				NOT = { has_variable = cp_mansur_seen_remittance }
+			}
+			cp_try_fire_ambient = { event = cp_mansur.40 person = mansur }
+		}
+		6 = {
+			trigger = {
+				has_variable = cp_mansur_seen_intro
+				NOT = { has_variable = cp_mansur_seen_bed_rent }
+			}
+			cp_try_fire_ambient = { event = cp_mansur.50 person = mansur }
+		}
+		6 = {
+			trigger = {
+				has_variable = cp_mansur_seen_first_wage
+				NOT = { has_variable = cp_mansur_seen_meal_tin }
+			}
+			cp_try_fire_ambient = { event = cp_mansur.60 person = mansur }
+		}
+		60 = { }
+	}
+}

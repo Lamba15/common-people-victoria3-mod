@@ -1,0 +1,261 @@
+﻿###############################################################################
+# Common People -- Nour events
+#
+# Nour is Person 6: a Misri woman whose household paper, keys, and property
+# rights make the rights-of-women law group legible at the table scale.
+###############################################################################
+
+namespace = cp_nour
+
+
+# cp_nour.1 -- hidden setup
+cp_nour.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_nour_alive
+		NOT = { has_variable = cp_nour_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_nour_alive value = 1 }
+		set_variable = { name = cp_nour_age value = 31 }
+		set_variable = { name = cp_nour_hope value = 5 }
+		set_variable = { name = cp_nour_exhaustion value = 3 }
+		set_variable = { name = cp_nour_sol value = 12 }
+		set_variable = { name = cp_nour_literacy value = 8 }
+		set_variable = { name = cp_nour_radical value = 0 }
+		set_variable = { name = cp_nour_loyalist value = 0 }
+		set_variable = cp_nour_profession_shopkeepers
+		set_variable = cp_nour_has_cedar_chest
+		set_variable = { name = cp_nour_w_womens_rights value = 10 }
+		set_variable = { name = cp_nour_w_family value = 8 }
+		set_variable = { name = cp_nour_w_law value = 7 }
+		set_variable = { name = cp_nour_w_religion value = 5 }
+		set_variable = { name = cp_nour_w_work value = 6 }
+
+		cp_set_person_home_state = { person = nour country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = nour place = mansoura }
+		cp_set_person_workplace_profile = { person = nour profile = public_service }
+		cp_nour_refresh_sol = yes
+	}
+}
+
+
+# cp_nour.10 -- "The Cedar Chest"
+cp_nour.10 = {
+	type = country_event
+
+	title = cp_nour.10.t
+	desc = cp_nour.10.d
+	flavor = cp_nour.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_nour_intro.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_nour_alive
+		var:cp_nour_alive > 0
+		NOT = { has_variable = cp_nour_seen_intro }
+	}
+
+	immediate = {
+		cp_nour_mark_intro = yes
+	}
+
+	option = {
+		name = cp_nour.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_nour.20 -- "Her Name on the Paper"
+cp_nour.20 = {
+	type = country_event
+
+	title = cp_nour.20.t
+	desc = cp_nour.20.d
+	flavor = cp_nour.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_nour_property.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_nour_alive
+		var:cp_nour_alive > 0
+		NOT = { has_variable = cp_nour_seen_property_rights }
+	}
+
+	immediate = {
+		cp_nour_mark_property_rights = yes
+	}
+
+	option = {
+		name = cp_nour.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_nour.30 -- "The Rent Receipt"
+cp_nour.30 = {
+	type = country_event
+
+	title = cp_nour.30.t
+	desc = cp_nour.30.d
+	flavor = cp_nour.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_nour_rent_receipt_v02.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_nour_alive
+		var:cp_nour_alive > 0
+		NOT = { has_variable = cp_nour_seen_rent_receipt }
+	}
+
+	immediate = {
+		cp_nour_mark_rent_receipt = yes
+	}
+
+	option = {
+		name = cp_nour.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_nour.40 -- "The Key Under the Pillow"
+cp_nour.40 = {
+	type = country_event
+
+	title = cp_nour.40.t
+	desc = cp_nour.40.d
+	flavor = cp_nour.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_nour_key_under_pillow_v02.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_nour_alive
+		var:cp_nour_alive > 0
+		NOT = { has_variable = cp_nour_seen_key_under_pillow }
+	}
+
+	immediate = {
+		cp_nour_mark_key_under_pillow = yes
+	}
+
+	option = {
+		name = cp_nour.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_nour.50 -- "The Register Shelf"
+cp_nour.50 = {
+	type = country_event
+
+	title = cp_nour.50.t
+	desc = cp_nour.50.d
+	flavor = cp_nour.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_nour_register_shelf_v02.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_nour_alive
+		var:cp_nour_alive > 0
+		NOT = { has_variable = cp_nour_seen_register_shelf }
+	}
+
+	immediate = {
+		cp_nour_mark_register_shelf = yes
+	}
+
+	option = {
+		name = cp_nour.50.a
+		default_option = yes
+	}
+}
+
+
+# cp_nour.60 -- "The Morning Account"
+cp_nour.60 = {
+	type = country_event
+
+	title = cp_nour.60.t
+	desc = cp_nour.60.d
+	flavor = cp_nour.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_nour_morning_account_v02.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_nour_alive
+		var:cp_nour_alive > 0
+		has_variable = cp_nour_seen_intro
+		NOT = { has_variable = cp_nour_seen_morning_account }
+	}
+
+	immediate = {
+		cp_nour_mark_morning_account = yes
+	}
+
+	option = {
+		name = cp_nour.60.a
+		default_option = yes
+	}
+}

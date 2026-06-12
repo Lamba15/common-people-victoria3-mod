@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_nabil.20 at mod/events/cp_nabil_events.txt:98
+Previous vanilla video placeholder: unspecific_signed_contract
+Target DDS: mod/gfx/event_pictures/cp_nabil_20_the_new_station_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_nabil_20_the_new_station_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_nabil.20
+Person token: nabil
+Title: The New Station
+Short description: The new station smells of limewash, ink, and boots not yet softened by feet. Nabil stands while the clerk writes his name with the wrong vowel, then corrects it by drawing a line so hard the paper nearly tears. There is a rack for rifles, a desk for complaints, a bench where men will wait pretending not to be afraid. The officer says order will now have a proper address. Nabil looks through the open door at the alley where old women are already measuring the building with their eyes, asking whether it will protect them from thieves or make every quarrel larger.
+Flavor text: A door with a seal over it can open both ways.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

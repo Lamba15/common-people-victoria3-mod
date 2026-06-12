@@ -1,0 +1,31 @@
+Common People character seed prompt: huda
+Source ledger: documentation/characters/huda/prompts/seed-v0.1.md
+Prompt heading: Canonical Portrait
+Target source PNG: image/generated/character-seeds/v0.1/huda_01_canonical_portrait.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Use case: historical-scene
+Asset type: Common People canonical character portrait, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism portrait-scene for Huda al-Matariya in the Common People Victoria 3 mod.
+Subject: Huda al-Matariya, Misri Egyptian Sunni lodger in her late twenties, practical face, olive-brown skin, tired dark eyes, black hair wrapped in a faded indigo scarf, plain work dress, strong forearms from carrying water.
+Scene/backdrop: narrow Cairo alley stair, rented room doorway above a shop, cracked plaster and laundry line.
+Foreground action: Huda pauses halfway up the stairs with a heavy clay water jar against her hip.
+Required object/gesture: water jar, stair, and rented-room doorway must be legible at 600x400.
+Composition/framing: medium close, Huda on stair, alley compressing around her.
+Lighting/mood: late afternoon alley light, pressure without spectacle.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials.
+Constraints: no text, no UI, no border, no watermark, no modern apartment, no romanticized poverty.
+Avoid: palace street, empty cityscape, heroic migrant pose, decorative bazaar.

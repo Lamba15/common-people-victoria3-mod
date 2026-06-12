@@ -1,0 +1,1124 @@
+﻿l_english:
+ # ===========================================================================
+ # Common People -- cp_layla_vox localization
+ # "A word between." Layla speaks, or is spoken to. Ten interlocutors, each
+ # with their own pool of scenarios and branching choices.
+ # Full design: documentation/the-conversation-rebuild.md
+ # ===========================================================================
+
+ # ---------------------------------------------------------------------------
+ # AHMED -- cp_layla_vox.10..19
+ # ---------------------------------------------------------------------------
+
+ # cp_layla_vox.11 -- at war, the letter hasn't come
+ cp_layla_vox.11.t:0 "The Letter That Has Not Come"
+ cp_layla_vox.11.d:0 "She is folding cloth at the window. The post came this morning and went on past the house."
+ cp_layla_vox.11.flavor:0 "Eight weeks. She has counted them the way she counts the beans in the pot, flat-palmed, twice over. The last letter came in the month of the date harvest and was four lines long — he was well, the captain was strict, the bread in camp was bad, he thought of her. She has read those four lines until the paper softened at the folds. Tonight she is folding a shirt of his that she keeps washed because not washing it would be an admission. Ahmed, she says in her head — she is not a woman who speaks aloud to an empty room — Ahmed, where are you tonight. She imagines him imagining her. She imagines him between two things, a sentry's post and a bowl of camp soup, not thinking of her at all, because a man at war is a man who thinks only of the ground under his feet, and she is glad for that, because a husband who thinks of home too much is a husband who does not come home. She holds the shirt against her face for one second, two. She does not cry. She folds it the way he folded them when they were first married — corners first, the way his mother taught him — and she puts it in the chest."
+ cp_layla_vox.11.a:0 "Say nothing. Let the silence be its own message."
+ cp_layla_vox.11.b:0 "Go to the neighbour and ask if her son's letter came this month."
+ cp_layla_vox.11.c:0 "Write something to him in her head, and never send it."
+
+ cp_layla_vox.1101.t:0 "The Silence That Is Prayer"
+ cp_layla_vox.1101.d:0 "The shirt is folded. The chest is closed. The oil lamp has not been lit yet; the room is dim in the way a room is dim just before a woman lights the lamp."
+ cp_layla_vox.1101.flavor:0 "Some kinds of prayer are the refusal of words. She has learned this from her mother, who spent the last year of her life not saying the thing she thought about her husband, not saying the thing she thought about her daughter's marriage, not saying the thing she thought about the field. Her mother held those unsaid things like stones in a pocket, and the pocket did not tear. Layla has a smaller pocket. She is not sure it does not tear. She stands at the window. A boy goes past on a mule. The mule is the colour of ashes. She watches until the mule is at the end of the lane, and then she lights the lamp."
+ cp_layla_vox.1101.a:0 "Close the shutters."
+
+ cp_layla_vox.1102.t:0 "Um Hassan Has Had No Letter Either"
+ cp_layla_vox.1102.d:0 "She crosses the lane. Um Hassan is at her own door, winnowing. The old gesture, the sieve against the hip."
+ cp_layla_vox.1102.flavor:0 "Nothing from Cairo this month, sister, Um Hassan says before Layla asks. Nothing from the north either. A cousin of the grocer's said there was a fight somewhere near Damietta, but a cousin of the grocer's said there was a flood in the mountains last year, and there is no flood in the mountains. Do not go from this on every rumour, sister. Eat. If he is not well, you will hear. That is the way. She squeezes Layla's wrist once and lets go. Layla walks home and knows, without being told, something she did not know before — that other women in other houses on this lane are counting the weeks too, each in her own kitchen, each alone. There is a small company in this. Not comfort. Company."
+ cp_layla_vox.1102.a:0 "Go home and start the second loaf."
+
+ cp_layla_vox.1103.t:0 "A Letter in the Head"
+ cp_layla_vox.1103.d:0 "She writes it on the way to the oven. She writes it back from the oven. It is a letter she cannot send because she cannot write and because she does not know where to send it."
+ cp_layla_vox.1103.flavor:0 "My husband. The hen laid this week, two eggs. Your mother asked after you on Friday and I told her you were well. I have not told her otherwise because she is old and it would be a wound, and a wound in an old woman is a wound that does not close. Your tobacco tin is on the sill where you left it. I have not opened it. I will not open it. When you come back you will see it there and you will know I kept it the way you kept it. Do not come back thin. Do not come back angry. Come back as you were, or come back changed — I will take the changed man — but come back. The bread is good this week. The flour we bought in Nazer. It made me think of that year when you came with the cart and the axle broke near the canal. We laughed at that. Remember? I am laughing a little, remembering. Come back, Ahmed. That is the only letter. That is the whole letter."
+ cp_layla_vox.1103.a:0 "Close the oven. Start again tomorrow."
+
+ # cp_layla_vox.12 -- newly married, the first year
+ cp_layla_vox.12.t:0 "The First Year"
+ cp_layla_vox.12.d:0 "She is still a young wife. She is still surprising herself. The house is still a house they are learning."
+ cp_layla_vox.12.flavor:0 "They have been married not quite a year. In the mornings there is still a strangeness to seeing his shoes by the door that were not there a year ago. In the evenings there is still a strangeness to his silence, which is a different kind of silence than her brother's was or her father's, and which she is learning. She has burned the bread twice this month. The first time he said nothing and ate it. The second time he laughed once, quietly, and said that it was the pan. She knows it was not the pan. She knows he knows it was not the pan. She knows they will not speak of it. There is a kindness in what they do not speak of. She watches him at the rim of the oven tonight, testing the heat with the back of his hand — her grandfather tested heat that way too — and she feels something she cannot name and will not try to name. What does she think of tonight?"
+ cp_layla_vox.12.a:0 "The way his hand was on hers longer than it had to be, that morning."
+ cp_layla_vox.12.b:0 "The way he said Layla on the second night, quietly, as if the word were a door."
+ cp_layla_vox.12.c:0 "The bread burned the second time, and what he did not say."
+
+ cp_layla_vox.1201.t:0 "The Second Too Long"
+ cp_layla_vox.1201.d:0 "A small thing. A hand on hers at the door with the bucket. One second longer than the handing-over required."
+ cp_layla_vox.1201.flavor:0 "She has turned this second over many times, not to examine it, but because it is a warm stone in her palm. She does not believe a man lives his whole marriage at that pitch; she was not raised to expect it. Her mother did not. Her grandmother did not. But she had the second. She has kept it. She is aware that to keep a second is the whole project of a woman's memory — that her mother's memory was a string of seconds, one in a wedding, one in a field, one in the kitchen on the day the second daughter was born — and that she is now building her own string. This one is hers. She puts it in the pocket she does not know she has."
+ cp_layla_vox.1201.a:0 "Carry the bucket in."
+
+ cp_layla_vox.1202.t:0 "The Way He Said Layla"
+ cp_layla_vox.1202.d:0 "Not the way her brothers said it. Not the way her father said it. A new way, which is its own thing."
+ cp_layla_vox.1202.flavor:0 "The word is the same word. But there is a way a man says a woman's name that is asking her permission, and there is a way a man says a woman's name that is not asking. Ahmed's way, that second night, had been neither. It had been something else, something she did not have a word for, and which she did not want to have a word for, because having a word for it would have taken the shape off it. She is aware, in the way young wives are sometimes cruelly aware, that the word as he said it had been simply — Layla, I am here. She had not known that was a way. She had known the declaring and the asking. She had not known the being-here. She turns it in her head in the lamplight and does not look at him, and he, across the small room, turns a page in his cousin's letter and does not look at her."
+ cp_layla_vox.1202.a:0 "Let the lamp burn a little longer."
+
+ cp_layla_vox.1203.t:0 "The Bread Burned a Second Time"
+ cp_layla_vox.1203.d:0 "The smell of it was in the house for two days afterward. The loaf she had bought from Um Hassan, while the true one cooled in shame on the ledge."
+ cp_layla_vox.1203.flavor:0 "What he did not say was the entire size of the marriage. A worse man would have joked. A harder man would have gone quiet — the hard quiet, not the kind quiet. He had gone the kind quiet. He had picked up the burned loaf and set it on the ledge, and gone to the door, and come back with the bought loaf, and said, in his steady voice — well, the pan's getting old. The pan was not getting old. The pan was nine months old and made by her uncle. Ahmed knew this. Ahmed was saying a thing that was not true so that another thing would not have to be said. Her grandmother had taught her that a man who says an untrue thing to protect a woman is a kind of prayer. She had been impatient with her grandmother at the time. Tonight, many months later, at the window with the shirt folded, she understands."
+ cp_layla_vox.1203.a:0 "Turn from the window."
+
+ # cp_layla_vox.13 -- home from the fields
+ cp_layla_vox.13.t:0 "Salt on His Neck"
+ cp_layla_vox.13.d:0 "He comes in from the west field with the sun behind him. He has not spoken yet. He will wash first."
+ cp_layla_vox.13.flavor:0 "The way a man comes in from a day of cutting is not the way a man comes in from a day of nothing. His shoulders are a particular height. His hands hang a particular way. He sits on the threshold to unlace his shoes because the room is still clean and he is not. She brings him the water. He drinks half of it and pours the rest over his neck, and she watches the salt come off him in a dark line on the threshold. She has watched this a thousand times. She will watch it, she hopes, a thousand times more. He looks up at her. He says — the eastern strip is ready. She does not answer immediately. A man who says a thing about the field is a man who is not saying a thing about himself. She has learned the waiting."
+ cp_layla_vox.13.a:0 "Sit on the step beside him without speaking."
+ cp_layla_vox.13.b:0 "Ask about the harvest: how much, how good, how late."
+ cp_layla_vox.13.c:0 "Go in and bring the bread out instead of waiting."
+
+ cp_layla_vox.1301.t:0 "The Step, Shared"
+ cp_layla_vox.1301.d:0 "She sits. She does not put her hand on him. The threshold is warm from the sun."
+ cp_layla_vox.1301.flavor:0 "They sit. A bird goes past, low, over the lane. A child shouts in a yard four houses down and is shushed by a mother. The light in the west field goes from gold to copper to the colour of cold tea. He puts his hand, palm up, on his own knee. It is an invitation without a word. She puts her hand in his. She feels the cut on his thumb he did not tell her about. They sit until the light is gone. She says — the bread is inside. He says — in a moment. In a moment is what he says when he means, let me have you, still, for a little longer."
+ cp_layla_vox.1301.a:0 "A little longer."
+
+ cp_layla_vox.1302.t:0 "How Much, How Good"
+ cp_layla_vox.1302.d:0 "She asks because a woman asks. She also asks because not asking would tell him she knew the answer was bad."
+ cp_layla_vox.1302.flavor:0 "Three sacks, he says, short of what it should be. The bailiff will take two. The third will be split with the water-share. She does the math the way her mother taught her, silent, on the steps of the kitchen — enough for three months of bread if they are careful, two if they are generous with the neighbours, and there will not be enough to be generous with the neighbours. She does not say this. He does not say this. They both know. The bad year is already a word in the air between them, and they have agreed, without agreeing, not to say it before the oven is lit."
+ cp_layla_vox.1302.a:0 "Start the second loaf."
+
+ cp_layla_vox.1303.t:0 "The Bread, Brought Out"
+ cp_layla_vox.1303.d:0 "She does not wait for him to come inside. She brings the whole plate out to the step."
+ cp_layla_vox.1303.flavor:0 "It is a small, sudden gesture and she does not know why she made it. Perhaps it was the way the salt came off his neck. Perhaps it was the light in the west field, which was already going. She sits down next to him and the plate is between them and she tears the loaf and hands him half. He looks at the half in his palm as if it is a curious thing. He eats. She eats. Across the lane a dog barks once and is quiet. After the bread he says — I thought we would eat inside tonight. She says — we can. We did. A kind of laugh goes between them that is not quite a laugh. She will remember this step, this bread, this not-quite-laugh. She does not know it. But she will."
+ cp_layla_vox.1303.a:0 "Carry the empty plate in."
+
+ # cp_layla_vox.14 -- the mill
+ cp_layla_vox.14.t:0 "Oil on His Shirt"
+ cp_layla_vox.14.d:0 "He has come from the mill. He smells of oil and of a kind of quiet that is not the village quiet."
+ cp_layla_vox.14.flavor:0 "The mill has changed him in a way she cannot yet name. He used to come in from the fields loud — not loud in words, loud in body, his shoulders telling her what the day had been. He comes in from the mill small. He hangs the coat with the oil stain on it on the peg by the door and does not look at her before he sits. The coat used to be one coat. It is now the coat-for-the-mill and the coat-for-Friday, and she washes the mill coat alone in a pot with lye because the oil will not come out with soap. She has a small cut on her thumb from the lye. She shows him nothing. He shows her nothing. They eat."
+ cp_layla_vox.14.a:0 "Ask about the child who coughs at the door."
+ cp_layla_vox.14.b:0 "Look at the coat on the peg. Not at him."
+ cp_layla_vox.14.c:0 "Take the tobacco tin off the sill and set it beside his plate."
+
+ cp_layla_vox.1401.t:0 "The Child at the Gate"
+ cp_layla_vox.1401.d:0 "There is a boy who coughs on the gate of the mill at shift-change. Ahmed has mentioned him twice. She has noted the twice."
+ cp_layla_vox.1401.flavor:0 "What is the boy's name, she asks. He looks up. He does not want to say the name. He says it. She repeats it once. The cough was worse this week, he says. I think it is the dust. The dust is the dust of raw cotton, he says — and she understands, suddenly, that he has been breathing it too, that the stain on the coat is not just oil, that the quiet is not just fatigue. He eats. She eats. She says — bring him bread tomorrow if he is there. He says — all right. He does not say the rest. The rest is that he will bring the boy bread and the boy will cough less for two days and then cough more."
+ cp_layla_vox.1401.a:0 "Wash the mill coat again tomorrow."
+
+ cp_layla_vox.1402.t:0 "The Coat on the Peg"
+ cp_layla_vox.1402.d:0 "She looks at the coat instead. A political thing. She does not know yet that it is a political thing."
+ cp_layla_vox.1402.flavor:0 "The coat says several things. It says there is a man somewhere who owns the mill. It says that man does not wash his own coat. It says the coat is stained because the oil the machines use is not the oil a kinder machine would use. It says — and this is the thing she feels forming in her like a second loaf rising, slower — that the hours Ahmed spends at the mill are hours he does not spend at home, that the village knows this, that the village has opinions about this, that the bey who comes less now comes less because the money is going somewhere else and the somewhere else is the mill, and that the mill is a kind of bey of its own kind, and that she does not yet have a word for a bey that is not a man. She has only the coat on the peg. She looks at the coat. She looks at Ahmed. She says nothing."
+ cp_layla_vox.1402.a:0 "Take the plate away."
+
+ cp_layla_vox.1403.t:0 "The Tin, Beside the Plate"
+ cp_layla_vox.1403.d:0 "She takes it from the sill and sets it down. A small offering, wordless."
+ cp_layla_vox.1403.flavor:0 "He looks at the tin. He looks at her. For a moment he does not understand, and then he understands, and he does not say what he understands because the understanding is the gift. He reaches for the tin and rolls a cigarette, and lights it, and leans back against the wall of the house and smokes slowly. The oil smell of the coat mixes with the tobacco smell and becomes, for a breath, not-the-mill. She sits across from him. Neither of them speaks. This is a marriage. Someone watching from outside would not see it. It does not matter."
+ cp_layla_vox.1403.a:0 "Refill the cup."
+
+ # cp_layla_vox.15 -- before sleep
+ cp_layla_vox.15.t:0 "The Room, Dark"
+ cp_layla_vox.15.d:0 "The lamp is out. The door to the lane is ajar for the draft. She is lying with her back to him and her face to the wall."
+ cp_layla_vox.15.flavor:0 "In daylight a marriage is a house and a kitchen and a door and two bodies moving between them in a sequence. In the dark it is a different kind of house. He is breathing behind her, slowly, not yet asleep. She can tell by the weight of the breath. He turns once. The mat creaks. She does not move. There is a way of lying beside a man that is asking, and a way of lying that is telling him not to ask, and a way that is simply being there. She is being there. The draft through the door is cool on the top of her head. A dog barks twice, far. She thinks — not in words, not quite — that this is the shape of her life. The wall in front of her. The man behind her. The door ajar. The dog. The dark."
+ cp_layla_vox.15.a:0 "Reach back and put her hand on his shoulder without turning."
+ cp_layla_vox.15.b:0 "Lie awake. Listen to him slip down into sleep."
+ cp_layla_vox.15.c:0 "Think of the door she left ajar today and did not close."
+
+ cp_layla_vox.1501.t:0 "Her Hand, Behind Her"
+ cp_layla_vox.1501.d:0 "She reaches back without turning. He is there."
+ cp_layla_vox.1501.flavor:0 "He covers her hand with his. He is not asleep after all. For a while they breathe at the same rate, in an accident that will pass. Then she is asleep. Then he is asleep. The dog barks again. The wall in front of her fades. Nothing in the room changes. Everything in the room has changed. A woman of the city would say — we held hands. A woman of the village would not say anything. The village does not have a word for it because the village has other words that work better. Ahmed's hand is heavier than hers. His hand is drier. His hand smells faintly of the oil from the mill, even after the washing. She does not mind. She does not mind any of it."
+ cp_layla_vox.1501.a:0 "Sleep."
+
+ cp_layla_vox.1502.t:0 "The Slow Falling"
+ cp_layla_vox.1502.d:0 "She does not sleep. She listens. He does not know she is listening."
+ cp_layla_vox.1502.flavor:0 "His breathing changes in stages. First the steady slow of a man who is still thinking. Then the deeper slow of a man who has stopped thinking but not yet gone over. Then the softer, smaller breath, almost like a child's, of a man who has gone over. She has listened to him make this journey a thousand nights. She could draw it on paper if she could draw. She cannot draw. She can only lie with her face to the wall and listen to him slip, stage by stage, into sleep, and know — as a woman knows a thing by the shape of it, without words — that she is the only other person in the world who knows the sound of him going. That is a kind of property. A kind of paper. With her name on it."
+ cp_layla_vox.1502.a:0 "Close her eyes."
+
+ cp_layla_vox.1503.t:0 "The Door, Ajar"
+ cp_layla_vox.1503.d:0 "She had meant to close it. The draft has been good. She has forgotten."
+ cp_layla_vox.1503.flavor:0 "The door ajar is a small thing. It is also a larger thing. In a year the door was always closed, because she was a new wife and everything had to be right. In year three she left it ajar once. He closed it. In year seven she leaves it ajar sometimes and he does not close it. It is a door that has learned her. She thinks, lying with her face to the wall — has he changed, or have I changed, or have we changed the door. Probably the door. Probably all three. She falls asleep with the question in her mouth, and the door open, and the dog far, and her husband behind her, and the wall in front."
+ cp_layla_vox.1503.a:0 "Close her eyes."
+
+ # cp_layla_vox.16 -- old age
+ cp_layla_vox.16.t:0 "His Knees on the Mat"
+ cp_layla_vox.16.d:0 "He is praying at the second call. The mat is the good one, the one from her mother's house. His knees crack when he kneels."
+ cp_layla_vox.16.flavor:0 "She has watched him pray since they were newly married, and he has watched her, and in that time neither of them has remarked on it. This week, twice, she has noticed the crack of his knees on the mat. It is not a thing she has heard before. A woman of the village would say — his knees are getting old, God preserve him. She does not say it. She only watches, sitting by the door where she has been since he began. His back is still straight. His shoulders are still a particular height. But the knees. The knees are new. She is aware, watching him, that she is watching — somewhere in the far distance — an old man. Not today. Not next year. But the road is there, and he is walking it, and one day she will see him walk it at an angle she does not yet know."
+ cp_layla_vox.16.a:0 "Bring him water when he is done, as she always has."
+ cp_layla_vox.16.b:0 "Tell him the old joke about her grandfather's knees. Make him laugh once."
+ cp_layla_vox.16.c:0 "Be still beside him after the prayer, and say nothing."
+
+ cp_layla_vox.1601.t:0 "The Cup, as Always"
+ cp_layla_vox.1601.d:0 "She brings the water in the brass cup. He drinks half, gives her the rest."
+ cp_layla_vox.1601.flavor:0 "The ritual is the marriage. She has not understood this until tonight. A younger woman would have said — the love is the marriage. An older woman would have said — the cooking is the marriage. Tonight she understands that the ritual is the marriage, that the half-cup-and-the-rest-to-her is the marriage, that the moment he passes her the cup without looking is the marriage. She takes the cup with both hands, which she has not always done. She drinks. He watches her drink. They do not speak. The mat is rolled up and set behind the door. The cup is rinsed and dried and put back."
+ cp_layla_vox.1601.a:0 "Put the mat away."
+
+ cp_layla_vox.1602.t:0 "Her Grandfather's Knees"
+ cp_layla_vox.1602.d:0 "The old joke. Her grandfather, she says, swore his knees were a weather station — they told him when it would rain. He laughs quietly, once."
+ cp_layla_vox.1602.flavor:0 "He laughs from the belly. It is a small laugh, it does not carry past the walls, but it is the laugh. She has not heard it this week. She has not heard it often this month. She knows — in the way a wife knows, not by counting but by a thing like a barometer in the chest — that the laugh is what she has been low on. He wipes one eye with the back of his hand. He says — and so, are your knees a weather station. She says — they are a calendar. He laughs again. The knees crack when he stands. Neither of them says it."
+ cp_layla_vox.1602.a:0 "Fold the mat."
+
+ cp_layla_vox.1603.t:0 "Stillness Beside Him"
+ cp_layla_vox.1603.d:0 "She does not speak. She does not bring water. She sits."
+ cp_layla_vox.1603.flavor:0 "It is a kind of prayer of her own. Not the words of the prayer — she does not know all the words anymore, and when she tries she realises her mother's rhythm is louder in her head than the imam's. She sits in the after-prayer silence that is his, because forty-five years of marriage has taught her that a man after prayer is a man between two rooms, and the kindest thing she can do is not to interrupt either room. He puts his hand, palm up, on the mat. She puts her hand on his. His hand is drier than it was. Hers is drier too. They sit until the evening call. Then the evening call. Then his hand pulls gently away, and he rolls up the mat, and the world returns to its chores."
+ cp_layla_vox.1603.a:0 "Start the supper."
+
+ # cp_layla_vox.19 -- fallback
+ cp_layla_vox.19.t:0 "Tonight He Is Only Ahmed"
+ cp_layla_vox.19.d:0 "Nothing is happening. He is by the door. The tobacco is in the tin on the sill."
+ cp_layla_vox.19.flavor:0 "Some nights a husband is just a husband. The mill was today, it will be tomorrow; the field was last week, it will be next week; the cough in his chest was there last year and will be there next. Tonight he is none of those. He is the man who set his shoes in the usual corner. She watches him from the oven. He looks up. He smiles a small smile. She smiles back. Neither of them smiles quite like that at anyone else. This is not a political thing. It is not a narrative thing. It is a Tuesday."
+ cp_layla_vox.19.a:0 "A small, ordinary evening."
+
+ # ---------------------------------------------------------------------------
+ # DAUGHTER -- cp_layla_vox.20..29
+ # ---------------------------------------------------------------------------
+
+ # cp_layla_vox.21 -- a question she cannot answer
+ cp_layla_vox.21.t:0 "Why Does the Bey Come"
+ cp_layla_vox.21.d:0 "The daughter is seven. She is sitting on the step with a stick, drawing in the dust. She has asked the question without looking up."
+ cp_layla_vox.21.flavor:0 "The question is exact, the way a child's question is exact. Why does the bey come, Mama, on the day you are at the oven. Layla is at the oven. The fire is low. Her daughter is drawing a horse that looks more like a dog. The dust around the horse-dog is the dust the bey's mare left last week. A lesser mother would say — he comes because the field is not ours. A more frightened mother would say — do not ask such things. Layla is neither. Layla is the mother who knows that the answer she gives tonight is the answer the girl will carry into her own marriage, into her own oven, into her own dust. What does she say?"
+ cp_layla_vox.21.a:0 "Tell her the truth: the field is ours but the paper is not, and that is why he comes."
+ cp_layla_vox.21.b:0 "Tell her not to ask such things. There is a price to questions."
+ cp_layla_vox.21.c:0 "Tell her a story instead — the one about the heron and the fisherman."
+
+ cp_layla_vox.2101.t:0 "The Field Is Ours"
+ cp_layla_vox.2101.d:0 "She says it quietly. She does not kneel. She does not soften. She says it the way she would say the day of the week."
+ cp_layla_vox.2101.flavor:0 "The field is ours. The paper is not. The paper is in Cairo, in a drawer. The bey has the paper. The paper is a piece of cloth with black marks on it. The black marks say the field is the paper's. The field is older than the paper. Grandmother is older than the paper. The paper will die one day. The field will not. The daughter looks up from her horse-dog. She does not ask the next question. She has understood the only question she needed to understand — that there are two kinds of ownership in the world, and that her mother knows them both. The bey will come again tomorrow. She will be ready."
+ cp_layla_vox.2101.a:0 "Go back to the oven."
+
+ cp_layla_vox.2102.t:0 "Do Not Ask"
+ cp_layla_vox.2102.d:0 "She softens the rebuke. She cannot help it. But she says it: do not ask such things."
+ cp_layla_vox.2102.flavor:0 "A mother's hand on the top of a daughter's head. The girl does not understand but also understands. She goes back to drawing. The horse becomes a boat. The boat becomes another dog. Layla turns to the oven and does not cry. She has said the thing her mother said to her and her grandmother said to her mother. She has extended the silence by a generation. She tells herself this is prudence. She hopes it is prudence. She is not sure it is prudence. The bread blackens on one side before she remembers to turn it."
+ cp_layla_vox.2102.a:0 "Turn the loaf."
+
+ cp_layla_vox.2103.t:0 "The Heron and the Fisherman"
+ cp_layla_vox.2103.d:0 "She tells the story. The heron is clever. The fisherman is patient. The river is the longer one."
+ cp_layla_vox.2103.flavor:0 "The daughter knows this story. The daughter likes this story. Layla has told it to her a dozen times. The daughter laughs at the fisherman's patience and claps for the heron's cleverness and falls silent at the end, when the heron flies away with the fish and the fisherman goes home with nothing but a wet shirt. The daughter says — but Mama, who is the heron. Layla says — sometimes we are the heron. Sometimes we are the fisherman. Today we are kneading bread. Tomorrow who knows. The daughter laughs and returns to her stick in the dust. She does not ask again why the bey comes. Perhaps tomorrow. Perhaps in ten years. But not tonight. Tonight the bread is almost ready."
+ cp_layla_vox.2103.a:0 "Shape the second loaf."
+
+ # cp_layla_vox.22 -- teaching her to knead
+ cp_layla_vox.22.t:0 "The First Loaf"
+ cp_layla_vox.22.d:0 "The daughter is nine. The dough is too dry. The girl's hands are smaller than Layla remembers her own being."
+ cp_layla_vox.22.flavor:0 "Her mother taught her on a table that was too high. She had to stand on a box. The box was a wooden one that had held raisins once, and the raisin-smell was still in the wood, and even now — thirty years later — the smell of a raisin is the smell of learning to knead. Her daughter has no box. The table is the right height. The dough is too dry because the girl was afraid to add water, and Layla did not help, because there is a shape to a first loaf that must be shaped by the hands of the person learning, and not by the hands of the person teaching. The girl is about to give up. She looks at her mother. What does Layla do?"
+ cp_layla_vox.22.a:0 "Praise the dough. Let her keep going. She is doing well enough."
+ cp_layla_vox.22.b:0 "Take it back. Redo it. Show her what it should look like."
+ cp_layla_vox.22.c:0 "Say nothing. Add water to her own dough — a silent correction she can follow."
+
+ cp_layla_vox.2201.t:0 "It Is Becoming Bread"
+ cp_layla_vox.2201.d:0 "She says it in the small voice she uses when she means it. Not the everyday voice."
+ cp_layla_vox.2201.flavor:0 "It is becoming bread, she says. The daughter looks up. The daughter is too young to know that bread can become other things too — cake, biscuit, a rockfall by the oven wall — and she hears the word only. Becoming bread. She pushes the dough again. It is still too dry. Layla watches. The dough will be bread, just. It will be a tighter loaf than Layla's own. The family will eat it for breakfast. The father will say — this is a good loaf. He will not know his daughter made it. She will tell him. He will take her into his arms and hold her against his chest the way he held Layla once, after her first loaf, thirty years ago. The kitchen is a continuous thing. It goes on without asking."
+ cp_layla_vox.2201.a:0 "Wipe her hands on the apron."
+
+ cp_layla_vox.2202.t:0 "Again"
+ cp_layla_vox.2202.d:0 "She takes the loaf back. She kneads it herself, quickly, with water. She hands it back."
+ cp_layla_vox.2202.flavor:0 "Again, she says. She does not mean it to sound harsh. It sounds harsh. The daughter's face goes briefly still. She takes the dough. She kneads it. It is better now, because Layla fixed it, not because the daughter fixed it. The loaf is bread. The daughter does not eat much of it at dinner. Ahmed notices. He looks at Layla. Layla looks away. She did not mean the again to be that kind of again. But the daughter heard it as that kind of again. She will have to undo it tomorrow. She is not sure she can."
+ cp_layla_vox.2202.a:0 "Clean the table."
+
+ cp_layla_vox.2203.t:0 "Add Water to Her Own"
+ cp_layla_vox.2203.d:0 "She says nothing. She reaches for her own bowl. She adds a spoonful of water. The daughter watches without seeming to watch."
+ cp_layla_vox.2203.flavor:0 "A minute passes. Two. The daughter's hand, without her seeming to decide, goes to the water jar. A spoonful into her bowl. The dough changes. Her mother, who is watching without watching, does not look up. The kneading continues. The daughter is kneading a loaf that she added water to of her own accord, which she will remember in twenty years, which she will teach her own daughter to do, without ever being told — add water if the dough is dry. It is a secret and it is not a secret. It is the way knowledge goes from hand to hand in a country where the women cannot read."
+ cp_layla_vox.2203.a:0 "Let her finish."
+
+ # cp_layla_vox.23 -- the daughter reads aloud
+ cp_layla_vox.23.t:0 "She Reads to Me"
+ cp_layla_vox.23.d:0 "The daughter has a thin book from the school. She has read two pages of it aloud tonight at the lamp."
+ cp_layla_vox.23.flavor:0 "Layla cannot read. She has never read. She has looked at the shapes on the coffee tin and the market scales and the registry-clerk's ledger without understanding, and she has made her peace with not understanding. Tonight the shapes have come into her house. The book is thin, with a blue cover and a drawing of a boy and a donkey. The boy is learning letters from the donkey. Her daughter is learning letters from the boy. Her daughter is reading to her — in a voice so clear, so unhurried, so unlike her mother's — that Layla is aware, sitting in the corner, that she is in the presence of a thing she did not make. Which is a mother's first humility and her last pride. What does she do?"
+ cp_layla_vox.23.a:0 "Pretend to understand the whole passage. Nod at the right places."
+ cp_layla_vox.23.b:0 "Ask the daughter to read it again, slowly, because it was beautiful."
+ cp_layla_vox.23.c:0 "Say she is proud. Say it aloud. Say it even if it shakes."
+
+ cp_layla_vox.2301.t:0 "The Nodding"
+ cp_layla_vox.2301.d:0 "She nods. She looks at her hands. The daughter, at the lamp, is pleased."
+ cp_layla_vox.2301.flavor:0 "A pretence is a cowardice. She knows this. She nods anyway, because the alternative is to say — I do not understand what you just read — and she does not want to say that in front of the child tonight. Not yet. Later. When the girl is older, when the girl already knows. She nods at the right places because she has listened to the cadence, because the cadence is a thing you can read without reading, because her own mother nodded at the cadence of the imam in a mosque whose words her mother also did not understand. It is an old nod. She has inherited it. She will not pass it on. Tomorrow, perhaps, she will say — read it to me slowly, child. Tomorrow. Not tonight. Tonight the lamp is bright and the girl is pleased and the house is quiet."
+ cp_layla_vox.2301.a:0 "Blow out the lamp."
+
+ cp_layla_vox.2302.t:0 "Again, Slowly"
+ cp_layla_vox.2302.d:0 "She asks. The daughter looks up. The daughter understands."
+ cp_layla_vox.2302.flavor:0 "Read it to me again, the mother says, and slowly, because it was beautiful. The daughter does not say — you did not understand it, did you. The daughter says — of course, Mama. The daughter reads it again, the way a child reads to a grandmother, slower, with the vowels held, with a small ceremony. Layla catches three words this time. Three words in a passage of many. The three words are — the boy returned home. She will remember those three words for the rest of her life. She will think of them on the night her husband does not come back from the mill, and the night her grandson goes away to Cairo, and the night she herself closes her eyes for the last time. The boy returned home. A sentence she did not know she was keeping. A sentence her daughter gave her."
+ cp_layla_vox.2302.a:0 "Hold the daughter's hand for a moment."
+
+ cp_layla_vox.2303.t:0 "I Am Proud"
+ cp_layla_vox.2303.d:0 "She says it with the shake in it. She does not pretend the shake is not there."
+ cp_layla_vox.2303.flavor:0 "I am proud of you, she says. The girl looks up. There is a second in which the girl is about to say — I know, Mama — in the way a child does, lightly. Instead the girl sees something in her mother's face and does not say it. The girl puts the book down. The girl comes across the room and puts her arms around her mother's neck. Her mother does not cry — she has decided not to cry — but the girl feels the decision in her mother's shoulders and does not let go for a long time. When she lets go, the mother says — read it to me again tomorrow. The girl says — I will read it every night. The mother says — do not promise. The girl says — I promise. The lamp burns down. Neither of them blows it out."
+ cp_layla_vox.2303.a:0 "Go to sleep later than usual."
+
+ # cp_layla_vox.24 -- the daughter leaving
+ cp_layla_vox.24.t:0 "The Bag at the Door"
+ cp_layla_vox.24.d:0 "The bag is the one Layla carried when she was married and came to this house. Her daughter is taking it tomorrow."
+ cp_layla_vox.24.flavor:0 "The daughter is sixteen. Or eighteen. Or old enough for the mother to have lost the count in the way a mother loses the count when the count begins to hurt. There is a husband waiting three villages over, or a position with a teacher in Cairo, or a brother-in-law who will take her to the railway. The destination does not matter. The bag is the same bag. Inside the bag is a folded cloth from Layla's own mother — three folds, always three — and a small brass comb that was her grandmother's, and a note Layla cannot write, so there is no note. There is, instead, a pomegranate in the bag that will not survive the journey but will be eaten at the first stop. The daughter is asleep. The bag is by the door. What does Layla do?"
+ cp_layla_vox.24.a:0 "Let her go tomorrow. Do not keep her. Kiss her hair and send her."
+ cp_layla_vox.24.b:0 "Ask her to stay one more night. One more morning. One more something."
+ cp_layla_vox.24.c:0 "Take the mother's shawl from the chest and put it in the bag."
+
+ cp_layla_vox.2401.t:0 "Let Her Go"
+ cp_layla_vox.2401.d:0 "She lets her go. In the morning she kisses the hair. She does not cry at the door. She cries later, at the oven."
+ cp_layla_vox.2401.flavor:0 "To let a daughter go is an act of marriage with the future. A mother who keeps her keeps her own child against her own child's life. Layla is not that mother. Her mother was not that mother. It is the inheritance she is passing down — not the comb, not the cloth, but the letting go. The daughter walks the lane with the bag. The boy from three houses down is waiting with the mule. The mule is the colour of ashes. The daughter turns once at the corner and waves. Layla waves. The corner takes her. Layla stands at the door for a moment, then the oven, then the corner. The corner is empty. It will be empty a long time."
+ cp_layla_vox.2401.a:0 "Begin the bread."
+
+ cp_layla_vox.2402.t:0 "One More Night"
+ cp_layla_vox.2402.d:0 "She goes to where the daughter is sleeping. She sits on the edge of the mat."
+ cp_layla_vox.2402.flavor:0 "She does not wake her. She knows, kneeling, that she will not ask for one more night. She knows this the way a woman knows the weight of a thing she has decided not to pick up. She sits. She watches the girl breathe — the girl's breath is exactly Ahmed's breath, in exactly his rhythm, which she had not noticed before, or had noticed and not let herself notice. She leans down and kisses the girl's forehead. The girl does not wake. The girl's breath changes slightly and goes back. The mother stands, her knees complaining, and goes back to the other room, and does not say, tomorrow, what she had thought about saying. One more night was a thing for herself, not for the daughter. She did not take it. This is who she is."
+ cp_layla_vox.2402.a:0 "Close the inner door softly."
+
+ cp_layla_vox.2403.t:0 "The Mother's Shawl"
+ cp_layla_vox.2403.d:0 "She takes it from the bottom of the chest. The smell of it is the smell of her own mother's house."
+ cp_layla_vox.2403.flavor:0 "The shawl was her grandmother's before her mother's. It has been folded in this chest for twenty years. The colour has faded in the folds — there is a deep plum at the edges, and a pale plum at the centre — and the edge is fraying where the grandmother's hand always went. Layla knew exactly where the grandmother's hand went. She has taken the shawl out once a year, on the day of her own mother's death, and aired it, and folded it back. Tonight she is folding it into the bag. It will smell of her grandmother when the daughter unpacks it in whatever room she opens it in. The daughter will smell it and know — without being told, because some kinds of knowing do not need telling — who has sent her off. The shawl, the comb, the cloth, the pomegranate. What a woman sends into the future."
+ cp_layla_vox.2403.a:0 "Close the bag."
+
+ # cp_layla_vox.25 -- disagreement
+ cp_layla_vox.25.t:0 "She Does Not Want the Match"
+ cp_layla_vox.25.d:0 "The match was the cousin's son, from two villages over. The daughter has said no. She has said it once, clearly, and not changed."
+ cp_layla_vox.25.flavor:0 "The cousin's son is a good boy. The cousin's son has a shop. The cousin's son is not, in Layla's daughter's eyes, the man for her, and the daughter has said this in the particular way a girl who knows her own mind says it — not with a scene, not with tears, but with a small repeated sentence that does not change. Ahmed is in favour of the match. Ahmed is not rigid about it; he is simply in favour. Layla is not in favour. Layla has not said this to Ahmed. The daughter looks at her mother across the kitchen tonight. The daughter is asking her mother with her face. What does the mother do?"
+ cp_layla_vox.25.a:0 "Argue for the match. Tell her the cousin's son is a good boy and she is being a fool."
+ cp_layla_vox.25.b:0 "Retreat. Say it is between her and her father. Do not take a side in front of the child."
+ cp_layla_vox.25.c:0 "Concede. Tell her — quietly, not in front of Ahmed — that she too does not think the cousin's son is the match."
+
+ cp_layla_vox.2501.t:0 "A Good Boy Is a Good Boy"
+ cp_layla_vox.2501.d:0 "She argues for the match. She hears her own voice and does not entirely recognise it."
+ cp_layla_vox.2501.flavor:0 "A good boy is a good boy, she says, and you will not find better in three villages. The daughter does not answer. The daughter's silence is the hardest kind of silence. Layla keeps talking. She talks herself into a position she did not begin in. By the end of it she has said things she does not fully mean — that a woman does not always marry the man she loves, that love is a thing that comes later, that her own mother did not love her own father at the beginning, that she herself did not love Ahmed at the beginning. Two of those four things are not true. She does not say so. The daughter goes to bed without speaking. Layla stands at the oven with a weight in her chest. The weight does not lift in the night. It will not lift for years."
+ cp_layla_vox.2501.a:0 "Blow out the lamp."
+
+ cp_layla_vox.2502.t:0 "Not in Front of the Child"
+ cp_layla_vox.2502.d:0 "She refuses the fight. It is between you and your father, she says. She does not meet her daughter's eye."
+ cp_layla_vox.2502.flavor:0 "The daughter knows what her mother has done. The daughter is not a fool. The daughter goes back to her work. The refusal is a form of betrayal the daughter will not name, and Layla will not name, and which will sit between them for months without a name. Ahmed, who notices these things, notices. He does not ask. He waits for Layla to say it. Layla does not say it. The cousin's son will come tomorrow for tea. The daughter will pour. The daughter will be polite. The mother will pour a second cup for herself to keep her hands busy. A marriage is an endurance, and tonight she has shortened her daughter's by not taking a side."
+ cp_layla_vox.2502.a:0 "Start the rice."
+
+ cp_layla_vox.2503.t:0 "Quietly"
+ cp_layla_vox.2503.d:0 "She waits until Ahmed goes to the well. Then she says it. The words are small."
+ cp_layla_vox.2503.flavor:0 "I do not think he is the one, she says. The daughter looks up. The daughter's relief is a visible thing, which is the point. Layla, who has been loyal to Ahmed in every visible way for twenty years, does not feel she has been disloyal to him tonight. She has been loyal to the daughter, and there is another kind of loyalty, to the older and the quieter one — loyalty to whatever it was her own mother did not do for her. She tells her daughter — do not tell your father I said this. The daughter nods. She will not tell. Ahmed will find out anyway, because he is not a fool, and the conversation they will have will be one of the good ones, because he is not rigid, because they have been married a long time. The cousin's son will not be the match. Somewhere, two villages over, he is washing his hands for no match. He will be all right. He will marry someone else."
+ cp_layla_vox.2503.a:0 "Put the kettle on."
+
+ # cp_layla_vox.29 -- fallback
+ cp_layla_vox.29.t:0 "The Child Asleep"
+ cp_layla_vox.29.d:0 "She is asleep. The night is quiet. There is no scene in this."
+ cp_layla_vox.29.flavor:0 "Some nights a daughter is just a daughter asleep in the other room. Layla stands at the doorway with the lamp low. The girl's breath is steady. One arm is thrown above her head the way it was at two and five and twelve and still now. The hair is a darker brown than Layla's was at her age. The face is Ahmed's, except when she smiles, and then it is her grandmother's. Layla watches for a long minute. Then she goes back to the kitchen."
+ cp_layla_vox.29.a:0 "Lower the wick."
+
+ # ---------------------------------------------------------------------------
+ # MOTHER (memory) -- cp_layla_vox.30..39
+ # ---------------------------------------------------------------------------
+
+ # cp_layla_vox.31 -- kneading, her mother's rhythm
+ cp_layla_vox.31.t:0 "The Rhythm of Her Mother's Hands"
+ cp_layla_vox.31.d:0 "She is kneading. Her hands are her own. Her rhythm is not."
+ cp_layla_vox.31.flavor:0 "Turn, fold, press. Turn, fold, press. She has been kneading since she was eleven. At some point — she does not remember when, twenty years ago, fifteen — the rhythm stopped being a thing she had to think about, and became a thing that happened in her arms without her. Tonight she realises, with the flour on her wrist to the bone, that the rhythm is not hers. It is her mother's. Turn, fold, press — the slight extra press at the end, the tiny lift-and-drop on the turn — these are her mother's. Her own innovation, if she has one, is a small counterclockwise tilt at the fold, and even that might have been her grandmother's, who did the same tilt, and whose mother also. She is a century of women pressing dough. The dough does not know. The dough only rises."
+ cp_layla_vox.31.a:0 "Notice the rhythm. Let the noticing be its own small grief."
+ cp_layla_vox.31.b:0 "Say aloud something her mother said, in her mother's cadence. Just to hear it."
+ cp_layla_vox.31.c:0 "Change the rhythm. Try. See if she can."
+
+ cp_layla_vox.3101.t:0 "The Small Grief"
+ cp_layla_vox.3101.d:0 "It is not an unhappiness. It is a weight behind the sternum that does not sit with any one word."
+ cp_layla_vox.3101.flavor:0 "She lets it settle. She has learned, since her mother's death, that there are griefs which are not griefs exactly — griefs which are recognitions, acknowledgements that a person is gone who used to stand where a hand now stands alone. Her mother would have called this nothing. Her mother was not given to naming her own weather. But Layla names it, in the secret of her own head, without ceremony: a small grief. The dough does not care. The dough rises. The grief rises with it and sits in the loaf and is baked in and is eaten at breakfast, and the family does not know, and the grief is good for the bread."
+ cp_layla_vox.3101.a:0 "Shape the second loaf."
+
+ cp_layla_vox.3102.t:0 "Her Mother's Words"
+ cp_layla_vox.3102.d:0 "She says, aloud — bless the flour and the hand that turns it. Her mother said this. No one else in the house does."
+ cp_layla_vox.3102.flavor:0 "The words come out in her mother's voice. This is a thing Layla has not practised. She has not said these words aloud in years. But the cadence is exact — the pause after the bless, the slight drop on the turns it — and it is as if her mother is standing behind her, leaning against the same table, watching the same dough. Her hands do not stop. She says the blessing again, because she can. Because no one is here to hear. Because saying it twice is a kind of double prayer, and her mother would have approved."
+ cp_layla_vox.3102.a:0 "Continue the kneading."
+
+ cp_layla_vox.3103.t:0 "The Attempt to Change"
+ cp_layla_vox.3103.d:0 "She tries. She tries to knead without the small extra press at the end. Her hands refuse."
+ cp_layla_vox.3103.flavor:0 "It is like trying to walk differently than one has walked since childhood. The hands go through the motion she asks them to go through — turn, fold, press, no extra press — for one cycle, two. On the third her mother's hands return. Layla is not sure she wills this. Perhaps the dough wills it. Perhaps the rhythm is a property of the dough, older than any one woman's mother. Perhaps it is simply that she does not want to knead without her mother. The attempt is brief and is her private one and is her own. Nothing changes. The bread is her mother's. The bread is hers. Both are true."
+ cp_layla_vox.3103.a:0 "Let the dough be."
+
+ # cp_layla_vox.32 -- a dream
+ cp_layla_vox.32.t:0 "A Dream"
+ cp_layla_vox.32.d:0 "She wakes at the third hour. The dream was her mother at the canal, holding a small fish."
+ cp_layla_vox.32.flavor:0 "The canal in the dream was not the real canal; it was the canal of her childhood, which was narrower and clearer and had a different tree above it than the one that stands there now. Her mother was young in the dream. Her mother was younger than Layla is now. Her mother was holding a fish the length of her palm and laughing the way she had laughed before the bad years, which was a laugh Layla has not thought about in a long time. The fish flicked. Her mother said — go home, Layla, before your father wonders. Then Layla woke. She is lying in the dark with the phrase in her ears. Go home, Layla. She does not know which home."
+ cp_layla_vox.32.a:0 "Wake fully. Do not return to it. Dreams you chase you lose."
+ cp_layla_vox.32.b:0 "Close her eyes. Try to go back. See the fish again."
+ cp_layla_vox.32.c:0 "Watch her mother walk past the dream's canal without turning."
+
+ cp_layla_vox.3201.t:0 "She Does Not Chase"
+ cp_layla_vox.3201.d:0 "She opens her eyes. She sits up. The dream is already fraying at the edges."
+ cp_layla_vox.3201.flavor:0 "Her mother told her once — dreams you chase you lose. She did not understand until the year after her mother's death, when she kept trying to dream her mother back, and dreamed instead of empty rooms. Tonight she does not chase. She sits up. She puts her feet on the cool floor. She looks at the window where the moon is going. She accepts — as a woman accepts the end of a good meal — that the fish and the canal and her mother's laugh are already going. She will keep what she kept. She cannot keep more. She stands. She goes to the water jar and drinks a little."
+ cp_layla_vox.3201.a:0 "Return to sleep without the dream."
+
+ cp_layla_vox.3202.t:0 "Trying to Go Back"
+ cp_layla_vox.3202.d:0 "She closes her eyes. She breathes the way the imam taught for calm. She goes back."
+ cp_layla_vox.3202.flavor:0 "It does not come. The canal is not there. Her mother is not there. There is an image of a blue door Layla has never seen in her life, and a man's voice she does not know, saying something in a language that is close to hers but not hers. She opens her eyes and laughs, very quietly, at herself. The things we try to keep are the things that leave us; the things we do not try to keep come back. Her mother, who knew this, would have laughed at her daughter tonight and said — silly girl, go to sleep. So she goes to sleep. With nothing. Which is, in fact, something."
+ cp_layla_vox.3202.a:0 "Sleep."
+
+ cp_layla_vox.3203.t:0 "She Walks Past"
+ cp_layla_vox.3203.d:0 "In the dream's last shred her mother turns from the canal and walks the lane and does not look back."
+ cp_layla_vox.3203.flavor:0 "It is a harder ending than she wanted. Her mother has walked past her once before — on the day she died, which was not really a walking past but a closing of the eyes, and which Layla has turned in her head a thousand times. Tonight the dream gives her the walking again, cleaner, with the mother's back straight and the lane dusty and the tree at the canal green as spring. She lets it happen. She does not call out. She knows — in the half-sleep she knows many things she does not know awake — that a mother's walking past is also a mother's permission. She turns in the bed. The dream ends. The morning begins, some hours away."
+ cp_layla_vox.3203.a:0 "Sleep until the call."
+
+ # cp_layla_vox.33 -- the grave
+ cp_layla_vox.33.t:0 "The Stone at the Edge"
+ cp_layla_vox.33.d:0 "She has walked to the grave in the old cemetery. The stone is the small one. The edge is white with dust."
+ cp_layla_vox.33.flavor:0 "It is Thursday. She has brought nothing, which is the custom and also the truth — she has nothing to bring. She stands. The cemetery is nearly empty. Two women in the far corner are weeping the way women of the village weep, which is with small sounds that do not carry, and a boy is sweeping the path. She looks at the stone. The name on it is her mother's, written in the hand of the clerk who made it, and Layla cannot read the name but knows where the letters are and what order they go in, and that is a kind of reading. She is aware, standing, that more of her life is after her mother than was before. She is also aware that this is not true. Her mother is in the way she kneads, in the way she folds, in the way she speaks to her daughter. Her mother is not at the stone. The stone is only a stone. But it is the stone."
+ cp_layla_vox.33.a:0 "Leave a small stone on top, as the custom goes."
+ cp_layla_vox.33.b:0 "Say nothing. Stand. Leave."
+ cp_layla_vox.33.c:0 "Recite the short Fatiha in her mother's cadence."
+
+ cp_layla_vox.3301.t:0 "The Small Stone"
+ cp_layla_vox.3301.d:0 "She finds one at the path's edge. She places it carefully on top of the larger stone."
+ cp_layla_vox.3301.flavor:0 "The small stone says — I was here. It does not say much else. It does not have to. She has placed a small stone on her mother's grave every year for fifteen years. There is a row of them along the top. In time, wind and rain will take them. She will put new ones. This is also a kind of writing. A kind of letter. She does not sign it."
+ cp_layla_vox.3301.a:0 "Walk home the long way."
+
+ cp_layla_vox.3302.t:0 "She Says Nothing"
+ cp_layla_vox.3302.d:0 "She stands for the length of a slow breath, and then another. She leaves."
+ cp_layla_vox.3302.flavor:0 "Some visits are silent ones. Her mother taught her that a silence at a grave is a prayer in a different language, and that the dead understand both. She believes this and also does not believe it. What matters is that she came. That the path from her house to the cemetery was walked. That the stone was seen. On the way home she passes the well, where two girls are drawing water and laughing, and she thinks that the dead like the sound of girls laughing at a well. She does not tell anyone this. It is the kind of thing a woman keeps."
+ cp_layla_vox.3302.a:0 "Turn at the corner toward the bread house."
+
+ cp_layla_vox.3303.t:0 "The Short Fatiha"
+ cp_layla_vox.3303.d:0 "She recites. Not in the imam's cadence. In her mother's."
+ cp_layla_vox.3303.flavor:0 "Her mother's Fatiha was always a little slower than the imam's, with the third verse held for a beat longer, and with the sixth verse said almost under the breath. Layla has never known whether this was a piety or a mistake, and has never asked. Tonight — at the stone, under the bright sun — she says it her mother's way, and it is her mother's recitation that rises, and her mother's hands that she feels at her own shoulders, and it is done before she is aware she has begun. She opens her eyes. The cemetery is still. The two women in the far corner have gone. The boy has moved his broom to another path. She folds her palms. She walks home. At home the oven is ready for the first loaf."
+ cp_layla_vox.3303.a:0 "Begin the bread."
+
+ # cp_layla_vox.34 -- what her mother would say
+ cp_layla_vox.34.t:0 "What Her Mother Would Say"
+ cp_layla_vox.34.d:0 "There is a thing happening in the village this week. She does not know what her mother would have said to it."
+ cp_layla_vox.34.flavor:0 "It might be the new law, or the new railway, or the factory's hiring, or the strike at the mill, or the bey's son's politics, or the letter the imam read at Friday prayer about the ruler. The thing does not matter to the asking. The asking is — what would my mother have said. Her mother was a quiet woman. Her mother had strong opinions that she did not often share. Her mother had a way of sitting with a new thing for a month before saying anything about it, and then of saying something that was both small and exact. Layla is trying tonight to guess the small exact thing. She has three guesses."
+ cp_layla_vox.34.a:0 "Her mother would have said: this is the way of the world, sit with it."
+ cp_layla_vox.34.b:0 "Her mother would have said: they will take more before they are done. Watch."
+ cp_layla_vox.34.c:0 "Her mother would not have said anything. She would have looked at me a long time."
+
+ cp_layla_vox.3401.t:0 "The Way of the World"
+ cp_layla_vox.3401.d:0 "It is the oldest answer. It is the answer that kept three generations alive."
+ cp_layla_vox.3401.flavor:0 "Her mother would have said — it is the way of the world, Layla, sit with it. And she would have meant — do not spend yourself on what you cannot change. And she would have meant — keep your daughter fed. And she would have meant — there will be good years. The answer is a loyalty to survival. Layla is tired tonight, and the loyalty to survival is the loyalty she picks up. Tomorrow she will perhaps pick up another. Tonight this one is enough. She is not ashamed of it. A woman who has kept her family alive through famine and war and the bey and the mill has earned her answers."
+ cp_layla_vox.3401.a:0 "Sit with it."
+
+ cp_layla_vox.3402.t:0 "They Will Take More"
+ cp_layla_vox.3402.d:0 "Her mother said this twice in her life. Layla heard both times. Both times her mother was right."
+ cp_layla_vox.3402.flavor:0 "The first time was the year the land tax doubled. The second was the year the wheat was sent down the railway. Her mother did not raise her voice for either. She said — they will take more — in the kitchen, to the wall, while stirring. She said it once and did not say it again. Both times she was right. Tonight, with the new thing in the village, Layla hears her mother saying it over her shoulder, not for comfort but for warning. Layla does not disagree with her mother. She will prepare. She will tell Ahmed. She will set aside what she can. The warning is a gift. She takes it."
+ cp_layla_vox.3402.a:0 "Set aside what she can."
+
+ cp_layla_vox.3403.t:0 "The Long Look"
+ cp_layla_vox.3403.d:0 "The hardest answer. Her mother's long look, across the kitchen, without words."
+ cp_layla_vox.3403.flavor:0 "There were some things her mother did not say because she did not yet know them, and some things she did not say because she did not want Layla to carry them, and some things she did not say because there was nothing to say. The long look was for the third kind. Tonight the thing in the village is the kind her mother would have met with the long look. Layla gives herself the look. It is a hard mercy. It does not solve anything. It tells her — you are alone with this, daughter, and you may sit with it, but you may not pretend that your mother has an answer you can borrow. She puts the stirring spoon down and wipes her hands on the apron and sits on the step for a while, alone, with the long look."
+ cp_layla_vox.3403.a:0 "Rise, eventually, and begin the evening."
+
+ # cp_layla_vox.35 -- the child they lost. Ported from cp_conversation.150-153.
+ cp_layla_vox.35.t:0 "The One We Lost"
+ cp_layla_vox.35.d:0 "She has not rehearsed this speech. She has rehearsed every other topic; this one she has been refusing to rehearse for forty years, because to rehearse it would be to admit it into the category of things that can be said."
+ cp_layla_vox.35.flavor:0 "Ummi, she says — her voice is quieter than it has ever been in any of these imagined rooms — I have come tonight about the child we lost. She does not, at first, intend to say the child's name. The child's name is a thing she keeps for her own mouth, for Ahmed's mouth, for the mouth of her mother who said it during the three days the child had it to be said — for those mouths, and no others. In the dream, however, her mother is waiting. Her mother is not, in the dream, impatient. Her mother has the face she had at forty, which is the face Layla has been carrying in her head since her mother died. She says the name. She surprises herself by saying it. The saying of it in this dream — across a kitchen whose table is the kitchen-table of her childhood, before a woman who does not, strictly, exist in a room outside her own head — is, she realises, the first time she has said the name aloud in many years. The name is short. It does not take long to say. After she says it, the dream is quiet for a moment. She continues: the child was ill for three days. The doctor did not come. The reason is complicated; the reason involves the cost of doctors, and the absence of a doctor in this village, and the weather that day which closed the road for the first of the three days. I do not know which of these reasons, Ummi, was the one that mattered. I have spent forty years not knowing. I have come to ask you, tonight, to sit with me in the not-knowing for one minute."
+ cp_layla_vox.35.a:0 "Her mother says the comforting sentence — the one Layla has said to other women a dozen times."
+ cp_layla_vox.35.b:0 "Her mother does not speak. She sits with Layla on the bench, in the not-knowing."
+ cp_layla_vox.35.c:0 "Her mother says a name of her own — the older sister Layla never met."
+
+ cp_layla_vox.3501.t:0 "The Comforting Sentence"
+ cp_layla_vox.3501.d:0 "Her mother says the sentence she is supposed to say. The sentence is not wrong. The sentence is also not sufficient."
+ cp_layla_vox.3501.flavor:0 "She knows the sentence. She has said it herself — she has said it a dozen times, perhaps more — to other women in the lane when their children were the ones that did not live. She said it to Um Yusuf in the winter of a bad year. She said it to her cousin's wife on a Friday afternoon under the palm at the edge of the courtyard. She said it, once, to a woman she did not even know, at the market, because the woman was standing very still at the vegetable cart and her eyes gave the thing away. The sentence is true. The sentence is also not enough. Her mother, saying it now in the dream, has said it with love, and has said it with the cadence that belongs to mothers who have buried children, and has still said it pre-prepared — because it is the sentence the whole village knows, and her mother was of the village, and her mother's limits are the village's limits. Layla accepts the sentence. She does not argue with a dream. She bows her head. She wakes, some hours later, carrying the child's name in her chest as she carried it in, and carrying now, in addition, the specific disappointment of having let the name out of her chest to a woman who was not, in the end, prepared to catch it."
+ cp_layla_vox.3501.a:0 "Wake in the dark."
+
+ cp_layla_vox.3502.t:0 "The Silence"
+ cp_layla_vox.3502.d:0 "Her mother does not speak. She does not pretend to. She sits with Layla, in the not-knowing. It is a response Layla had not known to expect, or to hope for."
+ cp_layla_vox.3502.flavor:0 "The silence lasts a long time. In the dream — because it is her dream, and because the dream permits this — the silence lasts as long as she needs it to. She does not fill it. Her mother does not fill it. The kitchen, which is the kitchen of her childhood, seems to become, as the silence continues, slightly smaller. After what would have been, in the waking world, perhaps three minutes — an impossibly long silence by any standards she was raised to — her mother says: thank you for telling me her name. Her mother does not say the child's name back to her. Her mother does not ask for the details. Her mother does not offer an explanation, or a blame, or a consolation. Her mother has simply received the name. Her mother has kept it. She will — Layla trusts, in the dream — remember it for some span of time Layla cannot verify, and that is enough, for tonight. She bows more deeply than she had planned to. She wakes. She is crying; she had not expected to cry; she is crying the quiet kind of tears that a woman of her age cries when something has been, for the first time in years, properly heard."
+ cp_layla_vox.3502.a:0 "Wake with the dream keeping its word."
+
+ cp_layla_vox.3503.t:0 "Her Mother's Own"
+ cp_layla_vox.3503.d:0 "Her mother says the name of her own first child, a sister of Layla's who was born before Layla and did not live. The two of them sit in the dream-kitchen, each holding the name of a daughter."
+ cp_layla_vox.3503.flavor:0 "My own — her mother begins, and says a name Layla has heard perhaps three times in her entire life, always spoken at a burial or a remembrance or in a whisper when her father was out of the room. Her mother does not finish the sentence. She does not need to. Layla understands. She understands that in the kitchen she has made — or perhaps outside it, in the lineage she was born into, where women have in fact had children who did not live for as long as there have been villages — the grief she has carried is not a grief that stands alone. Grief is an inheritance. Grief does not ask permission before being handed down. Her mother stands at the far end of the table, holding her firstborn's name. Layla sits at the near end, holding the child she did not bring to his fourth month. For a long moment the two names hang in the air like two lamps in a corridor, and then — in the soft fade of a dream coming to its end — the lamps are blown out, one by one, by the wind that blows through every kitchen whose windows cannot quite be closed. Layla wakes. She does not remember, precisely, which name her mother said. But in the months that follow, she finds — when she thinks of the child who did not live — that the chest-weight is a fraction lighter than it was before the dream. A fraction. Not more. But — at her age, after this many decades — a fraction is a great deal."
+ cp_layla_vox.3503.a:0 "Wake with the fraction."
+
+ # cp_layla_vox.39 -- fallback
+ cp_layla_vox.39.t:0 "A Rhythm She Cannot Place"
+ cp_layla_vox.39.d:0 "She is sweeping. A rhythm comes to her from the broom. It is not hers. It is a rhythm from very early."
+ cp_layla_vox.39.flavor:0 "Her mother's, probably. Or her grandmother's. Or some woman in the lineage, from before she was born, whose hand is still in hers. She sweeps. The rhythm takes. She does not analyse it. A woman who analyses an inherited rhythm loses it. She sweeps until the dust is out of the room and into the lane, and then she stops, and the rhythm also stops, and she goes in and washes her hands."
+ cp_layla_vox.39.a:0 "Rinse the broom."
+
+ # ---------------------------------------------------------------------------
+ # UM YUSUF (Coptic neighbour) -- cp_layla_vox.40..49
+ # ---------------------------------------------------------------------------
+
+ # cp_layla_vox.41 -- over the wall, morning chores
+ cp_layla_vox.41.t:0 "Over the Wall"
+ cp_layla_vox.41.d:0 "The wall between the yards is shoulder-high. Um Yusuf is hanging a dress. Layla is scattering grain to the hen."
+ cp_layla_vox.41.flavor:0 "They have known each other since Layla came to this house as a bride — twenty years, almost. Um Yusuf is Coptic; her husband works for a cloth merchant in Mansura and comes home on Fridays. She and Layla have never discussed either of these things. They have discussed the weather, the price of oil, the two sisters-in-law who are difficult, the hen that would not lay, the woman at the end of the lane whose son drinks, the cholera that was mild this year, the flood that did not come. They have never, in twenty years, quarrelled. They have sometimes not spoken for a week because one of them was in the other end of the village, and both have pretended on resuming that no week passed. Tonight Um Yusuf is hanging a dress that she has clearly worn to a wedding, and Layla is scattering grain, and the sky is the colour of apricot. What does Layla say?"
+ cp_layla_vox.41.a:0 "Small gossip: the woman at the end of the lane, the son who drinks."
+ cp_layla_vox.41.b:0 "Silence. Just the two of them, with their chores, at the wall."
+ cp_layla_vox.41.c:0 "A small gift: pass three eggs over the wall in a piece of cloth."
+
+ cp_layla_vox.4101.t:0 "Small Gossip"
+ cp_layla_vox.4101.d:0 "They do not call it gossip. They call it — did you hear."
+ cp_layla_vox.4101.flavor:0 "Did you hear, Layla says, about Um Mahmoud's son. Um Yusuf nods without looking up. I heard, Um Yusuf says. He came home at the third hour drunk and broke the gate. He broke the gate. He slept in the lane. Um Mahmoud sent the younger son to pull him inside before the light came. Poor Um Mahmoud, Layla says, and means it. Poor Um Mahmoud, Um Yusuf says, and means it. They hang and scatter. The son is not a sympathetic boy, neither of them likes him, but they are sympathetic to the mother, because the mother is the one they have both been and will always be. A woman's solidarity with another woman's bad son is one of the oldest things on the lane. They talk of other small things. The apricot sky fades. The hen finishes her grain."
+ cp_layla_vox.4101.a:0 "Go in when the light goes."
+
+ cp_layla_vox.4102.t:0 "The Silence at the Wall"
+ cp_layla_vox.4102.d:0 "They do not speak. The wall is shoulder-high. The two women work."
+ cp_layla_vox.4102.flavor:0 "Not every moment of twenty years' friendship is a conversation. Sometimes it is the shared pause in a lane, the fact of the other woman being there with her hands also busy. Um Yusuf hangs. Layla scatters. Neither looks up. Neither feels the need. A dog barks at the end of the lane. A child calls for a mother. The sky turns. At some point Um Yusuf makes a small sound like a laugh — perhaps at a thought of her own — and Layla smiles without knowing what at. They finish. They nod once. They go in. The whole encounter is nothing, and it is also the architecture of both their lives."
+ cp_layla_vox.4102.a:0 "Close the gate."
+
+ cp_layla_vox.4103.t:0 "Three Eggs in Cloth"
+ cp_layla_vox.4103.d:0 "The hen has had a good week. Layla folds three eggs into a piece of old cloth and hands them over the wall."
+ cp_layla_vox.4103.flavor:0 "Take them, Layla says. Um Yusuf does not protest, because between them that would be an insult; she only takes the cloth and lifts it in acknowledgement. Next week, inshallah, Um Yusuf says — by which she means, next week I will pass something back. It is the traffic of a long friendship. The cloth is the same piece that Um Yusuf sent over last month with a small jar of jam. They pass the cloth back and forth, and what the cloth carries changes, and the cloth has become, by the accumulation, something like a small shared currency. Neither of them would describe it in those words. The gate closes. Um Yusuf goes in. The cloth will come back, full of something, by Friday."
+ cp_layla_vox.4103.a:0 "Close the gate."
+
+ # cp_layla_vox.42 -- the priest's son
+ cp_layla_vox.42.t:0 "The Priest's Son"
+ cp_layla_vox.42.d:0 "Um Yusuf is at the wall in the morning, very quiet. The priest's son, she says, has been arrested."
+ cp_layla_vox.42.flavor:0 "The priest's son is twenty. He is a good boy. He is a clever boy — too clever, some say. He has been arrested in the market at Mansura, caught with a stack of papers that said something about the ruler. Um Yusuf does not know what the papers said; she cannot read. The priest is beside himself. The priest's wife has locked herself in the inner room and has not spoken to anyone in two days. Layla listens. Layla has known the priest's son since he was six, when he used to come down the lane with a wooden toy. What does she say?"
+ cp_layla_vox.42.a:0 "Sympathy, plain. Say it gently. Say it like a kiss on the forehead."
+ cp_layla_vox.42.b:0 "Wisdom, the village kind. Say what her mother would have said: they are young, they burn."
+ cp_layla_vox.42.c:0 "Change the subject. The priest's wife cannot stand to have it said. The village talks too much as it is."
+
+ cp_layla_vox.4201.t:0 "Sympathy, Plain"
+ cp_layla_vox.4201.d:0 "May God be with them, Layla says. May God return him. The words are small and old."
+ cp_layla_vox.4201.flavor:0 "Um Yusuf nods. The old words are enough. The old words are often the only thing. They are words both women were taught by women who knew what it was to wait, to wait for a son, to wait for a husband, to wait for a brother, to wait for news. Layla and Um Yusuf stand at the wall and say nothing else for a while. It is a Muslim sympathy and a Coptic acceptance and they meet in the shoulder-high stone. A child shouts in the lane. A kettle whistles somewhere. The morning continues. The priest's son is still in the Mansura jail. The two women on either side of the wall are, for this moment, one thing."
+ cp_layla_vox.4201.a:0 "Press her hand on Um Yusuf's once."
+
+ cp_layla_vox.4202.t:0 "They Are Young, They Burn"
+ cp_layla_vox.4202.d:0 "Layla says it the way her mother would have. She does not mean it dismissively."
+ cp_layla_vox.4202.flavor:0 "They are young, she says, they burn. It is a proverb, almost. It means — young men who care about the country cannot help burning about the country. It means — he is not a bad boy, he is a burning boy. It means — I am not afraid of his burning, I am afraid of the Mansura jail. Um Yusuf nods. Yes, she says. Yes, he burns. The priest cannot see it; the priest is a priest. But the mother sees. The wife is in the inner room because she has seen. Layla thinks of her own daughter and her own son-still-unborn, and thinks — what would I do if my burning boy came home with papers. She does not have the answer. She does not try to have the answer tonight. She nods to Um Yusuf. Um Yusuf nods back. They both know what they both know."
+ cp_layla_vox.4202.a:0 "Go in."
+
+ cp_layla_vox.4203.t:0 "Change the Subject"
+ cp_layla_vox.4203.d:0 "It is a small cowardice. She does it anyway."
+ cp_layla_vox.4203.flavor:0 "How is the oil, she says, at Mansura this week. Um Yusuf looks at her for one second. Um Yusuf understands — instantly, without a visible ripple — that Layla cannot bear the priest's son's name this morning, and so she will give her friend the oil instead. The oil is expensive. The oil is always expensive. They talk oil for two minutes, then cloth, then the cousin in Damanhur. Layla goes in feeling small. Um Yusuf goes in understanding. The priest's son is still in the Mansura jail. Tomorrow, perhaps, Layla will be able to say his name. Not today."
+ cp_layla_vox.4203.a:0 "Close the gate behind her."
+
+ # cp_layla_vox.43 -- the feast across faiths
+ cp_layla_vox.43.t:0 "Her Feast, Not Yours"
+ cp_layla_vox.43.d:0 "It is Um Yusuf's feast-day. The cloth hanging in her yard is the good cloth. The smell of something sweet from her oven is in the lane."
+ cp_layla_vox.43.flavor:0 "Um Yusuf is making kahk for the church. Her daughter is there helping; her cousin is there helping; a great-niece is there making a mess. Layla, from her side of the wall, can hear all three voices and the small sounds of a kitchen at work. It is not her feast. It is Um Yusuf's. But the lane is the same lane, and the smell is the same smell as the smell from her own oven on her own feast-days, and the happiness in her neighbour's voice is not, she thinks, a happiness she is a stranger to. What does she do?"
+ cp_layla_vox.43.a:0 "Send something over: dates, or a small bowl of honey, without ceremony."
+ cp_layla_vox.43.b:0 "Stay on her side. Let Um Yusuf's feast be Um Yusuf's. She will have her own."
+ cp_layla_vox.43.c:0 "Call over the wall — ask what she is baking, the way a neighbour asks."
+
+ cp_layla_vox.4301.t:0 "The Bowl of Honey"
+ cp_layla_vox.4301.d:0 "She does not make a ceremony. She passes it across the wall with a small gesture that means — eat it."
+ cp_layla_vox.4301.flavor:0 "Um Yusuf takes it. She does not protest — between them that would be an insult. She says — I will send kahk back when they are ready. Layla says — eat yours first. They laugh, both, a small wall-laugh. The kahk is holy to Um Yusuf; the honey is a good thing from Layla's own jar. Neither of them believes that the other's religion is wrong. Neither of them has ever thought about it in the terms the imams and the priests use. They are simply two women on a lane, and a feast is a feast, and a neighbour is a neighbour. The honey goes in. The gate closes. Later: three small kahk will come back, wrapped in the cloth they both have been passing for years."
+ cp_layla_vox.4301.a:0 "Wait for the kahk."
+
+ cp_layla_vox.4302.t:0 "She Stays on Her Side"
+ cp_layla_vox.4302.d:0 "It is not a hostility. It is a respect. Her feast. Her kitchen. Her cousins."
+ cp_layla_vox.4302.flavor:0 "Layla is at her own oven. The kahk-smell reaches her. She thinks of Um Yusuf's daughter, whom she watched grow up, and who is there today helping. She thinks of her own daughter. She thinks that in two weeks it will be her own feast-day, and that Um Yusuf will probably send something over, and that they will do this again, reversed. A year is a circle of small kitchen events, two kitchens on one lane. She is not invited inside. She is not expected inside. She would not go if she were invited. This is the rule of neighbourliness, and the rule holds both women in its kindness. The kahk is holy to Um Yusuf. Layla's oven is warm. Both are true."
+ cp_layla_vox.4302.a:0 "Turn her own loaf."
+
+ cp_layla_vox.4303.t:0 "What Are You Baking"
+ cp_layla_vox.4303.d:0 "She calls over the wall, in the bright voice of a neighbour."
+ cp_layla_vox.4303.flavor:0 "What are you baking, Um Yusuf. There is a short pause; then Um Yusuf laughs — a happy laugh Layla has not heard in months — and says — kahk, Layla, so much kahk, my hands are lost in the kahk. I will send you one. Layla says — send me two. Um Yusuf laughs again. The great-niece, who is small, starts shouting something that might be kahk-kahk-kahk, and the cousin shushes her, and the daughter, who is fifteen, shouts something in answer that is joyful and impossible to make out. The lane is full of the sound of Um Yusuf's kitchen. Layla stands on her side, smiling, with her hand on the wall. It is a good day. Her feast is next month. That will be Um Yusuf's turn to stand on the other side with her hand on the wall."
+ cp_layla_vox.4303.a:0 "Smile. Go in."
+
+ # cp_layla_vox.44 -- a death in Um Yusuf's family
+ cp_layla_vox.44.t:0 "The House Is Dark at Midday"
+ cp_layla_vox.44.d:0 "Um Yusuf's brother has died. The house across the wall has been silent since dawn."
+ cp_layla_vox.44.flavor:0 "The brother was the one who lived in Damanhur. He was younger than Um Yusuf by ten years; he was not sick; he was fifty-three. A letter came at dawn with the priest's oldest daughter on a mule. Um Yusuf opened the letter in the yard and sat down on the low stool and did not stand up again for two hours. The husband has been sent for. The daughter is in the house. The cousins have not come yet. Layla, who has heard it all through the wall, has been standing in her own kitchen with her hands in the dough for a long time. She has not moved. What does she do?"
+ cp_layla_vox.44.a:0 "Go over. Sit with her. Do not bring food yet — the cousins will."
+ cp_layla_vox.44.b:0 "Send the daughter over with a dish. Do not intrude in person while the house is still fresh."
+ cp_layla_vox.44.c:0 "Wait until tomorrow. Give her the day for her own family."
+
+ cp_layla_vox.4401.t:0 "Sitting, Nothing More"
+ cp_layla_vox.4401.d:0 "She goes. She sits on the low stool beside Um Yusuf. She does not speak."
+ cp_layla_vox.4401.flavor:0 "Um Yusuf does not speak either, for a long time. Then she says — he was small once, Layla. He had a tooth gap here — and she touches her own front tooth — and he would not smile with it showing, and our mother could not make him. Layla nods. She knows about tooth gaps. Um Yusuf continues. She talks for half an hour about a boy fifty years gone. Layla, who never met the brother, knows him by the end of the half-hour. She knows him in the particular way that the dead can be known after they are dead, through a sister's talk, in a yard, on a feast-day that is no longer a feast. Layla stays until the cousins come. She stands. She kisses Um Yusuf once on the top of the head, which is a thing they do not usually do, and goes home."
+ cp_layla_vox.4401.a:0 "Go home. Light the oven. The evening will need bread."
+
+ cp_layla_vox.4402.t:0 "The Daughter with the Dish"
+ cp_layla_vox.4402.d:0 "She sends her daughter over with a dish of rice and lentils. The daughter is old enough to know not to speak."
+ cp_layla_vox.4402.flavor:0 "The daughter comes back with the empty dish and a small bundle of almonds Um Yusuf pressed into her hand, because grief in a village takes the form of a refusal to let a kindness go one way. The daughter says — she is sitting in the yard, Mama, with her head down. Layla says — did you say anything. The daughter says — I said, may God be with you, and gave her the dish. Um Yusuf said, thank you, my dear, and kissed me here — the daughter touches her forehead. Layla nods. The daughter has done it right. Layla is prouder than she can say. Tomorrow Layla will go herself. Tonight the dish has gone, and the almonds have come back, and the lane has done its small work."
+ cp_layla_vox.4402.a:0 "Put the almonds in the jar for Friday."
+
+ cp_layla_vox.4403.t:0 "Wait Until Tomorrow"
+ cp_layla_vox.4403.d:0 "She does not go. She does not send the daughter. She waits."
+ cp_layla_vox.4403.flavor:0 "A day for her own family, her mother used to say. The cousins must come first. The husband must arrive first. The priest must come first. The neighbour comes last, on the second day, with something small. Layla keeps the rule tonight. She kneads. She does not hum. She is aware, across the wall, of Um Yusuf's silence. She is aware that Um Yusuf, hearing the silence of Layla's kitchen tonight, knows that Layla is observing the rule, and that this is itself a kind of presence. The wall between them is thin. It is also thick. Layla sleeps badly. Tomorrow she will go."
+ cp_layla_vox.4403.a:0 "Blow out the lamp."
+
+ # cp_layla_vox.49 -- fallback
+ cp_layla_vox.49.t:0 "The Wall, Quiet Today"
+ cp_layla_vox.49.d:0 "Um Yusuf is not at her side of the wall. The yard is empty. The hen is quiet."
+ cp_layla_vox.49.flavor:0 "Some days a wall is just a wall. Um Yusuf is in Damanhur, perhaps, or at the market, or sleeping, or ill. Layla puts her hand on the top stone, which is warm from the sun, and stands for a few breaths in the way one stands beside a friend's empty chair. She will be there tomorrow. Or the day after. Or Friday. The friendship is twenty years old. It does not need a wall-encounter every day to continue. Layla goes back in."
+ cp_layla_vox.49.a:0 "Back to the oven."
+
+ # ---------------------------------------------------------------------------
+ # UMM MARIAM (landless neighbour) -- cp_layla_vox.50..59
+ # Class contrast -- gated on Layla owning land. Umm Mariam is the woman who
+ # does not, today, hold paper.
+ # ---------------------------------------------------------------------------
+
+ # cp_layla_vox.51 -- Umm Mariam works Layla's field
+ cp_layla_vox.51.t:0 "She Is at the Edge of the Field"
+ cp_layla_vox.51.d:0 "Umm Mariam is working the north strip with two of her boys. The strip is Layla's, on paper. The work is Umm Mariam's."
+ cp_layla_vox.51.flavor:0 "Since the homesteading year, Layla has been the one with the paper. Umm Mariam has not. Umm Mariam works Layla's field for a share of the harvest, which they agreed on at Friday prayer in the first spring, and which Layla has not raised or lowered since. Umm Mariam was in the same lane growing up. They played at the same well. They were married in the same year, within a month of each other. And now Layla owns a field and Umm Mariam works it, and there is, between them, a silence the shape of the field. Tonight Layla walks the boundary, as she does at the end of every working day, to see what has been done. Umm Mariam is wiping her forehead with the back of her arm. What does Layla do about the count?"
+ cp_layla_vox.51.a:0 "Pay her more than the share. Not charity — a correction."
+ cp_layla_vox.51.b:0 "Pay her exactly the share. It is what they agreed. Honour is in the agreement."
+ cp_layla_vox.51.c:0 "Forget to pay today. Apologize tomorrow. Make it a small accident."
+
+ cp_layla_vox.5101.t:0 "Pay Her More"
+ cp_layla_vox.5101.d:0 "She adds a handful. Then another. She does not look Umm Mariam in the eye as she hands it over."
+ cp_layla_vox.5101.flavor:0 "Umm Mariam looks at the extra and looks at Layla. Umm Mariam has been a woman of the village for as long as Layla has, and she understands instantly what the extra is. She takes it. She does not say thank you — which would be to accept it as gift — but she does not hand it back either, because to hand it back would be to refuse what they both know is a kind of private debt being paid. The transaction is over in four seconds. Nothing has been said. Layla walks back along the boundary. Umm Mariam wipes her forehead again and calls her boys. The field, which is Layla's on paper, feels tonight to Layla like something she is holding for Umm Mariam, rent-free, until God decides. She does not say this to anyone. She does not, in later years, say it aloud even to herself. But she keeps paying more."
+ cp_layla_vox.5101.a:0 "Walk home with the accounts book in hand."
+
+ cp_layla_vox.5102.t:0 "The Share, Exact"
+ cp_layla_vox.5102.d:0 "She counts it in the palm. She hands it across. The count is exact."
+ cp_layla_vox.5102.flavor:0 "We agreed on this, Layla tells herself. The agreement is what honour sits on. To pay more today is to unmake the agreement, and to unmake the agreement is to confuse the lane. Umm Mariam takes the share and nods. The nod is small. The nod is — I know what was agreed, and you have honoured it, and I thank you for not inventing your own charity on my head. They part. Layla walks back thinking — she did not want more. She was not asking. She was only wiping her forehead. I read in her something that was not there. I must trust her to speak when she needs to speak. I must not decide for her. This is a harder kindness than I have been practising."
+ cp_layla_vox.5102.a:0 "Write the amount in the book."
+
+ cp_layla_vox.5103.t:0 "A Small Accident"
+ cp_layla_vox.5103.d:0 "She puts the pouch in her sleeve and does not take it out. She says goodnight. She walks back."
+ cp_layla_vox.5103.flavor:0 "She does not know why she did it. Tomorrow she will knock at Umm Mariam's gate and say — I forgot yesterday, forgive me — and she will pay the share plus a handful as apology. The handful will feel different than a pre-planned handful. It will feel like a thing the accident made possible. Perhaps she will do this again next week. Perhaps this is how she will pay more, by arranging accidents. She is aware, walking home in the dusk, that she is telling herself a small lie, and that the lie is wrapped around a real mercy, and that she does not know if she is a better woman for the mercy or a worse one for the lie. She will think about it tomorrow. Tonight the oven."
+ cp_layla_vox.5103.a:0 "Home."
+
+ # cp_layla_vox.52 -- Umm Mariam asks about the paper
+ cp_layla_vox.52.t:0 "She Asks About the Paper"
+ cp_layla_vox.52.d:0 "Umm Mariam at her own gate, a basket of onions on her hip. She asks casually. The question is not casual."
+ cp_layla_vox.52.flavor:0 "So, Layla — the paper, is it the same kind they gave Abu Suleiman? Layla knows why the question is being asked. Abu Suleiman also has paper. Abu Suleiman's neighbour, Hag Farouk, does not. Umm Mariam is asking because there has been a rumour — there is always a rumour — that a second round of distributing papers is being prepared at the district office. Umm Mariam is asking because Umm Mariam does not know how to go to the district office, and has heard that Layla went, and would like to know the shape of it. Layla is aware of all of this at once. What does she say?"
+ cp_layla_vox.52.a:0 "Speak plainly. Tell her exactly how she got the paper. Who she saw. What she signed."
+ cp_layla_vox.52.b:0 "Deflect. Say the process is complicated. Say she does not remember the exact steps."
+ cp_layla_vox.52.c:0 "Lie by omission. Say the paper was a one-time thing and she does not know of another round."
+
+ cp_layla_vox.5201.t:0 "Plain Speech"
+ cp_layla_vox.5201.d:0 "She says it all. The walk to Mansura. The clerk with the ledger. The four signatures, the stamp."
+ cp_layla_vox.5201.flavor:0 "Umm Mariam listens. The onions slide in the basket. When Layla is done Umm Mariam says only — thank you. She does not say — I will go tomorrow, or — I will try next week. She does not commit aloud. Layla does not press her. Layla understands — Umm Mariam will go, or will not go, according to things Layla is not part of: what her husband says, what money she can afford for the clerk's small bribe, whether the eldest son can be trusted to watch the younger ones for a day. The knowledge has been handed over cleanly. What Umm Mariam does with it is hers. That is the whole of kindness sometimes — to tell the truth and not decide."
+ cp_layla_vox.5201.a:0 "Walk home. Say nothing to anyone about this conversation."
+
+ cp_layla_vox.5202.t:0 "Deflection"
+ cp_layla_vox.5202.d:0 "It is complicated, Layla says. I do not remember the steps. Some of it was Ahmed, the clerk, I was not paying attention."
+ cp_layla_vox.5202.flavor:0 "Umm Mariam nods. Umm Mariam knows it is a deflection. Layla knows Umm Mariam knows. The knowing is itself a second conversation, running beneath the first. Umm Mariam says — of course, Layla, it must have been very confusing. She shifts the onions. She says — the sun is high, I should go in. She goes in. Layla stands at the gate for a second longer than she meant to. She is not sure why she deflected. Perhaps because she did not want to feel that her paper was a thing she owed to others. Perhaps because her paper feels fragile to her still, and explaining it aloud would make it more fragile. Perhaps because she is a small woman in a small part of her heart tonight. She walks home slower than usual."
+ cp_layla_vox.5202.a:0 "Sit on the step for a while before going in."
+
+ cp_layla_vox.5203.t:0 "A Small Lie"
+ cp_layla_vox.5203.d:0 "It was a one-time thing, Layla says. I have not heard of another round. I am sorry."
+ cp_layla_vox.5203.flavor:0 "She has heard of another round. She heard yesterday at the market, from the same rumour-source. She says what she says because her heart has decided, in a second too fast for her conscience to catch, that she cannot bear to watch Umm Mariam get paper too — or she cannot bear to watch Umm Mariam not get paper despite trying. Both are cowardices. She is aware of this even as she speaks. Umm Mariam nods slowly. The nod is slow because Umm Mariam, who has also heard the rumour, is filing the small lie away, not for revenge — Umm Mariam does not revenge — but for a future conversation, to be had one evening years from now, when Layla has grown bigger inside her own skin and can be told. Layla walks home. She feels smaller than she has felt in a long time. This is how it feels to be the one who has."
+ cp_layla_vox.5203.a:0 "Close the gate behind her harder than usual."
+
+ # cp_layla_vox.53 -- her child and Umm Mariam's child
+ cp_layla_vox.53.t:0 "Two Boys in the Lane"
+ cp_layla_vox.53.d:0 "Umm Mariam's younger boy and Layla's younger are playing at the well with sticks. Both are barefoot. Only one has a shirt that is not torn."
+ cp_layla_vox.53.flavor:0 "It is a small tear. It is not a tear the boy would notice. But Layla has noticed. She has noticed the way a mother notices — from across a yard, through a kitchen window, in the time it takes to fold a cloth. She has a shirt that her own son outgrew last month, folded in the chest, perfectly usable, with one button missing but easily replaced. It would fit Umm Mariam's boy. She has been meaning to take it across for a week. She has not. What does she do now?"
+ cp_layla_vox.53.a:0 "Take the shirt across. Casually. Say — I had this set aside, I thought of your younger."
+ cp_layla_vox.53.b:0 "Keep it in the chest. A torn shirt is Umm Mariam's business, and a woman's pride should be respected."
+ cp_layla_vox.53.c:0 "Invite both boys in for bread. The shirts are not the subject. The bread is."
+
+ cp_layla_vox.5301.t:0 "The Shirt, Casual"
+ cp_layla_vox.5301.d:0 "She takes it across. She does not make a gesture of it. She hands it over at the gate as if it were a small market item."
+ cp_layla_vox.5301.flavor:0 "Umm Mariam takes it. She holds it up. She says — oh — and then she says — thank you, my friend. The thank you is a rare word between them; it is said only for things that cannot be repaid in the ordinary cloth-and-jar traffic. Layla has done the right thing, without ceremony, without condescension. The shirt will be on Umm Mariam's younger boy by tomorrow. Layla walks back. She has been a woman of the village in the way a woman of the village can be at her best — practical, kind, private, and without a fanfare."
+ cp_layla_vox.5301.a:0 "Close the gate behind her lightly."
+
+ cp_layla_vox.5302.t:0 "In the Chest It Stays"
+ cp_layla_vox.5302.d:0 "She does not take it across. She tells herself that Umm Mariam's pride is hers to manage."
+ cp_layla_vox.5302.flavor:0 "There is a version of this argument that is right, and there is a version of this argument that is the face her cowardice wears when it is trying to look like something better. Layla cannot tell, tonight, which version is hers. The shirt stays in the chest. The torn shirt stays on the boy. Next week the tear will be larger. The month after, the shirt will be replaced — or it will not. Umm Mariam will never ask Layla for it. That is the way. Layla will not forgive herself for the chest for a long time, and not completely, even later, when Umm Mariam has died and everyone is old."
+ cp_layla_vox.5302.a:0 "Close the chest."
+
+ cp_layla_vox.5303.t:0 "Both Boys for Bread"
+ cp_layla_vox.5303.d:0 "She calls from the gate. Both boys look up. They come running."
+ cp_layla_vox.5303.flavor:0 "Bread with honey tonight, she says. Tell your mothers you are staying with Auntie Layla for half an hour. The boys shout in joy. They eat at her table. They are equally boys. The torn shirt is not mentioned. Umm Mariam, next door, hears her son's laugh through the wall and smiles at the saucepan she is scouring. Layla has found a way that does not require either woman to speak a word about the shirt. The dignity of the not-speaking is shared. Both boys come back with honey on their chins and are scolded for it, affectionately, from both kitchens."
+ cp_layla_vox.5303.a:0 "Wipe the table down."
+
+ # cp_layla_vox.54 -- a gift refused
+ cp_layla_vox.54.t:0 "She Has Refused the Jar"
+ cp_layla_vox.54.d:0 "Layla tried to pass a jar of olive oil across the wall. Umm Mariam said — no, keep it. It is too much."
+ cp_layla_vox.54.flavor:0 "Something has shifted. The cloth-and-jar traffic between them has been steady for twenty years. Tonight, for the first time, Umm Mariam has refused. The olive oil was a good jar — the one from the Nazer press — and it was more than the usual. Layla has pushed it too hard; she knows this as she stands at the wall with the jar still in her hand. The refusal was gentle but it was clear. Umm Mariam has gone in. The wall is the same wall. What does Layla do?"
+ cp_layla_vox.54.a:0 "Insist. Go around to the gate. Put the jar on her step."
+ cp_layla_vox.54.b:0 "Withdraw. Take the jar home. Use it herself. The refusal was a message."
+ cp_layla_vox.54.c:0 "Pretend to accept the refusal, and later leave the jar with a different pretext — a recipe, a question."
+
+ cp_layla_vox.5401.t:0 "She Goes Around"
+ cp_layla_vox.5401.d:0 "She carries the jar around the wall to the front gate. She puts it on the step."
+ cp_layla_vox.5401.flavor:0 "She does not knock. She does not call. She does not need to. She places the jar on the step and walks back home. Inside her own kitchen she waits. After twenty minutes she hears Umm Mariam's door open and close. The jar is inside. No one has said a word. Tomorrow at the wall Umm Mariam will say — Layla, you are a stubborn woman. Layla will say — I am. They will laugh a small wall-laugh, and the friendship will be restored, the stubbornness will have been absorbed, and the oil will, in time, be returned in kind."
+ cp_layla_vox.5401.a:0 "Wait for the wall tomorrow."
+
+ cp_layla_vox.5402.t:0 "She Takes It Home"
+ cp_layla_vox.5402.d:0 "She goes inside with the jar. She sets it on her own shelf. The refusal was a message."
+ cp_layla_vox.5402.flavor:0 "Pride has its rules. Umm Mariam has signalled that the cloth-and-jar traffic has a limit, and that the limit has been approached, and that Layla must respect it. Layla respects it. She does not push. The jar goes on her own shelf. Their traffic will resume tomorrow, smaller, back at the customary weight. Something small has cracked, however. Both women know. Neither will name it. It will be there for some weeks, a thin line in the wall."
+ cp_layla_vox.5402.a:0 "Put the jar on the high shelf."
+
+ cp_layla_vox.5403.t:0 "A Different Pretext"
+ cp_layla_vox.5403.d:0 "Tomorrow she goes over with a question about a recipe — and the jar with her, small, as if incidental."
+ cp_layla_vox.5403.flavor:0 "Umm Mariam, I have forgotten how your mother made the molokhiya — was it a spoonful of oil at the end, or two. Umm Mariam laughs. It was always two, Layla. And she accepts the jar that Layla has placed absently on the step between them, because the jar is now about molokhiya, not about charity, and because molokhiya is between them always. The pretext is a small kindness and a small cunning, and both women know the cunning is a respect. The jar has crossed. The rules have been honoured. The lane continues. Next week Umm Mariam will send back a small bundle of green coriander, with a pretext of her own."
+ cp_layla_vox.5403.a:0 "Go home to cook."
+
+ # cp_layla_vox.59 -- fallback
+ cp_layla_vox.59.t:0 "Umm Mariam Does Not Appear"
+ cp_layla_vox.59.d:0 "Her gate is closed. Her yard is empty. Perhaps she has gone to Mansura with her eldest."
+ cp_layla_vox.59.flavor:0 "There are weeks in a long friendship when the other woman is simply not there. The lane is quiet. The field — Layla's, on paper — is being worked by the older of Umm Mariam's boys, who is capable and silent. Layla walks the boundary. She notes that the north strip has been done well. She leaves without the small wall-chat. The oven needs her."
+ cp_layla_vox.59.a:0 "Home."
+
+ # ---------------------------------------------------------------------------
+ # THE BEY -- cp_layla_vox.60..69
+ # ---------------------------------------------------------------------------
+
+ # cp_layla_vox.61 -- he rides up to the field
+ cp_layla_vox.61.t:0 "The Mare on the Canal Road"
+ cp_layla_vox.61.d:0 "The Bey is on the canal road. The mare is grey. She sees him before he sees her."
+ cp_layla_vox.61.flavor:0 "She is bent over the water furrow with a stick, clearing it. Her back is to the road. The sound of the mare comes before the sight — the particular heavy walk of a horse that is well-fed on a road that is dry — and she knows, without turning, that he is coming. He comes every fortnight. He comes on the fortnight that she does not expect, always; he has a bailiff's sense of which fortnight. He stops at the edge of the strip. He does not dismount. She straightens. Her shawl is wet where her hand has been. The mare snorts. What does she do?"
+ cp_layla_vox.61.a:0 "Stand. Face him. Meet his eye."
+ cp_layla_vox.61.b:0 "Kneel. The old gesture. The one her mother taught."
+ cp_layla_vox.61.c:0 "Keep working. Do not acknowledge him until he speaks."
+
+ cp_layla_vox.6101.t:0 "Stand and Face"
+ cp_layla_vox.6101.d:0 "She stands. She turns. She looks up at him on the mare. The sun is behind him."
+ cp_layla_vox.6101.flavor:0 "It is not defiance. It is not not-defiance. It is simply her, wet-handed, looking at him. The Bey blinks once. He is unused to this. The women of this village do not look. The men avoid his eye as well, out of respect or fear or both, and the Bey is used to looking down on uncovered hair. Layla's hair is covered, but her eyes are not, and they are not down. For a second there is something like an exchange between them. He says — the water is late in the north strip. She says — it is. He says — tell your husband. She says — I will. He rides on. She kneels again to the furrow. Her hands shake for a minute. Then they stop. Then they work."
+ cp_layla_vox.6101.a:0 "Finish the furrow."
+
+ cp_layla_vox.6102.t:0 "The Old Gesture"
+ cp_layla_vox.6102.d:0 "She kneels. Her mother taught her this. The kneel is not for him; it is for the lineage of women who have knelt."
+ cp_layla_vox.6102.flavor:0 "The kneel is a peace with what the day requires. Her mother knelt when the old bey came; her grandmother knelt when the soldiers came; her great-grandmother knelt for the tax collector under the first Mohammed Ali. The kneel is not servility. The kneel is an endurance. The Bey, above her on the mare, does not like the kneel, interestingly — the new beys prefer nods, which they imagine are more modern — but he accepts it. He says — the water is late. She says — yes, Effendim. He rides on. She rises. Her knees hurt. She has bought a week."
+ cp_layla_vox.6102.a:0 "Rise. Back to the furrow."
+
+ cp_layla_vox.6103.t:0 "She Keeps Working"
+ cp_layla_vox.6103.d:0 "She does not turn. She does not stand. The stick in her hand continues to move."
+ cp_layla_vox.6103.flavor:0 "It is a small rudeness. She has never done it before. She has the sense, as she does it, that her mother is watching, and that her mother is not disapproving, and this surprises her. The Bey waits at the edge of the strip for a measured length of time. He does not speak. Eventually he says — your husband. She says — in the house, Effendim. He says — tell him the water is late. She says — I will. He rides on. She does not turn to watch him go. The water continues to move in the furrow. She knows that the next visit will be worse. She accepts this."
+ cp_layla_vox.6103.a:0 "Finish the furrow."
+
+ # cp_layla_vox.62 -- he asks after her husband
+ cp_layla_vox.62.t:0 "He Asks After Ahmed"
+ cp_layla_vox.62.d:0 "He does not dismount. His voice is mild. The mildness is the shape of the question."
+ cp_layla_vox.62.flavor:0 "And your husband, Layla — he is well? The question is not a question. The question is a mechanism. He asks after the husband on every visit, as if it were the politeness of an English gentleman, which he imagines himself to be — he has visited London once, he has mentioned it to the villagers through his bailiff. Layla understands the mechanism. She has understood it since she was twenty. The mechanism is: he is asking whether the husband is well enough to pay, whether the husband is strong enough to resist, whether the husband has any intentions he should know about. She has three answers she has used over the years. Tonight which?"
+ cp_layla_vox.62.a:0 "He is well, Effendim. The usual answer. Do not complicate."
+ cp_layla_vox.62.b:0 "The truth. He has a cough. He is tired. The harvest was short."
+ cp_layla_vox.62.c:0 "Say nothing. Lower her eyes. Let the silence be her answer."
+
+ cp_layla_vox.6201.t:0 "He Is Well"
+ cp_layla_vox.6201.d:0 "The customary answer. She has given it hundreds of times. She gives it again tonight."
+ cp_layla_vox.6201.flavor:0 "The Bey nods. The mechanism has been satisfied. He rides on. The answer is not a lie; Ahmed is, in the main, well. The answer is a refusal to give the Bey any material beyond what the ritual requires. Layla has learned that the Bey takes what he is given and does not press; the pressing is what he wants, because the pressing is what tells him something about the household. She gives no pressing. She gives the customary. He leaves. She bends back to the furrow. A small victory for not offering the extra."
+ cp_layla_vox.6201.a:0 "Work the water."
+
+ cp_layla_vox.6202.t:0 "The Truth"
+ cp_layla_vox.6202.d:0 "She gives him the cough, the tiredness, the short harvest. She is not sure why. Perhaps she is tired tonight herself."
+ cp_layla_vox.6202.flavor:0 "The Bey leans forward. His eyes brighten, not with pity, with interest. He says — a short harvest, is it. I should speak with him about this. She realises — three seconds too late — that she has handed him a thread, and that he will pull the thread at his leisure, and that Ahmed will be summoned tomorrow or the day after, and that the summoning will be for an adjustment of the arrangement, and that the adjustment will not be in Ahmed's favour. She has failed the lineage of women who have stood at this furrow. She walks home with a weight. She tells Ahmed. Ahmed does not blame her. Ahmed's not-blaming is worse than the blaming would be."
+ cp_layla_vox.6202.a:0 "Bear the weight home."
+
+ cp_layla_vox.6203.t:0 "Silence, Lowered Eyes"
+ cp_layla_vox.6203.d:0 "She does not answer. She lowers her eyes at the stick in her hand."
+ cp_layla_vox.6203.flavor:0 "The Bey waits. The wait is longer than usual. The mare shifts her weight. The Bey is considering whether to make the silence into something. He does not. He says — well. Tell him I asked. He rides on. Layla exhales. Silence has a cost tonight. Tomorrow — she does not know. Perhaps nothing. Perhaps something. She has saved Ahmed from an interview, but she has given the Bey a thing to ponder. She bends to the furrow. The work is what it was. The work is what it will be."
+ cp_layla_vox.6203.a:0 "Straighten the stick."
+
+ # cp_layla_vox.63 -- the ledger at the planting
+ cp_layla_vox.63.t:0 "The Ledger at the Planting"
+ cp_layla_vox.63.d:0 "Planting day. The Bey's bailiff has the book open on a flat stone. The Bey is reading aloud the allotment."
+ cp_layla_vox.63.flavor:0 "The allotment is what each household in the village is to plant. The allotment is decided by the Bey, with advice from the bailiff, on criteria that are not shown to the villagers. This year Ahmed's allotment is three-quarters cotton, one-quarter wheat. Last year it was two-thirds cotton. Next year it will be more cotton still, because the port wants cotton, and the Bey's sons want new things. Ahmed is beside her. The other men are behind. The Bey finishes reading Ahmed's allotment and looks at them. She sees Ahmed's jaw move once and settle. What does she do?"
+ cp_layla_vox.63.a:0 "Nod. Agree. Do not make this a fight. Not here, not with the bailiff watching."
+ cp_layla_vox.63.b:0 "Step forward. Say — Effendim, the wheat. We cannot feed on cotton alone."
+ cp_layla_vox.63.c:0 "Ask for a smaller parcel — less cotton, same wheat. A compromise she knows he will refuse."
+
+ cp_layla_vox.6301.t:0 "She Nods"
+ cp_layla_vox.6301.d:0 "She nods. Ahmed, beside her, nods. They do not fight it in the open."
+ cp_layla_vox.6301.flavor:0 "Later, at home, they will speak of it. Later they will adjust. Later the wheat will come from another source — bought, traded, borrowed — and the household will eat, as it has always eaten. The nod in public is the face that the Bey's ledger requires, and the ledger is the Bey's system, and the system is what they are inside tonight. To fight the ledger in public is to invite a visit from the Bey's men within the week. Layla has seen households who fought and the week that followed. She does not want the week. She nods. The Bey closes the book. The planting begins."
+ cp_layla_vox.6301.a:0 "Walk home with Ahmed."
+
+ cp_layla_vox.6302.t:0 "The Wheat"
+ cp_layla_vox.6302.d:0 "She steps forward. Her voice is steady. Effendim, she says, the wheat — we cannot feed on cotton alone."
+ cp_layla_vox.6302.flavor:0 "The bailiff's pen stops. The Bey looks at her as if he has not seen her before. The other men step back one small step, visibly, as if distancing themselves. The Bey says — you will buy wheat at the market, Um Layla. She says — the market wheat is expensive, Effendim. The Bey says — then plant less cotton on the western half and take the loss. You have spoken. Your neighbours have heard. This is their penalty as well as yours. He rides off. Layla is small inside her own skin on the walk home. Ahmed says — next year we eat. This year we do not eat. I love you. She cries, for a minute, where only he can see. She does it again anyway if the day repeats."
+ cp_layla_vox.6302.a:0 "Walk home."
+
+ cp_layla_vox.6303.t:0 "A Compromise"
+ cp_layla_vox.6303.d:0 "She asks for less cotton and the same wheat. A small mercy. She knows it will be refused."
+ cp_layla_vox.6303.flavor:0 "Effendim, she says, a smaller strip of cotton on the east would be easier — the water is better there for the wheat. The Bey considers. The bailiff shakes his head very slightly — a movement only Layla catches — and the Bey says — no, Um Layla. The book has the allotment. The book stands. The moment has passed. She has not won the compromise, but she has, by asking, told the bailiff and the Bey that she is a woman who asks. Next year, perhaps, they will not allot her as hard. Or perhaps they will. A small risk, a small reward, a small probability."
+ cp_layla_vox.6303.a:0 "Walk home beside Ahmed."
+
+ # cp_layla_vox.64 -- he comes after homesteading
+ cp_layla_vox.64.t:0 "He Comes Less, Now"
+ cp_layla_vox.64.d:0 "Since she has paper, the Bey comes less. Tonight he has come. The mare is at the gate."
+ cp_layla_vox.64.flavor:0 "In the old arrangement he came every fortnight. Since the homesteading law, he has come twice a year, on errands the bailiff could easily have run. She understands. He comes because he needs to, for his own reasons. He comes because he was someone to her before she had paper, and he is not sure what he is to her after. Nor is she sure. She stands at her own gate — her own gate — with her own field behind her. She is aware of the strangeness of the phrase, which she has been aware of every day for a year. What does she do?"
+ cp_layla_vox.64.a:0 "Offer tea. Make the offering formal. He is a guest at her gate now."
+ cp_layla_vox.64.b:0 "Refuse to receive him. Say — he may speak to Ahmed when Ahmed is home."
+ cp_layla_vox.64.c:0 "Stand. Be silent. Let him speak first, on her ground."
+
+ cp_layla_vox.6401.t:0 "Tea, Formal"
+ cp_layla_vox.6401.d:0 "Please, Effendim. I will make tea. Ahmed will be home at sunset. Please, sit."
+ cp_layla_vox.6401.flavor:0 "She makes tea. She serves it in the good glass. She sits on the low stool across from him and does not speak until he speaks. It is the first time she has served him tea on her own step. It is also, perhaps, the last. She is aware throughout of her own posture, which is a new posture — host, not subject — and he is aware too, and the two awarenesses sit between them like a third cup. He says small things. The weather. The river. He does not ask after Ahmed. He leaves when his glass is empty. She rinses the glass three times before putting it back on the shelf."
+ cp_layla_vox.6401.a:0 "Shelve the glass."
+
+ cp_layla_vox.6402.t:0 "He May Speak to Ahmed"
+ cp_layla_vox.6402.d:0 "She does not open the gate. She speaks through the slats. Effendim, Ahmed is at the mosque. Come back at sunset."
+ cp_layla_vox.6402.flavor:0 "It is a small firmness. It is a firmness she has wanted for twenty years. She has the paper now. The paper allows the firmness. The Bey is surprised — not angered, surprised — and he nods, and says — I will come at sunset, and rides off. At sunset he does not come back. He sends a message the next day saying the matter has been settled. She does not know what the matter was. She does not ask. Ahmed does not ask. The gate is closed and it was closed by her."
+ cp_layla_vox.6402.a:0 "Go inside."
+
+ cp_layla_vox.6403.t:0 "Her Silence, His First Word"
+ cp_layla_vox.6403.d:0 "She does not speak. She lets him stand at the gate. The mare shifts."
+ cp_layla_vox.6403.flavor:0 "For a longer minute than he expects, she says nothing. She is not rude; she is not welcoming. She is waiting. He understands — eventually — that the ground has changed, that she is no longer the woman who spoke first at the furrow, and that the paper means that he must, if he wants to conduct business, begin the business. He says — Um Layla, about the canal. She says — yes, Effendim. The conversation proceeds. She gives him less than she would have given at the furrow. He takes what he is given. The mare shifts again. He rides off. She walks inside and does not exhale until the gate clicks. Then she exhales."
+ cp_layla_vox.6403.a:0 "Sit on the step for a minute."
+
+ # cp_layla_vox.65 -- his son, his family, his politics
+ cp_layla_vox.65.t:0 "News of His Son"
+ cp_layla_vox.65.d:0 "Um Hassan has told her. The Bey's son has come back from Paris. He has strange ideas. The old Bey is angry."
+ cp_layla_vox.65.flavor:0 "The son studied in Paris for four years. The son came back last month with books and a soft hat and a stack of arguments his father cannot answer. The son has been seen talking to the schoolteacher — the one who reads al-Ahram — and has been seen not going to Friday prayer for three weeks. The village is watching. Um Hassan whispers about it at the wall. The old Bey has ridden out to Mansura twice this month on business no one can name. Tonight Layla is kneading. She is turning the news in her head. What does she think of the Bey's son?"
+ cp_layla_vox.65.a:0 "Sympathy for the old Bey. Sons can wound. That is a weight she knows."
+ cp_layla_vox.65.b:0 "Sympathy for the son. He saw a bigger world. He brought it back. The old Bey will lose this fight."
+ cp_layla_vox.65.c:0 "It is not her business. The rich man's son does not change the village's tomorrow."
+
+ cp_layla_vox.6501.t:0 "The Old Bey's Weight"
+ cp_layla_vox.6501.d:0 "She finds herself, for the first time, thinking of the Bey as a father, not as a bailiff on a mare."
+ cp_layla_vox.6501.flavor:0 "She has a daughter. The daughter has said she will not marry the cousin's son. The daughter reads aloud in the evenings from a thin book with a blue cover. Layla knows — in a way she did not know before tonight — what it is to be the old person whose child has come home larger than the house. The Bey is an old man. The Bey was cruel to her, not in the big ways, but in the small daily ways for twenty years. Tonight she grants him, in her head, one second's fellow feeling. It does not reach her face. It does not reach her hands. But it is there, briefly, in the dough. It surprises her. She does not cherish it. She does not refuse it."
+ cp_layla_vox.6501.a:0 "Knead on."
+
+ cp_layla_vox.6502.t:0 "The Son Will Win"
+ cp_layla_vox.6502.d:0 "The old Bey cannot answer the son's books. The old Bey will try, and lose, and know he is losing."
+ cp_layla_vox.6502.flavor:0 "The world is moving. Layla has felt this through the railway, through the new law, through the mill's whistle, through her daughter's reading. The Bey's son is, in his soft hat, only one of the ways the world is moving. The old Bey — her Bey — is on the losing side. She does not exactly cheer this. She has lived inside his ledger all her life; she does not know what life beyond the ledger will look like; she will not be the one to benefit most, because the benefits will go to her daughter and her grandchildren. But the ledger is going. She is on the side of its going. She kneads harder, not in anger. In hope."
+ cp_layla_vox.6502.a:0 "Bring in the loaf."
+
+ cp_layla_vox.6503.t:0 "Not Her Business"
+ cp_layla_vox.6503.d:0 "The rich fight their own fights. The poor do not benefit from taking sides."
+ cp_layla_vox.6503.flavor:0 "Her mother used to say this. Layla has said it herself many times. Tonight she says it again, in her head, to stop herself from caring. It does not entirely work. The Bey's son is in her head whether she wants him there or not; the old Bey is too. The village is in their fight whether the village is invited or not. But she can refuse to spend any more of her own tired evening on them. She bakes. She eats. She sleeps. The fight is elsewhere. The fight will arrive eventually. When it does she will have a position. She does not need to have one tonight."
+ cp_layla_vox.6503.a:0 "Put the loaf aside."
+
+ # cp_layla_vox.69 -- fallback
+ cp_layla_vox.69.t:0 "No Mare Today"
+ cp_layla_vox.69.d:0 "The canal road has been empty of him for a month. The absence is its own small presence."
+ cp_layla_vox.69.flavor:0 "Some fortnight the Bey does not come. In the old days this was never a relief — she spent the extra fortnight waiting harder. These days it is different. The absence is a kind of being-let-be. She clears the furrow. The water moves. No horse stops at her back. She permits herself, briefly, the pleasure of finishing work on her own time. She does not celebrate. Celebrating would be to grant him more than he deserves. She only finishes. She goes home."
+ cp_layla_vox.69.a:0 "Home."
+
+ # ---------------------------------------------------------------------------
+ # THE FACTORY OWNER -- cp_layla_vox.70..79
+ # ---------------------------------------------------------------------------
+
+ # cp_layla_vox.71 -- the gate before shift
+ cp_layla_vox.71.t:0 "At the Gate Before Shift"
+ cp_layla_vox.71.d:0 "Five a.m. The mill gate is open. The owner is standing at it in a coat of dark wool, though it is not cold."
+ cp_layla_vox.71.flavor:0 "She has not seen him at the gate before. The gate is usually the foreman's domain — the foreman with the runner's legs who takes a fast count as the workers come in. Today the owner is there. He is not tall. He has a soft face that is not, to her surprise, a cruel face. He watches the workers stream in. He is, Layla realises, counting them himself — not with a ledger, with his eyes, as if he wants to know in his body how many bodies come through his gate each morning. She is three paces away. His eye will pass over her. What does she do?"
+ cp_layla_vox.71.a:0 "Head down. Walk past. This is not a day for being looked at."
+ cp_layla_vox.71.b:0 "Meet his eye. Not a smile. Not a challenge. Just — see me."
+ cp_layla_vox.71.c:0 "Walk past him. Do not look at the gate. Pretend he is a pillar."
+
+ cp_layla_vox.7101.t:0 "Head Down"
+ cp_layla_vox.7101.d:0 "She walks past with her head down. Her shawl is over her hair. Her feet know the path."
+ cp_layla_vox.7101.flavor:0 "The head down is the village's old posture. It is the posture of the woman on the canal road. It is the posture she has used at the market, at the mosque, at the feast. It has kept her safe. She uses it. The owner's eye passes over her and does not stop. She is inside the mill. The shift begins. The dust of raw cotton settles in her throat within ten minutes. Her head stays down for most of the shift and not because of him. It stays down because that is where a workwoman's head is at the mill. Tonight, at home, she will think — I did not meet his eye. I will not meet it tomorrow either. This is my survival."
+ cp_layla_vox.7101.a:0 "Begin the shift."
+
+ cp_layla_vox.7102.t:0 "She Looks"
+ cp_layla_vox.7102.d:0 "Three paces out. Their eyes meet. The exchange is a second, maybe two."
+ cp_layla_vox.7102.flavor:0 "His face does not change. Hers does not either. There is, however, something in the exchange — small, not pleasant — that signals to both of them that she knows he is the owner, and he knows she knows, and that the line between them is now visible. He has thought of her, for a second, as a person. She has thought of him, for a second, as a man in a coat. She walks in. The shift begins. All morning she is aware that she has put a small coin down somewhere — she has spent a small currency. She will have to see if she gets something in return, or if the coin was lost. The owner, for his part, remembers the face. He does not know her name. Not yet."
+ cp_layla_vox.7102.a:0 "Begin the shift."
+
+ cp_layla_vox.7103.t:0 "He Is a Pillar"
+ cp_layla_vox.7103.d:0 "She looks past him. She does not register him at all. She walks into her place."
+ cp_layla_vox.7103.flavor:0 "It takes a practiced absence to do this properly. She has practiced. She has been ignoring overseers and bailiffs and bey's-men since she was fifteen. The owner is only the newest in a line. She walks as if the air beside him were the only air there is. He notices — her refusal to notice is its own kind of notice — and he files it. Some mornings are like that. She has spent her coin and kept her coin, both, by the same gesture. The shift begins."
+ cp_layla_vox.7103.a:0 "Begin the shift."
+
+ # cp_layla_vox.72 -- the ledger, she is a line
+ cp_layla_vox.72.t:0 "A Line in the Ledger"
+ cp_layla_vox.72.d:0 "The paymaster has called her name from the ledger. She has come to the table. The ledger is open."
+ cp_layla_vox.72.flavor:0 "She is a line. The line says her name, her father's name, her husband's name, the shift count for the month, the piastres owed. She cannot read the line. She has to take what she is given. The owner — not the foreman, the owner himself this month — is at the other end of the long table, approving the payments, signing a ledger of his own. The paymaster hands her the coins. She counts them once in her palm. The count is twelve piastres short of what she expected. The owner has not looked up. What does she do?"
+ cp_layla_vox.72.a:0 "Ask about the twelve piastres. At the table. Loud enough for the owner to hear."
+ cp_layla_vox.72.b:0 "Trust the number. If the ledger says twelve less, it says twelve less. Take it home."
+ cp_layla_vox.72.c:0 "Ask the foreman quietly after. He will know. He may or may not tell her."
+
+ cp_layla_vox.7201.t:0 "She Asks"
+ cp_layla_vox.7201.d:0 "She counts them again. She looks at the paymaster. She says — this is twelve short, effendim."
+ cp_layla_vox.7201.flavor:0 "The paymaster looks at the ledger. The paymaster's finger moves down a column. The paymaster says — fine for the cracked bobbin in the third week. Layla says — the bobbin was cracked when I took the post. The paymaster does not answer. The owner, at the far end of the table, looks up. The paymaster does not know what to do. The owner says — pay her. The paymaster hesitates. The owner says — pay her. The paymaster counts out twelve more piastres. She takes them. She does not smile. She walks out. Behind her the paymaster will be scolded. She knows this, and she does not care, and also a little she does care. She has made the owner look up."
+ cp_layla_vox.7201.a:0 "Leave."
+
+ cp_layla_vox.7202.t:0 "Trust the Number"
+ cp_layla_vox.7202.d:0 "She does not argue. She takes the short pay. She walks out with it."
+ cp_layla_vox.7202.flavor:0 "Twelve piastres is a small bread and a small oil. She will make it work. Ahmed will not ask where the twelve went; she will say the count was low this month, which is not untrue. She tells herself it is better not to make a scene, better not to mark herself as a woman-who-argues, better to keep the job. All three are true. It is also true that she has been cheated, and that the paymaster knows she was cheated, and that the owner — whose coat is dark wool — knows too. She carries the smallness home. The smallness is also a kind of saving. No one noticed her. No one will fire her. Twelve piastres."
+ cp_layla_vox.7202.a:0 "Home."
+
+ cp_layla_vox.7203.t:0 "The Foreman, Quietly"
+ cp_layla_vox.7203.d:0 "She waits until the line is done. She goes to the foreman. She asks quietly."
+ cp_layla_vox.7203.flavor:0 "The foreman is the one with the runner's legs. The foreman has always been, to her, a decent man — harassed, tired, caught between the floor and the office. He looks at the ledger for her. He says — the bobbin. She says — the bobbin was cracked when I took it. He nods slowly. He says — I will talk to him about it. She says — do not lose your post for my twelve piastres. He says — I will talk. They look at each other for a second longer than they have ever looked. She goes home. The twelve piastres may or may not come back next week. The foreman is a decent man. She hopes he keeps his post."
+ cp_layla_vox.7203.a:0 "Home."
+
+ # cp_layla_vox.73 -- the accident
+ cp_layla_vox.73.t:0 "A Hand Caught in the Loom"
+ cp_layla_vox.73.d:0 "The woman at the loom three over. Her hand was caught at the third hour. The scream ran through the hall and out."
+ cp_layla_vox.73.flavor:0 "The foreman stopped the machine. Two men pulled the woman's hand free. The hand is — Layla does not know. She did not look. No one looked. The woman was carried out. The machines started again within a minute. The owner was not in the mill that day. The next day she will come back on shift and will not know, at the start, whether the woman died or lived. What does she do this evening?"
+ cp_layla_vox.73.a:0 "Report it. Tell the imam. Tell the schoolteacher who writes. Tell anyone who will tell."
+ cp_layla_vox.73.b:0 "Silence. Tomorrow more cotton, less talk. This is the price. The neighbourhood knows."
+ cp_layla_vox.73.c:0 "Take the day. She cannot go back tomorrow. Not yet."
+
+ cp_layla_vox.7301.t:0 "Report"
+ cp_layla_vox.7301.d:0 "She goes to the schoolteacher. She says the woman's name. She says what she saw. The schoolteacher writes."
+ cp_layla_vox.7301.flavor:0 "The schoolteacher is young and has opinions. The schoolteacher takes notes. The schoolteacher says — this goes in the paper this week, Um Layla, if the paper is brave. Some weeks the paper is brave. The schoolteacher's hands are shaking a little — not from fear, from fury. Layla walks home with a small lightness she does not associate with the day. She has put her name — silently, indirectly — against the owner's name. The neighbourhood will find out. The owner will find out. Tomorrow at the gate she will keep her head down. The shift will go on. Something may change in a year, or five. She has done what she could."
+ cp_layla_vox.7301.a:0 "Home."
+
+ cp_layla_vox.7302.t:0 "Silence"
+ cp_layla_vox.7302.d:0 "She does not tell. She does not light the lamp at the schoolteacher's house. The shift tomorrow needs her."
+ cp_layla_vox.7302.flavor:0 "The silence is not indifference. The silence is a calculation. She has a daughter. Ahmed is not well this winter. A month without the mill wage is a month they cannot have. She bends her head over the loom tomorrow as she bent it yesterday. The woman with the hand does not come back. A new woman takes the loom three over. The new woman is from the next village. The new woman keeps her own head down. Layla nods to her. The new woman nods back. This is how a floor works."
+ cp_layla_vox.7302.a:0 "Sleep."
+
+ cp_layla_vox.7303.t:0 "She Cannot Go"
+ cp_layla_vox.7303.d:0 "She tells Ahmed. She says — I cannot go tomorrow. I cannot put my hand near that machine."
+ cp_layla_vox.7303.flavor:0 "Ahmed does not say — you must. Ahmed does not say — we need the wage. Ahmed looks at her for a long moment and says — take the day. Layla takes the day. She sits on the step of her own house for a long time. She watches the lane. A dog goes past. A boy. The sun moves. She is aware of the exact time the shift ends at the mill, because her body has learned it; she is aware of it from four streets away. She does not go tomorrow. She does go the day after. The owner's coat is in the office; the woman with the hand is not in the mill. The world has continued without her for a day. The world would continue without her for longer. She has learned this too."
+ cp_layla_vox.7303.a:0 "Go back on the second day."
+
+ # cp_layla_vox.74 -- he speaks her name
+ cp_layla_vox.74.t:0 "He Knows My Name"
+ cp_layla_vox.74.d:0 "The owner passes through the hall. He says — Layla. He says it as if he has always known it."
+ cp_layla_vox.74.flavor:0 "He has not always known it. He has looked her up in the ledger. He has looked her up because she is the one who asked about the twelve piastres, or because she is the one who spoke to the schoolteacher, or because the foreman mentioned her in passing, or simply because she is the shape he remembers. He passes her and says — Layla — and does not stop, does not look directly — and continues. It is a small claim. It is a claim that says — I have you by name. She keeps working. What does she think?"
+ cp_layla_vox.74.a:0 "Correct him next time. Say — Um Layla, effendim. Take her name back from his mouth."
+ cp_layla_vox.74.b:0 "Accept the name. Let him say it. It costs her less than the fight would."
+ cp_layla_vox.74.c:0 "Ask the foreman for a transfer to the further hall. He will not learn her there."
+
+ cp_layla_vox.7401.t:0 "She Corrects Him"
+ cp_layla_vox.7401.d:0 "The next time he passes. She says — Um Layla, effendim. She is respectful. She is firm."
+ cp_layla_vox.7401.flavor:0 "He stops. His eyebrows rise, very slightly. He says — Um Layla, forgive me. He walks on. She has taken her name back. She has also made a small enemy — perhaps. She has also, perhaps, made herself a small respect. The owner's floor knows what she did by end of shift. Two women who would not usually look at her look at her at the gate. They do not speak. A small current has started. She is not sure what the current will do. She is glad to have spent the coin. Her name is hers."
+ cp_layla_vox.7401.a:0 "Home."
+
+ cp_layla_vox.7402.t:0 "She Accepts"
+ cp_layla_vox.7402.d:0 "She does not correct him. She lets him say Layla. She lets her name sit in his mouth."
+ cp_layla_vox.7402.flavor:0 "It is not free. It costs her something. A man who calls her by her given name is a man who has reduced her to a line. She tells herself — it is only the mill. It is not the lane. At the lane I am Um Layla. At the mill I am Layla. A woman can be two names at once. She is not sure this is true. She is not sure her mother would have accepted the division. She walks home tired. Ahmed does not know. She does not tell him. The coin is spent. She does not like how the coin was spent. She will think about it again next week, when the coin comes up again."
+ cp_layla_vox.7402.a:0 "Home."
+
+ cp_layla_vox.7403.t:0 "Ask for Transfer"
+ cp_layla_vox.7403.d:0 "She goes to the foreman. She asks quietly. Move me to the further hall. I will take the smaller loom."
+ cp_layla_vox.7403.flavor:0 "The foreman looks at her. He does not ask why. He nods. It is done the next week. She is further from the office. Her wage is slightly less. Her back is better, actually, at the smaller loom. The owner will not remember her name after three months; his memory is for things he can see; she has removed herself from his line of sight. This is a small, practical victory and she does not make a thing of it. The further hall is quieter. The dust is the same."
+ cp_layla_vox.7403.a:0 "Home."
+
+ # cp_layla_vox.75 -- a strike at the gate
+ cp_layla_vox.75.t:0 "The Gate, This Morning"
+ cp_layla_vox.75.d:0 "The strike is in its third day. The foreman is in his office and will not come out. The owner is at the gate."
+ cp_layla_vox.75.flavor:0 "Four women stand across the gate with their arms linked. Behind them, a dozen men. The women's arms are wet from the rain. They have been there since the first call to prayer. They are waiting for the rest of the shift to arrive. When each worker comes, they do not shout — the village has no habit of shouting at its own — they say, quietly, walk with us. Some have walked. Some have gone through. The owner, at the gate, is saying nothing. He is letting the choice happen. Layla is three paces away. What does she do?"
+ cp_layla_vox.75.a:0 "Walk through. The daughter needs the wage. Her body knows the shift."
+ cp_layla_vox.75.b:0 "Stand with them. Link her arm into the line. She has waited forty years for the line to form."
+ cp_layla_vox.75.c:0 "Go home. Do not work and do not stand. The line is not hers to be in; neither is the machine."
+
+ cp_layla_vox.7501.t:0 "She Walks Through"
+ cp_layla_vox.7501.d:0 "She says — forgive me, sisters. She walks through. She does not look at their faces."
+ cp_layla_vox.7501.flavor:0 "The women do not shame her. They do not shame any of the ones who go through. They know — the way women who have held out a morning for three days in rain know — that some of their sisters cannot afford the line. Layla cannot afford the line. Her daughter's school fees. Ahmed's cough. The short harvest. She walks in. The machine starts. The day is long. On the way out, the line is smaller, and she cannot look. At home she sits on the step for a long time before going in. She is on the wrong side of the line. She knows this. She will be on the wrong side again tomorrow. She does not know how to change it. She does know. She just cannot, yet."
+ cp_layla_vox.7501.a:0 "Go in eventually."
+
+ cp_layla_vox.7502.t:0 "She Stands"
+ cp_layla_vox.7502.d:0 "She steps up. She links her arm into the end of the line. Her arm is wet against a stranger's arm."
+ cp_layla_vox.7502.flavor:0 "It is not a decision she has made for weeks. It is a decision she has made in the four seconds it took to cross the gate. The woman beside her — a younger woman, thin, with red on her lower eyelid from not sleeping — says, under her breath, God bless you, mother. Layla nods. The owner, at the gate, sees her join. He does not change his face. He files the face. She knows she has done something that will cost her. She does not yet know the shape of the cost. The morning continues. Two more women join. Five more men. The line thickens. The gate, at the tenth hour, is closed."
+ cp_layla_vox.7502.a:0 "Stand."
+
+ cp_layla_vox.7503.t:0 "Home"
+ cp_layla_vox.7503.d:0 "She does not walk through. She does not stand with them. She turns around and goes home."
+ cp_layla_vox.7503.flavor:0 "A woman can be neither in the factory nor at the line. She can simply go home, eat her bread, hold her daughter, wait for the strike to end. This too is a choice, and it is the choice she makes. She is not proud of it and she is not ashamed of it. She is tired. The day is long without work and without protest. She is aware of the silence of her own kitchen, and of the distant silence of the mill, and of the wet silence of the line, all at once. She does not sleep well. Tomorrow: either the mill opens or the line grows. Either way she will make the same decision again, or a different one."
+ cp_layla_vox.7503.a:0 "Sleep."
+
+ # cp_layla_vox.79 -- fallback
+ cp_layla_vox.79.t:0 "The Owner Did Not Come to the Floor"
+ cp_layla_vox.79.d:0 "Today the foreman is at the gate. The owner is not. A whole shift without his coat."
+ cp_layla_vox.79.flavor:0 "Some days the factory is only the factory. The foreman takes the count. The machines turn. The dust settles in her throat. She finishes the shift. She walks out at dark with her shawl over her hair. The lane home is quiet. Nothing has happened. This is the mill's version of rest — an absence of trouble — and she will take it, because trouble will come again soon enough."
+ cp_layla_vox.79.a:0 "Home."
+
+ # ---------------------------------------------------------------------------
+ # THE STRANGER -- cp_layla_vox.80..89
+ # Single-exchange scenes. The world reaches her through strangers.
+ # ---------------------------------------------------------------------------
+
+ # cp_layla_vox.81 -- a man at the well
+ cp_layla_vox.81.t:0 "The Man at the Well"
+ cp_layla_vox.81.d:0 "He is not from this village. His shoes are wrong for the road. His Arabic is Delta-accented but not local."
+ cp_layla_vox.81.flavor:0 "He has come to the well for water. He is not a servant of anyone; he is an ordinary traveller, on his way to Mansura, perhaps, or further. He asks the way to the coast road. She is drawing water and her bucket is almost full. She looks at him once. He is young. His face is tired in the way a face is tired when one has been walking two days. He says — sister, the road that goes left at the minaret — does it reach the sea? What does she say?"
+ cp_layla_vox.81.a:0 "#italic Left at the minaret, past the three palms. Past the canal. Two days on foot.#!"
+ cp_layla_vox.81.b:0 "Fill the bucket. Nod once toward the road. Say nothing."
+
+ # cp_layla_vox.82 -- news
+ cp_layla_vox.82.t:0 "A Traveler with News"
+ cp_layla_vox.82.d:0 "At the market, a man from Alexandria is telling the cloth-seller about a fight in the port. The cloth-seller does not want to listen."
+ cp_layla_vox.82.flavor:0 "The traveller is a small man with a big mouth and a grievance. The fight in the port was about a foreign ship that was loading cotton without paying the proper tax, and about a crowd that gathered, and about a group of soldiers who came, and about three men who did not come home. He is telling it as if he had been there; perhaps he was. The cloth-seller keeps trying to sell cloth. Layla stands with her basket. What does she do?"
+ cp_layla_vox.82.a:0 "Listen until he is done. Three men did not come home."
+ cp_layla_vox.82.b:0 "Turn back to the cloth-seller. The news is not dinner."
+
+ # cp_layla_vox.83 -- the beggar
+ cp_layla_vox.83.t:0 "A Beggar at the Door"
+ cp_layla_vox.83.d:0 "A man, thin, with a bandage on his foot, at her gate in the dust of the afternoon. He does not call out. He stands."
+ cp_layla_vox.83.flavor:0 "He is not one of the village's beggars — she knows all of those by face, and has her small routines with each. He is a stranger. He does not say what he wants. He stands at the gate with his eyes somewhere below her feet. He has come two days without food, perhaps, or three; she cannot tell exactly, but she can tell the shape of it. What does she do?"
+ cp_layla_vox.83.a:0 "Break a loaf. Hand him half."
+ cp_layla_vox.83.b:0 "Shake her head. Close the gate."
+ cp_layla_vox.83.c:0 "Bring a cup of water. That is what she can do."
+
+ # cp_layla_vox.84 -- a woman with a story
+ cp_layla_vox.84.t:0 "A Woman Sitting on the Canal Stone"
+ cp_layla_vox.84.d:0 "On the path back from the well. A woman older than Layla is sitting on the canal stone with her head in her hands."
+ cp_layla_vox.84.flavor:0 "Layla slows. The woman looks up. Her face is red around the eyes, and the way it is red is the way a face is red after a long walk and crying at intervals. She says — sister, sit for a moment. She does not say what is wrong. She only looks at Layla the way a person looks when they would like someone to sit."
+ cp_layla_vox.84.a:0 "Sit with her. Listen to what comes."
+ cp_layla_vox.84.b:0 "The bread is rising. Forgive me, sister."
+
+ # cp_layla_vox.85 -- a child lost on the road
+ cp_layla_vox.85.t:0 "A Child at the Crossroads"
+ cp_layla_vox.85.d:0 "A boy, maybe five. Alone. No one on the road for the last ten minutes. He is crying without making a sound."
+ cp_layla_vox.85.flavor:0 "She does not know this boy. He is not from the village; his clothes are not the village's clothes. He has wet his shoes. He is not speaking, but when she crouches in front of him he looks at her and his breath stutters and he nods slightly and does not move. What does she do?"
+ cp_layla_vox.85.a:0 "Take him home. Send the neighbour's boy for the imam."
+ cp_layla_vox.85.b:0 "Walk to the imam's house herself. He must be found by witnesses."
+
+ # cp_layla_vox.86 -- a man with papers
+ cp_layla_vox.86.t:0 "A Man with a Clipboard"
+ cp_layla_vox.86.d:0 "He has come to the door. His clipboard has a stamp on the top. He says he is from the district office."
+ cp_layla_vox.86.flavor:0 "The stamp is official. The man's hands are soft. He is not the tax collector; she knows the tax collector. He is not the recruitment man; she knows that uniform. He is a census man, or an insurance man, or a man from the new water authority, or a ministry man; she cannot tell. He would like to record her name, her husband's name, her children, the size of the household, the size of the field. He has a pencil poised. What does she say?"
+ cp_layla_vox.86.a:0 "Sign. The state that writes you is the state that finds you when you need it."
+ cp_layla_vox.86.b:0 "Refuse. Come back when my husband is here."
+ cp_layla_vox.86.c:0 "What is this for, effendim? Tell me."
+
+ # cp_layla_vox.89 -- fallback
+ cp_layla_vox.89.t:0 "The Road, Empty Today"
+ cp_layla_vox.89.d:0 "No strangers. No news. No faces not-of-the-village. A quiet afternoon."
+ cp_layla_vox.89.flavor:0 "Some days the world stays beyond the horizon. She does the bread. She does the oven. She does the yard. A fly bothers her. A dog goes past. The village is at its ordinary pulse. She is aware, with some surprise, that she is a little grateful for a day without strangers, and that a day without strangers is a day she will not remember a year from now, and that she does not mind."
+ cp_layla_vox.89.a:0 "To the oven."
+
+ # cp_layla_vox.81 -- stranger at well, option texts
+
+ # cp_layla_vox.82 -- traveller news
+
+ # cp_layla_vox.83 -- beggar
+
+ # cp_layla_vox.84 -- woman on stone
+
+ # cp_layla_vox.85 -- child lost
+
+ # cp_layla_vox.86 -- papers
+
+ # ---------------------------------------------------------------------------
+ # HERSELF / GOD -- cp_layla_vox.90..99
+ # Linear. Self-talk does not branch.
+ # ---------------------------------------------------------------------------
+
+ cp_layla_vox.91.t:0 "The Book on the Shelf"
+ cp_layla_vox.91.d:0 "The Qur'an is on the high shelf, wrapped in the cloth her uncle brought from Madinah. She cannot read it. She looks at it."
+ cp_layla_vox.91.flavor:0 "It is a shape she has not opened in months. It is a shape she has not opened in the sense of untying the cloth, she has opened it every day in her head, through the verses her mother taught her and the ones the imam says at Friday, and through the single line she has kept for herself since she was twelve — verily with hardship comes ease. Tonight she takes the book down. She unties the cloth. She holds the book without opening it. The paper is cool. She puts her forehead against the cover for one breath, two. She wraps the cloth back around it. She puts it back. This is a prayer that is not a prayer. She thinks her mother would have called it a prayer."
+ cp_layla_vox.91.a:0 "Climb down from the stool."
+
+ cp_layla_vox.92.t:0 "The Candle, Alone"
+ cp_layla_vox.92.d:0 "Ahmed is at the mosque. The daughter is asleep. The candle is the only other thing alive in the room."
+ cp_layla_vox.92.flavor:0 "A candle is a small fire. She watches the flame. The flame breathes — this is what candles do — and she breathes with it without deciding to. She has been awake too late. Her neck hurts. Her hands hurt. Nothing important happened today and nothing important will happen tomorrow. The candle does not care about her day. The candle burns. She watches it. This is a kind of conversation between them."
+ cp_layla_vox.92.a:0 "Blow it out and sleep."
+
+ cp_layla_vox.93.t:0 "A Line, Aloud"
+ cp_layla_vox.93.d:0 "She says a line aloud, to no one. She is alone in the kitchen. Her hand is in a bowl of rice she is picking over."
+ cp_layla_vox.93.flavor:0 "Ya rabb, she says — and it is not a prayer, it is an address, the way one addresses a friend one has known for fifty years — Ya rabb, look at these hands. And she holds them out, rice grains and all, and looks at them herself, and does not expect an answer because there is not an answer that this particular address needs. It is the having said it that matters. She goes back to picking over the rice. The grains are small. Some are brown. She sets those aside."
+ cp_layla_vox.93.a:0 "Put the rice on the fire."
+
+ cp_layla_vox.94.t:0 "Her Face in the Surface of the Water"
+ cp_layla_vox.94.d:0 "She leans over the water jar to scoop a cup. Her face is in the water."
+ cp_layla_vox.94.flavor:0 "She is older than she was last year. She knew this; she has been knowing it. The water tonight has a particular way of telling her. There are lines around her mouth. There is a thinness around her eyes. The hair at her temple is the colour of the fine flour on the shelf. She scoops the water. Her face breaks, reforms, waits for her again in the new calm of the water. She drinks. The face goes. She is not displeased. She is not pleased. She is a woman of her age, and she has the age she has, and she is still the one drinking the water."
+ cp_layla_vox.94.a:0 "Put the cup down."
+
+ cp_layla_vox.95.t:0 "Walking Home Alone"
+ cp_layla_vox.95.d:0 "From the field, at dusk, by herself. Ahmed has gone ahead with the donkey."
+ cp_layla_vox.95.flavor:0 "There is a kind of walk that is only hers. Her feet know the road. Her hands swing. The sky is going to apricot. A bird goes across. She is a woman of a certain age walking home at the end of a day. She is not a wife in this minute; she is not a mother; she is not a worker. She is the woman-walking. She has always, since she was a girl, loved this walk. She loved it when she was twelve and came back from the canal with a pitcher. She loved it at twenty when she came back from her mother's house on a Friday. She loves it now at forty, or fifty, or sixty, and will love it at seventy, if she is given seventy. It is her walk."
+ cp_layla_vox.95.a:0 "Home."
+
+ cp_layla_vox.96.t:0 "The Quiet After Everything"
+ cp_layla_vox.96.d:0 "The dishes are washed. The lamp is low. The daughter is asleep. Ahmed is breathing the way he breathes."
+ cp_layla_vox.96.flavor:0 "A day has ended. The kitchen is clean. The week's bread is wrapped in the cloth on the ledge. Her mother's prayer mat is folded behind the door. The cup she drank water from is dry on the shelf. These are the ordinary evidences. She sits on the step with her shawl around her shoulders. Somewhere in the village a donkey brays. The sound is short and familiar. Tomorrow will have its own shape. Tonight is this shape. She is satisfied — not in the way the songs say, not grandly — in the small, useful way a woman is satisfied when the loaves have risen and the family is fed and the evening is hers."
+ cp_layla_vox.96.a:0 "Sit until the lamp gutters."
+
+ cp_layla_vox.99.t:0 "Nothing Tonight"
+ cp_layla_vox.99.d:0 "She is sitting. She has nothing to say. She does not say it."
+ cp_layla_vox.99.flavor:0 "Some nights are empty. Not bad — empty. She sits with her hands on her knees. The lamp is low. There is a small brown moth at the lamp that she does not wave away, because it is a small brown moth, and it has its work. She has her own work tomorrow. Tonight is only tonight. It is enough."
+ cp_layla_vox.99.a:0 "Sleep."
+
+ # ---------------------------------------------------------------------------
+ # THE RULER -- cp_layla_vox.100..109
+ # Era-aware. Ruler title is resolved at loc time via
+ # [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] and
+ # [ROOT.GetCountry.GetRuler.GetFullName], so the scene adapts from monarchy
+ # to republic without rewriting.
+ # ---------------------------------------------------------------------------
+
+ # cp_layla_vox.101 -- the room (framing varies by government form)
+ cp_layla_vox.101.t:0 "The Room She Has Built"
+ cp_layla_vox.101.d.default:0 "She is kneading bread and she has decided tonight to go to the ruler's room in her mind. She does not know the room. She has built one from rumour."
+ cp_layla_vox.101.d.constitution:0 "She is kneading and she has decided tonight to go to the ministry in her mind. She has built it from the schoolteacher's stories — a corridor with a stone floor, a long desk, a clerk with ink on his fingers."
+ cp_layla_vox.101.d.republic:0 "She is kneading and she has decided tonight to go to the presidential house in her mind. She has built it from a newspaper picture her daughter read her — a room with electric light, a curtain of green velvet, a telephone on a wooden stand."
+ cp_layla_vox.101.flavor:0 "She takes one step forward in the built room. [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName] is somewhere at the far end. She has invented a face for this one too — a particular beard, a particular posture, eyes she cannot quite read. She is wearing a dress she does not own. Her hands, she notices, are clean. Behind her the real kitchen continues to knead, because a woman does not stop the bread to go to Cairo. She has come because she has a thing to say. She has not quite named it yet. She has always thought better on her feet. What is the first thing she does?"
+ cp_layla_vox.101.a:0 "Stand at the end of the carpet. Wait to be addressed. The old way."
+ cp_layla_vox.101.b:0 "Walk up the carpet without asking. She is tired of asking."
+ cp_layla_vox.101.c:0 "Say her name aloud, clearly, before anything else: I am Layla, daughter of Mohamed al-Sharif."
+
+ cp_layla_vox.1011.t:0 "The Carpet's End"
+ cp_layla_vox.1011.d:0 "She stands. She waits. The carpet is long. She can hear a pen at a table she cannot see."
+ cp_layla_vox.1011.flavor:0 "She waits the way her mother taught her. Her mother had never imagined a ruler, but her mother had waited at doors for landlords and tax collectors and priests and bailiffs, and the waiting at doors had a shape and Layla knows the shape. She uses it now. In the imagined room the minutes go. In the real kitchen the dough rises. Eventually [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName] will address her, or he will not, and either way she will have learned a thing. The dignity of waiting is an old kind. She lets it be her dignity tonight. She does not need the new kind yet."
+ cp_layla_vox.1011.a:0 "Wait."
+
+ cp_layla_vox.1012.t:0 "She Walks"
+ cp_layla_vox.1012.d:0 "She walks up the carpet without waiting. The secretary's pen stops. The ruler lifts his head."
+ cp_layla_vox.1012.flavor:0 "It is not the old way. It is the new way. It is the way her daughter walks. It is the way the schoolteacher walks. She has borrowed it from them. She does not have permission for this walk from any tradition she was raised in. She takes it anyway. In the imagined room the air is surprised. [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName] is surprised. The surprise is brief and then there is only interest. She stops three paces from his desk. She has his attention. She has earned the attention by the walking. She has not yet spoken. The pen has not resumed. It is her turn."
+ cp_layla_vox.1012.a:0 "Speak, now that the room is listening."
+
+ cp_layla_vox.1013.t:0 "Her Name"
+ cp_layla_vox.1013.d:0 "She says it the way a woman of her line would say it at the door of her own house, but louder, so the whole room hears."
+ cp_layla_vox.1013.flavor:0 "I am Layla, she says, daughter of Mohamed al-Sharif, of a village in the Delta whose name you may not know. My grandfather planted in this soil. His grandfather planted in this soil. The secretary's pen pauses. [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName] looks up. She has not yet asked for a thing; she has only named herself. And because she has named herself, the room has agreed to hear her. This is a lesson she will carry out of the imagined room into the real one. A woman who does not name herself cannot be heard. A woman who does name herself becomes, for a second, hard to ignore."
+ cp_layla_vox.1013.a:0 "Continue the speech tomorrow. She has opened the door."
+
+ # cp_layla_vox.102 -- THE LAND (ported from cp_conversation.10 family)
+ cp_layla_vox.102.t:0 "The Land"
+ cp_layla_vox.102.d.default:0 "She stands at the end of the carpet. [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName] is waiting for her to speak."
+ cp_layla_vox.102.d.serf:0 "She stands at the end of the carpet. Her hands are shaking. The bey does not know she is here. She hopes the bey will never know."
+ cp_layla_vox.102.d.owner:0 "She stands at the end of the carpet with a paper folded in her imagined hand. The paper says the field is hers. She has come to thank — and to ask, perhaps, for something more."
+ cp_layla_vox.102.flavor:0 "Effendim, she says — and her voice is smaller than she rehearsed, smaller than the room — I have come about the land. She clears her throat. My name is Layla, daughter of Mohamed al-Sharif, of a village in the Delta you have not heard of. My grandfather planted in this soil. His grandfather planted in this soil. His grandfather before him planted in this soil. They are in the soil now. I will be in the soil. My children, if I have children who live, will be in the soil. I have known that field in the flood year that was good, and the flood year that failed, and the year the locust took the eastern strip, and the year my mother died with her hand on the dry earth at the edge of the canal. The field is ours, Effendim. The field has always been ours. The ledgers in Cairo say otherwise. I have come to ask you for a paper. One paper. With my name on it. With my husband's name. With the name of the field. That my grandchildren, when they are old, can show the bailiff and say, the field is ours. That is what I have come to say. She stops. She waits. What does the ruler do?"
+ cp_layla_vox.102.a:0 "#italic \"The land has owners. You are not one of them.\"#!"
+ cp_layla_vox.102.b:0 "#italic \"Speak on. I am listening.\"#!"
+ cp_layla_vox.102.c:0 "#italic \"A peasant woman should not be in this room.\"#!"
+
+ cp_layla_vox.1021.t:0 "He Does Not Look Up"
+ cp_layla_vox.1021.d:0 "He says it without lifting his head. The secretary's pen does not pause."
+ cp_layla_vox.1021.flavor:0 "The words land in the room and do not ask permission. The land has owners. You are not one of them. She feels the breath go out in a long quiet way, as if struck with something soft and heavy. She had prepared herself for anger and for indifference. She had not prepared herself for the efficiency of it — the way he said it, as if stating the time. Effendim, she says, perhaps I have not been clear. We work the land. My grandfather — I said, he says without looking up, the land has owners. You are not one of them. The bailiff collects what the ledger requires. The ledger was drawn up correctly. Your name, and your husband's name, are on the ledger in the column for those who work the land. Not for those who own it. That column has been filled, in some cases, since before your grandfather's grandfather. Effendim, she says, what if the column were wrong? He lifts his head for the first time."
+ cp_layla_vox.1021.a:0 "She leaves the room. She does not stay."
+
+ cp_layla_vox.1022.t:0 "He Is Listening"
+ cp_layla_vox.1022.d:0 "He leans forward slightly. The secretary stops writing."
+ cp_layla_vox.1022.flavor:0 "Speak on, he says, and the voice is warmer than she expected, and she cannot tell if the warmth is real or if it is something men like him learn to put into their voices. Effendim, she says — the wars need men. The men need arms. The arms need steel. The steel needs money. The money comes from somewhere, and most of where it comes from is us. The villages. The wheat. The cotton the bey makes us plant instead of wheat. I am not angry about this. No — that is not true. I am angry. But I understand. A country is a thing that costs. But when the cost is paid and paid and paid again, and the ones who pay have no paper saying the field they water with their backs is their field — then one day something will break. I do not know what will break. But the paper, Effendim, would be a cheap thing for you to give. Cheaper than the steel. Cheaper than the next revolt. He makes a small gesture — the kind a man makes when he has decided something."
+ cp_layla_vox.1022.a:0 "She will come back to this room. She has been heard."
+
+ cp_layla_vox.1023.t:0 "He Is Cruel"
+ cp_layla_vox.1023.d:0 "A peasant woman should not be in this room, he says, and he says it into the room, not to her."
+ cp_layla_vox.1023.flavor:0 "The secretary keeps writing. The secretary has learned not to react. Layla stands at the end of the carpet with his sentence settling into the air around her. She had expected dismissiveness. She had not expected the contempt. The contempt is not personal — this is, somehow, the hardest part — the contempt is a class contempt, delivered with no particular heat, and it reveals to her that in the mind of the man she has built in her own kitchen, she is not a person at all but a category. She could leave now. She has been dismissed. She does not leave. She says — I am in this room because no other room has a door. Where else do you suggest I go, Effendim? The secretary's pen stops for one second. Then it resumes. Layla has made herself visible. The visibility is not safe. The visibility is also the point. She stays."
+ cp_layla_vox.1023.a:0 "She stays. The dough in the kitchen keeps rising."
+
+ # cp_layla_vox.103 -- the paper (homesteader)
+ cp_layla_vox.103.t:0 "She Has Come with the Paper"
+ cp_layla_vox.103.d:0 "The paper is in her imagined hand. She has come to say thank you. And to say more."
+ cp_layla_vox.103.flavor:0 "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName], she says, the paper came. It was given at the district office. My name is on it. My husband's name is on it. The field has a name on the paper. The name is not the name we have used. The name is the clerk's shorter version. But the paper is the paper. I have come to say thank you. She pauses. She is not, in her own heart, sure the ruler is the one she should be thanking. It was the law. It was something the schoolteacher called a reform. It was many men who wrote in offices she has never seen. But the ruler, in the imagined room, is the shape of all of them. She is thanking the shape. She is also about to say — and the water in the canal is still low, Effendim, and the water is worth a paper of its own. What does she do?"
+ cp_layla_vox.103.a:0 "Thank him. Leave it there. Do not stretch the mercy."
+ cp_layla_vox.103.b:0 "Ask the next question. The water."
+ cp_layla_vox.103.c:0 "Withdraw. She has said enough. She does not want to tire the room."
+
+ cp_layla_vox.1031.t:0 "Only Thanks"
+ cp_layla_vox.1031.d:0 "She says thank you. She bows slightly. She backs down the carpet to the door."
+ cp_layla_vox.1031.flavor:0 "A gratitude without a request is a rare thing in this room. The ruler does not know what to do with it. The secretary does not write it down. She leaves. In the real kitchen the loaves are ready. She pulls them out and sets them on the ledge. They have a particular slight gold on the top that she has been trying to get right for a year. Tonight they have it. She takes the crust between her fingers and tastes. The crust is what her mother's crust was. She smiles, to no one. The paper is on the shelf. The loaves are on the ledge. Thank you is enough sometimes."
+ cp_layla_vox.1031.a:0 "Set the loaves down."
+
+ cp_layla_vox.1032.t:0 "The Water"
+ cp_layla_vox.1032.d:0 "Effendim, she says, the water in the canal — and she tells him about the low year, and the bailiff, and the night the furrow had to be cleared by lamp."
+ cp_layla_vox.1032.flavor:0 "He listens. He listens longer than she expected. When she is done he says — I will write a letter to the governor of the province. She does not know whether the letter will reach the governor of the province, or whether the letter exists, or whether it is a polite way of ending the audience. She does not care. She has been heard for a second time. Two hearings in one audience is more than she dared plan for. She backs down the carpet feeling that she has spent the coin well. In the kitchen the loaves are still rising."
+ cp_layla_vox.1032.a:0 "Back to the oven."
+
+ cp_layla_vox.1033.t:0 "Withdraw"
+ cp_layla_vox.1033.d:0 "She does not ask the next question. She bows and turns. The carpet is long. The door is at the far end."
+ cp_layla_vox.1033.flavor:0 "She has learned from a life in the village that a mercy accepted is a mercy kept. A mercy asked to extend is a mercy that begins to feel to the giver like an obligation, and obligations go sour. She does not want the paper to go sour. She leaves. She has a single thing from the evening, and the single thing is the paper. In the real kitchen she finds she has pressed too hard on the dough, and the second loaf has a particular shape it should not have, and she laughs, quietly, at herself, and reshapes it. The loaves in the end come out fine."
+ cp_layla_vox.1033.a:0 "Reshape the loaf."
+
+ # cp_layla_vox.104 -- war
+ cp_layla_vox.104.t:0 "The War"
+ cp_layla_vox.104.d:0 "Her husband is somewhere in a uniform that she cannot picture. She has come to ask the ruler a question about it."
+ cp_layla_vox.104.flavor:0 "Effendim, she says — and her voice is a little more tired tonight than it has been in other audiences — Effendim, my husband is in your army. He has been there for eleven months. The last letter came in the month of the date harvest and was four lines. I have not come to ask where he is. I know you will not tell me where he is, and I know the answer would not help me find him anyway. I have come to ask a smaller thing. When this war ends — and all wars end — will the men come home the way they went, or will they come home another way? Will the roll of names be read in the villages, or will the families be left to count absences until the counting is unbearable? I ask because I have watched my neighbour count. She has been counting for eight months. She is going thin in a way a woman goes thin when the counting does not stop."
+ cp_layla_vox.104.a:0 "Bitter: she does not believe he has an answer."
+ cp_layla_vox.104.b:0 "Obedient: she knows wars are wars. She asks only the small thing."
+ cp_layla_vox.104.c:0 "Question: she asks him — why does this war need him?"
+
+ cp_layla_vox.1041.t:0 "She Does Not Wait for an Answer"
+ cp_layla_vox.1041.d:0 "Effendim, she says, you do not have an answer for me tonight. I will not stay."
+ cp_layla_vox.1041.flavor:0 "She turns. She walks back down the carpet. Her shoulders are square. The pen has stopped. The ruler has stood — a rare thing in the imagined room — and watched her go. In the real kitchen the dough has overrisen. She punches it down with more force than the dough deserves and begins again. She has not wept. She will not weep. Tomorrow Um Hassan at the wall will say — anything. Layla will say — no. And she will look Um Hassan in the eye in a way she has not in months, and Um Hassan will understand, and a small ally will have been made, which is the only thing one makes during a war."
+ cp_layla_vox.1041.a:0 "Punch the dough down."
+
+ cp_layla_vox.1042.t:0 "The Smaller Thing"
+ cp_layla_vox.1042.d:0 "Will the roll of names be read, Effendim? Just that."
+ cp_layla_vox.1042.flavor:0 "He says — yes. He says it without the usual delay. She looks at him for a second. She does not believe him. She does not not-believe him. She curtseys the way she was taught as a girl and backs down the carpet. If the roll is read, she will be there. If it is not read, she will have asked, and the asking will be what she has. In the real kitchen the loaves are almost ready to be shaped. She shapes the first one, firmly, the way her grandmother taught. The loaf holds. It will bake. It will be eaten."
+ cp_layla_vox.1042.a:0 "Shape the loaf."
+
+ cp_layla_vox.1043.t:0 "Why Does This War Need Him"
+ cp_layla_vox.1043.d:0 "Effendim, she says. Not a hard voice. A tired one. Why does this war need my husband?"
+ cp_layla_vox.1043.flavor:0 "The secretary's pen stops. The ruler does not answer for a long time. In the imagined room the air is heavier than before. When he finally speaks it is to say — your husband is needed because the country is needed. That is the only answer. Layla nods. It is not an answer. She knew it would not be. She has asked the question so that the question is in the room now. Once the question is in the room, the air of the room has to contain it. She backs down the carpet. She feels — for the first time in one of these audiences — that she has brought something that was not there before, and that it cannot be removed. The kitchen is warm. The dough is right. The question is in the room. She did that."
+ cp_layla_vox.1043.a:0 "Back to the oven."
+
+ # cp_layla_vox.105 -- the vote
+ cp_layla_vox.105.t:0 "The Vote She Is Given"
+ cp_layla_vox.105.d:0 "There is, now, a paper they are calling a vote. She has been told she can cast one. She has come to ask the ruler what the vote is for."
+ cp_layla_vox.105.flavor:0 "Effendim, she says, I have a paper. The paper says I can vote. I have been told to put a mark on it next to a name. I have been told that the name will go to the parliament in Cairo. I have been told that the parliament will speak for us. I have some questions. Does the parliament eat the wheat, or does the wheat still go to the port? Does the parliament decide when the canal is cleaned, or does the bey's son decide? Does the parliament know I exist, or is my mark on the paper the whole of its knowledge of me? I am not refusing the vote. I am asking what the vote is. I have had few things given to me in my life that were not also taking things away. I have learned to ask."
+ cp_layla_vox.105.a:0 "Take the vote. It is hers. She will not give it back just because it is small."
+ cp_layla_vox.105.b:0 "Refuse the vote. She will not sign a paper that does not yet feed her."
+ cp_layla_vox.105.c:0 "Ask him: what does this vote buy me? Give me an honest number."
+
+ cp_layla_vox.1051.t:0 "She Will Take It"
+ cp_layla_vox.1051.d:0 "She will. She will make her mark. She will walk to the polling room on the day with her shawl over her hair."
+ cp_layla_vox.1051.flavor:0 "Things are given small before they are given whole, her mother used to say. The vote is small. The vote may become whole. She will take it. She will hand it, with her mark, to the clerk at the polling table, and she will go home. In the real kitchen the loaves are done. She sets them on the ledge. She feels — briefly — a kind of pleasure that is new. The pleasure is that she has in her hand a thing she did not have last year, and that the thing was given by a law, and that laws change, and that her daughter, who is older than Layla was at her own vote, will have a larger paper, and that her granddaughter will have a larger one still."
+ cp_layla_vox.1051.a:0 "Wrap the loaves."
+
+ cp_layla_vox.1052.t:0 "She Refuses"
+ cp_layla_vox.1052.d:0 "Effendim, she says, I will not sign a paper that does not yet feed me. Find me one that does."
+ cp_layla_vox.1052.flavor:0 "It is a harder answer than she meant. She says it anyway. The ruler does not say anything. She turns. She walks back down the carpet. In the real kitchen she does not shape the loaves well tonight — her hands are still in the room — and the loaves come out slightly uneven, and she does not care. She will not vote on the day. She will watch her neighbour vote. She will not feel smug. She will feel a small discomfort, because she is suspicious of her own refusal. Maybe it was right. Maybe it was pride. She will not know until the government does or does not send a new road through the village."
+ cp_layla_vox.1052.a:0 "Wrap the loaves crooked."
+
+ cp_layla_vox.1053.t:0 "An Honest Number"
+ cp_layla_vox.1053.d:0 "Effendim, she says, what does this vote buy me? Not the speech. The number."
+ cp_layla_vox.1053.flavor:0 "He does not give a number. He gives a speech. She listens for a minute. She stops listening. She waits for the speech to end. When it ends she says — that was not a number, Effendim. He says — I do not have a number. She nods. She backs down the carpet. She will still vote, she thinks — probably — but she will not expect anything. Expecting things from a vote that has no number is a fast way to become bitter, and she does not want to become bitter before she is seventy."
+ cp_layla_vox.1053.a:0 "Home."
+
+ # cp_layla_vox.106 -- the old ruler
+ cp_layla_vox.106.t:0 "The Old Ruler, Remembered"
+ cp_layla_vox.106.d:0 "She has been through three of them now. Four, if she counts the old one whose name nobody says anymore."
+ cp_layla_vox.106.flavor:0 "Tonight the ruler in the imagined room is [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName]. He is, she has been told, different from the last one. The last one was different from the one before. She has been a married woman under four of them. She remembers the first one dimly — she was a girl, the village was quieter, the bey was harder, the tax was a different shape. She remembers the second because her mother died that year, and any year with her mother's death in it is a year with a name. She remembers the third because the railway came through. She does not yet have a word for this one. Tonight she says to him — Effendim, you are not the first. You will not be the last. Which kind do you want to be?"
+ cp_layla_vox.106.a:0 "She says it bitterly. She has been worn by the sequence."
+ cp_layla_vox.106.b:0 "She says it hopefully. She has seen enough to believe each one can be better."
+ cp_layla_vox.106.c:0 "She says it tired. The question is the question. She has no strength left for tone."
+
+ cp_layla_vox.1061.t:0 "Bitterly"
+ cp_layla_vox.1061.d:0 "You are the fourth I have carried in my back. My back is not what it was."
+ cp_layla_vox.1061.flavor:0 "She says it quietly. The room hears it anyway. The ruler does not answer. He cannot answer. She is not asking for an answer. She is speaking in the way an old peasant speaks to the weather — not because the weather will listen, but because the speaking is what is left. In the real kitchen her hands are in the dough and she has stopped thinking. The dough becomes bread on its own. She does not notice it rising. She does not notice it being shaped. Tomorrow she will eat it and not remember having made it. That is the bitterness. The bread is still good."
+ cp_layla_vox.1061.a:0 "Bake it anyway."
+
+ cp_layla_vox.1062.t:0 "Hopefully"
+ cp_layla_vox.1062.d:0 "You can be the one under whom my grandchildren's knees do not crack at thirty. That would be a good thing."
+ cp_layla_vox.1062.flavor:0 "She says it the way her mother would have laughed it — a small dry laugh, affectionate and demanding. The ruler does not know how to take it. That is his problem, not hers. She has set the standard — grandchildren's knees. He can meet it, or he can be another one she will one day count on her fingers to a granddaughter. She backs down the carpet humming. In the real kitchen the loaves rise higher than she expected. She is pleased with the day."
+ cp_layla_vox.1062.a:0 "Shape the loaves."
+
+ cp_layla_vox.1063.t:0 "Tired"
+ cp_layla_vox.1063.d:0 "Which kind, Effendim. I do not have a song tonight. The question is the question."
+ cp_layla_vox.1063.flavor:0 "She is tired and she says so. She is aware that speaking tired to a ruler is a privilege her grandmother did not have, and she is aware that the privilege is new, and fragile. She uses it sparingly. Tonight she uses it. The ruler, in the imagined room, does not answer. She backs down the carpet very slowly. Her knees are tired. Her shoulders are tired. Her hands, which have kneaded for eleven hours this week, are tired. She sits on the step of the kitchen when she comes out of the imagined room, and she breathes. The dough rises without her. The room in Cairo continues without her. The world continues. She continues. Tomorrow she will have some energy. Tonight she spent what she had in the room."
+ cp_layla_vox.1063.a:0 "Sit on the step."
+
+ # cp_layla_vox.109 -- fallback
+ cp_layla_vox.109.t:0 "The Room Is Empty Tonight"
+ cp_layla_vox.109.d:0 "The carpet is there. The desk is there. The secretary is there. The ruler is not."
+ cp_layla_vox.109.flavor:0 "He has gone somewhere. She does not know where. The imagined room has its secretary, who writes nothing, and its carpet, which leads nowhere. She stands at the end of the carpet for a minute. Nothing comes. She shrugs, in her imagined dress, and turns, and walks out. In the real kitchen her hands have continued the dough. The dough is ready. She shapes the first loaf. She is pleased that the room has no answer tonight, because it means the room is not her whole trouble. The oven is the trouble, and the oven is, at least, hers."
+ cp_layla_vox.109.a:0 "Shape the loaf."

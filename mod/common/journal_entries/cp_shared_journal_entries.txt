@@ -1,0 +1,66 @@
+﻿###############################################################################
+# Common People -- shared journal entries
+#
+# cp_je_common_people -- the active-person journal surface.
+# This is intentionally not owned by Layla or any other person. Individual
+# people live in events, dispatchers, and variables; the persistent journal UI
+# belongs to the three active lives the player has actually met most recently.
+###############################################################################
+
+cp_je_common_people = {
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	group = je_group_internal_affairs
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_variable = cp_debug_selected_event }
+				desc = cp_je_common_people_status_qa
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { cp_active_roster_has_any_person = yes }
+				}
+				desc = cp_je_common_people_status_gathering
+			}
+			triggered_desc = {
+				trigger = { has_variable = cp_global_ambient_cooldown }
+				desc = cp_je_common_people_status_quiet
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = cp_je_common_people_status_personal
+			}
+		}
+	}
+
+	# QA bridge first, hidden unless a console selector has queued an event.
+	scripted_button = cp_shared_debug_fire_selected_button
+
+	# Per-person buttons are statically declared because Victoria 3 does not
+	# support dynamic button generation here. Their visible triggers are capped
+	# to the three active roster slots.
+	scripted_button = cp_shared_action_layla_button
+	scripted_button = cp_shared_action_bey_button
+	scripted_button = cp_shared_action_soldier_button
+	scripted_button = cp_shared_action_nour_button
+	scripted_button = cp_shared_action_mina_button
+	scripted_button = cp_shared_action_zaynab_button
+	scripted_button = cp_shared_action_samier_button
+	scripted_button = cp_shared_action_tarek_button
+	scripted_button = cp_shared_action_farid_button
+	scripted_button = cp_shared_action_dawud_button
+	scripted_button = cp_shared_action_rashid_button
+	scripted_button = cp_shared_action_salma_button
+	scripted_button = cp_shared_action_karim_button
+	scripted_button = cp_shared_action_huda_button
+	scripted_button = cp_shared_action_nabil_button
+	scripted_button = cp_shared_action_mansur_button
+
+	complete = {
+		always = no
+	}
+
+	weight = 100
+}

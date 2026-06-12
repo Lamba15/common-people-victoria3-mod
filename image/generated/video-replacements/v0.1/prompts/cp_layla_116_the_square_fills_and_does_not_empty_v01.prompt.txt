@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_layla.116 at mod/events/cp_layla_events.txt:3554
+Previous vanilla video placeholder: africa_public_protest
+Target DDS: mod/gfx/event_pictures/cp_layla_116_the_square_fills_and_does_not_empty_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_layla_116_the_square_fills_and_does_not_empty_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_layla.116
+Person token: layla
+Title: The Square Fills and Does Not Empty
+Short description: The square that empties by mid-afternoon does not, this afternoon, empty. She stands at her window and watches it not-empty.
+Flavor text: There are perhaps two hundred of them. They have a cloth banner with writing on it she cannot, from this distance, read — she cannot, at any distance, read — and a man is standing on a cart speaking in the voice one uses to speak across open water. The thing that catches her — the thing that keeps her at the window for an hour when she should be at the stove — is not what he is saying, because she cannot, at this distance, make out the words. The thing that catches her is that the square does not empty. In every other year of her life, a crowd like this one would have emptied by now, because the hour the square empties is the hour the cavalry comes through. The cavalry does not, today, come through. She watches the square, and she watches the absence of the cavalry, and the two things together make her stand at the window for an hour with her hand on the frame, the way a child stands at the window watching the first rain of a season she has not been told to expect. Ahmed comes in behind her. He watches with her. He does not say anything. She does not turn around. After a while, the banner is lowered, and the crowd disperses on its own terms, at its own hour, and the cavalry, having decided not to, does not come.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

@@ -1,0 +1,213 @@
+﻿###############################################################################
+# Common People -- Rashid al-Katib's memory
+#
+# Person 11 scaffold. Rashid is registered as `rashid`, not as a V3
+# character. He enters conditionally when government administration, central
+# archives, or identification papers make the state visible at the counter.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_rashid_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = rashid
+		culture = misri
+		religion = sunni
+		poptype = bureaucrats
+	}
+}
+
+
+# --- Conditional entry ------------------------------------------------------
+cp_rashid_try_spawn = {
+	if = {
+		limit = {
+			c:EGY ?= this
+			NOT = { has_global_variable = cp_person_rashid_alive }
+			NOT = { has_variable = cp_rashid_alive }
+			OR = {
+				cp_country_has_government_office = yes
+				cp_country_has_modern_records = yes
+				has_technology_researched = tech_bureaucracy
+			}
+		}
+		cp_mark_person_spawn_home_from_government_office = { person = rashid }
+		cp_register_person = {
+			person = rashid
+			country = EGY
+		}
+		cp_rashid_dispatch_startup = yes
+		trigger_event = { id = cp_rashid.1 }
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_rashid_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_rashid_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_rashid_dispatch_yearly = {
+	cp_age_increment = { person = rashid }
+	cp_rashid_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = rashid country = EGY }
+	if = {
+		limit = {
+			has_technology_researched = central_archives
+			NOT = { has_variable = cp_rashid_seen_archives }
+		}
+		random_list = {
+			35 = { cp_try_fire_world_response = { event = cp_rashid.20 person = rashid } }
+			65 = { }
+		}
+	}
+}
+
+cp_rashid_dispatch_law_enacted = {
+	if = {
+		limit = {
+			OR = {
+				ROOT.currently_enacting_law.type ?= law_type:law_hereditary_bureaucrats
+				ROOT.currently_enacting_law.type ?= law_type:law_appointed_bureaucrats
+				ROOT.currently_enacting_law.type ?= law_type:law_elected_bureaucrats
+			}
+			NOT = { has_variable = cp_rashid_seen_new_seal }
+		}
+		cp_try_fire_law_reaction = { event = cp_rashid.50 person = rashid }
+	}
+}
+
+cp_rashid_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_rashid_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_rashid_dispatch_tech = {
+	if = {
+		limit = {
+			has_technology_researched = central_archives
+			NOT = { has_variable = cp_rashid_seen_archives }
+		}
+		cp_try_fire_world_response = { event = cp_rashid.20 person = rashid }
+	}
+	if = {
+		limit = {
+			has_technology_researched = identification_documents
+			NOT = { has_variable = cp_rashid_seen_identification }
+		}
+		cp_try_fire_world_response = { event = cp_rashid.30 person = rashid }
+	}
+}
+
+cp_rashid_dispatch_building = {
+	if = {
+		limit = {
+			is_building_type = building_government_administration
+			cp_building_affects_person_workplace = { person = rashid }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = rashid }
+				NOT = { has_variable = cp_rashid_seen_intro }
+			}
+		}
+		owner ?= {
+			random_list = {
+				60 = { cp_try_fire_world_response = { event = cp_rashid.10 person = rashid } }
+				40 = { }
+			}
+		}
+	}
+	if = {
+		limit = {
+			is_building_type = building_government_administration
+			cp_building_affects_person_workplace = { person = rashid }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = rashid }
+				has_variable = cp_rashid_seen_intro
+				NOT = { has_variable = cp_rashid_seen_numbered_drawer }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_rashid.60 person = rashid }
+		}
+	}
+}
+
+cp_rashid_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_rashid_mark_intro = {
+	cp_mark_event_seen = { person = rashid id = intro days = 3650 }
+	cp_shift_literacy = { person = rashid delta = 1 }
+	cp_shift_weight = { person = rashid weight = paperwork delta = 1 }
+}
+
+cp_rashid_mark_archives = {
+	cp_mark_event_seen = { person = rashid id = archives days = 1825 }
+	cp_shift_literacy = { person = rashid delta = 2 }
+	cp_shift_weight = { person = rashid weight = memory delta = 1 }
+}
+
+cp_rashid_mark_identification = {
+	cp_mark_event_seen = { person = rashid id = identification days = 1825 }
+	cp_shift_weight = { person = rashid weight = authority delta = 2 }
+	cp_shift_exhaustion = { person = rashid delta = 1 }
+}
+
+cp_rashid_mark_ink_dust = {
+	cp_mark_event_seen = { person = rashid id = ink_dust days = 540 }
+	cp_shift_exhaustion = { person = rashid delta = 1 }
+}
+
+cp_rashid_mark_new_seal = {
+	cp_mark_event_seen = { person = rashid id = new_seal days = 1825 }
+	cp_shift_literacy = { person = rashid delta = 1 }
+	cp_shift_weight = { person = rashid weight = authority delta = 1 }
+	cp_shift_exhaustion = { person = rashid delta = 1 }
+}
+
+cp_rashid_mark_numbered_drawer = {
+	cp_mark_event_seen = { person = rashid id = numbered_drawer days = 720 }
+	cp_shift_exhaustion = { person = rashid delta = 1 }
+	cp_shift_weight = { person = rashid weight = paperwork delta = 1 }
+	cp_shift_weight = { person = rashid weight = memory delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_rashid = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_rashid_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_rashid.10 person = rashid }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_rashid_seen_intro
+				NOT = { has_variable = cp_rashid_seen_ink_dust }
+			}
+			cp_try_fire_ambient = { event = cp_rashid.40 person = rashid }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_rashid_seen_intro
+				NOT = { has_variable = cp_rashid_seen_numbered_drawer }
+			}
+			cp_try_fire_ambient = { event = cp_rashid.60 person = rashid }
+		}
+		74 = { }
+	}
+}

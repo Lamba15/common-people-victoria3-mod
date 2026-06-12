@@ -1,0 +1,30 @@
+﻿l_english:
+ cp_huda.10.t:0 "The Room Above the Alley"
+ cp_huda.10.d:0 "Huda al-Matariya counts the stairs before she climbs them because the last six make the water slop from the jar. The room is above a coffee stall, under a roof patched with tin, and narrow enough that two women cannot pass without one turning sideways. In the village she knew every wall by the sound it gave back in winter. Here the walls belong to a man who writes numbers in a rent book and never looks at the sleeping child when he waits in the doorway. At night Cairo breathes through the shutters: donkeys, carts, a whistle from the station, someone laughing as if the whole street were his courtyard."
+ cp_huda.10.f:0 "She puts her bundle under the bed and keeps the door bolt in her hand until sleep takes it from her."
+ cp_huda.10.a:0 "A city begins with a key that is not yours."
+
+ cp_huda.20.t:0 "The Street Under Planks"
+ cp_huda.20.d:0 "The street is opened before dawn. Men lift stones from the road and lay planks over the ditch so narrow feet can cross. Huda carries a basket of lime chips until the handles burn crescents into her palms. The overseer says the new works will make the district respectable. Respectable, she thinks, watching sewage water shine in the trench beside a pile of imported pipe. Boys jump the gap for sport. Old women curse the dust. By noon the house fronts are all one color, and even the bread tastes of brick when she eats it standing in the shade of a wall that will be gone tomorrow."
+ cp_huda.20.f:0 "A city improves itself by asking the poor to step around the hole."
+ cp_huda.20.a:0 "Mind the plank."
+
+ cp_huda.30.t:0 "The Water Under Stone"
+ cp_huda.30.d:0 "For three mornings the men work with picks, and on the fourth the courtyard tap runs clear. Huda waits until the others have filled their jars, then puts her hand beneath the stream as if greeting a relative who has arrived clean from travel. No donkey boy to pay. No quarrel at the well. No clay taste at the bottom of the cup. The landlord says the rent will rise because the house is now modern. Huda laughs once, softly, not because it is funny but because the water is cold on her wrist and the child has stopped scratching the rash at his neck."
+ cp_huda.30.f:0 "Progress arrives by pipe and leaves by ledger."
+ cp_huda.30.a:0 "Let the cup fill first."
+
+ cp_huda.40.t:0 "The Rent Book"
+ cp_huda.40.d:0 "The rent collector writes with a pencil he licks between numbers. Huda stands in the doorway with flour on her sleeve and counts the coins again, though she knows the answer. Downstairs, a new shop has opened with glass jars in the window, and the landlord says the street is better now, which means her room is better, which means the number is higher. She says her wage has not climbed the stairs with the rent. He smiles at the joke because it costs him nothing. Behind her, the child is silent enough to hear the pencil scratch against the paper."
+ cp_huda.40.f:0 "In the book, every improvement has a hand reaching from it."
+ cp_huda.40.a:0 "The city knows how to count."
+
+ cp_huda.50.t:0 "The Roof Patch"
+ cp_huda.50.d:0 "Rain finds the roof by memory. It enters first at the nail above the sleeping mat, then through the seam where the tin was bent back last summer, then in a slow bead that hangs from the beam until the child wakes to watch it fall. Huda moves the basin, then the bundle, then the flour sack. By morning the landlord sends a boy with tar, rope, and a face too young to be blamed. He pats the patch flat and says it will hold. Huda looks at the ceiling and knows the roof has only been taught to wait for the next rain."
+ cp_huda.50.f:0 "A rented room leaks in places its owner never sleeps beneath."
+ cp_huda.50.a:0 "Move the mat away from the drip."
+
+ cp_huda.60.t:0 "The White Road"
+ cp_huda.60.d:0 "The new road dries pale under the sun and throws its whiteness onto every face that crosses it. Carts roll more smoothly now. Shopkeepers praise the clean stone. Huda carries washing along the edge and returns with dust on the hem of each sheet, fine as flour and harder to beat out. The old mud had swallowed ankles; this road swallows shade. Children run in the open space until a carriage scatters them against the wall. In the evening, when the lamps come on, the street looks almost foreign, except for the women sweeping its dust back from their doors."
+ cp_huda.60.f:0 "A road can be improved without asking where the feet should rest."
+ cp_huda.60.a:0 "Sweep the threshold again."

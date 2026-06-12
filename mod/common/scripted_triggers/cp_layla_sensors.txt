@@ -31,6 +31,7 @@
 
 cp_sensor_layla_alive = {
 	has_variable = cp_layla_alive
+	var:cp_layla_alive > 0
 }
 
 
@@ -467,8 +468,8 @@ cp_sensor_she_hears_foreign_news = {
 	}
 }
 
-cp_sensor_radio_voice_in_the_house = {
-	has_variable = cp_layla_owns_radio
+cp_sensor_radio_voice_reaches_her = {
+	has_variable = cp_layla_seen_radio
 	c:EGY = { has_technology_researched = radio }
 }
 

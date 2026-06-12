@@ -32,6 +32,870 @@ cp_layla_refresh_sol = {
 
 
 # ============================================================================
+# cp_layla_dispatch_startup -- Layla's startup/save-migration hook
+# ============================================================================
+# Called from the shared startup event before registration/setup. New games
+# pass through cleanly; old saves get the Layla-owned backfills here instead
+# of having shared on_actions write directly to cp_layla_* variables.
+cp_layla_dispatch_startup = {
+	if = {
+		limit = { has_variable = cp_layla_alive  var:cp_layla_alive > 0  NOT = { has_variable = cp_layla_status_variant } }
+		set_variable = { name = cp_layla_status_variant value = 1 }
+	}
+	if = {
+		limit = { has_variable = cp_layla_alive  var:cp_layla_alive > 0  NOT = { has_variable = cp_layla_sol_prev } }
+		set_variable = { name = cp_layla_sol_prev value = var:cp_layla_sol }
+		set_variable = { name = cp_layla_sol_delta value = 0 }
+	}
+	# Saves from before the data-driven home-state refactor lack the
+	# region_state marker. Backfill to Lower Egypt (her start) so the shared
+	# pop-cohort reader has something real to inspect.
+	if = {
+		limit = {
+			has_variable = cp_layla_alive
+			var:cp_layla_alive > 0
+			NOT = {
+				any_country = {
+					any_scope_state = { has_variable = cp_layla_lives_here }
+				}
+			}
+		}
+		cp_move_to_state = { state = STATE_LOWER_EGYPT }
+	}
+}
+
+
+# ============================================================================
+# cp_layla_dispatch_monthly -- Layla's JE display-state pulse
+# ============================================================================
+# The shared monthly on_action only guards and delegates. The actual Layla
+# mood roll and JE tick live here with the rest of her person-owned state.
+cp_layla_dispatch_monthly = {
+	# Self-heal: backfill cp_layla_status_variant on saves that predate it.
+	if = {
+		limit = { NOT = { has_variable = cp_layla_status_variant } }
+		set_variable = { name = cp_layla_status_variant value = 1 }
+	}
+	cp_debug_tick_increment = yes
+	# Mood bucket (1..10 -> low/mid/high bucket)
+	random_list = {
+		10 = { set_variable = { name = cp_layla_mood_roll value = 1 } }
+		10 = { set_variable = { name = cp_layla_mood_roll value = 2 } }
+		10 = { set_variable = { name = cp_layla_mood_roll value = 3 } }
+		10 = { set_variable = { name = cp_layla_mood_roll value = 4 } }
+		10 = { set_variable = { name = cp_layla_mood_roll value = 5 } }
+		10 = { set_variable = { name = cp_layla_mood_roll value = 6 } }
+		10 = { set_variable = { name = cp_layla_mood_roll value = 7 } }
+		10 = { set_variable = { name = cp_layla_mood_roll value = 8 } }
+		10 = { set_variable = { name = cp_layla_mood_roll value = 9 } }
+		10 = { set_variable = { name = cp_layla_mood_roll value = 10 } }
+	}
+	# Variant within bucket (1..3)
+	random_list = {
+		33 = { set_variable = { name = cp_layla_status_variant value = 1 } }
+		33 = { set_variable = { name = cp_layla_status_variant value = 2 } }
+		34 = { set_variable = { name = cp_layla_status_variant value = 3 } }
+	}
+}
+
+
+# ============================================================================
+# cp_layla_dispatch_yearly -- Layla's yearly lifecycle and milestone router
+# ============================================================================
+# Called from cp_on_yearly after the same shared alive guard used by the rest
+# of the roster. This keeps Layla's heavy life logic person-owned instead of
+# living as a special case in the global on_action dispatcher.
+cp_layla_dispatch_yearly = {
+	cp_age_increment = { person = layla }
+	# Self-heal: backfill snapshot variables on older saves.
+	if = {
+		limit = { NOT = { has_variable = cp_layla_sol_prev } }
+		set_variable = { name = cp_layla_sol_prev value = var:cp_layla_sol }
+		set_variable = { name = cp_layla_sol_delta value = 0 }
+	}
+	if = {
+		limit = { NOT = { has_variable = cp_layla_tax_burden } }
+		set_variable = { name = cp_layla_tax_burden value = 0 }
+		cp_refresh_tax_burden = yes
+		set_variable = { name = cp_layla_tax_burden_prev value = var:cp_layla_tax_burden }
+	}
+	if = {
+		limit = { NOT = { has_variable = cp_layla_welfare_tier } }
+		set_variable = { name = cp_layla_welfare_tier value = 0 }
+		set_variable = { name = cp_layla_welfare_tier_prev value = 0 }
+		cp_refresh_welfare_tier = yes
+	}
+	# Resample cp_layla_sol from her pop group BEFORE computing delta.
+	cp_layla_refresh_sol = yes
+
+	# Pop-tick: literacy drifts toward cohort, political mood drifts
+	# from expected-SoL gap. Both mirror the SoL resample pattern.
+	cp_pop_tick_literacy = yes
+	cp_pop_tick_political_mood = yes
+	# Delta = current - prev. Computed via multiply-by-(-1)
+	# because `change_variable = { subtract = var:X }` is not
+	# reliably supported; `add = var:X` is. So negate prev, then add.
+	set_variable = { name = cp_layla_sol_delta value = var:cp_layla_sol_prev }
+	change_variable = { name = cp_layla_sol_delta multiply = -1 }
+	change_variable = { name = cp_layla_sol_delta add = var:cp_layla_sol }
+	set_variable = { name = cp_layla_sol_prev value = var:cp_layla_sol }
+
+	# Tax burden: same pattern. Recompute, then fire the tax-spike
+	# event if burden jumped by ≥3 since last year (the tax
+	# collector now comes for more than he did).
+	cp_refresh_tax_burden = yes
+	if = {
+		limit = {
+			NOT = { has_variable = cp_layla_seen_tax_spike }
+			var:cp_layla_tax_burden >= 7
+			# current - prev >= 3  via multiply-by-(-1) trick
+			var:cp_layla_tax_burden >= var:cp_layla_tax_burden_prev
+			# We cannot express var - var >= 3 directly; approximate
+			# with absolute threshold (>=7) + the trend guard above.
+		}
+		cp_try_fire_milestone = { event = cp_layla.7 person = layla }
+		set_variable = { name = cp_layla_seen_tax_spike days = 1800 }
+	}
+	# First-bite event: consumption tax on grain lands for the
+	# first time since she's been alive.
+	if = {
+		limit = {
+			NOT = { has_variable = cp_layla_seen_grain_tax }
+			has_consumption_tax = g:grain
+		}
+		cp_try_fire_milestone = { event = cp_layla.8 person = layla }
+		set_variable = cp_layla_seen_grain_tax
+	}
+	set_variable = { name = cp_layla_tax_burden_prev value = var:cp_layla_tax_burden }
+
+	# First-child milestone. This is not ambient gossip: it opens
+	# the whole children/daughter branch, so it bypasses the ambient
+	# budget but stays probabilistic and one-shot.
+	if = {
+		limit = {
+			NOT = { has_variable = cp_layla_seen_childbirth }
+			NOT = { var:cp_layla_children >= 1 }
+			has_variable = cp_layla_married
+			has_variable = cp_layla_ahmed_alive
+			var:cp_layla_ahmed_alive > 0
+			NOT = { has_variable = cp_layla_ahmed_at_war }
+			var:cp_layla_age >= 23
+			var:cp_layla_age <= 32
+		}
+		random_list = {
+			35 = { cp_try_fire_milestone = { event = cp_layla.5 person = layla } }
+			65 = { }
+		}
+	}
+
+	# Crossroads: Cairo offers work. Fires once per life when
+	# prerequisites align — a mill exists in her state, she's
+	# still a village peasant, SoL is pressed, and migration is
+	# legally possible (NOT serfdom). 25% roll per qualifying
+	# year so it feels like a choice arriving rather than an
+	# obligation on a timer.
+	if = {
+		limit = {
+			has_variable = cp_layla_seen_first_textile_mill
+			NOT = { has_variable = cp_layla_seen_cairo_offer }
+			NOT = { has_law = law_type:law_serfdom }
+			has_variable = cp_layla_profession_peasants
+			var:cp_layla_sol <= 12
+		}
+		random_list = {
+			25 = {
+				cp_try_fire_milestone = { event = cp_layla.70 person = layla }
+				set_variable = cp_layla_seen_cairo_offer
+			}
+			75 = { }
+		}
+	}
+
+	# Mortality pressures — computed yearly before the rolls.
+	cp_refresh_mortality_pressure = yes
+	cp_refresh_worker_safety_pressure = yes
+
+	# First welfare receipt. Fires once per life when a welfare
+	# law is active AND she plausibly qualifies. Each rung has
+	# its own eligibility test; any match triggers the event.
+	if = {
+		limit = {
+			NOT = { has_variable = cp_layla_seen_first_envelope }
+			OR = {
+				# Old-age pension and she's of age.
+				AND = {
+					has_law = law_type:law_old_age_pension
+					var:cp_layla_age >= 60
+				}
+				# Poor laws and she's poor.
+				AND = {
+					has_law = law_type:law_poor_laws
+					var:cp_layla_sol <= 10
+				}
+				# Wage subsidies and her household earns wages.
+				AND = {
+					has_law = law_type:law_wage_subsidies
+					var:cp_layla_sol <= 15
+					OR = {
+						has_variable = cp_layla_profession_laborers
+						has_variable = cp_layla_profession_machinists
+						has_variable = cp_layla_profession_farmers
+						has_variable = cp_layla_profession_clerks
+					}
+				}
+			}
+		}
+		# 50% per qualifying year — welfare rolls are slow but
+		# the first envelope feels like an arrival, not a raffle.
+		random_list = {
+			50 = {
+				cp_try_fire_milestone = { event = cp_layla.90 person = layla }
+				set_variable = cp_layla_seen_first_envelope
+			}
+			50 = { }
+		}
+	}
+
+	# Layla's annual mortality roll. Buckets her 0..10 pressure
+	# into three rough tiers with per-year death probabilities
+	# calibrated to 19th-century reality (a 70yo peasant without
+	# public health dies at ~10%/yr; a 40yo at peak health ~1%).
+	# Age gate: no roll before 35, because events-before-then
+	# should kill her (childbirth, famine, factory), not timers.
+	if = {
+		limit = {
+			var:cp_layla_age >= 35
+			var:cp_layla_mortality_pressure >= 1
+		}
+		if = {
+			limit = { var:cp_layla_mortality_pressure >= 7 }
+			random_list = {
+				10 = { cp_try_fire_milestone = { event = cp_layla.80 person = layla } }
+				90 = { }
+			}
+		}
+		else_if = {
+			limit = { var:cp_layla_mortality_pressure >= 4 }
+			random_list = {
+				4 = { cp_try_fire_milestone = { event = cp_layla.80 person = layla } }
+				96 = { }
+			}
+		}
+		else = {
+			random_list = {
+				1 = { cp_try_fire_milestone = { event = cp_layla.80 person = layla } }
+				99 = { }
+			}
+		}
+	}
+
+	# Ahmed's worker-accident roll. Gated on cp_layla_worker_risk which
+	# is only non-zero when he works a shop floor. Worker-
+	# protections law clamps the worst away; no-workers-rights
+	# (or early industrialisation under regulatory_bodies) makes
+	# accidents real and annual.
+	if = {
+		limit = {
+			has_variable = cp_layla_ahmed_alive
+			var:cp_layla_ahmed_alive > 0
+			var:cp_layla_worker_risk >= 3
+		}
+		if = {
+			limit = { var:cp_layla_worker_risk >= 7 }
+			random_list = {
+				6 = { cp_try_fire_milestone = { event = cp_layla.81 person = layla } }
+				94 = { }
+			}
+		}
+		else = {
+			random_list = {
+				2 = { cp_try_fire_milestone = { event = cp_layla.81 person = layla } }
+				98 = { }
+			}
+		}
+	}
+
+	# Child mortality roll. V3 models this as state-level, but
+	# we capture one household's risk: if she has children AND
+	# conditions are grim (pressure 5+), a child may die this
+	# year. Lower bar than Layla's roll because children are
+	# more vulnerable to what the adults can survive.
+	if = {
+		limit = {
+			var:cp_layla_children >= 1
+			var:cp_layla_mortality_pressure >= 5
+		}
+		random_list = {
+			3 = { cp_try_fire_milestone = { event = cp_layla.82 person = layla } }
+			97 = { }
+		}
+	}
+
+	# Crossroads: the Small Concern. An urban household with
+	# savings and literacy is offered a partnership in a small
+	# workshop. Fires once per life. Eligibility covers lower-
+	# to-middle strata (laborers, machinists, clerks, engineers)
+	# — per V3's profession ladder, these are the pops with
+	# enough income + literacy to plausibly buy capital. She
+	# still needs a permissive economy law (laissez-faire or
+	# interventionism). 20% roll per qualifying year.
+	if = {
+		limit = {
+			has_variable = cp_layla_in_city
+			NOT = { has_variable = cp_layla_seen_ownership_offer }
+			OR = {
+				has_variable = cp_layla_profession_laborers
+				has_variable = cp_layla_profession_machinists
+				has_variable = cp_layla_profession_clerks
+				has_variable = cp_layla_profession_engineers
+			}
+			var:cp_layla_sol >= 20
+			var:cp_layla_literacy >= 10
+			OR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_interventionism
+			}
+		}
+		random_list = {
+			20 = {
+				cp_try_fire_milestone = { event = cp_layla.71 person = layla }
+				set_variable = cp_layla_seen_ownership_offer
+			}
+			80 = { }
+		}
+	}
+
+	# Crossroads: self-employment (Slice D). Gated on cp_layla_may_work
+	# (set by cp_layla.95 when law_women_in_the_workplace enacts).
+	# Two paths:
+	#   - FORCED: she has to. Widowhood + pressed SoL, or
+	#     unemployed + pressed SoL. 50% roll per qualifying year
+	#     because survival arrives faster than vocation.
+	#   - CHOSEN: law active, household OK, small yearly chance.
+	#     15% roll per qualifying year.
+	# One-shot per life via cp_layla_seen_self_employment; flag is set
+	# inside the event's immediate.
+	if = {
+		limit = {
+			has_variable = cp_layla_may_work
+			NOT = { has_variable = cp_layla_seen_self_employment }
+			NOT = { has_variable = cp_layla_self_employed }
+			# Forced: widow with SoL <=10, or low SoL without
+			# Ahmed's profession carrying them.
+			OR = {
+				AND = {
+					has_variable = cp_layla_ahmed_alive
+					var:cp_layla_ahmed_alive = 0
+					var:cp_layla_sol <= 10
+				}
+				AND = {
+					var:cp_layla_sol <= 8
+					NOT = { has_variable = cp_layla_profession_shopkeepers }
+					NOT = { has_variable = cp_layla_profession_capitalists }
+				}
+			}
+		}
+		random_list = {
+			50 = {
+				cp_try_fire_milestone = { event = cp_layla.97 person = layla }
+			}
+			50 = { }
+		}
+	}
+	else_if = {
+		# Chosen path: law active, decent SoL, not already
+		# self-employed or in a profession that makes this
+		# redundant. Low roll so it feels optional.
+		limit = {
+			has_variable = cp_layla_may_work
+			NOT = { has_variable = cp_layla_seen_self_employment }
+			NOT = { has_variable = cp_layla_self_employed }
+			NOT = { has_variable = cp_layla_profession_shopkeepers }
+			NOT = { has_variable = cp_layla_profession_capitalists }
+			var:cp_layla_sol >= 9
+		}
+		random_list = {
+			15 = {
+				cp_try_fire_milestone = { event = cp_layla.97 person = layla }
+			}
+			85 = { }
+		}
+	}
+
+	# Crossroads: daughter's marriage. Fires once per life when
+	# the mother is old enough that a first child born around
+	# cp_layla_age 22 would now be of marrying age. 20% roll per
+	# qualifying year so the crossroads arrives when it does.
+	if = {
+		limit = {
+			var:cp_layla_age >= 38
+			var:cp_layla_children >= 1
+			NOT = { has_variable = cp_layla_seen_daughter_marriage }
+			NOT = { has_variable = cp_layla_daughter_married }
+		}
+		random_list = {
+			20 = {
+				cp_try_fire_milestone = { event = cp_layla.72 person = layla }
+				set_variable = cp_layla_seen_daughter_marriage
+			}
+			80 = { }
+		}
+	}
+
+	# Crossroads: the mill closes. Fires when she's a city
+	# laborer household AND SoL has fallen to struggling. 30%
+	# roll per qualifying year — the downturn feels arriving,
+	# not scheduled.
+	if = {
+		limit = {
+			has_variable = cp_layla_in_city
+			NOT = { has_variable = cp_layla_seen_mill_closed }
+			OR = {
+				has_variable = cp_layla_ahmed_profession_laborer
+				has_variable = cp_layla_profession_laborers
+			}
+			var:cp_layla_sol <= 9
+		}
+		random_list = {
+			30 = {
+				cp_try_fire_milestone = { event = cp_layla.73 person = layla }
+			}
+			70 = { }
+		}
+	}
+
+	# The District Office (cp_layla.125). Per the editor audit:
+	# she makes the real trip that the fantasy audience is a
+	# survival mechanism for. Fires once per life, 10% per
+	# qualifying year, gated on age and at least one prior
+	# law-touching experience.
+	if = {
+		limit = {
+			var:cp_layla_age >= 35
+			NOT = { has_variable = cp_layla_seen_district_office }
+			OR = {
+				has_variable = cp_layla_receives_welfare
+				has_variable = cp_layla_has_voted
+				has_variable = cp_layla_owns_land
+				has_variable = cp_layla_self_employed
+			}
+		}
+		random_list = {
+			10 = {
+				cp_try_fire_milestone = { event = cp_layla.125 person = layla }
+			}
+			90 = { }
+		}
+	}
+}
+
+# ============================================================================
+# cp_layla_dispatch_law_enacted -- Layla-only law reactions
+# ============================================================================
+# Shared law contests stay in cp_on_law_enacted so one historical moment can
+# choose between eligible people. This effect owns only Layla's single-person
+# law reactions.
+cp_layla_dispatch_law_enacted = {
+	# Welfare-ladder transition. Any lawgroup_welfare change reaches
+	# here. We cache old tier, refresh to the new tier, compare, and
+	# fire up/down events.
+	if = {
+		limit = {
+			OR = {
+				ROOT.currently_enacting_law.type ?= law_type:law_no_social_security
+				ROOT.currently_enacting_law.type ?= law_type:law_chiefs_distribute_aid
+				ROOT.currently_enacting_law.type ?= law_type:law_poor_laws
+				ROOT.currently_enacting_law.type ?= law_type:law_wage_subsidies
+				ROOT.currently_enacting_law.type ?= law_type:law_old_age_pension
+			}
+		}
+		# Snapshot the prior tier into a temp var before refresh.
+		set_variable = { name = cp_layla_welfare_tier_prev value = var:cp_layla_welfare_tier }
+		cp_refresh_welfare_tier = yes
+		# Up transition: new > prev.
+		if = {
+			limit = { var:cp_layla_welfare_tier > var:cp_layla_welfare_tier_prev }
+			cp_try_fire_law_reaction = { event = cp_layla.91 person = layla }
+		}
+		else_if = {
+			# Down transition: new < prev. (Repeal / regression.)
+			limit = { var:cp_layla_welfare_tier < var:cp_layla_welfare_tier_prev }
+			cp_try_fire_law_reaction = { event = cp_layla.92 person = layla }
+		}
+	}
+
+
+	# Women's rights enactments. First-time-only per rung; the one-shot
+	# gate is the cp_layla_seen_womens_rights_* flag set inside each event's
+	# immediate block. Rollback events are not fired (user-design: each
+	# rung is a "first enactment" memory, not a ladder mirror).
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_women_in_the_fields
+			NOT = { has_variable = cp_layla_seen_womens_rights_fields }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.93 person = layla }
+	}
+
+	else_if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_women_in_the_workplace
+			NOT = { has_variable = cp_layla_seen_womens_rights_workplace }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.95 person = layla }
+	}
+
+	else_if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_womens_suffrage
+			NOT = { has_variable = cp_layla_seen_womens_rights_suffrage }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.96 person = layla }
+	}
+
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_compulsory_primary_school
+			NOT = { has_variable = cp_layla_seen_compulsory_school }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.101 person = layla }
+	}
+
+
+	# Slavery: emancipation is the big beat. The starting states
+	# (slave_trade / legacy / debt) are her baseline — no reaction
+	# event for those; they're handled via the ambient pulse
+	# cp_layla.104 which fires while those laws are active.
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_slavery_banned
+			NOT = { has_variable = cp_layla_seen_emancipation }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.103 person = layla }
+	}
+
+
+	# Regime: universal suffrage + single-party state. One-shot each.
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_universal_suffrage
+			NOT = { has_variable = cp_layla_seen_universal_suffrage }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.105 person = layla }
+	}
+
+	else_if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_single_party_state
+			NOT = { has_variable = cp_layla_seen_single_party }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.106 person = layla }
+	}
+
+
+	# Citizenship: multicultural. One-shot.
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_multicultural
+			NOT = { has_variable = cp_layla_seen_multicultural }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.107 person = layla }
+	}
+
+
+	# Health system rungs. Each one-shot.
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_charitable_health_system
+			NOT = { has_variable = cp_layla_seen_charitable_health }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.108 person = layla }
+	}
+
+	else_if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_private_health_insurance
+			NOT = { has_variable = cp_layla_seen_private_health }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.109 person = layla }
+	}
+
+
+	# Labor rights: worker protections (top rung of lawgroup_labor_rights).
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_worker_protections
+			NOT = { has_variable = cp_layla_seen_worker_protections }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.111 person = layla }
+	}
+
+
+	# Labour associations: right to associate (unions legal).
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_right_to_associate
+			NOT = { has_variable = cp_layla_seen_right_to_associate }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.112 person = layla }
+	}
+
+
+	# Church/state: the hardest beat (state atheism) and the softer
+	# middle (freedom of conscience). Starting rungs (state_religion /
+	# people_of_the_book / millet_system) are Egypt's default and
+	# produce no reaction event.
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_state_atheism
+			NOT = { has_variable = cp_layla_seen_state_atheism }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.114 person = layla }
+	}
+
+	else_if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_freedom_of_conscience
+			NOT = { has_variable = cp_layla_seen_freedom_of_conscience }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.115 person = layla }
+	}
+
+
+	# Free speech: the opening (right_of_assembly) and the closing
+	# (outlawed_dissent). Middle rungs (censorship / protected_speech)
+	# do not get their own beat this slice.
+	if = {
+		limit = {
+			NOT = { has_variable = cp_shared_public_order_law_handled }
+			NOT = { has_variable = cp_nabil_just_spawned }
+			ROOT.currently_enacting_law.type ?= law_type:law_right_of_assembly
+			NOT = { has_variable = cp_layla_seen_right_of_assembly }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.116 person = layla }
+	}
+
+	else_if = {
+		limit = {
+			NOT = { has_variable = cp_shared_public_order_law_handled }
+			NOT = { has_variable = cp_nabil_just_spawned }
+			ROOT.currently_enacting_law.type ?= law_type:law_outlawed_dissent
+			NOT = { has_variable = cp_layla_seen_outlawed_dissent }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.117 person = layla }
+	}
+
+
+	# Children's rights: restricted child labor (the kids leave the floor).
+	# Starting rung (child_labor_allowed) is default; compulsory_school
+	# is already handled above by cp_layla.101.
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_restricted_child_labor
+			NOT = { has_variable = cp_layla_seen_restricted_child_labor }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.118 person = layla }
+	}
+
+
+	# Policing: the two enactments that change the lane. Starting rung
+	# (local_police) produces no event on its own.
+	if = {
+		limit = {
+			NOT = { has_variable = cp_shared_public_order_law_handled }
+			NOT = { has_variable = cp_nabil_just_spawned }
+			ROOT.currently_enacting_law.type ?= law_type:law_dedicated_police
+			NOT = { has_variable = cp_layla_seen_dedicated_police }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.119 person = layla }
+	}
+
+	else_if = {
+		limit = {
+			NOT = { has_variable = cp_shared_public_order_law_handled }
+			NOT = { has_variable = cp_nabil_just_spawned }
+			ROOT.currently_enacting_law.type ?= law_type:law_militarized_police
+			NOT = { has_variable = cp_layla_seen_militarized_police }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.120 person = layla }
+	}
+
+
+	# Migration: the two ends of the ladder. Middle rung
+	# (migration_controls) produces no beat.
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_no_migration_controls
+			NOT = { has_variable = cp_layla_seen_no_migration_controls }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.121 person = layla }
+	}
+
+	else_if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_closed_borders
+			NOT = { has_variable = cp_layla_seen_closed_borders }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.122 person = layla }
+	}
+
+
+	# Economic system: the two rungs that reshape a village's
+	# relationship to the market. Middle rungs (interventionism,
+	# agrarianism, traditionalism) are baseline / mild.
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_laissez_faire
+			NOT = { has_variable = cp_layla_seen_laissez_faire }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.123 person = layla }
+	}
+
+	else_if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_command_economy
+			NOT = { has_variable = cp_layla_seen_command_economy }
+		}
+		cp_try_fire_law_reaction = { event = cp_layla.124 person = layla }
+	}
+}
+
+# ============================================================================
+# cp_layla_dispatch_war_started / cp_layla_dispatch_war_end
+# ============================================================================
+# Called from the shared war helpers after entering Egypt country scope.
+cp_layla_dispatch_war_started = {
+	if = {
+		limit = {
+			has_variable = cp_shared_war_start_target_layla
+			has_variable = cp_layla_ahmed_alive
+			var:cp_layla_ahmed_alive > 0
+			NOT = { has_variable = cp_layla_ahmed_at_war }
+			NOT = { has_variable = cp_layla_seen_ahmed_conscripted }
+			var:cp_layla_ahmed_age >= 18
+			var:cp_layla_ahmed_age <= 45
+		}
+		remove_variable = cp_shared_war_start_target_layla
+		cp_try_fire_milestone = { event = cp_layla.4 person = layla }
+	}
+}
+
+cp_layla_dispatch_war_end = {
+	if = {
+		limit = {
+			has_variable = cp_layla_ahmed_alive
+			var:cp_layla_ahmed_alive > 0
+			has_variable = cp_layla_ahmed_at_war
+		}
+		# Clear the conscription gate so the next war can fire cp_layla.4
+		# again. cp_layla_ahmed_at_war itself is cleared by the outcome effect
+		# in cp_memory (cp_ahmed_homecoming / cp_ahmed_killed).
+		remove_variable = cp_layla_seen_ahmed_conscripted
+
+		# Outcome weights by war result. recently_won_war and recently_lost_war
+		# are vanilla-set on country scope at on_capitulation (days = 1825
+		# timer, so they're fresh here).
+		if = {
+			limit = { has_variable = recently_won_war }
+			random_list = {
+				75 = { cp_try_fire_milestone = { event = cp_layla.40 person = layla } }
+				25 = { cp_try_fire_milestone = { event = cp_layla.41 person = layla } }
+			}
+		}
+		else_if = {
+			limit = { has_variable = recently_lost_war }
+			random_list = {
+				40 = { cp_try_fire_milestone = { event = cp_layla.40 person = layla } }
+				60 = { cp_try_fire_milestone = { event = cp_layla.41 person = layla } }
+			}
+		}
+		else = {
+			# Neither side fully capitulated (white peace, stalemate).
+			# Still brutal; still a coin flip with a slight pull toward home.
+			random_list = {
+				55 = { cp_try_fire_milestone = { event = cp_layla.40 person = layla } }
+				45 = { cp_try_fire_milestone = { event = cp_layla.41 person = layla } }
+			}
+		}
+	}
+}
+
+# ============================================================================
+# cp_layla_dispatch_tech -- Layla's technology world responses
+# ============================================================================
+# Called from cp_on_tech after the shared country/person guard. These are
+# one-shot moments where modernity reaches the household through rail, wire,
+# and radio, so they use the routine visible-story budget.
+cp_layla_dispatch_tech = {
+	if = {
+		limit = {
+			has_technology_researched = railways
+			NOT = { has_variable = cp_layla_seen_railway }
+		}
+		cp_try_fire_world_response = { event = cp_layla.30 person = layla }
+		set_variable = cp_layla_seen_railway
+	}
+	if = {
+		limit = {
+			has_technology_researched = electric_telegraph
+			NOT = { has_variable = cp_layla_seen_telegraph }
+		}
+		cp_try_fire_world_response = { event = cp_layla.31 person = layla }
+		set_variable = cp_layla_seen_telegraph
+	}
+	if = {
+		limit = {
+			has_technology_researched = radio
+			NOT = { has_variable = cp_layla_seen_radio }
+		}
+		cp_try_fire_world_response = { event = cp_layla.32 person = layla }
+		set_variable = cp_layla_seen_radio
+	}
+}
+
+# ============================================================================
+# cp_layla_dispatch_building -- Layla's building-scope world responses
+# ============================================================================
+# Called from cp_on_building_built in building scope. The actual event fire
+# enters owner country scope because the shared gatekeeper is country-scoped.
+cp_layla_dispatch_building = {
+	# First textile mill in her state -- the factory age begins on the
+	# far bank of the canal.
+	if = {
+		limit = {
+			is_building_type = building_textile_mill
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = layla }
+				NOT = { has_variable = cp_layla_seen_first_textile_mill }
+			}
+			state = { has_variable = cp_layla_lives_here }
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_layla.50 person = layla }
+			set_variable = cp_layla_seen_first_textile_mill
+		}
+	}
+}
+
+# ============================================================================
+# cp_layla_dispatch_revolution -- Layla's revolution milestone
+# ============================================================================
+# Called from cp_on_revolution after the shared country/person guard.
+cp_layla_dispatch_revolution = {
+	if = {
+		limit = {
+			has_variable = cp_shared_revolution_target_layla
+			NOT = { has_variable = cp_layla_seen_revolution }
+		}
+		remove_variable = cp_shared_revolution_target_layla
+		cp_try_fire_milestone = { event = cp_layla.60 person = layla }
+		# Timed 10-year flag so a later revolution can re-fire the prose.
+		set_variable = { name = cp_layla_seen_revolution days = 3650 }
+	}
+}
+
+# ============================================================================
 # Inner state (0..10 scales -- personality, not V3-mirrored)
 # ============================================================================
 
@@ -52,7 +916,7 @@ cp_layla_refresh_sol = {
 # Vanilla pattern source:
 #   - 00_slavery.txt  (every_scope_state + limit = { has_variable = X })
 #   - 00_belle_epoque.txt  (s:STATE_X ?= { random_scope_state })
-#   - ordered_scope_pop with order_by = total_pops / position = 0
+#   - ordered_scope_pop with order_by = workforce / position = 0
 
 # Dispatch cohort read based on her profession, called from inside
 # region_state scope. Expects scope to already be on the region_state.
@@ -64,7 +928,7 @@ cp_read_cohort_here_for = {
 			religion = rel:sunni
 			is_pop_type = $poptype$
 		}
-		order_by = total_pops
+		order_by = workforce
 		position = 0
 		check_range_bounds = no
 		save_temporary_scope_value_as = {
@@ -281,7 +1145,7 @@ cp_read_cohort_literacy_for = {
 			religion = rel:sunni
 			is_pop_type = $poptype$
 		}
-		order_by = total_pops
+		order_by = workforce
 		position = 0
 		check_range_bounds = no
 		save_temporary_scope_value_as = {
@@ -360,7 +1224,7 @@ cp_pop_tick_literacy = {
 		limit = { exists = scope:tmp_cohort_literacy }
 		# Convert cohort fraction (0..1) to percent (0..100) for comparison.
 		set_variable = { name = cp_layla_cohort_literacy_target value = scope:tmp_cohort_literacy }
-		multiply_variable = { name = cp_layla_cohort_literacy_target value = 100 }
+		change_variable = { name = cp_layla_cohort_literacy_target multiply = 100 }
 
 		# Drift UP only when cohort is ahead of her. Age-banded.
 		if = {
@@ -428,7 +1292,7 @@ cp_pop_tick_political_mood = {
 	# cp_layla_sol_gap = expected - cp_layla_sol. Positive → she's below expected.
 	# multiply-by-(-1) trick because `subtract = var:X` is unreliable.
 	set_variable = { name = cp_layla_sol_gap value = var:cp_layla_sol }
-	multiply_variable = { name = cp_layla_sol_gap value = -1 }
+	change_variable = { name = cp_layla_sol_gap multiply = -1 }
 	change_variable = { name = cp_layla_sol_gap add = var:cp_layla_expected_sol }
 
 	# Below expected → radicalism drift.
@@ -649,6 +1513,7 @@ cp_experience_hardship = {
 
 cp_ahmed_conscripted = {
 	set_variable = cp_layla_ahmed_at_war
+	set_variable = { name = cp_layla_ahmed_conscripted days = 540 }
 	cp_shift_exhaustion = { person = layla delta = 2 }
 	cp_shift_hope = { person = layla delta = -1 }
 }
@@ -1044,11 +1909,10 @@ cp_refresh_worker_safety_pressure = {
 }
 
 
-# Layla's own death. Sets cp_layla_alive = 0; downstream triggers that
-# gate on it stop firing. The JE will deactivate via its complete condition
-# in a subsequent pass.
+# Layla's own death. Marks her local alive variable as 0 and removes her
+# global registry flag so shared dispatchers stop routing events to her.
 cp_layla_dies = {
-	set_variable = { name = cp_layla_alive value = 0 }
+	cp_person_dies = { person = layla country = EGY }
 }
 
 
@@ -1086,6 +1950,19 @@ cp_refresh_welfare_tier = {
 	else = {
 		set_variable = { name = cp_layla_welfare_tier value = 0 }
 	}
+}
+
+# The first child is born. This is a Layla-specific household mutation rather
+# than a shared primitive because the first birth establishes her daughter/
+# child conversation branch and carries emotional state.
+cp_layla_first_childbirth = {
+	set_variable = cp_layla_seen_childbirth
+	change_variable = { name = cp_layla_children add = 1 }
+	clamp_variable = { name = cp_layla_children min = 0 max = 10 }
+	set_variable = cp_layla_has_children
+	cp_shift_hope = { person = layla delta = 1 }
+	cp_shift_exhaustion = { person = layla delta = 1 }
+	cp_flag_recent_joy = { person = layla }
 }
 
 # A child dies of illness. cp_layla_children decrements; a permanent scar flag
@@ -1173,5 +2050,103 @@ cp_roll_ambient_layla = {
 		5  = { trigger = { NOT = { has_variable = cp_layla_seen_imam_visit } }     cp_try_fire_ambient = { event = cp_layla.126  person = layla } }
 		5  = { trigger = { NOT = { has_variable = cp_layla_seen_small_victory } }  cp_try_fire_ambient = { event = cp_layla.127  person = layla } }
 		5  = { trigger = { NOT = { has_variable = cp_layla_seen_mariam_letter } }  cp_try_fire_ambient = { event = cp_layla.128  person = layla } }
+	}
+}
+
+
+# ============================================================================
+# cp_layla_roll_interlocutor -- legacy Layla-only voice dispatcher
+# ============================================================================
+# The old Layla-only journal button has been retired. This remains for debug
+# review and future salvage into a shared conversation lane that can route any
+# eligible person instead of privileging Layla.
+#
+# Full design: documentation/the-conversation-rebuild.md
+#
+# Interlocutor index:
+#   10 -- Ahmed (husband)           high when alive, gone when dead
+#   20 -- Their daughter            requires cp_layla_children > 0
+#   30 -- Her mother (memory)       always; lands rising weight with age
+#   40 -- Um Yusuf (Coptic neighbour) rural village only
+#   50 -- Umm Mariam (landless neighbour) rural village + she owns land
+#   60 -- The Bey                   serfdom or recently ex-serf
+#   70 -- The factory owner         urban laborer household
+#   80 -- The stranger              always, low weight
+#   90 -- Herself / God             always, rising with exhaustion/bereavement
+#   100 -- The ruler                always, low weight; era-aware inside
+cp_layla_roll_interlocutor = {
+	random_list = {
+		# Ahmed
+		25 = {
+			trigger = {
+				has_variable = cp_layla_ahmed_alive
+				var:cp_layla_ahmed_alive > 0
+			}
+			cp_button_fire = { event = cp_layla_vox.10  person = layla }
+		}
+		# Her daughter
+		15 = {
+			trigger = { has_variable = cp_layla_children  var:cp_layla_children > 0 }
+			cp_button_fire = { event = cp_layla_vox.20  person = layla }
+		}
+		# Her mother (memory)
+		15 = {
+			cp_button_fire = { event = cp_layla_vox.30  person = layla }
+		}
+		# Um Yusuf — rural neighbour
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_layla_in_city }
+				OR = {
+					has_variable = cp_layla_profession_peasants
+					has_variable = cp_layla_profession_farmers
+					has_variable = cp_layla_owns_land
+					has_variable = cp_layla_under_serfdom
+				}
+			}
+			cp_button_fire = { event = cp_layla_vox.40  person = layla }
+		}
+		# Umm Mariam — rural + she owns land (class contrast)
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_layla_in_city }
+				has_variable = cp_layla_owns_land
+			}
+			cp_button_fire = { event = cp_layla_vox.50  person = layla }
+		}
+		# The Bey
+		10 = {
+			trigger = {
+				OR = {
+					has_variable = cp_layla_under_serfdom
+					has_variable = cp_layla_owns_land
+					has_variable = cp_layla_profession_peasants
+				}
+			}
+			cp_button_fire = { event = cp_layla_vox.60  person = layla }
+		}
+		# The factory owner
+		10 = {
+			trigger = {
+				OR = {
+					has_variable = cp_layla_profession_laborers
+					has_variable = cp_layla_profession_machinists
+					has_variable = cp_layla_ahmed_profession_laborer
+				}
+			}
+			cp_button_fire = { event = cp_layla_vox.70  person = layla }
+		}
+		# The stranger
+		8 = {
+			cp_button_fire = { event = cp_layla_vox.80  person = layla }
+		}
+		# Herself / God
+		8 = {
+			cp_button_fire = { event = cp_layla_vox.90  person = layla }
+		}
+		# The ruler
+		8 = {
+			cp_button_fire = { event = cp_layla_vox.100  person = layla }
+		}
 	}
 }

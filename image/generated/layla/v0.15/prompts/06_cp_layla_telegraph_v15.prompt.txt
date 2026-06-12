@@ -1,0 +1,27 @@
+Common People Layla v0.15 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.15.md
+Target DDS: mod/gfx/event_pictures/cp_layla_telegraph_v15.dds
+Source PNG: image/generated/layla/v0.15/cp_layla_telegraph_v15.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla.31 - "A Word From Beyond"
+Narrative function: telegraphy is a cold wire by the road and a word that travels without a mouth.
+Subject: Layla standing near a road bend where a telegraph wire passes by a cousin's mill.
+Scene/backdrop: rural Egyptian road, simple mill wall, telegraph pole and wire, canal or field edge nearby.
+Foreground action: a man from the next village points to the wire while Layla studies it without touching.
+Required object/gesture: telegraph wire overhead; Layla's puzzled attention; the man's hand near but not touching the pole.
+Background detail: imam or older man in conversation at the edge, small mill, no city office.
+Lighting/mood: cool afternoon, permitted bewilderment, the invisible becoming infrastructure.
+Avoid: telegraph office, operator keyboard, readable telegram, electric sparks, modern power lines.

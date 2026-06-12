@@ -1,0 +1,27 @@
+Common People Layla v0.14 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.14.md
+Target DDS: mod/gfx/event_pictures/cp_layla_small_concern_v14.dds
+Source PNG: image/generated/layla/v0.14/cp_layla_small_concern_v14.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla.71 - "The Small Concern"
+Narrative function: a workshop partnership is two papers on the table and the pot behind the loose brick becoming capital.
+Subject: older Layla and Ahmed seated at a small household table with proposal papers between them.
+Scene/backdrop: modest room or city flat depending on age, loose brick wall, four matched chairs only if prosperity is implied.
+Foreground action: Layla studies the papers while Ahmed waits for her answer.
+Required object/gesture: two sheets of contract paper with no readable text; small savings pot or cloth bundle from behind a loose brick; Layla's hand near the money but not touching it.
+Background detail: simple tools, loom shuttle, or workshop sketch without readable writing; evening lamp.
+Lighting/mood: evening decision, risk and possibility, a door about to open.
+Avoid: bank office, formal signing ceremony, prosperous factory owner pose, readable contract.

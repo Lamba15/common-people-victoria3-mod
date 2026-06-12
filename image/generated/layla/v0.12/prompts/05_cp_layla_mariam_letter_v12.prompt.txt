@@ -1,0 +1,27 @@
+Common People Layla v0.12 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.12.md
+Target DDS: mod/gfx/event_pictures/cp_layla_mariam_letter_v12.dds
+Source PNG: image/generated/layla/v0.12/cp_layla_mariam_letter_v12.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla.128 - "Mariam Writes from Cairo"
+Narrative function: a cousin's Cairo life enters the house through Nur reading a sentence aloud.
+Subject: older Layla listening while Nur reads an unopened or newly opened letter on the mat.
+Scene/backdrop: household room at lamplight, low mat, envelope, drawer, modest wall.
+Foreground action: Nur reads slowly while Layla leans forward, asking for one sentence again.
+Required object/gesture: letter and envelope between them, no readable text; Layla's hand lifted to pause Nur.
+Background detail: faint Cairo keepsake or oud-shaped shadow suggested only through the letter, not as fantasy.
+Lighting/mood: warm lamplight, curiosity, judgment withheld.
+Avoid: Cairo salon scene, glamour portrait, readable handwriting, modern stationery.

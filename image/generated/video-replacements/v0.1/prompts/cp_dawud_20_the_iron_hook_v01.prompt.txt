@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_dawud.20 at mod/events/cp_dawud_events.txt:98
+Previous vanilla video placeholder: middleeast_engineer_blueprint
+Target DDS: mod/gfx/event_pictures/cp_dawud_20_the_iron_hook_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_dawud_20_the_iron_hook_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_dawud.20
+Person token: dawud
+Title: The Iron Hook
+Short description: New cranes change the weight of a sack and the value of a shoulder.
+Flavor text: The engineer speaks of leverage while the dockmen watch the hook swing over their heads. Dawud has lifted cotton, crates of kerosene, flour gone sour in damp sacks, and once a piano no one at the quay could imagine hearing. Now the iron arm lifts what twelve men used to curse into motion. Some laugh with relief. Some count the foreman's eyes and wonder whose name the slate will not need next month.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

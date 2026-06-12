@@ -1,0 +1,272 @@
+﻿###############################################################################
+# Common People -- Salma Farag events
+#
+# Salma is Person 12: a Misri switchboard clerk whose night shifts, listening
+# posture, and tired hands make telephones and electric service human-scale.
+###############################################################################
+
+namespace = cp_salma
+
+
+# cp_salma.1 -- hidden setup
+cp_salma.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_salma_alive
+		NOT = { has_variable = cp_salma_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_salma_alive value = 1 }
+		set_variable = { name = cp_salma_age value = 19 }
+		set_variable = { name = cp_salma_hope value = 6 }
+		set_variable = { name = cp_salma_exhaustion value = 4 }
+		set_variable = { name = cp_salma_sol value = 11 }
+		set_variable = { name = cp_salma_literacy value = 18 }
+		set_variable = { name = cp_salma_radical value = 0 }
+		set_variable = { name = cp_salma_loyalist value = 0 }
+		set_variable = { name = cp_salma_earache value = 2 }
+		set_variable = cp_salma_profession_clerks
+		set_variable = { name = cp_salma_w_wires value = 10 }
+		set_variable = { name = cp_salma_w_electricity value = 8 }
+		set_variable = { name = cp_salma_w_distance value = 8 }
+		set_variable = { name = cp_salma_w_family value = 6 }
+		set_variable = { name = cp_salma_w_work value = 6 }
+
+		cp_set_person_home_state_from_spawn_marker_or_default = { person = salma country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = salma place = ataba_cairo }
+		cp_set_person_workplace_profile = { person = salma profile = electric }
+		cp_salma_refresh_sol = yes
+
+		if = {
+			limit = {
+				NOT = { has_variable = cp_startup_conditional_scan }
+			}
+			random_list = {
+				55 = { cp_try_fire_world_response = { event = cp_salma.10 person = salma } }
+				45 = { }
+			}
+		}
+	}
+}
+
+
+# cp_salma.10 -- "The Switchboard"
+cp_salma.10 = {
+	type = country_event
+
+	title = cp_salma.10.t
+	desc = cp_salma.10.d
+	flavor = cp_salma.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_salma_10_the_switchboard_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_salma_alive
+		var:cp_salma_alive > 0
+		NOT = { has_variable = cp_salma_seen_intro }
+	}
+
+	immediate = {
+		cp_salma_mark_intro = yes
+	}
+
+	option = {
+		name = cp_salma.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_salma.20 -- "The First Light"
+cp_salma.20 = {
+	type = country_event
+
+	title = cp_salma.20.t
+	desc = cp_salma.20.d
+	flavor = cp_salma.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_salma_20_the_first_light_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_salma_alive
+		var:cp_salma_alive > 0
+		NOT = { has_variable = cp_salma_seen_first_light }
+	}
+
+	immediate = {
+		cp_salma_mark_first_light = yes
+	}
+
+	option = {
+		name = cp_salma.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_salma.30 -- "Voices in the Wall"
+cp_salma.30 = {
+	type = country_event
+
+	title = cp_salma.30.t
+	desc = cp_salma.30.d
+	flavor = cp_salma.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_salma_30_voices_in_the_wall_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_salma_alive
+		var:cp_salma_alive > 0
+		NOT = { has_variable = cp_salma_seen_radio_room }
+	}
+
+	immediate = {
+		cp_salma_mark_radio_room = yes
+	}
+
+	option = {
+		name = cp_salma.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_salma.40 -- "The Night Bell"
+cp_salma.40 = {
+	type = country_event
+
+	title = cp_salma.40.t
+	desc = cp_salma.40.d
+	flavor = cp_salma.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_salma_40_the_night_bell_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_salma_alive
+		var:cp_salma_alive > 0
+		NOT = { has_variable = cp_salma_seen_night_bell }
+	}
+
+	immediate = {
+		cp_salma_mark_night_bell = yes
+	}
+
+	option = {
+		name = cp_salma.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_salma.50 -- "The Burned Fuse"
+cp_salma.50 = {
+	type = country_event
+
+	title = cp_salma.50.t
+	desc = cp_salma.50.d
+	flavor = cp_salma.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_salma_50_the_burned_fuse_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_salma_alive
+		var:cp_salma_alive > 0
+		has_variable = cp_salma_seen_first_light
+		NOT = { has_variable = cp_salma_seen_burned_fuse }
+	}
+
+	immediate = {
+		cp_salma_mark_burned_fuse = yes
+	}
+
+	option = {
+		name = cp_salma.50.a
+		default_option = yes
+	}
+}
+
+
+# cp_salma.60 -- "The Crossed Line"
+cp_salma.60 = {
+	type = country_event
+
+	title = cp_salma.60.t
+	desc = cp_salma.60.d
+	flavor = cp_salma.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_salma_60_the_crossed_line_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_salma_alive
+		var:cp_salma_alive > 0
+		has_variable = cp_salma_seen_intro
+		NOT = { has_variable = cp_salma_seen_crossed_line }
+	}
+
+	immediate = {
+		cp_salma_mark_crossed_line = yes
+	}
+
+	option = {
+		name = cp_salma.60.a
+		default_option = yes
+	}
+}

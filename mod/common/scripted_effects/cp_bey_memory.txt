@@ -1,0 +1,149 @@
+﻿###############################################################################
+# Common People -- Hassan Bey al-Sayyid's memory
+#
+# Person 2 scaffold. Al-Sayyid is registered as `bey`, not as a V3 character.
+# All state lives as country variables on c:EGY.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_bey_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = bey
+		culture = misri
+		religion = sunni
+		poptype = aristocrats
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_bey_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_bey_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_bey_dispatch_yearly = {
+	cp_age_increment = { person = bey }
+	cp_bey_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = bey country = EGY }
+}
+
+cp_bey_dispatch_law_enacted = {
+	if = {
+		limit = {
+			ROOT.currently_enacting_law.type ?= law_type:law_commercialized_agriculture
+			NOT = { has_variable = cp_bey_seen_commercialized }
+		}
+		cp_try_fire_law_reaction = { event = cp_bey.22 person = bey }
+	}
+}
+
+cp_bey_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_bey_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_bey_dispatch_tech = {
+	if = {
+		limit = {
+			cp_person_home_has_manufacturing = { person = bey }
+			NOT = { has_variable = cp_bey_seen_factory_boundary }
+		}
+		cp_try_fire_world_response = { event = cp_bey.30 person = bey }
+	}
+}
+
+cp_bey_dispatch_building = {
+	if = {
+		limit = {
+			is_building_group = bg_manufacturing
+			cp_building_affects_person_workplace = { person = bey }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = bey }
+				NOT = { has_variable = cp_bey_seen_factory_boundary }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_bey.30 person = bey }
+		}
+	}
+}
+
+cp_bey_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_bey_mark_homesteading_loss = {
+	cp_mark_event_seen = { person = bey id = homesteading days = 1825 }
+	change_variable = { name = cp_bey_power add = -3 }
+	clamp_variable = { name = cp_bey_power min = 0 max = 10 }
+	change_variable = { name = cp_bey_certainty add = -2 }
+	clamp_variable = { name = cp_bey_certainty min = 0 max = 10 }
+	cp_shift_radical = { person = bey delta = 4 }
+}
+
+cp_bey_mark_serfdom_restored = {
+	cp_mark_event_seen = { person = bey id = serfdom_restored days = 1825 }
+	change_variable = { name = cp_bey_power add = 2 }
+	clamp_variable = { name = cp_bey_power min = 0 max = 10 }
+	change_variable = { name = cp_bey_certainty add = -1 }
+	clamp_variable = { name = cp_bey_certainty min = 0 max = 10 }
+	cp_shift_loyalist = { person = bey delta = 2 }
+}
+
+cp_bey_mark_commercialized_loss = {
+	cp_mark_event_seen = { person = bey id = commercialized days = 1825 }
+	set_variable = cp_bey_merchants_at_gate
+	change_variable = { name = cp_bey_power add = -2 }
+	clamp_variable = { name = cp_bey_power min = 0 max = 10 }
+	change_variable = { name = cp_bey_certainty add = -3 }
+	clamp_variable = { name = cp_bey_certainty min = 0 max = 10 }
+	cp_shift_radical = { person = bey delta = 3 }
+}
+
+cp_bey_mark_factory_boundary = {
+	cp_mark_event_seen = { person = bey id = factory_boundary days = 1825 }
+	change_variable = { name = cp_bey_power add = -1 }
+	clamp_variable = { name = cp_bey_power min = 0 max = 10 }
+	change_variable = { name = cp_bey_certainty add = -2 }
+	clamp_variable = { name = cp_bey_certainty min = 0 max = 10 }
+	cp_shift_radical = { person = bey delta = 2 }
+}
+
+cp_bey_mark_visitors_card = {
+	cp_mark_event_seen = { person = bey id = visitors_card days = 720 }
+	change_variable = { name = cp_bey_certainty add = -1 }
+	clamp_variable = { name = cp_bey_certainty min = 0 max = 10 }
+	cp_shift_loyalist = { person = bey delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_bey = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_bey_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_bey.10 person = bey }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_bey_seen_intro
+				NOT = { has_variable = cp_bey_seen_visitors_card }
+			}
+			cp_try_fire_ambient = { event = cp_bey.40 person = bey }
+		}
+		82 = { }
+	}
+}

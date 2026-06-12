@@ -1,0 +1,27 @@
+Common People character seed prompt: samier
+Source ledger: documentation/characters/samier/prompts/seed-v0.1.md
+Prompt heading: `cp_samier.10` - The Gate of Smoke
+Target source PNG: image/generated/character-seeds/v0.1/samier_02_cp_samier_10_the_gate_of_smoke.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Event: cp_samier.10 - "The Gate of Smoke"
+Narrative function: Factory work begins as a gate, a smell, and the first morning he belongs to a shift.
+Subject: Samier, nineteen, new factory worker.
+Scene/backdrop: factory gate at dawn, workers passing through smoke.
+Foreground action: Samier ties his lunch cloth tighter before stepping through the gate.
+Required object/gesture: lunch cloth in hands, smoke-dark gate.
+Lighting/mood: cold dawn, apprehension and motion.
+Avoid: triumphant industrial scene, modern factory, strike crowd.

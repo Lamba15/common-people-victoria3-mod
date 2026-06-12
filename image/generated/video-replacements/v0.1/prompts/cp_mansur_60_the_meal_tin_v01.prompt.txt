@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_mansur.60 at mod/events/cp_mansur_events.txt:241
+Previous vanilla video placeholder: southamerica_factory_opening
+Target DDS: mod/gfx/event_pictures/cp_mansur_60_the_meal_tin_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_mansur_60_the_meal_tin_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_mansur.60
+Person token: mansur
+Title: The Meal Tin
+Short description: Mansur carries his meal in a dented tin that knocks against his knee on the walk to the factory. Lentils, onion, a heel of bread wrapped in yesterday's paper: enough if the shift is honest, not enough if the bell stretches the afternoon thin. At noon he eats beside the wall where the heat from the looms settles in the plaster. Men talk about wages, foremen, a cousin who found better work near the station. Mansur saves the last piece of bread until the whistle blows again, then eats it standing, with oil on his thumb and the taste of home already gone from his mouth.
+Flavor text: Hunger learns the factory schedule faster than any new hand.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

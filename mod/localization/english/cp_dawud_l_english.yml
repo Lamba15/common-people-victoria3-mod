@@ -1,0 +1,30 @@
+﻿l_english:
+ cp_dawud.10.t:0 "The Rope Burn"
+ cp_dawud.10.d:0 "Port work finds Dawud by the rope before it finds him by name."
+ cp_dawud.10.f:0 "Dawud wraps a strip of linen around his palm and takes the line when the ship noses in. The rope goes tight with a sound like a door being forced, and the men lean back together, each one silent with his own small prayer. Salt has dried white on Dawud's cuffs. By evening it will be on his tongue, in his hair, and in the cracks of the coin he carries home."
+ cp_dawud.10.a:0 "The quay keeps its own hours."
+
+ cp_dawud.20.t:0 "The Iron Hook"
+ cp_dawud.20.d:0 "New cranes change the weight of a sack and the value of a shoulder."
+ cp_dawud.20.f:0 "The engineer speaks of leverage while the dockmen watch the hook swing over their heads. Dawud has lifted cotton, crates of kerosene, flour gone sour in damp sacks, and once a piano no one at the quay could imagine hearing. Now the iron arm lifts what twelve men used to curse into motion. Some laugh with relief. Some count the foreman's eyes and wonder whose name the slate will not need next month."
+ cp_dawud.20.a:0 "Iron does not ask whose back it spared."
+
+ cp_dawud.30.t:0 "Smoke at the Quay"
+ cp_dawud.30.d:0 "A steamship turns distance into timetable and hunger into cargo."
+ cp_dawud.30.f:0 "The old sailors call it ugly, but they stand closest when the smoke rises. Dawud smells coal before he sees the hull, then tar, then coffee, then the sour breath of men shut too long below deck. The manifest comes down in a clerk's clean hand. Its columns say cotton, rifles, sugar, lamp oil. Dawud reads none of the numbers, but he knows which crates are guarded and which are not, and that is another sort of literacy."
+ cp_dawud.30.a:0 "The sea has learned to count."
+
+ cp_dawud.40.t:0 "Salt on the Floor"
+ cp_dawud.40.d:0 "Dawud brings the harbor home in the hems of his clothes."
+ cp_dawud.40.f:0 "His wife sweeps after supper and finds salt under the chair, salt near the mat, salt where their little boy slept through the call to prayer and the church bell both. Dawud apologizes with the sheepishness of a man who cannot leave work at the door. The room smells faintly of rope and sea water. Outside, the city talks in several tongues at once, and none of them are quiet enough for sleep."
+ cp_dawud.40.a:0 "The broom knows the coast."
+
+ cp_dawud.50.t:0 "The Tariff Chalk"
+ cp_dawud.50.d:0 "A new trade law reaches the quay as chalk marks on crates and a clerk's different tone."
+ cp_dawud.50.f:0 "By noon the warehouse wall is a lesson in government. White chalk for cotton, red for kerosene, a black slash beside the crates that must wait until a stamped paper appears. The clerk says the rule has changed and says it as if the harbor should bow. Dawud watches men argue over fees they cannot read and goods they have already carried. One box has dates from Upper Egypt. Another has cloth from beyond the sea. Both smell of dust when the lid lifts."
+ cp_dawud.50.a:0 "The chalk comes off on his sleeve."
+
+ cp_dawud.60.t:0 "The Manifest Room"
+ cp_dawud.60.d:0 "A trade office asks Dawud to stand near the papers and remember what the columns forget."
+ cp_dawud.60.f:0 "The room above the quay has two windows and neither one opens far enough. Manifests lie in stacks, their ink drying into numbers that pretend not to be sacks, barrels, splintered boards, wet rope, bruised fingers, and men coughing coal dust into their cuffs. Dawud is called in because he knows which crate cracked in the rain and which sailor changed his story. The clerk writes while Dawud speaks. For once, his back is not the only record."
+ cp_dawud.60.a:0 "The paper listens badly, but it listens."

@@ -1,0 +1,266 @@
+﻿###############################################################################
+# Common People -- Yusuf ibn Mahmud events
+#
+# Yusuf is Person 3: a Misri soldier in Egypt whose arc lets war reach the
+# mod through someone who has to carry the rifle.
+###############################################################################
+
+namespace = cp_soldier
+
+
+# cp_soldier.1 -- hidden setup
+cp_soldier.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_soldier_alive
+		NOT = { has_variable = cp_soldier_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_soldier_alive value = 1 }
+		set_variable = { name = cp_soldier_age value = 20 }
+		set_variable = { name = cp_soldier_hope value = 5 }
+		set_variable = { name = cp_soldier_exhaustion value = 3 }
+		set_variable = { name = cp_soldier_sol value = 9 }
+		set_variable = { name = cp_soldier_literacy value = 4 }
+		set_variable = { name = cp_soldier_radical value = 1 }
+		set_variable = { name = cp_soldier_loyalist value = 1 }
+		set_variable = cp_soldier_profession_soldiers
+		set_variable = { name = cp_soldier_w_war value = 10 }
+		set_variable = { name = cp_soldier_w_family value = 9 }
+		set_variable = { name = cp_soldier_w_religion value = 5 }
+		set_variable = { name = cp_soldier_w_nationalism value = 5 }
+		set_variable = { name = cp_soldier_w_revolution value = 4 }
+
+		cp_set_person_home_state = { person = soldier country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = soldier place = kafr_al_gindi }
+		cp_set_person_workplace_profile = { person = soldier profile = military }
+		cp_soldier_refresh_sol = yes
+	}
+}
+
+
+# cp_soldier.10 -- "The Strap"
+cp_soldier.10 = {
+	type = country_event
+
+	title = cp_soldier.10.t
+	desc = cp_soldier.10.d
+	flavor = cp_soldier.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_soldier_intro.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_soldier_alive
+		var:cp_soldier_alive > 0
+		NOT = { has_variable = cp_soldier_seen_intro }
+		NOT = { has_variable = cp_soldier_at_war }
+	}
+
+	immediate = {
+		cp_soldier_mark_intro = yes
+	}
+
+	option = {
+		name = cp_soldier.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_soldier.20 -- "The Notice"
+cp_soldier.20 = {
+	type = country_event
+
+	title = cp_soldier.20.t
+	desc = cp_soldier.20.d
+	flavor = cp_soldier.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_soldier_notice.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_soldier_alive
+		var:cp_soldier_alive > 0
+		NOT = { has_variable = cp_soldier_at_war }
+		NOT = { has_variable = cp_soldier_seen_notice }
+	}
+
+	immediate = {
+		cp_soldier_mark_notice = yes
+	}
+
+	option = {
+		name = cp_soldier.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_soldier.21 -- "The Road Back"
+cp_soldier.21 = {
+	type = country_event
+
+	title = cp_soldier.21.t
+	desc = cp_soldier.21.d
+	flavor = cp_soldier.21.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_soldier_return_v02.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_soldier_alive
+		var:cp_soldier_alive > 0
+		has_variable = cp_soldier_at_war
+		NOT = { has_variable = cp_soldier_seen_return }
+	}
+
+	immediate = {
+		cp_soldier_mark_return = yes
+	}
+
+	option = {
+		name = cp_soldier.21.a
+		default_option = yes
+	}
+}
+
+
+# cp_soldier.30 -- "The Arsenal Gate"
+cp_soldier.30 = {
+	type = country_event
+
+	title = cp_soldier.30.t
+	desc = cp_soldier.30.d
+	flavor = cp_soldier.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_soldier_arsenal_gate_v03.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_soldier_alive
+		var:cp_soldier_alive > 0
+		NOT = { has_variable = cp_soldier_seen_arsenal_gate }
+	}
+
+	immediate = {
+		cp_soldier_mark_arsenal_gate = yes
+	}
+
+	option = {
+		name = cp_soldier.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_soldier.40 -- "Beans at Dusk"
+cp_soldier.40 = {
+	type = country_event
+
+	title = cp_soldier.40.t
+	desc = cp_soldier.40.d
+	flavor = cp_soldier.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_soldier_beans_dusk_v03.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/spiritual"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_soldier_alive
+		var:cp_soldier_alive > 0
+		has_variable = cp_soldier_seen_intro
+		NOT = { has_variable = cp_soldier_at_war }
+		NOT = { has_variable = cp_soldier_seen_beans_dusk }
+	}
+
+	immediate = {
+		cp_soldier_mark_beans_dusk = yes
+	}
+
+	option = {
+		name = cp_soldier.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_soldier.50 -- "The Letter Folded Twice"
+cp_soldier.50 = {
+	type = country_event
+
+	title = cp_soldier.50.t
+	desc = cp_soldier.50.d
+	flavor = cp_soldier.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_soldier_letter_folded_v03.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_soldier_alive
+		var:cp_soldier_alive > 0
+		has_variable = cp_soldier_at_war
+		has_variable = cp_soldier_seen_notice
+		NOT = { has_variable = cp_soldier_seen_letter_folded }
+	}
+
+	immediate = {
+		cp_soldier_mark_letter_folded = yes
+	}
+
+	option = {
+		name = cp_soldier.50.a
+		default_option = yes
+	}
+}

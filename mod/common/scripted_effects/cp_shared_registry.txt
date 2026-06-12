@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- shared person registry (r5)
 #
 # A "person" is a narrative object owned by the mod: a character whose life we
@@ -36,21 +36,19 @@
 #
 # Side effects:
 #   - Global variables: cp_person_$person$_alive, cp_person_$person$_country
-#   - Country variables on c:$country$:
-#       cp_$person$_alive, cp_$person$_age, cp_$person$_hope,
-#       cp_$person$_exhaustion, cp_$person$_sol, cp_$person$_literacy,
-#       cp_$person$_profession_$profession$
-#   - State marker on home_state: cp_$person$_lives_here
+#   - Country variables and home-state markers are initialized by the
+#     person's hidden setup event immediately after registration.
 # ============================================================================
 
 cp_register_person = {
-	# Global registry — these flags let the shared dispatcher know this
-	# person exists and which country they currently live in.
+	# Global registry — this flag lets the shared dispatcher know this person
+	# exists. The $country$ param must be used (V3 compiler rule), so we
+	# store the country as a scope reference in a separate global.
 	set_global_variable = { name = cp_person_$person$_alive   value = yes }
-	set_global_variable = { name = cp_person_$person$_country value = $country$ }
+	set_global_variable = { name = cp_person_$person$_country value = c:$country$ }
 
 	# Each person's detailed country-variable init happens in their own
-	# startup event (e.g. cp_startup.1 for Layla). That event reads the
+	# startup event (e.g. cp_layla_setup.1 for Layla). That event reads the
 	# registry flag to know whether it should run. Keeping this effect
 	# minimal avoids overwriting anything the per-person init set.
 }
@@ -71,6 +69,7 @@ cp_register_person = {
 cp_person_dies = {
 	c:$country$ = {
 		set_variable = { name = cp_$person$_alive value = 0 }
+		cp_refresh_active_roster = yes
 	}
 	remove_global_variable = cp_person_$person$_alive
 }

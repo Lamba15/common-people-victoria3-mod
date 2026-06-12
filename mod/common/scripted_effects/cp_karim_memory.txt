@@ -1,0 +1,265 @@
+﻿###############################################################################
+# Common People -- Karim al-Nahhas's memory
+#
+# Person 13 scaffold. Karim is registered as `karim`, not as a V3 character.
+# He enters conditionally when machine tools, steel, or engines make factory
+# skill visible through ordinary hands.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_karim_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = karim
+		culture = misri
+		religion = sunni
+		poptype = machinists
+	}
+}
+
+
+# --- Conditional entry ------------------------------------------------------
+cp_karim_try_spawn = {
+	if = {
+		limit = {
+			c:EGY ?= this
+			NOT = { has_global_variable = cp_person_karim_alive }
+			NOT = { has_variable = cp_karim_alive }
+			OR = {
+				cp_country_has_machine_industry = yes
+				has_technology_researched = mechanical_tools
+				AND = {
+					cp_country_has_manufacturing = yes
+					cp_era_1850_to_1880 = yes
+				}
+				AND = {
+					cp_country_has_manufacturing = yes
+					cp_era_after_1880 = yes
+				}
+			}
+		}
+		cp_mark_person_spawn_home_from_machine_industry = { person = karim }
+		cp_mark_person_spawn_home_from_manufacturing = { person = karim }
+		cp_register_person = {
+			person = karim
+			country = EGY
+		}
+		cp_karim_dispatch_startup = yes
+		trigger_event = { id = cp_karim.1 }
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_karim_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_karim_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_karim_dispatch_yearly = {
+	cp_age_increment = { person = karim }
+	cp_karim_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = karim country = EGY }
+	if = {
+		limit = {
+			has_variable = cp_karim_seen_intro
+			NOT = { has_variable = cp_karim_seen_broken_finger }
+			cp_person_home_has_machine_industry = { person = karim }
+		}
+		random_list = {
+			10 = { cp_try_fire_world_response = { event = cp_karim.30 person = karim } }
+			90 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = cp_karim_seen_intro
+			NOT = { has_variable = cp_karim_seen_night_gauge }
+			cp_person_home_has_machine_industry = { person = karim }
+		}
+		random_list = {
+			12 = { cp_try_fire_world_response = { event = cp_karim.60 person = karim } }
+			88 = { }
+		}
+	}
+}
+
+cp_karim_dispatch_law_enacted = {
+	cp_person_hook_noop = yes
+}
+
+cp_karim_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_karim_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_karim_dispatch_tech = {
+	if = {
+		limit = {
+			has_technology_researched = mechanical_tools
+			cp_person_home_has_machine_industry = { person = karim }
+			NOT = { has_variable = cp_karim_seen_tool_bench }
+		}
+		cp_try_fire_world_response = { event = cp_karim.20 person = karim }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_technology_researched = rotary_valve_engine
+				has_technology_researched = combustion_engine
+			}
+			cp_person_home_has_machine_industry = { person = karim }
+			NOT = { has_variable = cp_karim_seen_new_engine }
+		}
+		cp_try_fire_world_response = { event = cp_karim.40 person = karim }
+	}
+}
+
+cp_karim_dispatch_building = {
+	if = {
+		limit = {
+			OR = {
+				is_building_type = building_tooling_workshop
+				is_building_type = building_steel_mill
+				is_building_type = building_motor_industry
+			}
+			cp_building_affects_person_workplace = { person = karim }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = karim }
+				NOT = { has_variable = cp_karim_seen_intro }
+			}
+		}
+		owner ?= {
+			random_list = {
+				60 = { cp_try_fire_world_response = { event = cp_karim.10 person = karim } }
+				40 = { }
+			}
+		}
+	}
+	if = {
+		limit = {
+			is_building_type = building_tooling_workshop
+			cp_building_affects_person_workplace = { person = karim }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = karim }
+				NOT = { has_variable = cp_karim_seen_tool_bench }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_karim.20 person = karim }
+		}
+	}
+	if = {
+		limit = {
+			is_building_type = building_steel_mill
+			cp_building_affects_person_workplace = { person = karim }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = karim }
+				has_variable = cp_karim_seen_intro
+				NOT = { has_variable = cp_karim_seen_steel_color }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_karim.50 person = karim }
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				is_building_type = building_tooling_workshop
+				is_building_type = building_motor_industry
+			}
+			cp_building_affects_person_workplace = { person = karim }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = karim }
+				has_variable = cp_karim_seen_intro
+				NOT = { has_variable = cp_karim_seen_night_gauge }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_karim.60 person = karim }
+		}
+	}
+}
+
+cp_karim_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_karim_mark_intro = {
+	cp_mark_event_seen = { person = karim id = intro days = 3650 }
+	cp_shift_literacy = { person = karim delta = 1 }
+	cp_shift_weight = { person = karim weight = machines delta = 1 }
+}
+
+cp_karim_mark_tool_bench = {
+	cp_mark_event_seen = { person = karim id = tool_bench days = 1825 }
+	cp_shift_literacy = { person = karim delta = 1 }
+	cp_shift_weight = { person = karim weight = precision delta = 2 }
+}
+
+cp_karim_mark_broken_finger = {
+	cp_mark_event_seen = { person = karim id = broken_finger days = 1825 }
+	cp_shift_exhaustion = { person = karim delta = 2 }
+	cp_shift_radical = { person = karim delta = 1 }
+}
+
+cp_karim_mark_new_engine = {
+	cp_mark_event_seen = { person = karim id = new_engine days = 1825 }
+	cp_shift_hope = { person = karim delta = 1 }
+	cp_shift_weight = { person = karim weight = engines delta = 2 }
+}
+
+cp_karim_mark_steel_color = {
+	cp_mark_event_seen = { person = karim id = steel_color days = 1825 }
+	cp_shift_exhaustion = { person = karim delta = 1 }
+	cp_shift_weight = { person = karim weight = machines delta = 1 }
+	cp_shift_weight = { person = karim weight = precision delta = 1 }
+}
+
+cp_karim_mark_night_gauge = {
+	cp_mark_event_seen = { person = karim id = night_gauge days = 720 }
+	cp_shift_literacy = { person = karim delta = 1 }
+	cp_shift_weight = { person = karim weight = precision delta = 1 }
+	cp_shift_exhaustion = { person = karim delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_karim = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_karim_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_karim.10 person = karim }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_karim_seen_intro
+				NOT = { has_variable = cp_karim_seen_broken_finger }
+			}
+			cp_try_fire_ambient = { event = cp_karim.30 person = karim }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_karim_seen_intro
+				NOT = { has_variable = cp_karim_seen_night_gauge }
+			}
+			cp_try_fire_ambient = { event = cp_karim.60 person = karim }
+		}
+		74 = { }
+	}
+}

@@ -1,0 +1,27 @@
+Common People The Soldier v0.3 replacement prompt
+Source ledger: documentation/characters/the-soldier/prompts/replacement-batch-v0.3.md
+Target DDS: mod/gfx/event_pictures/cp_soldier_beans_dusk_v03.dds
+Source PNG: image/generated/soldier/v0.3/cp_soldier_beans_dusk_v03.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Yusuf ibn Mahmud, a young Misri Egyptian soldier around 20; worn uniform, observant and uneasy, family-bound, never heroic propaganda.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide. Put Yusuf, the key action, and required object in the left half or center-left; right half can carry barracks, rifles, smoke, bedding, and atmosphere.
+Constraints: no readable text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic parade, no battlefield poster, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_soldier.40 - "Beans at Dusk"
+Narrative function: ordinary warmth survives inside military hardship for a moment.
+Subject: Yusuf sitting with other soldiers, tired and tender.
+Scene/backdrop: modest Egyptian barracks courtyard or room at dusk with low wall, oil lamp, rolled bedding, rifles stacked nearby, city lamps beginning outside the gate.
+Foreground action: Yusuf sits with his back to a wall, holding a warm bowl of thin beans and carefully tearing bread.
+Required object/gesture: bowl of beans, torn bread, rifles stacked nearby, evening lamp light.
+Background detail: two or three soldiers eating or humming quietly, rolled bedding, dusk gate.
+Lighting/mood: dusk and lamplight, homesickness, small shared humanity, no spectacle.
+Avoid: cafe scene, grand city plaza, banquet table, heroic military poster, modern mess hall.

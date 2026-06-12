@@ -1,0 +1,27 @@
+Common People Mina v0.2 replacement prompt
+Source ledger: documentation/characters/mina/prompts/replacement-batch-v0.2.md
+Target DDS: mod/gfx/event_pictures/cp_mina_courtyard_sheet_v02.dds
+Source PNG: image/generated/mina/v0.2/cp_mina_courtyard_sheet_v02.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Mina, a young Coptic Egyptian printer's apprentice in late-19th-century Cairo; keep him grounded, unheroic, ink-stained, and visibly shaped by workshop labor.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: event-window readable at small size, close-medium or medium-wide, essential face/action/object in the left half or center-left, right half safe for atmosphere.
+Constraints: no readable text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_mina.60 - "The Courtyard Sheet"
+Narrative function: a printed sheet becomes public life as ordinary people pass it from hand to hand after church.
+Subject: Mina in a simple dark robe or work clothes among Coptic courtyard neighbors; he remains a participant, not a preacher.
+Scene/backdrop: small church courtyard in Cairo with sunlit plaster walls, archway, doorway, and a pinned notice on the right-side wall.
+Foreground action: Mina offers or reads a sheet to an older woman while a boy watches and points.
+Required object/gesture: sheet held between hands in the left half of frame, no readable text; pinned blank notice on the wall as secondary background.
+Background detail: church cross, older men arguing quietly, dusty courtyard stones, warm afternoon light.
+Lighting/mood: civic and communal, gentle tension, no sermon or spectacle.
+Avoid: marketplace crowd, readable notice, modern church architecture, fantasy religious iconography.

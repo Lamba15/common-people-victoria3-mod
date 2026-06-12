@@ -1,0 +1,151 @@
+﻿###############################################################################
+# Common People -- Mina's memory
+#
+# Person 7 scaffold. Mina is registered as `mina`, not as a V3 character.
+# He carries the urban print/education thread from a Coptic workshop in Cairo.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_mina_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = mina
+		culture = misri
+		religion = orthodox
+		poptype = clerks
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_mina_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_mina_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_mina_dispatch_yearly = {
+	cp_age_increment = { person = mina }
+	cp_mina_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = mina country = EGY }
+}
+
+cp_mina_dispatch_law_enacted = {
+	cp_person_hook_noop = yes
+}
+
+cp_mina_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_mina_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_mina_dispatch_tech = {
+	if = {
+		limit = {
+			cp_country_has_modern_records = yes
+			NOT = { has_variable = cp_mina_seen_notice_sheet }
+		}
+		cp_try_fire_world_response = { event = cp_mina.30 person = mina }
+	}
+}
+
+cp_mina_dispatch_building = {
+	if = {
+		limit = {
+			OR = {
+				is_building_type = building_university
+				is_building_type = building_government_administration
+			}
+			cp_building_affects_person_workplace = { person = mina }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = mina }
+				NOT = { has_variable = cp_mina_seen_catalogue_room }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_mina.50 person = mina }
+		}
+	}
+}
+
+cp_mina_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_mina_mark_intro = {
+	cp_mark_event_seen = { person = mina id = intro days = 3650 }
+	cp_shift_hope = { person = mina delta = 1 }
+}
+
+cp_mina_mark_public_schools = {
+	cp_mark_event_seen = { person = mina id = public_schools days = 3650 }
+	set_variable = cp_mina_printed_primer
+	cp_shift_hope = { person = mina delta = 2 }
+	cp_shift_loyalist = { person = mina delta = 1 }
+	cp_shift_weight = { person = mina weight = education delta = 2 }
+	cp_shift_weight = { person = mina weight = religion delta = 1 }
+}
+
+cp_mina_mark_notice_sheet = {
+	cp_mark_event_seen = { person = mina id = notice_sheet days = 1825 }
+	set_variable = cp_mina_prints_public_notices
+	cp_shift_literacy = { person = mina delta = 1 }
+	cp_shift_weight = { person = mina weight = politics delta = 1 }
+}
+
+cp_mina_mark_night_proof = {
+	cp_mark_event_seen = { person = mina id = night_proof days = 540 }
+	cp_shift_exhaustion = { person = mina delta = 1 }
+	cp_shift_weight = { person = mina weight = work delta = 1 }
+}
+
+cp_mina_mark_catalogue_room = {
+	cp_mark_event_seen = { person = mina id = catalogue_room days = 1825 }
+	set_variable = cp_mina_prints_catalogues
+	cp_shift_literacy = { person = mina delta = 1 }
+	cp_shift_weight = { person = mina weight = education delta = 1 }
+	cp_shift_weight = { person = mina weight = city delta = 1 }
+}
+
+cp_mina_mark_courtyard_sheet = {
+	cp_mark_event_seen = { person = mina id = courtyard_sheet days = 720 }
+	cp_shift_hope = { person = mina delta = 1 }
+	cp_shift_weight = { person = mina weight = religion delta = 1 }
+	cp_shift_weight = { person = mina weight = city delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_mina = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_mina_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_mina.10 person = mina }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_mina_seen_intro
+				NOT = { has_variable = cp_mina_seen_night_proof }
+			}
+			cp_try_fire_ambient = { event = cp_mina.40 person = mina }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_mina_seen_intro
+				NOT = { has_variable = cp_mina_seen_courtyard_sheet }
+			}
+			cp_try_fire_ambient = { event = cp_mina.60 person = mina }
+		}
+		74 = { }
+	}
+}

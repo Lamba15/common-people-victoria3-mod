@@ -1,0 +1,31 @@
+Common People character seed prompt: karim
+Source ledger: documentation/characters/karim/prompts/seed-v0.1.md
+Prompt heading: Canonical Portrait
+Target source PNG: image/generated/character-seeds/v0.1/karim_01_canonical_portrait.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Use case: historical-scene
+Asset type: Common People canonical character portrait, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism portrait-scene for Karim al-Nahhas in the Common People Victoria 3 mod.
+Subject: Karim al-Nahhas, Misri Egyptian Sunni machinist around twenty-four, compact build, serious dark eyes, olive-brown skin, short black hair, rolled sleeves, worn leather apron, oil-blackened fingernails.
+Scene/backdrop: Cairo machine shop, gear teeth, belt drive, tool bench, iron filings catching light.
+Foreground action: Karim holds a small caliper against a metal part, his face close enough to listen to the machine.
+Required object/gesture: caliper, oil-blackened fingers, and gear teeth must be legible at 600x400.
+Composition/framing: close-medium, Karim at workbench, machinery close but not swallowing him.
+Lighting/mood: hot workshop light, concentration, danger made ordinary.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials.
+Constraints: no text, no UI, no border, no watermark, no modern tools, no safety goggles.
+Avoid: genius inventor pose, giant fantasy gears, clean showroom machine, owner inspecting workers.

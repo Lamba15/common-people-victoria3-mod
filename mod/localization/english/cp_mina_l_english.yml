@@ -1,0 +1,32 @@
+﻿l_english:
+ # Mina -- Person 7: a Coptic printer's apprentice in Cairo
+
+ cp_mina.10.t:0 "The Letters Set in Lead"
+ cp_mina.10.d:0 "Mina sets the last line before the morning call has finished moving across the roofs."
+ cp_mina.10.f:0 "The letters are cold when he lifts them and warm by the time he locks them into the chase. They blacken the grooves of his fingers. His master says a good printer can read with his hands before his eyes have caught the word; Mina does not yet believe this, but he knows, already, the weight of a mistake. A single letter backward and a whole sentence shames itself. Outside, Cairo opens its shutters. Inside, under the small cross above the paper shelf, he lowers the press and feels the page accept its pressure."
+ cp_mina.10.a:0 "#italic The page is ordinary. That is why it matters.#!"
+
+ cp_mina.20.t:0 "The Primer Leaves the Press"
+ cp_mina.20.d:0 "The order is not large. That is the first thing everyone says about it, as if smallness can make a thing harmless."
+ cp_mina.20.f:0 "A schoolmaster comes with a list, a seal, and a purse that has been counted twice before he enters the shop. Primers, he says. Cheap paper, plain cover, enough for a class and enough again for the class that follows when the first set tears. Mina stands beside the press and watches the first sheet come up wet with ink. The alphabet sits there in rows, patient as seed. By afternoon a Muslim mother and a Coptic father are both at the doorway, both pretending not to stare too long at the tied bundles. The mother touches the top booklet with two fingers. The father clears his throat. Mina says, because no one else has decided who should speak, that the ink will dry before evening."
+ cp_mina.20.a:0 "#italic Let the letters go where hands have not yet held them.#!"
+
+ cp_mina.30.t:0 "The Notice Sheet"
+ cp_mina.30.d:0 "Modern records arrive at the workshop as names that must be spelled exactly."
+ cp_mina.30.f:0 "The government clerk brings the list folded into quarters and guarded like a relic. Mina smooths it under the stone and sees what frightens the man: names, numbers, villages, fathers' names, all of them demanding to be the same on every sheet. A misplaced letter can close a door or open the wrong one. His master mutters that paper has become a second face. Mina sets the first line slowly, feeling the city gather itself into type."
+ cp_mina.30.a:0 "#italic No letter is harmless now.#!"
+
+ cp_mina.40.t:0 "The Night Proof"
+ cp_mina.40.d:0 "Long after the shutters close, Mina reads the page backward for mistakes."
+ cp_mina.40.f:0 "The shop is quiet enough for the press to tick as it cools. Mina holds the proof near the lamp and reads the words in reverse order, letter by letter, as his master taught him. In the alley someone laughs, then coughs, then walks away. He finds one wrong letter in a merchant's notice and one smudged line in a school sheet. He fixes both before sleep can claim him. By morning no one will know the error was ever there, which is the printer's only kind of mercy."
+ cp_mina.40.a:0 "#italic The page goes out clean.#!"
+
+ cp_mina.50.t:0 "The Catalogue Room"
+ cp_mina.50.d:0 "A new office orders catalogues, and Mina learns that knowledge also has margins."
+ cp_mina.50.f:0 "The list arrives tied with blue cord and smelling faintly of dust, ink, and government storage. Professors' names, room numbers, examination dates, fees, regulations, the proper spelling of a foreign word nobody in the shop agrees how to pronounce. Mina sets each line with care, leaving enough space for the eye to breathe. His master says officials notice only mistakes. Mina thinks of the students who will run a finger down the page and find where they are meant to stand."
+ cp_mina.50.a:0 "#italic Leave a margin wide enough for a thumb.#!"
+
+ cp_mina.60.t:0 "The Courtyard Sheet"
+ cp_mina.60.d:0 "After liturgy, a sheet of small notices moves from hand to hand in the church courtyard."
+ cp_mina.60.f:0 "The paper is pinned to the courtyard wall with a bent nail, but no one leaves it there. A widow reads the work notice twice. A boy asks Mina whether the school line means boys like him or boys with better shoes. Near the door, two old men argue over a date and then ask him to settle it, as if the printer has authority over time because he set the numbers straight. Mina smiles and does not say that one digit almost slipped backward at dawn."
+ cp_mina.60.a:0 "#italic The sheet is passed carefully, edge to edge.#!"

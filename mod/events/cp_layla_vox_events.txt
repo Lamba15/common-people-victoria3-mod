@@ -1,0 +1,4296 @@
+﻿###############################################################################
+# Common People -- Layla, voices (cp_layla_vox)
+#
+# Legacy Layla-only voice tree. The old "A word between" journal button has
+# been retired so the persistent UI no longer privileges one person. Keep this
+# tree available for generated QA selectors and future salvage into a shared
+# roster-level conversation lane.
+#
+# Numbering:
+#   Scenario-pickers (hidden):
+#     10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+#   Scenarios per interlocutor:
+#     Ahmed:       11..16, 19 fallback
+#     Daughter:    21..25, 29 fallback
+#     Mother:      31..34, 39 fallback
+#     Um Yusuf:    41..44, 49 fallback
+#     Umm Mariam:  51..54, 59 fallback
+#     Bey:         61..65, 69 fallback
+#     Factory:     71..75, 79 fallback
+#     Stranger:    81..86, 89 fallback
+#     Herself/God: 91..96, 99 fallback
+#     Ruler:       101..106, 109 fallback
+#   Branches (follow-ups for scenario X):
+#     (X*100)+branch_idx. E.g. scenario 11 has branches 1101, 1102, 1103.
+#
+# Cooldowns & seen-flags:
+#   - Each scenario's immediate sets cp_layla_audience_cooldown (days=180)
+#     so the button is limited to ~2 clicks per in-game year.
+#   - Each scenario sets its own cp_layla_spoke_<topic> seen-flag (days=540)
+#     so the same scene doesn't reopen for 18 months.
+#
+# Weight shifts:
+#   Each option applies one of cp_shift_hope / cp_shift_exhaustion /
+#   cp_shift_radical / cp_shift_loyalist / cp_flag_recent_joy /
+#   cp_flag_recent_hardship, via the shared primitives in cp_shared_memory.txt.
+###############################################################################
+
+namespace = cp_layla_vox
+
+
+# ============================================================================
+# AHMED -- cp_layla_vox.10 scenario picker
+# ============================================================================
+# Gated upstream in cp_layla_roll_interlocutor on cp_layla_ahmed_alive.
+# Hidden; chooses which Ahmed-scene to open based on his and her state.
+
+cp_layla_vox.10 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		random_list = {
+			# Ahmed at war, the letter doesn't come
+			25 = {
+				trigger = {
+					has_variable = cp_layla_ahmed_at_war
+					NOT = { has_variable = cp_layla_spoke_ahmed_letter }
+				}
+				trigger_event = { id = cp_layla_vox.11 popup = yes }
+			}
+			# The first year, newly married
+			15 = {
+				trigger = {
+					var:cp_layla_age < 28
+					NOT = { has_variable = cp_layla_spoke_ahmed_newly }
+				}
+				trigger_event = { id = cp_layla_vox.12 popup = yes }
+			}
+			# Home from the fields
+			20 = {
+				trigger = {
+					OR = {
+						has_variable = cp_layla_profession_peasants
+						has_variable = cp_layla_profession_farmers
+						has_variable = cp_layla_owns_land
+						has_variable = cp_layla_under_serfdom
+					}
+					NOT = { has_variable = cp_layla_spoke_ahmed_fields }
+				}
+				trigger_event = { id = cp_layla_vox.13 popup = yes }
+			}
+			# Ahmed at the mill: oil on his shirt
+			20 = {
+				trigger = {
+					has_variable = cp_layla_ahmed_profession_laborer
+					NOT = { has_variable = cp_layla_spoke_ahmed_mill }
+				}
+				trigger_event = { id = cp_layla_vox.14 popup = yes }
+			}
+			# The room dark, before sleep
+			15 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_ahmed_dark } }
+				trigger_event = { id = cp_layla_vox.15 popup = yes }
+			}
+			# Old age, his knees
+			15 = {
+				trigger = {
+					var:cp_layla_age >= 55
+					NOT = { has_variable = cp_layla_spoke_ahmed_old } }
+				trigger_event = { id = cp_layla_vox.16 popup = yes }
+			}
+			# Fallback
+			2 = {
+				trigger_event = { id = cp_layla_vox.19 popup = yes }
+			}
+		}
+	}
+}
+
+
+# ============================================================================
+# cp_layla_vox.11 -- AHMED: at war, the letter has not come
+# ============================================================================
+
+cp_layla_vox.11 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla_vox.11.t
+	desc = cp_layla_vox.11.d
+	flavor = cp_layla_vox.11.flavor
+
+	event_image = { texture = "gfx/event_pictures/cp_layla_letter_not_come_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 5
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_ahmed_letter days = 540 }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.11.a
+		trigger_event = { id = cp_layla_vox.1101 popup = yes }
+	}
+	option = {
+		name = cp_layla_vox.11.b
+		trigger_event = { id = cp_layla_vox.1102 popup = yes }
+	}
+	option = {
+		name = cp_layla_vox.11.c
+		trigger_event = { id = cp_layla_vox.1103 popup = yes }
+	}
+}
+
+cp_layla_vox.1101 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1101.t
+	desc = cp_layla_vox.1101.d
+	flavor = cp_layla_vox.1101.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_letter_not_come_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1101.a
+		cp_shift_exhaustion = { person = layla delta = 1 }
+		cp_flag_recent_hardship = { person = layla }
+	}
+}
+
+cp_layla_vox.1102 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1102.t
+	desc = cp_layla_vox.1102.d
+	flavor = cp_layla_vox.1102.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_letter_not_come_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1102.a
+		cp_shift_hope = { person = layla delta = 1 }
+	}
+}
+
+cp_layla_vox.1103 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1103.t
+	desc = cp_layla_vox.1103.d
+	flavor = cp_layla_vox.1103.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_letter_not_come_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1103.a
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_shift_exhaustion = { person = layla delta = 1 }
+	}
+}
+
+
+# ============================================================================
+# cp_layla_vox.12 -- AHMED: the first year, newly married
+# ============================================================================
+
+cp_layla_vox.12 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla_vox.12.t
+	desc = cp_layla_vox.12.d
+	flavor = cp_layla_vox.12.flavor
+
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_ahmed_newly days = 540 }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.12.a
+		trigger_event = { id = cp_layla_vox.1201 popup = yes }
+	}
+	option = {
+		name = cp_layla_vox.12.b
+		trigger_event = { id = cp_layla_vox.1202 popup = yes }
+	}
+	option = {
+		name = cp_layla_vox.12.c
+		trigger_event = { id = cp_layla_vox.1203 popup = yes }
+	}
+}
+
+cp_layla_vox.1201 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1201.t
+	desc = cp_layla_vox.1201.d
+	flavor = cp_layla_vox.1201.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1201.a
+		cp_flag_recent_joy = { person = layla }
+		cp_shift_hope = { person = layla delta = 1 }
+	}
+}
+
+cp_layla_vox.1202 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1202.t
+	desc = cp_layla_vox.1202.d
+	flavor = cp_layla_vox.1202.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1202.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+cp_layla_vox.1203 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1203.t
+	desc = cp_layla_vox.1203.d
+	flavor = cp_layla_vox.1203.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1203.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+
+# ============================================================================
+# cp_layla_vox.13 -- AHMED: home from the fields
+# ============================================================================
+
+cp_layla_vox.13 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla_vox.13.t
+	desc = cp_layla_vox.13.d
+	flavor = cp_layla_vox.13.flavor
+
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_ahmed_fields days = 540 }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.13.a
+		trigger_event = { id = cp_layla_vox.1301 popup = yes }
+	}
+	option = {
+		name = cp_layla_vox.13.b
+		trigger_event = { id = cp_layla_vox.1302 popup = yes }
+	}
+	option = {
+		name = cp_layla_vox.13.c
+		trigger_event = { id = cp_layla_vox.1303 popup = yes }
+	}
+}
+
+cp_layla_vox.1301 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1301.t
+	desc = cp_layla_vox.1301.d
+	flavor = cp_layla_vox.1301.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1301.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+cp_layla_vox.1302 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1302.t
+	desc = cp_layla_vox.1302.d
+	flavor = cp_layla_vox.1302.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1302.a
+		cp_shift_exhaustion = { person = layla delta = 1 }
+	}
+}
+
+cp_layla_vox.1303 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1303.t
+	desc = cp_layla_vox.1303.d
+	flavor = cp_layla_vox.1303.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1303.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+
+# ============================================================================
+# cp_layla_vox.14 -- AHMED: the mill, oil and quiet
+# ============================================================================
+
+cp_layla_vox.14 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla_vox.14.t
+	desc = cp_layla_vox.14.d
+	flavor = cp_layla_vox.14.flavor
+
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_mill_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_ahmed_mill days = 540 }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.14.a
+		trigger_event = { id = cp_layla_vox.1401 popup = yes }
+	}
+	option = {
+		name = cp_layla_vox.14.b
+		trigger_event = { id = cp_layla_vox.1402 popup = yes }
+	}
+	option = {
+		name = cp_layla_vox.14.c
+		trigger_event = { id = cp_layla_vox.1403 popup = yes }
+	}
+}
+
+cp_layla_vox.1401 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1401.t
+	desc = cp_layla_vox.1401.d
+	flavor = cp_layla_vox.1401.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_mill_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1401.a
+		cp_shift_exhaustion = { person = layla delta = 1 }
+	}
+}
+
+cp_layla_vox.1402 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1402.t
+	desc = cp_layla_vox.1402.d
+	flavor = cp_layla_vox.1402.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_mill_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1402.a
+		cp_shift_radical = { person = layla delta = 1 }
+	}
+}
+
+cp_layla_vox.1403 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1403.t
+	desc = cp_layla_vox.1403.d
+	flavor = cp_layla_vox.1403.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_mill_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1403.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+
+# ============================================================================
+# cp_layla_vox.15 -- AHMED: before sleep, the room dark
+# ============================================================================
+
+cp_layla_vox.15 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla_vox.15.t
+	desc = cp_layla_vox.15.d
+	flavor = cp_layla_vox.15.flavor
+
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_room_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_ahmed_dark days = 540 }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.15.a
+		trigger_event = { id = cp_layla_vox.1501 popup = yes }
+	}
+	option = {
+		name = cp_layla_vox.15.b
+		trigger_event = { id = cp_layla_vox.1502 popup = yes }
+	}
+	option = {
+		name = cp_layla_vox.15.c
+		trigger_event = { id = cp_layla_vox.1503 popup = yes }
+	}
+}
+
+cp_layla_vox.1501 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1501.t
+	desc = cp_layla_vox.1501.d
+	flavor = cp_layla_vox.1501.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_room_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1501.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+cp_layla_vox.1502 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1502.t
+	desc = cp_layla_vox.1502.d
+	flavor = cp_layla_vox.1502.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_room_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1502.a
+		cp_shift_exhaustion = { person = layla delta = 1 }
+	}
+}
+
+cp_layla_vox.1503 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1503.t
+	desc = cp_layla_vox.1503.d
+	flavor = cp_layla_vox.1503.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_room_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1503.a
+		cp_flag_recent_hardship = { person = layla }
+	}
+}
+
+
+# ============================================================================
+# cp_layla_vox.16 -- AHMED: old age, his knees on the mat
+# ============================================================================
+
+cp_layla_vox.16 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla_vox.16.t
+	desc = cp_layla_vox.16.d
+	flavor = cp_layla_vox.16.flavor
+
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_ahmed_old days = 540 }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.16.a
+		trigger_event = { id = cp_layla_vox.1601 popup = yes }
+	}
+	option = {
+		name = cp_layla_vox.16.b
+		trigger_event = { id = cp_layla_vox.1602 popup = yes }
+	}
+	option = {
+		name = cp_layla_vox.16.c
+		trigger_event = { id = cp_layla_vox.1603 popup = yes }
+	}
+}
+
+cp_layla_vox.1601 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1601.t
+	desc = cp_layla_vox.1601.d
+	flavor = cp_layla_vox.1601.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1601.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+cp_layla_vox.1602 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1602.t
+	desc = cp_layla_vox.1602.d
+	flavor = cp_layla_vox.1602.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1602.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+cp_layla_vox.1603 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1603.t
+	desc = cp_layla_vox.1603.d
+	flavor = cp_layla_vox.1603.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.1603.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+
+# ============================================================================
+# cp_layla_vox.19 -- AHMED: fallback (nothing, tonight)
+# ============================================================================
+
+cp_layla_vox.19 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla_vox.19.t
+	desc = cp_layla_vox.19.d
+	flavor = cp_layla_vox.19.flavor
+
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_ahmed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.19.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+
+# ============================================================================
+# DAUGHTER -- cp_layla_vox.20 scenario picker
+# ============================================================================
+
+cp_layla_vox.20 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		random_list = {
+			# A question she cannot answer
+			20 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_daughter_q } }
+				trigger_event = { id = cp_layla_vox.21 popup = yes }
+			}
+			# Teaching her to knead
+			20 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_daughter_bread } }
+				trigger_event = { id = cp_layla_vox.22 popup = yes }
+			}
+			# The daughter reads aloud
+			20 = {
+				trigger = {
+					has_variable = cp_layla_daughter_at_school
+					NOT = { has_variable = cp_layla_spoke_daughter_reads }
+				}
+				trigger_event = { id = cp_layla_vox.23 popup = yes }
+			}
+			# The daughter leaving
+			15 = {
+				trigger = {
+					var:cp_layla_age >= 38
+					NOT = { has_variable = cp_layla_spoke_daughter_leaving }
+				}
+				trigger_event = { id = cp_layla_vox.24 popup = yes }
+			}
+			# Disagreement
+			15 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_daughter_argue } }
+				trigger_event = { id = cp_layla_vox.25 popup = yes }
+			}
+			# Fallback
+			3 = {
+				trigger_event = { id = cp_layla_vox.29 popup = yes }
+			}
+		}
+	}
+}
+
+cp_layla_vox.21 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.21.t
+	desc = cp_layla_vox.21.d
+	flavor = cp_layla_vox.21.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_daughter_q days = 540 }
+	}
+	option = { name = cp_layla_vox.21.a  default_option = yes  trigger_event = { id = cp_layla_vox.2101 popup = yes } }
+	option = { name = cp_layla_vox.21.b  trigger_event = { id = cp_layla_vox.2102 popup = yes } }
+	option = { name = cp_layla_vox.21.c  trigger_event = { id = cp_layla_vox.2103 popup = yes } }
+}
+
+cp_layla_vox.2101 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2101.t
+	desc = cp_layla_vox.2101.d
+	flavor = cp_layla_vox.2101.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2101.a
+		cp_shift_hope = { person = layla delta = 1 }
+	}
+}
+
+cp_layla_vox.2102 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2102.t
+	desc = cp_layla_vox.2102.d
+	flavor = cp_layla_vox.2102.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2102.a
+		cp_flag_recent_hardship = { person = layla }
+	}
+}
+
+cp_layla_vox.2103 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2103.t
+	desc = cp_layla_vox.2103.d
+	flavor = cp_layla_vox.2103.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2103.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+
+cp_layla_vox.22 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.22.t
+	desc = cp_layla_vox.22.d
+	flavor = cp_layla_vox.22.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_daughter_bread days = 540 }
+	}
+	option = { name = cp_layla_vox.22.a  default_option = yes  trigger_event = { id = cp_layla_vox.2201 popup = yes } }
+	option = { name = cp_layla_vox.22.b  trigger_event = { id = cp_layla_vox.2202 popup = yes } }
+	option = { name = cp_layla_vox.22.c  trigger_event = { id = cp_layla_vox.2203 popup = yes } }
+}
+
+cp_layla_vox.2201 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2201.t
+	desc = cp_layla_vox.2201.d
+	flavor = cp_layla_vox.2201.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2201.a
+		cp_flag_recent_joy = { person = layla }
+		cp_shift_hope = { person = layla delta = 1 }
+	}
+}
+
+cp_layla_vox.2202 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2202.t
+	desc = cp_layla_vox.2202.d
+	flavor = cp_layla_vox.2202.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2202.a
+		cp_shift_exhaustion = { person = layla delta = 1 }
+	}
+}
+
+cp_layla_vox.2203 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2203.t
+	desc = cp_layla_vox.2203.d
+	flavor = cp_layla_vox.2203.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2203.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+
+cp_layla_vox.23 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.23.t
+	desc = cp_layla_vox.23.d
+	flavor = cp_layla_vox.23.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_school_v10.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_daughter_reads days = 540 }
+	}
+	option = { name = cp_layla_vox.23.a  default_option = yes  trigger_event = { id = cp_layla_vox.2301 popup = yes } }
+	option = { name = cp_layla_vox.23.b  trigger_event = { id = cp_layla_vox.2302 popup = yes } }
+	option = { name = cp_layla_vox.23.c  trigger_event = { id = cp_layla_vox.2303 popup = yes } }
+}
+
+cp_layla_vox.2301 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2301.t
+	desc = cp_layla_vox.2301.d
+	flavor = cp_layla_vox.2301.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_daughter_reads_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2301.a
+		cp_flag_recent_hardship = { person = layla }
+	}
+}
+
+cp_layla_vox.2302 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2302.t
+	desc = cp_layla_vox.2302.d
+	flavor = cp_layla_vox.2302.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_daughter_reads_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2302.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+cp_layla_vox.2303 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2303.t
+	desc = cp_layla_vox.2303.d
+	flavor = cp_layla_vox.2303.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_daughter_reads_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2303.a
+		cp_flag_recent_joy = { person = layla }
+		cp_shift_hope = { person = layla delta = 1 }
+	}
+}
+
+
+cp_layla_vox.24 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.24.t
+	desc = cp_layla_vox.24.d
+	flavor = cp_layla_vox.24.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_children_leave_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_daughter_leaving days = 540 }
+	}
+	option = { name = cp_layla_vox.24.a  default_option = yes  trigger_event = { id = cp_layla_vox.2401 popup = yes } }
+	option = { name = cp_layla_vox.24.b  trigger_event = { id = cp_layla_vox.2402 popup = yes } }
+	option = { name = cp_layla_vox.24.c  trigger_event = { id = cp_layla_vox.2403 popup = yes } }
+}
+
+cp_layla_vox.2401 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2401.t
+	desc = cp_layla_vox.2401.d
+	flavor = cp_layla_vox.2401.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_children_leave_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2401.a
+		cp_shift_hope = { person = layla delta = 1 }
+		cp_flag_recent_hardship = { person = layla }
+	}
+}
+
+cp_layla_vox.2402 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2402.t
+	desc = cp_layla_vox.2402.d
+	flavor = cp_layla_vox.2402.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_children_leave_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2402.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+cp_layla_vox.2403 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2403.t
+	desc = cp_layla_vox.2403.d
+	flavor = cp_layla_vox.2403.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_children_leave_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2403.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+
+cp_layla_vox.25 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.25.t
+	desc = cp_layla_vox.25.d
+	flavor = cp_layla_vox.25.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_daughter_argue days = 540 }
+	}
+	option = { name = cp_layla_vox.25.a  default_option = yes  trigger_event = { id = cp_layla_vox.2501 popup = yes } }
+	option = { name = cp_layla_vox.25.b  trigger_event = { id = cp_layla_vox.2502 popup = yes } }
+	option = { name = cp_layla_vox.25.c  trigger_event = { id = cp_layla_vox.2503 popup = yes } }
+}
+
+cp_layla_vox.2501 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2501.t
+	desc = cp_layla_vox.2501.d
+	flavor = cp_layla_vox.2501.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2501.a
+		cp_shift_exhaustion = { person = layla delta = 1 }
+		cp_flag_recent_hardship = { person = layla }
+	}
+}
+
+cp_layla_vox.2502 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2502.t
+	desc = cp_layla_vox.2502.d
+	flavor = cp_layla_vox.2502.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2502.a
+		cp_shift_exhaustion = { person = layla delta = 1 }
+	}
+}
+
+cp_layla_vox.2503 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.2503.t
+	desc = cp_layla_vox.2503.d
+	flavor = cp_layla_vox.2503.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.2503.a
+		cp_shift_loyalist = { person = layla delta = 1 }
+	}
+}
+
+
+cp_layla_vox.29 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.29.t
+	desc = cp_layla_vox.29.d
+	flavor = cp_layla_vox.29.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_children_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 5
+	immediate = {
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.29.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+
+# ============================================================================
+# MOTHER -- cp_layla_vox.30 scenario picker
+# ============================================================================
+
+cp_layla_vox.30 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		random_list = {
+			# Kneading, her mother's rhythm
+			25 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_mother_knead } }
+				trigger_event = { id = cp_layla_vox.31 popup = yes }
+			}
+			# A dream
+			25 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_mother_dream } }
+				trigger_event = { id = cp_layla_vox.32 popup = yes }
+			}
+			# The grave, years after
+			25 = {
+				trigger = {
+					var:cp_layla_age >= 40
+					NOT = { has_variable = cp_layla_spoke_mother_grave }
+				}
+				trigger_event = { id = cp_layla_vox.33 popup = yes }
+			}
+			# What her mother would say
+			25 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_mother_would_say } }
+				trigger_event = { id = cp_layla_vox.34 popup = yes }
+			}
+			# The child they lost -- gated on bereavement flag
+			20 = {
+				trigger = {
+					has_variable = cp_layla_lost_a_child
+					NOT = { has_variable = cp_layla_spoke_mother_lost_child }
+				}
+				trigger_event = { id = cp_layla_vox.35 popup = yes }
+			}
+			# Fallback
+			3 = {
+				trigger_event = { id = cp_layla_vox.39 popup = yes }
+			}
+		}
+	}
+}
+
+cp_layla_vox.31 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.31.t
+	desc = cp_layla_vox.31.d
+	flavor = cp_layla_vox.31.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_mother_knead days = 540 }
+	}
+	option = { name = cp_layla_vox.31.a  default_option = yes  trigger_event = { id = cp_layla_vox.3101 popup = yes } }
+	option = { name = cp_layla_vox.31.b  trigger_event = { id = cp_layla_vox.3102 popup = yes } }
+	option = { name = cp_layla_vox.31.c  trigger_event = { id = cp_layla_vox.3103 popup = yes } }
+}
+
+cp_layla_vox.3101 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3101.t
+	desc = cp_layla_vox.3101.d
+	flavor = cp_layla_vox.3101.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.3101.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+cp_layla_vox.3102 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3102.t
+	desc = cp_layla_vox.3102.d
+	flavor = cp_layla_vox.3102.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.3102.a
+		cp_flag_recent_joy = { person = layla }
+	}
+}
+
+cp_layla_vox.3103 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3103.t
+	desc = cp_layla_vox.3103.d
+	flavor = cp_layla_vox.3103.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = {
+		default_option = yes
+		name = cp_layla_vox.3103.a
+		cp_flag_recent_hardship = { person = layla }
+	}
+}
+
+
+cp_layla_vox.32 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.32.t
+	desc = cp_layla_vox.32.d
+	flavor = cp_layla_vox.32.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_mother_dream days = 540 }
+	}
+	option = { name = cp_layla_vox.32.a  default_option = yes  trigger_event = { id = cp_layla_vox.3201 popup = yes } }
+	option = { name = cp_layla_vox.32.b  trigger_event = { id = cp_layla_vox.3202 popup = yes } }
+	option = { name = cp_layla_vox.32.c  trigger_event = { id = cp_layla_vox.3203 popup = yes } }
+}
+
+cp_layla_vox.3201 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3201.t
+	desc = cp_layla_vox.3201.d
+	flavor = cp_layla_vox.3201.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.3201.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.3202 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3202.t
+	desc = cp_layla_vox.3202.d
+	flavor = cp_layla_vox.3202.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.3202.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.3203 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3203.t
+	desc = cp_layla_vox.3203.d
+	flavor = cp_layla_vox.3203.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.3203.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+cp_layla_vox.33 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.33.t
+	desc = cp_layla_vox.33.d
+	flavor = cp_layla_vox.33.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_mother_grave days = 540 }
+	}
+	option = { name = cp_layla_vox.33.a  default_option = yes  trigger_event = { id = cp_layla_vox.3301 popup = yes } }
+	option = { name = cp_layla_vox.33.b  trigger_event = { id = cp_layla_vox.3302 popup = yes } }
+	option = { name = cp_layla_vox.33.c  trigger_event = { id = cp_layla_vox.3303 popup = yes } }
+}
+
+cp_layla_vox.3301 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3301.t
+	desc = cp_layla_vox.3301.d
+	flavor = cp_layla_vox.3301.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.3301.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.3302 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3302.t
+	desc = cp_layla_vox.3302.d
+	flavor = cp_layla_vox.3302.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.3302.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.3303 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3303.t
+	desc = cp_layla_vox.3303.d
+	flavor = cp_layla_vox.3303.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.3303.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+
+cp_layla_vox.34 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.34.t
+	desc = cp_layla_vox.34.d
+	flavor = cp_layla_vox.34.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_mother_would_say days = 540 }
+	}
+	option = { name = cp_layla_vox.34.a  default_option = yes  trigger_event = { id = cp_layla_vox.3401 popup = yes } }
+	option = { name = cp_layla_vox.34.b  trigger_event = { id = cp_layla_vox.3402 popup = yes } }
+	option = { name = cp_layla_vox.34.c  trigger_event = { id = cp_layla_vox.3403 popup = yes } }
+}
+
+cp_layla_vox.3401 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3401.t
+	desc = cp_layla_vox.3401.d
+	flavor = cp_layla_vox.3401.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.3401.a  default_option = yes  cp_shift_loyalist = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.3402 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3402.t
+	desc = cp_layla_vox.3402.d
+	flavor = cp_layla_vox.3402.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.3402.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.3403 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3403.t
+	desc = cp_layla_vox.3403.d
+	flavor = cp_layla_vox.3403.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.3403.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+# cp_layla_vox.35 -- the child they lost. Ported from cp_conversation.150-153.
+# Reframed: the ruler's carpet becomes the dream-edge where her dead mother
+# sits with her in the not-knowing.
+cp_layla_vox.35 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.35.t
+	desc = cp_layla_vox.35.d
+	flavor = cp_layla_vox.35.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_lost_child_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_mother_lost_child days = 540 }
+	}
+	option = { name = cp_layla_vox.35.a  default_option = yes  trigger_event = { id = cp_layla_vox.3501 popup = yes } }
+	option = { name = cp_layla_vox.35.b  trigger_event = { id = cp_layla_vox.3502 popup = yes } }
+	option = { name = cp_layla_vox.35.c  trigger_event = { id = cp_layla_vox.3503 popup = yes } }
+}
+
+cp_layla_vox.3501 = {
+	# Ported from cp_conversation.151 -- the comforting sentence.
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3501.t
+	desc = cp_layla_vox.3501.d
+	flavor = cp_layla_vox.3501.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_lost_child_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.3501.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.3502 = {
+	# Ported from cp_conversation.152 -- the silence that holds.
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3502.t
+	desc = cp_layla_vox.3502.d
+	flavor = cp_layla_vox.3502.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_lost_child_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.3502.a  default_option = yes  cp_shift_hope = { person = layla delta = 1 }  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.3503 = {
+	# Ported from cp_conversation.153 -- two mothers, two names.
+	type = country_event
+	placement = root
+	title = cp_layla_vox.3503.t
+	desc = cp_layla_vox.3503.d
+	flavor = cp_layla_vox.3503.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_lost_child_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.3503.a  default_option = yes  cp_shift_hope = { person = layla delta = 1 }  cp_flag_recent_joy = { person = layla } }
+}
+
+
+cp_layla_vox.39 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.39.t
+	desc = cp_layla_vox.39.d
+	flavor = cp_layla_vox.39.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.39.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+
+# ============================================================================
+# UM YUSUF -- cp_layla_vox.40 scenario picker
+# ============================================================================
+# Um Yusuf is Layla's Coptic neighbour across the wall. Rural only.
+
+cp_layla_vox.40 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		random_list = {
+			25 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_yusuf_wall } }
+				trigger_event = { id = cp_layla_vox.41 popup = yes }
+			}
+			25 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_yusuf_son } }
+				trigger_event = { id = cp_layla_vox.42 popup = yes }
+			}
+			25 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_yusuf_feast } }
+				trigger_event = { id = cp_layla_vox.43 popup = yes }
+			}
+			25 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_yusuf_death } }
+				trigger_event = { id = cp_layla_vox.44 popup = yes }
+			}
+			3 = { trigger_event = { id = cp_layla_vox.49 popup = yes } }
+		}
+	}
+}
+
+cp_layla_vox.41 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.41.t
+	desc = cp_layla_vox.41.d
+	flavor = cp_layla_vox.41.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_yusuf_wall days = 540 }
+	}
+	option = { name = cp_layla_vox.41.a  default_option = yes  trigger_event = { id = cp_layla_vox.4101 popup = yes } }
+	option = { name = cp_layla_vox.41.b  trigger_event = { id = cp_layla_vox.4102 popup = yes } }
+	option = { name = cp_layla_vox.41.c  trigger_event = { id = cp_layla_vox.4103 popup = yes } }
+}
+
+cp_layla_vox.4101 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.4101.t
+	desc = cp_layla_vox.4101.d
+	flavor = cp_layla_vox.4101.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.4101.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.4102 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.4102.t
+	desc = cp_layla_vox.4102.d
+	flavor = cp_layla_vox.4102.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.4102.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.4103 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.4103.t
+	desc = cp_layla_vox.4103.d
+	flavor = cp_layla_vox.4103.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.4103.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+
+cp_layla_vox.42 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.42.t
+	desc = cp_layla_vox.42.d
+	flavor = cp_layla_vox.42.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_yusuf_son days = 540 }
+	}
+	option = { name = cp_layla_vox.42.a  default_option = yes  trigger_event = { id = cp_layla_vox.4201 popup = yes } }
+	option = { name = cp_layla_vox.42.b  trigger_event = { id = cp_layla_vox.4202 popup = yes } }
+	option = { name = cp_layla_vox.42.c  trigger_event = { id = cp_layla_vox.4203 popup = yes } }
+}
+
+cp_layla_vox.4201 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.4201.t
+	desc = cp_layla_vox.4201.d
+	flavor = cp_layla_vox.4201.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.4201.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.4202 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.4202.t
+	desc = cp_layla_vox.4202.d
+	flavor = cp_layla_vox.4202.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.4202.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.4203 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.4203.t
+	desc = cp_layla_vox.4203.d
+	flavor = cp_layla_vox.4203.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.4203.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+cp_layla_vox.43 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.43.t
+	desc = cp_layla_vox.43.d
+	flavor = cp_layla_vox.43.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_yusuf_feast days = 540 }
+	}
+	option = { name = cp_layla_vox.43.a  default_option = yes  trigger_event = { id = cp_layla_vox.4301 popup = yes } }
+	option = { name = cp_layla_vox.43.b  trigger_event = { id = cp_layla_vox.4302 popup = yes } }
+	option = { name = cp_layla_vox.43.c  trigger_event = { id = cp_layla_vox.4303 popup = yes } }
+}
+
+cp_layla_vox.4301 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.4301.t
+	desc = cp_layla_vox.4301.d
+	flavor = cp_layla_vox.4301.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.4301.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.4302 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.4302.t
+	desc = cp_layla_vox.4302.d
+	flavor = cp_layla_vox.4302.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.4302.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.4303 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.4303.t
+	desc = cp_layla_vox.4303.d
+	flavor = cp_layla_vox.4303.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.4303.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+
+cp_layla_vox.44 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.44.t
+	desc = cp_layla_vox.44.d
+	flavor = cp_layla_vox.44.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_yusuf_death days = 540 }
+	}
+	option = { name = cp_layla_vox.44.a  default_option = yes  trigger_event = { id = cp_layla_vox.4401 popup = yes } }
+	option = { name = cp_layla_vox.44.b  trigger_event = { id = cp_layla_vox.4402 popup = yes } }
+	option = { name = cp_layla_vox.44.c  trigger_event = { id = cp_layla_vox.4403 popup = yes } }
+}
+
+cp_layla_vox.4401 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.4401.t
+	desc = cp_layla_vox.4401.d
+	flavor = cp_layla_vox.4401.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.4401.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.4402 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.4402.t
+	desc = cp_layla_vox.4402.d
+	flavor = cp_layla_vox.4402.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.4402.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.4403 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.4403.t
+	desc = cp_layla_vox.4403.d
+	flavor = cp_layla_vox.4403.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.4403.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+cp_layla_vox.49 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.49.t
+	desc = cp_layla_vox.49.d
+	flavor = cp_layla_vox.49.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 5
+	immediate = {
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.49.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+
+# ============================================================================
+# UMM MARIAM -- cp_layla_vox.50 scenario picker
+# ============================================================================
+# Umm Mariam is the landless neighbour — the class contrast. Gated on
+# cp_layla_owns_land upstream (in the dispatcher), so every scene here is
+# post-homesteading.
+
+cp_layla_vox.50 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		random_list = {
+			25 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_mariam_work } }
+				trigger_event = { id = cp_layla_vox.51 popup = yes }
+			}
+			25 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_mariam_paper } }
+				trigger_event = { id = cp_layla_vox.52 popup = yes }
+			}
+			25 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_mariam_children } }
+				trigger_event = { id = cp_layla_vox.53 popup = yes }
+			}
+			25 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_mariam_gift } }
+				trigger_event = { id = cp_layla_vox.54 popup = yes }
+			}
+			3 = { trigger_event = { id = cp_layla_vox.59 popup = yes } }
+		}
+	}
+}
+
+cp_layla_vox.51 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.51.t
+	desc = cp_layla_vox.51.d
+	flavor = cp_layla_vox.51.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_mariam_work days = 540 }
+	}
+	option = { name = cp_layla_vox.51.a  default_option = yes  trigger_event = { id = cp_layla_vox.5101 popup = yes } }
+	option = { name = cp_layla_vox.51.b  trigger_event = { id = cp_layla_vox.5102 popup = yes } }
+	option = { name = cp_layla_vox.51.c  trigger_event = { id = cp_layla_vox.5103 popup = yes } }
+}
+
+cp_layla_vox.5101 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.5101.t
+	desc = cp_layla_vox.5101.d
+	flavor = cp_layla_vox.5101.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.5101.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 }  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.5102 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.5102.t
+	desc = cp_layla_vox.5102.d
+	flavor = cp_layla_vox.5102.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.5102.a  default_option = yes  cp_shift_loyalist = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.5103 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.5103.t
+	desc = cp_layla_vox.5103.d
+	flavor = cp_layla_vox.5103.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.5103.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+cp_layla_vox.52 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.52.t
+	desc = cp_layla_vox.52.d
+	flavor = cp_layla_vox.52.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_mariam_paper days = 540 }
+	}
+	option = { name = cp_layla_vox.52.a  default_option = yes  trigger_event = { id = cp_layla_vox.5201 popup = yes } }
+	option = { name = cp_layla_vox.52.b  trigger_event = { id = cp_layla_vox.5202 popup = yes } }
+	option = { name = cp_layla_vox.52.c  trigger_event = { id = cp_layla_vox.5203 popup = yes } }
+}
+
+cp_layla_vox.5201 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.5201.t
+	desc = cp_layla_vox.5201.d
+	flavor = cp_layla_vox.5201.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.5201.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.5202 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.5202.t
+	desc = cp_layla_vox.5202.d
+	flavor = cp_layla_vox.5202.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.5202.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.5203 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.5203.t
+	desc = cp_layla_vox.5203.d
+	flavor = cp_layla_vox.5203.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.5203.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+cp_layla_vox.53 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.53.t
+	desc = cp_layla_vox.53.d
+	flavor = cp_layla_vox.53.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_mariam_children days = 540 }
+	}
+	option = { name = cp_layla_vox.53.a  default_option = yes  trigger_event = { id = cp_layla_vox.5301 popup = yes } }
+	option = { name = cp_layla_vox.53.b  trigger_event = { id = cp_layla_vox.5302 popup = yes } }
+	option = { name = cp_layla_vox.53.c  trigger_event = { id = cp_layla_vox.5303 popup = yes } }
+}
+
+cp_layla_vox.5301 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.5301.t
+	desc = cp_layla_vox.5301.d
+	flavor = cp_layla_vox.5301.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.5301.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.5302 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.5302.t
+	desc = cp_layla_vox.5302.d
+	flavor = cp_layla_vox.5302.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.5302.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.5303 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.5303.t
+	desc = cp_layla_vox.5303.d
+	flavor = cp_layla_vox.5303.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.5303.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+
+cp_layla_vox.54 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.54.t
+	desc = cp_layla_vox.54.d
+	flavor = cp_layla_vox.54.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_mariam_gift days = 540 }
+	}
+	option = { name = cp_layla_vox.54.a  default_option = yes  trigger_event = { id = cp_layla_vox.5401 popup = yes } }
+	option = { name = cp_layla_vox.54.b  trigger_event = { id = cp_layla_vox.5402 popup = yes } }
+	option = { name = cp_layla_vox.54.c  trigger_event = { id = cp_layla_vox.5403 popup = yes } }
+}
+
+cp_layla_vox.5401 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.5401.t
+	desc = cp_layla_vox.5401.d
+	flavor = cp_layla_vox.5401.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.5401.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.5402 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.5402.t
+	desc = cp_layla_vox.5402.d
+	flavor = cp_layla_vox.5402.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.5402.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.5403 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.5403.t
+	desc = cp_layla_vox.5403.d
+	flavor = cp_layla_vox.5403.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.5403.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+cp_layla_vox.59 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.59.t
+	desc = cp_layla_vox.59.d
+	flavor = cp_layla_vox.59.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 5
+	immediate = {
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.59.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+# ============================================================================
+# THE BEY -- cp_layla_vox.60 scenario picker
+# ============================================================================
+
+cp_layla_vox.60 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		random_list = {
+			25 = {
+				trigger = {
+					has_variable = cp_layla_under_serfdom
+					NOT = { has_variable = cp_layla_spoke_bey_field }
+				}
+				trigger_event = { id = cp_layla_vox.61 popup = yes }
+			}
+			20 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_bey_husband } }
+				trigger_event = { id = cp_layla_vox.62 popup = yes }
+			}
+			20 = {
+				trigger = {
+					has_variable = cp_layla_under_serfdom
+					NOT = { has_variable = cp_layla_spoke_bey_ledger }
+				}
+				trigger_event = { id = cp_layla_vox.63 popup = yes }
+			}
+			25 = {
+				trigger = {
+					has_variable = cp_layla_owns_land
+					NOT = { has_variable = cp_layla_spoke_bey_after }
+				}
+				trigger_event = { id = cp_layla_vox.64 popup = yes }
+			}
+			15 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_bey_son } }
+				trigger_event = { id = cp_layla_vox.65 popup = yes }
+			}
+			3 = { trigger_event = { id = cp_layla_vox.69 popup = yes } }
+		}
+	}
+}
+
+cp_layla_vox.61 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.61.t
+	desc = cp_layla_vox.61.d
+	flavor = cp_layla_vox.61.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_bey_field days = 540 }
+	}
+	option = { name = cp_layla_vox.61.a  default_option = yes  trigger_event = { id = cp_layla_vox.6101 popup = yes } }
+	option = { name = cp_layla_vox.61.b  trigger_event = { id = cp_layla_vox.6102 popup = yes } }
+	option = { name = cp_layla_vox.61.c  trigger_event = { id = cp_layla_vox.6103 popup = yes } }
+}
+
+cp_layla_vox.6101 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6101.t
+	desc = cp_layla_vox.6101.d
+	flavor = cp_layla_vox.6101.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6101.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 }  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.6102 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6102.t
+	desc = cp_layla_vox.6102.d
+	flavor = cp_layla_vox.6102.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6102.a  default_option = yes  cp_shift_loyalist = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.6103 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6103.t
+	desc = cp_layla_vox.6103.d
+	flavor = cp_layla_vox.6103.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6103.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+}
+
+
+cp_layla_vox.62 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.62.t
+	desc = cp_layla_vox.62.d
+	flavor = cp_layla_vox.62.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_bey_husband days = 540 }
+	}
+	option = { name = cp_layla_vox.62.a  default_option = yes  trigger_event = { id = cp_layla_vox.6201 popup = yes } }
+	option = { name = cp_layla_vox.62.b  trigger_event = { id = cp_layla_vox.6202 popup = yes } }
+	option = { name = cp_layla_vox.62.c  trigger_event = { id = cp_layla_vox.6203 popup = yes } }
+}
+
+cp_layla_vox.6201 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6201.t
+	desc = cp_layla_vox.6201.d
+	flavor = cp_layla_vox.6201.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6201.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.6202 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6202.t
+	desc = cp_layla_vox.6202.d
+	flavor = cp_layla_vox.6202.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6202.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.6203 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6203.t
+	desc = cp_layla_vox.6203.d
+	flavor = cp_layla_vox.6203.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6203.a  default_option = yes  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+
+cp_layla_vox.63 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.63.t
+	desc = cp_layla_vox.63.d
+	flavor = cp_layla_vox.63.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_bey_ledger days = 540 }
+	}
+	option = { name = cp_layla_vox.63.a  default_option = yes  trigger_event = { id = cp_layla_vox.6301 popup = yes } }
+	option = { name = cp_layla_vox.63.b  trigger_event = { id = cp_layla_vox.6302 popup = yes } }
+	option = { name = cp_layla_vox.63.c  trigger_event = { id = cp_layla_vox.6303 popup = yes } }
+}
+
+cp_layla_vox.6301 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6301.t
+	desc = cp_layla_vox.6301.d
+	flavor = cp_layla_vox.6301.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6301.a  default_option = yes  cp_shift_loyalist = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.6302 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6302.t
+	desc = cp_layla_vox.6302.d
+	flavor = cp_layla_vox.6302.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6302.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 }  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.6303 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6303.t
+	desc = cp_layla_vox.6303.d
+	flavor = cp_layla_vox.6303.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6303.a  default_option = yes  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+
+cp_layla_vox.64 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.64.t
+	desc = cp_layla_vox.64.d
+	flavor = cp_layla_vox.64.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_bey_after days = 540 }
+	}
+	option = { name = cp_layla_vox.64.a  default_option = yes  trigger_event = { id = cp_layla_vox.6401 popup = yes } }
+	option = { name = cp_layla_vox.64.b  trigger_event = { id = cp_layla_vox.6402 popup = yes } }
+	option = { name = cp_layla_vox.64.c  trigger_event = { id = cp_layla_vox.6403 popup = yes } }
+}
+
+cp_layla_vox.6401 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6401.t
+	desc = cp_layla_vox.6401.d
+	flavor = cp_layla_vox.6401.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6401.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.6402 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6402.t
+	desc = cp_layla_vox.6402.d
+	flavor = cp_layla_vox.6402.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6402.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.6403 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6403.t
+	desc = cp_layla_vox.6403.d
+	flavor = cp_layla_vox.6403.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6403.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+cp_layla_vox.65 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.65.t
+	desc = cp_layla_vox.65.d
+	flavor = cp_layla_vox.65.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_bey_son days = 540 }
+	}
+	option = { name = cp_layla_vox.65.a  default_option = yes  trigger_event = { id = cp_layla_vox.6501 popup = yes } }
+	option = { name = cp_layla_vox.65.b  trigger_event = { id = cp_layla_vox.6502 popup = yes } }
+	option = { name = cp_layla_vox.65.c  trigger_event = { id = cp_layla_vox.6503 popup = yes } }
+}
+
+cp_layla_vox.6501 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6501.t
+	desc = cp_layla_vox.6501.d
+	flavor = cp_layla_vox.6501.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6501.a  default_option = yes  cp_shift_loyalist = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.6502 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6502.t
+	desc = cp_layla_vox.6502.d
+	flavor = cp_layla_vox.6502.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6502.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.6503 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.6503.t
+	desc = cp_layla_vox.6503.d
+	flavor = cp_layla_vox.6503.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.6503.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+cp_layla_vox.69 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.69.t
+	desc = cp_layla_vox.69.d
+	flavor = cp_layla_vox.69.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 5
+	immediate = {
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.69.a  default_option = yes  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+
+# ============================================================================
+# FACTORY OWNER -- cp_layla_vox.70 scenario picker
+# ============================================================================
+
+cp_layla_vox.70 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		random_list = {
+			25 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_owner_gate } }
+				trigger_event = { id = cp_layla_vox.71 popup = yes }
+			}
+			20 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_owner_ledger } }
+				trigger_event = { id = cp_layla_vox.72 popup = yes }
+			}
+			20 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_owner_accident } }
+				trigger_event = { id = cp_layla_vox.73 popup = yes }
+			}
+			20 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_owner_name } }
+				trigger_event = { id = cp_layla_vox.74 popup = yes }
+			}
+			15 = {
+				trigger = {
+					OR = {
+						has_law = law_type:law_right_to_associate
+						has_law = law_type:law_corporatized_unions
+						has_law = law_type:law_factory_councils
+					}
+					NOT = { has_variable = cp_layla_spoke_owner_strike }
+				}
+				trigger_event = { id = cp_layla_vox.75 popup = yes }
+			}
+			3 = { trigger_event = { id = cp_layla_vox.79 popup = yes } }
+		}
+	}
+}
+
+cp_layla_vox.71 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.71.t
+	desc = cp_layla_vox.71.d
+	flavor = cp_layla_vox.71.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_mill_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_owner_gate days = 540 }
+	}
+	option = { name = cp_layla_vox.71.a  default_option = yes  trigger_event = { id = cp_layla_vox.7101 popup = yes } }
+	option = { name = cp_layla_vox.71.b  trigger_event = { id = cp_layla_vox.7102 popup = yes } }
+	option = { name = cp_layla_vox.71.c  trigger_event = { id = cp_layla_vox.7103 popup = yes } }
+}
+
+cp_layla_vox.7101 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7101.t
+	desc = cp_layla_vox.7101.d
+	flavor = cp_layla_vox.7101.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_mill_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7101.a  default_option = yes  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.7102 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7102.t
+	desc = cp_layla_vox.7102.d
+	flavor = cp_layla_vox.7102.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_mill_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7102.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.7103 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7103.t
+	desc = cp_layla_vox.7103.d
+	flavor = cp_layla_vox.7103.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_mill_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7103.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+cp_layla_vox.72 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.72.t
+	desc = cp_layla_vox.72.d
+	flavor = cp_layla_vox.72.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_foreman_runner_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_owner_ledger days = 540 }
+	}
+	option = { name = cp_layla_vox.72.a  default_option = yes  trigger_event = { id = cp_layla_vox.7201 popup = yes } }
+	option = { name = cp_layla_vox.72.b  trigger_event = { id = cp_layla_vox.7202 popup = yes } }
+	option = { name = cp_layla_vox.72.c  trigger_event = { id = cp_layla_vox.7203 popup = yes } }
+}
+
+cp_layla_vox.7201 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7201.t
+	desc = cp_layla_vox.7201.d
+	flavor = cp_layla_vox.7201.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_foreman_runner_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7201.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.7202 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7202.t
+	desc = cp_layla_vox.7202.d
+	flavor = cp_layla_vox.7202.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_foreman_runner_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7202.a  default_option = yes  cp_shift_loyalist = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.7203 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7203.t
+	desc = cp_layla_vox.7203.d
+	flavor = cp_layla_vox.7203.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_foreman_runner_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7203.a  default_option = yes  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+
+cp_layla_vox.73 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.73.t
+	desc = cp_layla_vox.73.d
+	flavor = cp_layla_vox.73.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mill_closed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_owner_accident days = 540 }
+	}
+	option = { name = cp_layla_vox.73.a  default_option = yes  trigger_event = { id = cp_layla_vox.7301 popup = yes } }
+	option = { name = cp_layla_vox.73.b  trigger_event = { id = cp_layla_vox.7302 popup = yes } }
+	option = { name = cp_layla_vox.73.c  trigger_event = { id = cp_layla_vox.7303 popup = yes } }
+}
+
+cp_layla_vox.7301 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7301.t
+	desc = cp_layla_vox.7301.d
+	flavor = cp_layla_vox.7301.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mill_closed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7301.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 }  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.7302 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7302.t
+	desc = cp_layla_vox.7302.d
+	flavor = cp_layla_vox.7302.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mill_closed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7302.a  default_option = yes  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.7303 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7303.t
+	desc = cp_layla_vox.7303.d
+	flavor = cp_layla_vox.7303.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_mill_closed_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7303.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+cp_layla_vox.74 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.74.t
+	desc = cp_layla_vox.74.d
+	flavor = cp_layla_vox.74.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_rolls_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_owner_name days = 540 }
+	}
+	option = { name = cp_layla_vox.74.a  default_option = yes  trigger_event = { id = cp_layla_vox.7401 popup = yes } }
+	option = { name = cp_layla_vox.74.b  trigger_event = { id = cp_layla_vox.7402 popup = yes } }
+	option = { name = cp_layla_vox.74.c  trigger_event = { id = cp_layla_vox.7403 popup = yes } }
+}
+
+cp_layla_vox.7401 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7401.t
+	desc = cp_layla_vox.7401.d
+	flavor = cp_layla_vox.7401.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_rolls_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7401.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.7402 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7402.t
+	desc = cp_layla_vox.7402.d
+	flavor = cp_layla_vox.7402.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_rolls_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7402.a  default_option = yes  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.7403 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7403.t
+	desc = cp_layla_vox.7403.d
+	flavor = cp_layla_vox.7403.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_rolls_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7403.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+cp_layla_vox.75 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.75.t
+	desc = cp_layla_vox.75.d
+	flavor = cp_layla_vox.75.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_strike_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_owner_strike days = 540 }
+	}
+	option = { name = cp_layla_vox.75.a  default_option = yes  trigger_event = { id = cp_layla_vox.7501 popup = yes } }
+	option = { name = cp_layla_vox.75.b  trigger_event = { id = cp_layla_vox.7502 popup = yes } }
+	option = { name = cp_layla_vox.75.c  trigger_event = { id = cp_layla_vox.7503 popup = yes } }
+}
+
+cp_layla_vox.7501 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7501.t
+	desc = cp_layla_vox.7501.d
+	flavor = cp_layla_vox.7501.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_strike_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7501.a  default_option = yes  cp_shift_loyalist = { person = layla delta = 1 }  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.7502 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7502.t
+	desc = cp_layla_vox.7502.d
+	flavor = cp_layla_vox.7502.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_strike_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7502.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 }  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.7503 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.7503.t
+	desc = cp_layla_vox.7503.d
+	flavor = cp_layla_vox.7503.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_strike_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.7503.a  default_option = yes  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+
+cp_layla_vox.79 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.79.t
+	desc = cp_layla_vox.79.d
+	flavor = cp_layla_vox.79.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_mill_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 5
+	immediate = {
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.79.a  default_option = yes  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+
+# ============================================================================
+# STRANGER -- cp_layla_vox.80 scenario picker
+# ============================================================================
+# Strangers are single-exchange (no deep branching). Each scenario has 2
+# options that close immediately.
+
+cp_layla_vox.80 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		random_list = {
+			20 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_stranger_well } }
+				trigger_event = { id = cp_layla_vox.81 popup = yes }
+			}
+			20 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_stranger_news } }
+				trigger_event = { id = cp_layla_vox.82 popup = yes }
+			}
+			20 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_stranger_beggar } }
+				trigger_event = { id = cp_layla_vox.83 popup = yes }
+			}
+			15 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_stranger_woman } }
+				trigger_event = { id = cp_layla_vox.84 popup = yes }
+			}
+			15 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_stranger_child } }
+				trigger_event = { id = cp_layla_vox.85 popup = yes }
+			}
+			15 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_stranger_papers } }
+				trigger_event = { id = cp_layla_vox.86 popup = yes }
+			}
+			3 = { trigger_event = { id = cp_layla_vox.89 popup = yes } }
+		}
+	}
+}
+
+cp_layla_vox.81 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.81.t
+	desc = cp_layla_vox.81.d
+	flavor = cp_layla_vox.81.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_strangers_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_stranger_well days = 540 }
+	}
+	option = { name = cp_layla_vox.81.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+	option = { name = cp_layla_vox.81.b  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.82 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.82.t
+	desc = cp_layla_vox.82.d
+	flavor = cp_layla_vox.82.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_stall_v10.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_stranger_news days = 540 }
+	}
+	option = { name = cp_layla_vox.82.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+	option = { name = cp_layla_vox.82.b  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.83 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.83.t
+	desc = cp_layla_vox.83.d
+	flavor = cp_layla_vox.83.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_strangers_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_stranger_beggar days = 540 }
+	}
+	option = { name = cp_layla_vox.83.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+	option = { name = cp_layla_vox.83.b  cp_flag_recent_hardship = { person = layla } }
+	option = { name = cp_layla_vox.83.c  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.84 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.84.t
+	desc = cp_layla_vox.84.d
+	flavor = cp_layla_vox.84.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_strangers_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_stranger_woman days = 540 }
+	}
+	option = { name = cp_layla_vox.84.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+	option = { name = cp_layla_vox.84.b  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.85 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.85.t
+	desc = cp_layla_vox.85.d
+	flavor = cp_layla_vox.85.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_neighbours_boy_v09.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_stranger_child days = 540 }
+	}
+	option = { name = cp_layla_vox.85.a  default_option = yes  cp_flag_recent_joy = { person = layla }  cp_shift_hope = { person = layla delta = 1 } }
+	option = { name = cp_layla_vox.85.b  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.86 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.86.t
+	desc = cp_layla_vox.86.d
+	flavor = cp_layla_vox.86.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_envelope_v10.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_stranger_papers days = 540 }
+	}
+	option = { name = cp_layla_vox.86.a  default_option = yes  cp_shift_loyalist = { person = layla delta = 1 } }
+	option = { name = cp_layla_vox.86.b  cp_shift_radical = { person = layla delta = 1 } }
+	option = { name = cp_layla_vox.86.c  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.89 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.89.t
+	desc = cp_layla_vox.89.d
+	flavor = cp_layla_vox.89.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_strangers_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 5
+	immediate = {
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.89.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+
+# ============================================================================
+# HERSELF / GOD -- cp_layla_vox.90 scenario picker
+# ============================================================================
+# Linear -- self-talk doesn't branch.
+
+cp_layla_vox.90 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		random_list = {
+			20 = { trigger = { NOT = { has_variable = cp_layla_spoke_self_quran } }   trigger_event = { id = cp_layla_vox.91 popup = yes } }
+			20 = { trigger = { NOT = { has_variable = cp_layla_spoke_self_candle } }  trigger_event = { id = cp_layla_vox.92 popup = yes } }
+			20 = { trigger = { NOT = { has_variable = cp_layla_spoke_self_line } }    trigger_event = { id = cp_layla_vox.93 popup = yes } }
+			15 = { trigger = { NOT = { has_variable = cp_layla_spoke_self_mirror } }  trigger_event = { id = cp_layla_vox.94 popup = yes } }
+			15 = { trigger = { NOT = { has_variable = cp_layla_spoke_self_walk } }    trigger_event = { id = cp_layla_vox.95 popup = yes } }
+			15 = { trigger = { NOT = { has_variable = cp_layla_spoke_self_quiet } }   trigger_event = { id = cp_layla_vox.96 popup = yes } }
+			3  = { trigger_event = { id = cp_layla_vox.99 popup = yes } }
+		}
+	}
+}
+
+cp_layla_vox.91 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.91.t
+	desc = cp_layla_vox.91.d
+	flavor = cp_layla_vox.91.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_kitchen_v10.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_self_quran days = 540 }
+	}
+	option = { name = cp_layla_vox.91.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.92 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.92.t
+	desc = cp_layla_vox.92.d
+	flavor = cp_layla_vox.92.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_moment_v09.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_self_candle days = 540 }
+	}
+	option = { name = cp_layla_vox.92.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.93 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.93.t
+	desc = cp_layla_vox.93.d
+	flavor = cp_layla_vox.93.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_moment_v09.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_self_line days = 540 }
+	}
+	option = { name = cp_layla_vox.93.a  default_option = yes  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.94 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.94.t
+	desc = cp_layla_vox.94.d
+	flavor = cp_layla_vox.94.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_distance_v10.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_self_mirror days = 540 }
+	}
+	option = { name = cp_layla_vox.94.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.95 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.95.t
+	desc = cp_layla_vox.95.d
+	flavor = cp_layla_vox.95.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_nile_v10.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_self_walk days = 540 }
+	}
+	option = { name = cp_layla_vox.95.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.96 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.96.t
+	desc = cp_layla_vox.96.d
+	flavor = cp_layla_vox.96.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_moment_v09.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_self_quiet days = 540 }
+	}
+	option = { name = cp_layla_vox.96.a  default_option = yes  cp_shift_hope = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.99 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.99.t
+	desc = cp_layla_vox.99.d
+	flavor = cp_layla_vox.99.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_small_v10.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 5
+	immediate = {
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.99.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}
+
+
+# ============================================================================
+# THE RULER -- cp_layla_vox.100 scenario picker
+# ============================================================================
+# Era-aware. Ruler title is drawn from
+# [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] at loc time. Scenario .102
+# ports the Land monologue from cp_conversation.10.
+
+cp_layla_vox.100 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		random_list = {
+			20 = {
+				trigger = { NOT = { has_variable = cp_layla_spoke_ruler_room } }
+				trigger_event = { id = cp_layla_vox.101 popup = yes }
+			}
+			25 = {
+				trigger = {
+					OR = {
+						has_variable = cp_layla_profession_peasants
+						has_variable = cp_layla_profession_farmers
+						has_variable = cp_layla_owns_land
+						has_variable = cp_layla_under_serfdom
+					}
+					NOT = { has_variable = cp_layla_spoke_ruler_land }
+				}
+				trigger_event = { id = cp_layla_vox.102 popup = yes }
+			}
+			15 = {
+				trigger = {
+					has_variable = cp_layla_owns_land
+					NOT = { has_variable = cp_layla_spoke_ruler_paper }
+				}
+				trigger_event = { id = cp_layla_vox.103 popup = yes }
+			}
+			15 = {
+				trigger = {
+					OR = {
+						has_variable = cp_layla_ahmed_at_war
+						has_variable = cp_layla_ahmed_conscripted
+					}
+					NOT = { has_variable = cp_layla_spoke_ruler_war }
+				}
+				trigger_event = { id = cp_layla_vox.104 popup = yes }
+			}
+			15 = {
+				trigger = {
+					has_variable = cp_layla_may_vote
+					NOT = { has_variable = cp_layla_spoke_ruler_vote }
+				}
+				trigger_event = { id = cp_layla_vox.105 popup = yes }
+			}
+			15 = {
+				trigger = {
+					var:cp_layla_age >= 45
+					NOT = { has_variable = cp_layla_spoke_ruler_old }
+				}
+				trigger_event = { id = cp_layla_vox.106 popup = yes }
+			}
+			3 = { trigger_event = { id = cp_layla_vox.109 popup = yes } }
+		}
+	}
+}
+
+cp_layla_vox.101 = {
+	type = country_event
+	placement = root
+
+	title = cp_layla_vox.101.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla_vox.101.d.republic
+				trigger = {
+					OR = {
+						has_law = law_type:law_presidential_republic
+						has_law = law_type:law_parliamentary_republic
+					}
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla_vox.101.d.constitution
+				trigger = {
+					OR = {
+						has_law = law_type:law_landed_voting
+						has_law = law_type:law_wealth_voting
+						has_law = law_type:law_census_voting
+						has_law = law_type:law_universal_suffrage
+					}
+				}
+			}
+			triggered_desc = {
+				desc = cp_layla_vox.101.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla_vox.101.flavor
+
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_audience_v06.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_ruler_room days = 540 }
+	}
+
+	option = { name = cp_layla_vox.101.a  default_option = yes  trigger_event = { id = cp_layla_vox.1011 popup = yes } }
+	option = { name = cp_layla_vox.101.b  trigger_event = { id = cp_layla_vox.1012 popup = yes } }
+	option = { name = cp_layla_vox.101.c  trigger_event = { id = cp_layla_vox.1013 popup = yes } }
+}
+
+cp_layla_vox.1011 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1011.t
+	desc = cp_layla_vox.1011.d
+	flavor = cp_layla_vox.1011.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_audience_v06.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1011.a  default_option = yes  cp_shift_loyalist = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.1012 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1012.t
+	desc = cp_layla_vox.1012.d
+	flavor = cp_layla_vox.1012.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_audience_v06.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1012.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.1013 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1013.t
+	desc = cp_layla_vox.1013.d
+	flavor = cp_layla_vox.1013.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_audience_v06.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1013.a  default_option = yes  cp_flag_recent_joy = { person = layla }  cp_shift_hope = { person = layla delta = 1 } }
+}
+
+
+cp_layla_vox.102 = {
+	# Ported from cp_conversation.10 — the Land monologue.
+	type = country_event
+	placement = root
+
+	title = cp_layla_vox.102.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = cp_layla_vox.102.d.serf
+				trigger = { has_variable = cp_layla_under_serfdom }
+			}
+			triggered_desc = {
+				desc = cp_layla_vox.102.d.owner
+				trigger = { has_variable = cp_layla_owns_land }
+			}
+			triggered_desc = {
+				desc = cp_layla_vox.102.d.default
+				trigger = { always = yes }
+			}
+		}
+	}
+	flavor = cp_layla_vox.102.flavor
+
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_land_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 5
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_ruler_land days = 540 }
+	}
+
+	option = { name = cp_layla_vox.102.a  default_option = yes  trigger_event = { id = cp_layla_vox.1021 popup = yes } }
+	option = { name = cp_layla_vox.102.b  trigger_event = { id = cp_layla_vox.1022 popup = yes } }
+	option = { name = cp_layla_vox.102.c  trigger_event = { id = cp_layla_vox.1023 popup = yes } }
+}
+
+cp_layla_vox.1021 = {
+	# Ported from cp_conversation.11 — dismissive.
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1021.t
+	desc = cp_layla_vox.1021.d
+	flavor = cp_layla_vox.1021.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_land_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1021.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 }  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.1022 = {
+	# Ported from cp_conversation.12 — engaged.
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1022.t
+	desc = cp_layla_vox.1022.d
+	flavor = cp_layla_vox.1022.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_land_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1022.a  default_option = yes  cp_shift_hope = { person = layla delta = 1 }  cp_shift_loyalist = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.1023 = {
+	# Ported from cp_conversation.13 — cruel.
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1023.t
+	desc = cp_layla_vox.1023.d
+	flavor = cp_layla_vox.1023.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_land_v07.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1023.a  default_option = yes  cp_shift_radical = { person = layla delta = 2 }  cp_flag_recent_hardship = { person = layla } }
+}
+
+
+cp_layla_vox.103 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.103.t
+	desc = cp_layla_vox.103.d
+	flavor = cp_layla_vox.103.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_paper_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_ruler_paper days = 540 }
+	}
+	option = { name = cp_layla_vox.103.a  default_option = yes  trigger_event = { id = cp_layla_vox.1031 popup = yes } }
+	option = { name = cp_layla_vox.103.b  trigger_event = { id = cp_layla_vox.1032 popup = yes } }
+	option = { name = cp_layla_vox.103.c  trigger_event = { id = cp_layla_vox.1033 popup = yes } }
+}
+
+cp_layla_vox.1031 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1031.t
+	desc = cp_layla_vox.1031.d
+	flavor = cp_layla_vox.1031.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_paper_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1031.a  default_option = yes  cp_shift_loyalist = { person = layla delta = 1 }  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.1032 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1032.t
+	desc = cp_layla_vox.1032.d
+	flavor = cp_layla_vox.1032.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_paper_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1032.a  default_option = yes  cp_shift_hope = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.1033 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1033.t
+	desc = cp_layla_vox.1033.d
+	flavor = cp_layla_vox.1033.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_paper_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1033.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+}
+
+
+cp_layla_vox.104 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.104.t
+	desc = cp_layla_vox.104.d
+	flavor = cp_layla_vox.104.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_rifles_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_ruler_war days = 540 }
+	}
+	option = { name = cp_layla_vox.104.a  default_option = yes  trigger_event = { id = cp_layla_vox.1041 popup = yes } }
+	option = { name = cp_layla_vox.104.b  trigger_event = { id = cp_layla_vox.1042 popup = yes } }
+	option = { name = cp_layla_vox.104.c  trigger_event = { id = cp_layla_vox.1043 popup = yes } }
+}
+
+cp_layla_vox.1041 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1041.t
+	desc = cp_layla_vox.1041.d
+	flavor = cp_layla_vox.1041.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_rifles_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1041.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 }  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.1042 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1042.t
+	desc = cp_layla_vox.1042.d
+	flavor = cp_layla_vox.1042.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_rifles_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1042.a  default_option = yes  cp_shift_loyalist = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.1043 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1043.t
+	desc = cp_layla_vox.1043.d
+	flavor = cp_layla_vox.1043.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_rifles_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1043.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+}
+
+
+cp_layla_vox.105 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.105.t
+	desc = cp_layla_vox.105.d
+	flavor = cp_layla_vox.105.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_election_day_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_ruler_vote days = 540 }
+	}
+	option = { name = cp_layla_vox.105.a  default_option = yes  trigger_event = { id = cp_layla_vox.1051 popup = yes } }
+	option = { name = cp_layla_vox.105.b  trigger_event = { id = cp_layla_vox.1052 popup = yes } }
+	option = { name = cp_layla_vox.105.c  trigger_event = { id = cp_layla_vox.1053 popup = yes } }
+}
+
+cp_layla_vox.1051 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1051.t
+	desc = cp_layla_vox.1051.d
+	flavor = cp_layla_vox.1051.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_election_day_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1051.a  default_option = yes  cp_shift_loyalist = { person = layla delta = 1 }  cp_flag_recent_joy = { person = layla } }
+}
+
+cp_layla_vox.1052 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1052.t
+	desc = cp_layla_vox.1052.d
+	flavor = cp_layla_vox.1052.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_election_day_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1052.a  default_option = yes  cp_shift_radical = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.1053 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1053.t
+	desc = cp_layla_vox.1053.d
+	flavor = cp_layla_vox.1053.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_election_day_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1053.a  default_option = yes  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+
+cp_layla_vox.106 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.106.t
+	desc = cp_layla_vox.106.d
+	flavor = cp_layla_vox.106.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_country_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		set_variable = { name = cp_layla_spoke_ruler_old days = 540 }
+	}
+	option = { name = cp_layla_vox.106.a  default_option = yes  trigger_event = { id = cp_layla_vox.1061 popup = yes } }
+	option = { name = cp_layla_vox.106.b  trigger_event = { id = cp_layla_vox.1062 popup = yes } }
+	option = { name = cp_layla_vox.106.c  trigger_event = { id = cp_layla_vox.1063 popup = yes } }
+}
+
+cp_layla_vox.1061 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1061.t
+	desc = cp_layla_vox.1061.d
+	flavor = cp_layla_vox.1061.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_country_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1061.a  default_option = yes  cp_flag_recent_hardship = { person = layla } }
+}
+
+cp_layla_vox.1062 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1062.t
+	desc = cp_layla_vox.1062.d
+	flavor = cp_layla_vox.1062.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_country_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1062.a  default_option = yes  cp_shift_hope = { person = layla delta = 1 } }
+}
+
+cp_layla_vox.1063 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.1063.t
+	desc = cp_layla_vox.1063.d
+	flavor = cp_layla_vox.1063.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_country_v08.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 5
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.1063.a  default_option = yes  cp_shift_exhaustion = { person = layla delta = 1 } }
+}
+
+
+cp_layla_vox.109 = {
+	type = country_event
+	placement = root
+	title = cp_layla_vox.109.t
+	desc = cp_layla_vox.109.d
+	flavor = cp_layla_vox.109.flavor
+	event_image = { texture = "gfx/event_pictures/cp_layla_conversation_audience_v06.dds" }
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 5
+	immediate = {
+		set_variable = { name = cp_layla_audience_cooldown days = 180 }
+		cp_spotlight_person = { person = layla }
+	}
+
+	option = { name = cp_layla_vox.109.a  default_option = yes  cp_flag_recent_joy = { person = layla } }
+}

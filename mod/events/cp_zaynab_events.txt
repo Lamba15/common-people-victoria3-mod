@@ -1,0 +1,261 @@
+﻿###############################################################################
+# Common People -- Zaynab events
+#
+# Zaynab is Person 8: a Misri midwife whose basin, linen, and sickroom trust
+# make health-system laws visible before they become statistics.
+###############################################################################
+
+namespace = cp_zaynab
+
+
+# cp_zaynab.1 -- hidden setup
+cp_zaynab.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_zaynab_alive
+		NOT = { has_variable = cp_zaynab_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_zaynab_alive value = 1 }
+		set_variable = { name = cp_zaynab_age value = 43 }
+		set_variable = { name = cp_zaynab_hope value = 5 }
+		set_variable = { name = cp_zaynab_exhaustion value = 4 }
+		set_variable = { name = cp_zaynab_sol value = 8 }
+		set_variable = { name = cp_zaynab_literacy value = 2 }
+		set_variable = { name = cp_zaynab_radical value = 0 }
+		set_variable = { name = cp_zaynab_loyalist value = 0 }
+		set_variable = cp_zaynab_profession_peasants
+		set_variable = cp_zaynab_has_birth_basin
+		set_variable = { name = cp_zaynab_w_health value = 10 }
+		set_variable = { name = cp_zaynab_w_family value = 9 }
+		set_variable = { name = cp_zaynab_w_religion value = 7 }
+		set_variable = { name = cp_zaynab_w_work value = 8 }
+		set_variable = { name = cp_zaynab_w_children value = 9 }
+
+		cp_set_person_home_state = { person = zaynab country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = zaynab place = mit_al_nakhla }
+		cp_set_person_workplace_profile = { person = zaynab profile = public_service }
+		cp_zaynab_refresh_sol = yes
+	}
+}
+
+
+# cp_zaynab.10 -- "The Brass Basin"
+cp_zaynab.10 = {
+	type = country_event
+
+	title = cp_zaynab.10.t
+	desc = cp_zaynab.10.d
+	flavor = cp_zaynab.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_zaynab_intro.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/spiritual"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_zaynab_alive
+		var:cp_zaynab_alive > 0
+		NOT = { has_variable = cp_zaynab_seen_intro }
+	}
+
+	immediate = {
+		cp_zaynab_mark_intro = yes
+	}
+
+	option = {
+		name = cp_zaynab.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_zaynab.20 -- "The Doctor Waits Outside"
+cp_zaynab.20 = {
+	type = country_event
+
+	title = cp_zaynab.20.t
+	desc = cp_zaynab.20.d
+	flavor = cp_zaynab.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_zaynab_20_the_doctor_waits_outside_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_zaynab_alive
+		var:cp_zaynab_alive > 0
+		NOT = { has_variable = cp_zaynab_seen_public_health }
+	}
+
+	immediate = {
+		cp_zaynab_mark_public_health = yes
+	}
+
+	option = {
+		name = cp_zaynab.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_zaynab.30 -- "The Fever Bowl"
+cp_zaynab.30 = {
+	type = country_event
+
+	title = cp_zaynab.30.t
+	desc = cp_zaynab.30.d
+	flavor = cp_zaynab.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_zaynab_30_the_fever_bowl_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_zaynab_alive
+		var:cp_zaynab_alive > 0
+		NOT = { has_variable = cp_zaynab_seen_fever_bowl }
+	}
+
+	immediate = {
+		cp_zaynab_mark_fever_bowl = yes
+	}
+
+	option = {
+		name = cp_zaynab.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_zaynab.40 -- "The Long Night"
+cp_zaynab.40 = {
+	type = country_event
+
+	title = cp_zaynab.40.t
+	desc = cp_zaynab.40.d
+	flavor = cp_zaynab.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_zaynab_40_the_long_night_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/spiritual"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_zaynab_alive
+		var:cp_zaynab_alive > 0
+		NOT = { has_variable = cp_zaynab_seen_long_night }
+	}
+
+	immediate = {
+		cp_zaynab_mark_long_night = yes
+	}
+
+	option = {
+		name = cp_zaynab.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_zaynab.50 -- "The Lime Bucket"
+cp_zaynab.50 = {
+	type = country_event
+
+	title = cp_zaynab.50.t
+	desc = cp_zaynab.50.d
+	flavor = cp_zaynab.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_zaynab_50_the_lime_bucket_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_zaynab_alive
+		var:cp_zaynab_alive > 0
+		NOT = { has_variable = cp_zaynab_seen_lime_bucket }
+	}
+
+	immediate = {
+		cp_zaynab_mark_lime_bucket = yes
+	}
+
+	option = {
+		name = cp_zaynab.50.a
+		default_option = yes
+	}
+}
+
+
+# cp_zaynab.60 -- "Thread Around the Wrist"
+cp_zaynab.60 = {
+	type = country_event
+
+	title = cp_zaynab.60.t
+	desc = cp_zaynab.60.d
+	flavor = cp_zaynab.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_zaynab_60_thread_around_the_wrist_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_zaynab_alive
+		var:cp_zaynab_alive > 0
+		has_variable = cp_zaynab_seen_intro
+		NOT = { has_variable = cp_zaynab_seen_thread_wrist }
+	}
+
+	immediate = {
+		cp_zaynab_mark_thread_wrist = yes
+	}
+
+	option = {
+		name = cp_zaynab.60.a
+		default_option = yes
+	}
+}

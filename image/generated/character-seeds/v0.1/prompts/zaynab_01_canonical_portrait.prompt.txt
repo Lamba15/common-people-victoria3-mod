@@ -1,0 +1,31 @@
+Common People character seed prompt: zaynab
+Source ledger: documentation/characters/zaynab/prompts/seed-v0.1.md
+Prompt heading: Canonical Portrait
+Target source PNG: image/generated/character-seeds/v0.1/zaynab_01_canonical_portrait.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Use case: historical-scene
+Asset type: Common People canonical character portrait, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism portrait-scene for Zaynab in the Common People Victoria 3 mod.
+Subject: Zaynab, Misri Egyptian Sunni village midwife in her fifties, olive-brown skin, lined face, steady dark eyes, practical dark headscarf, plain dress, worn careful hands.
+Scene/backdrop: small village room at night, brass oil lamp, folded linen, ceramic water bowl, doorway opening to darkness.
+Foreground action: Zaynab shields the lamp flame with one hand while reaching for folded linen with the other.
+Required object/gesture: shielded lamp flame, folded linen, and water bowl must be legible at 600x400.
+Composition/framing: close-medium portrait, Zaynab foreground, lamp low center, doorway shadow behind.
+Lighting/mood: warm lamp against deep blue night, grave and competent.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials.
+Constraints: no text, no UI, no border, no watermark, no modern hospital equipment, no explicit medical gore.
+Avoid: saint icon, magical healer, modern clinic, melodramatic childbirth scene.

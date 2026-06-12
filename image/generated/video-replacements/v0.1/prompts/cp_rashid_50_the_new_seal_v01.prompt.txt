@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_rashid.50 at mod/events/cp_rashid_events.txt:205
+Previous vanilla video placeholder: middleeast_courtroom_upheaval
+Target DDS: mod/gfx/event_pictures/cp_rashid_50_the_new_seal_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_rashid_50_the_new_seal_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_rashid.50
+Person token: rashid
+Title: The New Seal
+Short description: The ministry sends down a new seal in a box lined with green cloth. Rashid is told which law has changed, which old words must no longer be written, and which new words will satisfy Cairo. The seal is heavier than the one before it. It leaves a darker circle on the page, a small moon of authority pressed into fiber and ink. Men who yesterday bowed to one clerk now wait for another. A cousin of a cousin asks whether the new order will make his son eligible for a desk. A retired scribe sits in the corridor with his papers folded across his knees, listening for the shape of his own dismissal. Rashid oils the handle, tests it on scrap, and feels the room adjust around the sound.
+Flavor text: By afternoon everyone knows where the stamp is kept, and no one knows yet what it will cost.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

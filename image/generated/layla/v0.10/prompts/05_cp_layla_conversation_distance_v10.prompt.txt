@@ -1,0 +1,27 @@
+Common People Layla v0.10 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.10.md
+Target DDS: mod/gfx/event_pictures/cp_layla_conversation_distance_v10.dds
+Source PNG: image/generated/layla/v0.10/cp_layla_conversation_distance_v10.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla_vox.94 - "Her Face in the Surface of the Water"
+Narrative function: Layla sees age in a water jar and accepts the face without turning it into a sermon.
+Subject: older Layla leaning over a large clay water jar.
+Scene/backdrop: quiet household room or courtyard corner, low evening light, clay wall.
+Foreground action: Layla scoops water while her reflected face breaks on the surface.
+Required object/gesture: water reflection in a clay jar; cup in Layla's hand.
+Background detail: flour dust on a shelf, hanging cloth, small stool.
+Lighting/mood: cool dusk, self-recognition, calm without sentimentality.
+Avoid: mirror vanity scene, magical reflection, modern basin, glamour portrait.

@@ -1,0 +1,31 @@
+﻿l_english:
+ cp_salma.10.t:0 "The Switchboard"
+ cp_salma.10.d:0 "Salma Farag sits before a wooden board pierced with holes, each one dark until a little brass mouth asks to be joined to another. She has been told to say exchange first, then the number, then nothing unless spoken to. The men in the office call it a machine, but it behaves more like a room full of people who cannot see one another and therefore become careless with their voices. Salma learns which merchant breathes through his teeth before asking for Alexandria, which official says urgent when he means embarrassing, which mother calls three times because a son on the other end has not answered. She does not own any of the words. Still, by evening they have passed through her fingers."
+ cp_salma.10.f:0 "When she pulls the plug free, the silence has weight."
+ cp_salma.10.a:0 "The wires have listeners now."
+
+ cp_salma.20.t:0 "The First Light"
+ cp_salma.20.d:0 "The power-house begins with a cough that travels under the floorboards. Men step outside to look at the street lamps even before they are lit, pretending not to be impressed. Salma waits with the other clerks because the exchange will not close until the engineer says the current is steady. At dusk one bulb over the corridor whitens, flickers, and holds. The room changes at once. Ink stains sharpen. Faces lose the mercy of shadow. A fly circles the glass as if it has discovered a small sun. Salma thinks of her mother's house, where the evening still begins when someone cups a match against the wind."
+ cp_salma.20.f:0 "The new light is clean, and because it is clean it shows every tired thing."
+ cp_salma.20.a:0 "Let the lamps hold."
+
+ cp_salma.30.t:0 "Voices in the Wall"
+ cp_salma.30.d:0 "Radio comes to the office as a locked cabinet and a rule that no one should touch it without permission. Permission proves flexible. By the second week every clerk has stood near the door while a voice from nowhere reads names, prices, weather, a speech from Cairo, a song whose singer might as well be hidden behind the plaster. Salma listens with her head turned slightly away, as if politeness still applies when the speaker has no body. The room hears news before the street does. For one minute the city is not lanes and thresholds but air, carrying words too quickly for anyone to sweep them back into private rooms."
+ cp_salma.30.f:0 "After the cabinet is locked, the silence seems old-fashioned."
+ cp_salma.30.a:0 "Some news has already escaped."
+
+ cp_salma.40.t:0 "The Night Bell"
+ cp_salma.40.d:0 "On night duty Salma wraps her shawl around her shoulders and listens for bells that may not come. The city outside the exchange thins to hooves, late footsteps, a cart wheel striking the same loose stone. When a lamp gutters she sees her own reflection in the black window: young face, old eyes, the mouth held still because a clerk's mouth must not reveal what it has heard. Near midnight a call arrives from a hospital. A man's voice asks for a house in a quarter Salma knows by its bread smell. She connects the line and keeps her fingers on the plug until the first cry reaches the wire."
+ cp_salma.40.f:0 "Only when the line goes dead does she breathe out."
+ cp_salma.40.a:0 "Hold the line steady."
+
+ cp_salma.50.t:0 "The Burned Fuse"
+ cp_salma.50.d:0 "The lamps fail all at once, not like sunset but like a hand closing over the room. For a moment the exchange is only breath, chairs scraping, and the thin panic of bells that still expect to be answered. Salma keeps her fingers on the board while the engineer opens the fuse box with a curse he swallows when he remembers the clerks can hear. The burned strip smells sharp and bitter. Someone lights a match; every face rises out of the dark with its own private fear. When the current returns, the bulbs tremble before they hold, and Salma feels the whole city pretending it had not been frightened."
+ cp_salma.50.f:0 "Electric light is most powerful in the second before it comes back."
+ cp_salma.50.a:0 "Let the current steady."
+
+ cp_salma.60.t:0 "The Crossed Line"
+ cp_salma.60.d:0 "A crossed line brings two households into Salma's ear at once. One woman asks for a doctor; another laughs at a joke that was not meant for the sickroom. Salma pulls one plug, then another, but for three breaths grief and laughter share the same wire and neither knows it has been heard. Later the supervisor says such things happen while the network is young. Salma nods because clerks are paid to nod. All afternoon she connects merchants, offices, cousins, police stations, mothers, and sons, and wonders how many lives have brushed against one another in the dark without leaving a name."
+ cp_salma.60.f:0 "Distance has grown shorter, not kinder."
+ cp_salma.60.a:0 "Separate the voices carefully."
+ # add entries below. format: key:0 "value"

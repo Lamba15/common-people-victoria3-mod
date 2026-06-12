@@ -1,0 +1,231 @@
+﻿###############################################################################
+# Common People -- Farid al-Haddad's memory
+#
+# Person 9 scaffold. Farid is registered as `farid`, not as a V3 character.
+# He enters conditionally when railways or telegraphy make an ordinary
+# station worker's life mechanically legible.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_farid_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = farid
+		culture = misri
+		religion = sunni
+		poptype = laborers
+	}
+}
+
+
+# --- Conditional entry ------------------------------------------------------
+cp_farid_try_spawn = {
+	if = {
+		limit = {
+			c:EGY ?= this
+			NOT = { has_global_variable = cp_person_farid_alive }
+			NOT = { has_variable = cp_farid_alive }
+			OR = {
+				has_technology_researched = railways
+				has_technology_researched = electric_telegraph
+				cp_country_has_rail_infrastructure = yes
+			}
+		}
+		cp_mark_person_spawn_home_from_rail_infrastructure = { person = farid }
+		cp_register_person = {
+			person = farid
+			country = EGY
+		}
+		cp_farid_dispatch_startup = yes
+		trigger_event = { id = cp_farid.1 }
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_farid_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_farid_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_farid_dispatch_yearly = {
+	cp_age_increment = { person = farid }
+	cp_farid_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = farid country = EGY }
+	if = {
+		limit = {
+			has_technology_researched = electric_telegraph
+			NOT = { has_variable = cp_farid_seen_telegraph }
+		}
+		random_list = {
+			35 = { cp_try_fire_world_response = { event = cp_farid.20 person = farid } }
+			65 = { }
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_technology_researched = steel_railway_cars
+				has_technology_researched = electric_railway
+			}
+			NOT = { has_variable = cp_farid_seen_new_carriage }
+		}
+		random_list = {
+			35 = { cp_try_fire_world_response = { event = cp_farid.50 person = farid } }
+			65 = { }
+		}
+	}
+}
+
+cp_farid_dispatch_law_enacted = {
+	cp_person_hook_noop = yes
+}
+
+cp_farid_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_farid_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_farid_dispatch_tech = {
+	if = {
+		limit = {
+			has_technology_researched = railways
+			NOT = { has_variable = cp_farid_seen_intro }
+		}
+		random_list = {
+			50 = { cp_try_fire_world_response = { event = cp_farid.10 person = farid } }
+			50 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_technology_researched = electric_telegraph
+			NOT = { has_variable = cp_farid_seen_telegraph }
+		}
+		cp_try_fire_world_response = { event = cp_farid.20 person = farid }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_technology_researched = steel_railway_cars
+				has_technology_researched = electric_railway
+			}
+			NOT = { has_variable = cp_farid_seen_new_carriage }
+		}
+		cp_try_fire_world_response = { event = cp_farid.50 person = farid }
+	}
+}
+
+cp_farid_dispatch_building = {
+	if = {
+		limit = {
+			is_building_type = building_railway
+			cp_building_affects_person_workplace = { person = farid }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = farid }
+				NOT = { has_variable = cp_farid_seen_rail_yard }
+			}
+		}
+		owner ?= {
+			random_list = {
+				70 = { cp_try_fire_world_response = { event = cp_farid.30 person = farid } }
+				30 = { }
+			}
+		}
+	}
+	if = {
+		limit = {
+			is_building_type = building_railway
+			cp_building_affects_person_workplace = { person = farid }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = farid }
+				has_variable = cp_farid_seen_intro
+				NOT = { has_variable = cp_farid_seen_parcel_bag }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_farid.60 person = farid }
+		}
+	}
+}
+
+cp_farid_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_farid_mark_intro = {
+	cp_mark_event_seen = { person = farid id = intro days = 3650 }
+	change_variable = { name = cp_farid_hope add = 1 }
+	clamp_variable = { name = cp_farid_hope min = 0 max = 10 }
+}
+
+cp_farid_mark_telegraph = {
+	cp_mark_event_seen = { person = farid id = telegraph days = 1825 }
+	change_variable = { name = cp_farid_literacy add = 2 }
+	clamp_variable = { name = cp_farid_literacy min = 0 max = 100 }
+	cp_shift_weight = { person = farid weight = authority delta = 1 }
+}
+
+cp_farid_mark_rail_yard = {
+	cp_mark_event_seen = { person = farid id = rail_yard days = 1825 }
+	cp_shift_exhaustion = { person = farid delta = 1 }
+	cp_shift_weight = { person = farid weight = work delta = 1 }
+}
+
+cp_farid_mark_night_shift = {
+	cp_mark_event_seen = { person = farid id = night_shift days = 540 }
+	cp_shift_exhaustion = { person = farid delta = 1 }
+}
+
+cp_farid_mark_new_carriage = {
+	cp_mark_event_seen = { person = farid id = new_carriage days = 1825 }
+	cp_shift_hope = { person = farid delta = 1 }
+	cp_shift_literacy = { person = farid delta = 1 }
+	cp_shift_weight = { person = farid weight = infrastructure delta = 1 }
+	cp_shift_weight = { person = farid weight = schedule delta = 1 }
+}
+
+cp_farid_mark_parcel_bag = {
+	cp_mark_event_seen = { person = farid id = parcel_bag days = 720 }
+	cp_shift_exhaustion = { person = farid delta = 1 }
+	cp_shift_weight = { person = farid weight = city delta = 1 }
+	cp_shift_weight = { person = farid weight = work delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_farid = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_farid_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_farid.10 person = farid }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_farid_seen_intro
+				NOT = { has_variable = cp_farid_seen_night_shift }
+			}
+			cp_try_fire_ambient = { event = cp_farid.40 person = farid }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_farid_seen_intro
+				NOT = { has_variable = cp_farid_seen_parcel_bag }
+			}
+			cp_try_fire_ambient = { event = cp_farid.60 person = farid }
+		}
+		74 = { }
+	}
+}

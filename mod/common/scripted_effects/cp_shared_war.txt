@@ -1,0 +1,133 @@
+﻿###############################################################################
+# Common People -- shared war dispatch helpers
+###############################################################################
+
+
+cp_roll_war_start_response = {
+	random_list = {
+		55 = {
+			trigger = {
+				cp_person_is_alive = { person = layla }
+				has_variable = cp_layla_ahmed_alive
+				var:cp_layla_ahmed_alive > 0
+				NOT = { has_variable = cp_layla_ahmed_at_war }
+				NOT = { has_variable = cp_layla_seen_ahmed_conscripted }
+				var:cp_layla_ahmed_age >= 18
+				var:cp_layla_ahmed_age <= 45
+			}
+			set_variable = { name = cp_shared_war_start_target_layla days = 30 }
+		}
+		45 = {
+			trigger = {
+				cp_person_is_alive = { person = soldier }
+				NOT = { has_variable = cp_soldier_at_war }
+				NOT = { has_variable = cp_soldier_seen_notice }
+				var:cp_soldier_age >= 18
+				var:cp_soldier_age <= 45
+			}
+			set_variable = { name = cp_shared_war_start_target_soldier days = 30 }
+		}
+		15 = { }
+	}
+}
+
+
+cp_on_war_started_for_egy = {
+	cp_roll_war_start_response = yes
+	if = {
+		limit = {
+			cp_person_is_alive = { person = bey }
+		}
+		cp_bey_dispatch_war_started = yes
+	}
+	if = {
+		limit = {
+			cp_person_is_alive = { person = layla }
+		}
+		cp_layla_dispatch_war_started = yes
+	}
+	if = {
+		limit = {
+			cp_person_is_alive = { person = soldier }
+		}
+		cp_soldier_dispatch_war_started = yes
+	}
+	if = {
+		limit = {
+			cp_person_is_alive = { person = samier }
+		}
+		cp_samier_dispatch_war_started = yes
+	}
+		if = {
+			limit = {
+				cp_person_is_alive = { person = tarek }
+			}
+			cp_tarek_dispatch_war_started = yes
+		}
+		if = {
+			limit = {
+				cp_person_is_alive = { person = karim }
+			}
+			cp_karim_dispatch_war_started = yes
+		}
+		if = {
+			limit = {
+				cp_person_is_alive = { person = farid }
+			}
+			cp_farid_dispatch_war_started = yes
+	}
+	if = {
+		limit = {
+			cp_person_is_alive = { person = dawud }
+		}
+		cp_dawud_dispatch_war_started = yes
+	}
+		if = {
+			limit = {
+				cp_person_is_alive = { person = rashid }
+			}
+			cp_rashid_dispatch_war_started = yes
+		}
+		if = {
+			limit = {
+				cp_person_is_alive = { person = salma }
+			}
+			cp_salma_dispatch_war_started = yes
+		}
+		if = {
+			limit = {
+				cp_person_is_alive = { person = huda }
+			}
+			cp_huda_dispatch_war_started = yes
+		}
+		if = {
+			limit = {
+				cp_person_is_alive = { person = mansur }
+			}
+			cp_mansur_dispatch_war_started = yes
+		}
+		if = {
+			limit = {
+				cp_person_is_alive = { person = nabil }
+			}
+			cp_nabil_dispatch_war_started = yes
+		}
+		if = {
+			limit = {
+				cp_person_is_alive = { person = nour }
+			}
+			cp_nour_dispatch_war_started = yes
+	}
+	if = {
+		limit = {
+			cp_person_is_alive = { person = mina }
+		}
+		cp_mina_dispatch_war_started = yes
+	}
+	if = {
+		limit = {
+			cp_person_is_alive = { person = zaynab }
+		}
+		cp_zaynab_dispatch_war_started = yes
+	}
+}

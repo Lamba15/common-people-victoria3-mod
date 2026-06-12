@@ -1,0 +1,26 @@
+Common People character seed prompt: tarek
+Source ledger: documentation/characters/tarek/prompts/seed-v0.1.md
+Prompt heading: Future Samier crossover beat
+Target source PNG: image/generated/character-seeds/v0.1/tarek_03_future_samier_crossover_beat.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Narrative function: Tarek and Samier should share the same factory from opposite sides of a table.
+Subject: Tarek in dark jacket, Samier in work shirt if included.
+Scene/backdrop: factory yard or mill office doorway.
+Foreground action: Tarek holds a paper he has not yet signed while a worker waits across the threshold.
+Required object/gesture: unsigned paper between owner and worker.
+Lighting/mood: hot afternoon, mutual fear disguised as bargaining.
+Avoid: caricatured villainy, heroic worker speech, clean boardroom.

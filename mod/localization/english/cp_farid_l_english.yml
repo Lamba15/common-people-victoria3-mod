@@ -1,0 +1,30 @@
+﻿l_english:
+ cp_farid.10.t:0 "The Platform Boy"
+ cp_farid.10.d:0 "Railway work reaches Farid as smoke, shouting, and a coin held warm in his fist."
+ cp_farid.10.f:0 "Farid learns the station before he learns the timetable. He knows which porter limps after noon, which guard sells tea from a brass kettle, which passengers hold their bundles as if the train might steal them. When the engine comes in, the platform wind lifts dust against his teeth, and for one bright second the whole country seems to move because someone has waved a flag."
+ cp_farid.10.a:0 "The whistle has made him older."
+
+ cp_farid.20.t:0 "The Blue Wire"
+ cp_farid.20.d:0 "Telegraphy teaches Farid that a message can outrun the train."
+ cp_farid.20.f:0 "The clerk lets him stand by the door because Farid brings the coal scuttle without spilling it. A needle clicks, a hand writes, and the paper fills with words from a city whose dust has not yet reached their shoes. Farid watches the wire outside tremble in the heat. It is only metal, only a line above the road, but men lower their voices near it as they do near a judge."
+ cp_farid.20.a:0 "A word travels without a mouth."
+
+ cp_farid.30.t:0 "Stones for the Embankment"
+ cp_farid.30.d:0 "A new railway job gives Farid another wage and another bruise."
+ cp_farid.30.f:0 "The overseer reads names from a slate while the men stand in the half-made shade of the embankment. Farid answers too quickly and hears a few older workers laugh, not cruelly, only because youth still thinks a wage begins when the name is called. By sunset the stones have found his shoulder bone. The rails lie beside the road like two dark promises, straight enough to frighten anyone who grew up following canals."
+ cp_farid.30.a:0 "The line is paid for in backs."
+
+ cp_farid.40.t:0 "The Night Lamp"
+ cp_farid.40.d:0 "Farid keeps watch while the station sleeps in pieces."
+ cp_farid.40.f:0 "After midnight the station belongs to smaller sounds: the lamp glass ticking as it cools, a mule coughing near the freight shed, one clerk turning in his chair without waking. Farid sits on an upturned crate with his cap over his knees. Somewhere down the line an engine cries once and is silent. He thinks of his mother's courtyard, then of the wages folded under his shirt, then of nothing at all until dawn loosens the black from the rails."
+ cp_farid.40.a:0 "Morning will count him present."
+
+ cp_farid.50.t:0 "The New Carriage"
+ cp_farid.50.d:0 "The railway receives better cars, and Farid learns that speed has its own discipline."
+ cp_farid.50.f:0 "The new carriage arrives with paint still sharp on the doors and iron steps that do not sag under a man's boot. Passengers stare at it as if comfort has been imported for inspection. Farid is told where to stand, when to lift, how many breaths between the guard's whistle and the slamming of the last latch. The old cars gave a boy time to run beside them. This one expects him to already be there."
+ cp_farid.50.a:0 "The schedule tightens like a belt."
+
+ cp_farid.60.t:0 "The Parcel Bag"
+ cp_farid.60.d:0 "A station bag fills with letters, receipts, and the names of people Farid will never meet."
+ cp_farid.60.f:0 "The leather bag is heavier than it looks. It holds letters folded small enough to hide in a sleeve, money orders smelling of anxious hands, a newspaper already soft at the corners, and one parcel wrapped so carefully that Farid carries it as if it might hear him breathe. At each stop someone asks whether a name has arrived. He learns that a railway does not only move bodies. It moves waiting."
+ cp_farid.60.a:0 "He keeps the strap over one shoulder."

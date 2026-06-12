@@ -1,0 +1,31 @@
+Common People character seed prompt: soldier
+Source ledger: documentation/characters/the-soldier/prompts/seed-v0.1.md
+Prompt heading: Canonical Portrait
+Target source PNG: image/generated/character-seeds/v0.1/soldier_01_canonical_portrait.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Use case: historical-scene
+Asset type: Common People canonical character portrait, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism portrait-scene for Yusuf ibn Mahmud in the Common People Victoria 3 mod.
+Subject: Yusuf ibn Mahmud, Misri Egyptian Sunni conscript in his early twenties, lean village face, olive-brown skin, anxious dark eyes, patched military coat over simple clothes, worn rifle strap across his shoulder.
+Scene/backdrop: village road near a low wall, field dust and a military column far behind him.
+Foreground action: Yusuf holds a folded call-up paper in one hand and grips the rifle strap with the other.
+Required object/gesture: folded call-up paper and rifle strap must be legible at 600x400.
+Composition/framing: close-medium portrait, Yusuf foreground center, road and distant column behind.
+Lighting/mood: flat hot morning, fear kept private.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials.
+Constraints: no text, no UI, no border, no watermark, no modern uniform, no heroic poster pose.
+Avoid: battlefield charge, decorated officer, clean parade uniform, nationalist propaganda.

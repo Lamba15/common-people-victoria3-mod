@@ -4,13 +4,54 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is **Common People**, a Victoria 3 mod (target version 1.12, forward-compatible with 1.13's National Cast shipping April 28, 2026) built from the [common-people template](https://github.com/common-people). It adds personal, human-scale stories about ordinary citizens of the nations the player governs. The design document is `documentation/the-holy-grail.md`. Characters and their events live in `documentation/characters/<name>/`. The mod code itself lives in `mod/`.
+This is **Common People**, a Victoria 3 mod targeting the 1.13 line (metadata supports `1.13.*`; the installed local game reports `release/1.13.8`, checksum suffix `ce22`; current logs are for 1.13.8 but may predate the latest no-launch mod edits) built from the [common-people template](https://github.com/common-people). It adds personal, human-scale stories about ordinary citizens of the nations the player governs. The design document is `documentation/the-holy-grail.md`. Characters and their events live in `documentation/characters/<name>/`. The mod code itself lives in `mod/`.
 
 The mod abbreviation is `cp`. All mod-owned identifiers are prefixed `cp_`.
 
+Current version: **v0.4.0** — multi-person scaffolding + event-firing budget landed in the r5 refactor, first in-game test passed, and the current static scaffold has 16 registered persons with ten conditional entrants. Layla is Person 1 of N, not a special infrastructure lane. Adding new persons is purely additive. See `documentation/audit-v0.5-rebuild.md` for the current rebuild ledger; `documentation/audit-v0.3.md` is historical.
+
+## Architecture (r5)
+
+The mod is designed around **persons** — narrative objects owned by the mod, not V3 `character` entities. Each person is a cluster of country variables with the name token baked into every identifier.
+
+**Three reference documents are the ground truth — read them before editing:**
+
+- `documentation/characters/_shared/registry.md` — how a person joins the mod, what variables they own, how they die.
+- `documentation/characters/_shared/firing.md` — the five-tier event firing protocol and the 1–2 routine automatic events/year target with a hard cap of two.
+- `documentation/characters/_shared/adding-a-new-person.md` — mechanical 7-step recipe with copy-paste templates for Person 2/3/N. **This is the most important file in the repo when onboarding a new character.**
+
+### File prefix rule
+
+Every file under `mod/common/` and `mod/events/` classifies cleanly as one of:
+
+- `cp_shared_*` — cross-person infrastructure (registry, firing gatekeepers, parameterised primitives, monthly router).
+- `cp_<name>_*` — a single person's events, memory, sensors, buttons, custom_loc, JE, loc (e.g. `cp_layla_*`).
+- `cp_debug_*` — console-fireable probes.
+- `cp_on_actions.txt` — the thin dispatcher router.
+
+**When adding Person N, do not edit any `cp_layla_*` file.** Always-on persons add one startup registration and one first-contact entry if eligible; conditional persons add a `cp_<name>_try_spawn` effect and hook it from yearly/technology/building dispatch where relevant. The shared files that gain content are `cp_shared_startup_events.txt` when needed, `cp_shared_firing.txt`, `cp_shared_war.txt`, `cp_on_actions.txt`, and occasionally `cp_shared_sensors.txt` for reusable context. Everything else is new `cp_<name>_*` files.
+
+### Variable naming
+
+Every person-specific variable carries the name token: `cp_<name>_<attr>`. Examples: `cp_layla_hope`, `cp_layla_sol`, `cp_layla_seen_homesteading`, `cp_layla_w_revolution`, `cp_layla_profession_peasants`, `cp_layla_ahmed_alive` (household-furniture prefixed by owner). Never use an unprefixed `cp_<attr>` — that's a pre-r5 pattern and will fail the rename audit.
+
+Globals (cross-person): `cp_person_<name>_alive`, `cp_person_<name>_country`, `cp_global_ambient_cooldown`, `cp_person_<name>_ambient_cooldown`, `cp_is_loaded`.
+
+### Firing gatekeepers
+
+Every `trigger_event` in shared code or buttons flows through one of five gatekeepers in `cp_shared_firing.txt`:
+
+- `cp_try_fire_ambient` — small life beats. Gated by 183-day global cooldown + 365-day per-person cooldown. Target: **1–2 routine automatic fires per in-game year across all persons combined, with a hard cap of two.**
+- `cp_try_fire_law_reaction` — law-reform beats. Uses the same 183-day global + 365-day per-person cooldown lane so rapid law passing cannot flood the player. Per-event seen-flag enforces one-shot.
+- `cp_try_fire_world_response` — routine technology, building, conditional-entry, and noncritical yearly state beats. Uses the same shared cooldown lane.
+- `cp_try_fire_milestone` — bypasses budget. Death, Cairo offer, suitor, first welfare, revolution.
+- `cp_button_fire` — player-initiated; always fires (player click is a promise). Per-event seen-flags still apply.
+
+Raw `trigger_event` inside an event's `immediate` or option block is allowed for chained follow-ups (the next scene in the same beat) — not for dispatcher-initiated fires.
+
 ## Reference skill
 
-When editing Paradox script files (`.txt` under `mod/events/` or `mod/common/`, or `.yml` localization under `mod/localization/`), the project-level skill `.claude/skills/victoria3-event/` auto-loads. It contains:
+When editing Paradox script files (`.txt` under `mod/events/` or `mod/common/`, or `.yml` localization under `mod/localization/`), use the project-level skill `.agents/skills/victoria3-event/`. It contains:
 
 - `SKILL.md` — fast reference: conventions, checklists, quick trait list
 - `reference.md` — deep reference: verbatim vanilla examples for events, templates, on_actions, variables, scopes, localization; full 25 personality + 17 condition trait lists; debug workflow; common gotchas
@@ -34,9 +75,13 @@ Always consult the skill's `reference.md` before inventing V3 syntax. The vanill
 
 - **Paradox script syntax:** Files in `mod/common/` and `mod/events/` use Paradox's declarative scripting format (block-based with `=`, `{ }`, indentation by tabs). This is NOT JSON, YAML, or any standard format.
 - **Localization files** must start with a BOM (`\xEF\xBB\xBF`) and use the header format `l_english:` (or other language code). Entries are `key:0 "value"` format. Verify with `xxd <file> | head -1` — first three bytes must be `ef bb bf`.
-- **File naming:** Mod files are prefixed `cp_` (e.g., `cp_layla_events.txt`) to avoid conflicts with other mods and the base game.
+- **File naming:** Mod files are prefixed `cp_` (e.g., `cp_layla_events.txt`) to avoid conflicts with other mods and the base game. Per-person files add the name token: `cp_<name>_*`.
 - **Global variable pattern:** `cp_is_loaded` is set on game start via `on_actions`, with a corresponding error-suppression event (`cp_error_suppression.0001`). This is a compatibility mechanism for inter-mod detection.
+- **V3 macro substitution is load-time, not runtime.** `$param$` is substituted when a scripted effect is parsed, so `cp_$person$_hope` becomes literal `cp_layla_hope` at each callsite. This means `cu:$culture$`, `rel:$religion$`, `c:$country$` do not work at runtime — use per-person wrappers that bake the literals in (see `cp_layla_refresh_sol` in `cp_layla_memory.txt` for the pattern).
+- **V3 rejects scripted_effects with unused macro parameters.** If a scripted_effect's callsites pass `person = layla` but the effect body never references `$person$`, V3 silently rejects compilation — every call becomes a no-op. Either reference every declared param in the body (e.g. `limit = { has_variable = cp_$person$_alive }` satisfies the check while adding a sanity gate) or strip the unused param from the callsite.
+- **Routine event budget.** The mod targets 1–2 routine automatic events per in-game year across all persons, with a hard cap of two. Ambient, first-contact, law-reaction, and world-response events share the same visible-story cooldown lane. Milestones add 0–1 only when a critical life/world state demands it. Do not write new event sources that bypass this — use the five gatekeepers.
 - **Writing style:** Every event text is written as a paragraph of a novel (tone reference: Naguib Mahfouz's *Cairo Trilogy*). Specific, sensory, subtext. Never narration ("you see X") — write what a witness would feel.
+- **No dead code in-tree.** When a system is replaced, do not leave the old files sitting with a "retired" header comment. Two acceptable paths: either **salvage** the old content (port the good prose, route the unused images, lift the reusable effects) into the new system, or **delete** the old files in the same commit as the new system. Never both retired-and-kept — orphaned files confuse future work, complicate bug-hunts, and rot. If a short grace period is genuinely needed for playtest comparison, that is an explicit TODO with an expiry, not a permanent condition.
 
 ## Useful Scripts
 

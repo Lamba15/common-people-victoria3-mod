@@ -1,0 +1,31 @@
+Common People character seed prompt: dawud
+Source ledger: documentation/characters/dawud/prompts/seed-v0.1.md
+Prompt heading: Canonical Portrait
+Target source PNG: image/generated/character-seeds/v0.1/dawud_01_canonical_portrait.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Use case: historical-scene
+Asset type: Common People canonical character portrait, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism portrait-scene for Dawud Hanna in the Common People Victoria 3 mod.
+Subject: Dawud Hanna, Misri Egyptian Orthodox dockworker in his thirties, strong shoulders, olive-brown skin, tired dark eyes, short curly black hair, salt-stained linen shirt, rough rope coil over one shoulder, small simple cross cord at his throat.
+Scene/backdrop: Lower Egyptian river port or Alexandria-adjacent quay, crates, rope, sacks, steam haze in the distance.
+Foreground action: Dawud sits on a low bollard after a shift, examining a fresh rope burn across his palm.
+Required object/gesture: rope burn and rope coil must be legible at 600x400.
+Composition/framing: close-medium, Dawud foreground left, quay and cargo gang blurred but recognizable behind him.
+Lighting/mood: humid late afternoon, exhaustion, dignity without romance.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials.
+Constraints: no text, no UI, no border, no watermark, no modern hard hat, no sailor uniform.
+Avoid: heroic dock panorama, naval battle, polished merchant office, tourist harbor.

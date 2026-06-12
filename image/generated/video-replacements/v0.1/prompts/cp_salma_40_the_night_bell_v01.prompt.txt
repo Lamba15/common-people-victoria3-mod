@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_salma.40 at mod/events/cp_salma_events.txt:169
+Previous vanilla video placeholder: africa_city_center
+Target DDS: mod/gfx/event_pictures/cp_salma_40_the_night_bell_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_salma_40_the_night_bell_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_salma.40
+Person token: salma
+Title: The Night Bell
+Short description: On night duty Salma wraps her shawl around her shoulders and listens for bells that may not come. The city outside the exchange thins to hooves, late footsteps, a cart wheel striking the same loose stone. When a lamp gutters she sees her own reflection in the black window: young face, old eyes, the mouth held still because a clerk's mouth must not reveal what it has heard. Near midnight a call arrives from a hospital. A man's voice asks for a house in a quarter Salma knows by its bread smell. She connects the line and keeps her fingers on the plug until the first cry reaches the wire.
+Flavor text: Only when the line goes dead does she breathe out.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

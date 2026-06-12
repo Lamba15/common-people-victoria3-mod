@@ -1,14 +1,14 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- shared startup events (r5)
 #
-# Single entry point for registering every person in the mod. Called from
-# cp_on_start (on_game_started subscription) after the existing cp_startup.1
-# intro runs.
-#
-# r5 note: cp_startup.1 (in cp_startup_events.txt) still initialises Layla's
-# country-variable block AND fires her intro event; it will be rewritten in
-# Commit 2 to delegate variable setup to cp_register_person here. For
-# Commit 1 this file is dormant — no one calls cp_shared_startup.1 yet.
+# Single entry point for setting up always-on persons and sampling eligible
+# conditional persons before the first visible contact. Called from cp_on_start
+# (on_game_started subscription). Conditional entrants still use their
+# cp_<person>_try_spawn effect from yearly/tech/building/law hooks later, but
+# startup can now register them too if the selected start date or save state
+# already satisfies their world conditions. The visible first contact is
+# randomized in cp_shared_startup.2 so no person owns the start of every
+# campaign.
 ###############################################################################
 
 namespace = cp_shared_startup
@@ -16,14 +16,15 @@ namespace = cp_shared_startup
 
 # cp_shared_startup.1 -- "Register all persons"
 #
-# Fires after cp_startup.1 sets up the mod-loaded flag. Iterates each
-# registered person (via a fixed list — V3 cannot loop over arbitrary
-# names). Every person's cp_register_person call bakes in the culture,
-# religion, home_state, profession, and starting age for their life.
+# Iterates each always-on person (via a fixed list — V3 cannot loop over
+# arbitrary names). Each person registers through cp_register_person, then
+# triggers that person's hidden setup event if their local variable block does
+# not exist yet.
 #
-# Adding a new person: add one cp_register_person call here, create their
-# cp_<person>_memory.txt + cp_<person>_events.txt, and add one if-block
-# per hook to cp_on_actions.txt. No existing file is modified.
+# Adding a new always-on person: add one cp_register_person call here, create
+# their cp_<person>_memory.txt + cp_<person>_events.txt, and add one lean
+# if-block per hook to cp_on_actions.txt. Conditional persons instead need a
+# called cp_<person>_try_spawn effect. No existing person file is modified.
 
 cp_shared_startup.1 = {
 	type = country_event
@@ -34,33 +35,311 @@ cp_shared_startup.1 = {
 	}
 
 	immediate = {
-		# Person 1 -- Layla al-Sharif of Mīt al-Nakhla, Lower Egypt.
-		# Misri Sunni peasant, 22 in 1836.
-		cp_register_person = {
-			person = layla
-			country = EGY
-			culture = misri
-			religion = sunni
-			home_state = STATE_LOWER_EGYPT
-			profession = peasants
-			age = 22
+		if = {
+			limit = { NOT = { has_variable = cp_common_people_je_added } }
+			add_journal_entry = { type = cp_je_common_people }
+			set_variable = cp_common_people_je_added
 		}
 
-		# Future persons — register conditionally or unconditionally here.
-		# Example (commented out; template for when we add the Bey):
-		# cp_register_person = {
-		#     person = bey
-		#     country = EGY
-		#     culture = misri
-		#     religion = sunni
-		#     home_state = STATE_LOWER_EGYPT
-		#     profession = capitalists
-		#     age = 42
-		# }
+		cp_layla_dispatch_startup = yes
+
+		# Person 1 -- Layla al-Sharif of Mit al-Nakhla, Lower Egypt.
+		# Misri Sunni peasant, 22 in 1836. Her country-variable block lives
+		# in cp_layla_setup.1.
+		if = {
+			limit = {
+				OR = {
+					NOT = { has_variable = cp_layla_alive }
+					AND = {
+						has_variable = cp_layla_alive
+						var:cp_layla_alive > 0
+					}
+				}
+			}
+			cp_register_person = {
+				person = layla
+				country = EGY
+			}
+		}
+		trigger_event = { id = cp_layla_setup.1 }
+
+		# Person 2 -- Hassan Bey al-Sayyid, a Misri aristocrat in
+		# Lower Egypt. His country-variable block lives in cp_bey.1.
+		cp_bey_dispatch_startup = yes
+		if = {
+			limit = {
+				OR = {
+					NOT = { has_variable = cp_bey_alive }
+					AND = {
+						has_variable = cp_bey_alive
+						var:cp_bey_alive > 0
+					}
+				}
+			}
+			cp_register_person = {
+				person = bey
+				country = EGY
+			}
+		}
+		trigger_event = { id = cp_bey.1 }
+
+		# Person 3 -- Yusuf ibn Mahmud, a Misri soldier in Lower Egypt.
+		# His country-variable block lives in cp_soldier.1.
+		cp_soldier_dispatch_startup = yes
+		if = {
+			limit = {
+				OR = {
+					NOT = { has_variable = cp_soldier_alive }
+					AND = {
+						has_variable = cp_soldier_alive
+						var:cp_soldier_alive > 0
+					}
+				}
+			}
+			cp_register_person = {
+				person = soldier
+				country = EGY
+			}
+		}
+		trigger_event = { id = cp_soldier.1 }
+
+		# Person 6 -- Nour, a Misri shopkeeper's widow in Lower Egypt.
+		# Her country-variable block lives in cp_nour.1.
+		cp_nour_dispatch_startup = yes
+		if = {
+			limit = {
+				OR = {
+					NOT = { has_variable = cp_nour_alive }
+					AND = {
+						has_variable = cp_nour_alive
+						var:cp_nour_alive > 0
+					}
+				}
+			}
+			cp_register_person = {
+				person = nour
+				country = EGY
+			}
+		}
+		trigger_event = { id = cp_nour.1 }
+
+		# Person 7 -- Mina, a Misri Orthodox printer's apprentice in Cairo.
+		# His country-variable block lives in cp_mina.1.
+		cp_mina_dispatch_startup = yes
+		if = {
+			limit = {
+				OR = {
+					NOT = { has_variable = cp_mina_alive }
+					AND = {
+						has_variable = cp_mina_alive
+						var:cp_mina_alive > 0
+					}
+				}
+			}
+			cp_register_person = {
+				person = mina
+				country = EGY
+			}
+		}
+		trigger_event = { id = cp_mina.1 }
+
+		# Person 8 -- Zaynab, a Misri village midwife in Lower Egypt.
+		# Her country-variable block lives in cp_zaynab.1.
+		cp_zaynab_dispatch_startup = yes
+		if = {
+			limit = {
+				OR = {
+					NOT = { has_variable = cp_zaynab_alive }
+					AND = {
+						has_variable = cp_zaynab_alive
+						var:cp_zaynab_alive > 0
+					}
+				}
+			}
+			cp_register_person = {
+				person = zaynab
+				country = EGY
+			}
+		}
+		trigger_event = { id = cp_zaynab.1 }
+
+		# If a later start date or loaded scenario already satisfies a
+		# conditional person's world gates, register them before first contact.
+		# Their setup events see this one-day flag and suppress their own
+		# immediate visible intro, letting cp_shared_startup.2 pick one opener.
+		set_variable = { name = cp_startup_conditional_scan days = 1 }
+		cp_samier_try_spawn = yes
+		cp_tarek_try_spawn = yes
+		cp_farid_try_spawn = yes
+		cp_dawud_try_spawn = yes
+		cp_rashid_try_spawn = yes
+		cp_salma_try_spawn = yes
+		cp_karim_try_spawn = yes
+		cp_huda_try_spawn = yes
+		cp_nabil_try_spawn = yes
+		cp_mansur_try_spawn = yes
+
+		if = {
+			limit = { NOT = { has_variable = cp_active_roster_v0_cleaned } }
+			cp_clear_all_active_people = yes
+			set_variable = cp_active_roster_v0_cleaned
+		}
+		cp_refresh_active_roster = yes
+		trigger_event = { id = cp_shared_startup.2 }
 	}
 
-	option = {
-		name = cp_shared_startup.1.a
-		default_option = yes
+}
+
+
+# cp_shared_startup.2 -- randomized first contact
+#
+# Picks the first visible ordinary person after all always-on setup events have
+# run. Layla is one branch among the starting roster, not a privileged startup
+# path. Conditional persons can also be chosen here if the startup conditional
+# scan registered them.
+
+cp_shared_startup.2 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		NOT = { has_variable = cp_first_contact_chosen }
+	}
+
+	immediate = {
+		set_variable = cp_first_contact_chosen
+
+		random_list = {
+			14 = {
+				trigger = {
+					cp_person_is_alive = { person = layla }
+					NOT = { has_variable = cp_layla_met_player }
+				}
+				cp_mark_first_contact_budget = { person = layla }
+				trigger_event = { id = cp_layla.1 }
+			}
+			16 = {
+				trigger = {
+					cp_person_is_alive = { person = bey }
+					NOT = { has_variable = cp_bey_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = bey }
+				trigger_event = { id = cp_bey.10 }
+			}
+			14 = {
+				trigger = {
+					cp_person_is_alive = { person = soldier }
+					NOT = { has_variable = cp_soldier_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = soldier }
+				trigger_event = { id = cp_soldier.10 }
+			}
+			14 = {
+				trigger = {
+					cp_person_is_alive = { person = nour }
+					NOT = { has_variable = cp_nour_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = nour }
+				trigger_event = { id = cp_nour.10 }
+			}
+			14 = {
+				trigger = {
+					cp_person_is_alive = { person = mina }
+					NOT = { has_variable = cp_mina_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = mina }
+				trigger_event = { id = cp_mina.10 }
+			}
+			14 = {
+				trigger = {
+					cp_person_is_alive = { person = zaynab }
+					NOT = { has_variable = cp_zaynab_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = zaynab }
+				trigger_event = { id = cp_zaynab.10 }
+			}
+			8 = {
+				trigger = {
+					cp_person_is_alive = { person = samier }
+					NOT = { has_variable = cp_samier_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = samier }
+				trigger_event = { id = cp_samier.10 }
+			}
+			8 = {
+				trigger = {
+					cp_person_is_alive = { person = tarek }
+					NOT = { has_variable = cp_tarek_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = tarek }
+				trigger_event = { id = cp_tarek.10 }
+			}
+			8 = {
+				trigger = {
+					cp_person_is_alive = { person = farid }
+					NOT = { has_variable = cp_farid_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = farid }
+				trigger_event = { id = cp_farid.10 }
+			}
+			8 = {
+				trigger = {
+					cp_person_is_alive = { person = dawud }
+					NOT = { has_variable = cp_dawud_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = dawud }
+				trigger_event = { id = cp_dawud.10 }
+			}
+			8 = {
+				trigger = {
+					cp_person_is_alive = { person = rashid }
+					NOT = { has_variable = cp_rashid_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = rashid }
+				trigger_event = { id = cp_rashid.10 }
+			}
+			8 = {
+				trigger = {
+					cp_person_is_alive = { person = salma }
+					NOT = { has_variable = cp_salma_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = salma }
+				trigger_event = { id = cp_salma.10 }
+			}
+			8 = {
+				trigger = {
+					cp_person_is_alive = { person = karim }
+					NOT = { has_variable = cp_karim_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = karim }
+				trigger_event = { id = cp_karim.10 }
+			}
+			8 = {
+				trigger = {
+					cp_person_is_alive = { person = huda }
+					NOT = { has_variable = cp_huda_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = huda }
+				trigger_event = { id = cp_huda.10 }
+			}
+			8 = {
+				trigger = {
+					cp_person_is_alive = { person = nabil }
+					NOT = { has_variable = cp_nabil_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = nabil }
+				trigger_event = { id = cp_nabil.10 }
+			}
+			8 = {
+				trigger = {
+					cp_person_is_alive = { person = mansur }
+					NOT = { has_variable = cp_mansur_seen_intro }
+				}
+				cp_mark_first_contact_budget = { person = mansur }
+				trigger_event = { id = cp_mansur.10 }
+			}
+			14 = { }
+		}
 	}
 }

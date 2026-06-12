@@ -30,7 +30,7 @@ The five reactions that set `cp_h1` (and `cp_h1_sub` where applicable). Between 
 
 ### R1. cp_layla.h1_tenant_farmers
 
-**Trigger:** `on_law_enacted` for EGY, new law = `law_tenant_farmers`, Layla alive, `cp_h1` unset.
+**Trigger:** `on_law_enactment_pass` for EGY, new law = `law_tenant_farmers`, Layla alive, `cp_h1` unset.
 **Fires:** once.
 
 **State change:**
@@ -47,7 +47,7 @@ The five reactions that set `cp_h1` (and `cp_h1_sub` where applicable). Between 
 
 ### R2. cp_layla.h1_homesteading
 
-**Trigger:** `on_law_enacted` for EGY, new law = `law_homesteading`, Layla alive, `cp_h1` unset.
+**Trigger:** `on_law_enactment_pass` for EGY, new law = `law_homesteading`, Layla alive, `cp_h1` unset.
 **Fires:** once.
 
 **State change:**
@@ -66,7 +66,7 @@ The five reactions that set `cp_h1` (and `cp_h1_sub` where applicable). Between 
 
 ### R3. cp_layla.h1_commercialized
 
-**Trigger:** `on_law_enacted` for EGY, new law = `law_commercialized_agriculture`, Layla alive, `cp_h1` unset.
+**Trigger:** `on_law_enactment_pass` for EGY, new law = `law_commercialized_agriculture`, Layla alive, `cp_h1` unset.
 **Fires:** once.
 
 **State change:**
@@ -82,7 +82,7 @@ The five reactions that set `cp_h1` (and `cp_h1_sub` where applicable). Between 
 
 ### R4. cp_layla.h1_collectivized
 
-**Trigger:** `on_law_enacted` for EGY, new law = `law_collectivized_agriculture`, Layla alive, `cp_h1` unset.
+**Trigger:** `on_law_enactment_pass` for EGY, new law = `law_collectivized_agriculture`, Layla alive, `cp_h1` unset.
 **Fires:** once.
 
 **State change:**
@@ -118,7 +118,7 @@ The five reactions that set `cp_h1` (and `cp_h1_sub` where applicable). Between 
 
 ### R6. cp_layla.serfdom_restored
 
-**Trigger:** `on_law_enacted` for EGY, new law = `law_serfdom`, Layla alive, `cp_h1 = "A"`.
+**Trigger:** `on_law_enactment_pass` for EGY, new law = `law_serfdom`, Layla alive, `cp_h1 = "A"`.
 **Fires:** once.
 
 **State change:**
@@ -137,7 +137,7 @@ The five reactions that set `cp_h1` (and `cp_h1_sub` where applicable). Between 
 
 ### R7. cp_layla.tenancy_rollback
 
-**Trigger:** `on_law_enacted` for EGY, new law = `law_tenant_farmers`, Layla alive, `cp_h1 = "A"`, `cp_h1_sub = "H"`.
+**Trigger:** `on_law_enactment_pass` for EGY, new law = `law_tenant_farmers`, Layla alive, `cp_h1 = "A"`, `cp_h1_sub = "H"`.
 **Fires:** once.
 
 **State change:**
@@ -315,7 +315,7 @@ The five reactions that set `cp_h1` (and `cp_h1_sub` where applicable). Between 
 
 ### R18. cp_layla.ahmed_conscripted
 
-**Trigger:** `on_war_started` for EGY, Ahmed alive, `cp_ahmed_at_war = 0`, first event of this war.
+**Trigger:** `on_diplo_play_war_start` involving EGY, Ahmed alive, `cp_ahmed_at_war = 0`, first event of this war.
 **Fires:** once per war.
 
 **State change:**
@@ -422,7 +422,7 @@ The five reactions that set `cp_h1` (and `cp_h1_sub` where applicable). Between 
 
 ### R24. cp_layla.war_declared
 
-**Trigger:** `on_war_started` involving EGY.
+**Trigger:** `on_diplo_play_war_start` involving EGY.
 **Fires:** once per war.
 
 **State change:**

@@ -1,0 +1,30 @@
+﻿l_english:
+ cp_mansur.10.t:0 "The Mat Beside the Looms"
+ cp_mansur.10.d:0 "Mansur al-Mahalla arrives with a bundle tied in his mother's cloth and a village letter folded inside his shirt. The foreman gives him a place to sleep in the room where the spare bobbins are kept, between a cracked basin and a wall blackened by lamp smoke. All night the looms in the next hall settle and tick as if still remembering the day's work. He has never heard wood and iron breathe like this. At dawn the older men rise without speaking, wash their faces from the same bucket, and tuck their bread under their arms before the bell finds them."
+ cp_mansur.10.f:0 "The factory gives him a mat first, then a number, then work."
+ cp_mansur.10.a:0 "Another household has entered the machines."
+
+ cp_mansur.20.t:0 "The First Wage Token"
+ cp_mansur.20.d:0 "On Thursday the pay clerk drops a metal token into Mansur's palm, then scratches a mark beside his name. Mansur closes his fingers around it too quickly, ashamed of how small it is and how heavy it feels. In the village, money came in handfuls after harvest or not at all. Here it arrives by bell, by table, by a man who does not look up. He buys onions, lamp oil, and half a loaf with sesame stuck to the crust, then counts what remains three times before deciding how much can go home and how much must stay under the mat."
+ cp_mansur.20.f:0 "A wage is a promise made in coins small enough to lose."
+ cp_mansur.20.a:0 "Let the mark stand beside his name."
+
+ cp_mansur.30.t:0 "The Belt Does Not Stop"
+ cp_mansur.30.d:0 "The belt slips at noon with a sound like wet cloth torn in two. No one shouts at first. The machines keep their rhythm, and the men learn what has happened by the empty place where Hassan's hand should be. Mansur holds the water jar while another man wraps cloth around the wrist. The foreman says the line must not cool. A boy wipes the floor with rags and looks older when he stands up. That evening Mansur eats beside the loom room door and feels the pulse of the belt in his teeth after the factory has gone quiet."
+ cp_mansur.30.f:0 "The machine forgets a man faster than a man forgets the machine."
+ cp_mansur.30.a:0 "Remember the sound."
+
+ cp_mansur.40.t:0 "Money Sent Home"
+ cp_mansur.40.d:0 "Mansur gives the money to a driver going north and watches him knot it into the corner of a scarf. The driver says he knows the village, then names the wrong mosque. Mansur corrects him twice and hates himself for begging the road to be accurate. His mother will unfold the cloth under the fig tree if the packet reaches her. His younger brother will ask whether the factory is larger than the canal bridge. No one will ask whether he sleeps well. The city takes such questions and spends them before they arrive."
+ cp_mansur.40.f:0 "A remittance is a son trying to be present by weight."
+ cp_mansur.40.a:0 "Send it before the evening road closes."
+
+ cp_mansur.50.t:0 "The Bed Rent"
+ cp_mansur.50.d:0 "The man who owns the room comes on Friday with a pencil behind his ear and a patience that has learned to charge interest. Mansur pays for the mat, for the lamp smoke, for the corner where his bundle rests, and for the right to breathe air already breathed by eight other men. The landlord does not raise his voice. He only wets the pencil point and writes the number as if numbers are a weather no one can argue with. Mansur thinks of the mud floor at home, the cracked jar near the door, the way poverty there at least knew his mother's name. Here even sleep is rented by the week."
+ cp_mansur.50.f:0 "When the door closes, the room seems smaller, though nothing has moved."
+ cp_mansur.50.a:0 "The city takes rent before it gives rest."
+
+ cp_mansur.60.t:0 "The Meal Tin"
+ cp_mansur.60.d:0 "Mansur carries his meal in a dented tin that knocks against his knee on the walk to the factory. Lentils, onion, a heel of bread wrapped in yesterday's paper: enough if the shift is honest, not enough if the bell stretches the afternoon thin. At noon he eats beside the wall where the heat from the looms settles in the plaster. Men talk about wages, foremen, a cousin who found better work near the station. Mansur saves the last piece of bread until the whistle blows again, then eats it standing, with oil on his thumb and the taste of home already gone from his mouth."
+ cp_mansur.60.f:0 "Hunger learns the factory schedule faster than any new hand."
+ cp_mansur.60.a:0 "Let him keep the last piece."

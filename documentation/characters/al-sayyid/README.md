@@ -1,9 +1,21 @@
 # Hassan Bey al-Sayyid (Egypt)
 
+## Implementation Status
+
+First scaffold landed in the v0.5 rebuild:
+
+- Name token: `bey`
+- Script files: `mod/events/cp_bey_events.txt`, `mod/common/scripted_effects/cp_bey_memory.txt`, `mod/localization/english/cp_bey_l_english.yml`
+- Shared wiring: `cp_shared_startup.1` registers him death-safely, `cp_roll_for_event` gives him a 7-weight ambient branch, and `cp_on_law_enacted` uses a weighted shared Homesteading resolver between Layla and the Bey.
+- Images: all six visible Bey events now use mod-owned generated DDS art, with source/archive files under `image/generated/al-sayyid/v0.1/`, `image/generated/al-sayyid/v0.2/`, and `image/generated/al-sayyid/v0.3/`. The v0.3 batch replaces the final generic factory and officialdom motion plates.
+- Current content: two ambient beats (`cp_bey.10`, `cp_bey.40`), three land-reform reactions (`cp_bey.20` Homesteading, `cp_bey.21` Serfdom Restored, `cp_bey.22` Commercialized Agriculture), and one industrialization world-response (`cp_bey.30`). No JE, button, conversation tree, death event, or Landowners clout ladder yet.
+
 ## Profile
 
 - **Pop type**: Aristocrat
 - **Culture**: Misri | **Religion**: Sunni | **Age**: 52 | **Traits**: Arrogant
+- **Home state**: `STATE_LOWER_EGYPT`, stored through the shared `cp_bey_lives_here` residence marker and journal state pointer.
+- **Workplace profile**: estate landholder / manufacturing-boundary observer, so factory reactions only matter when industrial buildings touch his home-state world.
 - **Full name**: Hassan Bey al-Sayyid. His farmers call him "al-Sayyid" -- The Master. Only his wife calls him Hassan. The day someone calls him just "Hassan" to his face is the day his world has ended.
 - **Interest group**: Landowners (ig_landowners)
 - **Personality**: Paternalistic, traditionalist, monarchist. Genuinely believes he cares for "his" peasants. Does not see the cruelty because the cruelty IS the system and the system is all he knows.
@@ -54,7 +66,7 @@ any_scope_pop = {
 }
 ```
 
-Mirror every Layla land-reform event with an al-Sayyid counterpart on the same `on_law_enacted` hook.
+Mirror every Layla land-reform event with an al-Sayyid counterpart on the same `on_law_enactment_pass` hook.
 
 ## Life Events
 
@@ -77,7 +89,10 @@ A man from Cairo in a European suit offers to buy al-Sayyid's remaining estate. 
 "Nobody comes to my estate anymore. The governor doesn't return my letters. My son says I should sell the house and invest in railways. Railways." He sits alone in a room that was full of guests ten years ago.
 
 *Industrialization advances (factories built):*
-"They built a factory on the edge of town. The noise. The smoke. My farmers' children go there instead of the fields. They say the pay is better. Better! They sell their hands to machines for coins."
+Implemented as `cp_bey.30`, "Smoke at the Boundary": they build a factory where the estate road used to turn, and the old boundary stone suddenly looks like a relic nobody has agreed to preserve. The world-response uses the shared visible-story cooldown, so modernization can make Al-Sayyid visible without increasing the routine event budget.
+
+*New administrative middle class:*
+Implemented as ambient `cp_bey.40`, "The Visitor's Card": a new official leaves a printed card and speaks in the language of committees and valuations. This gives Al-Sayyid a quiet life beat after the intro, with the same ambient cooldown protections as every other person.
 
 *Serfdom RE-ENACTED (if the player goes backwards):*
 "Order is restored." Al-Sayyid rides through the village again. The fellahin lower their eyes. The young man who looked him in the eye works his field again. Al-Sayyid should feel triumph. Instead he feels something he cannot name. The village is quieter than before. There is no feast this time.

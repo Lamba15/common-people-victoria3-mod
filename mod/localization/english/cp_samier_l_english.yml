@@ -1,0 +1,30 @@
+﻿l_english:
+ cp_samier.10.t:0 "The Gate of Smoke"
+ cp_samier.10.d:0 "Samier arrives where the fields have become brick and whistle."
+ cp_samier.10.f:0 "The mill gate opens with a scrape that seems too large for one morning. Men pass through it without looking up, each carrying his own small hunger, and Samier stands beside the wall with his bundle against his hip. The city has not asked his name. Smoke lies over the roofs like a second ceiling, and beyond it the minarets show themselves in pieces, as if Cairo too must be learned by shift and by wound."
+ cp_samier.10.a:0 "The bell does not wait."
+
+ cp_samier.20.t:0 "Words on the Board"
+ cp_samier.20.d:0 "A new labor law reaches the factory floor as paper and suspicion."
+ cp_samier.20.f:0 "The clerk pins the notice where the dust has already browned the wood. Samier reads only the shapes he knows and waits for someone else to say what they mean: fewer hours, perhaps; fewer fines; perhaps a hand kept whole because a man in an office has finally imagined fingers. The foreman watches from the loom line. Nothing has changed yet, which is why every worker listens so carefully."
+ cp_samier.20.a:0 "The machines keep turning."
+
+ cp_samier.30.t:0 "The Red Thread"
+ cp_samier.30.d:0 "New machinery teaches the factory floor a sharper grammar."
+ cp_samier.30.f:0 "The belt catches Yusuf's sleeve before his shout reaches the door. For one breath the room belongs only to iron: wheel, spindle, bolt, the hard bright teeth of the new frame. Then Samier is on his knees with his scarf twisted around the man's wrist, watching the red thread run through the cotton dust and disappear into it. The overseer says the machine must not cool. No one answers him, but no one leaves either."
+ cp_samier.30.a:0 "The bell has learned another sound."
+
+ cp_samier.40.t:0 "Bread at the Gate"
+ cp_samier.40.d:0 "The workers divide a small meal before the evening shift."
+ cp_samier.40.f:0 "A boy from Bulaq brings bread in a cloth and sets it on the low wall as if it were something official. Samier breaks his half again, gives the smaller piece away, and laughs when the others pretend not to notice. The factory breathes heat behind them; the street smells of oil, onions, river mud, and tired wool. For a few minutes no one owes the bell a body. The bread goes around until only crumbs remain on the stone."
+ cp_samier.40.a:0 "A little hunger becomes shared."
+
+ cp_samier.50.t:0 "The False Quarter Hour"
+ cp_samier.50.d:0 "The factory clock begins stealing minutes before it steals wages."
+ cp_samier.50.f:0 "The bell rings while the last blue is still leaving the sky. Samier stops under the clock and counts the hands twice, because a man can be mistaken once but not every morning. The foreman writes late beside four names and tears the fine from their pay before the looms have warmed. No one argues. The clock hangs above them with its clean white face, innocent as a witness who has been paid to forget."
+ cp_samier.50.a:0 "The hour belongs to whoever owns the clock."
+
+ cp_samier.60.t:0 "Letters After the Bell"
+ cp_samier.60.d:0 "A school law reaches Samier as chalk dust and a borrowed alphabet."
+ cp_samier.60.f:0 "After the evening shift, a clerk's younger sister writes letters on a broken slate behind the coffee stall. Samier holds the chalk as if it might burn him, then laughs at himself and makes the first crooked mark. Around him men pretend to drink slowly so they can listen without admitting it. The factory is still hot across the lane. For once the bell has finished speaking, and something smaller than iron begins to answer."
+ cp_samier.60.a:0 "He carries one letter home in his palm."

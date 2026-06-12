@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- shared person-parameterised sensors (r5)
 #
 # Sensors answer yes/no questions about the world or about a person's state.
@@ -15,8 +15,9 @@
 # ============================================================================
 
 cp_person_is_alive = {
+	has_global_variable = cp_person_$person$_alive
 	has_variable = cp_$person$_alive
-	var:cp_$person$_alive = 1
+	var:cp_$person$_alive > 0
 }
 
 cp_person_is_old = {
@@ -29,6 +30,484 @@ cp_person_is_very_old = {
 
 cp_person_is_literate = {
 	var:cp_$person$_literacy >= 10
+}
+
+cp_active_roster_has_person = {
+	has_variable = cp_$person$_active_slot
+	var:cp_$person$_active_slot > 0
+	var:cp_$person$_active_slot <= 3
+}
+
+cp_active_roster_has_slot = {
+	OR = {
+		AND = { has_variable = cp_layla_active_slot var:cp_layla_active_slot = $slot$ }
+		AND = { has_variable = cp_bey_active_slot var:cp_bey_active_slot = $slot$ }
+		AND = { has_variable = cp_soldier_active_slot var:cp_soldier_active_slot = $slot$ }
+		AND = { has_variable = cp_nour_active_slot var:cp_nour_active_slot = $slot$ }
+		AND = { has_variable = cp_mina_active_slot var:cp_mina_active_slot = $slot$ }
+		AND = { has_variable = cp_zaynab_active_slot var:cp_zaynab_active_slot = $slot$ }
+		AND = { has_variable = cp_samier_active_slot var:cp_samier_active_slot = $slot$ }
+		AND = { has_variable = cp_tarek_active_slot var:cp_tarek_active_slot = $slot$ }
+		AND = { has_variable = cp_farid_active_slot var:cp_farid_active_slot = $slot$ }
+		AND = { has_variable = cp_dawud_active_slot var:cp_dawud_active_slot = $slot$ }
+		AND = { has_variable = cp_rashid_active_slot var:cp_rashid_active_slot = $slot$ }
+		AND = { has_variable = cp_salma_active_slot var:cp_salma_active_slot = $slot$ }
+		AND = { has_variable = cp_karim_active_slot var:cp_karim_active_slot = $slot$ }
+		AND = { has_variable = cp_huda_active_slot var:cp_huda_active_slot = $slot$ }
+		AND = { has_variable = cp_nabil_active_slot var:cp_nabil_active_slot = $slot$ }
+		AND = { has_variable = cp_mansur_active_slot var:cp_mansur_active_slot = $slot$ }
+	}
+}
+
+cp_active_roster_has_any_person = {
+	OR = {
+		cp_active_roster_has_person = { person = layla }
+		cp_active_roster_has_person = { person = bey }
+		cp_active_roster_has_person = { person = soldier }
+		cp_active_roster_has_person = { person = nour }
+		cp_active_roster_has_person = { person = mina }
+		cp_active_roster_has_person = { person = zaynab }
+		cp_active_roster_has_person = { person = samier }
+		cp_active_roster_has_person = { person = tarek }
+		cp_active_roster_has_person = { person = farid }
+		cp_active_roster_has_person = { person = dawud }
+		cp_active_roster_has_person = { person = rashid }
+		cp_active_roster_has_person = { person = salma }
+		cp_active_roster_has_person = { person = karim }
+		cp_active_roster_has_person = { person = huda }
+		cp_active_roster_has_person = { person = nabil }
+		cp_active_roster_has_person = { person = mansur }
+	}
+}
+
+# ============================================================================
+# Home-state sensors
+# ============================================================================
+# A person can only be directly affected by local buildings in the state that
+# carries cp_<person>_lives_here. Country-wide technologies and laws can still
+# matter nationally, but building events must pass through these local checks.
+
+cp_building_is_in_person_home_state = {
+	state = { has_variable = cp_$person$_lives_here }
+}
+
+cp_building_affects_person_workplace = {
+	cp_building_is_in_person_home_state = { person = $person$ }
+	OR = {
+		AND = {
+			owner ?= { var:cp_$person$_workplace_agrarian > 0 }
+			OR = {
+				is_building_group = bg_agriculture
+				is_building_group = bg_plantations
+				is_building_type = building_food_industry
+			}
+		}
+		AND = {
+			owner ?= { var:cp_$person$_workplace_manufacturing > 0 }
+			is_building_group = bg_manufacturing
+		}
+		AND = {
+			owner ?= { var:cp_$person$_workplace_machine > 0 }
+			OR = {
+				is_building_type = building_tooling_workshop
+				is_building_type = building_steel_mill
+				is_building_type = building_motor_industry
+			}
+		}
+		AND = {
+			owner ?= { var:cp_$person$_workplace_rail > 0 }
+			is_building_type = building_railway
+		}
+		AND = {
+			owner ?= { var:cp_$person$_workplace_port > 0 }
+			OR = {
+				is_building_type = building_port
+				is_building_type = building_trade_center
+			}
+		}
+		AND = {
+			owner ?= { var:cp_$person$_workplace_public_service > 0 }
+			OR = {
+				is_building_type = building_government_administration
+				is_building_type = building_university
+			}
+		}
+		AND = {
+			owner ?= { var:cp_$person$_workplace_electric > 0 }
+			OR = {
+				is_building_type = building_electrics_industry
+				is_building_type = building_power_plant
+			}
+		}
+		AND = {
+			owner ?= { var:cp_$person$_workplace_urban > 0 }
+			OR = {
+				is_building_type = building_construction_sector
+				is_building_type = building_trade_center
+				is_building_type = building_urban_center
+			}
+		}
+		AND = {
+			owner ?= { var:cp_$person$_workplace_military > 0 }
+			OR = {
+				is_building_type = building_arms_industry
+				is_building_type = building_munition_plant
+				is_building_type = building_barrack
+			}
+		}
+	}
+}
+
+cp_person_home_has_manufacturing = {
+	OR = {
+		var:cp_$person$_workplace_manufacturing > 0
+		var:cp_$person$_workplace_machine > 0
+	}
+	any_scope_state = {
+		has_variable = cp_$person$_lives_here
+		any_scope_building = {
+			is_building_group = bg_manufacturing
+		}
+	}
+}
+
+cp_person_home_has_machine_industry = {
+	OR = {
+		var:cp_$person$_workplace_manufacturing > 0
+		var:cp_$person$_workplace_machine > 0
+	}
+	any_scope_state = {
+		has_variable = cp_$person$_lives_here
+		any_scope_building = {
+			OR = {
+				is_building_type = building_tooling_workshop
+				is_building_type = building_steel_mill
+				is_building_type = building_motor_industry
+			}
+		}
+	}
+}
+
+cp_person_home_has_rail_infrastructure = {
+	var:cp_$person$_workplace_rail > 0
+	any_scope_state = {
+		has_variable = cp_$person$_lives_here
+		any_scope_building = {
+			is_building_type = building_railway
+		}
+	}
+}
+
+cp_person_home_has_port = {
+	var:cp_$person$_workplace_port > 0
+	any_scope_state = {
+		has_variable = cp_$person$_lives_here
+		any_scope_building = {
+			is_building_type = building_port
+		}
+	}
+}
+
+cp_person_home_has_government_office = {
+	var:cp_$person$_workplace_public_service > 0
+	any_scope_state = {
+		has_variable = cp_$person$_lives_here
+		any_scope_building = {
+			is_building_type = building_government_administration
+		}
+	}
+}
+
+cp_person_home_has_electric_service = {
+	var:cp_$person$_workplace_electric > 0
+	any_scope_state = {
+		has_variable = cp_$person$_lives_here
+		any_scope_building = {
+			is_building_type = building_power_plant
+		}
+	}
+}
+
+cp_person_home_has_telephone_network = {
+	var:cp_$person$_workplace_electric > 0
+	any_scope_state = {
+		has_variable = cp_$person$_lives_here
+		any_scope_building = {
+			is_building_type = building_electrics_industry
+		}
+	}
+}
+
+cp_person_home_has_urban_growth = {
+	var:cp_$person$_workplace_urban > 0
+	any_scope_state = {
+		has_variable = cp_$person$_lives_here
+		any_scope_building = {
+			OR = {
+				is_building_type = building_construction_sector
+				is_building_type = building_trade_center
+				is_building_type = building_urban_center
+			}
+		}
+	}
+}
+
+cp_person_home_has_military_industry = {
+	var:cp_$person$_workplace_military > 0
+	any_scope_state = {
+		has_variable = cp_$person$_lives_here
+		any_scope_building = {
+			OR = {
+				is_building_type = building_arms_industry
+				is_building_type = building_munition_plant
+				is_building_type = building_barrack
+			}
+		}
+	}
+}
+
+cp_bey_has_visible_history = {
+	OR = {
+		has_variable = cp_bey_seen_commercialized
+		has_variable = cp_bey_seen_factory_boundary
+		has_variable = cp_bey_seen_homesteading
+		has_variable = cp_bey_seen_intro
+		has_variable = cp_bey_seen_serfdom_restored
+		has_variable = cp_bey_seen_visitors_card
+	}
+}
+
+cp_dawud_has_visible_history = {
+	OR = {
+		has_variable = cp_dawud_seen_cranes
+		has_variable = cp_dawud_seen_intro
+		has_variable = cp_dawud_seen_manifest_room
+		has_variable = cp_dawud_seen_salt_floor
+		has_variable = cp_dawud_seen_steamship
+		has_variable = cp_dawud_seen_tariff_chalk
+	}
+}
+
+cp_farid_has_visible_history = {
+	OR = {
+		has_variable = cp_farid_seen_intro
+		has_variable = cp_farid_seen_new_carriage
+		has_variable = cp_farid_seen_night_shift
+		has_variable = cp_farid_seen_parcel_bag
+		has_variable = cp_farid_seen_rail_yard
+		has_variable = cp_farid_seen_telegraph
+	}
+}
+
+cp_huda_has_visible_history = {
+	OR = {
+		has_variable = cp_huda_seen_building_work
+		has_variable = cp_huda_seen_clean_water
+		has_variable = cp_huda_seen_intro
+		has_variable = cp_huda_seen_rent_book
+		has_variable = cp_huda_seen_roof_patch
+		has_variable = cp_huda_seen_white_road
+	}
+}
+
+cp_karim_has_visible_history = {
+	OR = {
+		has_variable = cp_karim_seen_broken_finger
+		has_variable = cp_karim_seen_intro
+		has_variable = cp_karim_seen_new_engine
+		has_variable = cp_karim_seen_night_gauge
+		has_variable = cp_karim_seen_steel_color
+		has_variable = cp_karim_seen_tool_bench
+	}
+}
+
+cp_layla_has_visible_history = {
+	OR = {
+		has_variable = cp_layla_seen_ahmed_conscripted
+		has_variable = cp_layla_seen_bread
+		has_variable = cp_layla_seen_brother
+		has_variable = cp_layla_seen_cairo_offer
+		has_variable = cp_layla_seen_charitable_health
+		has_variable = cp_layla_seen_childbirth
+		has_variable = cp_layla_seen_closed_borders
+		has_variable = cp_layla_seen_cloth_affordable
+		has_variable = cp_layla_seen_coffee_arrival
+		has_variable = cp_layla_seen_command_economy
+		has_variable = cp_layla_seen_compulsory_school
+		has_variable = cp_layla_seen_date_harvest
+		has_variable = cp_layla_seen_daughter_marriage
+		has_variable = cp_layla_seen_daughter_reads
+		has_variable = cp_layla_seen_dedicated_police
+		has_variable = cp_layla_seen_district_office
+		has_variable = cp_layla_seen_dust
+		has_variable = cp_layla_seen_emancipation
+		has_variable = cp_layla_seen_first_envelope
+		has_variable = cp_layla_seen_first_textile_mill
+		has_variable = cp_layla_seen_flood
+		has_variable = cp_layla_seen_freedom_of_conscience
+		has_variable = cp_layla_seen_grain_tax
+		has_variable = cp_layla_seen_hajj
+		has_variable = cp_layla_seen_hen
+		has_variable = cp_layla_seen_homesteading
+		has_variable = cp_layla_seen_imam_visit
+		has_variable = cp_layla_seen_laissez_faire
+		has_variable = cp_layla_seen_letter
+		has_variable = cp_layla_seen_mariam_letter
+		has_variable = cp_layla_seen_midwife_lamp
+		has_variable = cp_layla_seen_militarized_police
+		has_variable = cp_layla_seen_mill_closed
+		has_variable = cp_layla_seen_month_without
+		has_variable = cp_layla_seen_mothers_hand
+		has_variable = cp_layla_seen_mule
+		has_variable = cp_layla_seen_multicultural
+		has_variable = cp_layla_seen_neighbours_boy
+		has_variable = cp_layla_seen_no_migration_controls
+		has_variable = cp_layla_seen_no_wind
+		has_variable = cp_layla_seen_not_on_deed
+		has_variable = cp_layla_seen_old_woman
+		has_variable = cp_layla_seen_outlawed_dissent
+		has_variable = cp_layla_seen_ownership_offer
+		has_variable = cp_layla_seen_private_health
+		has_variable = cp_layla_seen_public_health
+		has_variable = cp_layla_seen_public_schools
+		has_variable = cp_layla_seen_radio
+		has_variable = cp_layla_seen_railway
+		has_variable = cp_layla_seen_ramadan
+		has_variable = cp_layla_seen_restricted_child_labor
+		has_variable = cp_layla_seen_revolution
+		has_variable = cp_layla_seen_right_of_assembly
+		has_variable = cp_layla_seen_right_to_associate
+		has_variable = cp_layla_seen_river_low
+		has_variable = cp_layla_seen_scale
+		has_variable = cp_layla_seen_self_employment
+		has_variable = cp_layla_seen_serfdom_restored
+		has_variable = cp_layla_seen_single_party
+		has_variable = cp_layla_seen_slaves_pulse
+		has_variable = cp_layla_seen_small_victory
+		has_variable = cp_layla_seen_state_atheism
+		has_variable = cp_layla_seen_strike
+		has_variable = cp_layla_seen_sugar_cheap
+		has_variable = cp_layla_seen_tax_spike
+		has_variable = cp_layla_seen_telegraph
+		has_variable = cp_layla_seen_under_beys_eye
+		has_variable = cp_layla_seen_universal_suffrage
+		has_variable = cp_layla_seen_walking_field
+		has_variable = cp_layla_seen_womens_rights_fields
+		has_variable = cp_layla_seen_womens_rights_property
+		has_variable = cp_layla_seen_womens_rights_suffrage
+		has_variable = cp_layla_seen_womens_rights_workplace
+		has_variable = cp_layla_seen_worker_protections
+	}
+}
+
+cp_mansur_has_visible_history = {
+	OR = {
+		has_variable = cp_mansur_seen_bed_rent
+		has_variable = cp_mansur_seen_belt
+		has_variable = cp_mansur_seen_first_wage
+		has_variable = cp_mansur_seen_intro
+		has_variable = cp_mansur_seen_meal_tin
+		has_variable = cp_mansur_seen_remittance
+	}
+}
+
+cp_mina_has_visible_history = {
+	OR = {
+		has_variable = cp_mina_seen_catalogue_room
+		has_variable = cp_mina_seen_courtyard_sheet
+		has_variable = cp_mina_seen_intro
+		has_variable = cp_mina_seen_night_proof
+		has_variable = cp_mina_seen_notice_sheet
+		has_variable = cp_mina_seen_public_schools
+	}
+}
+
+cp_nabil_has_visible_history = {
+	OR = {
+		has_variable = cp_nabil_seen_complaint_bench
+		has_variable = cp_nabil_seen_intro
+		has_variable = cp_nabil_seen_lost_boy
+		has_variable = cp_nabil_seen_rifles
+		has_variable = cp_nabil_seen_square_afterward
+		has_variable = cp_nabil_seen_station
+	}
+}
+
+cp_nour_has_visible_history = {
+	OR = {
+		has_variable = cp_nour_seen_intro
+		has_variable = cp_nour_seen_key_under_pillow
+		has_variable = cp_nour_seen_morning_account
+		has_variable = cp_nour_seen_property_rights
+		has_variable = cp_nour_seen_register_shelf
+		has_variable = cp_nour_seen_rent_receipt
+	}
+}
+
+cp_rashid_has_visible_history = {
+	OR = {
+		has_variable = cp_rashid_seen_archives
+		has_variable = cp_rashid_seen_identification
+		has_variable = cp_rashid_seen_ink_dust
+		has_variable = cp_rashid_seen_intro
+		has_variable = cp_rashid_seen_new_seal
+		has_variable = cp_rashid_seen_numbered_drawer
+	}
+}
+
+cp_salma_has_visible_history = {
+	OR = {
+		has_variable = cp_salma_seen_burned_fuse
+		has_variable = cp_salma_seen_crossed_line
+		has_variable = cp_salma_seen_first_light
+		has_variable = cp_salma_seen_intro
+		has_variable = cp_salma_seen_night_bell
+		has_variable = cp_salma_seen_radio_room
+	}
+}
+
+cp_samier_has_visible_history = {
+	OR = {
+		has_variable = cp_samier_seen_false_quarter
+		has_variable = cp_samier_seen_gate_bread
+		has_variable = cp_samier_seen_intro
+		has_variable = cp_samier_seen_labor_law
+		has_variable = cp_samier_seen_letters_after_bell
+		has_variable = cp_samier_seen_red_thread
+	}
+}
+
+cp_soldier_has_visible_history = {
+	OR = {
+		has_variable = cp_soldier_seen_arsenal_gate
+		has_variable = cp_soldier_seen_beans_dusk
+		has_variable = cp_soldier_seen_intro
+		has_variable = cp_soldier_seen_letter_folded
+		has_variable = cp_soldier_seen_notice
+		has_variable = cp_soldier_seen_return
+	}
+}
+
+cp_tarek_has_visible_history = {
+	OR = {
+		has_variable = cp_tarek_seen_account_book
+		has_variable = cp_tarek_seen_intro
+		has_variable = cp_tarek_seen_labor_law
+		has_variable = cp_tarek_seen_locked_gate
+		has_variable = cp_tarek_seen_new_boiler
+		has_variable = cp_tarek_seen_second_chimney
+	}
+}
+
+cp_zaynab_has_visible_history = {
+	OR = {
+		has_variable = cp_zaynab_seen_fever_bowl
+		has_variable = cp_zaynab_seen_intro
+		has_variable = cp_zaynab_seen_lime_bucket
+		has_variable = cp_zaynab_seen_long_night
+		has_variable = cp_zaynab_seen_public_health
+		has_variable = cp_zaynab_seen_thread_wrist
+	}
 }
 
 
@@ -61,6 +540,204 @@ cp_person_is_radical = {
 cp_person_is_loyalist = {
 	has_variable = cp_$person$_loyalist
 	var:cp_$person$_loyalist >= 30
+}
+
+
+# ============================================================================
+# Country/time context sensors
+# ============================================================================
+# These keep person-selection weights data-driven. They are intentionally broad:
+# the monthly router should decide whose life is most legible in the current
+# world, while each person's own ambient pool still decides which beat can fire.
+
+cp_era_before_1850 = {
+	game_date < 1850.1.1
+}
+
+cp_era_1850_to_1880 = {
+	game_date >= 1850.1.1
+	game_date < 1880.1.1
+}
+
+cp_era_after_1880 = {
+	game_date >= 1880.1.1
+}
+
+cp_country_has_manufacturing = {
+	any_scope_state = {
+		is_incorporated = yes
+		any_scope_building = {
+			is_building_group = bg_manufacturing
+		}
+	}
+}
+
+cp_country_has_factory_migration = {
+	OR = {
+		AND = {
+			cp_country_has_manufacturing = yes
+			cp_country_has_urban_growth = yes
+		}
+		AND = {
+			cp_country_has_manufacturing = yes
+			cp_era_1850_to_1880 = yes
+		}
+		AND = {
+			cp_country_has_manufacturing = yes
+			cp_era_after_1880 = yes
+		}
+		AND = {
+			cp_country_has_machine_industry = yes
+			cp_country_has_urban_growth = yes
+		}
+	}
+}
+
+cp_country_has_machine_industry = {
+	OR = {
+		has_technology_researched = mechanical_tools
+		has_technology_researched = rotary_valve_engine
+		has_technology_researched = combustion_engine
+		any_scope_state = {
+			is_incorporated = yes
+			any_scope_building = {
+				OR = {
+					is_building_type = building_tooling_workshop
+					is_building_type = building_steel_mill
+					is_building_type = building_motor_industry
+				}
+			}
+		}
+	}
+}
+
+cp_country_has_rail_infrastructure = {
+	OR = {
+		has_technology_researched = railways
+		any_scope_state = {
+			is_incorporated = yes
+			any_scope_building = {
+				is_building_type = building_railway
+			}
+		}
+	}
+}
+
+cp_country_has_telegraph = {
+	has_technology_researched = electric_telegraph
+}
+
+cp_country_has_port = {
+	any_scope_state = {
+		is_incorporated = yes
+		any_scope_building = {
+			is_building_type = building_port
+		}
+	}
+}
+
+cp_country_has_steam_trade = {
+	OR = {
+		has_technology_researched = paddle_steamer
+		has_technology_researched = hydraulic_cranes
+		has_technology_researched = gantry_cranes
+	}
+}
+
+cp_country_has_government_office = {
+	any_scope_state = {
+		is_incorporated = yes
+		any_scope_building = {
+			is_building_type = building_government_administration
+		}
+	}
+}
+
+cp_country_has_modern_records = {
+	OR = {
+		has_technology_researched = central_archives
+		has_technology_researched = identification_documents
+	}
+}
+
+cp_country_has_electric_service = {
+	OR = {
+		has_technology_researched = electrical_generation
+		any_scope_state = {
+			is_incorporated = yes
+			any_scope_building = {
+				is_building_type = building_power_plant
+			}
+		}
+	}
+}
+
+cp_country_has_telephone_network = {
+	OR = {
+		has_technology_researched = telephone
+		has_technology_researched = radio
+		any_scope_state = {
+			is_incorporated = yes
+			any_scope_building = {
+				is_building_type = building_electrics_industry
+			}
+		}
+	}
+}
+
+cp_country_has_urban_growth = {
+	OR = {
+		has_technology_researched = urban_planning
+		has_technology_researched = modern_sewerage
+		has_technology_researched = steel_frame_buildings
+		has_technology_researched = paved_roads
+		AND = {
+			game_date >= 1845.1.1
+			any_scope_state = {
+				is_incorporated = yes
+				any_scope_building = {
+					OR = {
+						is_building_type = building_construction_sector
+						is_building_type = building_trade_center
+						is_building_type = building_urban_center
+					}
+				}
+			}
+		}
+	}
+}
+
+cp_country_has_public_order_pressure = {
+	OR = {
+		has_law = law_type:law_dedicated_police
+		has_law = law_type:law_militarized_police
+		has_law = law_type:law_right_of_assembly
+		has_law = law_type:law_outlawed_dissent
+		has_law = law_type:law_censorship
+	}
+}
+
+cp_country_old_land_order = {
+	OR = {
+		has_law = law_type:law_serfdom
+		has_law = law_type:law_tenant_farmers
+	}
+}
+
+cp_country_workers_unprotected = {
+	has_law = law_type:law_no_workers_rights
+}
+
+cp_country_women_property_rights = {
+	has_law = law_type:law_women_own_property
+}
+
+cp_country_public_schools = {
+	has_law = law_type:law_public_schools
+}
+
+cp_country_public_health = {
+	has_law = law_type:law_public_health_insurance
 }
 
 

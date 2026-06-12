@@ -1,0 +1,27 @@
+Common People Layla v0.8 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.8.md
+Target DDS: mod/gfx/event_pictures/cp_layla_conversation_room_v08.dds
+Source PNG: image/generated/layla/v0.8/cp_layla_conversation_room_v08.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla_vox.15 and follow-ups - "The Room, Dark"
+Narrative function: marriage is shown as breath, a wall, a door ajar, and a hand reaching back.
+Subject: young or middle-aged Layla and Ahmed in a modest room at night.
+Scene/backdrop: village room with reed roof, woven mat, clay lamp now out, door ajar to the lane.
+Foreground action: Layla lies or sits with her face half-turned from Ahmed, reaching one hand back toward his shoulder.
+Required object/gesture: hand reaching back without turning; ajar door letting in a thin line of night.
+Background detail: low mat, clay jar, faint dog or lane shadow beyond the door.
+Lighting/mood: very low blue night and residual lamp warmth, private tenderness without glamour.
+Avoid: romantic glamour, modern bed, exposed bodies, theatrical embrace.

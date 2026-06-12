@@ -1,0 +1,31 @@
+Common People character seed prompt: bey
+Source ledger: documentation/characters/al-sayyid/prompts/seed-v0.1.md
+Prompt heading: Canonical Portrait
+Target source PNG: image/generated/character-seeds/v0.1/bey_01_canonical_portrait.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Use case: historical-scene
+Asset type: Common People canonical character portrait, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism portrait-scene for Hassan Bey al-Sayyid in the Common People Victoria 3 mod.
+Subject: Hassan Bey al-Sayyid, Misri Egyptian Sunni aristocratic landholder in his early fifties, red tarboosh, trimmed beard, dark embroidered robe over traditional clothing, proud posture with tired eyes.
+Scene/backdrop: shaded estate arch in rural Lower Egypt, cotton fields and date palms visible past the courtyard.
+Foreground action: Hassan Bey stands with one hand on a cane and the other near a low table holding cotton bolls and a sealed paper.
+Required object/gesture: red tarboosh, cane, cotton bolls, and sealed paper must be legible at 600x400.
+Composition/framing: close-medium portrait, Bey foreground left under the arch, cotton fields visible behind.
+Lighting/mood: hot afternoon shade, authority becoming brittle.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials.
+Constraints: no text, no UI, no border, no watermark, no modern suit, no palace grandeur, no fantasy costume.
+Avoid: cartoon villain, European salon, battle commander, triumphant landlord poster.

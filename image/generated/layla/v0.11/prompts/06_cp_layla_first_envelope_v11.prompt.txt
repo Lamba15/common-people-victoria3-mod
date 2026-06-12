@@ -1,0 +1,27 @@
+Common People Layla v0.11 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.11.md
+Target DDS: mod/gfx/event_pictures/cp_layla_first_envelope_v11.dds
+Source PNG: image/generated/layla/v0.11/cp_layla_first_envelope_v11.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla.90 - "The First Envelope"
+Narrative function: welfare arrives as a plain envelope that changes the way the state feels in the hand.
+Subject: older Layla at home receiving or opening a small official envelope.
+Scene/backdrop: modest room or doorway, low table, bread, folded cloth, worn wall.
+Foreground action: Layla holds the envelope carefully while a clerk, neighbor, or Ahmed watches from nearby.
+Required object/gesture: small sealed envelope with no readable writing; Layla's thumb under the flap.
+Background detail: bread woman at threshold or ledger man receding, clay cup, household shadows.
+Lighting/mood: soft morning light, disbelief, cautious relief.
+Avoid: cash display, modern welfare office, celebratory pose, readable stamps.

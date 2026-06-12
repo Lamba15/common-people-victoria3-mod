@@ -35,7 +35,7 @@ You only do this once.
 
 ### Required
 
-- **Victoria 3 installed** (Steam or standalone). Verify the game version matches `mod/.metadata/metadata.json`'s `supported_game_version` (currently `1.12.*`).
+- **Victoria 3 installed** (Steam or standalone). Verify the game version matches `mod/.metadata/metadata.json`'s `supported_game_version` (currently `1.13.*`).
 - **Mod symlink** from `mod/` into the game's mod directory:
   ```
   Linux:   ~/.local/share/Paradox Interactive/Victoria 3/mod/common-people
@@ -79,7 +79,7 @@ grep -n "cp_layla.homesteading" documentation/characters/layla/reactions.md
 
 Re-read the entry. Note:
 - The event ID (e.g. `cp_layla.homesteading`)
-- The trigger spec (e.g. `on_law_enacted` → `law_homesteading`)
+- The trigger spec (e.g. `on_law_enactment_pass` -> `law_homesteading`)
 - The state-change list
 - The default prose + any variants keyed to branch/anchor
 
@@ -98,10 +98,10 @@ Check the vanilla on_actions list before inventing a trigger:
 
 ```bash
 .claude/skills/victoria3-event/scripts/fetch_vanilla.sh \
-  common/on_actions/00_on_actions.txt | grep -i "^on_" | head -40
+  common/on_actions/00_code_on_actions.txt | grep -i "^on_" | head -40
 ```
 
-Use an existing hook (e.g. `on_monthly_pulse_country`, `on_war_started`, `on_law_enacted`) wherever possible. Custom triggers add complexity.
+Use an existing hook (e.g. `on_monthly_pulse_country`, `on_diplo_play_war_start`, `on_law_enactment_pass`) wherever possible. Custom triggers add complexity.
 
 ---
 
@@ -119,7 +119,7 @@ Write the spec as 5-10 lines at the top of a scratch file, or in the event's ent
 
 ### Sanity check
 
-- Does the trigger's scope match what your effect expects? `on_law_enacted` gives you country scope, not character scope -- you'll need `scope:cp_layla = { ... }` to reach the character.
+- Does the trigger's scope match what your effect expects? `on_law_enactment_pass` gives you country scope, while `on_diplo_play_war_start` gives you diplomatic-play scope and requires entering `scope:actor` / `scope:target` for countries.
 - If you're setting a branch letter, does a reaction that *consumes* that letter exist, or will exist soon? Writing state that nothing reads is dead weight.
 - If you're moving an anchor, is the new anchor a valid one per `anchors.md §2`?
 
@@ -383,7 +383,7 @@ Copies all English .yml files to braz_por, french, japanese, polish, russian, tu
 Edit `mod/common/on_actions/cp_on_actions.txt` (or add a new file). Subscribe via nesting -- **never replace vanilla's on_action block.**
 
 ```
-on_law_enacted = {
+on_law_enactment_pass = {
     on_actions = {
         cp_on_law_enacted_dispatch
     }
@@ -391,7 +391,7 @@ on_law_enacted = {
 
 cp_on_law_enacted_dispatch = {
     effect = {
-        # root = country, scope:law = the law that just passed
+        # root = country; currently_enacting_law is the law that just passed
         if = {
             limit = {
                 exists = scope:cp_layla
@@ -419,10 +419,10 @@ See `anchors.md §5` for the dispatcher pseudocode; the exact mechanism is an ev
 ### Check for trigger conflicts
 
 ```bash
-grep -rn "on_law_enacted" mod/common/on_actions/
+grep -rn "on_law_enactment_pass" mod/common/on_actions/
 ```
 
-There should only be one `on_law_enacted = { ... }` block in the mod, and it should use the `on_actions = { cp_... }` nesting pattern. If you find a top-level override, fix it -- it's overwriting the vanilla handler and silently breaking base-game events.
+There should only be one `on_law_enactment_pass = { ... }` block in the mod, and it should use the `on_actions = { cp_... }` nesting pattern. If you find a top-level override, fix it -- it's overwriting the vanilla handler and silently breaking base-game events.
 
 ---
 
@@ -436,7 +436,7 @@ Add `-debug_mode` to V3's launch options (Steam: right-click → Properties → 
 
 Two test modes:
 
-1. **Fresh game as EGY**: lets you verify character spawn (`cp_startup.1`), initial scope save, and early events.
+1. **Fresh game as EGY**: lets you verify shared startup (`cp_shared_startup.1`), Layla setup (`cp_layla_setup.1`), randomized first contact, and early events.
 2. **Existing save**: faster to test a specific trigger. Console a force-fire.
 
 ### Force-fire the event
@@ -473,7 +473,7 @@ The persistence test most bugs hide in:
 3. Reload the save.
 4. Re-open the variable inspector.
 
-If `cp_layla` scope doesn't exist after reload, the initial save-scope in `cp_startup.1` is missing or scoped wrong. If variables exist but are reset, the eventify pass wrote a new `cp_layla` over the saved one.
+If `cp_layla_*` country variables do not exist after reload, the hidden setup path in `cp_layla_setup.1` is missing or scoped wrong. If variables exist but are reset, a startup or migration path is overwriting person state instead of leaving existing variables alone.
 
 ### Monitor the error log
 
@@ -555,7 +555,7 @@ Or grep for the save_scope_as:
 grep "save_scope_as = cp_layla" mod/events/
 ```
 
-Must exist in `cp_startup.1` or the character-creation event, and the guarding `exists = scope:cp_layla` must be on every event that references her.
+Current Common People events do not rely on a saved V3 character portrait scope for Layla. If a future person uses one, the save-scope must live in that person's hidden setup event and every event that references it must guard that the saved scope still exists.
 
 ### Event doesn't fire at all
 

@@ -1,0 +1,27 @@
+Common People Layla v0.9 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.9.md
+Target DDS: mod/gfx/event_pictures/cp_layla_no_wind_v09.dds
+Source PNG: image/generated/layla/v0.9/cp_layla_no_wind_v09.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla.13 and cp_layla.92 - "No Wind"
+Narrative function: economic pressure is felt as heat, still air, and a room where nothing moves.
+Subject: Layla in middle age, seated low beside a household ledger or food basket, face composed.
+Scene/backdrop: cramped village or Cairo room with reed mat, shuttered opening, and hanging cloth that does not stir.
+Foreground action: Layla looks toward a still curtain while her hand rests near a few coins or a small ration of grain.
+Required object/gesture: motionless hanging cloth; Layla's fingers touching coins or grain without counting them.
+Background detail: sleeping mat rolled against the wall, clay jar, weak light under the door.
+Lighting/mood: heavy summer heat, financial dread, no storm or spectacle.
+Avoid: desert landscape, dramatic weather, modern fan, obvious poverty tableau.

@@ -1,0 +1,161 @@
+﻿###############################################################################
+# Common People -- Zaynab's memory
+#
+# Person 8 scaffold. Zaynab is registered as `zaynab`, not as a V3 character.
+# She carries health, birth, fever, and household trust from a village midwife.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_zaynab_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = zaynab
+		culture = misri
+		religion = sunni
+		poptype = peasants
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_zaynab_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_zaynab_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_zaynab_dispatch_yearly = {
+	cp_age_increment = { person = zaynab }
+	cp_zaynab_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = zaynab country = EGY }
+	if = {
+		limit = {
+			NOT = { cp_country_public_health = yes }
+			NOT = { has_variable = cp_zaynab_seen_fever_bowl }
+		}
+		cp_try_fire_world_response = { event = cp_zaynab.30 person = zaynab }
+	}
+}
+
+cp_zaynab_dispatch_law_enacted = {
+	cp_person_hook_noop = yes
+}
+
+cp_zaynab_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_zaynab_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_zaynab_dispatch_tech = {
+	if = {
+		limit = {
+			OR = {
+				has_technology_researched = medical_degrees
+				has_technology_researched = pharmaceuticals
+				has_technology_researched = modern_sewerage
+			}
+			NOT = { has_variable = cp_zaynab_seen_lime_bucket }
+		}
+		cp_try_fire_world_response = { event = cp_zaynab.50 person = zaynab }
+	}
+}
+
+cp_zaynab_dispatch_building = {
+	if = {
+		limit = {
+			OR = {
+				is_building_type = building_government_administration
+				is_building_type = building_university
+			}
+			cp_building_affects_person_workplace = { person = zaynab }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = zaynab }
+				NOT = { has_variable = cp_zaynab_seen_lime_bucket }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_zaynab.50 person = zaynab }
+		}
+	}
+}
+
+cp_zaynab_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_zaynab_mark_intro = {
+	cp_mark_event_seen = { person = zaynab id = intro days = 3650 }
+	cp_shift_hope = { person = zaynab delta = 1 }
+}
+
+cp_zaynab_mark_public_health = {
+	cp_mark_event_seen = { person = zaynab id = public_health days = 3650 }
+	set_variable = cp_zaynab_knows_public_doctor
+	cp_shift_hope = { person = zaynab delta = 2 }
+	cp_shift_exhaustion = { person = zaynab delta = -1 }
+	cp_shift_loyalist = { person = zaynab delta = 1 }
+	cp_shift_weight = { person = zaynab weight = health delta = 2 }
+}
+
+cp_zaynab_mark_fever_bowl = {
+	cp_mark_event_seen = { person = zaynab id = fever_bowl days = 1825 }
+	set_variable = cp_zaynab_keeps_fever_bowl
+	cp_shift_exhaustion = { person = zaynab delta = 1 }
+	cp_shift_weight = { person = zaynab weight = health delta = 1 }
+}
+
+cp_zaynab_mark_long_night = {
+	cp_mark_event_seen = { person = zaynab id = long_night days = 540 }
+	cp_shift_hope = { person = zaynab delta = 1 }
+	cp_shift_exhaustion = { person = zaynab delta = 1 }
+}
+
+cp_zaynab_mark_lime_bucket = {
+	cp_mark_event_seen = { person = zaynab id = lime_bucket days = 1825 }
+	set_variable = cp_zaynab_keeps_lime_bucket
+	cp_shift_literacy = { person = zaynab delta = 1 }
+	cp_shift_exhaustion = { person = zaynab delta = -1 }
+	cp_shift_weight = { person = zaynab weight = health delta = 1 }
+}
+
+cp_zaynab_mark_thread_wrist = {
+	cp_mark_event_seen = { person = zaynab id = thread_wrist days = 720 }
+	cp_shift_hope = { person = zaynab delta = 1 }
+	cp_shift_weight = { person = zaynab weight = children delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_zaynab = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_zaynab_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_zaynab.10 person = zaynab }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_zaynab_seen_intro
+				NOT = { has_variable = cp_zaynab_seen_long_night }
+			}
+			cp_try_fire_ambient = { event = cp_zaynab.40 person = zaynab }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_zaynab_seen_intro
+				NOT = { has_variable = cp_zaynab_seen_thread_wrist }
+			}
+			cp_try_fire_ambient = { event = cp_zaynab.60 person = zaynab }
+		}
+		74 = { }
+	}
+}

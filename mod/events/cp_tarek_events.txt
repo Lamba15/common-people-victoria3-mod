@@ -1,0 +1,275 @@
+﻿###############################################################################
+# Common People -- Tarek al-Rashidi events
+#
+# Tarek is Person 5: a Misri industrial capitalist who carries the grief and
+# violence of industrialization from the owner's side of the factory gate.
+###############################################################################
+
+namespace = cp_tarek
+
+
+# cp_tarek.1 -- hidden setup
+cp_tarek.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_tarek_alive
+		NOT = { has_variable = cp_tarek_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_tarek_alive value = 1 }
+		set_variable = { name = cp_tarek_age value = 26 }
+		set_variable = { name = cp_tarek_hope value = 7 }
+		set_variable = { name = cp_tarek_exhaustion value = 3 }
+		set_variable = { name = cp_tarek_sol value = 28 }
+		set_variable = { name = cp_tarek_literacy value = 45 }
+		set_variable = { name = cp_tarek_radical value = 0 }
+		set_variable = { name = cp_tarek_loyalist value = 2 }
+		set_variable = { name = cp_tarek_certainty value = 6 }
+		set_variable = { name = cp_tarek_profit_pressure value = 3 }
+		set_variable = cp_tarek_profession_capitalists
+		set_variable = { name = cp_tarek_w_industrialization value = 10 }
+		set_variable = { name = cp_tarek_w_economy value = 10 }
+		set_variable = { name = cp_tarek_w_labor_laws value = 8 }
+		set_variable = { name = cp_tarek_w_free_trade value = 9 }
+		set_variable = { name = cp_tarek_w_land_reform value = 6 }
+
+		cp_set_person_home_state_from_spawn_marker_or_default = { person = tarek country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = tarek place = bulaq }
+		cp_set_person_workplace_profile = { person = tarek profile = manufacturing }
+		cp_tarek_refresh_sol = yes
+
+		if = {
+			limit = {
+				NOT = { has_variable = cp_startup_conditional_scan }
+			}
+			random_list = {
+				55 = { cp_try_fire_world_response = { event = cp_tarek.10 person = tarek } }
+				45 = { }
+			}
+		}
+	}
+}
+
+
+# cp_tarek.10 -- "The Mill Ledger"
+cp_tarek.10 = {
+	type = country_event
+
+	title = cp_tarek.10.t
+	desc = cp_tarek.10.d
+	flavor = cp_tarek.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_tarek_10_the_mill_ledger_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_tarek_alive
+		var:cp_tarek_alive > 0
+		NOT = { has_variable = cp_tarek_seen_intro }
+	}
+
+	immediate = {
+		cp_tarek_mark_intro = yes
+	}
+
+	option = {
+		name = cp_tarek.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_tarek.20 -- "The New Arithmetic"
+cp_tarek.20 = {
+	type = country_event
+
+	title = cp_tarek.20.t
+	desc = cp_tarek.20.d
+	flavor = cp_tarek.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_tarek_labor_law.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_tarek_alive
+		var:cp_tarek_alive > 0
+		NOT = { has_variable = cp_tarek_seen_labor_law }
+	}
+
+	immediate = {
+		cp_tarek_mark_labor_law = yes
+	}
+
+	option = {
+		name = cp_tarek.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_tarek.30 -- "The New Boiler"
+cp_tarek.30 = {
+	type = country_event
+
+	title = cp_tarek.30.t
+	desc = cp_tarek.30.d
+	flavor = cp_tarek.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_tarek_30_the_new_boiler_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_tarek_alive
+		var:cp_tarek_alive > 0
+		NOT = { has_variable = cp_tarek_seen_new_boiler }
+	}
+
+	immediate = {
+		cp_tarek_mark_new_boiler = yes
+	}
+
+	option = {
+		name = cp_tarek.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_tarek.40 -- "The Account Book"
+cp_tarek.40 = {
+	type = country_event
+
+	title = cp_tarek.40.t
+	desc = cp_tarek.40.d
+	flavor = cp_tarek.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_tarek_40_the_account_book_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_tarek_alive
+		var:cp_tarek_alive > 0
+		NOT = { has_variable = cp_tarek_seen_account_book }
+	}
+
+	immediate = {
+		cp_tarek_mark_account_book = yes
+	}
+
+	option = {
+		name = cp_tarek.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_tarek.50 -- "The Second Chimney"
+cp_tarek.50 = {
+	type = country_event
+
+	title = cp_tarek.50.t
+	desc = cp_tarek.50.d
+	flavor = cp_tarek.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_tarek_50_the_second_chimney_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_tarek_alive
+		var:cp_tarek_alive > 0
+		has_variable = cp_tarek_seen_intro
+		cp_person_home_has_manufacturing = { person = tarek }
+		NOT = { has_variable = cp_tarek_seen_second_chimney }
+	}
+
+	immediate = {
+		cp_tarek_mark_second_chimney = yes
+	}
+
+	option = {
+		name = cp_tarek.50.a
+		default_option = yes
+	}
+}
+
+
+# cp_tarek.60 -- "The Locked Gate"
+cp_tarek.60 = {
+	type = country_event
+
+	title = cp_tarek.60.t
+	desc = cp_tarek.60.d
+	flavor = cp_tarek.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_tarek_60_the_locked_gate_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_tarek_alive
+		var:cp_tarek_alive > 0
+		has_variable = cp_tarek_seen_intro
+		cp_country_workers_unprotected = yes
+		NOT = { has_variable = cp_tarek_seen_locked_gate }
+	}
+
+	immediate = {
+		cp_tarek_mark_locked_gate = yes
+	}
+
+	option = {
+		name = cp_tarek.60.a
+		default_option = yes
+	}
+}

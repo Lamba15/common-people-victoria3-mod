@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_samier.60 at mod/events/cp_samier_events.txt:243
+Previous vanilla video placeholder: middleeast_middleclass_cafe
+Target DDS: mod/gfx/event_pictures/cp_samier_60_letters_after_the_bell_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_samier_60_letters_after_the_bell_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_samier.60
+Person token: samier
+Title: Letters After the Bell
+Short description: A school law reaches Samier as chalk dust and a borrowed alphabet.
+Flavor text: After the evening shift, a clerk's younger sister writes letters on a broken slate behind the coffee stall. Samier holds the chalk as if it might burn him, then laughs at himself and makes the first crooked mark. Around him men pretend to drink slowly so they can listen without admitting it. The factory is still hot across the lane. For once the bell has finished speaking, and something smaller than iron begins to answer.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

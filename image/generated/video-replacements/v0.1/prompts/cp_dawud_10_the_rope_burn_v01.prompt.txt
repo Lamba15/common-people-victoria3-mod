@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_dawud.10 at mod/events/cp_dawud_events.txt:62
+Previous vanilla video placeholder: unspecific_steam_ship
+Target DDS: mod/gfx/event_pictures/cp_dawud_10_the_rope_burn_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_dawud_10_the_rope_burn_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_dawud.10
+Person token: dawud
+Title: The Rope Burn
+Short description: Port work finds Dawud by the rope before it finds him by name.
+Flavor text: Dawud wraps a strip of linen around his palm and takes the line when the ship noses in. The rope goes tight with a sound like a door being forced, and the men lean back together, each one silent with his own small prayer. Salt has dried white on Dawud's cuffs. By evening it will be on his tongue, in his hair, and in the cracks of the coin he carries home.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

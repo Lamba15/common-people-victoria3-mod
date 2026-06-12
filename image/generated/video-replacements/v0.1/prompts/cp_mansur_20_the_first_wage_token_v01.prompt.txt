@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_mansur.20 at mod/events/cp_mansur_events.txt:96
+Previous vanilla video placeholder: unspecific_signed_contract
+Target DDS: mod/gfx/event_pictures/cp_mansur_20_the_first_wage_token_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_mansur_20_the_first_wage_token_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_mansur.20
+Person token: mansur
+Title: The First Wage Token
+Short description: On Thursday the pay clerk drops a metal token into Mansur's palm, then scratches a mark beside his name. Mansur closes his fingers around it too quickly, ashamed of how small it is and how heavy it feels. In the village, money came in handfuls after harvest or not at all. Here it arrives by bell, by table, by a man who does not look up. He buys onions, lamp oil, and half a loaf with sesame stuck to the crust, then counts what remains three times before deciding how much can go home and how much must stay under the mat.
+Flavor text: A wage is a promise made in coins small enough to lose.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

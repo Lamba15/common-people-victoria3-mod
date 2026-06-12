@@ -1,0 +1,27 @@
+Common People character seed prompt: bey
+Source ledger: documentation/characters/al-sayyid/prompts/seed-v0.1.md
+Prompt heading: `cp_bey.20` - The Gate Opens
+Target source PNG: image/generated/character-seeds/v0.1/bey_03_cp_bey_20_the_gate_opens.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Event: cp_bey.20 - "The Gate Opens"
+Narrative function: Homesteading reaches the landholder as a gate that no longer obeys him.
+Subject: Hassan Bey al-Sayyid and a secondary steward.
+Scene/backdrop: estate gate opening toward a tenant path and fields.
+Foreground action: the steward holds a paper while the Bey looks past him at the open gate.
+Required object/gesture: open gate and paper in steward's hand.
+Lighting/mood: white afternoon heat, restrained humiliation.
+Avoid: peasant riot, court trial, readable law text, heroic reformer.

@@ -9,6 +9,15 @@
 - **Home state**: Cairo (factory) with a ghost in the Fayoum
 - **Personality**: Ambitious, melancholic, forward-looking. He mourns the old world -- he loved his father's estate, the trees his grandfather planted, the view of the Fayoum at sunrise. But he chose to survive. There is grief underneath the European suit. He can't sleep and sometimes, late at night, he walks to the roof and stares south toward the Fayoum, missing the sound of the land.
 
+## Implementation Status
+
+- **Name token**: `tarek`
+- **Script files**: `mod/events/cp_tarek_events.txt`, `mod/common/scripted_effects/cp_tarek_memory.txt`, `mod/localization/english/cp_tarek_l_english.yml`
+- **Wiring**: `cp_tarek_try_spawn` runs from the yearly country pulse and requires Misri Egypt with incorporated manufacturing and land reform beyond Serfdom/Tenant Farmers. Tarek then joins the shared ambient router and the worker-protection law resolver.
+- **Images**: `cp_tarek.10` and `cp_tarek.40` use `middleeast_middleclass_cafe`; `cp_tarek.30` uses `unspecific_gears_pistons`; `cp_tarek.50` uses `southamerica_factory_opening`; `cp_tarek.60` uses `africa_public_protest`; `cp_tarek_labor_law.dds` remains a shipped DDS. The generated intro still is archived as a motion-replaced source under `image/archive/motion-replaced-event-pictures/v0.16/`; sources live in `image/generated/tarek/v0.1/` and the external source library at `/home/aboelsoud/Pictures/common-people-mod-images/tarek/`.
+- **Current content**: hidden setup, mill-ledger opener (`cp_tarek.10`), worker-protection law reaction (`cp_tarek.20`), new-boiler modernization response (`cp_tarek.30`), account-book ambient beat (`cp_tarek.40`), second-chimney expansion beat (`cp_tarek.50`), locked-gate labor-control beat (`cp_tarek.60`), yearly aging/SoL refresh, and generated person QA coverage.
+- **Not yet built**: profitability checks, strike branches, Samier crossover scenes, factory-failure path, late-life reckoning, and journal/buttons/conversation integration.
+
 ## Personality Weights
 
 | Interest | Weight | Why |
@@ -64,7 +73,7 @@ OR = {
 has_law = law_type:law_no_workers_rights
 ```
 
-On-actions: yearly pulse (economy test), `on_law_enacted` (labor laws), IG clout checks, building throughput in his state.
+On-actions: yearly pulse (economy test), `on_law_enactment_pass` (labor laws), IG clout checks, building throughput in his state.
 
 ## Life Events
 

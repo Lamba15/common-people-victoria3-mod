@@ -1,0 +1,277 @@
+﻿###############################################################################
+# Common People -- Nabil al-Haras events
+#
+# Nabil is Person 15: a Misri night watchman whose lamp, whistle, and tired
+# feet make policing and public order human-scale.
+###############################################################################
+
+namespace = cp_nabil
+
+
+# cp_nabil.1 -- hidden setup
+cp_nabil.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_nabil_alive
+		NOT = { has_variable = cp_nabil_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_nabil_alive value = 1 }
+		set_variable = { name = cp_nabil_age value = 31 }
+		set_variable = { name = cp_nabil_hope value = 4 }
+		set_variable = { name = cp_nabil_exhaustion value = 5 }
+		set_variable = { name = cp_nabil_sol value = 9 }
+		set_variable = { name = cp_nabil_literacy value = 4 }
+		set_variable = { name = cp_nabil_radical value = 0 }
+		set_variable = { name = cp_nabil_loyalist value = 1 }
+		set_variable = { name = cp_nabil_night_eyes value = 2 }
+		set_variable = { name = cp_nabil_just_spawned days = 30 }
+		set_variable = cp_nabil_profession_laborers
+		set_variable = { name = cp_nabil_w_order value = 10 }
+		set_variable = { name = cp_nabil_w_uniform value = 7 }
+		set_variable = { name = cp_nabil_w_fear value = 7 }
+		set_variable = { name = cp_nabil_w_crowd value = 6 }
+		set_variable = { name = cp_nabil_w_family value = 5 }
+
+		cp_set_person_home_state = { person = nabil country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = nabil place = bab_al_khalq }
+		cp_set_person_workplace_profile = { person = nabil profile = urban }
+		cp_nabil_refresh_sol = yes
+
+		if = {
+			limit = {
+				NOT = { has_variable = cp_startup_conditional_scan }
+			}
+			random_list = {
+				50 = { cp_try_fire_world_response = { event = cp_nabil.10 person = nabil } }
+				50 = { }
+			}
+		}
+	}
+}
+
+
+# cp_nabil.10 -- "The Lamp at the Corner"
+cp_nabil.10 = {
+	type = country_event
+
+	title = cp_nabil.10.t
+	desc = cp_nabil.10.d
+	flavor = cp_nabil.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_nabil_10_the_lamp_at_the_corner_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_nabil_alive
+		var:cp_nabil_alive > 0
+		NOT = { has_variable = cp_nabil_seen_intro }
+	}
+
+	immediate = {
+		cp_nabil_mark_intro = yes
+	}
+
+	option = {
+		name = cp_nabil.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_nabil.20 -- "The New Station"
+cp_nabil.20 = {
+	type = country_event
+
+	title = cp_nabil.20.t
+	desc = cp_nabil.20.d
+	flavor = cp_nabil.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_nabil_20_the_new_station_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_nabil_alive
+		var:cp_nabil_alive > 0
+		NOT = { has_variable = cp_nabil_seen_station }
+	}
+
+	immediate = {
+		cp_nabil_mark_station = yes
+	}
+
+	option = {
+		name = cp_nabil.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_nabil.30 -- "Rifles by the Bakery"
+cp_nabil.30 = {
+	type = country_event
+
+	title = cp_nabil.30.t
+	desc = cp_nabil.30.d
+	flavor = cp_nabil.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_nabil_30_rifles_by_the_bakery_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_nabil_alive
+		var:cp_nabil_alive > 0
+		NOT = { has_variable = cp_nabil_seen_rifles }
+	}
+
+	immediate = {
+		cp_nabil_mark_rifles = yes
+	}
+
+	option = {
+		name = cp_nabil.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_nabil.40 -- "The Square Afterwards"
+cp_nabil.40 = {
+	type = country_event
+
+	title = cp_nabil.40.t
+	desc = cp_nabil.40.d
+	flavor = cp_nabil.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_nabil_40_the_square_afterwards_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_nabil_alive
+		var:cp_nabil_alive > 0
+		NOT = { has_variable = cp_nabil_seen_square_afterward }
+	}
+
+	immediate = {
+		cp_nabil_mark_square_afterward = yes
+	}
+
+	option = {
+		name = cp_nabil.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_nabil.50 -- "The Lost Boy"
+cp_nabil.50 = {
+	type = country_event
+
+	title = cp_nabil.50.t
+	desc = cp_nabil.50.d
+	flavor = cp_nabil.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_nabil_50_the_lost_boy_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_nabil_alive
+		var:cp_nabil_alive > 0
+		has_variable = cp_nabil_seen_intro
+		NOT = { has_variable = cp_nabil_seen_lost_boy }
+	}
+
+	immediate = {
+		cp_nabil_mark_lost_boy = yes
+	}
+
+	option = {
+		name = cp_nabil.50.a
+		default_option = yes
+	}
+}
+
+
+# cp_nabil.60 -- "The Complaint Bench"
+cp_nabil.60 = {
+	type = country_event
+
+	title = cp_nabil.60.t
+	desc = cp_nabil.60.d
+	flavor = cp_nabil.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_nabil_60_the_complaint_bench_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_nabil_alive
+		var:cp_nabil_alive > 0
+		has_variable = cp_nabil_seen_intro
+		OR = {
+			has_variable = cp_nabil_seen_station
+			has_law = law_type:law_dedicated_police
+		}
+		NOT = { has_variable = cp_nabil_seen_complaint_bench }
+	}
+
+	immediate = {
+		cp_nabil_mark_complaint_bench = yes
+	}
+
+	option = {
+		name = cp_nabil.60.a
+		default_option = yes
+	}
+}

@@ -1,6 +1,6 @@
 # Layla event image catalog
 
-Every Layla event with a prompt spec. This is the human-readable source; `script/gen-layla-event-images.sh` is the runnable script that feeds these into the Codex CLI pipeline.
+Every Layla event with an early prompt spec. This file is historical reference only; the old bulk generator was removed during the v0.7 rebuild because it still carried pre-r5 conversation and grand ruler-room assumptions. Active replacement prompts live in versioned batch ledgers such as `replacement-batch-v0.7.md` and are exported with `script/export-art-batch-prompts.py`.
 
 ## Shared references (all events)
 
@@ -434,37 +434,9 @@ Each entry: `Output — Title — Context — Scene — Mood`.
 
 ---
 
-## Conversations (audience in Cairo)
+## Conversations
 
-The conversation events are all visually one register: Layla in her kitchen, eyes on a distance, speaking silently to a Pasha she has invented. One shared image suits the root and closer; the topic openers and Pasha-voice responses share a second image set.
-
-### cp_conversation.1 — An Audience in Cairo (root)
-- **Output**: `cp_conversation_audience.dds.png`
-- **Scene**: Layla (age-appropriate to Act V: older, grey streaks at her temples) seated on a low stool in her kitchen, one hand around a small brass coffee-cup, eyes unfocused, looking somewhere past the doorway. Evening lamplight. Her hands are old. The kitchen is her own.
-- **Mood**: the fantasy is about to begin; the kitchen knows.
-
-### cp_conversation.90 — The Kitchen Returns (closer)
-- **Output**: `cp_conversation_kitchen.dds.png`
-- **Scene**: Same kitchen; Layla setting the empty coffee cup down on the low table. Lamp lower. The fantasy has ended; the kitchen is just the kitchen again. Her face softer than it was at the start.
-- **Mood**: carried something, set it down.
-
-### Topic-opener variants (one image per cluster; the opener and its three Pasha responses share the same scene register)
-
-- **.10-19 The Land** → `cp_conversation_land.dds.png`: Layla's imagined carpet on a palace floor; she stands at its end, a ledger of the land in her hand.
-- **.20-23 Ahmed** → `cp_conversation_ahmed.dds.png`: Layla mid-sentence, one hand at her throat, the fantasy-Pasha's shoes at the edge of frame.
-- **.30-33 Children** → `cp_conversation_children.dds.png`: Layla's hand raised counting off names. A folded paper in her lap.
-- **.40-43 The Room** → `cp_conversation_room.dds.png`: Layla describing her city tenement with the small precise gestures of a draughtsman. 
-- **.50-53 The Paper** → `cp_conversation_paper.dds.png`: Layla holding up a folded deed into the imagined palace light.
-- **.60-63 Country** → `cp_conversation_country.dds.png`: Layla's free hand emphasising a point, the other at her side clenched.
-- **.70-73 The Mill** → `cp_conversation_mill.dds.png`: Layla's hand miming the shape of a textile machine she has never operated.
-- **.80-82 Small Thing** → `cp_conversation_small.dds.png`: Layla's eyes on the carpet's pattern; she has nothing of weight to say tonight.
-- **.100-103 Distance** → `cp_conversation_distance.dds.png`: Layla in her matriarch's clothes, hands folded, a small brooch at her collar; her imagined self is prosperous, and she is unsure.
-- **.110-113 Envelope** → `cp_conversation_envelope.dds.png`: Layla producing an envelope from her sleeve at the start of the speech.
-- **.120-123 Rolls** → `cp_conversation_rolls.dds.png`: Layla holding a blank voter-roll, tracing her own name across the top with a fingertip.
-- **.130-133 Stall** → `cp_conversation_stall.dds.png`: Layla's hand sketching in the air the shape of a market-scale.
-- **.140-143 Nile** → `cp_conversation_nile.dds.png`: Layla describing the flood-line with her hand, palm flat and horizontal.
-- **.150-153 Lost Child** → `cp_conversation_lost_child.dds.png`: Layla's hand at her breastbone; her eyes down. No props.
-- **.160-163 The School** → `cp_conversation_school.dds.png`: Layla holding an imagined letter at a reading distance, describing a daughter's handwriting.
+The pre-r5 `cp_conversation.*` prompt list has been removed from this runnable catalog. Those source names and grand ruler-room prompt assumptions are retired; current conversation art is replaced through versioned `cp_layla_vox` batches such as `replacement-batch-v0.7.md`.
 
 ---
 

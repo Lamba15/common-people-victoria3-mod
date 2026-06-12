@@ -1,0 +1,271 @@
+﻿###############################################################################
+# Common People -- Rashid al-Katib events
+#
+# Rashid is Person 11: a Misri government clerk whose ink, stamps, and tired
+# eyes make bureaucracy visible as ordinary labor rather than an abstraction.
+###############################################################################
+
+namespace = cp_rashid
+
+
+# cp_rashid.1 -- hidden setup
+cp_rashid.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_rashid_alive
+		NOT = { has_variable = cp_rashid_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_rashid_alive value = 1 }
+		set_variable = { name = cp_rashid_age value = 31 }
+		set_variable = { name = cp_rashid_hope value = 5 }
+		set_variable = { name = cp_rashid_exhaustion value = 4 }
+		set_variable = { name = cp_rashid_sol value = 12 }
+		set_variable = { name = cp_rashid_literacy value = 25 }
+		set_variable = { name = cp_rashid_radical value = 0 }
+		set_variable = { name = cp_rashid_loyalist value = 0 }
+		set_variable = { name = cp_rashid_ink_cough value = 2 }
+		set_variable = cp_rashid_profession_bureaucrats
+		set_variable = { name = cp_rashid_w_paperwork value = 10 }
+		set_variable = { name = cp_rashid_w_authority value = 8 }
+		set_variable = { name = cp_rashid_w_memory value = 7 }
+		set_variable = { name = cp_rashid_w_family value = 6 }
+		set_variable = { name = cp_rashid_w_city value = 5 }
+
+		cp_set_person_home_state_from_spawn_marker_or_default = { person = rashid country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = rashid place = abdeen_cairo }
+		cp_set_person_workplace_profile = { person = rashid profile = public_service }
+		cp_rashid_refresh_sol = yes
+
+		if = {
+			limit = {
+				NOT = { has_variable = cp_startup_conditional_scan }
+			}
+			random_list = {
+				50 = { cp_try_fire_world_response = { event = cp_rashid.10 person = rashid } }
+				50 = { }
+			}
+		}
+	}
+}
+
+
+# cp_rashid.10 -- "The Counter Window"
+cp_rashid.10 = {
+	type = country_event
+
+	title = cp_rashid.10.t
+	desc = cp_rashid.10.d
+	flavor = cp_rashid.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_rashid_10_the_counter_window_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_rashid_alive
+		var:cp_rashid_alive > 0
+		NOT = { has_variable = cp_rashid_seen_intro }
+	}
+
+	immediate = {
+		cp_rashid_mark_intro = yes
+	}
+
+	option = {
+		name = cp_rashid.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_rashid.20 -- "The Archive Lamp"
+cp_rashid.20 = {
+	type = country_event
+
+	title = cp_rashid.20.t
+	desc = cp_rashid.20.d
+	flavor = cp_rashid.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_rashid_20_the_archive_lamp_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_rashid_alive
+		var:cp_rashid_alive > 0
+		NOT = { has_variable = cp_rashid_seen_archives }
+	}
+
+	immediate = {
+		cp_rashid_mark_archives = yes
+	}
+
+	option = {
+		name = cp_rashid.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_rashid.30 -- "The Paper Name"
+cp_rashid.30 = {
+	type = country_event
+
+	title = cp_rashid.30.t
+	desc = cp_rashid.30.d
+	flavor = cp_rashid.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_rashid_30_the_paper_name_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_rashid_alive
+		var:cp_rashid_alive > 0
+		NOT = { has_variable = cp_rashid_seen_identification }
+	}
+
+	immediate = {
+		cp_rashid_mark_identification = yes
+	}
+
+	option = {
+		name = cp_rashid.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_rashid.40 -- "Dust in the Ink"
+cp_rashid.40 = {
+	type = country_event
+
+	title = cp_rashid.40.t
+	desc = cp_rashid.40.d
+	flavor = cp_rashid.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_rashid_40_dust_in_the_ink_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_rashid_alive
+		var:cp_rashid_alive > 0
+		NOT = { has_variable = cp_rashid_seen_ink_dust }
+	}
+
+	immediate = {
+		cp_rashid_mark_ink_dust = yes
+	}
+
+	option = {
+		name = cp_rashid.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_rashid.50 -- "The New Seal"
+cp_rashid.50 = {
+	type = country_event
+
+	title = cp_rashid.50.t
+	desc = cp_rashid.50.d
+	flavor = cp_rashid.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_rashid_50_the_new_seal_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_rashid_alive
+		var:cp_rashid_alive > 0
+		NOT = { has_variable = cp_rashid_seen_new_seal }
+	}
+
+	immediate = {
+		cp_rashid_mark_new_seal = yes
+	}
+
+	option = {
+		name = cp_rashid.50.a
+		default_option = yes
+	}
+}
+
+
+# cp_rashid.60 -- "The Numbered Drawer"
+cp_rashid.60 = {
+	type = country_event
+
+	title = cp_rashid.60.t
+	desc = cp_rashid.60.d
+	flavor = cp_rashid.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_rashid_60_the_numbered_drawer_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_rashid_alive
+		var:cp_rashid_alive > 0
+		has_variable = cp_rashid_seen_intro
+		NOT = { has_variable = cp_rashid_seen_numbered_drawer }
+	}
+
+	immediate = {
+		cp_rashid_mark_numbered_drawer = yes
+	}
+
+	option = {
+		name = cp_rashid.60.a
+		default_option = yes
+	}
+}

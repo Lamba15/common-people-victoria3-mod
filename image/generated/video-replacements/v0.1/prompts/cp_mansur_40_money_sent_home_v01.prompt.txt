@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_mansur.40 at mod/events/cp_mansur_events.txt:168
+Previous vanilla video placeholder: middleeast_middleclass_cafe
+Target DDS: mod/gfx/event_pictures/cp_mansur_40_money_sent_home_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_mansur_40_money_sent_home_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_mansur.40
+Person token: mansur
+Title: Money Sent Home
+Short description: Mansur gives the money to a driver going north and watches him knot it into the corner of a scarf. The driver says he knows the village, then names the wrong mosque. Mansur corrects him twice and hates himself for begging the road to be accurate. His mother will unfold the cloth under the fig tree if the packet reaches her. His younger brother will ask whether the factory is larger than the canal bridge. No one will ask whether he sleeps well. The city takes such questions and spends them before they arrive.
+Flavor text: A remittance is a son trying to be present by weight.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

@@ -1,0 +1,27 @@
+Common People Layla v0.13 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.13.md
+Target DDS: mod/gfx/event_pictures/cp_layla_next_village_doctor_v13.dds
+Source PNG: image/generated/layla/v0.13/cp_layla_next_village_doctor_v13.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla.110 - "The Doctor in the Next Village"
+Narrative function: public health care becomes the four-mile road to a doctor who asks only who is ill.
+Subject: Layla arriving with news of Khaled's illness at a simple village doctor's door.
+Scene/backdrop: next village doorway, dusty road behind, modest room with doctor's bag and stool.
+Foreground action: the doctor opens the door or steps out with his bag as Layla explains, hand pressed to her chest.
+Required object/gesture: doctor's bag ready to travel; Layla's tired feet or dusty hem from the walk.
+Background detail: Khaled's wife or a worried relative behind Layla, low evening light, no payment table.
+Lighting/mood: dusk after a long walk, disbelief turning to relief.
+Avoid: modern ambulance, hospital corridor, money exchange, bureaucratic papers.

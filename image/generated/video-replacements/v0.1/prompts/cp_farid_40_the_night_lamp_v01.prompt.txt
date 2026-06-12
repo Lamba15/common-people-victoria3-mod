@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_farid.40 at mod/events/cp_farid_events.txt:171
+Previous vanilla video placeholder: unspecific_trains
+Target DDS: mod/gfx/event_pictures/cp_farid_40_the_night_lamp_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_farid_40_the_night_lamp_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_farid.40
+Person token: farid
+Title: The Night Lamp
+Short description: Farid keeps watch while the station sleeps in pieces.
+Flavor text: After midnight the station belongs to smaller sounds: the lamp glass ticking as it cools, a mule coughing near the freight shed, one clerk turning in his chair without waking. Farid sits on an upturned crate with his cap over his knees. Somewhere down the line an engine cries once and is silent. He thinks of his mother's courtyard, then of the wages folded under his shirt, then of nothing at all until dawn loosens the black from the rails.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

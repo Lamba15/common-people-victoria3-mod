@@ -1,0 +1,32 @@
+﻿l_english:
+ # Zaynab -- Person 8: a village midwife and sickroom witness
+
+ cp_zaynab.10.t:0 "The Brass Basin"
+ cp_zaynab.10.d:0 "Before dawn, Zaynab folds the linen twice and lays it beside the basin."
+ cp_zaynab.10.f:0 "The water is not hot yet. The girl behind the curtain has stopped speaking, which Zaynab does not like, but she has learned not to say every thing she knows. She pinches the lamp wick smaller. She counts the cloths. She sets the small bowl of crushed leaves where her hand can find it without looking. Outside, a rooster makes one cracked attempt at morning and gives up. Inside, Zaynab presses her thumb against the brass rim and listens to the room: breath, fear, the old mother's beads, the pause before pain returns. She has walked to this house in floodwater and dust, in wedding noise and mourning silence. Each time, people look at her as if she has brought life in her basket. She knows better. She has brought cloth, water, and the courage to remain."
+ cp_zaynab.10.a:0 "#italic Let the basin warm. Let the room hold.#!"
+
+ cp_zaynab.20.t:0 "The Doctor Waits Outside"
+ cp_zaynab.20.d:0 "The new doctor arrives with a box, a register, and the careful politeness of a man who knows the village has not yet decided whether he is useful."
+ cp_zaynab.20.f:0 "The child burns against his mother's shoulder. The doctor opens the box and the mother looks, not at the doctor, but at Zaynab. That is the whole matter. The government may pay the man. The seal may be good. The bottles may be clean. But the mother asks the old question with her eyes: §IWill this help?#! Zaynab looks at the bandages, then at the doctor's hands. They are soft, but they do not shake. She asks him what he will do first. He answers plainly. She nods once. Only then does the mother step nearer. The doctor writes nothing yet. He waits while Zaynab wets a cloth and lays it on the child's head, as if the new medicine must enter by the old door."
+ cp_zaynab.20.a:0 "#italic Let him open the box. Let her decide whether to trust it.#!"
+
+ cp_zaynab.30.t:0 "The Fever Bowl"
+ cp_zaynab.30.d:0 "When no doctor comes, the basin returns to its older work."
+ cp_zaynab.30.f:0 "The fever has taken the boy's voice and left only the dry clicking in his throat. Zaynab changes the cloth again. The mother asks whether the government hospital will send someone, and no one in the room answers, because the answer has already failed to arrive. The bowl grows cloudy with each wrung cloth. Zaynab smells vinegar, sweat, smoke from the courtyard stove, and the sour fear that makes women speak softly. She has no new medicine to offer. She has her hands, and the night, and the discipline not to leave before morning."
+ cp_zaynab.30.a:0 "#italic Keep the cloth cool. Keep the mother breathing.#!"
+
+ cp_zaynab.40.t:0 "The Long Night"
+ cp_zaynab.40.d:0 "A birth stretches past midnight and pulls the whole lane into silence."
+ cp_zaynab.40.f:0 "By the third call to prayer the women in the room have stopped pretending they are not afraid. Zaynab rubs her wrists, washes again, and asks for more water though she knows the jar is nearly empty. Outside, men sit on overturned baskets and do not speak. Inside, the lamp gutters, catches, gutters again. The girl grips Zaynab's sleeve hard enough to tear it. Zaynab leans close and says the words her own teacher once said to her: not yet, daughter, but soon. She does not know if it is true. She says it until it becomes useful."
+ cp_zaynab.40.a:0 "#italic Stay with her until dawn.#!"
+
+ cp_zaynab.50.t:0 "The Lime Bucket"
+ cp_zaynab.50.d:0 "New health knowledge reaches Zaynab as a bucket, a brush, and a smell that will not leave her hands."
+ cp_zaynab.50.f:0 "The young doctor calls it sanitation, as if the word itself has washed. Zaynab calls it lime because that is what burns white on the brush and bites the cracks in her fingers. She scrubs the threshold, the basin stand, the wall where a feverish child had leaned his head. The women laugh when she orders them back from the wet floor, but they obey. By sunset the room smells less like sickness and more like an argument she intends to win."
+ cp_zaynab.50.a:0 "#italic Let the floor dry before anyone enters.#!"
+
+ cp_zaynab.60.t:0 "Thread Around the Wrist"
+ cp_zaynab.60.d:0 "A child born before dawn leaves Zaynab with a red thread and a quiet room."
+ cp_zaynab.60.f:0 "The thread is no thicker than a hair and bright as pomegranate skin. Zaynab ties it around the child's wrist because the grandmother insists, then checks the knot herself because a careless blessing is still careless. The mother sleeps with one hand open on the mat. The room has the stunned peace of a place after a storm, every cup and folded cloth lying exactly where fear dropped it. Zaynab sits beside the basin until the first vendors call in the street."
+ cp_zaynab.60.a:0 "#italic The knot holds. The child breathes.#!"

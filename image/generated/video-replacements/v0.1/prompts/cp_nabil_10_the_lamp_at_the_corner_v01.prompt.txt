@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_nabil.10 at mod/events/cp_nabil_events.txt:62
+Previous vanilla video placeholder: africa_city_center
+Target DDS: mod/gfx/event_pictures/cp_nabil_10_the_lamp_at_the_corner_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_nabil_10_the_lamp_at_the_corner_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_nabil.10
+Person token: nabil
+Title: The Lamp at the Corner
+Short description: Nabil al-Haras lights the corner lamp with a taper cupped against the wind. The flame catches, trembles, and makes a small yellow room out of the street. His whistle hangs from a cord around his neck. Children call him police when they want to run from him and uncle when they want him to look away. He is neither, not properly. He is a man paid to walk until dawn and remember which doors were bolted, which voices were drunk, which stranger asked twice for the same house. The city sleeps in pieces. Nabil learns the pieces by sound.
+Flavor text: A quiet street is not quiet to the man required to prove it.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

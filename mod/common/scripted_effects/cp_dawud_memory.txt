@@ -1,0 +1,224 @@
+﻿###############################################################################
+# Common People -- Dawud Hanna's memory
+#
+# Person 10 scaffold. Dawud is registered as `dawud`, not as a V3 character.
+# He enters conditionally when ports, steamships, or cargo cranes make sea
+# trade visible through dock labor.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_dawud_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = dawud
+		culture = misri
+		religion = orthodox
+		poptype = laborers
+	}
+}
+
+
+# --- Conditional entry ------------------------------------------------------
+cp_dawud_try_spawn = {
+	if = {
+		limit = {
+			c:EGY ?= this
+			NOT = { has_global_variable = cp_person_dawud_alive }
+			NOT = { has_variable = cp_dawud_alive }
+			OR = {
+				cp_country_has_port = yes
+				has_technology_researched = paddle_steamer
+				has_technology_researched = hydraulic_cranes
+				has_technology_researched = gantry_cranes
+			}
+		}
+		cp_mark_person_spawn_home_from_port = { person = dawud }
+		cp_register_person = {
+			person = dawud
+			country = EGY
+		}
+		cp_dawud_dispatch_startup = yes
+		trigger_event = { id = cp_dawud.1 }
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_dawud_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_dawud_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_dawud_dispatch_yearly = {
+	cp_age_increment = { person = dawud }
+	cp_dawud_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = dawud country = EGY }
+	if = {
+		limit = {
+			OR = {
+				has_technology_researched = hydraulic_cranes
+				has_technology_researched = gantry_cranes
+			}
+			NOT = { has_variable = cp_dawud_seen_cranes }
+		}
+		random_list = {
+			35 = { cp_try_fire_world_response = { event = cp_dawud.20 person = dawud } }
+			65 = { }
+		}
+	}
+}
+
+cp_dawud_dispatch_law_enacted = {
+	if = {
+		limit = {
+			OR = {
+				ROOT.currently_enacting_law.type ?= law_type:law_free_trade
+				ROOT.currently_enacting_law.type ?= law_type:law_protectionism
+				ROOT.currently_enacting_law.type ?= law_type:law_mercantilism
+				ROOT.currently_enacting_law.type ?= law_type:law_isolationism
+			}
+			NOT = { has_variable = cp_dawud_seen_tariff_chalk }
+		}
+		cp_try_fire_law_reaction = { event = cp_dawud.50 person = dawud }
+	}
+}
+
+cp_dawud_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_dawud_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_dawud_dispatch_tech = {
+	if = {
+		limit = {
+			has_technology_researched = paddle_steamer
+			NOT = { has_variable = cp_dawud_seen_steamship }
+		}
+		cp_try_fire_world_response = { event = cp_dawud.30 person = dawud }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_technology_researched = hydraulic_cranes
+				has_technology_researched = gantry_cranes
+			}
+			NOT = { has_variable = cp_dawud_seen_cranes }
+		}
+		cp_try_fire_world_response = { event = cp_dawud.20 person = dawud }
+	}
+}
+
+cp_dawud_dispatch_building = {
+	if = {
+		limit = {
+			is_building_type = building_port
+			cp_building_affects_person_workplace = { person = dawud }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = dawud }
+				NOT = { has_variable = cp_dawud_seen_intro }
+			}
+		}
+		owner ?= {
+			random_list = {
+				60 = { cp_try_fire_world_response = { event = cp_dawud.10 person = dawud } }
+				40 = { }
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				is_building_type = building_port
+				is_building_type = building_trade_center
+			}
+			cp_building_affects_person_workplace = { person = dawud }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = dawud }
+				has_variable = cp_dawud_seen_intro
+				NOT = { has_variable = cp_dawud_seen_manifest_room }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_dawud.60 person = dawud }
+		}
+	}
+}
+
+cp_dawud_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_dawud_mark_intro = {
+	cp_mark_event_seen = { person = dawud id = intro days = 3650 }
+	cp_shift_hope = { person = dawud delta = 1 }
+	cp_shift_weight = { person = dawud weight = trade delta = 1 }
+}
+
+cp_dawud_mark_cranes = {
+	cp_mark_event_seen = { person = dawud id = cranes days = 1825 }
+	cp_shift_exhaustion = { person = dawud delta = -1 }
+	cp_shift_weight = { person = dawud weight = machinery delta = 1 }
+}
+
+cp_dawud_mark_steamship = {
+	cp_mark_event_seen = { person = dawud id = steamship days = 1825 }
+	cp_shift_weight = { person = dawud weight = trade delta = 2 }
+	cp_shift_literacy = { person = dawud delta = 1 }
+}
+
+cp_dawud_mark_salt_floor = {
+	cp_mark_event_seen = { person = dawud id = salt_floor days = 540 }
+	cp_shift_exhaustion = { person = dawud delta = 1 }
+}
+
+cp_dawud_mark_tariff_chalk = {
+	cp_mark_event_seen = { person = dawud id = tariff_chalk days = 1825 }
+	cp_shift_weight = { person = dawud weight = trade delta = 1 }
+	cp_shift_weight = { person = dawud weight = politics delta = 1 }
+	cp_shift_literacy = { person = dawud delta = 1 }
+}
+
+cp_dawud_mark_manifest_room = {
+	cp_mark_event_seen = { person = dawud id = manifest_room days = 720 }
+	cp_shift_exhaustion = { person = dawud delta = 1 }
+	cp_shift_weight = { person = dawud weight = trade delta = 1 }
+	cp_shift_weight = { person = dawud weight = work delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_dawud = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_dawud_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_dawud.10 person = dawud }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_dawud_seen_intro
+				NOT = { has_variable = cp_dawud_seen_salt_floor }
+			}
+			cp_try_fire_ambient = { event = cp_dawud.40 person = dawud }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_dawud_seen_intro
+				NOT = { has_variable = cp_dawud_seen_manifest_room }
+			}
+			cp_try_fire_ambient = { event = cp_dawud.60 person = dawud }
+		}
+		74 = { }
+	}
+}

@@ -1,0 +1,31 @@
+Common People character seed prompt: layla
+Source ledger: documentation/characters/layla/prompts/seed-v0.1.md
+Prompt heading: Canonical Portrait
+Target source PNG: image/generated/character-seeds/v0.1/layla_01_canonical_portrait.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Use case: historical-scene
+Asset type: Common People canonical character portrait, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism portrait-scene for Layla al-Sharif in the Common People Victoria 3 mod.
+Subject: Layla al-Sharif, Misri Egyptian Sunni fellaha in her early twenties, olive-brown skin, dark tired eyes, plain earth-toned galabeya, patched muted headscarf wrapped for field work, work-worn hands, quiet posture.
+Scene/backdrop: mud-brick house threshold in a Lower Egyptian Delta village, low roof patched with palm fronds, canal light and fields beyond the doorway.
+Foreground action: Layla stands with one hand on the doorframe and the other holding the edge of her headscarf, looking toward the first work of the day rather than posing.
+Required object/gesture: patched headscarf, doorframe hand, and mud-brick threshold must be legible at 600x400.
+Composition/framing: close-medium portrait, Layla foreground slightly left, house threshold framing her, fields visible as context.
+Lighting/mood: cool pre-dawn with a thin warm horizon, intimate and patient.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic pose.
+Avoid: ornate palace room, smiling triumph, decorative atmosphere without the threshold and patched roof.

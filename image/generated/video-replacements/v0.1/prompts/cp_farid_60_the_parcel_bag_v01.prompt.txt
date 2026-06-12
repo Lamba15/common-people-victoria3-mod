@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_farid.60 at mod/events/cp_farid_events.txt:243
+Previous vanilla video placeholder: ip2_telegraph_dictate
+Target DDS: mod/gfx/event_pictures/cp_farid_60_the_parcel_bag_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_farid_60_the_parcel_bag_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_farid.60
+Person token: farid
+Title: The Parcel Bag
+Short description: A station bag fills with letters, receipts, and the names of people Farid will never meet.
+Flavor text: The leather bag is heavier than it looks. It holds letters folded small enough to hide in a sleeve, money orders smelling of anxious hands, a newspaper already soft at the corners, and one parcel wrapped so carefully that Farid carries it as if it might hear him breathe. At each stop someone asks whether a name has arrived. He learns that a railway does not only move bodies. It moves waiting.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

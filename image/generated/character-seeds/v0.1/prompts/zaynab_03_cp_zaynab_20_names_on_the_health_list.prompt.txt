@@ -1,0 +1,27 @@
+Common People character seed prompt: zaynab
+Source ledger: documentation/characters/zaynab/prompts/seed-v0.1.md
+Prompt heading: `cp_zaynab.20` - Names on the Health List
+Target source PNG: image/generated/character-seeds/v0.1/zaynab_03_cp_zaynab_20_names_on_the_health_list.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Event: cp_zaynab.20 - "Names on the Health List"
+Narrative function: Public health reaches Zaynab as official paper entering a world of memory, hands, and lamps.
+Subject: Zaynab with a younger clerk or orderly secondary in frame.
+Scene/backdrop: small health station or village room, water bowl, folded linens, official paper without readable text.
+Foreground action: Zaynab places her hand on the paper while keeping the lamp near the bowl.
+Required object/gesture: hand on paper, lamp near water bowl.
+Lighting/mood: morning light after a long night, suspicion and usefulness together.
+Avoid: modern hospital, readable forms, triumphal public-health poster.

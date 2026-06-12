@@ -1,0 +1,27 @@
+Common People Layla v0.15 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.15.md
+Target DDS: mod/gfx/event_pictures/cp_layla_women_hiring_v15.dds
+Source PNG: image/generated/layla/v0.15/cp_layla_women_hiring_v15.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla.95 - "They Are Hiring Women Now"
+Narrative function: women entering wage work is a mill gate opening for a woman who does not ask permission.
+Subject: Layla at a window or lane edge watching a neighbor walk through a mill gate.
+Scene/backdrop: 19th-century textile mill yard or village lane with a letter from the city, depending on composition.
+Foreground action: a woman with a lunch tin walks through the gate without looking back while Layla watches from outside.
+Required object/gesture: mill gate; woman entering with lunch tin; Layla's unfinished tea or cousin's letter in her hand.
+Background detail: foreman calling names without a readable list, other workers, no cheering crowd.
+Lighting/mood: morning shift, gate opening, hope mixed with household argument.
+Avoid: modern factory, safety helmets, readable employment notice, triumphant poster, fashion-model pose.

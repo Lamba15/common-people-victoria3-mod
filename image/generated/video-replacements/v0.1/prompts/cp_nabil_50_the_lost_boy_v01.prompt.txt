@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_nabil.50 at mod/events/cp_nabil_events.txt:206
+Previous vanilla video placeholder: africa_city_center
+Target DDS: mod/gfx/event_pictures/cp_nabil_50_the_lost_boy_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_nabil_50_the_lost_boy_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_nabil.50
+Person token: nabil
+Title: The Lost Boy
+Short description: A child missing after sunset turns Nabil's patrol into a search.
+Flavor text: The mother gives the boy's name three times, each softer than the last, as if the street might be listening for accuracy. Nabil lifts his lamp to doorways, under carts, into the dry mouth of an alley where cats scatter from the light. He finds the child asleep beside a baker's warm wall, one hand still closed around a fig. When the mother takes him, she does not thank Nabil at first. She presses her cheek to the boy's hair and makes the sound of a door being bolted from inside.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

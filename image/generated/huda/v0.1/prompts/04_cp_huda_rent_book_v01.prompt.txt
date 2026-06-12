@@ -1,0 +1,25 @@
+Common People Huda v0.1 replacement prompt
+Source ledger: documentation/characters/huda/prompts/replacement-batch-v0.1.md
+Target DDS: mod/gfx/event_pictures/cp_huda_rent_book_v01.dds
+Source PNG: image/generated/huda/v0.1/cp_huda_rent_book_v01.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Huda al-Matariya, a Misri Egyptian city lodger and day laborer; practical tired face, olive-brown skin, dark eyes, faded indigo scarf, plain work dress, grounded 19th-century Cairo materials.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, quiet human scale.
+Composition/framing: event-window safe composition; place the essential face, action, and required object in the left half or center-left because the game's text panel covers the right half. The right half may carry atmosphere, architecture, or background only.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no modern machinery, no fantasy costume, no palace grandeur, no heroic propaganda pose.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_huda.40 - "The Rent Book"
+Narrative function: city growth raises the rent before it raises anyone's dignity.
+Scene/backdrop: 19th-century Cairo alley doorway below her rented room, rough stair rising behind her, landlord's small table near the wall.
+Foreground action: Huda watches a landlord mark a rent book while her hand tightens around a coin.
+Required object/gesture: Huda's tense hand with coin, landlord's rent book with unreadable marks, pencil or reed pen, rough stair behind her.
+Lighting/mood: hard noon shade, anger kept inside the body.
+Avoid: readable text or numbers, modern office, courtroom, eviction spectacle, comic miser.

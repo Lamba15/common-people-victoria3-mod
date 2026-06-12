@@ -1,0 +1,27 @@
+Common People character seed prompt: nour
+Source ledger: documentation/characters/nour/prompts/seed-v0.1.md
+Prompt heading: `cp_nour.20` - Her Name on the Paper
+Target source PNG: image/generated/character-seeds/v0.1/nour_03_cp_nour_20_her_name_on_the_paper.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Event: cp_nour.20 - "Her Name on the Paper"
+Narrative function: Women's property reform becomes a paper Nour must learn to trust.
+Subject: Nour in a provincial clerk's office.
+Scene/backdrop: small clerk's desk, shuttered window, mud-plaster wall.
+Foreground action: a clerk releases a folded legal paper into Nour's hands while her brass key rests beside it.
+Required object/gesture: paper passing into her hands and the key beside it.
+Lighting/mood: dusty afternoon, private shock without celebration.
+Avoid: modern courtroom, heroic suffrage poster, readable text, palace office.

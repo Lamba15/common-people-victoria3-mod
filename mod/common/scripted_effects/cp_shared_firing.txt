@@ -1,26 +1,31 @@
-###############################################################################
+﻿###############################################################################
 # Common People -- shared firing gatekeepers (r5)
 #
-# Every event fire in the mod flows through one of four gatekeepers, picked
+# Every event fire in the mod flows through one of five gatekeepers, picked
 # by the event's tier:
 #
 #   AMBIENT        — small life beats, conversations, seasonal pulses.
-#                    Gated by a 180-day global cooldown and a 365-day
-#                    per-person cooldown. Target: 0–2 fires per in-game year
-#                    across ALL persons combined.
+#                    Gated by a 183-day global cooldown and a 365-day
+#                    per-person cooldown. Target: 1–2 fires per in-game year
+#                    across ALL persons combined, with a hard cap of 2.
 #
-#   LAW-REACTION   — events tied to a specific law enactment. Bypasses the
-#                    ambient cooldown (laws set their own rules — a year with
-#                    two laws gets two law events). Already one-shot via the
-#                    event's own cp_$person$_seen_$id$ flag.
+#   LAW-REACTION   — events tied to a specific law enactment. Uses the same
+#                    visible-story cooldown as ambient/startup beats, so law
+#                    reforms cannot flood the player with Common People popups.
+#                    Already one-shot via the event's own seen flag.
+#
+#   WORLD-RESPONSE — routine automatic reactions to technology, buildings,
+#                    conditional person entry, and other state changes. Uses
+#                    the same visible-story cooldown as ambient/startup/law
+#                    beats so modernization does not create popup bursts.
 #
 #   MILESTONE      — critical life beats: death, Cairo offer, suitor, first
 #                    welfare envelope, revolution. Bypasses cooldowns; fires
 #                    on event-specific probability rolls in the dispatcher.
 #
-#   BUTTON         — player-initiated via the Check-on-Layla button or
-#                    equivalent. Always fires. Per-event seen-flags still
-#                    apply (no repeats of the same beat within its cooldown).
+#   BUTTON         — player-initiated via a person journal/check button or QA
+#                    button. Always fires. Per-event seen-flags still apply
+#                    (no repeats of the same beat within its cooldown).
 #
 # See documentation/characters/_shared/firing.md for the full protocol.
 ###############################################################################
@@ -41,13 +46,44 @@
 cp_try_fire_ambient = {
 	if = {
 		limit = {
+			cp_person_is_alive = { person = $person$ }
 			NOT = { has_global_variable = cp_global_ambient_cooldown }
 			NOT = { has_global_variable = cp_person_$person$_ambient_cooldown }
 		}
+		cp_spotlight_person = { person = $person$ }
 		trigger_event = { id = $event$ }
 		set_global_variable = {
 			name = cp_global_ambient_cooldown
-			days = 180
+			days = 183
+		}
+		set_global_variable = {
+			name = cp_person_$person$_ambient_cooldown
+			days = 365
+		}
+	}
+}
+
+
+# ============================================================================
+# cp_mark_first_contact_budget
+# ============================================================================
+# The randomized startup opener is a visible Common People beat, so it occupies
+# the same quiet lane as ambient events. This keeps the first campaign year at
+# one opener plus at most one later passive ambient event.
+#
+# Parameters:
+#   person  = name token (e.g. layla)
+# ============================================================================
+
+cp_mark_first_contact_budget = {
+	if = {
+		limit = {
+			cp_person_is_alive = { person = $person$ }
+		}
+		cp_spotlight_person = { person = $person$ }
+		set_global_variable = {
+			name = cp_global_ambient_cooldown
+			days = 183
 		}
 		set_global_variable = {
 			name = cp_person_$person$_ambient_cooldown
@@ -60,18 +96,202 @@ cp_try_fire_ambient = {
 # ============================================================================
 # cp_try_fire_law_reaction
 # ============================================================================
-# Fire a law-reaction event. Bypasses the ambient cooldown because laws have
-# their own pacing — we want the player to feel the consequence of their
-# legislative choice. One-shot per life is enforced by the event's own
-# cp_$person$_seen_$id$ flag set in the event's immediate block.
+# Fire a law-reaction event if the shared visible-story budget is open. Laws
+# matter, but they still count as Common People popups; this keeps routine
+# automatic events near 1-2 per year across the whole roster.
 #
 # Parameters:
 #   event   = event id
-#   person  = name token (for symmetry; currently unused internally)
+#   person  = name token
 # ============================================================================
 
 cp_try_fire_law_reaction = {
-	trigger_event = { id = $event$ }
+	# The $person$ alive-check also satisfies V3's unused-parameter compile
+	# rule (scripted_effects must reference every macro arg).
+	if = {
+		limit = {
+			cp_person_is_alive = { person = $person$ }
+			NOT = { has_global_variable = cp_global_ambient_cooldown }
+			NOT = { has_global_variable = cp_person_$person$_ambient_cooldown }
+		}
+		cp_spotlight_person = { person = $person$ }
+		trigger_event = { id = $event$ }
+		set_global_variable = {
+			name = cp_global_ambient_cooldown
+			days = 183
+		}
+		set_global_variable = {
+			name = cp_person_$person$_ambient_cooldown
+			days = 365
+		}
+	}
+}
+
+
+# ============================================================================
+# cp_try_fire_world_response
+# ============================================================================
+# Fire a routine world-response event if the shared visible-story budget is
+# open. This covers technology, building, and conditional-entry beats that
+# should feel reactive without bypassing the 1-2/year routine popup lane.
+#
+# Parameters:
+#   event   = event id
+#   person  = name token
+# ============================================================================
+
+cp_try_fire_world_response = {
+	if = {
+		limit = {
+			cp_person_is_alive = { person = $person$ }
+			NOT = { has_global_variable = cp_global_ambient_cooldown }
+			NOT = { has_global_variable = cp_person_$person$_ambient_cooldown }
+		}
+		cp_spotlight_person = { person = $person$ }
+		trigger_event = { id = $event$ }
+		set_global_variable = {
+			name = cp_global_ambient_cooldown
+			days = 183
+		}
+		set_global_variable = {
+			name = cp_person_$person$_ambient_cooldown
+			days = 365
+		}
+	}
+}
+
+
+# ============================================================================
+# cp_roll_revolution_response
+# ============================================================================
+# Shared resolver for revolution-start reactions. Revolution can plausibly
+# belong to several lives at once, but the player should not get a stack of
+# Common People windows from a single rupture. This picks one eligible person
+# by setting a short-lived target flag; person dispatchers still own the
+# actual event fire and state mutation.
+# ============================================================================
+
+cp_roll_revolution_response = {
+	random_list = {
+		55 = {
+			trigger = {
+				cp_person_is_alive = { person = layla }
+				NOT = { has_variable = cp_layla_seen_revolution }
+			}
+			set_variable = { name = cp_shared_revolution_target_layla days = 30 }
+		}
+		45 = {
+			trigger = {
+				cp_person_is_alive = { person = nabil }
+				NOT = { has_variable = cp_nabil_just_spawned }
+				has_variable = cp_nabil_seen_intro
+				NOT = { has_variable = cp_nabil_seen_square_afterward }
+			}
+			set_variable = { name = cp_shared_revolution_target_nabil days = 30 }
+		}
+		25 = { }
+	}
+}
+
+
+# ============================================================================
+# cp_roll_public_order_law_reaction
+# ============================================================================
+# Shared resolver for law reactions where Layla and Nabil can both plausibly
+# own the beat. This prevents one public-order law from opening two event
+# windows while still letting the current roster decide whose life carries it.
+# ============================================================================
+
+cp_roll_public_order_law_reaction = {
+	if = {
+		limit = {
+			NOT = { has_variable = cp_shared_public_order_law_handled }
+			NOT = { has_variable = cp_nabil_just_spawned }
+			OR = {
+				ROOT.currently_enacting_law.type ?= law_type:law_right_of_assembly
+				ROOT.currently_enacting_law.type ?= law_type:law_outlawed_dissent
+				ROOT.currently_enacting_law.type ?= law_type:law_dedicated_police
+				ROOT.currently_enacting_law.type ?= law_type:law_militarized_police
+			}
+		}
+		random_list = {
+			45 = {
+				trigger = {
+					ROOT.currently_enacting_law.type ?= law_type:law_right_of_assembly
+					cp_person_is_alive = { person = layla }
+					NOT = { has_variable = cp_layla_seen_right_of_assembly }
+				}
+				set_variable = { name = cp_shared_public_order_law_handled days = 1 }
+				cp_try_fire_law_reaction = { event = cp_layla.116 person = layla }
+			}
+			45 = {
+				trigger = {
+					ROOT.currently_enacting_law.type ?= law_type:law_right_of_assembly
+					cp_person_is_alive = { person = nabil }
+					NOT = { has_variable = cp_nabil_seen_square_afterward }
+				}
+				set_variable = { name = cp_shared_public_order_law_handled days = 1 }
+				cp_try_fire_law_reaction = { event = cp_nabil.40 person = nabil }
+			}
+			35 = {
+				trigger = {
+					ROOT.currently_enacting_law.type ?= law_type:law_outlawed_dissent
+					cp_person_is_alive = { person = layla }
+					NOT = { has_variable = cp_layla_seen_outlawed_dissent }
+				}
+				set_variable = { name = cp_shared_public_order_law_handled days = 1 }
+				cp_try_fire_law_reaction = { event = cp_layla.117 person = layla }
+			}
+			55 = {
+				trigger = {
+					ROOT.currently_enacting_law.type ?= law_type:law_outlawed_dissent
+					cp_person_is_alive = { person = nabil }
+					NOT = { has_variable = cp_nabil_seen_rifles }
+				}
+				set_variable = { name = cp_shared_public_order_law_handled days = 1 }
+				cp_try_fire_law_reaction = { event = cp_nabil.30 person = nabil }
+			}
+			35 = {
+				trigger = {
+					ROOT.currently_enacting_law.type ?= law_type:law_dedicated_police
+					cp_person_is_alive = { person = layla }
+					NOT = { has_variable = cp_layla_seen_dedicated_police }
+				}
+				set_variable = { name = cp_shared_public_order_law_handled days = 1 }
+				cp_try_fire_law_reaction = { event = cp_layla.119 person = layla }
+			}
+			55 = {
+				trigger = {
+					ROOT.currently_enacting_law.type ?= law_type:law_dedicated_police
+					cp_person_is_alive = { person = nabil }
+					NOT = { has_variable = cp_nabil_seen_station }
+				}
+				set_variable = { name = cp_shared_public_order_law_handled days = 1 }
+				cp_try_fire_law_reaction = { event = cp_nabil.20 person = nabil }
+			}
+			30 = {
+				trigger = {
+					ROOT.currently_enacting_law.type ?= law_type:law_militarized_police
+					cp_person_is_alive = { person = layla }
+					NOT = { has_variable = cp_layla_seen_militarized_police }
+				}
+				set_variable = { name = cp_shared_public_order_law_handled days = 1 }
+				cp_try_fire_law_reaction = { event = cp_layla.120 person = layla }
+			}
+			60 = {
+				trigger = {
+					ROOT.currently_enacting_law.type ?= law_type:law_militarized_police
+					cp_person_is_alive = { person = nabil }
+					NOT = { has_variable = cp_nabil_seen_rifles }
+				}
+				set_variable = { name = cp_shared_public_order_law_handled days = 1 }
+				cp_try_fire_law_reaction = { event = cp_nabil.30 person = nabil }
+			}
+			10 = {
+				set_variable = { name = cp_shared_public_order_law_handled days = 1 }
+			}
+		}
+	}
 }
 
 
@@ -88,7 +308,13 @@ cp_try_fire_law_reaction = {
 # ============================================================================
 
 cp_try_fire_milestone = {
-	trigger_event = { id = $event$ }
+	if = {
+		limit = {
+			cp_person_is_alive = { person = $person$ }
+		}
+		cp_spotlight_person = { person = $person$ }
+		trigger_event = { id = $event$ }
+	}
 }
 
 
@@ -106,7 +332,13 @@ cp_try_fire_milestone = {
 # ============================================================================
 
 cp_button_fire = {
-	trigger_event = { id = $event$ popup = yes }
+	if = {
+		limit = {
+			cp_person_is_alive = { person = $person$ }
+		}
+		cp_spotlight_person = { person = $person$ }
+		trigger_event = { id = $event$ popup = yes }
+	}
 }
 
 
@@ -116,10 +348,11 @@ cp_button_fire = {
 # Called from cp_on_monthly (on_monthly_pulse_country). Picks at most one
 # ambient event across all alive persons, OR (most often) nothing.
 #
-# The weights: each person gets a 7/100 branch; the "nothing-fires" branch
-# weighs 86/100 (with just Layla alive; the weights rebalance when more
-# persons are added). Combined with the 180-day global ambient cooldown,
-# this caps ambient fires at ~1–2 per in-game year.
+# The weights are context-sensitive: each person gets one active branch whose
+# weight changes with date, laws, factories, war state, schools, property
+# rights, and health laws. The "nothing-fires" branch absorbs the balance.
+# Combined with the 183-day shared visible-story cooldown, this caps routine
+# automatic popups at 1–2 per in-game year while letting the roster feel alive.
 #
 # Each per-person branch calls that person's cp_roll_ambient_<name> effect,
 # which does a nested random_list over that person's ambient pool and then
@@ -128,12 +361,330 @@ cp_button_fire = {
 
 cp_roll_for_event = {
 	random_list = {
-		7 = {
-			trigger = { has_variable = cp_layla_alive }
+		# Layla is one agrarian anchor early on; her share slowly falls as
+		# industrial, school, health, and property-rights lives become legible.
+		9 = {
+			trigger = {
+				cp_person_is_alive = { person = layla }
+				cp_era_before_1850 = yes
+			}
 			cp_roll_ambient_layla = yes
 		}
-		# When Person 2 is registered, add:
-		# 7 = { trigger = { has_variable = cp_bey_alive }  cp_roll_ambient_bey = yes }
-		93 = { }   # most months are silent
+		7 = {
+			trigger = {
+				cp_person_is_alive = { person = layla }
+				cp_era_1850_to_1880 = yes
+			}
+			cp_roll_ambient_layla = yes
+		}
+		5 = {
+			trigger = {
+				cp_person_is_alive = { person = layla }
+				cp_era_after_1880 = yes
+			}
+			cp_roll_ambient_layla = yes
+		}
+
+		# The Bey dominates while the old estate order still has teeth.
+		10 = {
+			trigger = {
+				cp_person_is_alive = { person = bey }
+				cp_country_old_land_order = yes
+				game_date < 1860.1.1
+			}
+			cp_roll_ambient_bey = yes
+		}
+		6 = {
+			trigger = {
+				cp_person_is_alive = { person = bey }
+				cp_country_old_land_order = yes
+				game_date >= 1860.1.1
+			}
+			cp_roll_ambient_bey = yes
+		}
+		3 = {
+			trigger = {
+				cp_person_is_alive = { person = bey }
+				NOT = { cp_country_old_land_order = yes }
+			}
+			cp_roll_ambient_bey = yes
+		}
+
+		# Yusuf moves forward when war has actually touched the roster.
+		10 = {
+			trigger = {
+				cp_person_is_alive = { person = soldier }
+				has_variable = cp_soldier_at_war
+			}
+			cp_roll_ambient_soldier = yes
+		}
+		5 = {
+			trigger = {
+				cp_person_is_alive = { person = soldier }
+				NOT = { has_variable = cp_soldier_at_war }
+			}
+			cp_roll_ambient_soldier = yes
+		}
+
+		# Mansur appears when factories and city pull turn work into migration.
+		8 = {
+			trigger = {
+				cp_person_is_alive = { person = mansur }
+				cp_person_home_has_manufacturing = { person = mansur }
+			}
+			cp_roll_ambient_mansur = yes
+		}
+		3 = {
+			trigger = {
+				cp_person_is_alive = { person = mansur }
+				NOT = { cp_person_home_has_manufacturing = { person = mansur } }
+			}
+			cp_roll_ambient_mansur = yes
+		}
+
+		# Samier rises with factories, especially before worker protections.
+		10 = {
+			trigger = {
+				cp_person_is_alive = { person = samier }
+				cp_person_home_has_manufacturing = { person = samier }
+				cp_country_workers_unprotected = yes
+			}
+			cp_roll_ambient_samier = yes
+		}
+		6 = {
+			trigger = {
+				cp_person_is_alive = { person = samier }
+				cp_person_home_has_manufacturing = { person = samier }
+				NOT = { cp_country_workers_unprotected = yes }
+			}
+			cp_roll_ambient_samier = yes
+		}
+		3 = {
+			trigger = {
+				cp_person_is_alive = { person = samier }
+				NOT = { cp_person_home_has_manufacturing = { person = samier } }
+			}
+			cp_roll_ambient_samier = yes
+		}
+
+		# Tarek matters most when factories are real and the land order has moved.
+		8 = {
+			trigger = {
+				cp_person_is_alive = { person = tarek }
+				cp_person_home_has_manufacturing = { person = tarek }
+				NOT = { cp_country_old_land_order = yes }
+			}
+			cp_roll_ambient_tarek = yes
+		}
+		5 = {
+			trigger = {
+				cp_person_is_alive = { person = tarek }
+				OR = {
+					NOT = { cp_person_home_has_manufacturing = { person = tarek } }
+					cp_country_old_land_order = yes
+				}
+			}
+			cp_roll_ambient_tarek = yes
+		}
+
+		# Karim rises when machine tools and engines make factory skill legible.
+		8 = {
+			trigger = {
+				cp_person_is_alive = { person = karim }
+				cp_person_home_has_machine_industry = { person = karim }
+			}
+			cp_roll_ambient_karim = yes
+		}
+		4 = {
+			trigger = {
+				cp_person_is_alive = { person = karim }
+				NOT = { cp_person_home_has_machine_industry = { person = karim } }
+			}
+			cp_roll_ambient_karim = yes
+		}
+
+		# Farid comes forward when rails and wires make infrastructure intimate.
+		9 = {
+			trigger = {
+				cp_person_is_alive = { person = farid }
+				OR = {
+					cp_person_home_has_rail_infrastructure = { person = farid }
+					cp_country_has_telegraph = yes
+				}
+			}
+			cp_roll_ambient_farid = yes
+		}
+		5 = {
+			trigger = {
+				cp_person_is_alive = { person = farid }
+				NOT = {
+					OR = {
+						cp_person_home_has_rail_infrastructure = { person = farid }
+						cp_country_has_telegraph = yes
+					}
+				}
+			}
+			cp_roll_ambient_farid = yes
+		}
+
+		# Dawud rises when ports and steam trade pull the coast into daily life.
+		8 = {
+			trigger = {
+				cp_person_is_alive = { person = dawud }
+				OR = {
+					cp_person_home_has_port = { person = dawud }
+					cp_country_has_steam_trade = yes
+				}
+			}
+			cp_roll_ambient_dawud = yes
+		}
+		4 = {
+			trigger = {
+				cp_person_is_alive = { person = dawud }
+				NOT = {
+					OR = {
+						cp_person_home_has_port = { person = dawud }
+						cp_country_has_steam_trade = yes
+					}
+				}
+			}
+			cp_roll_ambient_dawud = yes
+		}
+
+		# Rashid appears when paperwork, offices, and records touch daily life.
+		8 = {
+			trigger = {
+				cp_person_is_alive = { person = rashid }
+				OR = {
+					cp_person_home_has_government_office = { person = rashid }
+					cp_country_has_modern_records = yes
+				}
+			}
+			cp_roll_ambient_rashid = yes
+		}
+		4 = {
+			trigger = {
+				cp_person_is_alive = { person = rashid }
+				NOT = {
+					OR = {
+						cp_person_home_has_government_office = { person = rashid }
+						cp_country_has_modern_records = yes
+					}
+				}
+			}
+			cp_roll_ambient_rashid = yes
+		}
+
+		# Salma belongs to the electric/telephone layer of late modernization.
+		8 = {
+			trigger = {
+				cp_person_is_alive = { person = salma }
+				OR = {
+					cp_person_home_has_electric_service = { person = salma }
+					cp_person_home_has_telephone_network = { person = salma }
+					cp_era_after_1880 = yes
+				}
+			}
+			cp_roll_ambient_salma = yes
+		}
+		3 = {
+			trigger = {
+				cp_person_is_alive = { person = salma }
+				NOT = {
+					OR = {
+						cp_person_home_has_electric_service = { person = salma }
+						cp_person_home_has_telephone_network = { person = salma }
+						cp_era_after_1880 = yes
+					}
+				}
+			}
+			cp_roll_ambient_salma = yes
+		}
+
+		# Huda rises when the city is visibly making and pricing new rooms.
+		8 = {
+			trigger = {
+				cp_person_is_alive = { person = huda }
+				cp_person_home_has_urban_growth = { person = huda }
+			}
+			cp_roll_ambient_huda = yes
+		}
+		3 = {
+			trigger = {
+				cp_person_is_alive = { person = huda }
+				NOT = { cp_person_home_has_urban_growth = { person = huda } }
+			}
+			cp_roll_ambient_huda = yes
+		}
+
+		# Nabil rises when policing and assembly make the street political.
+		8 = {
+			trigger = {
+				cp_person_is_alive = { person = nabil }
+				cp_country_has_public_order_pressure = yes
+			}
+			cp_roll_ambient_nabil = yes
+		}
+		3 = {
+			trigger = {
+				cp_person_is_alive = { person = nabil }
+				NOT = { cp_country_has_public_order_pressure = yes }
+			}
+			cp_roll_ambient_nabil = yes
+		}
+
+		# Nour's household paper becomes sharper around property reform.
+		8 = {
+			trigger = {
+				cp_person_is_alive = { person = nour }
+				cp_country_women_property_rights = yes
+			}
+			cp_roll_ambient_nour = yes
+		}
+		5 = {
+			trigger = {
+				cp_person_is_alive = { person = nour }
+				NOT = { cp_country_women_property_rights = yes }
+			}
+			cp_roll_ambient_nour = yes
+		}
+
+		# Mina comes forward when schools and print are changing ordinary life.
+		8 = {
+			trigger = {
+				cp_person_is_alive = { person = mina }
+				OR = {
+					cp_country_public_schools = yes
+					cp_era_1850_to_1880 = yes
+					cp_era_after_1880 = yes
+				}
+			}
+			cp_roll_ambient_mina = yes
+		}
+		5 = {
+			trigger = {
+				cp_person_is_alive = { person = mina }
+				cp_era_before_1850 = yes
+				NOT = { cp_country_public_schools = yes }
+			}
+			cp_roll_ambient_mina = yes
+		}
+
+		# Zaynab is strongest while health is still communal and fragile.
+		9 = {
+			trigger = {
+				cp_person_is_alive = { person = zaynab }
+				NOT = { cp_country_public_health = yes }
+			}
+			cp_roll_ambient_zaynab = yes
+		}
+		5 = {
+			trigger = {
+				cp_person_is_alive = { person = zaynab }
+				cp_country_public_health = yes
+			}
+			cp_roll_ambient_zaynab = yes
+		}
+		32 = { }   # most eligible months are still silent
 	}
 }

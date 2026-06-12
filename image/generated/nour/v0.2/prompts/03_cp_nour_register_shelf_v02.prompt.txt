@@ -1,0 +1,27 @@
+Common People Nour v0.2 replacement prompt
+Source ledger: documentation/characters/nour/prompts/replacement-batch-v0.2.md
+Target DDS: mod/gfx/event_pictures/cp_nour_register_shelf_v02.dds
+Source PNG: image/generated/nour/v0.2/cp_nour_register_shelf_v02.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Nour, a Misri Sunni woman around 31 in late-19th-century Lower Egypt; practical modest clothing and headscarf, shopkeeper household, composed and intelligent rather than theatrical.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide. Put the essential face, action, and required object in the left half or center-left; right half can carry shelves, walls, doorway, or atmosphere.
+Constraints: no readable text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_nour.50 - "The Register Shelf"
+Narrative function: the state becomes visible as a shelf holding her name where a brother-in-law cannot move it.
+Subject: Nour bending close to an opened register, wary but steady.
+Scene/backdrop: provincial Egyptian government records office, old plaster wall, tall dusty shelf, heavy ledger volume, clerk's desk, small window.
+Foreground action: a clerk opens the register while Nour leans near enough to see the page.
+Required object/gesture: large register volume, high dusty shelf, Nour leaning toward the open page, no readable text.
+Background detail: stacked records, ink pot, distant clerk, dust in window light.
+Lighting/mood: dusty office daylight, official paper as witness, wary relief.
+Avoid: telegraph office as the focus, modern files, courtroom, readable labels, heroic bureaucracy scene.

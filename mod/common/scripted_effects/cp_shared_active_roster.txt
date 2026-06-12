@@ -1,0 +1,251 @@
+﻿###############################################################################
+# Common People -- active journal roster
+#
+# The persistent JE is not a catalogue. It shows up to three living people who
+# have recently had visible contact with the player: first contact, ambient,
+# law/world response, milestone, or a player check-in button.
+###############################################################################
+
+cp_clear_all_active_people = {
+	remove_variable = cp_layla_active_slot
+	remove_variable = cp_bey_active_slot
+	remove_variable = cp_soldier_active_slot
+	remove_variable = cp_nour_active_slot
+	remove_variable = cp_mina_active_slot
+	remove_variable = cp_zaynab_active_slot
+	remove_variable = cp_samier_active_slot
+	remove_variable = cp_tarek_active_slot
+	remove_variable = cp_farid_active_slot
+	remove_variable = cp_dawud_active_slot
+	remove_variable = cp_rashid_active_slot
+	remove_variable = cp_salma_active_slot
+	remove_variable = cp_karim_active_slot
+	remove_variable = cp_huda_active_slot
+	remove_variable = cp_nabil_active_slot
+	remove_variable = cp_mansur_active_slot
+}
+
+
+cp_clear_dead_active_people = {
+	if = { limit = { NOT = { cp_person_is_alive = { person = layla } } } remove_variable = cp_layla_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = bey } } } remove_variable = cp_bey_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = soldier } } } remove_variable = cp_soldier_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = nour } } } remove_variable = cp_nour_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = mina } } } remove_variable = cp_mina_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = zaynab } } } remove_variable = cp_zaynab_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = samier } } } remove_variable = cp_samier_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = tarek } } } remove_variable = cp_tarek_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = farid } } } remove_variable = cp_farid_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = dawud } } } remove_variable = cp_dawud_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = rashid } } } remove_variable = cp_rashid_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = salma } } } remove_variable = cp_salma_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = karim } } } remove_variable = cp_karim_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = huda } } } remove_variable = cp_huda_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = nabil } } } remove_variable = cp_nabil_active_slot }
+	if = { limit = { NOT = { cp_person_is_alive = { person = mansur } } } remove_variable = cp_mansur_active_slot }
+}
+
+cp_clear_invalid_active_people = {
+	if = { limit = { has_variable = cp_layla_active_slot OR = { var:cp_layla_active_slot <= 0 var:cp_layla_active_slot > 3 } } remove_variable = cp_layla_active_slot }
+	if = { limit = { has_variable = cp_bey_active_slot OR = { var:cp_bey_active_slot <= 0 var:cp_bey_active_slot > 3 } } remove_variable = cp_bey_active_slot }
+	if = { limit = { has_variable = cp_soldier_active_slot OR = { var:cp_soldier_active_slot <= 0 var:cp_soldier_active_slot > 3 } } remove_variable = cp_soldier_active_slot }
+	if = { limit = { has_variable = cp_nour_active_slot OR = { var:cp_nour_active_slot <= 0 var:cp_nour_active_slot > 3 } } remove_variable = cp_nour_active_slot }
+	if = { limit = { has_variable = cp_mina_active_slot OR = { var:cp_mina_active_slot <= 0 var:cp_mina_active_slot > 3 } } remove_variable = cp_mina_active_slot }
+	if = { limit = { has_variable = cp_zaynab_active_slot OR = { var:cp_zaynab_active_slot <= 0 var:cp_zaynab_active_slot > 3 } } remove_variable = cp_zaynab_active_slot }
+	if = { limit = { has_variable = cp_samier_active_slot OR = { var:cp_samier_active_slot <= 0 var:cp_samier_active_slot > 3 } } remove_variable = cp_samier_active_slot }
+	if = { limit = { has_variable = cp_tarek_active_slot OR = { var:cp_tarek_active_slot <= 0 var:cp_tarek_active_slot > 3 } } remove_variable = cp_tarek_active_slot }
+	if = { limit = { has_variable = cp_farid_active_slot OR = { var:cp_farid_active_slot <= 0 var:cp_farid_active_slot > 3 } } remove_variable = cp_farid_active_slot }
+	if = { limit = { has_variable = cp_dawud_active_slot OR = { var:cp_dawud_active_slot <= 0 var:cp_dawud_active_slot > 3 } } remove_variable = cp_dawud_active_slot }
+	if = { limit = { has_variable = cp_rashid_active_slot OR = { var:cp_rashid_active_slot <= 0 var:cp_rashid_active_slot > 3 } } remove_variable = cp_rashid_active_slot }
+	if = { limit = { has_variable = cp_salma_active_slot OR = { var:cp_salma_active_slot <= 0 var:cp_salma_active_slot > 3 } } remove_variable = cp_salma_active_slot }
+	if = { limit = { has_variable = cp_karim_active_slot OR = { var:cp_karim_active_slot <= 0 var:cp_karim_active_slot > 3 } } remove_variable = cp_karim_active_slot }
+	if = { limit = { has_variable = cp_huda_active_slot OR = { var:cp_huda_active_slot <= 0 var:cp_huda_active_slot > 3 } } remove_variable = cp_huda_active_slot }
+	if = { limit = { has_variable = cp_nabil_active_slot OR = { var:cp_nabil_active_slot <= 0 var:cp_nabil_active_slot > 3 } } remove_variable = cp_nabil_active_slot }
+	if = { limit = { has_variable = cp_mansur_active_slot OR = { var:cp_mansur_active_slot <= 0 var:cp_mansur_active_slot > 3 } } remove_variable = cp_mansur_active_slot }
+}
+
+cp_clear_active_slot_three = {
+	if = { limit = { has_variable = cp_layla_active_slot var:cp_layla_active_slot = 3 } remove_variable = cp_layla_active_slot }
+	if = { limit = { has_variable = cp_bey_active_slot var:cp_bey_active_slot = 3 } remove_variable = cp_bey_active_slot }
+	if = { limit = { has_variable = cp_soldier_active_slot var:cp_soldier_active_slot = 3 } remove_variable = cp_soldier_active_slot }
+	if = { limit = { has_variable = cp_nour_active_slot var:cp_nour_active_slot = 3 } remove_variable = cp_nour_active_slot }
+	if = { limit = { has_variable = cp_mina_active_slot var:cp_mina_active_slot = 3 } remove_variable = cp_mina_active_slot }
+	if = { limit = { has_variable = cp_zaynab_active_slot var:cp_zaynab_active_slot = 3 } remove_variable = cp_zaynab_active_slot }
+	if = { limit = { has_variable = cp_samier_active_slot var:cp_samier_active_slot = 3 } remove_variable = cp_samier_active_slot }
+	if = { limit = { has_variable = cp_tarek_active_slot var:cp_tarek_active_slot = 3 } remove_variable = cp_tarek_active_slot }
+	if = { limit = { has_variable = cp_farid_active_slot var:cp_farid_active_slot = 3 } remove_variable = cp_farid_active_slot }
+	if = { limit = { has_variable = cp_dawud_active_slot var:cp_dawud_active_slot = 3 } remove_variable = cp_dawud_active_slot }
+	if = { limit = { has_variable = cp_rashid_active_slot var:cp_rashid_active_slot = 3 } remove_variable = cp_rashid_active_slot }
+	if = { limit = { has_variable = cp_salma_active_slot var:cp_salma_active_slot = 3 } remove_variable = cp_salma_active_slot }
+	if = { limit = { has_variable = cp_karim_active_slot var:cp_karim_active_slot = 3 } remove_variable = cp_karim_active_slot }
+	if = { limit = { has_variable = cp_huda_active_slot var:cp_huda_active_slot = 3 } remove_variable = cp_huda_active_slot }
+	if = { limit = { has_variable = cp_nabil_active_slot var:cp_nabil_active_slot = 3 } remove_variable = cp_nabil_active_slot }
+	if = { limit = { has_variable = cp_mansur_active_slot var:cp_mansur_active_slot = 3 } remove_variable = cp_mansur_active_slot }
+}
+
+cp_shift_active_slot_two_to_three = {
+	if = { limit = { has_variable = cp_layla_active_slot var:cp_layla_active_slot = 2 } set_variable = { name = cp_layla_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_bey_active_slot var:cp_bey_active_slot = 2 } set_variable = { name = cp_bey_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_soldier_active_slot var:cp_soldier_active_slot = 2 } set_variable = { name = cp_soldier_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_nour_active_slot var:cp_nour_active_slot = 2 } set_variable = { name = cp_nour_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_mina_active_slot var:cp_mina_active_slot = 2 } set_variable = { name = cp_mina_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_zaynab_active_slot var:cp_zaynab_active_slot = 2 } set_variable = { name = cp_zaynab_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_samier_active_slot var:cp_samier_active_slot = 2 } set_variable = { name = cp_samier_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_tarek_active_slot var:cp_tarek_active_slot = 2 } set_variable = { name = cp_tarek_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_farid_active_slot var:cp_farid_active_slot = 2 } set_variable = { name = cp_farid_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_dawud_active_slot var:cp_dawud_active_slot = 2 } set_variable = { name = cp_dawud_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_rashid_active_slot var:cp_rashid_active_slot = 2 } set_variable = { name = cp_rashid_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_salma_active_slot var:cp_salma_active_slot = 2 } set_variable = { name = cp_salma_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_karim_active_slot var:cp_karim_active_slot = 2 } set_variable = { name = cp_karim_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_huda_active_slot var:cp_huda_active_slot = 2 } set_variable = { name = cp_huda_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_nabil_active_slot var:cp_nabil_active_slot = 2 } set_variable = { name = cp_nabil_active_slot value = 3 } }
+	if = { limit = { has_variable = cp_mansur_active_slot var:cp_mansur_active_slot = 2 } set_variable = { name = cp_mansur_active_slot value = 3 } }
+}
+
+cp_shift_active_slot_one_to_two = {
+	if = { limit = { has_variable = cp_layla_active_slot var:cp_layla_active_slot = 1 } set_variable = { name = cp_layla_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_bey_active_slot var:cp_bey_active_slot = 1 } set_variable = { name = cp_bey_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_soldier_active_slot var:cp_soldier_active_slot = 1 } set_variable = { name = cp_soldier_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_nour_active_slot var:cp_nour_active_slot = 1 } set_variable = { name = cp_nour_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_mina_active_slot var:cp_mina_active_slot = 1 } set_variable = { name = cp_mina_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_zaynab_active_slot var:cp_zaynab_active_slot = 1 } set_variable = { name = cp_zaynab_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_samier_active_slot var:cp_samier_active_slot = 1 } set_variable = { name = cp_samier_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_tarek_active_slot var:cp_tarek_active_slot = 1 } set_variable = { name = cp_tarek_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_farid_active_slot var:cp_farid_active_slot = 1 } set_variable = { name = cp_farid_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_dawud_active_slot var:cp_dawud_active_slot = 1 } set_variable = { name = cp_dawud_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_rashid_active_slot var:cp_rashid_active_slot = 1 } set_variable = { name = cp_rashid_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_salma_active_slot var:cp_salma_active_slot = 1 } set_variable = { name = cp_salma_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_karim_active_slot var:cp_karim_active_slot = 1 } set_variable = { name = cp_karim_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_huda_active_slot var:cp_huda_active_slot = 1 } set_variable = { name = cp_huda_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_nabil_active_slot var:cp_nabil_active_slot = 1 } set_variable = { name = cp_nabil_active_slot value = 2 } }
+	if = { limit = { has_variable = cp_mansur_active_slot var:cp_mansur_active_slot = 1 } set_variable = { name = cp_mansur_active_slot value = 2 } }
+}
+
+cp_compact_active_slot = {
+	if = {
+		limit = {
+			NOT = { cp_active_roster_has_slot = { slot = $to$ } }
+			has_variable = cp_$person$_active_slot
+			var:cp_$person$_active_slot = $from$
+		}
+		set_variable = { name = cp_$person$_active_slot value = $to$ }
+	}
+}
+
+cp_shift_active_slot_three_to_two = {
+	cp_compact_active_slot = { person = layla from = 3 to = 2 }
+	cp_compact_active_slot = { person = bey from = 3 to = 2 }
+	cp_compact_active_slot = { person = soldier from = 3 to = 2 }
+	cp_compact_active_slot = { person = nour from = 3 to = 2 }
+	cp_compact_active_slot = { person = mina from = 3 to = 2 }
+	cp_compact_active_slot = { person = zaynab from = 3 to = 2 }
+	cp_compact_active_slot = { person = samier from = 3 to = 2 }
+	cp_compact_active_slot = { person = tarek from = 3 to = 2 }
+	cp_compact_active_slot = { person = farid from = 3 to = 2 }
+	cp_compact_active_slot = { person = dawud from = 3 to = 2 }
+	cp_compact_active_slot = { person = rashid from = 3 to = 2 }
+	cp_compact_active_slot = { person = salma from = 3 to = 2 }
+	cp_compact_active_slot = { person = karim from = 3 to = 2 }
+	cp_compact_active_slot = { person = huda from = 3 to = 2 }
+	cp_compact_active_slot = { person = nabil from = 3 to = 2 }
+	cp_compact_active_slot = { person = mansur from = 3 to = 2 }
+}
+
+cp_shift_active_slot_two_to_one = {
+	cp_compact_active_slot = { person = layla from = 2 to = 1 }
+	cp_compact_active_slot = { person = bey from = 2 to = 1 }
+	cp_compact_active_slot = { person = soldier from = 2 to = 1 }
+	cp_compact_active_slot = { person = nour from = 2 to = 1 }
+	cp_compact_active_slot = { person = mina from = 2 to = 1 }
+	cp_compact_active_slot = { person = zaynab from = 2 to = 1 }
+	cp_compact_active_slot = { person = samier from = 2 to = 1 }
+	cp_compact_active_slot = { person = tarek from = 2 to = 1 }
+	cp_compact_active_slot = { person = farid from = 2 to = 1 }
+	cp_compact_active_slot = { person = dawud from = 2 to = 1 }
+	cp_compact_active_slot = { person = rashid from = 2 to = 1 }
+	cp_compact_active_slot = { person = salma from = 2 to = 1 }
+	cp_compact_active_slot = { person = karim from = 2 to = 1 }
+	cp_compact_active_slot = { person = huda from = 2 to = 1 }
+	cp_compact_active_slot = { person = nabil from = 2 to = 1 }
+	cp_compact_active_slot = { person = mansur from = 2 to = 1 }
+}
+
+cp_compact_active_roster = {
+	cp_shift_active_slot_three_to_two = yes
+	cp_shift_active_slot_two_to_one = yes
+	cp_shift_active_slot_three_to_two = yes
+}
+
+cp_recover_active_roster_person = {
+	if = {
+		limit = {
+			cp_person_is_alive = { person = $person$ }
+			cp_$person$_has_visible_history = yes
+			NOT = { has_variable = cp_$person$_active_slot }
+		}
+		if = {
+			limit = { NOT = { cp_active_roster_has_slot = { slot = 1 } } }
+			set_variable = { name = cp_$person$_active_slot value = 1 }
+		}
+		else_if = {
+			limit = { NOT = { cp_active_roster_has_slot = { slot = 2 } } }
+			set_variable = { name = cp_$person$_active_slot value = 2 }
+		}
+		else_if = {
+			limit = { NOT = { cp_active_roster_has_slot = { slot = 3 } } }
+			set_variable = { name = cp_$person$_active_slot value = 3 }
+		}
+	}
+}
+
+cp_recover_active_roster_from_seen_people = {
+	if = {
+		limit = {
+			NOT = { cp_active_roster_has_any_person = yes }
+		}
+		cp_recover_active_roster_person = { person = layla }
+		cp_recover_active_roster_person = { person = bey }
+		cp_recover_active_roster_person = { person = soldier }
+		cp_recover_active_roster_person = { person = nour }
+		cp_recover_active_roster_person = { person = mina }
+		cp_recover_active_roster_person = { person = zaynab }
+		cp_recover_active_roster_person = { person = samier }
+		cp_recover_active_roster_person = { person = tarek }
+		cp_recover_active_roster_person = { person = farid }
+		cp_recover_active_roster_person = { person = dawud }
+		cp_recover_active_roster_person = { person = rashid }
+		cp_recover_active_roster_person = { person = salma }
+		cp_recover_active_roster_person = { person = karim }
+		cp_recover_active_roster_person = { person = huda }
+		cp_recover_active_roster_person = { person = nabil }
+		cp_recover_active_roster_person = { person = mansur }
+	}
+}
+
+cp_refresh_active_roster = {
+	cp_clear_invalid_active_people = yes
+	cp_clear_dead_active_people = yes
+	cp_compact_active_roster = yes
+	cp_recover_active_roster_from_seen_people = yes
+}
+
+cp_spotlight_person = {
+	if = {
+		limit = { cp_person_is_alive = { person = $person$ } }
+		cp_refresh_active_roster = yes
+		if = {
+			limit = {
+				has_variable = cp_$person$_active_slot
+				var:cp_$person$_active_slot = 1
+			}
+			set_variable = { name = cp_$person$_active_slot value = 1 }
+		}
+		else = {
+			remove_variable = cp_$person$_active_slot
+			cp_clear_active_slot_three = yes
+			cp_shift_active_slot_two_to_three = yes
+			cp_shift_active_slot_one_to_two = yes
+			set_variable = { name = cp_$person$_active_slot value = 1 }
+		}
+	}
+}

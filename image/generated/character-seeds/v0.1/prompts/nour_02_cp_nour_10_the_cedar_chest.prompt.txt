@@ -1,0 +1,27 @@
+Common People character seed prompt: nour
+Source ledger: documentation/characters/nour/prompts/seed-v0.1.md
+Prompt heading: `cp_nour.10` - The Cedar Chest
+Target source PNG: image/generated/character-seeds/v0.1/nour_02_cp_nour_10_the_cedar_chest.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Event: cp_nour.10 - "The Cedar Chest"
+Narrative function: Nour's legal dependency begins as private objects she can hold but not fully own.
+Subject: Nour beside the household cedar chest.
+Scene/backdrop: dawn market-house interior with shelves of folded cloth.
+Foreground action: Nour lays a brass key beside a folded account paper.
+Required object/gesture: key beside the folded paper on the chest lid.
+Lighting/mood: cool dawn, intimate and restrained.
+Avoid: harem imagery, wealthy merchant house, readable writing.

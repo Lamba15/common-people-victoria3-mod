@@ -14,17 +14,17 @@
 # Taxonomy:
 #   - Reactions (fired by dispatchers): cp_layla.2 (homesteading),
 #     cp_layla.3 (serfdom restored), cp_layla.4 (Ahmed conscripted).
-#   - Pulses (fired by the JE's check-on button via weighted random):
-#     cp_layla.10..15.
-#   - Story beats (orphan until hooked): cp_layla.1 (intro, fired from
-#     cp_startup.1), cp_layla.5 (childbirth), cp_layla.6 (reflection).
+#   - Pulses (fired by the shared roster action button or monthly router):
+#     cp_layla.10..35 and selected later beats.
+#   - Story beats: cp_layla.1 (intro, selected by the first-contact roll)
+#     and cp_layla.5 (first childbirth, fired from cp_on_yearly).
 ###############################################################################
 
 namespace = cp_layla
 
 # cp_layla.1 -- "The Farmer's Daughter" (intro)
 #
-# First meeting. Fires from cp_startup.1 immediately after variable init.
+# First meeting. Selected by cp_shared_startup.2 or later person-owned routing.
 cp_layla.1 = {
 	type = country_event
 
@@ -35,19 +35,28 @@ cp_layla.1 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_intro.dds"
+		texture = "gfx/event_pictures/cp_layla_intro_v06.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
+		NOT = { has_variable = cp_layla_met_player }
+	}
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
+		set_variable = cp_layla_met_player
 	}
 
 	option = {
 		name = cp_layla.1.a
 		default_option = yes
-		set_variable = cp_layla_met_player
 	}
 }
 
@@ -64,13 +73,17 @@ cp_layla.2 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_homesteading.dds"
+		texture = "gfx/event_pictures/cp_layla_homesteading_v05.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	option = {
@@ -95,13 +108,17 @@ cp_layla.3 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_serfdom_restored.dds"
+		texture = "gfx/event_pictures/cp_layla_serfdom_restored_v14.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	option = {
@@ -125,14 +142,19 @@ cp_layla.4 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted.dds"
+		texture = "gfx/event_pictures/cp_layla_ahmed_conscripted_v06.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		has_variable = cp_layla_ahmed_alive
+		var:cp_layla_ahmed_alive > 0
 		NOT = { has_variable = cp_layla_ahmed_at_war }
 	}
 
@@ -158,13 +180,21 @@ cp_layla.7 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_tax_collector.dds"
+		texture = "gfx/event_pictures/cp_layla_tax_collector_v15.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
+	}
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
 	}
 
 	option = {
@@ -198,13 +228,21 @@ cp_layla.8 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_loaf.dds"
+		texture = "gfx/event_pictures/cp_layla_loaf_v12.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
+	}
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
 	}
 
 	option = {
@@ -222,10 +260,10 @@ cp_layla.8 = {
 
 # cp_layla.5 -- "The First Cry" (childbirth, mother survives)
 #
-# Placeholder — orphan until pregnancy mechanics are wired.
+# First-child milestone. Fired by cp_on_yearly while Layla is young,
+# married, Ahmed is alive and home, and no child has yet been born.
 cp_layla.5 = {
 	type = country_event
-	orphan = yes
 
 	title = cp_layla.5.t
 	desc  = cp_layla.5.d
@@ -234,64 +272,38 @@ cp_layla.5 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_childbirth.dds"
+		texture = "gfx/event_pictures/cp_layla_childbirth_v09.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
+		NOT = { has_variable = cp_layla_seen_childbirth }
+		NOT = { var:cp_layla_children >= 1 }
+	}
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
 	}
 
 	option = {
 		name = cp_layla.5.a
 		default_option = yes
-		change_variable = { name = cp_layla_children add = 1 }
-		set_variable = cp_layla_has_children
+		cp_layla_first_childbirth = yes
 	}
 }
-
-# cp_layla.6 -- "A Moment" (reflection, fired from the Check on Layla button
-# as one of the always-on options) -- orphan flagged because it is only
-# reachable from the button's random list, which is itself an effect and
-# does not count as an event dispatcher.
-cp_layla.6 = {
-	type = country_event
-	orphan = yes
-
-	title = cp_layla.6.t
-	desc  = cp_layla.6.d
-	flavor = cp_layla.6.f
-
-	icon = "gfx/interface/icons/event_icons/event_default.dds"
-
-	event_image = {
-		texture = "gfx/event_pictures/cp_layla_moment.dds"
-	}
-
-	duration = 3
-
-	trigger = {
-		has_variable = cp_layla_alive
-	}
-
-	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
-	}
-
-	option = {
-		name = cp_layla.6.a
-		default_option = yes
-	}
-}
-
 
 ###############################################################################
 # Slice-of-life reflection events (cp_layla.10..15)
 #
-# Fired from cp_layla_check_button's random_list. No state mutation -- pure
-# reflection beats. Three gate on specific life situations (war / homesteader
-# / serfdom); three are always-on.
+# Fired from the shared roster action button or the monthly ambient router.
+# These remain pure reflection beats; cooldowns live in the shared button and
+# firing gatekeepers, not inside the events.
 ###############################################################################
 
 # cp_layla.10 -- "The Letter That Has Not Come"
@@ -305,17 +317,21 @@ cp_layla.10 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_letter_not_come.dds"
+		texture = "gfx/event_pictures/cp_layla_letter_not_come_v07.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = letter days = 720 }
 	}
 
 	option = {
@@ -335,17 +351,21 @@ cp_layla.11 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_walking_field.dds"
+		texture = "gfx/event_pictures/cp_layla_walking_field_v15.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = walking_field days = 720 }
 	}
 
 	option = {
@@ -365,17 +385,21 @@ cp_layla.12 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_bey_eye.dds"
+		texture = "gfx/event_pictures/cp_layla_bey_eye_v07.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = under_beys_eye days = 720 }
 	}
 
 	option = {
@@ -395,17 +419,21 @@ cp_layla.13 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_layla_no_wind_v09.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = no_wind days = 720 }
 	}
 
 	option = {
@@ -425,17 +453,21 @@ cp_layla.14 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_neighbours_boy.dds"
+		texture = "gfx/event_pictures/cp_layla_neighbours_boy_v09.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = neighbours_boy days = 720 }
 	}
 
 	option = {
@@ -455,17 +487,21 @@ cp_layla.15 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mothers_hand.dds"
+		texture = "gfx/event_pictures/cp_layla_mothers_hand_v07.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = mothers_hand days = 720 }
 	}
 
 	option = {
@@ -495,17 +531,21 @@ cp_layla.16 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_hen.dds"
+		texture = "gfx/event_pictures/cp_layla_hen_v11.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = hen days = 720 }
 	}
 
 	option = {
@@ -525,17 +565,21 @@ cp_layla.17 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_merchants_scale.dds"
+		texture = "gfx/event_pictures/cp_layla_merchants_scale_v12.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = scale days = 720 }
 	}
 
 	option = {
@@ -555,17 +599,21 @@ cp_layla.18 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_river_low.dds"
+		texture = "gfx/event_pictures/cp_layla_river_low_v14.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = river_low days = 720 }
 	}
 
 	option = {
@@ -585,17 +633,21 @@ cp_layla.19 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_old_woman.dds"
+		texture = "gfx/event_pictures/cp_layla_old_woman_v13.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = old_woman days = 720 }
 	}
 
 	option = {
@@ -615,17 +667,21 @@ cp_layla.20 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_bread_not_rise.dds"
+		texture = "gfx/event_pictures/cp_layla_bread_not_rise_v09.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = bread days = 720 }
 	}
 
 	option = {
@@ -645,17 +701,21 @@ cp_layla.21 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_dust_on_water.dds"
+		texture = "gfx/event_pictures/cp_layla_dust_on_water_v11.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = dust days = 720 }
 	}
 
 	option = {
@@ -675,17 +735,21 @@ cp_layla.22 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_brothers_letter.dds"
+		texture = "gfx/event_pictures/cp_layla_brothers_letter_v09.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = brother days = 720 }
 	}
 
 	option = {
@@ -705,17 +769,21 @@ cp_layla.23 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mule.dds"
+		texture = "gfx/event_pictures/cp_layla_mule_v13.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
-		set_variable = { name = cp_layla_button_cooldown days = 90 }
+		cp_mark_event_seen = { person = layla id = mule days = 720 }
 	}
 
 	option = {
@@ -744,13 +812,21 @@ cp_layla.30 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_railway.dds"
+		texture = "gfx/event_pictures/cp_layla_railway_v14.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
+	}
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
 	}
 
 	option = {
@@ -774,13 +850,21 @@ cp_layla.31 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_telegraph.dds"
+		texture = "gfx/event_pictures/cp_layla_telegraph_v15.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
+	}
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
 	}
 
 	option = {
@@ -804,13 +888,21 @@ cp_layla.32 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_radio.dds"
+		texture = "gfx/event_pictures/cp_layla_radio_v14.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
+	}
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
 	}
 
 	option = {
@@ -844,17 +936,23 @@ cp_layla.40 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_column_returns.dds"
+		texture = "gfx/event_pictures/cp_layla_column_returns_v10.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		has_variable = cp_layla_ahmed_alive
+		var:cp_layla_ahmed_alive > 0
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		cp_ahmed_homecoming = yes
 	}
 
@@ -875,16 +973,21 @@ cp_layla.41 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_clerks_letter.dds"
+		texture = "gfx/event_pictures/cp_layla_clerks_letter_v06.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		cp_ahmed_killed = yes
 	}
 
@@ -913,13 +1016,21 @@ cp_layla.50 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mill_smoke.dds"
+		texture = "gfx/event_pictures/cp_layla_mill_smoke_v12.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
+	}
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
 	}
 
 	option = {
@@ -952,13 +1063,21 @@ cp_layla.60 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_shutters.dds"
+		texture = "gfx/event_pictures/cp_layla_shutters_v14.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
+	}
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
 	}
 
 	option = {
@@ -1003,16 +1122,21 @@ cp_layla.80 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_last_morning.dds"
+		texture = "gfx/event_pictures/cp_layla_last_morning_v05.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		cp_layla_dies = yes
 		# Schedule the forty-days coda. Fires in country scope 40 days
 		# from now. cp_layla_alive is already cleared; the coda does
@@ -1042,16 +1166,21 @@ cp_layla.81 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_foreman_runner.dds"
+		texture = "gfx/event_pictures/cp_layla_foreman_runner_v08.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		cp_ahmed_killed = yes
 	}
 
@@ -1098,16 +1227,21 @@ cp_layla.90 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_first_envelope.dds"
+		texture = "gfx/event_pictures/cp_layla_first_envelope_v11.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_receives_welfare
 	}
 
@@ -1163,13 +1297,21 @@ cp_layla.91 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_law_new.dds"
+		texture = "gfx/event_pictures/cp_layla_law_new_v12.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
+	}
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
 	}
 
 	option = {
@@ -1212,13 +1354,21 @@ cp_layla.92 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_no_wind.dds"
+		texture = "gfx/event_pictures/cp_layla_no_wind_v09.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
+	}
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
 	}
 
 	option = {
@@ -1252,16 +1402,21 @@ cp_layla.82 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_child_fever.dds"
+		texture = "gfx/event_pictures/cp_layla_child_fever_v09.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		cp_child_dies = yes
 	}
 
@@ -1323,16 +1478,24 @@ cp_layla.71 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_small_concern.dds"
+		texture = "gfx/event_pictures/cp_layla_small_concern_v14.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 5
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	# Option A: invest their savings. Cleanest entry into ownership.
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
 	option = {
 		name = cp_layla.71.a
 		default_option = yes
@@ -1368,16 +1531,24 @@ cp_layla.70 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_cairo_calling.dds"
+		texture = "gfx/event_pictures/cp_layla_cairo_calling_v09.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 5
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	# Option A: the family moves together
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
 	option = {
 		name = cp_layla.70.a
 		default_option = yes
@@ -1456,17 +1627,22 @@ cp_layla.93 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_women_fields.dds"
+		texture = "gfx/event_pictures/cp_layla_women_fields_v15.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_womens_rights_fields }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_womens_rights_fields
 	}
 
@@ -1504,7 +1680,7 @@ cp_layla.94 = {
 				trigger = {
 					OR = {
 						has_variable = cp_layla_owns_land
-						has_variable = cp_layla_owns_small_concern
+						has_variable = cp_layla_self_employed
 					}
 				}
 			}
@@ -1526,17 +1702,22 @@ cp_layla.94 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_paper_my_name.dds"
+		texture = "gfx/event_pictures/cp_layla_paper_my_name_v13.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_womens_rights_property }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_womens_rights_property
 		set_variable = cp_layla_may_own_property
 	}
@@ -1585,17 +1766,22 @@ cp_layla.95 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_women_hiring.dds"
+		texture = "gfx/event_pictures/cp_layla_women_hiring_v15.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_womens_rights_workplace }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_womens_rights_workplace
 		set_variable = cp_layla_may_work
 	}
@@ -1663,17 +1849,22 @@ cp_layla.96 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_on_rolls.dds"
+		texture = "gfx/event_pictures/cp_layla_on_rolls_v13.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_womens_rights_suffrage }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_womens_rights_suffrage
 		set_variable = cp_layla_may_vote
 	}
@@ -1769,19 +1960,24 @@ cp_layla.97 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_own_stall.dds"
+		texture = "gfx/event_pictures/cp_layla_own_stall_v13.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 5
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		has_variable = cp_layla_may_work
 		NOT = { has_variable = cp_layla_seen_self_employment }
 		NOT = { has_variable = cp_layla_self_employed }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_self_employment
 	}
 
@@ -1869,13 +2065,17 @@ cp_layla.98 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_month_without.dds"
+		texture = "gfx/event_pictures/cp_layla_month_without_v13.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		has_law = law_type:law_no_social_security
 		var:cp_layla_sol <= 8
 		var:cp_layla_age >= 50
@@ -1883,6 +2083,7 @@ cp_layla.98 = {
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_month_without days = 1460 }
 	}
 
@@ -1941,13 +2142,17 @@ cp_layla.99 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_not_on_deed.dds"
+		texture = "gfx/event_pictures/cp_layla_not_on_deed_v07.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_may_own_property }
 		OR = {
 			has_variable = cp_layla_owns_land
@@ -1958,6 +2163,7 @@ cp_layla.99 = {
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_not_on_deed days = 1460 }
 	}
 
@@ -2009,18 +2215,23 @@ cp_layla.24 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_election_day.dds"
+		texture = "gfx/event_pictures/cp_layla_election_day_v08.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		has_variable = cp_layla_may_vote
 		NOT = { has_variable = cp_layla_has_voted }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_has_voted
 	}
 
@@ -2077,17 +2288,22 @@ cp_layla.100 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_school_built.dds"
+		texture = "gfx/event_pictures/cp_layla_school_built_v14.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_public_schools }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_public_schools
 	}
 
@@ -2133,17 +2349,22 @@ cp_layla.101 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_children_school.dds"
+		texture = "gfx/event_pictures/cp_layla_children_school_v09.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_compulsory_school }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_compulsory_school
 		if = {
 			# If she has kids, the daughter goes. Flag it. Literacy
@@ -2194,18 +2415,23 @@ cp_layla.102 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_daughter_reads.dds"
+		texture = "gfx/event_pictures/cp_layla_daughter_reads_v08.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		has_variable = cp_layla_daughter_at_school
 		NOT = { has_variable = cp_layla_seen_daughter_reads }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_daughter_reads days = 365 }
 	}
 
@@ -2234,17 +2460,22 @@ cp_layla.103 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_chains.dds"
+		texture = "gfx/event_pictures/cp_layla_chains_v09.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 5
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_emancipation }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_emancipation
 	}
 
@@ -2297,13 +2528,17 @@ cp_layla.104 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_compound.dds"
+		texture = "gfx/event_pictures/cp_layla_compound_v10.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		OR = {
 			has_law = law_type:law_slave_trade
 			has_law = law_type:law_legacy_slavery
@@ -2314,6 +2549,7 @@ cp_layla.104 = {
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_slaves_pulse days = 1460 }
 	}
 
@@ -2352,17 +2588,22 @@ cp_layla.25 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_ramadan.dds"
+		texture = "gfx/event_pictures/cp_layla_ramadan_v14.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/spiritual"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_ramadan }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_ramadan days = 730 }
 	}
 
@@ -2395,13 +2636,17 @@ cp_layla.26 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_nile_rises.dds"
+		texture = "gfx/event_pictures/cp_layla_nile_rises_v13.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_flood }
 		# Only reaches her if she's still on the land.
 		OR = {
@@ -2412,6 +2657,7 @@ cp_layla.26 = {
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_flood days = 730 }
 	}
 
@@ -2433,17 +2679,22 @@ cp_layla.27 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_hajj.dds"
+		texture = "gfx/event_pictures/cp_layla_hajj_v11.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/spiritual"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_hajj }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_hajj days = 730 }
 	}
 
@@ -2466,17 +2717,22 @@ cp_layla.28 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_midwife_lamp.dds"
+		texture = "gfx/event_pictures/cp_layla_midwife_lamp_v12.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_midwife_lamp }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_midwife_lamp days = 730 }
 	}
 
@@ -2497,17 +2753,22 @@ cp_layla.29 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_dates.dds"
+		texture = "gfx/event_pictures/cp_layla_dates_v11.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_date_harvest }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_date_harvest days = 730 }
 	}
 
@@ -2538,13 +2799,17 @@ cp_layla.33 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_coffee.dds"
+		texture = "gfx/event_pictures/cp_layla_coffee_v10.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_coffee_arrival }
 		var:cp_layla_sol >= 10
 		c:EGY.market = {
@@ -2553,6 +2818,7 @@ cp_layla.33 = {
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_coffee_arrival
 	}
 
@@ -2574,13 +2840,17 @@ cp_layla.34 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_sugar.dds"
+		texture = "gfx/event_pictures/cp_layla_sugar_v15.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_sugar_cheap }
 		c:EGY.market = {
 			mg:sugar = { market_goods_cheaper >= 0.10 }
@@ -2588,6 +2858,7 @@ cp_layla.34 = {
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_sugar_cheap
 	}
 
@@ -2609,13 +2880,17 @@ cp_layla.35 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_cloth.dds"
+		texture = "gfx/event_pictures/cp_layla_cloth_v10.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_cloth_affordable }
 		var:cp_layla_sol >= 12
 		c:EGY.market = {
@@ -2624,6 +2899,7 @@ cp_layla.35 = {
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_cloth_affordable
 	}
 
@@ -2665,18 +2941,26 @@ cp_layla.72 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_suitor.dds"
+		texture = "gfx/event_pictures/cp_layla_suitor_v15.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
 
 	duration = 5
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	# Option A: marry her to the village peasant's son. Familiar. Safe.
 	# Continuity — she stays in the lane, in reach, in Layla's kitchen
 	# once a week for the rest of Layla's life.
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
 	option = {
 		name = cp_layla.72.a
 		default_option = yes
@@ -2751,17 +3035,22 @@ cp_layla.105 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_every_man.dds"
+		texture = "gfx/event_pictures/cp_layla_every_man_v11.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_universal_suffrage }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_universal_suffrage
 	}
 
@@ -2797,17 +3086,22 @@ cp_layla.106 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_poster.dds"
+		texture = "gfx/event_pictures/cp_layla_poster_v13.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_single_party }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_single_party
 	}
 
@@ -2842,17 +3136,22 @@ cp_layla.107 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_coptic_neighbour.dds"
+		texture = "gfx/event_pictures/cp_layla_coptic_neighbour_v07.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_multicultural }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_multicultural
 	}
 
@@ -2894,17 +3193,22 @@ cp_layla.108 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mosque_doctor.dds"
+		texture = "gfx/event_pictures/cp_layla_mosque_doctor_v13.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/spiritual"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_charitable_health }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_charitable_health
 	}
 
@@ -2942,17 +3246,22 @@ cp_layla.109 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_insurance_man.dds"
+		texture = "gfx/event_pictures/cp_layla_insurance_man_v12.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_private_health }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_private_health
 	}
 
@@ -2979,17 +3288,22 @@ cp_layla.110 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_next_village_doctor.dds"
+		texture = "gfx/event_pictures/cp_layla_next_village_doctor_v13.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_public_health }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_public_health
 	}
 
@@ -3018,17 +3332,22 @@ cp_layla.111 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_guard.dds"
+		texture = "gfx/event_pictures/cp_layla_guard_v11.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_worker_protections }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_worker_protections
 	}
 
@@ -3057,17 +3376,22 @@ cp_layla.112 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_meeting.dds"
+		texture = "gfx/event_pictures/cp_layla_meeting_v12.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_right_to_associate }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_right_to_associate
 	}
 
@@ -3100,13 +3424,17 @@ cp_layla.113 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_strike.dds"
+		texture = "gfx/event_pictures/cp_layla_strike_v07.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		has_variable = cp_layla_in_city
 		OR = {
 			has_variable = cp_layla_profession_laborers
@@ -3122,6 +3450,7 @@ cp_layla.113 = {
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_strike days = 1825 }
 	}
 
@@ -3156,17 +3485,25 @@ cp_layla.73 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mill_closed.dds"
+		texture = "gfx/event_pictures/cp_layla_mill_closed_v07.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 5
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 	}
 
 	# A: return to the village. Default. The village will have them if
 	# the village has them; SoL contracts but they are fed.
+	immediate = {
+		cp_spotlight_person = { person = layla }
+	}
+
 	option = {
 		name = cp_layla.73.a
 		default_option = yes
@@ -3220,17 +3557,22 @@ cp_layla.114 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_minaret_silence.dds"
+		texture = "gfx/event_pictures/cp_layla_minaret_silence_v12.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/spiritual"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_state_atheism }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_state_atheism
 	}
 
@@ -3266,17 +3608,22 @@ cp_layla.115 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_procession.dds"
+		texture = "gfx/event_pictures/cp_layla_procession_v13.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/spiritual"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_freedom_of_conscience }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_freedom_of_conscience
 	}
 
@@ -3309,17 +3656,22 @@ cp_layla.116 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_square_fills.dds"
+		texture = "gfx/event_pictures/cp_layla_square_fills_v15.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_right_of_assembly }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_right_of_assembly
 	}
 
@@ -3355,17 +3707,22 @@ cp_layla.118 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_children_leave.dds"
+		texture = "gfx/event_pictures/cp_layla_children_leave_v08.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_restricted_child_labor }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_restricted_child_labor
 	}
 
@@ -3404,17 +3761,22 @@ cp_layla.119 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_station.dds"
+		texture = "gfx/event_pictures/cp_layla_station_v15.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_dedicated_police }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_dedicated_police
 	}
 
@@ -3447,17 +3809,22 @@ cp_layla.120 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_rifles.dds"
+		texture = "gfx/event_pictures/cp_layla_rifles_v08.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_militarized_police }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_militarized_police
 	}
 
@@ -3490,17 +3857,22 @@ cp_layla.117 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_burning_letters.dds"
+		texture = "gfx/event_pictures/cp_layla_burning_letters_v09.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_outlawed_dissent }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_outlawed_dissent
 	}
 
@@ -3544,17 +3916,22 @@ cp_layla.121 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_strangers.dds"
+		texture = "gfx/event_pictures/cp_layla_strangers_v08.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_no_migration_controls }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_no_migration_controls
 	}
 
@@ -3587,17 +3964,22 @@ cp_layla.122 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_letter_folded.dds"
+		texture = "gfx/event_pictures/cp_layla_letter_folded_v12.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_closed_borders }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_closed_borders
 	}
 
@@ -3630,17 +4012,22 @@ cp_layla.123 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_factory_field.dds"
+		texture = "gfx/event_pictures/cp_layla_factory_field_v11.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_laissez_faire }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_laissez_faire
 	}
 
@@ -3678,17 +4065,22 @@ cp_layla.124 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_ministry.dds"
+		texture = "gfx/event_pictures/cp_layla_ministry_v12.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_command_economy }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_command_economy
 	}
 
@@ -3722,7 +4114,7 @@ cp_layla.124 = {
 # suggestions" + §"Twelve specific line-level edits" (#12).
 #
 # .83  -- The Forty Days (post-death coda — fires after .80 clears alive)
-# .125 -- The District Office (grounds the Pasha fantasy in real failure)
+# .125 -- The District Office (grounds the ruler-room fantasy in real failure)
 # .126 -- The Imam's Visit (installs Sheikh Abdallah as recurring)
 # .127 -- The Small Victory (the comic beat)
 # .128 -- Mariam Writes from Cairo (letter-from-the-cousin)
@@ -3744,8 +4136,11 @@ cp_layla.83 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_forty_days.dds"
+		texture = "gfx/event_pictures/cp_layla_forty_days_v11.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
 
 	duration = 5
 
@@ -3753,6 +4148,10 @@ cp_layla.83 = {
 		# Fires from inside cp_layla.80's option effect (scheduled via days = 40).
 		# No extra gate needed; .80 is the one-shot.
 		always = yes
+	}
+
+	immediate = {
+		cp_spotlight_person = { person = layla }
 	}
 
 	option = {
@@ -3768,7 +4167,7 @@ cp_layla.83 = {
 #
 # Fires once per life, randomly, when she has attempted at least one
 # law-related action (welfare, suffrage, a deed). The real office
-# takes her down, politely, to the floor. The fantasy Pasha audience
+# takes her down, politely, to the floor. The fantasy ruler-room audience
 # is, thereafter, a survival mechanism, not decoration.
 cp_layla.125 = {
 	type = country_event
@@ -3780,18 +4179,23 @@ cp_layla.125 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_district_office.dds"
+		texture = "gfx/event_pictures/cp_layla_district_office_v11.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
 
 	duration = 5
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		var:cp_layla_age >= 35
 		NOT = { has_variable = cp_layla_seen_district_office }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = cp_layla_seen_district_office
 	}
 
@@ -3835,18 +4239,23 @@ cp_layla.126 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_imam_visit.dds"
+		texture = "gfx/event_pictures/cp_layla_imam_visit_v11.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/spiritual"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_imam_visit }
 		NOT = { has_law = law_type:law_state_atheism }
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_imam_visit days = 1825 }
 	}
 
@@ -3886,13 +4295,17 @@ cp_layla.127 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_small_victory.dds"
+		texture = "gfx/event_pictures/cp_layla_small_victory_v14.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		NOT = { has_variable = cp_layla_seen_small_victory }
 		# Requires some material improvement — SoL above struggling, and
 		# at least one ally gesture (welfare active, vote rights, or a
@@ -3906,6 +4319,7 @@ cp_layla.127 = {
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_small_victory days = 3650 }
 	}
 
@@ -3942,13 +4356,17 @@ cp_layla.128 = {
 	icon = "gfx/interface/icons/event_icons/event_default.dds"
 
 	event_image = {
-		texture = "gfx/event_pictures/cp_layla_mariam_letter.dds"
+		texture = "gfx/event_pictures/cp_layla_mariam_letter_v12.dds"
 	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
 
 	duration = 3
 
 	trigger = {
 		has_variable = cp_layla_alive
+		var:cp_layla_alive > 0
 		# Nūr must be old enough and literate — gated on the daughter-
 		# literate flag (set by cp_layla.101 via cp_layla_may_work-adjacent
 		# logic; approximate with daughter_at_school for now).
@@ -3960,6 +4378,7 @@ cp_layla.128 = {
 	}
 
 	immediate = {
+		cp_spotlight_person = { person = layla }
 		set_variable = { name = cp_layla_seen_mariam_letter days = 1460 }
 	}
 

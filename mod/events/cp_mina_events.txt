@@ -1,0 +1,261 @@
+﻿###############################################################################
+# Common People -- Mina events
+#
+# Mina is Person 7: a Coptic printer's apprentice in Cairo whose workshop makes
+# school laws, literacy, newspapers, and sectarian coexistence visible by hand.
+###############################################################################
+
+namespace = cp_mina
+
+
+# cp_mina.1 -- hidden setup
+cp_mina.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_mina_alive
+		NOT = { has_variable = cp_mina_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_mina_alive value = 1 }
+		set_variable = { name = cp_mina_age value = 19 }
+		set_variable = { name = cp_mina_hope value = 6 }
+		set_variable = { name = cp_mina_exhaustion value = 4 }
+		set_variable = { name = cp_mina_sol value = 10 }
+		set_variable = { name = cp_mina_literacy value = 14 }
+		set_variable = { name = cp_mina_radical value = 0 }
+		set_variable = { name = cp_mina_loyalist value = 0 }
+		set_variable = cp_mina_profession_clerks
+		set_variable = cp_mina_has_apron
+		set_variable = { name = cp_mina_w_education value = 10 }
+		set_variable = { name = cp_mina_w_religion value = 7 }
+		set_variable = { name = cp_mina_w_work value = 8 }
+		set_variable = { name = cp_mina_w_politics value = 5 }
+		set_variable = { name = cp_mina_w_city value = 8 }
+
+		cp_set_person_home_state = { person = mina country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = mina place = faggala_cairo }
+		cp_set_person_workplace_profile = { person = mina profile = public_service }
+		cp_mina_refresh_sol = yes
+	}
+}
+
+
+# cp_mina.10 -- "The Letters Set in Lead"
+cp_mina.10 = {
+	type = country_event
+
+	title = cp_mina.10.t
+	desc = cp_mina.10.d
+	flavor = cp_mina.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_mina_intro.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_mina_alive
+		var:cp_mina_alive > 0
+		NOT = { has_variable = cp_mina_seen_intro }
+	}
+
+	immediate = {
+		cp_mina_mark_intro = yes
+	}
+
+	option = {
+		name = cp_mina.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_mina.20 -- "The Primer Leaves the Press"
+cp_mina.20 = {
+	type = country_event
+
+	title = cp_mina.20.t
+	desc = cp_mina.20.d
+	flavor = cp_mina.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_mina_public_schools.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_mina_alive
+		var:cp_mina_alive > 0
+		NOT = { has_variable = cp_mina_seen_public_schools }
+	}
+
+	immediate = {
+		cp_mina_mark_public_schools = yes
+	}
+
+	option = {
+		name = cp_mina.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_mina.30 -- "The Notice Sheet"
+cp_mina.30 = {
+	type = country_event
+
+	title = cp_mina.30.t
+	desc = cp_mina.30.d
+	flavor = cp_mina.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_mina_notice_sheet_v02.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_mina_alive
+		var:cp_mina_alive > 0
+		NOT = { has_variable = cp_mina_seen_notice_sheet }
+	}
+
+	immediate = {
+		cp_mina_mark_notice_sheet = yes
+	}
+
+	option = {
+		name = cp_mina.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_mina.40 -- "The Night Proof"
+cp_mina.40 = {
+	type = country_event
+
+	title = cp_mina.40.t
+	desc = cp_mina.40.d
+	flavor = cp_mina.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_mina_night_proof_v02.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_mina_alive
+		var:cp_mina_alive > 0
+		NOT = { has_variable = cp_mina_seen_night_proof }
+	}
+
+	immediate = {
+		cp_mina_mark_night_proof = yes
+	}
+
+	option = {
+		name = cp_mina.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_mina.50 -- "The Catalogue Room"
+cp_mina.50 = {
+	type = country_event
+
+	title = cp_mina.50.t
+	desc = cp_mina.50.d
+	flavor = cp_mina.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_mina_catalogue_room_v02.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_mina_alive
+		var:cp_mina_alive > 0
+		NOT = { has_variable = cp_mina_seen_catalogue_room }
+	}
+
+	immediate = {
+		cp_mina_mark_catalogue_room = yes
+	}
+
+	option = {
+		name = cp_mina.50.a
+		default_option = yes
+	}
+}
+
+
+# cp_mina.60 -- "The Courtyard Sheet"
+cp_mina.60 = {
+	type = country_event
+
+	title = cp_mina.60.t
+	desc = cp_mina.60.d
+	flavor = cp_mina.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_mina_courtyard_sheet_v02.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/spiritual"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_mina_alive
+		var:cp_mina_alive > 0
+		has_variable = cp_mina_seen_intro
+		NOT = { has_variable = cp_mina_seen_courtyard_sheet }
+	}
+
+	immediate = {
+		cp_mina_mark_courtyard_sheet = yes
+	}
+
+	option = {
+		name = cp_mina.60.a
+		default_option = yes
+	}
+}

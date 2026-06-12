@@ -2,6 +2,8 @@
 
 ## Common People -- Design Document & Modding Guide
 
+> Current implementation note, 2026-05-25: this document remains the vision text, but the working mod now targets the Victoria 3 1.13 line and uses the r5 "person as country variables" architecture described in `documentation/characters/_shared/`. Treat older 1.12 workaround language below as historical design context unless a current shared registry/firing document repeats it.
+
 *"History is not the story of heroes entirely. It is often the story of cruelty and injustice and shortsightedness. There are monsters, there is evil, there is betrayal. That's why people should read history -- so that they'll get angry enough to demand change."*
 
 ---

@@ -1,0 +1,36 @@
+﻿l_english:
+ # cp_nour.10 -- "The Cedar Chest"
+ cp_nour.10.t:0 "The Cedar Chest"
+ cp_nour.10.d:0 "Nour keeps the key in the fold of her scarf, though everyone in the house knows where it is."
+ cp_nour.10.f:0 "The chest had been her mother's before it was hers, and before that it had belonged to a woman whose name no one wrote down because no one had needed to write it down. Inside are the cloth lengths, the copper bracelet wrapped in linen, three receipts, and a paper from her late brother that says nothing useful and has therefore become precious. Nour opens it before dawn, when the shop is not yet awake and the men have not begun asking for things. She lays the key beside the account paper and looks at the two objects together. The key opens wood. The paper opens nothing. Still, she smooths it with the heel of her hand as if a fold, pressed flat often enough, might become a door."
+ cp_nour.10.a:0 "She locks the chest again before the house stirs."
+
+ # cp_nour.20 -- "Her Name on the Paper"
+ cp_nour.20.t:0 "Her Name on the Paper"
+ cp_nour.20.d:0 "The clerk has written her name once, slowly, and now the paper is crossing the desk."
+ cp_nour.20.f:0 "For a moment she does not take it. The paper rests between his fingers and hers, belonging to neither of them, and the pause grows large enough for the clerk to look annoyed. Nour has signed for grain, for cloth, for lamp oil, for debts that were not hers and became hers anyway. This is different. The letters are the same black scratches, the same dry scrape of ink, but this time the scratches say that the chest, the room behind the shop, the half-share of shelves her husband had always called temporary, may sit under her hand without asking a dead man's permission. She takes the paper. It is lighter than a loaf and heavier than sleep. At home she will put the key on top of it, not because the law needs the key, but because she does."
+ cp_nour.20.a:0 "Fold it carefully."
+
+ # cp_nour.30 -- "The Rent Receipt"
+ cp_nour.30.t:0 "The Rent Receipt"
+ cp_nour.30.d:0 "A receipt with Nour's name on it changes the room more than the rent itself."
+ cp_nour.30.f:0 "The landlord's nephew writes too quickly until Nour asks him to begin again. Not the household name. Her name. He looks at the doorway, where her brother-in-law has chosen to stand with his hands folded and his mouth closed. The pen starts over. Rent for the back room, paid in full, received from Nour bint Hassan. The words are ordinary enough to bore a judge, and that is their power. At home she slips the receipt under the cedar lining, where the old papers make room for it without argument."
+ cp_nour.30.a:0 "Let the ink dry before anyone folds it."
+
+ # cp_nour.40 -- "The Key Under the Pillow"
+ cp_nour.40.t:0 "The Key Under the Pillow"
+ cp_nour.40.d:0 "At night the house sleeps around the chest, and Nour listens to its hinges remember."
+ cp_nour.40.f:0 "She keeps the key under the pillow for one week after the paper comes, then for another, then because habit has made a small nest there. The room is no safer than it was. The roof still leaks in the winter corner, and the shop boys still leave flour on the threshold. Yet when she wakes before dawn and touches the key, she does not count who might take it from her. She counts what must be bought, what must be mended, what can wait. It is not freedom. It is a list she is allowed to make."
+ cp_nour.40.a:0 "The key is warm from her hand."
+
+ # cp_nour.50 -- "The Register Shelf"
+ cp_nour.50.t:0 "The Register Shelf"
+ cp_nour.50.d:0 "A government register gives Nour a place that cannot be moved by a brother-in-law's hand."
+ cp_nour.50.f:0 "The clerk pulls the volume down from a shelf so high it leaves dust on his sleeve. He finds the page by number, not by asking whose wife she is. There, between a warehouse and a coffee seller, her room has been copied in a narrow official hand. Nour bends close enough to smell glue, paper, and the old damp of the office wall. The letters do not love her. They do not defend her. But they sit where they have been put, and when the clerk closes the book, her name remains inside."
+ cp_nour.50.a:0 "A shelf can be a kind of witness."
+
+ # cp_nour.60 -- "The Morning Account"
+ cp_nour.60.t:0 "The Morning Account"
+ cp_nour.60.d:0 "Before the street wakes, Nour balances the shop's small money."
+ cp_nour.60.f:0 "The first coin is sticky with date syrup. The second has a notch near the rim. Nour sets them in a row beside the lamp and writes the numbers slowly, not because she cannot count them in her head, but because the paper has begun to deserve the truth. Flour, thread, lamp oil, rent, one copper coin set aside for the girl who sweeps the threshold. Outside, shutters lift one by one. Inside, Nour draws a line under the morning and lets herself smile before anyone can ask why."
+ cp_nour.60.a:0 "The account closes clean."

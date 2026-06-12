@@ -1,0 +1,186 @@
+﻿###############################################################################
+# Common People -- shared roster action-button effects
+#
+# Player clicks use the same person-owned scene pools as ambient life beats,
+# but route through cp_button_fire instead of the automatic ambient budget.
+###############################################################################
+
+cp_shared_action_layla = {
+	set_variable = { name = cp_layla_action_cooldown days = 180 }
+	random_list = {
+		15 = { trigger = { has_variable = cp_layla_ahmed_at_war NOT = { has_variable = cp_layla_seen_letter } } cp_button_fire = { event = cp_layla.10 person = layla } }
+		15 = { trigger = { has_variable = cp_layla_owns_land NOT = { has_variable = cp_layla_seen_walking_field } } cp_button_fire = { event = cp_layla.11 person = layla } }
+		15 = { trigger = { has_variable = cp_layla_under_serfdom NOT = { has_variable = cp_layla_seen_under_beys_eye } } cp_button_fire = { event = cp_layla.12 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_no_wind } } cp_button_fire = { event = cp_layla.13 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_neighbours_boy } } cp_button_fire = { event = cp_layla.14 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_mothers_hand } } cp_button_fire = { event = cp_layla.15 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_hen } } cp_button_fire = { event = cp_layla.16 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_scale } } cp_button_fire = { event = cp_layla.17 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_river_low } } cp_button_fire = { event = cp_layla.18 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_old_woman } } cp_button_fire = { event = cp_layla.19 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_bread } } cp_button_fire = { event = cp_layla.20 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_dust } } cp_button_fire = { event = cp_layla.21 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_brother } } cp_button_fire = { event = cp_layla.22 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_mule } } cp_button_fire = { event = cp_layla.23 person = layla } }
+		10 = { trigger = { has_variable = cp_layla_may_vote NOT = { has_variable = cp_layla_has_voted } } cp_button_fire = { event = cp_layla.24 person = layla } }
+		5 = { trigger = { var:cp_layla_sol <= 10 } cp_button_fire = { event = cp_layla.98 person = layla } }
+		5 = { trigger = { has_variable = cp_layla_owns_land } cp_button_fire = { event = cp_layla.99 person = layla } }
+		10 = { trigger = { has_variable = cp_layla_daughter_at_school NOT = { has_variable = cp_layla_seen_daughter_reads } } cp_button_fire = { event = cp_layla.102 person = layla } }
+		5 = { trigger = { OR = { has_law = law_type:law_debt_slavery has_law = law_type:law_legacy_slavery has_law = law_type:law_slave_trade } NOT = { has_variable = cp_layla_seen_slaves_pulse } } cp_button_fire = { event = cp_layla.104 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_ramadan } } cp_button_fire = { event = cp_layla.25 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_flood } } cp_button_fire = { event = cp_layla.26 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_hajj } } cp_button_fire = { event = cp_layla.27 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_midwife_lamp } } cp_button_fire = { event = cp_layla.28 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_date_harvest } } cp_button_fire = { event = cp_layla.29 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_coffee_arrival } } cp_button_fire = { event = cp_layla.33 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_sugar_cheap } } cp_button_fire = { event = cp_layla.34 person = layla } }
+		10 = { trigger = { NOT = { has_variable = cp_layla_seen_cloth_affordable } } cp_button_fire = { event = cp_layla.35 person = layla } }
+		5 = { trigger = { OR = { has_variable = cp_layla_profession_laborers has_variable = cp_layla_ahmed_profession_laborer } OR = { has_law = law_type:law_right_to_associate has_law = law_type:law_corporatized_unions has_law = law_type:law_factory_councils } NOT = { has_variable = cp_layla_seen_strike } } cp_button_fire = { event = cp_layla.113 person = layla } }
+		5 = { trigger = { NOT = { has_variable = cp_layla_seen_imam_visit } } cp_button_fire = { event = cp_layla.126 person = layla } }
+		5 = { trigger = { NOT = { has_variable = cp_layla_seen_small_victory } } cp_button_fire = { event = cp_layla.127 person = layla } }
+		5 = { trigger = { NOT = { has_variable = cp_layla_seen_mariam_letter } } cp_button_fire = { event = cp_layla.128 person = layla } }
+	}
+}
+
+cp_shared_action_bey = {
+	set_variable = { name = cp_bey_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_bey_seen_intro } } cp_button_fire = { event = cp_bey.10 person = bey } }
+		8 = { trigger = { has_variable = cp_bey_seen_intro NOT = { has_variable = cp_bey_seen_visitors_card } } cp_button_fire = { event = cp_bey.40 person = bey } }
+	}
+}
+
+cp_shared_action_soldier = {
+	set_variable = { name = cp_soldier_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_soldier_seen_intro } NOT = { has_variable = cp_soldier_at_war } } cp_button_fire = { event = cp_soldier.10 person = soldier } }
+		8 = { trigger = { has_variable = cp_soldier_seen_intro NOT = { has_variable = cp_soldier_at_war } NOT = { has_variable = cp_soldier_seen_beans_dusk } } cp_button_fire = { event = cp_soldier.40 person = soldier } }
+		7 = { trigger = { has_variable = cp_soldier_at_war has_variable = cp_soldier_seen_notice NOT = { has_variable = cp_soldier_seen_letter_folded } } cp_button_fire = { event = cp_soldier.50 person = soldier } }
+	}
+}
+
+cp_shared_action_nour = {
+	set_variable = { name = cp_nour_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_nour_seen_intro } } cp_button_fire = { event = cp_nour.10 person = nour } }
+		8 = { trigger = { has_variable = cp_nour_seen_intro NOT = { has_variable = cp_nour_seen_key_under_pillow } } cp_button_fire = { event = cp_nour.40 person = nour } }
+		8 = { trigger = { has_variable = cp_nour_seen_intro NOT = { has_variable = cp_nour_seen_morning_account } } cp_button_fire = { event = cp_nour.60 person = nour } }
+	}
+}
+
+cp_shared_action_mina = {
+	set_variable = { name = cp_mina_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_mina_seen_intro } } cp_button_fire = { event = cp_mina.10 person = mina } }
+		8 = { trigger = { has_variable = cp_mina_seen_intro NOT = { has_variable = cp_mina_seen_night_proof } } cp_button_fire = { event = cp_mina.40 person = mina } }
+		8 = { trigger = { has_variable = cp_mina_seen_intro NOT = { has_variable = cp_mina_seen_courtyard_sheet } } cp_button_fire = { event = cp_mina.60 person = mina } }
+	}
+}
+
+cp_shared_action_zaynab = {
+	set_variable = { name = cp_zaynab_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_zaynab_seen_intro } } cp_button_fire = { event = cp_zaynab.10 person = zaynab } }
+		8 = { trigger = { has_variable = cp_zaynab_seen_intro NOT = { has_variable = cp_zaynab_seen_long_night } } cp_button_fire = { event = cp_zaynab.40 person = zaynab } }
+		8 = { trigger = { has_variable = cp_zaynab_seen_intro NOT = { has_variable = cp_zaynab_seen_thread_wrist } } cp_button_fire = { event = cp_zaynab.60 person = zaynab } }
+	}
+}
+
+cp_shared_action_samier = {
+	set_variable = { name = cp_samier_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_samier_seen_intro } } cp_button_fire = { event = cp_samier.10 person = samier } }
+		8 = { trigger = { has_variable = cp_samier_seen_intro NOT = { has_variable = cp_samier_seen_gate_bread } } cp_button_fire = { event = cp_samier.40 person = samier } }
+		7 = { trigger = { has_variable = cp_samier_seen_intro cp_person_home_has_manufacturing = { person = samier } cp_country_workers_unprotected = yes NOT = { has_variable = cp_samier_seen_false_quarter } } cp_button_fire = { event = cp_samier.50 person = samier } }
+		5 = { trigger = { has_variable = cp_samier_seen_intro has_law = law_type:law_public_schools NOT = { has_variable = cp_samier_seen_letters_after_bell } } cp_button_fire = { event = cp_samier.60 person = samier } }
+	}
+}
+
+cp_shared_action_tarek = {
+	set_variable = { name = cp_tarek_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_tarek_seen_intro } } cp_button_fire = { event = cp_tarek.10 person = tarek } }
+		8 = { trigger = { has_variable = cp_tarek_seen_intro NOT = { has_variable = cp_tarek_seen_account_book } } cp_button_fire = { event = cp_tarek.40 person = tarek } }
+		7 = { trigger = { has_variable = cp_tarek_seen_intro cp_person_home_has_manufacturing = { person = tarek } NOT = { has_variable = cp_tarek_seen_second_chimney } } cp_button_fire = { event = cp_tarek.50 person = tarek } }
+		5 = { trigger = { has_variable = cp_tarek_seen_intro cp_country_workers_unprotected = yes NOT = { has_variable = cp_tarek_seen_locked_gate } } cp_button_fire = { event = cp_tarek.60 person = tarek } }
+	}
+}
+
+cp_shared_action_farid = {
+	set_variable = { name = cp_farid_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_farid_seen_intro } } cp_button_fire = { event = cp_farid.10 person = farid } }
+		8 = { trigger = { has_variable = cp_farid_seen_intro NOT = { has_variable = cp_farid_seen_night_shift } } cp_button_fire = { event = cp_farid.40 person = farid } }
+		8 = { trigger = { has_variable = cp_farid_seen_intro NOT = { has_variable = cp_farid_seen_parcel_bag } } cp_button_fire = { event = cp_farid.60 person = farid } }
+	}
+}
+
+cp_shared_action_dawud = {
+	set_variable = { name = cp_dawud_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_dawud_seen_intro } } cp_button_fire = { event = cp_dawud.10 person = dawud } }
+		8 = { trigger = { has_variable = cp_dawud_seen_intro NOT = { has_variable = cp_dawud_seen_salt_floor } } cp_button_fire = { event = cp_dawud.40 person = dawud } }
+		8 = { trigger = { has_variable = cp_dawud_seen_intro NOT = { has_variable = cp_dawud_seen_manifest_room } } cp_button_fire = { event = cp_dawud.60 person = dawud } }
+	}
+}
+
+cp_shared_action_rashid = {
+	set_variable = { name = cp_rashid_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_rashid_seen_intro } } cp_button_fire = { event = cp_rashid.10 person = rashid } }
+		8 = { trigger = { has_variable = cp_rashid_seen_intro NOT = { has_variable = cp_rashid_seen_ink_dust } } cp_button_fire = { event = cp_rashid.40 person = rashid } }
+		8 = { trigger = { has_variable = cp_rashid_seen_intro NOT = { has_variable = cp_rashid_seen_numbered_drawer } } cp_button_fire = { event = cp_rashid.60 person = rashid } }
+	}
+}
+
+cp_shared_action_salma = {
+	set_variable = { name = cp_salma_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_salma_seen_intro } } cp_button_fire = { event = cp_salma.10 person = salma } }
+		8 = { trigger = { has_variable = cp_salma_seen_intro NOT = { has_variable = cp_salma_seen_night_bell } } cp_button_fire = { event = cp_salma.40 person = salma } }
+		7 = { trigger = { has_variable = cp_salma_seen_first_light cp_person_home_has_electric_service = { person = salma } NOT = { has_variable = cp_salma_seen_burned_fuse } } cp_button_fire = { event = cp_salma.50 person = salma } }
+		7 = { trigger = { has_variable = cp_salma_seen_intro cp_person_home_has_telephone_network = { person = salma } NOT = { has_variable = cp_salma_seen_crossed_line } } cp_button_fire = { event = cp_salma.60 person = salma } }
+	}
+}
+
+cp_shared_action_karim = {
+	set_variable = { name = cp_karim_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_karim_seen_intro } } cp_button_fire = { event = cp_karim.10 person = karim } }
+		8 = { trigger = { has_variable = cp_karim_seen_intro NOT = { has_variable = cp_karim_seen_broken_finger } } cp_button_fire = { event = cp_karim.30 person = karim } }
+		8 = { trigger = { has_variable = cp_karim_seen_intro NOT = { has_variable = cp_karim_seen_night_gauge } } cp_button_fire = { event = cp_karim.60 person = karim } }
+	}
+}
+
+cp_shared_action_huda = {
+	set_variable = { name = cp_huda_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_huda_seen_intro } } cp_button_fire = { event = cp_huda.10 person = huda } }
+		8 = { trigger = { has_variable = cp_huda_seen_intro cp_person_home_has_urban_growth = { person = huda } NOT = { has_variable = cp_huda_seen_rent_book } } cp_button_fire = { event = cp_huda.40 person = huda } }
+		6 = { trigger = { has_variable = cp_huda_seen_intro has_technology_researched = modern_sewerage NOT = { has_variable = cp_huda_seen_clean_water } } cp_button_fire = { event = cp_huda.30 person = huda } }
+		7 = { trigger = { has_variable = cp_huda_seen_intro cp_person_home_has_urban_growth = { person = huda } NOT = { has_variable = cp_huda_seen_roof_patch } } cp_button_fire = { event = cp_huda.50 person = huda } }
+		6 = { trigger = { has_variable = cp_huda_seen_intro has_technology_researched = paved_roads NOT = { has_variable = cp_huda_seen_white_road } } cp_button_fire = { event = cp_huda.60 person = huda } }
+	}
+}
+
+cp_shared_action_nabil = {
+	set_variable = { name = cp_nabil_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_nabil_seen_intro } } cp_button_fire = { event = cp_nabil.10 person = nabil } }
+		7 = { trigger = { has_variable = cp_nabil_seen_intro cp_country_has_public_order_pressure = yes NOT = { has_variable = cp_nabil_seen_square_afterward } } cp_button_fire = { event = cp_nabil.40 person = nabil } }
+		6 = { trigger = { has_variable = cp_nabil_seen_intro NOT = { has_variable = cp_nabil_seen_lost_boy } } cp_button_fire = { event = cp_nabil.50 person = nabil } }
+		5 = { trigger = { has_variable = cp_nabil_seen_intro OR = { has_variable = cp_nabil_seen_station has_law = law_type:law_dedicated_police } NOT = { has_variable = cp_nabil_seen_complaint_bench } } cp_button_fire = { event = cp_nabil.60 person = nabil } }
+	}
+}
+
+cp_shared_action_mansur = {
+	set_variable = { name = cp_mansur_action_cooldown days = 180 }
+	random_list = {
+		10 = { trigger = { NOT = { has_variable = cp_mansur_seen_intro } } cp_button_fire = { event = cp_mansur.10 person = mansur } }
+		7 = { trigger = { has_variable = cp_mansur_seen_intro NOT = { has_variable = cp_mansur_seen_first_wage } } cp_button_fire = { event = cp_mansur.20 person = mansur } }
+		6 = { trigger = { has_variable = cp_mansur_seen_intro cp_person_home_has_machine_industry = { person = mansur } NOT = { has_variable = cp_mansur_seen_belt } } cp_button_fire = { event = cp_mansur.30 person = mansur } }
+		5 = { trigger = { has_variable = cp_mansur_seen_first_wage NOT = { has_variable = cp_mansur_seen_remittance } } cp_button_fire = { event = cp_mansur.40 person = mansur } }
+		6 = { trigger = { has_variable = cp_mansur_seen_intro NOT = { has_variable = cp_mansur_seen_bed_rent } } cp_button_fire = { event = cp_mansur.50 person = mansur } }
+		6 = { trigger = { has_variable = cp_mansur_seen_first_wage NOT = { has_variable = cp_mansur_seen_meal_tin } } cp_button_fire = { event = cp_mansur.60 person = mansur } }
+	}
+}

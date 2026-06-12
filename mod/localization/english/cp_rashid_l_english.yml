@@ -1,0 +1,31 @@
+﻿l_english:
+ cp_rashid.10.t:0 "The Counter Window"
+ cp_rashid.10.d:0 "At the ministry counter a man named Rashid al-Katib pulls a cracked wooden shutter up by two finger-widths and waits for the line to understand that the government has begun. He is not an official in the way people mean the word. He rents one room above a spice seller, owns two shirts, and carries ink under the nail of his right thumb no soap can quite remove. Still, the petitioners lower their voices when they reach him. He reads their papers, turns them over, asks for the missing seal, and watches a village man put both hands on the counter as if the wood might judge him. By noon the sweat has made the ledger edges soft. Rashid copies each name carefully because a bent letter can become a delayed pension, a disputed field, a son who cannot prove whose son he is."
+ cp_rashid.10.f:0 "He closes the ledger only when the muezzin's call has faded and the last woman in the line has stopped pretending not to cry."
+ cp_rashid.10.a:0 "The state now has a window."
+
+ cp_rashid.20.t:0 "The Archive Lamp"
+ cp_rashid.20.d:0 "The new archive room smells of damp leather, hot dust, and the oil lamp Rashid is told not to trim after midnight. Shelves climb higher than a man can reach without the little ladder that wobbles on the broken tile. He finds land deeds tied with string, old tax rolls in a hand so ornate it refuses to die, birth names folded beside death notices as if the dead still need witnesses. Each bundle carries a village inside it: quarrels, promises, thumbprints, dates guessed from harvests and floods. Rashid learns to fear the papers that are too clean. A life that has been handled leaves marks. A life that has no marks can disappear between two boards and no one in the office will know where to look."
+ cp_rashid.20.f:0 "At dawn he writes one label twice, then a third time, because the first two looked too much like forgetting."
+ cp_rashid.20.a:0 "Keep the lamp lit."
+
+ cp_rashid.30.t:0 "The Paper Name"
+ cp_rashid.30.d:0 "Identification papers arrive in a locked box with a key that sits warm in the senior clerk's palm. Rashid is given a stack of forms, a ruler, and an instruction: names must fit the line. They do not. A grandfather's name spills past the margin; a widow insists on the name people call her in the alley; a boy gives his village before his father because that is where anyone would find him. Rashid trims nothing at first. Then the line grows, the room heats, and the ink dries in the nib. By evening he understands the cruelty of a narrow blank. The paper promises to make people visible, but it has a small mouth. It accepts what it can swallow and leaves the rest standing in the corridor."
+ cp_rashid.30.f:0 "He presses the seal down gently, as if gentleness can change what the seal has done."
+ cp_rashid.30.a:0 "A name is not a box."
+
+ cp_rashid.40.t:0 "Dust in the Ink"
+ cp_rashid.40.d:0 "Some evenings Rashid carries the day's dust home in his cuffs. He shakes them over the basin and watches black specks spread across the water like a map no one has ordered yet. His wife asks whether the office will raise his pay now that the new shelves have arrived. Rashid says, perhaps, and means no. A government can build another room more easily than it can notice the man who copies the room's contents. After supper he mends a penknife handle with thread and wax. The children sleep near the wall. On the sill, his ledger hand twitches once in the dark, still trying to finish a word that was interrupted by the closing bell."
+ cp_rashid.40.f:0 "In the morning he will wash his hands before leaving, and the ink will return before noon."
+ cp_rashid.40.a:0 "Let him sleep while the books are closed."
+
+ cp_rashid.50.t:0 "The New Seal"
+ cp_rashid.50.d:0 "The ministry sends down a new seal in a box lined with green cloth. Rashid is told which law has changed, which old words must no longer be written, and which new words will satisfy Cairo. The seal is heavier than the one before it. It leaves a darker circle on the page, a small moon of authority pressed into fiber and ink. Men who yesterday bowed to one clerk now wait for another. A cousin of a cousin asks whether the new order will make his son eligible for a desk. A retired scribe sits in the corridor with his papers folded across his knees, listening for the shape of his own dismissal. Rashid oils the handle, tests it on scrap, and feels the room adjust around the sound."
+ cp_rashid.50.f:0 "By afternoon everyone knows where the stamp is kept, and no one knows yet what it will cost."
+ cp_rashid.50.a:0 "A law has weight in the hand."
+
+ cp_rashid.60.t:0 "The Numbered Drawer"
+ cp_rashid.60.d:0 "A carpenter fits numbered drawers against the office wall while the clerks continue working around his ladder. Rashid receives drawer seventeen, then drawer twenty-three, then a key so small he fears losing it inside his own pocket. The room changes at once. A petition no longer waits in a stack; it waits in a place. A widow's claim can be found before the tea cools. A tax roll can vanish more completely because it vanished from a drawer with a number, and therefore looks less like theft. Rashid writes the numbers in a notebook he keeps hidden under the blotter. He tells himself this is order. He tells himself order is mercy. Then he writes one more number beside a name he recognizes and does not tell anyone."
+ cp_rashid.60.f:0 "The drawer slides shut with the soft finality of a mouth deciding what it will not say."
+ cp_rashid.60.a:0 "Let the office learn its own memory."
+ # add entries below. format: key:0 "value"

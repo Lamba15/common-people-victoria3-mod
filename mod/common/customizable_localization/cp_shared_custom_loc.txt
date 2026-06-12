@@ -1,0 +1,256 @@
+﻿###############################################################################
+# Common People -- shared active journal localization
+#
+# The shared JE cannot generate dynamic rows, so the active roster is rendered
+# through three fixed slots. Events and player buttons decide who occupies
+# those slots; inactive people do not appear in the JE.
+###############################################################################
+
+cp_common_people_active_body = {
+	type = country
+
+	text = {
+		trigger = { cp_active_roster_has_any_person = yes }
+		localization_key = cp_common_people_active_body
+	}
+	text = {
+		localization_key = cp_common_people_active_body_empty
+	}
+}
+
+cp_common_people_active_slot_1 = {
+	type = country
+	text = { trigger = { has_variable = cp_layla_active_slot var:cp_layla_active_slot = 1 } localization_key = cp_roster_layla_line_alive }
+	text = { trigger = { has_variable = cp_bey_active_slot var:cp_bey_active_slot = 1 } localization_key = cp_roster_bey_line_alive }
+	text = { trigger = { has_variable = cp_soldier_active_slot var:cp_soldier_active_slot = 1 } localization_key = cp_roster_soldier_line_alive }
+	text = { trigger = { has_variable = cp_nour_active_slot var:cp_nour_active_slot = 1 } localization_key = cp_roster_nour_line_alive }
+	text = { trigger = { has_variable = cp_mina_active_slot var:cp_mina_active_slot = 1 } localization_key = cp_roster_mina_line_alive }
+	text = { trigger = { has_variable = cp_zaynab_active_slot var:cp_zaynab_active_slot = 1 } localization_key = cp_roster_zaynab_line_alive }
+	text = { trigger = { has_variable = cp_samier_active_slot var:cp_samier_active_slot = 1 } localization_key = cp_roster_samier_line_alive }
+	text = { trigger = { has_variable = cp_tarek_active_slot var:cp_tarek_active_slot = 1 } localization_key = cp_roster_tarek_line_alive }
+	text = { trigger = { has_variable = cp_farid_active_slot var:cp_farid_active_slot = 1 } localization_key = cp_roster_farid_line_alive }
+	text = { trigger = { has_variable = cp_dawud_active_slot var:cp_dawud_active_slot = 1 } localization_key = cp_roster_dawud_line_alive }
+	text = { trigger = { has_variable = cp_rashid_active_slot var:cp_rashid_active_slot = 1 } localization_key = cp_roster_rashid_line_alive }
+	text = { trigger = { has_variable = cp_salma_active_slot var:cp_salma_active_slot = 1 } localization_key = cp_roster_salma_line_alive }
+	text = { trigger = { has_variable = cp_karim_active_slot var:cp_karim_active_slot = 1 } localization_key = cp_roster_karim_line_alive }
+	text = { trigger = { has_variable = cp_huda_active_slot var:cp_huda_active_slot = 1 } localization_key = cp_roster_huda_line_alive }
+	text = { trigger = { has_variable = cp_nabil_active_slot var:cp_nabil_active_slot = 1 } localization_key = cp_roster_nabil_line_alive }
+	text = { trigger = { has_variable = cp_mansur_active_slot var:cp_mansur_active_slot = 1 } localization_key = cp_roster_mansur_line_alive }
+	text = { localization_key = cp_common_people_active_slot_empty }
+}
+
+cp_common_people_active_slot_2 = {
+	type = country
+	text = { trigger = { has_variable = cp_layla_active_slot var:cp_layla_active_slot = 2 } localization_key = cp_roster_layla_line_alive }
+	text = { trigger = { has_variable = cp_bey_active_slot var:cp_bey_active_slot = 2 } localization_key = cp_roster_bey_line_alive }
+	text = { trigger = { has_variable = cp_soldier_active_slot var:cp_soldier_active_slot = 2 } localization_key = cp_roster_soldier_line_alive }
+	text = { trigger = { has_variable = cp_nour_active_slot var:cp_nour_active_slot = 2 } localization_key = cp_roster_nour_line_alive }
+	text = { trigger = { has_variable = cp_mina_active_slot var:cp_mina_active_slot = 2 } localization_key = cp_roster_mina_line_alive }
+	text = { trigger = { has_variable = cp_zaynab_active_slot var:cp_zaynab_active_slot = 2 } localization_key = cp_roster_zaynab_line_alive }
+	text = { trigger = { has_variable = cp_samier_active_slot var:cp_samier_active_slot = 2 } localization_key = cp_roster_samier_line_alive }
+	text = { trigger = { has_variable = cp_tarek_active_slot var:cp_tarek_active_slot = 2 } localization_key = cp_roster_tarek_line_alive }
+	text = { trigger = { has_variable = cp_farid_active_slot var:cp_farid_active_slot = 2 } localization_key = cp_roster_farid_line_alive }
+	text = { trigger = { has_variable = cp_dawud_active_slot var:cp_dawud_active_slot = 2 } localization_key = cp_roster_dawud_line_alive }
+	text = { trigger = { has_variable = cp_rashid_active_slot var:cp_rashid_active_slot = 2 } localization_key = cp_roster_rashid_line_alive }
+	text = { trigger = { has_variable = cp_salma_active_slot var:cp_salma_active_slot = 2 } localization_key = cp_roster_salma_line_alive }
+	text = { trigger = { has_variable = cp_karim_active_slot var:cp_karim_active_slot = 2 } localization_key = cp_roster_karim_line_alive }
+	text = { trigger = { has_variable = cp_huda_active_slot var:cp_huda_active_slot = 2 } localization_key = cp_roster_huda_line_alive }
+	text = { trigger = { has_variable = cp_nabil_active_slot var:cp_nabil_active_slot = 2 } localization_key = cp_roster_nabil_line_alive }
+	text = { trigger = { has_variable = cp_mansur_active_slot var:cp_mansur_active_slot = 2 } localization_key = cp_roster_mansur_line_alive }
+	text = { localization_key = cp_common_people_active_slot_empty }
+}
+
+cp_common_people_active_slot_3 = {
+	type = country
+	text = { trigger = { has_variable = cp_layla_active_slot var:cp_layla_active_slot = 3 } localization_key = cp_roster_layla_line_alive }
+	text = { trigger = { has_variable = cp_bey_active_slot var:cp_bey_active_slot = 3 } localization_key = cp_roster_bey_line_alive }
+	text = { trigger = { has_variable = cp_soldier_active_slot var:cp_soldier_active_slot = 3 } localization_key = cp_roster_soldier_line_alive }
+	text = { trigger = { has_variable = cp_nour_active_slot var:cp_nour_active_slot = 3 } localization_key = cp_roster_nour_line_alive }
+	text = { trigger = { has_variable = cp_mina_active_slot var:cp_mina_active_slot = 3 } localization_key = cp_roster_mina_line_alive }
+	text = { trigger = { has_variable = cp_zaynab_active_slot var:cp_zaynab_active_slot = 3 } localization_key = cp_roster_zaynab_line_alive }
+	text = { trigger = { has_variable = cp_samier_active_slot var:cp_samier_active_slot = 3 } localization_key = cp_roster_samier_line_alive }
+	text = { trigger = { has_variable = cp_tarek_active_slot var:cp_tarek_active_slot = 3 } localization_key = cp_roster_tarek_line_alive }
+	text = { trigger = { has_variable = cp_farid_active_slot var:cp_farid_active_slot = 3 } localization_key = cp_roster_farid_line_alive }
+	text = { trigger = { has_variable = cp_dawud_active_slot var:cp_dawud_active_slot = 3 } localization_key = cp_roster_dawud_line_alive }
+	text = { trigger = { has_variable = cp_rashid_active_slot var:cp_rashid_active_slot = 3 } localization_key = cp_roster_rashid_line_alive }
+	text = { trigger = { has_variable = cp_salma_active_slot var:cp_salma_active_slot = 3 } localization_key = cp_roster_salma_line_alive }
+	text = { trigger = { has_variable = cp_karim_active_slot var:cp_karim_active_slot = 3 } localization_key = cp_roster_karim_line_alive }
+	text = { trigger = { has_variable = cp_huda_active_slot var:cp_huda_active_slot = 3 } localization_key = cp_roster_huda_line_alive }
+	text = { trigger = { has_variable = cp_nabil_active_slot var:cp_nabil_active_slot = 3 } localization_key = cp_roster_nabil_line_alive }
+	text = { trigger = { has_variable = cp_mansur_active_slot var:cp_mansur_active_slot = 3 } localization_key = cp_roster_mansur_line_alive }
+	text = { localization_key = cp_common_people_active_slot_empty }
+}
+
+
+# ============================================================================
+# Current-life sentence per person
+# ============================================================================
+# These keep each active journal row reactive without bringing back per-person
+# journal entries. More specific recent/life-changing flags rank above the
+# person's baseline.
+
+cp_roster_layla_current = {
+	type = country
+	text = { trigger = { has_variable = cp_layla_ahmed_at_war } localization_key = cp_roster_layla_current_war }
+	text = { trigger = { has_variable = cp_layla_ahmed_alive var:cp_layla_ahmed_alive = 0 } localization_key = cp_roster_layla_current_widow }
+	text = { trigger = { has_variable = cp_layla_under_serfdom } localization_key = cp_roster_layla_current_serfdom }
+	text = { trigger = { has_variable = cp_layla_owns_land } localization_key = cp_roster_layla_current_land }
+	text = { trigger = { has_variable = cp_layla_in_city } localization_key = cp_roster_layla_current_city }
+	text = { localization_key = cp_roster_layla_current_default }
+}
+
+cp_roster_bey_current = {
+	type = country
+	text = { trigger = { has_variable = cp_bey_seen_factory_boundary } localization_key = cp_roster_bey_current_factory }
+	text = { trigger = { has_variable = cp_bey_seen_commercialized } localization_key = cp_roster_bey_current_commercialized }
+	text = { trigger = { has_variable = cp_bey_seen_serfdom_restored } localization_key = cp_roster_bey_current_serfdom }
+	text = { trigger = { has_variable = cp_bey_seen_visitors_card } localization_key = cp_roster_bey_current_visitors }
+	text = { trigger = { has_variable = cp_bey_seen_homesteading } localization_key = cp_roster_bey_current_homesteading }
+	text = { localization_key = cp_roster_bey_current_default }
+}
+
+cp_roster_soldier_current = {
+	type = country
+	text = { trigger = { has_variable = cp_soldier_at_war } localization_key = cp_roster_soldier_current_war }
+	text = { trigger = { has_variable = cp_soldier_seen_return } localization_key = cp_roster_soldier_current_return }
+	text = { trigger = { has_variable = cp_soldier_seen_arsenal_gate } localization_key = cp_roster_soldier_current_arsenal }
+	text = { trigger = { has_variable = cp_soldier_seen_letter_folded } localization_key = cp_roster_soldier_current_letter }
+	text = { trigger = { has_variable = cp_soldier_seen_beans_dusk } localization_key = cp_roster_soldier_current_beans }
+	text = { trigger = { has_variable = cp_soldier_seen_notice } localization_key = cp_roster_soldier_current_notice }
+	text = { localization_key = cp_roster_soldier_current_default }
+}
+
+cp_roster_nour_current = {
+	type = country
+	text = { trigger = { has_variable = cp_nour_has_property_paper } localization_key = cp_roster_nour_current_paper }
+	text = { trigger = { has_variable = cp_nour_found_in_register } localization_key = cp_roster_nour_current_register }
+	text = { trigger = { has_variable = cp_nour_seen_register_shelf } localization_key = cp_roster_nour_current_register }
+	text = { trigger = { has_variable = cp_nour_seen_key_under_pillow } localization_key = cp_roster_nour_current_key }
+	text = { trigger = { has_variable = cp_nour_seen_morning_account } localization_key = cp_roster_nour_current_morning }
+	text = { trigger = { has_variable = cp_nour_seen_rent_receipt } localization_key = cp_roster_nour_current_rent }
+	text = { trigger = { has_variable = cp_nour_seen_property_rights } localization_key = cp_roster_nour_current_paper }
+	text = { localization_key = cp_roster_nour_current_default }
+}
+
+cp_roster_mina_current = {
+	type = country
+	text = { trigger = { has_variable = cp_mina_printed_primer } localization_key = cp_roster_mina_current_schools }
+	text = { trigger = { has_variable = cp_mina_prints_public_notices } localization_key = cp_roster_mina_current_notices }
+	text = { trigger = { has_variable = cp_mina_seen_notice_sheet } localization_key = cp_roster_mina_current_notices }
+	text = { trigger = { has_variable = cp_mina_prints_catalogues } localization_key = cp_roster_mina_current_catalogues }
+	text = { trigger = { has_variable = cp_mina_seen_catalogue_room } localization_key = cp_roster_mina_current_catalogues }
+	text = { trigger = { has_variable = cp_mina_seen_courtyard_sheet } localization_key = cp_roster_mina_current_courtyard }
+	text = { trigger = { has_variable = cp_mina_seen_night_proof } localization_key = cp_roster_mina_current_night }
+	text = { trigger = { has_variable = cp_mina_seen_public_schools } localization_key = cp_roster_mina_current_schools }
+	text = { localization_key = cp_roster_mina_current_default }
+}
+
+cp_roster_zaynab_current = {
+	type = country
+	text = { trigger = { has_variable = cp_zaynab_seen_lime_bucket } localization_key = cp_roster_zaynab_current_health }
+	text = { trigger = { has_variable = cp_zaynab_seen_fever_bowl } localization_key = cp_roster_zaynab_current_fever }
+	text = { trigger = { has_variable = cp_zaynab_seen_long_night } localization_key = cp_roster_zaynab_current_night }
+	text = { trigger = { has_variable = cp_zaynab_seen_thread_wrist } localization_key = cp_roster_zaynab_current_thread }
+	text = { trigger = { has_variable = cp_zaynab_seen_public_health } localization_key = cp_roster_zaynab_current_public_health }
+	text = { localization_key = cp_roster_zaynab_current_default }
+}
+
+cp_roster_samier_current = {
+	type = country
+	text = { trigger = { has_variable = cp_samier_seen_labor_law } localization_key = cp_roster_samier_current_law }
+	text = { trigger = { has_variable = cp_samier_seen_red_thread } localization_key = cp_roster_samier_current_injury }
+	text = { trigger = { has_variable = cp_samier_seen_false_quarter } localization_key = cp_roster_samier_current_false }
+	text = { trigger = { has_variable = cp_samier_seen_letters_after_bell } localization_key = cp_roster_samier_current_letters }
+	text = { trigger = { has_variable = cp_samier_seen_gate_bread } localization_key = cp_roster_samier_current_gate }
+	text = { localization_key = cp_roster_samier_current_default }
+}
+
+cp_roster_tarek_current = {
+	type = country
+	text = { trigger = { has_variable = cp_tarek_seen_labor_law } localization_key = cp_roster_tarek_current_law }
+	text = { trigger = { has_variable = cp_tarek_seen_new_boiler } localization_key = cp_roster_tarek_current_boiler }
+	text = { trigger = { has_variable = cp_tarek_seen_locked_gate } localization_key = cp_roster_tarek_current_gate }
+	text = { trigger = { has_variable = cp_tarek_seen_second_chimney } localization_key = cp_roster_tarek_current_chimney }
+	text = { trigger = { has_variable = cp_tarek_seen_account_book } localization_key = cp_roster_tarek_current_account }
+	text = { localization_key = cp_roster_tarek_current_default }
+}
+
+cp_roster_farid_current = {
+	type = country
+	text = { trigger = { has_variable = cp_farid_seen_telegraph } localization_key = cp_roster_farid_current_telegraph }
+	text = { trigger = { has_variable = cp_farid_seen_new_carriage } localization_key = cp_roster_farid_current_carriage }
+	text = { trigger = { has_variable = cp_farid_seen_parcel_bag } localization_key = cp_roster_farid_current_parcel }
+	text = { trigger = { has_variable = cp_farid_seen_night_shift } localization_key = cp_roster_farid_current_night }
+	text = { trigger = { has_variable = cp_farid_seen_rail_yard } localization_key = cp_roster_farid_current_rail }
+	text = { localization_key = cp_roster_farid_current_default }
+}
+
+cp_roster_dawud_current = {
+	type = country
+	text = { trigger = { has_variable = cp_dawud_seen_cranes } localization_key = cp_roster_dawud_current_cranes }
+	text = { trigger = { has_variable = cp_dawud_seen_tariff_chalk } localization_key = cp_roster_dawud_current_tariff }
+	text = { trigger = { has_variable = cp_dawud_seen_manifest_room } localization_key = cp_roster_dawud_current_manifest }
+	text = { trigger = { has_variable = cp_dawud_seen_salt_floor } localization_key = cp_roster_dawud_current_salt }
+	text = { trigger = { has_variable = cp_dawud_seen_steamship } localization_key = cp_roster_dawud_current_steamship }
+	text = { localization_key = cp_roster_dawud_current_default }
+}
+
+cp_roster_rashid_current = {
+	type = country
+	text = { trigger = { has_variable = cp_rashid_seen_identification } localization_key = cp_roster_rashid_current_id }
+	text = { trigger = { has_variable = cp_rashid_seen_archives } localization_key = cp_roster_rashid_current_archive }
+	text = { trigger = { has_variable = cp_rashid_seen_new_seal } localization_key = cp_roster_rashid_current_seal }
+	text = { trigger = { has_variable = cp_rashid_seen_numbered_drawer } localization_key = cp_roster_rashid_current_drawer }
+	text = { trigger = { has_variable = cp_rashid_seen_ink_dust } localization_key = cp_roster_rashid_current_ink }
+	text = { localization_key = cp_roster_rashid_current_default }
+}
+
+cp_roster_salma_current = {
+	type = country
+	text = { trigger = { has_variable = cp_salma_seen_radio_room } localization_key = cp_roster_salma_current_radio }
+	text = { trigger = { has_variable = cp_salma_seen_first_light } localization_key = cp_roster_salma_current_light }
+	text = { trigger = { has_variable = cp_salma_seen_burned_fuse } localization_key = cp_roster_salma_current_fuse }
+	text = { trigger = { has_variable = cp_salma_seen_crossed_line } localization_key = cp_roster_salma_current_crossed }
+	text = { trigger = { has_variable = cp_salma_seen_night_bell } localization_key = cp_roster_salma_current_night }
+	text = { localization_key = cp_roster_salma_current_default }
+}
+
+cp_roster_karim_current = {
+	type = country
+	text = { trigger = { has_variable = cp_karim_seen_new_engine } localization_key = cp_roster_karim_current_engine }
+	text = { trigger = { has_variable = cp_karim_seen_broken_finger } localization_key = cp_roster_karim_current_finger }
+	text = { trigger = { has_variable = cp_karim_seen_night_gauge } localization_key = cp_roster_karim_current_gauge }
+	text = { trigger = { has_variable = cp_karim_seen_steel_color } localization_key = cp_roster_karim_current_steel }
+	text = { trigger = { has_variable = cp_karim_seen_tool_bench } localization_key = cp_roster_karim_current_tool }
+	text = { localization_key = cp_roster_karim_current_default }
+}
+
+cp_roster_huda_current = {
+	type = country
+	text = { trigger = { has_variable = cp_huda_seen_clean_water } localization_key = cp_roster_huda_current_water }
+	text = { trigger = { has_variable = cp_huda_seen_rent_book } localization_key = cp_roster_huda_current_rent }
+	text = { trigger = { has_variable = cp_huda_seen_roof_patch } localization_key = cp_roster_huda_current_roof }
+	text = { trigger = { has_variable = cp_huda_seen_white_road } localization_key = cp_roster_huda_current_road }
+	text = { trigger = { has_variable = cp_huda_seen_building_work } localization_key = cp_roster_huda_current_building }
+	text = { localization_key = cp_roster_huda_current_default }
+}
+
+cp_roster_nabil_current = {
+	type = country
+	text = { trigger = { has_variable = cp_nabil_seen_square_afterward } localization_key = cp_roster_nabil_current_square }
+	text = { trigger = { has_variable = cp_nabil_seen_rifles } localization_key = cp_roster_nabil_current_rifles }
+	text = { trigger = { has_variable = cp_nabil_seen_station } localization_key = cp_roster_nabil_current_station }
+	text = { trigger = { has_variable = cp_nabil_seen_complaint_bench } localization_key = cp_roster_nabil_current_complaint }
+	text = { trigger = { has_variable = cp_nabil_seen_lost_boy } localization_key = cp_roster_nabil_current_lost }
+	text = { localization_key = cp_roster_nabil_current_default }
+}
+
+cp_roster_mansur_current = {
+	type = country
+	text = { trigger = { has_variable = cp_mansur_seen_first_wage } localization_key = cp_roster_mansur_current_wage }
+	text = { trigger = { has_variable = cp_mansur_seen_belt } localization_key = cp_roster_mansur_current_belt }
+	text = { trigger = { has_variable = cp_mansur_seen_bed_rent } localization_key = cp_roster_mansur_current_rent }
+	text = { trigger = { has_variable = cp_mansur_seen_meal_tin } localization_key = cp_roster_mansur_current_meal }
+	text = { trigger = { has_variable = cp_mansur_seen_remittance } localization_key = cp_roster_mansur_current_remittance }
+	text = { localization_key = cp_roster_mansur_current_default }
+}

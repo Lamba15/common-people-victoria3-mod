@@ -1,0 +1,212 @@
+﻿###############################################################################
+# Common People -- shared roster action-button availability
+#
+# These triggers mirror the player-click action pools. Keeping the availability
+# checks separate lets the shared JE disable a person's button when every
+# currently eligible scene has already been seen.
+###############################################################################
+
+cp_shared_action_layla_available = {
+	cp_person_is_alive = { person = layla }
+	OR = {
+		AND = { has_variable = cp_layla_ahmed_at_war NOT = { has_variable = cp_layla_seen_letter } }
+		AND = { has_variable = cp_layla_owns_land NOT = { has_variable = cp_layla_seen_walking_field } }
+		AND = { has_variable = cp_layla_under_serfdom NOT = { has_variable = cp_layla_seen_under_beys_eye } }
+		NOT = { has_variable = cp_layla_seen_no_wind }
+		NOT = { has_variable = cp_layla_seen_neighbours_boy }
+		NOT = { has_variable = cp_layla_seen_mothers_hand }
+		NOT = { has_variable = cp_layla_seen_hen }
+		NOT = { has_variable = cp_layla_seen_scale }
+		NOT = { has_variable = cp_layla_seen_river_low }
+		NOT = { has_variable = cp_layla_seen_old_woman }
+		NOT = { has_variable = cp_layla_seen_bread }
+		NOT = { has_variable = cp_layla_seen_dust }
+		NOT = { has_variable = cp_layla_seen_brother }
+		NOT = { has_variable = cp_layla_seen_mule }
+		AND = { has_variable = cp_layla_may_vote NOT = { has_variable = cp_layla_has_voted } }
+		var:cp_layla_sol <= 10
+		has_variable = cp_layla_owns_land
+		AND = { has_variable = cp_layla_daughter_at_school NOT = { has_variable = cp_layla_seen_daughter_reads } }
+		AND = {
+			OR = {
+				has_law = law_type:law_debt_slavery
+				has_law = law_type:law_legacy_slavery
+				has_law = law_type:law_slave_trade
+			}
+			NOT = { has_variable = cp_layla_seen_slaves_pulse }
+		}
+		NOT = { has_variable = cp_layla_seen_ramadan }
+		NOT = { has_variable = cp_layla_seen_flood }
+		NOT = { has_variable = cp_layla_seen_hajj }
+		NOT = { has_variable = cp_layla_seen_midwife_lamp }
+		NOT = { has_variable = cp_layla_seen_date_harvest }
+		NOT = { has_variable = cp_layla_seen_coffee_arrival }
+		NOT = { has_variable = cp_layla_seen_sugar_cheap }
+		NOT = { has_variable = cp_layla_seen_cloth_affordable }
+		AND = {
+			OR = {
+				has_variable = cp_layla_profession_laborers
+				has_variable = cp_layla_ahmed_profession_laborer
+			}
+			OR = {
+				has_law = law_type:law_right_to_associate
+				has_law = law_type:law_corporatized_unions
+				has_law = law_type:law_factory_councils
+			}
+			NOT = { has_variable = cp_layla_seen_strike }
+		}
+		NOT = { has_variable = cp_layla_seen_imam_visit }
+		NOT = { has_variable = cp_layla_seen_small_victory }
+		NOT = { has_variable = cp_layla_seen_mariam_letter }
+	}
+}
+
+cp_shared_action_bey_available = {
+	cp_person_is_alive = { person = bey }
+	OR = {
+		NOT = { has_variable = cp_bey_seen_intro }
+		AND = { has_variable = cp_bey_seen_intro NOT = { has_variable = cp_bey_seen_visitors_card } }
+	}
+}
+
+cp_shared_action_soldier_available = {
+	cp_person_is_alive = { person = soldier }
+	OR = {
+		AND = { NOT = { has_variable = cp_soldier_seen_intro } NOT = { has_variable = cp_soldier_at_war } }
+		AND = { has_variable = cp_soldier_seen_intro NOT = { has_variable = cp_soldier_at_war } NOT = { has_variable = cp_soldier_seen_beans_dusk } }
+		AND = { has_variable = cp_soldier_at_war has_variable = cp_soldier_seen_notice NOT = { has_variable = cp_soldier_seen_letter_folded } }
+	}
+}
+
+cp_shared_action_nour_available = {
+	cp_person_is_alive = { person = nour }
+	OR = {
+		NOT = { has_variable = cp_nour_seen_intro }
+		AND = { has_variable = cp_nour_seen_intro NOT = { has_variable = cp_nour_seen_key_under_pillow } }
+		AND = { has_variable = cp_nour_seen_intro NOT = { has_variable = cp_nour_seen_morning_account } }
+	}
+}
+
+cp_shared_action_mina_available = {
+	cp_person_is_alive = { person = mina }
+	OR = {
+		NOT = { has_variable = cp_mina_seen_intro }
+		AND = { has_variable = cp_mina_seen_intro NOT = { has_variable = cp_mina_seen_night_proof } }
+		AND = { has_variable = cp_mina_seen_intro NOT = { has_variable = cp_mina_seen_courtyard_sheet } }
+	}
+}
+
+cp_shared_action_zaynab_available = {
+	cp_person_is_alive = { person = zaynab }
+	OR = {
+		NOT = { has_variable = cp_zaynab_seen_intro }
+		AND = { has_variable = cp_zaynab_seen_intro NOT = { has_variable = cp_zaynab_seen_long_night } }
+		AND = { has_variable = cp_zaynab_seen_intro NOT = { has_variable = cp_zaynab_seen_thread_wrist } }
+	}
+}
+
+cp_shared_action_samier_available = {
+	cp_person_is_alive = { person = samier }
+	OR = {
+		NOT = { has_variable = cp_samier_seen_intro }
+		AND = { has_variable = cp_samier_seen_intro NOT = { has_variable = cp_samier_seen_gate_bread } }
+		AND = { has_variable = cp_samier_seen_intro cp_person_home_has_manufacturing = { person = samier } cp_country_workers_unprotected = yes NOT = { has_variable = cp_samier_seen_false_quarter } }
+		AND = { has_variable = cp_samier_seen_intro has_law = law_type:law_public_schools NOT = { has_variable = cp_samier_seen_letters_after_bell } }
+	}
+}
+
+cp_shared_action_tarek_available = {
+	cp_person_is_alive = { person = tarek }
+	OR = {
+		NOT = { has_variable = cp_tarek_seen_intro }
+		AND = { has_variable = cp_tarek_seen_intro NOT = { has_variable = cp_tarek_seen_account_book } }
+		AND = { has_variable = cp_tarek_seen_intro cp_person_home_has_manufacturing = { person = tarek } NOT = { has_variable = cp_tarek_seen_second_chimney } }
+		AND = { has_variable = cp_tarek_seen_intro cp_country_workers_unprotected = yes NOT = { has_variable = cp_tarek_seen_locked_gate } }
+	}
+}
+
+cp_shared_action_farid_available = {
+	cp_person_is_alive = { person = farid }
+	OR = {
+		NOT = { has_variable = cp_farid_seen_intro }
+		AND = { has_variable = cp_farid_seen_intro NOT = { has_variable = cp_farid_seen_night_shift } }
+		AND = { has_variable = cp_farid_seen_intro NOT = { has_variable = cp_farid_seen_parcel_bag } }
+	}
+}
+
+cp_shared_action_dawud_available = {
+	cp_person_is_alive = { person = dawud }
+	OR = {
+		NOT = { has_variable = cp_dawud_seen_intro }
+		AND = { has_variable = cp_dawud_seen_intro NOT = { has_variable = cp_dawud_seen_salt_floor } }
+		AND = { has_variable = cp_dawud_seen_intro NOT = { has_variable = cp_dawud_seen_manifest_room } }
+	}
+}
+
+cp_shared_action_rashid_available = {
+	cp_person_is_alive = { person = rashid }
+	OR = {
+		NOT = { has_variable = cp_rashid_seen_intro }
+		AND = { has_variable = cp_rashid_seen_intro NOT = { has_variable = cp_rashid_seen_ink_dust } }
+		AND = { has_variable = cp_rashid_seen_intro NOT = { has_variable = cp_rashid_seen_numbered_drawer } }
+	}
+}
+
+cp_shared_action_salma_available = {
+	cp_person_is_alive = { person = salma }
+	OR = {
+		NOT = { has_variable = cp_salma_seen_intro }
+		AND = { has_variable = cp_salma_seen_intro NOT = { has_variable = cp_salma_seen_night_bell } }
+		AND = { has_variable = cp_salma_seen_first_light cp_person_home_has_electric_service = { person = salma } NOT = { has_variable = cp_salma_seen_burned_fuse } }
+		AND = { has_variable = cp_salma_seen_intro cp_person_home_has_telephone_network = { person = salma } NOT = { has_variable = cp_salma_seen_crossed_line } }
+	}
+}
+
+cp_shared_action_karim_available = {
+	cp_person_is_alive = { person = karim }
+	OR = {
+		NOT = { has_variable = cp_karim_seen_intro }
+		AND = { has_variable = cp_karim_seen_intro NOT = { has_variable = cp_karim_seen_broken_finger } }
+		AND = { has_variable = cp_karim_seen_intro NOT = { has_variable = cp_karim_seen_night_gauge } }
+	}
+}
+
+cp_shared_action_huda_available = {
+	cp_person_is_alive = { person = huda }
+	OR = {
+		NOT = { has_variable = cp_huda_seen_intro }
+		AND = { has_variable = cp_huda_seen_intro cp_person_home_has_urban_growth = { person = huda } NOT = { has_variable = cp_huda_seen_rent_book } }
+		AND = { has_variable = cp_huda_seen_intro has_technology_researched = modern_sewerage NOT = { has_variable = cp_huda_seen_clean_water } }
+		AND = { has_variable = cp_huda_seen_intro cp_person_home_has_urban_growth = { person = huda } NOT = { has_variable = cp_huda_seen_roof_patch } }
+		AND = { has_variable = cp_huda_seen_intro has_technology_researched = paved_roads NOT = { has_variable = cp_huda_seen_white_road } }
+	}
+}
+
+cp_shared_action_nabil_available = {
+	cp_person_is_alive = { person = nabil }
+	OR = {
+		NOT = { has_variable = cp_nabil_seen_intro }
+		AND = { has_variable = cp_nabil_seen_intro cp_country_has_public_order_pressure = yes NOT = { has_variable = cp_nabil_seen_square_afterward } }
+		AND = { has_variable = cp_nabil_seen_intro NOT = { has_variable = cp_nabil_seen_lost_boy } }
+		AND = {
+			has_variable = cp_nabil_seen_intro
+			OR = {
+				has_variable = cp_nabil_seen_station
+				has_law = law_type:law_dedicated_police
+			}
+			NOT = { has_variable = cp_nabil_seen_complaint_bench }
+		}
+	}
+}
+
+cp_shared_action_mansur_available = {
+	cp_person_is_alive = { person = mansur }
+	OR = {
+		NOT = { has_variable = cp_mansur_seen_intro }
+		AND = { has_variable = cp_mansur_seen_intro NOT = { has_variable = cp_mansur_seen_first_wage } }
+		AND = { has_variable = cp_mansur_seen_intro cp_person_home_has_machine_industry = { person = mansur } NOT = { has_variable = cp_mansur_seen_belt } }
+		AND = { has_variable = cp_mansur_seen_first_wage NOT = { has_variable = cp_mansur_seen_remittance } }
+		AND = { has_variable = cp_mansur_seen_intro NOT = { has_variable = cp_mansur_seen_bed_rent } }
+		AND = { has_variable = cp_mansur_seen_first_wage NOT = { has_variable = cp_mansur_seen_meal_tin } }
+	}
+}

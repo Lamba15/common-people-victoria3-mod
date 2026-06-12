@@ -15,6 +15,17 @@ Each anchor lives in its own folder: `README.md` holds the profile/weights/hooks
 | [tarek/](tarek/) | Tarek al-Rashidi | Misri (Egypt) | Capitalist | Landowner's son who sold the estate and built a factory |
 | [samier/](samier/) | Samier | Misri (Egypt) | Laborer | Factory worker whose anger either radicalizes or is bought off |
 | [the-soldier/](the-soldier/) | The Soldier | Generic | Servicemen | Conscript archetype, reusable for every war |
+| [nour/](nour/) | Nour | Misri (Egypt) | Shopkeeper | Woman whose household paper makes rights-of-women reforms intimate |
+| [mina/](mina/) | Mina | Misri (Egypt) | Clerk | Coptic printer's apprentice making schools and public words tangible |
+| [zaynab/](zaynab/) | Zaynab | Misri (Egypt) | Midwife | Village healer making public health a matter of trust |
+| [farid/](farid/) | Farid al-Haddad | Misri (Egypt) | Laborer | Railway porter making rails and telegraphy visible from the platform |
+| [dawud/](dawud/) | Dawud Hanna | Misri (Egypt) | Laborer | Dockworker making ports, steamships, and cargo cranes visible by hand |
+| [rashid/](rashid/) | Rashid al-Katib | Misri (Egypt) | Bureaucrat | Low clerk making offices, archives, and identity papers visible at the counter |
+| [salma/](salma/) | Salma Farag | Misri (Egypt) | Clerk | Switchboard clerk making electricity, telephones, and radio audible by hand |
+| [karim/](karim/) | Karim al-Nahhas | Misri (Egypt) | Machinist | Skilled machinist making tools, engines, and factory risk audible by hand |
+| [huda/](huda/) | Huda al-Matariya | Misri (Egypt) | Laborer | City lodger making urban growth, rent, water, and construction visible upstairs |
+| [mansur/](mansur/) | Mansur al-Mahalla | Misri (Egypt) | Laborer | Factory migrant making wages, boarding rooms, and remittances visible by hand |
+| [nabil/](nabil/) | Nabil al-Haras | Misri (Egypt) | Laborer | Night watchman making policing, dissent, and public order visible at street level |
 
 ## Lightweight Characters
 

@@ -1,0 +1,276 @@
+﻿###############################################################################
+# Common People -- Salma Farag's memory
+#
+# Person 12 scaffold. Salma is registered as `salma`, not as a V3 character.
+# She enters conditionally when electric service, telephones, or radio make
+# late-century communication visible through ordinary clerical labor.
+###############################################################################
+
+
+# --- Refresh SoL from pop cohort -------------------------------------------
+cp_salma_refresh_sol = {
+	cp_refresh_sol_from_pop = {
+		person = salma
+		culture = misri
+		religion = sunni
+		poptype = clerks
+	}
+}
+
+
+# --- Conditional entry ------------------------------------------------------
+cp_salma_try_spawn = {
+	if = {
+		limit = {
+			c:EGY ?= this
+			NOT = { has_global_variable = cp_person_salma_alive }
+			NOT = { has_variable = cp_salma_alive }
+			OR = {
+				cp_country_has_electric_service = yes
+				cp_country_has_telephone_network = yes
+				has_technology_researched = telephone
+			}
+		}
+		cp_mark_person_spawn_home_from_electric_service = { person = salma }
+		cp_register_person = {
+			person = salma
+			country = EGY
+		}
+		cp_salma_dispatch_startup = yes
+		trigger_event = { id = cp_salma.1 }
+	}
+}
+
+
+# --- Dispatcher branches ----------------------------------------------------
+cp_salma_dispatch_startup = {
+	cp_person_hook_noop = yes
+}
+
+cp_salma_dispatch_monthly = {
+	cp_person_hook_noop = yes
+}
+
+cp_salma_dispatch_yearly = {
+	cp_age_increment = { person = salma }
+	cp_salma_refresh_sol = yes
+	cp_person_yearly_lifecycle = { person = salma country = EGY }
+	if = {
+		limit = {
+			has_technology_researched = electrical_generation
+			NOT = { has_variable = cp_salma_seen_first_light }
+		}
+		random_list = {
+			30 = { cp_try_fire_world_response = { event = cp_salma.20 person = salma } }
+			70 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = cp_salma_seen_first_light
+			NOT = { has_variable = cp_salma_seen_burned_fuse }
+			cp_person_home_has_electric_service = { person = salma }
+		}
+		random_list = {
+			10 = { cp_try_fire_world_response = { event = cp_salma.50 person = salma } }
+			90 = { }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = cp_salma_seen_intro
+			NOT = { has_variable = cp_salma_seen_crossed_line }
+			cp_person_home_has_telephone_network = { person = salma }
+		}
+		random_list = {
+			10 = { cp_try_fire_world_response = { event = cp_salma.60 person = salma } }
+			90 = { }
+		}
+	}
+}
+
+cp_salma_dispatch_law_enacted = {
+	cp_person_hook_noop = yes
+}
+
+cp_salma_dispatch_war_started = {
+	cp_person_hook_noop = yes
+}
+
+cp_salma_dispatch_war_end = {
+	cp_person_hook_noop = yes
+}
+
+cp_salma_dispatch_tech = {
+	if = {
+		limit = {
+			has_technology_researched = telephone
+			NOT = { has_variable = cp_salma_seen_intro }
+		}
+		cp_try_fire_world_response = { event = cp_salma.10 person = salma }
+	}
+	if = {
+		limit = {
+			has_technology_researched = electrical_generation
+			NOT = { has_variable = cp_salma_seen_first_light }
+		}
+		cp_try_fire_world_response = { event = cp_salma.20 person = salma }
+	}
+	if = {
+		limit = {
+			has_technology_researched = radio
+			NOT = { has_variable = cp_salma_seen_radio_room }
+		}
+		cp_try_fire_world_response = { event = cp_salma.30 person = salma }
+	}
+	if = {
+		limit = {
+			has_technology_researched = electrical_generation
+			has_variable = cp_salma_seen_first_light
+			NOT = { has_variable = cp_salma_seen_burned_fuse }
+		}
+		cp_try_fire_world_response = { event = cp_salma.50 person = salma }
+	}
+	if = {
+		limit = {
+			has_technology_researched = telephone
+			has_variable = cp_salma_seen_intro
+			NOT = { has_variable = cp_salma_seen_crossed_line }
+		}
+		cp_try_fire_world_response = { event = cp_salma.60 person = salma }
+	}
+}
+
+cp_salma_dispatch_building = {
+	if = {
+		limit = {
+			OR = {
+				is_building_type = building_electrics_industry
+				is_building_type = building_power_plant
+			}
+			cp_building_affects_person_workplace = { person = salma }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = salma }
+				NOT = { has_variable = cp_salma_seen_intro }
+			}
+		}
+		owner ?= {
+			random_list = {
+				60 = { cp_try_fire_world_response = { event = cp_salma.10 person = salma } }
+				40 = { }
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				is_building_type = building_electrics_industry
+				is_building_type = building_power_plant
+			}
+			cp_building_affects_person_workplace = { person = salma }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = salma }
+				has_variable = cp_salma_seen_first_light
+				NOT = { has_variable = cp_salma_seen_burned_fuse }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_salma.50 person = salma }
+		}
+	}
+	if = {
+		limit = {
+			is_building_type = building_electrics_industry
+			cp_building_affects_person_workplace = { person = salma }
+			owner ?= {
+				THIS = c:EGY
+				cp_person_is_alive = { person = salma }
+				has_variable = cp_salma_seen_intro
+				NOT = { has_variable = cp_salma_seen_crossed_line }
+			}
+		}
+		owner ?= {
+			cp_try_fire_world_response = { event = cp_salma.60 person = salma }
+		}
+	}
+}
+
+cp_salma_dispatch_revolution = {
+	cp_person_hook_noop = yes
+}
+
+
+# --- Event effects ----------------------------------------------------------
+cp_salma_mark_intro = {
+	cp_mark_event_seen = { person = salma id = intro days = 3650 }
+	cp_shift_literacy = { person = salma delta = 1 }
+	cp_shift_weight = { person = salma weight = wires delta = 1 }
+}
+
+cp_salma_mark_first_light = {
+	cp_mark_event_seen = { person = salma id = first_light days = 1825 }
+	cp_shift_hope = { person = salma delta = 1 }
+	cp_shift_weight = { person = salma weight = electricity delta = 2 }
+}
+
+cp_salma_mark_radio_room = {
+	cp_mark_event_seen = { person = salma id = radio_room days = 1825 }
+	cp_shift_literacy = { person = salma delta = 1 }
+	cp_shift_weight = { person = salma weight = distance delta = 2 }
+}
+
+cp_salma_mark_night_bell = {
+	cp_mark_event_seen = { person = salma id = night_bell days = 540 }
+	cp_shift_exhaustion = { person = salma delta = 1 }
+}
+
+cp_salma_mark_burned_fuse = {
+	cp_mark_event_seen = { person = salma id = burned_fuse days = 720 }
+	cp_shift_exhaustion = { person = salma delta = 1 }
+	cp_shift_weight = { person = salma weight = electricity delta = 1 }
+	cp_shift_weight = { person = salma weight = work delta = 1 }
+}
+
+cp_salma_mark_crossed_line = {
+	cp_mark_event_seen = { person = salma id = crossed_line days = 720 }
+	cp_shift_exhaustion = { person = salma delta = 1 }
+	cp_shift_weight = { person = salma weight = distance delta = 1 }
+	cp_shift_weight = { person = salma weight = family delta = 1 }
+}
+
+
+# --- Ambient pool -----------------------------------------------------------
+cp_roll_ambient_salma = {
+	random_list = {
+		10 = {
+			trigger = {
+				NOT = { has_variable = cp_salma_seen_intro }
+			}
+			cp_try_fire_ambient = { event = cp_salma.10 person = salma }
+		}
+		8 = {
+			trigger = {
+				has_variable = cp_salma_seen_intro
+				NOT = { has_variable = cp_salma_seen_night_bell }
+			}
+			cp_try_fire_ambient = { event = cp_salma.40 person = salma }
+		}
+		7 = {
+			trigger = {
+				has_variable = cp_salma_seen_first_light
+				NOT = { has_variable = cp_salma_seen_burned_fuse }
+			}
+			cp_try_fire_ambient = { event = cp_salma.50 person = salma }
+		}
+		7 = {
+			trigger = {
+				has_variable = cp_salma_seen_intro
+				NOT = { has_variable = cp_salma_seen_crossed_line }
+			}
+			cp_try_fire_ambient = { event = cp_salma.60 person = salma }
+		}
+		68 = { }
+	}
+}

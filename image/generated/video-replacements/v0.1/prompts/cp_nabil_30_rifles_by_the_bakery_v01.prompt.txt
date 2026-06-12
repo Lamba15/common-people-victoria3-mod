@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_nabil.30 at mod/events/cp_nabil_events.txt:134
+Previous vanilla video placeholder: africa_public_protest
+Target DDS: mod/gfx/event_pictures/cp_nabil_30_rifles_by_the_bakery_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_nabil_30_rifles_by_the_bakery_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_nabil.30
+Person token: nabil
+Title: Rifles by the Bakery
+Short description: The rifles arrive before the bread. Four men stand outside the bakery with their straps white against dark jackets, and the morning crowd learns to lower its voice while still arguing over loaves. Nabil is told to keep people moving. He keeps them moving by touching no one. A boy asks whether the soldiers are here for thieves, and his mother closes his mouth with her hand. Across the street, a letter is folded into a sleeve before anyone can read it twice. The smell of hot bread comes through the line of metal and makes the whole arrangement uglier.
+Flavor text: Fear is easiest to organize when everyone is hungry.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

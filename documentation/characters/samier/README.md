@@ -1,5 +1,15 @@
 # Samier the Factory Worker (Egypt)
 
+## Implementation Status
+
+First scaffold landed in the v0.5 rebuild:
+
+- Name token: `samier`
+- Script files: `mod/events/cp_samier_events.txt`, `mod/common/scripted_effects/cp_samier_memory.txt`, `mod/localization/english/cp_samier_l_english.yml`
+- Shared wiring: `cp_samier_try_spawn` conditionally registers him on the yearly pulse once Egypt has incorporated manufacturing under `law_no_workers_rights`, `cp_roll_for_event` gives him a 7-weight ambient branch after registration, and `cp_on_law_enacted` routes his worker-protection law reaction once alive.
+- Images: `cp_samier.10` uses `southamerica_factory_opening`; `cp_samier.30` uses `unspecific_gears_pistons`; `cp_samier.40` uses `middleeast_middleclass_cafe`; `cp_samier_labor_law.dds` remains a shipped DDS. The generated intro still is archived as a motion-replaced source under `image/archive/motion-replaced-event-pictures/v0.16/`, with source files under `image/generated/samier/v0.1/`.
+- Current content: factory-arrival opener (`cp_samier.10`), worker-protection law reaction (`cp_samier.20`), unsafe-machine world response (`cp_samier.30`), shared-bread ambient beat (`cp_samier.40`), wage-clock exploitation beat (`cp_samier.50`), and night-literacy response (`cp_samier.60`). Strike branch, radicalization path, death event, JE, button, and conversation tree remain future work.
+
 ## Profile
 
 - **Pop type**: Laborer / Machinist
@@ -60,7 +70,7 @@ scope:samier = {
 }
 ```
 
-On-actions: `on_law_enacted` (workers' rights), yearly pulse (accidents, SoL), `on_revolution_start`, high turmoil in his state.
+On-actions: `on_law_enactment_pass` (workers' rights), yearly pulse (accidents, SoL), `on_revolution_start`, high turmoil in his state.
 
 ## Main Arc (7 chapters)
 

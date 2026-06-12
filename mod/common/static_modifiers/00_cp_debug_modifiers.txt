@@ -1,0 +1,11 @@
+﻿# Debug modifiers for testing law enactment paths. Not shipped in content.
+
+cp_debug_weak_ig = {
+	interest_group_pol_str_mult = -0.95
+	interest_group_approval_add = -100
+}
+
+cp_debug_strong_ig = {
+	interest_group_pol_str_mult = 9.0
+	interest_group_approval_add = 100
+}

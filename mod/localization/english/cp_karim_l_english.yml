@@ -1,0 +1,30 @@
+﻿l_english:
+ cp_karim.10.t:0 "The Iron Teeth"
+ cp_karim.10.d:0 "Karim al-Nahhas learns the new machine by listening to what it refuses. A belt slaps. A gear complains behind its cover. The foreman says it is English iron and therefore exact, but Karim has seen exact things chew cloth, wood, and flesh with the same appetite. He keeps one hand on the lever and one eye on the boy sent to sweep filings from the floor. The old copper shop smelled of charcoal and sweat; this room smells of oil, hot dust, and a speed that does not care who has eaten. When the teeth catch properly, the whole bench trembles as if it has become an animal pretending to be furniture."
+ cp_karim.10.f:0 "At noon he finds grey metal dust in the lines of his palm."
+ cp_karim.10.a:0 "The machine has its own temper."
+
+ cp_karim.20.t:0 "The Tool Bench"
+ cp_karim.20.d:0 "The new tools arrive wrapped in straw and foreign paper. Karim lifts each piece as carefully as a barber lifts a razor: calipers, taps, a file with teeth so fine it might have been made for bone. The master says the country will build faster now. Karim hears the sentence and thinks of the hour after sunset when he still must teach his younger brother numbers by lamplight. He clamps a plate to the bench and turns the handle. The cut is clean. Too clean. It leaves no room for the small forgiveness of the hand, only the truth of whether the mark was measured correctly."
+ cp_karim.20.f:0 "Precision is a mercy only when the wage is also precise."
+ cp_karim.20.a:0 "Measure it twice."
+
+ cp_karim.30.t:0 "The Broken Finger"
+ cp_karim.30.d:0 "The accident is small enough for the shift to continue. That is the first cruelty. Karim's finger is caught, not taken, and because it is not taken the foreman says thanks be to God and points to the unfinished order. Blood darkens the rag around Karim's hand. The boy who sweeps filings stares until Karim tells him to look away. He finishes the piece with his left hand clumsy on the lever, each turn of the wheel sending a bright nail of pain up his arm. By evening the finger has swollen tight and purple, as if the machine has kept part of him and sent the rest home with a warning."
+ cp_karim.30.f:0 "In the morning he will be expected to prove that a hand can forgive."
+ cp_karim.30.a:0 "A small injury is still a debt."
+
+ cp_karim.40.t:0 "The New Engine"
+ cp_karim.40.d:0 "They gather around the new engine before the first belt is fitted. Men who pretend to know engines put their hands behind their backs and nod. Karim says nothing. He watches the governor spin, the rod rise, the brass cap shine under a lamp that makes every screw-head look awake. When steam enters, the machine gives one deep cough and the room answers by becoming quiet. It is stronger than three men, stronger than twenty when the belt takes. But Karim notices the loose washer near the mounting and the hairline crack in a pipe joint. A country may praise power from a distance. A machinist stands close enough to hear where it will fail."
+ cp_karim.40.f:0 "Progress has a sound before it has a name."
+ cp_karim.40.a:0 "Keep one ear on the engine."
+
+ cp_karim.50.t:0 "The Steel Color"
+ cp_karim.50.d:0 "The steel mill teaches Karim a new kind of heat. Iron had been red, honest, almost agricultural in its glow, but this metal passes through colors too quickly for comfort: cherry, white, then a hard blue at the edge that makes every man step back without being told. Karim is sent to fit a guard near the rollers. He waits for the foreman to finish praising output, then lays his hand near the bolt holes and feels the floor answer through his bones. A country can ask for rails, rifles, bridges, and engines. The mill asks for wrists that do not shake. When the ingot moves, the whole room seems to inhale around it."
+ cp_karim.50.f:0 "Afterward his eyelashes smell faintly singed, though he never stood close enough to burn."
+ cp_karim.50.a:0 "Steel remembers the fire."
+
+ cp_karim.60.t:0 "The Night Gauge"
+ cp_karim.60.d:0 "Karim stays after the whistle because the gauge refuses to settle. The day shift has left its heat in the walls. Outside, carts grind along the street; inside, the needle trembles between two marks as if it is ashamed to choose one. He cleans the valve, tightens the coupling, loosens it again, and writes a number in the margin of an old invoice. No one will pay him for the hour. No one will know which accident did not happen because a man listened to a needle breathe. When he finally turns down the lamp, the machine ticks softly in the dark, cooling by degrees, like a body deciding to forgive the day."
+ cp_karim.60.f:0 "Precision has no witness except the mistake it prevents."
+ cp_karim.60.a:0 "Leave the gauge true."

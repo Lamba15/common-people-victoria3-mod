@@ -1,0 +1,27 @@
+Common People character seed prompt: bey
+Source ledger: documentation/characters/al-sayyid/prompts/seed-v0.1.md
+Prompt heading: `cp_bey.10` - The House Counts the Doors
+Target source PNG: image/generated/character-seeds/v0.1/bey_02_cp_bey_10_the_house_counts_the_doors.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Event: cp_bey.10 - "The House Counts the Doors"
+Narrative function: Introduce the Bey through estate order, household memory, and a fear that the old count no longer holds.
+Subject: Hassan Bey al-Sayyid, estate landholder.
+Scene/backdrop: estate courtyard with doors to tenant storerooms and a shaded arch.
+Foreground action: the Bey touches the head of his cane against a threshold while a steward waits behind him.
+Required object/gesture: cane at the threshold and estate doors.
+Lighting/mood: dusty morning shade, ownership turning into inventory.
+Avoid: palace court, mob confrontation, modern office.

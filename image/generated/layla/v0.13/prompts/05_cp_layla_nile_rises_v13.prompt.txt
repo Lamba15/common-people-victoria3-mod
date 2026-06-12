@@ -1,0 +1,27 @@
+Common People Layla v0.13 replacement prompt
+Source ledger: documentation/characters/layla/prompts/replacement-batch-v0.13.md
+Target DDS: mod/gfx/event_pictures/cp_layla_nile_rises_v13.dds
+Source PNG: image/generated/layla/v0.13/cp_layla_nile_rises_v13.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Layla al-Sharif, an Egyptian/Misri fellah woman; keep her grounded, unheroic, with work-worn hands, dark eyes, heavy brows, and practical 19th-century clothing. Age her to the event.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: close-medium or medium-wide, no epic hero camera.
+Constraints: no text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_layla.26 - "The Nile Rises"
+Narrative function: the year's fate is read in dark silt and water height along the irrigation channel.
+Subject: Layla walking beside Ahmed or Ahmed's memory along the irrigation channel.
+Scene/backdrop: Lower Egyptian field edge, irrigation water, dark silt line, palms, low village fields.
+Foreground action: Layla bends or pauses to read the color of the silt at the water's edge.
+Required object/gesture: dark silt on the bank; Layla's hand near the water without touching it.
+Background detail: quiet men in the lane or field edge, simple water wheel or channel wall.
+Lighting/mood: early morning, reverence without sentimentality, ancient rhythm.
+Avoid: grand Nile panorama, tourist felucca, flood disaster, desert fantasy.

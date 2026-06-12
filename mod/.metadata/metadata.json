@@ -1,10 +1,10 @@
 {
   "name" : "Common People",
   "id" : "common-people",
-  "version" : "0.1.0",
+  "version" : "0.4.0",
   "game_id" : "victoria3",
   "picture" : "thumbnail.png",
-  "supported_game_version" : "1.12.*",
+  "supported_game_version" : "1.13.*",
   "short_description" : "Personal stories of ordinary people whose lives change through your policy decisions. Egypt-first; more to come.",
   "tags" : ["Events", "Historical", "Immersion", "Characters"],
   "relationships" : [],

@@ -1,0 +1,262 @@
+﻿###############################################################################
+# Common People -- Hassan Bey al-Sayyid events
+#
+# Al-Sayyid is Person 2: a Misri aristocrat in Egypt whose life mirrors
+# Layla's land-reform arc from the landlord side.
+###############################################################################
+
+namespace = cp_bey
+
+
+# cp_bey.1 -- hidden setup
+cp_bey.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_bey_alive
+		NOT = { has_variable = cp_bey_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_bey_alive value = 1 }
+		set_variable = { name = cp_bey_age value = 52 }
+		set_variable = { name = cp_bey_hope value = 6 }
+		set_variable = { name = cp_bey_exhaustion value = 2 }
+		set_variable = { name = cp_bey_sol value = 30 }
+		set_variable = { name = cp_bey_literacy value = 35 }
+		set_variable = { name = cp_bey_radical value = 0 }
+		set_variable = { name = cp_bey_loyalist value = 5 }
+		set_variable = { name = cp_bey_power value = 8 }
+		set_variable = { name = cp_bey_certainty value = 8 }
+		set_variable = cp_bey_profession_aristocrats
+		set_variable = { name = cp_bey_w_land_reform value = 10 }
+		set_variable = { name = cp_bey_w_industrialization value = 9 }
+		set_variable = { name = cp_bey_w_landowners value = 10 }
+		set_variable = { name = cp_bey_w_monarchy value = 8 }
+		set_variable = { name = cp_bey_w_education value = 7 }
+
+		cp_set_person_home_state = { person = bey country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = bey place = sayyid_estate }
+		cp_set_person_workplace_profile = { person = bey profile = manufacturing }
+		cp_bey_refresh_sol = yes
+	}
+}
+
+
+# cp_bey.10 -- "The Master's Window"
+cp_bey.10 = {
+	type = country_event
+
+	title = cp_bey.10.t
+	desc = cp_bey.10.d
+	flavor = cp_bey.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_bey_intro.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_bey_alive
+		var:cp_bey_alive > 0
+		NOT = { has_variable = cp_bey_seen_intro }
+	}
+
+	immediate = {
+		cp_mark_event_seen = { person = bey id = intro days = 3650 }
+	}
+
+	option = {
+		name = cp_bey.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_bey.20 -- "The Gate Opens"
+cp_bey.20 = {
+	type = country_event
+
+	title = cp_bey.20.t
+	desc = cp_bey.20.d
+	flavor = cp_bey.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_bey_homesteading.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_bey_alive
+		var:cp_bey_alive > 0
+		NOT = { has_variable = cp_bey_seen_homesteading }
+	}
+
+	immediate = {
+		cp_bey_mark_homesteading_loss = yes
+	}
+
+	option = {
+		name = cp_bey.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_bey.21 -- "Order Restored"
+cp_bey.21 = {
+	type = country_event
+
+	title = cp_bey.21.t
+	desc = cp_bey.21.d
+	flavor = cp_bey.21.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_bey_serfdom_restored.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/political"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_bey_alive
+		var:cp_bey_alive > 0
+		NOT = { has_variable = cp_bey_seen_serfdom_restored }
+	}
+
+	immediate = {
+		cp_bey_mark_serfdom_restored = yes
+	}
+
+	option = {
+		name = cp_bey.21.a
+		default_option = yes
+	}
+}
+
+
+# cp_bey.22 -- "The Cotton Merchant"
+cp_bey.22 = {
+	type = country_event
+
+	title = cp_bey.22.t
+	desc = cp_bey.22.d
+	flavor = cp_bey.22.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_bey_commercialized_v02.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_bey_alive
+		var:cp_bey_alive > 0
+		NOT = { has_variable = cp_bey_seen_commercialized }
+	}
+
+	immediate = {
+		cp_bey_mark_commercialized_loss = yes
+	}
+
+	option = {
+		name = cp_bey.22.a
+		default_option = yes
+	}
+}
+
+
+# cp_bey.30 -- "Smoke at the Boundary"
+cp_bey.30 = {
+	type = country_event
+
+	title = cp_bey.30.t
+	desc = cp_bey.30.d
+	flavor = cp_bey.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_bey_factory_boundary_v03.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_bey_alive
+		var:cp_bey_alive > 0
+		NOT = { has_variable = cp_bey_seen_factory_boundary }
+	}
+
+	immediate = {
+		cp_bey_mark_factory_boundary = yes
+	}
+
+	option = {
+		name = cp_bey.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_bey.40 -- "The Visitor's Card"
+cp_bey.40 = {
+	type = country_event
+
+	title = cp_bey.40.t
+	desc = cp_bey.40.d
+	flavor = cp_bey.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_bey_visitors_card_v03.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_bey_alive
+		var:cp_bey_alive > 0
+		has_variable = cp_bey_seen_intro
+		NOT = { has_variable = cp_bey_seen_visitors_card }
+	}
+
+	immediate = {
+		cp_bey_mark_visitors_card = yes
+	}
+
+	option = {
+		name = cp_bey.40.a
+		default_option = yes
+	}
+}

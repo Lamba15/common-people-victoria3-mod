@@ -1,0 +1,27 @@
+Common People character seed prompt: tarek
+Source ledger: documentation/characters/tarek/prompts/seed-v0.1.md
+Prompt heading: `cp_tarek.10` - The Mill Ledger
+Target source PNG: image/generated/character-seeds/v0.1/tarek_02_cp_tarek_10_the_mill_ledger.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Event: cp_tarek.10 - "The Mill Ledger"
+Narrative function: Tarek's new world is not freedom; it is numbers that must keep the dead estate from returning as debt.
+Subject: Tarek, late twenties, mill owner.
+Scene/backdrop: small mill office, ledger, cloth samples, factory noise beyond the wall.
+Foreground action: Tarek presses two fingers to a column in the ledger while holding a cloth sample in the other hand.
+Required object/gesture: ledger column and cloth sample.
+Lighting/mood: yellow lamp, sleepless calculation.
+Avoid: readable numbers, luxury office, triumphant merchant scene.

@@ -1,0 +1,27 @@
+Common People character seed prompt: soldier
+Source ledger: documentation/characters/the-soldier/prompts/seed-v0.1.md
+Prompt heading: `cp_soldier.10` - The Notice
+Target source PNG: image/generated/character-seeds/v0.1/soldier_02_cp_soldier_10_the_notice.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Event: cp_soldier.10 - "The Notice"
+Narrative function: War enters Yusuf's life as a folded paper and a road out of the village.
+Subject: Yusuf, young conscript, still in civilian clothes with a military strap newly issued.
+Scene/backdrop: village lane beside a wall where women and boys keep distance in the background.
+Foreground action: Yusuf looks down at a folded paper while his thumb hooks under the rough strap.
+Required object/gesture: folded notice and rough strap.
+Lighting/mood: dusty noon, public order with private dread.
+Avoid: battle scene, cheering crowd, readable order, officer portrait.

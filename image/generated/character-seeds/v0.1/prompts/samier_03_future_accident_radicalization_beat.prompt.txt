@@ -1,0 +1,26 @@
+Common People character seed prompt: samier
+Source ledger: documentation/characters/samier/prompts/seed-v0.1.md
+Prompt heading: Future accident/radicalization beat
+Target source PNG: image/generated/character-seeds/v0.1/samier_03_future_accident_radicalization_beat.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Narrative function: Samier's politics should grow from a bodily experience of work, not from speeches alone.
+Subject: Samier, mid twenties, tired and angrier.
+Scene/backdrop: factory yard after shift.
+Foreground action: Samier reads or listens to a notice while holding a torn sleeve closed at the elbow.
+Required object/gesture: torn sleeve and notice paper.
+Lighting/mood: dusty evening, anger becoming organized.
+Avoid: readable slogans, modern pamphlets, heroic revolutionary pose.

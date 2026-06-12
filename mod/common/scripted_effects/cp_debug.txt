@@ -2,8 +2,9 @@
 # Common People -- debug effects
 #
 # Diagnostic effects for Phase A verification and ongoing development.
-# Not called from production code; only from cp_debug_events.txt and from
-# the JE's on_monthly_pulse (cp_debug_tick_increment, temporarily).
+# Not called from production code; only from cp_debug_events.txt, the debug
+# popup JE button, and from the JE's on_monthly_pulse
+# (cp_debug_tick_increment, temporarily).
 #
 # Once Phase A is proven and the JE pulse is confirmed firing, the status-
 # line reference to cp_debug_tick is removed. The variable itself stays as
@@ -12,4 +13,12 @@
 
 cp_debug_tick_increment = {
 	change_variable = { name = cp_debug_tick add = 1 }
+}
+
+
+# Fire the generated person debug popup queue from JE button context. Console
+# selectors set cp_debug_selected_event, then QA clicks the hidden-when-idle
+# debug button.
+cp_debug_fire_selected = {
+	cp_debug_person_fire_selected = yes
 }

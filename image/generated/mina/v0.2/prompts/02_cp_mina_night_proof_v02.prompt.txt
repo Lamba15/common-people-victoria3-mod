@@ -1,0 +1,27 @@
+Common People Mina v0.2 replacement prompt
+Source ledger: documentation/characters/mina/prompts/replacement-batch-v0.2.md
+Target DDS: mod/gfx/event_pictures/cp_mina_night_proof_v02.dds
+Source PNG: image/generated/mina/v0.2/cp_mina_night_proof_v02.dds.png
+
+Shared visual contract:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Primary request: Generate one painted historical realism event image for Common People.
+Subject: Mina, a young Coptic Egyptian printer's apprentice in late-19th-century Cairo; keep him grounded, unheroic, ink-stained, and visibly shaped by workshop labor.
+Style/medium: painterly historical realism, textured oil-paint surface, natural anatomy, grounded materials, 19th-century Egypt, quiet human scale.
+Composition/framing: event-window readable at small size, close-medium or medium-wide, essential face/action/object in the left half or center-left, right half safe for atmosphere.
+Constraints: no readable text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no palace grandeur, no invented flags, no decorative atmosphere without the required object.
+
+Victoria 3 event-window safety:
+Place the essential face, action, and required object in the left half or center-left. The game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific scene:
+Event: cp_mina.40 - "The Night Proof"
+Narrative function: the printer's invisible care appears as one corrected page after everyone else has gone home.
+Subject: Mina alone at night in the workshop, tired but alert, holding a proof sheet close to an oil lamp.
+Scene/backdrop: shuttered letterpress shop opening onto a narrow dark Cairo alley; press and type trays recede into shadow.
+Foreground action: Mina reads the proof backward for errors, fingers stained with ink.
+Required object/gesture: oil lamp, proof sheet with unreadable columns, Mina's hands gripping the paper.
+Background detail: small cross or icon on a shelf, quiet alley, cooling press.
+Lighting/mood: warm lamplight against blue-black night, mercy in careful labor, no melodrama.
+Avoid: cafe scene, theatrical candlelit scholar pose, modern newspaper layout, readable type.

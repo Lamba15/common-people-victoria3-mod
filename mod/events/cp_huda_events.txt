@@ -1,0 +1,272 @@
+﻿###############################################################################
+# Common People -- Huda al-Matariya events
+#
+# Huda is Person 14: a Misri lodger and city laborer whose rent, water, and
+# stairs make urban growth human-scale.
+###############################################################################
+
+namespace = cp_huda
+
+
+# cp_huda.1 -- hidden setup
+cp_huda.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		c:EGY ?= this
+		has_global_variable = cp_person_huda_alive
+		NOT = { has_variable = cp_huda_alive }
+	}
+
+	immediate = {
+		set_variable = { name = cp_huda_alive value = 1 }
+		set_variable = { name = cp_huda_age value = 20 }
+		set_variable = { name = cp_huda_hope value = 5 }
+		set_variable = { name = cp_huda_exhaustion value = 6 }
+		set_variable = { name = cp_huda_sol value = 8 }
+		set_variable = { name = cp_huda_literacy value = 6 }
+		set_variable = { name = cp_huda_radical value = 0 }
+		set_variable = { name = cp_huda_loyalist value = 0 }
+		set_variable = { name = cp_huda_rent_arrears value = 1 }
+		set_variable = cp_huda_profession_laborers
+		set_variable = { name = cp_huda_w_city value = 10 }
+		set_variable = { name = cp_huda_w_rent value = 9 }
+		set_variable = { name = cp_huda_w_bricks value = 8 }
+		set_variable = { name = cp_huda_w_water value = 7 }
+		set_variable = { name = cp_huda_w_family value = 6 }
+
+		cp_set_person_home_state_from_spawn_marker_or_default = { person = huda country = EGY state = STATE_LOWER_EGYPT }
+		cp_set_person_home_place = { person = huda place = matariya_cairo }
+		cp_set_person_workplace_profile = { person = huda profile = urban }
+		cp_huda_refresh_sol = yes
+
+		if = {
+			limit = {
+				NOT = { has_variable = cp_startup_conditional_scan }
+			}
+			random_list = {
+				50 = { cp_try_fire_world_response = { event = cp_huda.10 person = huda } }
+				50 = { }
+			}
+		}
+	}
+}
+
+
+# cp_huda.10 -- "The Room Above the Alley"
+cp_huda.10 = {
+	type = country_event
+
+	title = cp_huda.10.t
+	desc = cp_huda.10.d
+	flavor = cp_huda.10.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_huda_room_alley_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/civil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_huda_alive
+		var:cp_huda_alive > 0
+		NOT = { has_variable = cp_huda_seen_intro }
+	}
+
+	immediate = {
+		cp_huda_mark_intro = yes
+	}
+
+	option = {
+		name = cp_huda.10.a
+		default_option = yes
+	}
+}
+
+
+# cp_huda.20 -- "The Street Under Planks"
+cp_huda.20 = {
+	type = country_event
+
+	title = cp_huda.20.t
+	desc = cp_huda.20.d
+	flavor = cp_huda.20.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_huda_street_planks_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_huda_alive
+		var:cp_huda_alive > 0
+		NOT = { has_variable = cp_huda_seen_building_work }
+	}
+
+	immediate = {
+		cp_huda_mark_building_work = yes
+	}
+
+	option = {
+		name = cp_huda.20.a
+		default_option = yes
+	}
+}
+
+
+# cp_huda.30 -- "The Water Under Stone"
+cp_huda.30 = {
+	type = country_event
+
+	title = cp_huda.30.t
+	desc = cp_huda.30.d
+	flavor = cp_huda.30.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_huda_water_under_stone_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/enthusiastic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_huda_alive
+		var:cp_huda_alive > 0
+		NOT = { has_variable = cp_huda_seen_clean_water }
+	}
+
+	immediate = {
+		cp_huda_mark_clean_water = yes
+	}
+
+	option = {
+		name = cp_huda.30.a
+		default_option = yes
+	}
+}
+
+
+# cp_huda.40 -- "The Rent Book"
+cp_huda.40 = {
+	type = country_event
+
+	title = cp_huda.40.t
+	desc = cp_huda.40.d
+	flavor = cp_huda.40.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_huda_rent_book_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/dramatic"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_huda_alive
+		var:cp_huda_alive > 0
+		NOT = { has_variable = cp_huda_seen_rent_book }
+	}
+
+	immediate = {
+		cp_huda_mark_rent_book = yes
+	}
+
+	option = {
+		name = cp_huda.40.a
+		default_option = yes
+	}
+}
+
+
+# cp_huda.50 -- "The Roof Patch"
+cp_huda.50 = {
+	type = country_event
+
+	title = cp_huda.50.t
+	desc = cp_huda.50.d
+	flavor = cp_huda.50.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_huda_roof_patch_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/sadness"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_huda_alive
+		var:cp_huda_alive > 0
+		has_variable = cp_huda_seen_intro
+		NOT = { has_variable = cp_huda_seen_roof_patch }
+	}
+
+	immediate = {
+		cp_huda_mark_roof_patch = yes
+	}
+
+	option = {
+		name = cp_huda.50.a
+		default_option = yes
+	}
+}
+
+
+# cp_huda.60 -- "The White Road"
+cp_huda.60 = {
+	type = country_event
+
+	title = cp_huda.60.t
+	desc = cp_huda.60.d
+	flavor = cp_huda.60.f
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	event_image = {
+		texture = "gfx/event_pictures/cp_huda_white_road_v01.dds"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/MUSIC/Stingers/events/tranquil"
+
+	duration = 3
+
+	trigger = {
+		has_variable = cp_huda_alive
+		var:cp_huda_alive > 0
+		has_variable = cp_huda_seen_intro
+		NOT = { has_variable = cp_huda_seen_white_road }
+	}
+
+	immediate = {
+		cp_huda_mark_white_road = yes
+	}
+
+	option = {
+		name = cp_huda.60.a
+		default_option = yes
+	}
+}

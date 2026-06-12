@@ -3,6 +3,8 @@
 #
 # Console-only test events. Each has a single, isolated job.
 # Fire with `event cp_debug.N` in the in-game console.
+# Popup probes queue the target first; click the shared QA button
+# "Open queued QA event" afterward to open the popup safely.
 #
 # Currently live (retained because each still has diagnostic value):
 #   cp_debug.1   -- Confirm console event firing works (visible, no data).
@@ -33,19 +35,43 @@
 #                   cp_layla_expected_sol, cp_layla_sol_gap after.
 #   cp_debug.26  -- NEW: force-grant railways + telegraph + radio to EGY
 #                   so the tech dispatcher fires cp_layla.30/.31/.32.
-#   cp_debug.27  -- NEW: fire Ahmed homecoming event directly.
-#   cp_debug.28  -- NEW: fire Ahmed death-notice event directly.
-#   cp_debug.29  -- NEW: fire textile-mill-arrival event directly.
-#   cp_debug.30  -- NEW: fire revolution-fear event directly.
-#   cp_debug.31  -- NEW: fire the Cairo-crossroads event directly.
-#   cp_debug.32  -- NEW: fire the Small-Concern ownership crossroads.
-#   cp_debug.33  -- NEW: fire Layla's death event directly.
-#   cp_debug.34  -- NEW: fire Ahmed's mill-accident death.
-#   cp_debug.35  -- NEW: fire a child's death (needs cp_layla_children >= 1).
+#   cp_debug.27  -- NEW: queue Ahmed homecoming event.
+#   cp_debug.28  -- NEW: queue Ahmed death-notice event.
+#   cp_debug.29  -- NEW: queue textile-mill-arrival event.
+#   cp_debug.30  -- NEW: queue revolution-fear event.
+#   cp_debug.31  -- NEW: queue the Cairo-crossroads event.
+#   cp_debug.32  -- NEW: queue the Small-Concern ownership crossroads.
+#   cp_debug.33  -- NEW: queue Layla's death event.
+#   cp_debug.34  -- NEW: queue Ahmed's mill-accident death.
+#   cp_debug.35  -- NEW: queue a child's death (needs cp_layla_children >= 1).
 #   cp_debug.36  -- NEW: recompute mortality + worker-risk pressures now.
-#   cp_debug.37  -- NEW: fire the First-Envelope welfare event directly.
+#   cp_debug.37  -- NEW: queue the First-Envelope welfare event.
 #   cp_debug.38  -- NEW: simulate welfare UP transition (enact poor_laws).
 #   cp_debug.39  -- NEW: simulate welfare DOWN transition (no_social_security).
+#   cp_debug.85  -- NEW: force-run shared person registration/setup.
+#   cp_debug.86  -- NEW: queue the Bey's ambient intro.
+#   cp_debug.87  -- NEW: queue the Bey's Homesteading reaction.
+#   cp_debug.88  -- NEW: queue the Bey's Serfdom Restored reaction.
+#   cp_debug.89  -- NEW: queue the Bey's Commercialized Agriculture reaction.
+#   cp_debug.90  -- NEW: queue Yusuf's ambient intro.
+#   cp_debug.91  -- NEW: queue Yusuf's war-notice milestone.
+#   cp_debug.92  -- NEW: queue Yusuf's return milestone.
+#   cp_debug.93  -- NEW: force-run Samier registration/setup.
+#   cp_debug.94  -- NEW: queue Samier's ambient intro.
+#   cp_debug.95  -- NEW: queue Samier's labor-law reaction.
+#   cp_debug.96  -- NEW: force-run Tarek registration/setup.
+#   cp_debug.97  -- NEW: queue Tarek's ambient intro.
+#   cp_debug.98  -- NEW: queue Tarek's labor-law reaction.
+#   cp_debug.99  -- NEW: queue Layla's first-child milestone.
+#   cp_debug.100 -- NEW: force-run Nour registration/setup.
+#   cp_debug.101 -- NEW: queue Nour's ambient intro.
+#   cp_debug.102 -- NEW: queue Nour's property-rights reaction.
+#   cp_debug.103 -- NEW: force-run Mina registration/setup.
+#   cp_debug.104 -- NEW: queue Mina's ambient intro.
+#   cp_debug.105 -- NEW: queue Mina's public-schools reaction.
+#   cp_debug.106 -- NEW: force-run Zaynab registration/setup.
+#   cp_debug.107 -- NEW: queue Zaynab's ambient intro.
+#   cp_debug.108 -- NEW: queue Zaynab's public-health reaction.
 #
 # Retired (obsolete probes; removed in the April cleanup):
 #   cp_debug.2/.3/.4 -- direct law-event fires (superseded by .5 + dispatcher)
@@ -80,9 +106,17 @@ cp_debug.1 = {
 	}
 }
 
-# cp_debug.5 -- Activate Homesteading law. This exercises the
-# on_law_enactment_pass dispatcher path. If cp_layla.2 fires, the
-# dispatcher works; if not, compare to cp_debug.2.
+# cp_debug.5 -- Apply cp_layla.2's outcome directly (no popup).
+#
+# V3 1.12 quirk: console-thread `event` commands crash when the fired event
+# produces a player popup (random-in-wrong-thread assertion). To avoid the
+# crash, this debug helper applies cp_grant_homesteading directly instead
+# of firing cp_layla.2.
+#
+# Two ways to see the actual popup in-game:
+#   1. Click "Check on Layla" button (game-thread, no crash).
+#   2. Use Laws panel UI to enact Homesteading (after cp_debug.82 to weaken
+#      Landowners). The real dispatcher chain fires cp_layla.2 safely.
 cp_debug.5 = {
 	type = country_event
 	hidden = yes
@@ -90,7 +124,8 @@ cp_debug.5 = {
 
 	immediate = {
 		c:EGY ?= {
-			activate_law = law_type:law_homesteading
+			cp_grant_homesteading = yes
+			cp_mark_event_seen = { person = layla id = homesteading days = 540 }
 		}
 	}
 }
@@ -133,7 +168,7 @@ cp_debug.8 = {
 		c:EGY ?= {
 			# delta = cp_layla_sol - cp_layla_sol_prev  (via multiply-by-(-1))
 			set_variable = { name = cp_layla_sol_delta value = var:cp_layla_sol_prev }
-			multiply_variable = { name = cp_layla_sol_delta value = -1 }
+			change_variable = { name = cp_layla_sol_delta multiply = -1 }
 			change_variable = { name = cp_layla_sol_delta add = var:cp_layla_sol }
 			set_variable = { name = cp_layla_sol_prev value = var:cp_layla_sol }
 		}
@@ -225,7 +260,7 @@ cp_debug.19 = {
 							religion = rel:sunni
 							is_pop_type = peasants
 						}
-						order_by = total_pops
+						order_by = workforce
 						position = 0
 						check_range_bounds = no
 						save_temporary_scope_value_as = {
@@ -380,7 +415,7 @@ cp_debug.26 = {
 	}
 }
 
-# cp_debug.27 -- Fire the homecoming event directly (skip the outcome roll).
+# cp_debug.27 -- Queue the homecoming event (skip the outcome roll).
 # Tests prose + cp_ahmed_homecoming composite effect. Requires Ahmed alive.
 cp_debug.27 = {
 	type = country_event
@@ -390,12 +425,12 @@ cp_debug.27 = {
 	immediate = {
 		c:EGY ?= {
 			set_variable = cp_layla_ahmed_at_war
-			trigger_event = { id = cp_layla.40 }
+			set_variable = { name = cp_debug_selected_event value = 1040 }
 		}
 	}
 }
 
-# cp_debug.28 -- Fire the death-notice directly. Tests prose +
+# cp_debug.28 -- Queue the death-notice event. Tests prose +
 # cp_ahmed_killed composite. Clears cp_layla_ahmed_alive.
 cp_debug.28 = {
 	type = country_event
@@ -405,12 +440,12 @@ cp_debug.28 = {
 	immediate = {
 		c:EGY ?= {
 			set_variable = cp_layla_ahmed_at_war
-			trigger_event = { id = cp_layla.41 }
+			set_variable = { name = cp_debug_selected_event value = 1041 }
 		}
 	}
 }
 
-# cp_debug.29 -- Fire the textile-mill arrival directly. Skips the
+# cp_debug.29 -- Queue the textile-mill arrival. Skips the
 # on_building_built hook; useful for reviewing cp_layla.50 prose without
 # waiting for the AI to build a mill in Lower Egypt.
 cp_debug.29 = {
@@ -420,12 +455,12 @@ cp_debug.29 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.50 }
+			set_variable = { name = cp_debug_selected_event value = 1050 }
 		}
 	}
 }
 
-# cp_debug.30 -- Fire the revolution-fear event directly. Faster than
+# cp_debug.30 -- Queue the revolution-fear event. Faster than
 # actually triggering a revolution just to see the prose.
 cp_debug.30 = {
 	type = country_event
@@ -434,12 +469,12 @@ cp_debug.30 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.60 }
+			set_variable = { name = cp_debug_selected_event value = 1060 }
 		}
 	}
 }
 
-# cp_debug.31 -- Fire the Cairo-crossroads event directly. Skips the
+# cp_debug.31 -- Queue the Cairo-crossroads event. Skips the
 # yearly-pulse random roll and prereq gate; useful for reviewing prose
 # + testing each of the three option composites (move / split / stay).
 cp_debug.31 = {
@@ -449,12 +484,12 @@ cp_debug.31 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.70 }
+			set_variable = { name = cp_debug_selected_event value = 1070 }
 		}
 	}
 }
 
-# cp_debug.32 -- Fire the Small-Concern ownership crossroads directly.
+# cp_debug.32 -- Queue the Small-Concern ownership crossroads.
 # Used with cp_debug.20/.21/.etc to test each profession variant of the
 # opening prose.
 cp_debug.32 = {
@@ -464,12 +499,12 @@ cp_debug.32 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.71 }
+			set_variable = { name = cp_debug_selected_event value = 1071 }
 		}
 	}
 }
 
-# cp_debug.33/.34/.35 -- Fire each mortality event directly.
+# cp_debug.33/.34/.35 -- Queue each mortality event.
 #   .33 = Layla dies (closes the arc)
 #   .34 = Ahmed dies at the mill
 #   .35 = a child dies of illness (requires cp_layla_children >= 1)
@@ -480,7 +515,7 @@ cp_debug.33 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.80 }
+			set_variable = { name = cp_debug_selected_event value = 1080 }
 		}
 	}
 }
@@ -492,7 +527,7 @@ cp_debug.34 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.81 }
+			set_variable = { name = cp_debug_selected_event value = 1081 }
 		}
 	}
 }
@@ -504,7 +539,7 @@ cp_debug.35 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.82 }
+			set_variable = { name = cp_debug_selected_event value = 1082 }
 		}
 	}
 }
@@ -524,7 +559,7 @@ cp_debug.36 = {
 	}
 }
 
-# cp_debug.37 -- Fire the First-Envelope welfare event directly. Prose
+# cp_debug.37 -- Queue the First-Envelope welfare event. Prose
 # variant depends on the active welfare law; use with `effect activate_law`
 # to test each.
 cp_debug.37 = {
@@ -534,7 +569,7 @@ cp_debug.37 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.90 }
+			set_variable = { name = cp_debug_selected_event value = 1090 }
 		}
 	}
 }
@@ -624,7 +659,7 @@ cp_debug.43 = {
 	}
 }
 
-# cp_debug.44 -- Fire the self-employment crossroads directly (cp_layla.97).
+# cp_debug.44 -- Queue the self-employment crossroads (cp_layla.97).
 # Grants cp_layla_may_work first so the trigger passes.
 cp_debug.44 = {
 	type = country_event
@@ -634,12 +669,12 @@ cp_debug.44 = {
 	immediate = {
 		c:EGY ?= {
 			set_variable = cp_layla_may_work
-			trigger_event = { id = cp_layla.97 }
+			set_variable = { name = cp_debug_selected_event value = 1097 }
 		}
 	}
 }
 
-# cp_debug.45 -- Fire election-day directly (cp_layla.24). Grants cp_layla_may_vote.
+# cp_debug.45 -- Queue election-day (cp_layla.24). Grants cp_layla_may_vote.
 cp_debug.45 = {
 	type = country_event
 	hidden = yes
@@ -648,7 +683,7 @@ cp_debug.45 = {
 	immediate = {
 		c:EGY ?= {
 			set_variable = cp_layla_may_vote
-			trigger_event = { id = cp_layla.24 }
+			set_variable = { name = cp_debug_selected_event value = 1024 }
 		}
 	}
 }
@@ -668,7 +703,7 @@ cp_debug.46 = {
 	}
 }
 
-# cp_debug.47 -- Force the absence-bite "Month Without" event directly.
+# cp_debug.47 -- Queue the absence-bite "Month Without" event.
 cp_debug.47 = {
 	type = country_event
 	hidden = yes
@@ -676,12 +711,12 @@ cp_debug.47 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.98 }
+			set_variable = { name = cp_debug_selected_event value = 1098 }
 		}
 	}
 }
 
-# cp_debug.48 -- Force the "Her Name Is Not on the Deed" event directly.
+# cp_debug.48 -- Queue the "Her Name Is Not on the Deed" event.
 cp_debug.48 = {
 	type = country_event
 	hidden = yes
@@ -689,7 +724,7 @@ cp_debug.48 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.99 }
+			set_variable = { name = cp_debug_selected_event value = 1099 }
 		}
 	}
 }
@@ -720,8 +755,9 @@ cp_debug.50 = {
 	}
 }
 
-# cp_debug.51 -- Fire the daughter-reads pulse directly. Sets
-# cp_layla_daughter_at_school so the trigger passes, then triggers the event.
+# cp_debug.51 -- Queue the daughter-reads pulse. Sets
+# cp_layla_daughter_at_school so the trigger passes before the shared QA button
+# fires.
 cp_debug.51 = {
 	type = country_event
 	hidden = yes
@@ -731,7 +767,7 @@ cp_debug.51 = {
 		c:EGY ?= {
 			set_variable = { name = cp_layla_children value = 2 }
 			set_variable = cp_layla_daughter_at_school
-			trigger_event = { id = cp_layla.102 }
+			set_variable = { name = cp_debug_selected_event value = 1102 }
 		}
 	}
 }
@@ -749,7 +785,7 @@ cp_debug.52 = {
 	}
 }
 
-# cp_debug.53 -- Fire the slavery-ambient pulse directly.
+# cp_debug.53 -- Queue the slavery-ambient pulse.
 cp_debug.53 = {
 	type = country_event
 	hidden = yes
@@ -757,12 +793,12 @@ cp_debug.53 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.104 }
+			set_variable = { name = cp_debug_selected_event value = 1104 }
 		}
 	}
 }
 
-# cp_debug.54 -- Fire daughter's marriage crossroads. Sets prerequisites.
+# cp_debug.54 -- Queue daughter's marriage crossroads. Sets prerequisites.
 cp_debug.54 = {
 	type = country_event
 	hidden = yes
@@ -772,7 +808,7 @@ cp_debug.54 = {
 		c:EGY ?= {
 			set_variable = { name = cp_layla_children value = 2 }
 			set_variable = { name = cp_layla_age value = 40 }
-			trigger_event = { id = cp_layla.72 }
+			set_variable = { name = cp_debug_selected_event value = 1072 }
 		}
 	}
 }
@@ -882,7 +918,7 @@ cp_debug.62 = {
 	}
 }
 
-# cp_debug.63 -- Fire strike pulse directly.
+# cp_debug.63 -- Queue strike pulse.
 cp_debug.63 = {
 	type = country_event
 	hidden = yes
@@ -890,12 +926,12 @@ cp_debug.63 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.113 }
+			set_variable = { name = cp_debug_selected_event value = 1113 }
 		}
 	}
 }
 
-# cp_debug.64 -- Fire "Mill Closes" crossroads.
+# cp_debug.64 -- Queue "Mill Closes" crossroads.
 cp_debug.64 = {
 	type = country_event
 	hidden = yes
@@ -903,7 +939,7 @@ cp_debug.64 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.73 }
+			set_variable = { name = cp_debug_selected_event value = 1073 }
 		}
 	}
 }
@@ -960,7 +996,10 @@ cp_debug.68 = {
 	}
 }
 
-# cp_debug.69 -- Set cp_layla_daughter_at_school and fire conversation .160 directly.
+# cp_debug.69 -- Set cp_layla_daughter_at_school so the daughter-reads vox
+# scenario (cp_layla_vox.23) passes its generated QA selector.
+# No popup fired here -- console-thread popups crash V3; queue a generated
+# selector and click the shared QA button in-game to see the prose.
 cp_debug.69 = {
 	type = country_event
 	hidden = yes
@@ -969,7 +1008,6 @@ cp_debug.69 = {
 	immediate = {
 		c:EGY ?= {
 			set_variable = cp_layla_daughter_at_school
-			trigger_event = { id = cp_conversation.160 }
 		}
 	}
 }
@@ -1065,7 +1103,7 @@ cp_debug.76 = {
 	}
 }
 
-# cp_debug.77 -- Fire cp_layla.83 (The Forty Days) directly.
+# cp_debug.77 -- Queue cp_layla.83 (The Forty Days).
 cp_debug.77 = {
 	type = country_event
 	hidden = yes
@@ -1073,12 +1111,12 @@ cp_debug.77 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.83 }
+			set_variable = { name = cp_debug_selected_event value = 1083 }
 		}
 	}
 }
 
-# cp_debug.78 -- Fire cp_layla.125 (The District Office) directly.
+# cp_debug.78 -- Queue cp_layla.125 (The District Office).
 cp_debug.78 = {
 	type = country_event
 	hidden = yes
@@ -1086,12 +1124,12 @@ cp_debug.78 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.125 }
+			set_variable = { name = cp_debug_selected_event value = 1125 }
 		}
 	}
 }
 
-# cp_debug.79 -- Fire cp_layla.126 (The Imam's Visit) directly.
+# cp_debug.79 -- Queue cp_layla.126 (The Imam's Visit).
 cp_debug.79 = {
 	type = country_event
 	hidden = yes
@@ -1099,12 +1137,12 @@ cp_debug.79 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.126 }
+			set_variable = { name = cp_debug_selected_event value = 1126 }
 		}
 	}
 }
 
-# cp_debug.80 -- Fire cp_layla.127 (The Small Victory) directly.
+# cp_debug.80 -- Queue cp_layla.127 (The Small Victory).
 cp_debug.80 = {
 	type = country_event
 	hidden = yes
@@ -1112,12 +1150,12 @@ cp_debug.80 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.127 }
+			set_variable = { name = cp_debug_selected_event value = 1127 }
 		}
 	}
 }
 
-# cp_debug.81 -- Fire cp_layla.128 (Mariam Writes from Cairo) directly.
+# cp_debug.81 -- Queue cp_layla.128 (Mariam Writes from Cairo).
 cp_debug.81 = {
 	type = country_event
 	hidden = yes
@@ -1125,7 +1163,456 @@ cp_debug.81 = {
 
 	immediate = {
 		c:EGY ?= {
-			trigger_event = { id = cp_layla.128 }
+			set_variable = { name = cp_debug_selected_event value = 1128 }
+		}
+	}
+}
+
+
+# cp_debug.82 -- Crush Landowners IG + boost Rural Folk IG to make
+# Homesteading trivially passable. For testing the cp_on_law_enacted
+# dispatcher chain via a real enactment.
+cp_debug.82 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			ig:ig_landowners ?= {
+				add_modifier = { name = cp_debug_weak_ig }
+			}
+			ig:ig_rural_folk ?= {
+				add_modifier = { name = cp_debug_strong_ig }
+			}
+			ig:ig_intelligentsia ?= {
+				add_modifier = { name = cp_debug_strong_ig }
+			}
+		}
+	}
+}
+
+# cp_debug.84 -- Reset Layla's homesteading-related state so enactment
+# can fire cp_layla.2 again. For clean dispatcher-chain testing.
+cp_debug.84 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_layla_seen_homesteading
+			remove_variable = cp_layla_owns_land
+			remove_variable = cp_layla_under_serfdom
+		}
+	}
+}
+
+
+# cp_debug.83 -- Undo cp_debug.82. Removes debug modifiers from all IGs.
+cp_debug.83 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			ig:ig_landowners ?= {
+				remove_modifier = cp_debug_weak_ig
+			}
+			ig:ig_rural_folk ?= {
+				remove_modifier = cp_debug_strong_ig
+			}
+			ig:ig_intelligentsia ?= {
+				remove_modifier = cp_debug_strong_ig
+			}
+		}
+	}
+}
+
+# cp_debug.85 -- Force-run shared person registration/setup.
+cp_debug.85 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			trigger_event = { id = cp_shared_startup.1 }
+		}
+	}
+}
+
+# cp_debug.86 -- Queue the Bey's ambient intro.
+cp_debug.86 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_bey_seen_intro
+			set_variable = { name = cp_debug_selected_event value = 30010 }
+		}
+	}
+}
+
+# cp_debug.87 -- Queue the Bey's Homesteading reaction.
+cp_debug.87 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_bey_seen_homesteading
+			set_variable = { name = cp_debug_selected_event value = 30020 }
+		}
+	}
+}
+
+# cp_debug.88 -- Queue the Bey's Serfdom Restored reaction.
+cp_debug.88 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_bey_seen_serfdom_restored
+			set_variable = { name = cp_debug_selected_event value = 30021 }
+		}
+	}
+}
+
+# cp_debug.89 -- Queue the Bey's Commercialized Agriculture reaction.
+cp_debug.89 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_bey_seen_commercialized
+			set_variable = { name = cp_debug_selected_event value = 30022 }
+		}
+	}
+}
+
+# cp_debug.90 -- Queue Yusuf's ambient intro.
+cp_debug.90 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_soldier_seen_intro
+			remove_variable = cp_soldier_at_war
+			set_variable = { name = cp_debug_selected_event value = 40010 }
+		}
+	}
+}
+
+# cp_debug.91 -- Queue Yusuf's war-notice milestone.
+cp_debug.91 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_soldier_seen_notice
+			remove_variable = cp_soldier_at_war
+			set_variable = { name = cp_debug_selected_event value = 40020 }
+		}
+	}
+}
+
+# cp_debug.92 -- Queue Yusuf's return milestone.
+cp_debug.92 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			set_variable = cp_soldier_at_war
+			remove_variable = cp_soldier_seen_return
+			set_variable = { name = cp_debug_selected_event value = 40021 }
+		}
+	}
+}
+
+# cp_debug.93 -- Force-run Samier registration/setup.
+cp_debug.93 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			if = {
+				limit = {
+					NOT = { has_global_variable = cp_person_samier_alive }
+					NOT = { has_variable = cp_samier_alive }
+				}
+				cp_register_person = {
+					person = samier
+					country = EGY
+				}
+			}
+			trigger_event = { id = cp_samier.1 }
+		}
+	}
+}
+
+# cp_debug.94 -- Queue Samier's ambient intro.
+cp_debug.94 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_samier_seen_intro
+			set_variable = { name = cp_debug_selected_event value = 50010 }
+		}
+	}
+}
+
+# cp_debug.95 -- Queue Samier's labor-law reaction.
+cp_debug.95 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_samier_seen_labor_law
+			set_variable = { name = cp_debug_selected_event value = 50020 }
+		}
+	}
+}
+
+# cp_debug.96 -- Force-run Tarek registration/setup.
+cp_debug.96 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			if = {
+				limit = {
+					NOT = { has_global_variable = cp_person_tarek_alive }
+					NOT = { has_variable = cp_tarek_alive }
+				}
+				cp_register_person = {
+					person = tarek
+					country = EGY
+				}
+			}
+			trigger_event = { id = cp_tarek.1 }
+		}
+	}
+}
+
+# cp_debug.97 -- Queue Tarek's ambient intro.
+cp_debug.97 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_tarek_seen_intro
+			set_variable = { name = cp_debug_selected_event value = 60010 }
+		}
+	}
+}
+
+# cp_debug.98 -- Queue Tarek's labor-law reaction.
+cp_debug.98 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_tarek_seen_labor_law
+			set_variable = { name = cp_debug_selected_event value = 60020 }
+		}
+	}
+}
+
+# cp_debug.99 -- Queue Layla's first-child milestone. Resets only
+# the small first-child gates so the event can be reviewed in an existing
+# smoke-test save without rewinding the rest of her life state.
+cp_debug.99 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_layla_seen_childbirth
+			remove_variable = cp_layla_has_children
+			set_variable = { name = cp_layla_children value = 0 }
+			set_variable = { name = cp_debug_selected_event value = 1005 }
+		}
+	}
+}
+
+# cp_debug.100 -- Force-run Nour registration/setup.
+cp_debug.100 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			if = {
+				limit = {
+					NOT = { has_global_variable = cp_person_nour_alive }
+					NOT = { has_variable = cp_nour_alive }
+				}
+				cp_register_person = {
+					person = nour
+					country = EGY
+				}
+			}
+			trigger_event = { id = cp_nour.1 }
+		}
+	}
+}
+
+# cp_debug.101 -- Queue Nour's ambient intro.
+cp_debug.101 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_nour_seen_intro
+			set_variable = { name = cp_debug_selected_event value = 70010 }
+		}
+	}
+}
+
+# cp_debug.102 -- Queue Nour's property-rights reaction.
+cp_debug.102 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_nour_seen_property_rights
+			set_variable = { name = cp_debug_selected_event value = 70020 }
+		}
+	}
+}
+
+# cp_debug.103 -- Force-run Mina registration/setup.
+cp_debug.103 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			if = {
+				limit = {
+					NOT = { has_global_variable = cp_person_mina_alive }
+					NOT = { has_variable = cp_mina_alive }
+				}
+				cp_register_person = {
+					person = mina
+					country = EGY
+				}
+			}
+			trigger_event = { id = cp_mina.1 }
+		}
+	}
+}
+
+# cp_debug.104 -- Queue Mina's ambient intro.
+cp_debug.104 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_mina_seen_intro
+			set_variable = { name = cp_debug_selected_event value = 80010 }
+		}
+	}
+}
+
+# cp_debug.105 -- Queue Mina's public-schools reaction.
+cp_debug.105 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_mina_seen_public_schools
+			set_variable = { name = cp_debug_selected_event value = 80020 }
+		}
+	}
+}
+
+# cp_debug.106 -- Force-run Zaynab registration/setup.
+cp_debug.106 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			if = {
+				limit = {
+					NOT = { has_global_variable = cp_person_zaynab_alive }
+					NOT = { has_variable = cp_zaynab_alive }
+				}
+				cp_register_person = {
+					person = zaynab
+					country = EGY
+				}
+			}
+			trigger_event = { id = cp_zaynab.1 }
+		}
+	}
+}
+
+# cp_debug.107 -- Queue Zaynab's ambient intro.
+cp_debug.107 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_zaynab_seen_intro
+			set_variable = { name = cp_debug_selected_event value = 90010 }
+		}
+	}
+}
+
+# cp_debug.108 -- Queue Zaynab's public-health reaction.
+cp_debug.108 = {
+	type = country_event
+	hidden = yes
+	orphan = yes
+
+	immediate = {
+		c:EGY ?= {
+			remove_variable = cp_zaynab_seen_public_health
+			set_variable = { name = cp_debug_selected_event value = 90020 }
 		}
 	}
 }

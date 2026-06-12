@@ -1,0 +1,28 @@
+Common People video replacement prompt v0.1
+Source event: cp_rashid.30 at mod/events/cp_rashid_events.txt:133
+Previous vanilla video placeholder: unspecific_signed_contract
+Target DDS: mod/gfx/event_pictures/cp_rashid_30_the_paper_name_v01.dds
+Source PNG: image/generated/video-replacements/v0.1/cp_rashid_30_the_paper_name_v01.dds.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, grounded 19th-century materials, natural anatomy.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the essential person, action, object, or workplace named by the event.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific event:
+Event id: cp_rashid.30
+Person token: rashid
+Title: The Paper Name
+Short description: Identification papers arrive in a locked box with a key that sits warm in the senior clerk's palm. Rashid is given a stack of forms, a ruler, and an instruction: names must fit the line. They do not. A grandfather's name spills past the margin; a widow insists on the name people call her in the alley; a boy gives his village before his father because that is where anyone would find him. Rashid trims nothing at first. Then the line grows, the room heats, and the ink dries in the nib. By evening he understands the cruelty of a narrow blank. The paper promises to make people visible, but it has a small mouth. It accepts what it can swallow and leaves the rest standing in the corridor.
+Flavor text: He presses the seal down gently, as if gentleness can change what the seal has done.
+
+Scene instruction:
+Render one specific moment from the event text. Favor ordinary labor, domestic detail, and social consequence over spectacle. Keep the subject and the event's most important object readable on the left side. Use the right side for background depth, architecture, smoke, crowd edge, or empty space that can be covered by Victoria 3's text panel.

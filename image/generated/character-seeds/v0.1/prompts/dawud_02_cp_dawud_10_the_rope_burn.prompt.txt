@@ -1,0 +1,27 @@
+Common People character seed prompt: dawud
+Source ledger: documentation/characters/dawud/prompts/seed-v0.1.md
+Prompt heading: `cp_dawud.10` - The Rope Burn
+Target source PNG: image/generated/character-seeds/v0.1/dawud_02_cp_dawud_10_the_rope_burn.png
+
+Generation target:
+Use case: historical-scene
+Asset type: Victoria 3 event/portrait image, 3:2 landscape, final crop must read at 600x400
+Model: gpt-image-2
+Size: 1536x1024
+Quality: high
+
+Global Common People constraints:
+Painted historical realism, textured oil-paint surface, natural anatomy, grounded 19th-century Egyptian materials.
+No text, no UI, no border, no watermark, no modern clothing, no fantasy costume, no heroic propaganda pose.
+The image must be human-scale and must include the required object or gesture named in the scene prompt.
+Victoria 3 event-window safety: place the essential face, action, and required object in the left half or center-left; the game's right-side text panel covers much of the right half, so reserve that area for atmosphere and background only.
+
+Specific prompt:
+Event: cp_dawud.10 - "The Rope Burn"
+Narrative function: Port expansion enters Dawud's life as a wound in the hand.
+Subject: Dawud, dockworker in his thirties.
+Scene/backdrop: working quay with sacks and a low cargo boat at the edge of frame.
+Foreground action: Dawud tips water from a tin cup over a red rope burn while another worker pulls the rope away.
+Required object/gesture: wet injured palm, thick rope, tin cup.
+Lighting/mood: flat noon light, pain treated as routine.
+Avoid: dramatic shipwreck, clean warehouse, heroic labor mural.

@@ -1,0 +1,278 @@
+﻿###############################################################################
+# Common People -- shared scripted buttons
+#
+# Player-facing journal buttons should not belong to a single person unless
+# that person has explicitly been promoted to a major, persistent arc. The only
+# shared button shipped for now is the hidden-when-idle QA popup bridge used by
+# generated console selectors.
+###############################################################################
+
+cp_shared_debug_fire_selected_button = {
+	name = "cp_shared_debug_fire_selected_button_name"
+	desc = "cp_shared_debug_fire_selected_button_desc"
+
+	visible = {
+		has_variable = cp_debug_selected_event
+	}
+
+	possible = {
+		has_variable = cp_debug_selected_event
+	}
+
+	effect = {
+		if = {
+			limit = { has_variable = cp_debug_selected_event }
+			cp_debug_fire_selected = yes
+			remove_variable = cp_debug_selected_event
+		}
+	}
+}
+
+
+# ============================================================================
+# Roster action buttons
+# ============================================================================
+# These buttons are shared JE controls, not person-owned journal entries. They
+# bypass the automatic 1-2/year ambient budget because a player click is an
+# explicit request to check in, but each person still gets a short cooldown and
+# the selected event must have an unseen/currently-eligible beat.
+
+cp_shared_action_layla_button = {
+	name = "cp_shared_action_layla_button_name"
+	desc = "cp_shared_action_layla_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = layla }
+		cp_active_roster_has_person = { person = layla }
+	}
+	possible = {
+		NOT = { has_variable = cp_layla_action_cooldown }
+		cp_shared_action_layla_available = yes
+	}
+	effect = { cp_shared_action_layla = yes }
+}
+
+cp_shared_action_bey_button = {
+	name = "cp_shared_action_bey_button_name"
+	desc = "cp_shared_action_bey_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = bey }
+		cp_active_roster_has_person = { person = bey }
+	}
+	possible = {
+		NOT = { has_variable = cp_bey_action_cooldown }
+		cp_shared_action_bey_available = yes
+	}
+	effect = { cp_shared_action_bey = yes }
+}
+
+cp_shared_action_soldier_button = {
+	name = "cp_shared_action_soldier_button_name"
+	desc = "cp_shared_action_soldier_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = soldier }
+		cp_active_roster_has_person = { person = soldier }
+	}
+	possible = {
+		NOT = { has_variable = cp_soldier_action_cooldown }
+		cp_shared_action_soldier_available = yes
+	}
+	effect = { cp_shared_action_soldier = yes }
+}
+
+cp_shared_action_nour_button = {
+	name = "cp_shared_action_nour_button_name"
+	desc = "cp_shared_action_nour_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = nour }
+		cp_active_roster_has_person = { person = nour }
+	}
+	possible = {
+		NOT = { has_variable = cp_nour_action_cooldown }
+		cp_shared_action_nour_available = yes
+	}
+	effect = { cp_shared_action_nour = yes }
+}
+
+cp_shared_action_mina_button = {
+	name = "cp_shared_action_mina_button_name"
+	desc = "cp_shared_action_mina_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = mina }
+		cp_active_roster_has_person = { person = mina }
+	}
+	possible = {
+		NOT = { has_variable = cp_mina_action_cooldown }
+		cp_shared_action_mina_available = yes
+	}
+	effect = { cp_shared_action_mina = yes }
+}
+
+cp_shared_action_zaynab_button = {
+	name = "cp_shared_action_zaynab_button_name"
+	desc = "cp_shared_action_zaynab_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = zaynab }
+		cp_active_roster_has_person = { person = zaynab }
+	}
+	possible = {
+		NOT = { has_variable = cp_zaynab_action_cooldown }
+		cp_shared_action_zaynab_available = yes
+	}
+	effect = { cp_shared_action_zaynab = yes }
+}
+
+cp_shared_action_samier_button = {
+	name = "cp_shared_action_samier_button_name"
+	desc = "cp_shared_action_samier_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = samier }
+		cp_active_roster_has_person = { person = samier }
+	}
+	possible = {
+		NOT = { has_variable = cp_samier_action_cooldown }
+		cp_shared_action_samier_available = yes
+	}
+	effect = { cp_shared_action_samier = yes }
+}
+
+cp_shared_action_tarek_button = {
+	name = "cp_shared_action_tarek_button_name"
+	desc = "cp_shared_action_tarek_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = tarek }
+		cp_active_roster_has_person = { person = tarek }
+	}
+	possible = {
+		NOT = { has_variable = cp_tarek_action_cooldown }
+		cp_shared_action_tarek_available = yes
+	}
+	effect = { cp_shared_action_tarek = yes }
+}
+
+cp_shared_action_farid_button = {
+	name = "cp_shared_action_farid_button_name"
+	desc = "cp_shared_action_farid_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = farid }
+		cp_active_roster_has_person = { person = farid }
+	}
+	possible = {
+		NOT = { has_variable = cp_farid_action_cooldown }
+		cp_shared_action_farid_available = yes
+	}
+	effect = { cp_shared_action_farid = yes }
+}
+
+cp_shared_action_dawud_button = {
+	name = "cp_shared_action_dawud_button_name"
+	desc = "cp_shared_action_dawud_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = dawud }
+		cp_active_roster_has_person = { person = dawud }
+	}
+	possible = {
+		NOT = { has_variable = cp_dawud_action_cooldown }
+		cp_shared_action_dawud_available = yes
+	}
+	effect = { cp_shared_action_dawud = yes }
+}
+
+cp_shared_action_rashid_button = {
+	name = "cp_shared_action_rashid_button_name"
+	desc = "cp_shared_action_rashid_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = rashid }
+		cp_active_roster_has_person = { person = rashid }
+	}
+	possible = {
+		NOT = { has_variable = cp_rashid_action_cooldown }
+		cp_shared_action_rashid_available = yes
+	}
+	effect = { cp_shared_action_rashid = yes }
+}
+
+cp_shared_action_salma_button = {
+	name = "cp_shared_action_salma_button_name"
+	desc = "cp_shared_action_salma_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = salma }
+		cp_active_roster_has_person = { person = salma }
+	}
+	possible = {
+		NOT = { has_variable = cp_salma_action_cooldown }
+		cp_shared_action_salma_available = yes
+	}
+	effect = { cp_shared_action_salma = yes }
+}
+
+cp_shared_action_karim_button = {
+	name = "cp_shared_action_karim_button_name"
+	desc = "cp_shared_action_karim_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = karim }
+		cp_active_roster_has_person = { person = karim }
+	}
+	possible = {
+		NOT = { has_variable = cp_karim_action_cooldown }
+		cp_shared_action_karim_available = yes
+	}
+	effect = { cp_shared_action_karim = yes }
+}
+
+cp_shared_action_huda_button = {
+	name = "cp_shared_action_huda_button_name"
+	desc = "cp_shared_action_huda_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = huda }
+		cp_active_roster_has_person = { person = huda }
+	}
+	possible = {
+		NOT = { has_variable = cp_huda_action_cooldown }
+		cp_shared_action_huda_available = yes
+	}
+	effect = { cp_shared_action_huda = yes }
+}
+
+cp_shared_action_nabil_button = {
+	name = "cp_shared_action_nabil_button_name"
+	desc = "cp_shared_action_nabil_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = nabil }
+		cp_active_roster_has_person = { person = nabil }
+	}
+	possible = {
+		NOT = { has_variable = cp_nabil_action_cooldown }
+		cp_shared_action_nabil_available = yes
+	}
+	effect = { cp_shared_action_nabil = yes }
+}
+
+cp_shared_action_mansur_button = {
+	name = "cp_shared_action_mansur_button_name"
+	desc = "cp_shared_action_mansur_button_desc"
+
+	visible = {
+		cp_person_is_alive = { person = mansur }
+		cp_active_roster_has_person = { person = mansur }
+	}
+	possible = {
+		NOT = { has_variable = cp_mansur_action_cooldown }
+		cp_shared_action_mansur_available = yes
+	}
+	effect = { cp_shared_action_mansur = yes }
+}
